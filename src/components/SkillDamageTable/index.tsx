@@ -3,7 +3,7 @@ import { Table } from 'antd'
 import { skillBasicDps, skillFinalDps, skillStandardDps } from '../../utils/skill-dps'
 import GuFengJueSkillDataDTO from '../../data/skill'
 import CharacterDTO from '../../data/character'
-import styles from './index.less'
+import './index.css'
 
 function SkillDamageTable() {
   const data = GuFengJueSkillDataDTO
@@ -97,7 +97,7 @@ function SkillDamageTable() {
   return (
     <div>
       <Table
-        className={styles.skillDamageTable}
+        className={'skillDamageTable'}
         dataSource={data}
         pagination={false}
         columns={columns}

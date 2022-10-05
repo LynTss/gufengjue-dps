@@ -1,0 +1,13 @@
+.skillDamageTable th {
+  white-space: nowrap;
+}
+
+.skillDamageTable th.keyTable.ant-table-cell {
+  background-color: #2AC88F;
+  color: #fff;
+}
+
+.skillDamageTable .ant-table-thead>tr>th,
+.skillDamageTable .ant-table-tbody>tr>td {
+  padding: 4px 8px;
+}
