@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/gufengjue-dps/static/css/main.ad6023b7.css",
-    "main.js": "/gufengjue-dps/static/js/main.09bd8453.js",
+    "main.js": "/gufengjue-dps/static/js/main.4a7a501c.js",
     "index.html": "/gufengjue-dps/index.html",
     "main.ad6023b7.css.map": "/gufengjue-dps/static/css/main.ad6023b7.css.map",
-    "main.09bd8453.js.map": "/gufengjue-dps/static/js/main.09bd8453.js.map"
+    "main.4a7a501c.js.map": "/gufengjue-dps/static/js/main.4a7a501c.js.map"
   },
   "entrypoints": [
     "static/css/main.ad6023b7.css",
-    "static/js/main.09bd8453.js"
+    "static/js/main.4a7a501c.js"
   ]
 }
