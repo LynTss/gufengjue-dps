@@ -9,6 +9,7 @@ export enum GainDpsTypeEnum {
 export enum GainTypeEnum {
   力道 = '力道',
   破防 = '破防',
+  破防百分比 = '破防百分比',
   外攻会心等级 = '外攻会心等级',
   外攻会心百分比 = '外攻会心百分比',
   外攻会心效果等级 = '外攻会心效果等级',

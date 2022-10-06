@@ -50,7 +50,7 @@ export interface SkillBasicDTO {
  * @name 技能增益列表
  * @description 技能增益的计算要符合郭氏理论：https://www.jx3box.com/bps/12752
  */
-export interface SkillGainDTO {
+export interface SkillGainDTO extends Partial<SKillGainData> {
   /**
    * @name 增益是否启用
    */
@@ -59,6 +59,19 @@ export interface SkillGainDTO {
    * @name 增益名称
    */
   增益名称: string
+  /**
+   * @name 增益所在位置
+   * @description 秘籍、奇穴、技能
+   */
+  增益所在位置: string // '秘籍' | '奇穴' | '技能'
+  /**
+   * @name 增益集合
+   * @description 当一个增益有多个效果时
+   */
+  增益集合?: SKillGainData[]
+}
+
+export interface SKillGainData {
   /**
    * @name 技能增益计算类型
    * @description 相同类型增益按加法计算，不同增益类型按乘法计算
@@ -74,9 +87,4 @@ export interface SkillGainDTO {
    * @description 增益的具体数值（数值、百分比等）
    */
   增益数值: number
-  /**
-   * @name 增益所在位置
-   * @description 秘籍、奇穴
-   */
-  增益所在位置: string // '秘籍' | '奇穴'
 }

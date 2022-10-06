@@ -56,7 +56,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能增益列表: liukeyuGainDTO,
   },
   {
-    技能名称: '避实就虚',
+    技能名称: '避实击虚',
     技能伤害系数: 0.5,
     技能基础伤害_最小值: 35,
     技能基础伤害_最大值: 40,

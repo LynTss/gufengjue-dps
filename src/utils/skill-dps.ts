@@ -57,12 +57,9 @@ export const skillStandardDps = (damage: number, characterConfig: CharacterFinal
  */
 export const skillFinalDpsFunction = (damage: number, characterConfig: CharacterFinalDTO) => {
   // 计算目标等级减伤
-  console.log('damage', damage)
   const r_dengjijianshang = skillDengjijianshangDps(damage, characterConfig)
-  console.log('r_dengjijianshang', r_dengjijianshang)
   // 无双增伤
   const r_wushuang = skillWushuangDps(r_dengjijianshang, characterConfig)
-  console.log('r_wushuang', r_wushuang)
 
   return Math.floor(r_wushuang)
 }
@@ -86,9 +83,7 @@ export const skillFinalDps = (skillConfig: SkillBasicDTO, characterConfig: Chara
 export const skillDengjijianshangDps = (damage: number, characterConfig: CharacterFinalDTO) => {
   const levelDiff = 当前目标.等级 - characterConfig.等级
   const levelReduce = -(levelDiff * 每等级减伤)
-  console.log('levelReduce', levelReduce)
   const levelReducePoint = guoshiBasic(levelReduce)
-  console.log('levelReducePoint', levelReducePoint)
 
   return guoshiResult(damage, levelReducePoint)
 }

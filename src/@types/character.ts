@@ -53,11 +53,11 @@ export interface CharacterFinalDTO extends Partial<EquipmentDTO> {
    * @name 攻击力-基础攻击力
    * @description 显示的基础攻击力
    */
-  基础攻击: number
+  基础攻击?: number
   /**
    * @name 个人等级
    */
-  等级: number
+  等级?: number
   /**
    * @name 破防值
    * @description 游戏内现实的具体破防值
@@ -72,10 +72,10 @@ export interface CharacterFinalDTO extends Partial<EquipmentDTO> {
    * @name 力道
    * @description 游戏内现实的具体无双值
    */
-  力道: number
+  力道?: number
   /**
    * @name 加速值
    * @description 游戏内现实的具体无双值
    */
-  加速值: number
+  加速值?: number
 }

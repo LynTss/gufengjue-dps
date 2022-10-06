@@ -1,15 +1,15 @@
 import { CharacterFinalDTO } from '@/@types/character'
 
-const CharacterDTO: CharacterFinalDTO = {
-  面板攻击: 28508,
+const DefaultCharacterDTO: CharacterFinalDTO = {
+  面板攻击: 30089,
   等级: 120,
-  破防值: 23676,
-  无双值: 0,
-  基础攻击: 0,
-  武器伤害_最小值: 2558,
-  武器伤害_最大值: 4264,
-  力道: 0,
-  加速值: 0,
+  破防值: 31825,
+  无双值: 25539,
+  基础攻击: 17427,
+  武器伤害_最小值: 4066,
+  武器伤害_最大值: 5508,
+  力道: 7916,
+  加速值: 491,
 }
 
-export default CharacterDTO
+export default DefaultCharacterDTO
