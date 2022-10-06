@@ -1,6 +1,11 @@
 import React from 'react'
 import { Table } from 'antd'
-import { skillBasicDps, skillFinalDps, skillStandardDps } from '../../utils/skill-dps'
+import {
+  skillBasicDps,
+  skillDengjijianshangDps,
+  skillFinalDps,
+  skillStandardDps,
+} from '../../utils/skill-dps'
 import GuFengJueSkillDataDTO from '../../data/skill'
 import './index.css'
 
@@ -72,7 +77,31 @@ function SkillDamageTable({ characterData, currentTarget }) {
       },
     },
     {
-      title: '最终伤害-min',
+      title: '等级减伤害后伤害-min',
+      dataIndex: 'min',
+      className: 'keyTable-1',
+      fix: 'right',
+      width: 120,
+      render: (_, row) => {
+        const damage = skillBasicDps(row, characterData)?.min
+        const standard_min = skillStandardDps(damage, characterData, currentTarget)
+        return skillDengjijianshangDps(standard_min, characterData, currentTarget)
+      },
+    },
+    {
+      title: '等级减伤害后伤害-max',
+      dataIndex: 'max',
+      className: 'keyTable-1',
+      fix: 'right',
+      width: 120,
+      render: (_, row) => {
+        const damage = skillBasicDps(row, characterData)?.max
+        const standard_min = skillStandardDps(damage, characterData, currentTarget)
+        return skillDengjijianshangDps(standard_min, characterData, currentTarget)
+      },
+    },
+    {
+      title: '破防无双计算后伤害-min',
       dataIndex: 'min',
       className: 'keyTable',
       fix: 'right',
@@ -82,7 +111,7 @@ function SkillDamageTable({ characterData, currentTarget }) {
       },
     },
     {
-      title: '最终伤害-max',
+      title: '破防无双计算后伤害-max',
       dataIndex: 'max',
       className: 'keyTable',
       fix: 'right',
