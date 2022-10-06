@@ -1,0 +1,50 @@
+.dps {
+  width: 100%;
+  display: flex;
+}
+
+.dps-line {
+  display: flex;
+  font-size: 20px;
+  border-bottom: 1px solid #dfdfdf;
+  justify-content: space-between;
+}
+
+.dps-total {
+  color: #FE5502;
+}
+
+.dps-count {
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dps-count-1 {
+  width: 25%;
+}
+
+.dps-count-2 {
+  width: 40%;
+  text-align: right;
+}
+
+.dps-count-3 {
+  width: 30%;
+  text-align: right;
+}
+
+.dps-number {
+  width: 50%;
+  color: var(--ant-primary-color);
+  font-size: 90px;
+  font-weight: 700;
+  display: flex;
+  line-height: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.dps-skill-count-wrap {
+  width: 50%;
+}

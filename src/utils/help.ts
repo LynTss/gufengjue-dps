@@ -8,6 +8,13 @@ export const guoshiBasic = (zhi) => {
 }
 
 /**
+ * @name 郭氏点数百分比增加
+ */
+export const guoshiPercent = (dianshu, baifenbi) => {
+  return dianshu + Math.floor(dianshu * (guoshiBasic(baifenbi) / 1024))
+}
+
+/**
  * @name 郭氏基础系数算法
  */
 export const guoshiXishuBasic = (dianshu, xishu) => {
@@ -19,6 +26,24 @@ export const guoshiXishuBasic = (dianshu, xishu) => {
  */
 export const guoshiResult = (basic, guoshizhi, jichuxishu = 1) => {
   return Math.floor(basic * (jichuxishu + guoshizhi / 1024))
+}
+
+/**
+ * @name 郭氏会心
+ */
+export const guoshiHuixin = (huixinzhi, shuliang) => {
+  const guoshihuixinzhi = Math.floor((huixinzhi * 1024) / 属性系数.会心)
+  return Math.ceil((guoshihuixinzhi / 1024 + 0.0003) * shuliang)
+}
+
+/**
+ * @name 郭氏会心伤害
+ */
+export const guoshiHuixinshanghai = (huixiao, shanghai, 郭氏额外会效果值) => {
+  const guoshihuixiao = guoshiXishuBasic(huixiao, 属性系数.会效)
+  return (
+    Math.floor(shanghai * 1.75) + Math.floor((shanghai * (guoshihuixiao + 郭氏额外会效果值)) / 1024)
+  )
 }
 
 /**
@@ -40,4 +65,20 @@ export const guoshiFangyu = (fangyudianshu, fangyuxishu) => {
  */
 export const guoshiHuixiao = (huixiao) => {
   return guoshiXishuBasic(huixiao, 属性系数.会效)
+}
+
+export const getlocalStorage = (key) => {
+  const objString = localStorage.getItem(key)
+  if (objString) {
+    try {
+      const obj = JSON.parse(objString)
+      if (obj) {
+        return obj
+      }
+    } catch {
+      return objString
+    }
+  } else {
+    return objString
+  }
 }

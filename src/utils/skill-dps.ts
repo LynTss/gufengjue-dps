@@ -6,7 +6,7 @@ import { guoshiXishuBasic, guoshiResult, guoshiBasic } from './help'
  */
 import { CharacterFinalDTO } from '@/@types/character'
 import { SkillBasicDTO } from '@/@types/skill'
-import { 属性系数, 当前目标, 每等级减伤 } from './constant'
+import { 属性系数, 每等级减伤 } from './constant'
 import { guoshiFangyu, guoshiPofang } from './help'
 
 /**
@@ -41,7 +41,7 @@ export const skillBasicDps = (skillConfig: SkillBasicDTO, characterConfig: Chara
  * @name 技能基准伤害
  * @params 基准伤害，参与最终无双、技能增伤等计算
  */
-export const skillStandardDps = (damage: number, characterConfig: CharacterFinalDTO) => {
+export const skillStandardDps = (damage: number, characterConfig: CharacterFinalDTO, 当前目标) => {
   const { 破防值 } = characterConfig
   const { 防御点数, 防御系数 } = 当前目标
   const guoshiPofangzhi = guoshiPofang(破防值)
@@ -55,9 +55,13 @@ export const skillStandardDps = (damage: number, characterConfig: CharacterFinal
  * @name 技能最终伤害计算
  * @params 基准伤害，参与最终无双、技能增伤等计算
  */
-export const skillFinalDpsFunction = (damage: number, characterConfig: CharacterFinalDTO) => {
+export const skillFinalDpsFunction = (
+  damage: number,
+  characterConfig: CharacterFinalDTO,
+  当前目标
+) => {
   // 计算目标等级减伤
-  const r_dengjijianshang = skillDengjijianshangDps(damage, characterConfig)
+  const r_dengjijianshang = skillDengjijianshangDps(damage, characterConfig, 当前目标)
   // 无双增伤
   const r_wushuang = skillWushuangDps(r_dengjijianshang, characterConfig)
 
@@ -69,22 +73,29 @@ export const skillFinalDpsFunction = (damage: number, characterConfig: Character
  * @param characterConfig
  * @returns
  */
-export const skillFinalDps = (skillConfig: SkillBasicDTO, characterConfig: CharacterFinalDTO) => {
+export const skillFinalDps = (
+  skillConfig: SkillBasicDTO,
+  characterConfig: CharacterFinalDTO,
+  当前目标
+) => {
   const { min, max } = skillBasicDps(skillConfig, characterConfig)
-  const standard_min = skillStandardDps(min, characterConfig)
-  const standard_max = skillStandardDps(max, characterConfig)
+  const standard_min = skillStandardDps(min, characterConfig, 当前目标)
+  const standard_max = skillStandardDps(max, characterConfig, 当前目标)
   return {
-    min: skillFinalDpsFunction(standard_min, characterConfig),
-    max: skillFinalDpsFunction(standard_max, characterConfig),
+    min: skillFinalDpsFunction(standard_min, characterConfig, 当前目标),
+    max: skillFinalDpsFunction(standard_max, characterConfig, 当前目标),
   }
 }
 
 // 等级减伤dps
-export const skillDengjijianshangDps = (damage: number, characterConfig: CharacterFinalDTO) => {
-  const levelDiff = 当前目标.等级 - characterConfig.等级
-  const levelReduce = -(levelDiff * 每等级减伤)
-  const levelReducePoint = guoshiBasic(levelReduce)
-
+export const skillDengjijianshangDps = (
+  damage: number,
+  characterConfig: CharacterFinalDTO,
+  当前目标
+) => {
+  const levelDiff = Math.abs((characterConfig?.等级 || 120) - 当前目标.等级)
+  const levelReduce = levelDiff * 每等级减伤
+  const levelReducePoint = -guoshiBasic(levelReduce)
   return guoshiResult(damage, levelReducePoint)
 }
 

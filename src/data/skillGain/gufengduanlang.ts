@@ -8,6 +8,7 @@ const gufengduanlangGainDTO: SkillGainDTO[] = [
     增益计算类型: 'a',
     增益数值: 0.04,
     增益所在位置: '秘籍',
+    是否启用: true,
   },
   {
     增益名称: '5%伤害',
@@ -15,6 +16,7 @@ const gufengduanlangGainDTO: SkillGainDTO[] = [
     增益计算类型: 'a',
     增益数值: 0.05,
     增益所在位置: '秘籍',
+    是否启用: true,
   },
   {
     增益名称: '4%会心',
@@ -22,12 +24,21 @@ const gufengduanlangGainDTO: SkillGainDTO[] = [
     增益计算类型: 'a',
     增益数值: 0.04,
     增益所在位置: '秘籍',
+    是否启用: true,
   },
   {
-    增益名称: '5%会心',
+    增益名称: '3%会心',
     增益类型: GainTypeEnum.外攻会心百分比,
     增益计算类型: 'a',
-    增益数值: 0.05,
+    增益数值: 0.03,
+    增益所在位置: '秘籍',
+    是否启用: true,
+  },
+  {
+    增益名称: '戗风',
+    增益类型: GainTypeEnum.伤害百分比,
+    增益计算类型: 'a',
+    增益数值: 0.15,
     增益所在位置: '秘籍',
   },
 ]

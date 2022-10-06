@@ -1,3 +1,6 @@
+.skillDamageTableWrap {
+  padding: 20px 0;
+}
 .skillDamageTable th {
   white-space: nowrap;
 }

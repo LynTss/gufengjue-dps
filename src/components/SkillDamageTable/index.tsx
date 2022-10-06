@@ -2,10 +2,9 @@ import React from 'react'
 import { Table } from 'antd'
 import { skillBasicDps, skillFinalDps, skillStandardDps } from '../../utils/skill-dps'
 import GuFengJueSkillDataDTO from '../../data/skill'
-import CharacterDTO from '../../data/character'
 import './index.css'
 
-function SkillDamageTable() {
+function SkillDamageTable({ characterData, currentTarget }) {
   const data = GuFengJueSkillDataDTO
 
   const columns = [
@@ -46,30 +45,30 @@ function SkillDamageTable() {
       title: '原始伤害-min',
       dataIndex: 'yuanshi_min',
       render: (_, row) => {
-        return skillBasicDps(row, CharacterDTO)?.min
+        return skillBasicDps(row, characterData)?.min
       },
     },
     {
       title: '原始伤害-max',
       dataIndex: 'yuanshi_max',
       render: (_, row) => {
-        return skillBasicDps(row, CharacterDTO)?.max
+        return skillBasicDps(row, characterData)?.max
       },
     },
     {
       title: '基准伤害-min',
       dataIndex: 'jizhun_min',
       render: (_, row) => {
-        const damage = skillBasicDps(row, CharacterDTO)?.min
-        return skillStandardDps(damage, CharacterDTO)
+        const damage = skillBasicDps(row, characterData)?.min
+        return skillStandardDps(damage, characterData, currentTarget)
       },
     },
     {
       title: '基准伤害-min',
       dataIndex: 'jizhun_max',
       render: (_, row) => {
-        const damage = skillBasicDps(row, CharacterDTO)?.max
-        return skillStandardDps(damage, CharacterDTO)
+        const damage = skillBasicDps(row, characterData)?.max
+        return skillStandardDps(damage, characterData, currentTarget)
       },
     },
     {
@@ -79,7 +78,7 @@ function SkillDamageTable() {
       fix: 'right',
       width: 120,
       render: (_, row) => {
-        return skillFinalDps(row, CharacterDTO)?.min
+        return skillFinalDps(row, characterData, currentTarget)?.min
       },
     },
     {
@@ -89,13 +88,14 @@ function SkillDamageTable() {
       fix: 'right',
       width: 120,
       render: (_, row) => {
-        return skillFinalDps(row, CharacterDTO)?.max
+        return skillFinalDps(row, characterData, currentTarget)?.max
       },
     },
   ]
 
   return (
-    <div>
+    <div className={'skillDamageTableWrap'}>
+      <h1>技能详细数据及计算过程数据</h1>
       <Table
         className={'skillDamageTable'}
         dataSource={data}

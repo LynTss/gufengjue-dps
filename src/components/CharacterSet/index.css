@@ -1,0 +1,83 @@
+.current-target {
+  display: flex;
+}
+
+.current-wrap {
+  width: 300px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.label {
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 8px;
+  line-height: 20px;
+}
+
+.current-boss {
+  width: 300px;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+}
+
+.form .ant-form-item {
+  width: 300px;
+  margin: 0 10px 20px;
+}
+
+.form .ant-form-item-control-input-content > div {
+  width: 100%;
+}
+
+.form .ant-form-item-label>label:after {
+  display: none;
+}
+
+.form .ant-form-item-row {
+  display: block;
+  text-align: left;
+}
+
+.form .ant-form-item-label {
+  display: block;
+  margin-bottom: 8px;
+  text-align: left;
+  height: 20px;
+  line-height: 20px;
+}
+
+.form .ant-form-item-label > label {
+  text-align: left;
+  line-height: 20px;
+  font-size: 20px;
+  height: 20px;
+}
+
+.form .ant-form-item.jisuan {
+  display: block;
+  width: 100%;
+}
+
+.jisuan .ant-form-item-control {
+  margin-left: 0 !important;
+}
+
+.jisuan-button {
+  width: 100px;
+}
+
+.item-label .anticon {
+  font-size: 14px;
+  margin-left: 8px;
+  vertical-align: -1px;
+  cursor: pointer;
+}
+
+.item-label .anticon:hover {
+  color: var(--ant-primary-color);
+}

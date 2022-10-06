@@ -7,7 +7,7 @@ import './style/base.css'
 
 ConfigProvider.config({
   theme: {
-    primaryColor: '#ff0000',
+    primaryColor: '#344160',
   },
 })
 

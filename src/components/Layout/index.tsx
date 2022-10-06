@@ -1,4 +1,5 @@
 import React from 'react'
+import './index.css'
 
 interface LayoutProps {
   children: any
@@ -6,7 +7,11 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = (props) => {
   const { children } = props
-  return <div>{children}</div>
+  return (
+    <div className={'layout-wrap'}>
+      <div className="layout">{children}</div>
+    </div>
+  )
 }
 
 export default Layout

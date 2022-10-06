@@ -23,6 +23,27 @@ const commonGainDTO: SkillGainDTO[] = [
       },
     ],
   },
+  {
+    增益名称: '威升灭影随风',
+    增益所在位置: '技能',
+    增益集合: [
+      {
+        增益类型: GainTypeEnum.破防百分比,
+        增益计算类型: 'a',
+        增益数值: 0.2,
+      },
+      {
+        增益类型: GainTypeEnum.外攻会心百分比,
+        增益计算类型: 'a',
+        增益数值: 0.2,
+      },
+      {
+        增益类型: GainTypeEnum.外攻会心效果百分比,
+        增益计算类型: 'a',
+        增益数值: 0.2,
+      },
+    ],
+  },
 ]
 
 export default commonGainDTO

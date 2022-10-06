@@ -4,7 +4,9 @@ import fenjiaoGainDTO from './skillGain/fenjiaoshi'
 import liukeyuGainDTO from './skillGain/liukeyu'
 import jidianshiGainDTO from './skillGain/jidianshi'
 import qiluoshiGainDTO from './skillGain/qiluoshi'
-import canglangsandieGainDTO from './skillGain/canglangsandie'
+import canglangsandie1GainDTO from './skillGain/canglangsandie1'
+import canglangsandie2GainDTO from './skillGain/canglangsandie2'
+import canglangsandie3GainDTO from './skillGain/canglangsandie3'
 import hengyunduanlangGainDTO from './skillGain/hengyunduanlang'
 import gufengduanlangGainDTO from './skillGain/gufengduanlang'
 import chushiyuGainDTO from './skillGain/chushiyu'
@@ -116,7 +118,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 316,
     武器伤害系数: 2,
     伤害计算次数: 1,
-    技能增益列表: canglangsandieGainDTO,
+    技能增益列表: canglangsandie1GainDTO,
   },
   {
     技能名称: '沧浪三叠·二',
@@ -125,7 +127,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 288,
     武器伤害系数: 2.5,
     伤害计算次数: 1,
-    技能增益列表: canglangsandieGainDTO,
+    技能增益列表: canglangsandie2GainDTO,
   },
   {
     技能名称: '沧浪三叠·三',
@@ -134,7 +136,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 220,
     武器伤害系数: 3,
     伤害计算次数: 1,
-    技能增益列表: canglangsandieGainDTO,
+    技能增益列表: canglangsandie3GainDTO,
   },
   {
     技能名称: '横云断浪',

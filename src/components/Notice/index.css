@@ -1,0 +1,17 @@
+.notice {
+  width: 70%;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+.notice h1 {
+  color: #ff0000;
+  font-size: 30px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.notice span {
+  color: #3a6ff8;
+  font-weight: 700;
+}
