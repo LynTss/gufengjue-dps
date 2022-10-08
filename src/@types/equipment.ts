@@ -19,14 +19,6 @@ export interface EquipmentDTO {
    */
   力道: number
   /**
-   * @name 外功攻击
-   */
-  外功攻击: number
-  /**
-   * @name 外攻破防
-   */
-  外攻破防: number
-  /**
    * @name 无双值
    */
   无双值: number

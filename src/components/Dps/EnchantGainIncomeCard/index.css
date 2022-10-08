@@ -1,0 +1,37 @@
+.income-line {
+  display: flex;
+  max-width: 50%;
+  font-size: 20px;
+  justify-content: flex-start;
+  height: 24px;
+  line-height: 24px;
+  margin-bottom: 8px;
+}
+
+.income-name {
+  width: 100px;
+  text-align: right;
+  margin-right: 8px;
+}
+
+.income-number {
+  width: calc(100% - 100px - 8px);
+  position: relative;
+  text-align: left;
+}
+
+.income-number-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.income-percent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 24px;
+  z-index: 1;
+  background: #2AC88F;
+}

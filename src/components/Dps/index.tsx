@@ -4,6 +4,8 @@ import { DpsListData, getDpsTotal } from './utils'
 import { message } from 'antd'
 import skillCycle from '@/data/skillCycle'
 import './index.css'
+import { EnchantGainDTO } from '@/data/enchantGain'
+import EnchantGainIncomeCard from './EnchantGainIncomeCard'
 
 interface DpsProps {
   characterData: CharacterFinalDTO
@@ -86,40 +88,61 @@ function Dps(params: DpsProps, ref) {
   }, [dpsList])
 
   return (
-    <div className={'dps'}>
-      <div className={'dps-skill-count-wrap'}>
-        {dps ? (
-          <div className={'dps-skill-count'}>
-            <div className={'dps-line dps-total'}>
-              <span>技能名称</span>
-              <div className={'dps-count'}>
-                <span className="dps-count-1">技能数量</span>
-                <span className="dps-count-2">技能总伤</span>
-                <span className="dps-count-3">技能比例</span>
+    <div>
+      <div className={'dps'}>
+        <div className={'dps-skill-count-wrap'}>
+          {dps ? (
+            <div className={'dps-skill-count'}>
+              <div className={'dps-line dps-total'}>
+                <span>技能名称</span>
+                <div className={'dps-count'}>
+                  <span className="dps-count-1">技能数量</span>
+                  <span className="dps-count-2">技能总伤</span>
+                  <span className="dps-count-3">技能比例</span>
+                </div>
               </div>
             </div>
-          </div>
-        ) : null}
-        {sortDpsList?.length ? (
-          <div className={'dps-skill-count'}>
-            {sortDpsList.map((item) => {
-              return (
-                <div className={'dps-line'} key={item.name}>
-                  <span>{item.name}</span>
-                  <div className={'dps-count'}>
-                    <span className="dps-count-1">{item.number}</span>
-                    <span className="dps-count-2">{item.dps}</span>
-                    <span className="dps-count-3">{((item.dps / total) * 100).toFixed(2)}%</span>
+          ) : null}
+          {sortDpsList?.length ? (
+            <div className={'dps-skill-count'}>
+              {sortDpsList.map((item) => {
+                return (
+                  <div className={'dps-line'} key={item.name}>
+                    <span>{item.name}</span>
+                    <div className={'dps-count'}>
+                      <span className="dps-count-1">{item.number}</span>
+                      <span className="dps-count-2">{item.dps}</span>
+                      <span className="dps-count-3">{((item.dps / total) * 100).toFixed(2)}%</span>
+                    </div>
                   </div>
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
+          ) : null}
+        </div>
+        {dps ? (
+          <div className="dps-number">
+            <span>{dps}</span>
           </div>
         ) : null}
       </div>
+
       {dps ? (
-        <div className="dps-number">
-          <span>{dps}</span>
+        <div className={'income'}>
+          <div className={'income-wrap'}>
+            {EnchantGainDTO.map((item) => {
+              return (
+                <EnchantGainIncomeCard
+                  key={item.附魔名称}
+                  totalDps={total}
+                  data={item}
+                  currentCycle={currentCycle}
+                  characterData={characterData}
+                  currentTarget={currentTarget}
+                />
+              )
+            })}
+          </div>
         </div>
       ) : null}
     </div>
