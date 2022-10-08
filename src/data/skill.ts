@@ -1,3 +1,4 @@
+import commonGainDTO from '@/data/skillGain/common'
 import { SkillBasicDTO } from '@/@types/skill'
 import guyingshiGainDTO from './skillGain/guyingshi'
 import fenjiaoGainDTO from './skillGain/fenjiaoshi'
@@ -64,7 +65,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 40,
     武器伤害系数: 1, // !描述0 实测1
     伤害计算次数: 1,
-    技能增益列表: [],
+    技能增益列表: commonGainDTO,
   },
   {
     技能名称: '疾电势',
@@ -82,7 +83,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 15,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: [],
+    技能增益列表: commonGainDTO,
   },
   {
     技能名称: '驰风八步·二',
@@ -91,7 +92,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 15,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: [],
+    技能增益列表: commonGainDTO,
   },
   {
     技能名称: '起落势',
@@ -172,7 +173,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 102,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: [],
+    技能增益列表: commonGainDTO,
   },
   {
     技能名称: '截辕·爆炸',
@@ -181,7 +182,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 147,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: [],
+    技能增益列表: commonGainDTO,
   },
   {
     技能名称: '横刀',
@@ -190,7 +191,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 1,
     伤害计算次数: 1,
-    技能增益列表: [],
+    技能增益列表: commonGainDTO,
   },
   {
     技能名称: '流血·一',
@@ -199,7 +200,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: [],
+    技能增益列表: commonGainDTO,
   },
   {
     技能名称: '流血·二',
@@ -208,7 +209,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 2,
-    技能增益列表: [],
+    技能增益列表: commonGainDTO,
   },
   {
     技能名称: '流血·三',
@@ -217,7 +218,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 3,
-    技能增益列表: [],
+    技能增益列表: commonGainDTO,
   },
   {
     技能名称: '流血·四',
@@ -226,7 +227,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 4,
-    技能增益列表: [],
+    技能增益列表: commonGainDTO,
   },
 ]
 export default GuFengJueSkillDataDTO

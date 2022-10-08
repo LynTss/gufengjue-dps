@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { CharacterFinalDTO } from '@/@types/character'
 import { Button, Form, InputNumber, Select, Tooltip } from 'antd'
 import { QuestionCircleOutlined } from '@ant-design/icons'
-import { 目标集合 } from '@/utils/constant'
+import { 目标集合 } from '@/data/constant'
 import skillCycle from '@/data/skillCycle'
 import './index.css'
 

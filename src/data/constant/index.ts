@@ -2,6 +2,8 @@
  * 常量文件
  */
 
+import { TargetDTO } from '@/@types/character'
+
 export const 自身等级 = 120 // 当前角色等级
 export const 每等级减伤 = 0.05
 
@@ -24,7 +26,7 @@ export const 属性系数 = {
   御劲减会伤: 21095.25,
 }
 
-export const 目标集合 = [
+export const 目标集合: TargetDTO[] = [
   {
     名称: '124级木桩',
     等级: 124,

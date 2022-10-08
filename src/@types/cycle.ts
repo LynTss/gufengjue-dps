@@ -14,8 +14,10 @@ export interface CycleDTO {
   /**
    * @name 技能增益描述
    */
-  技能增益列表?: Array<{
-    增益名称: string
-    增益技能数: number
-  }>
+  技能增益列表?: CycleGain[]
+}
+
+export interface CycleGain {
+  增益名称: string
+  增益技能数: number
 }

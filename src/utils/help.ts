@@ -1,4 +1,4 @@
-import { 属性系数 } from './constant'
+import { 属性系数 } from '@/data/constant'
 
 /**
  * @name 郭氏基础系数算法

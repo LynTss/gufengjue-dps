@@ -101,7 +101,7 @@ function SkillDamageTable({ characterData, currentTarget }) {
       },
     },
     {
-      title: '破防无双计算后伤害-min',
+      title: '无双计算后伤害-min',
       dataIndex: 'min',
       className: 'keyTable',
       fix: 'right',
@@ -111,7 +111,7 @@ function SkillDamageTable({ characterData, currentTarget }) {
       },
     },
     {
-      title: '破防无双计算后伤害-max',
+      title: '无双计算后伤害-max',
       dataIndex: 'max',
       className: 'keyTable',
       fix: 'right',

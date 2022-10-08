@@ -51,10 +51,7 @@ function Dps(params: DpsProps, ref) {
 
     list.forEach((item) => {
       if (item.name.includes('起落势')) {
-        qiluoshiList.push({
-          ...item,
-          name: '起落势',
-        })
+        qiluoshiList.push(item)
       } else if (item.name === '驰风八步·一') {
         resList.push({
           ...item,
@@ -65,13 +62,21 @@ function Dps(params: DpsProps, ref) {
       }
     })
 
-    let qiluoshiNumber = 0
-    let qiluoshiDps = 0
+    if (qiluoshiList?.length) {
+      let qiluoshiNumber = 0
+      let qiluoshiDps = 0
 
-    qiluoshiList.forEach((item) => {
-      qiluoshiNumber = qiluoshiNumber + item?.number
-      qiluoshiDps = qiluoshiDps + item?.dps
-    })
+      qiluoshiList.forEach((item) => {
+        qiluoshiNumber = qiluoshiNumber + item?.number
+        qiluoshiDps = qiluoshiDps + item?.dps
+      })
+
+      resList.push({
+        name: '起落势',
+        number: qiluoshiNumber,
+        dps: qiluoshiDps,
+      })
+    }
 
     resList.sort((a, b) => {
       return b.dps - a.dps

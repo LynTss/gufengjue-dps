@@ -52,7 +52,7 @@ export interface SkillBasicDTO {
  */
 export interface SkillGainDTO extends Partial<SKillGainData> {
   /**
-   * @name 增益是否启用
+   * @name 常驻增益是否启用
    */
   是否启用?: boolean
   /**

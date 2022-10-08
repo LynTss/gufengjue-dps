@@ -4,9 +4,9 @@ import { guoshiXishuBasic, guoshiResult, guoshiBasic } from './help'
  * @description 技能伤害计算遵循郭氏理论
  * @url https://www.jx3box.com/bps/12752
  */
-import { CharacterFinalDTO } from '@/@types/character'
+import { CharacterFinalDTO, TargetDTO } from '@/@types/character'
 import { SkillBasicDTO } from '@/@types/skill'
-import { 属性系数, 每等级减伤 } from './constant'
+import { 属性系数, 每等级减伤 } from '@/data/constant'
 import { guoshiFangyu, guoshiPofang } from './help'
 
 /**
@@ -41,7 +41,11 @@ export const skillBasicDps = (skillConfig: SkillBasicDTO, characterConfig: Chara
  * @name 技能基准伤害
  * @params 基准伤害，参与最终无双、技能增伤等计算
  */
-export const skillStandardDps = (damage: number, characterConfig: CharacterFinalDTO, 当前目标) => {
+export const skillStandardDps = (
+  damage: number,
+  characterConfig: CharacterFinalDTO,
+  当前目标: TargetDTO
+) => {
   const { 破防值 } = characterConfig
   const { 防御点数, 防御系数 } = 当前目标
   const guoshiPofangzhi = guoshiPofang(破防值)
@@ -58,7 +62,7 @@ export const skillStandardDps = (damage: number, characterConfig: CharacterFinal
 export const skillFinalDpsFunction = (
   damage: number,
   characterConfig: CharacterFinalDTO,
-  当前目标
+  当前目标: TargetDTO
 ) => {
   // 计算目标等级减伤
   const r_dengjijianshang = skillDengjijianshangDps(damage, characterConfig, 当前目标)
@@ -76,7 +80,7 @@ export const skillFinalDpsFunction = (
 export const skillFinalDps = (
   skillConfig: SkillBasicDTO,
   characterConfig: CharacterFinalDTO,
-  当前目标
+  当前目标: TargetDTO
 ) => {
   const { min, max } = skillBasicDps(skillConfig, characterConfig)
   const standard_min = skillStandardDps(min, characterConfig, 当前目标)
@@ -91,7 +95,7 @@ export const skillFinalDps = (
 export const skillDengjijianshangDps = (
   damage: number,
   characterConfig: CharacterFinalDTO,
-  当前目标
+  当前目标: TargetDTO
 ) => {
   const levelDiff = Math.abs((characterConfig?.等级 || 120) - 当前目标.等级)
   const levelReduce = levelDiff * 每等级减伤
