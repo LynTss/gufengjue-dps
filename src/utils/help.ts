@@ -37,6 +37,14 @@ export const guoshiHuixin = (huixinzhi, shuliang) => {
 }
 
 /**
+ * @name 郭氏会心率
+ */
+export const guoshiHuixinLv = (huixinzhi) => {
+  const guoshihuixinzhi = Math.floor((huixinzhi * 1024) / 属性系数.会心)
+  return guoshihuixinzhi / 1024 + 0.0003
+}
+
+/**
  * @name 郭氏会心伤害
  */
 export const guoshiHuixinshanghai = (huixiao, shanghai, 郭氏额外会效果值) => {

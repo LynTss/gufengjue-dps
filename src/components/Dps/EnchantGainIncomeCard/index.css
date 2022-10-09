@@ -1,28 +1,28 @@
 .income-line {
   display: flex;
-  max-width: 50%;
   font-size: 20px;
   justify-content: flex-start;
-  height: 24px;
+  height: 40px;
   line-height: 24px;
-  margin-bottom: 8px;
+  padding: 8px 0;
 }
 
 .income-name {
-  width: 100px;
+  width: 50px;
   text-align: right;
   margin-right: 8px;
 }
 
 .income-number {
-  width: calc(100% - 100px - 8px);
+  width: calc(100% - 50px - 8px - 8px);
   position: relative;
   text-align: left;
+  color:#fff;
 }
 
 .income-number-text {
   position: absolute;
-  left: 0;
+  left: 8px;
   top: 0;
   z-index: 2;
 }

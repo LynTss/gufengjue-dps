@@ -44,10 +44,10 @@ export const EnchantGainDTO: EnchantDTO[] = [
     增益类型: GainTypeEnum.外攻会心效果等级,
     增益数值: 491,
   },
-  {
-    附魔名称: '破招',
-    增益计算类型: GainDpsTypeEnum.A,
-    增益类型: GainTypeEnum.破招,
-    增益数值: 491,
-  },
+  // {
+  //   附魔名称: '破招',
+  //   增益计算类型: GainDpsTypeEnum.A,
+  //   增益类型: GainTypeEnum.破招,
+  //   增益数值: 491,
+  // },
 ]

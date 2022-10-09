@@ -34,17 +34,49 @@
   text-align: right;
 }
 
-.dps-number {
+.right {
   width: 50%;
-  color: var(--ant-primary-color);
+  padding-left: 20px;
+}
+
+
+.dps-number {
+  border:1px solid #999;
+  margin-bottom: 24px;
+}
+
+.dps-number-header,.income-title {
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  border-bottom:1px solid #999;
+}
+
+.income-title .anticon {
+  font-size: 14px;
+  margin-left: 8px;
+  vertical-align: -1px;
+  cursor: pointer;
+}
+
+.dps-number-text {
+  background-color: var(--ant-primary-color);
+  color:#fff;
   font-size: 90px;
   font-weight: 700;
-  display: flex;
-  line-height: 30px;
-  justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .dps-skill-count-wrap {
   width: 50%;
+}
+
+.income {
+  border: 1px solid #999;
+  width: 100%;
+}
+
+.income-wrap {
+  padding: 8px 0;
 }

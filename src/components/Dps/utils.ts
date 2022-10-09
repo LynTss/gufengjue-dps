@@ -1,5 +1,6 @@
+import { GainDpsTypeEnum } from './../../@types/enum'
 import { TargetDTO } from '@/@types/character'
-import { guoshiBasic, guoshiHuixin, guoshiHuixinshanghai } from '@/utils/help'
+import { guoshiBasic, guoshiHuixin, guoshiHuixinLv, guoshiHuixinshanghai } from '@/utils/help'
 import { CharacterFinalDTO } from '@/@types/character'
 import { CycleDTO, CycleGain } from '@/@types/cycle'
 import { GainTypeEnum } from '@/@types/enum'
@@ -59,20 +60,15 @@ export const getSingleSkillTotalDps = (
     if (循环?.技能增益列表?.length) {
       循环?.技能增益列表.forEach((增益) => {
         无增益技能数 = 无增益技能数 - 增益.增益技能数
-        const { 未会心总伤, 会心总伤 } = getGainTotalDps(增益, 当前技能属性, 人物属性, 当前目标)
-        totalDps = totalDps + 未会心总伤 + 会心总伤
+        const { 期望技能总伤 } = getGainTotalDps(增益, 当前技能属性, 人物属性, 当前目标)
+        totalDps = totalDps + 期望技能总伤
       })
     }
 
     // 判断常规未增益技能的总伤
-    const { 未会心总伤, 会心总伤 } = getNoGainSkillTotalDps(
-      当前技能属性,
-      人物属性,
-      无增益技能数,
-      当前目标
-    )
+    const { 期望技能总伤 } = getNoGainSkillTotalDps(当前技能属性, 人物属性, 无增益技能数, 当前目标)
 
-    totalDps = totalDps + 未会心总伤 + 会心总伤
+    totalDps = totalDps + 期望技能总伤
 
     return totalDps
   }
@@ -89,21 +85,19 @@ export const getGainTotalDps = (
   let 最终人物属性 = { ...人物属性 }
   let 技能增伤 = 1
   let 郭氏额外会效果值 = 0
+  let 额外会心率 = 0
 
   // 计算技能常驻固定增益（秘籍、奇穴）等
   当前技能属性.技能增益列表.forEach((增益) => {
     if (增益.是否启用) {
       if (增益.增益集合?.length) {
         增益.增益集合?.forEach((增益数值信息) => {
-          const { 计算后人物属性, 计算后技能增伤, 计算后郭氏额外会效果值 } = switchGain(
-            最终人物属性,
-            增益数值信息,
-            技能增伤,
-            郭氏额外会效果值
-          )
+          const { 计算后人物属性, 计算后技能增伤, 计算后郭氏额外会效果值, 计算后额外会心率 } =
+            switchGain(最终人物属性, 增益数值信息, 技能增伤, 郭氏额外会效果值, 额外会心率)
           最终人物属性 = { ...计算后人物属性 }
           技能增伤 = 计算后技能增伤
           郭氏额外会效果值 = 计算后郭氏额外会效果值
+          额外会心率 = 计算后额外会心率
         })
       }
     }
@@ -113,32 +107,30 @@ export const getGainTotalDps = (
   const 增益集合列表: SKillGainData[] = getGainList(循环增益信息, 当前技能属性)
 
   增益集合列表.forEach((增益数值信息) => {
-    const { 计算后人物属性, 计算后技能增伤, 计算后郭氏额外会效果值 } = switchGain(
+    const { 计算后人物属性, 计算后技能增伤, 计算后郭氏额外会效果值, 计算后额外会心率 } = switchGain(
       最终人物属性,
       增益数值信息,
       技能增伤,
-      郭氏额外会效果值
+      郭氏额外会效果值,
+      额外会心率
     )
     最终人物属性 = { ...计算后人物属性 }
     技能增伤 = 计算后技能增伤
     郭氏额外会效果值 = 计算后郭氏额外会效果值
+    额外会心率 = 计算后额外会心率
   })
 
-  const { min, max } = skillFinalDps(当前技能属性, 最终人物属性, 当前目标)
+  const { 期望技能总伤, 会心数量 } = getSkillDamage(
+    当前技能属性,
+    最终人物属性,
+    技能增伤,
+    当前目标,
+    循环增益信息.增益技能数,
+    郭氏额外会效果值,
+    额外会心率
+  )
 
-  const 最小技能总伤 = min * 技能增伤
-  const 最大技能总伤 = max * 技能增伤
-
-  const 平均伤害 = Math.floor((最小技能总伤 + 最大技能总伤) / 2)
-
-  const 会心数量 = guoshiHuixin(最终人物属性.会心值, 循环增益信息.增益技能数)
-
-  const 会心实际伤害 = guoshiHuixinshanghai(最终人物属性.会心效果值, 平均伤害, 郭氏额外会效果值)
-
-  const 未会心总伤 = (循环增益信息.增益技能数 - 会心数量) * 平均伤害
-  const 会心总伤 = 会心数量 * 会心实际伤害
-
-  return { 未会心总伤, 会心总伤 }
+  return { 期望技能总伤, 会心数量 }
 }
 
 export const getNoGainSkillTotalDps = (
@@ -150,26 +142,46 @@ export const getNoGainSkillTotalDps = (
   let 最终人物属性 = { ...人物属性 }
   let 技能增伤 = 1
   let 郭氏额外会效果值 = 0
+  let 额外会心率 = 0
 
   // 计算技能常驻固定增益（秘籍、奇穴）等
   当前技能属性.技能增益列表.forEach((增益) => {
     if (增益.是否启用) {
       if (增益.增益集合?.length) {
         增益.增益集合?.forEach((增益数值信息) => {
-          const { 计算后人物属性, 计算后技能增伤, 计算后郭氏额外会效果值 } = switchGain(
-            最终人物属性,
-            增益数值信息,
-            技能增伤,
-            郭氏额外会效果值
-          )
+          const { 计算后人物属性, 计算后技能增伤, 计算后郭氏额外会效果值, 计算后额外会心率 } =
+            switchGain(最终人物属性, 增益数值信息, 技能增伤, 郭氏额外会效果值, 额外会心率)
           最终人物属性 = { ...计算后人物属性 }
           技能增伤 = 计算后技能增伤
           郭氏额外会效果值 = 计算后郭氏额外会效果值
+          额外会心率 = 计算后额外会心率
         })
       }
     }
   })
 
+  const { 期望技能总伤, 会心数量 } = getSkillDamage(
+    当前技能属性,
+    最终人物属性,
+    技能增伤,
+    当前目标,
+    技能总数,
+    郭氏额外会效果值,
+    额外会心率
+  )
+
+  return { 期望技能总伤, 会心数量 }
+}
+
+const getSkillDamage = (
+  当前技能属性: SkillBasicDTO,
+  最终人物属性: CharacterFinalDTO,
+  技能增伤: number,
+  当前目标: TargetDTO,
+  技能总数: number,
+  郭氏额外会效果值: number,
+  额外会心率: number
+) => {
   const { min, max } = skillFinalDps(当前技能属性, 最终人物属性, 当前目标)
 
   const 最小技能总伤 = min * 技能增伤
@@ -179,42 +191,58 @@ export const getNoGainSkillTotalDps = (
 
   const 会心数量 = guoshiHuixin(最终人物属性.会心值, 技能总数)
 
+  const 会心期望率 = guoshiHuixinLv(最终人物属性.会心值) + 额外会心率
+
   const 会心实际伤害 = guoshiHuixinshanghai(最终人物属性.会心效果值, 平均伤害, 郭氏额外会效果值)
 
-  const 未会心总伤 = (技能总数 - 会心数量) * 平均伤害
+  const 期望技能总伤 = Math.floor(平均伤害 + 会心期望率 * (会心实际伤害 - 平均伤害)) * 技能总数
 
-  const 会心总伤 = 会心数量 * 会心实际伤害
-
-  return { 未会心总伤, 会心总伤 }
+  return { 期望技能总伤, 会心数量 }
 }
 
 /**
  * 计算不同的增益对属性、技能增伤的影响
  * 返回最终参与技能伤害计算的人物属性、技能增伤等数据
  */
-const switchGain = (人物属性, 增益, 技能增伤, 郭氏额外会效果值) => {
-  const { 增益数值, 增益类型 } = 增益
+const switchGain = (人物属性, 增益, 技能增伤, 郭氏额外会效果值, 额外会心率) => {
+  const { 增益数值, 增益类型, 增益计算类型 } = 增益
   const 计算后人物属性 = { ...人物属性 }
   let 计算后技能增伤 = 技能增伤
   let 计算后郭氏额外会效果值 = 郭氏额外会效果值
-  switch (增益类型) {
-    case GainTypeEnum.破防百分比:
-      计算后人物属性.破防值 = guoshiPercent(计算后人物属性.破防值, 增益数值)
-      break
-    case GainTypeEnum.外攻会心百分比:
-      计算后人物属性.会心值 = guoshiPercent(计算后人物属性.会心值, 增益数值)
-      break
-    case GainTypeEnum.外攻会心效果百分比:
-      计算后郭氏额外会效果值 = 计算后郭氏额外会效果值 + guoshiBasic(增益数值)
-      break
-    case GainTypeEnum.伤害百分比:
-      计算后技能增伤 = 计算后技能增伤 + 增益数值
-      break
-    default:
-      console.error(`存在未计算增益${增益?.增益类型}`, 增益)
-      break
+  let 计算后额外会心率 = 额外会心率
+  if (增益计算类型 === GainDpsTypeEnum.A) {
+    switch (增益类型) {
+      case GainTypeEnum.破防百分比:
+        计算后人物属性.破防值 = guoshiPercent(计算后人物属性.破防值, 增益数值)
+        break
+      case GainTypeEnum.外攻会心百分比:
+        计算后人物属性.会心值 = guoshiPercent(计算后人物属性.会心值, 增益数值)
+        break
+      case GainTypeEnum.外攻会心效果百分比:
+        计算后郭氏额外会效果值 = 计算后郭氏额外会效果值 + guoshiBasic(增益数值)
+        break
+      case GainTypeEnum.伤害百分比:
+        计算后技能增伤 = 计算后技能增伤 + 增益数值
+        break
+      default:
+        console.error(`存在未计算增益${增益?.增益类型}`, 增益)
+        break
+    }
+  } else if (增益计算类型 === GainDpsTypeEnum.B) {
+    switch (增益类型) {
+      case GainTypeEnum.外攻会心百分比:
+        计算后额外会心率 = 计算后额外会心率 + 增益数值
+        break
+      case GainTypeEnum.伤害百分比:
+        计算后技能增伤 = 计算后技能增伤 * (1 + 增益数值)
+        break
+      default:
+        console.error(`存在未计算增益${增益?.增益类型}`, 增益)
+        break
+    }
   }
-  return { 计算后人物属性, 计算后技能增伤, 计算后郭氏额外会效果值 }
+
+  return { 计算后人物属性, 计算后技能增伤, 计算后郭氏额外会效果值, 计算后额外会心率 }
 }
 
 /**

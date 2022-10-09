@@ -1,4 +1,4 @@
-import { GainTypeEnum } from '../../@types/enum'
+import { GainDpsTypeEnum, GainTypeEnum } from '../../@types/enum'
 import { SkillGainDTO } from '../../@types/skill'
 import commonGainDTO from './common'
 
@@ -11,7 +11,7 @@ const liukeyuGainDTO: SkillGainDTO[] = [
     增益集合: [
       {
         增益类型: GainTypeEnum.伤害百分比,
-        增益计算类型: 'a',
+        增益计算类型: GainDpsTypeEnum.A,
         增益数值: 0.03,
       },
     ],
@@ -23,7 +23,7 @@ const liukeyuGainDTO: SkillGainDTO[] = [
     增益集合: [
       {
         增益类型: GainTypeEnum.伤害百分比,
-        增益计算类型: 'a',
+        增益计算类型: GainDpsTypeEnum.A,
         增益数值: 0.04,
       },
     ],
@@ -35,7 +35,7 @@ const liukeyuGainDTO: SkillGainDTO[] = [
     增益集合: [
       {
         增益类型: GainTypeEnum.伤害百分比,
-        增益计算类型: 'a',
+        增益计算类型: GainDpsTypeEnum.A,
         增益数值: 0.05,
       },
     ],
@@ -46,7 +46,7 @@ const liukeyuGainDTO: SkillGainDTO[] = [
     增益集合: [
       {
         增益类型: GainTypeEnum.外攻会心百分比,
-        增益计算类型: 'a',
+        增益计算类型: GainDpsTypeEnum.A,
         增益数值: 0.02,
       },
     ],
@@ -57,7 +57,7 @@ const liukeyuGainDTO: SkillGainDTO[] = [
     增益集合: [
       {
         增益类型: GainTypeEnum.外攻会心百分比,
-        增益计算类型: 'a',
+        增益计算类型: GainDpsTypeEnum.A,
         增益数值: 0.03,
       },
     ],
@@ -69,7 +69,7 @@ const liukeyuGainDTO: SkillGainDTO[] = [
     增益集合: [
       {
         增益类型: GainTypeEnum.外攻会心百分比,
-        增益计算类型: 'a',
+        增益计算类型: GainDpsTypeEnum.A,
         增益数值: 0.04,
       },
     ],
