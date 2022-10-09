@@ -3,7 +3,7 @@ import { CharacterFinalDTO } from '@/@types/character'
 import CharacterSet from '@/components/CharacterSet'
 import { DEFAULT_CHARACTER } from './constant'
 import Dps from '@/components/Dps'
-// import SkillDamageTable from '@/components/SkillDamageTable'
+import SkillDamageTable from '@/components/SkillDamageTable'
 import { 目标集合 } from '@/data/constant'
 import skillCycle from '@/data/skillCycle'
 import Notice from '@/components/Notice'
@@ -63,9 +63,8 @@ function Pages() {
         currentCycleName={currentCycleName}
       />
       {calculated ? (
-        <div>1</div>
+        <SkillDamageTable characterData={formatCharacterData} currentTarget={targetObj} />
       ) : (
-        // <SkillDamageTable characterData={formatCharacterData} currentTarget={targetObj} />
         <Notice />
       )}
     </div>
