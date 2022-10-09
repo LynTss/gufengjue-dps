@@ -27,14 +27,6 @@ function SkillDamageTable({ characterData, currentTarget }) {
     //   dataIndex: 'category',
     // },
     {
-      title: '基础-min',
-      dataIndex: '技能基础伤害_最小值',
-    },
-    {
-      title: '基础-max',
-      dataIndex: '技能基础伤害_最大值',
-    },
-    {
       title: '武伤系数',
       dataIndex: '武器伤害系数',
     },
@@ -42,6 +34,14 @@ function SkillDamageTable({ characterData, currentTarget }) {
     //   title: '系数实测',
     //   dataIndex: 'action',
     // },
+    {
+      title: '基础-min',
+      dataIndex: '技能基础伤害_最小值',
+    },
+    {
+      title: '基础-max',
+      dataIndex: '技能基础伤害_最大值',
+    },
     {
       title: '层数',
       dataIndex: '伤害计算次数',
