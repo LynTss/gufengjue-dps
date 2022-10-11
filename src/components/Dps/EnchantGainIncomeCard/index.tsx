@@ -5,6 +5,7 @@ import { CycleDTO } from '@/@types/cycle'
 import { EnchantDTO } from '@/@types/enchant'
 import { GainTypeEnum } from '@/@types/enum'
 import './index.css'
+import { SKillGainData } from '@/@types/skill'
 
 interface EnchantGainIncomeCardProps {
   currentCycle: CycleDTO[]
@@ -19,7 +20,7 @@ function EnchantGainIncomeCard(params: EnchantGainIncomeCardProps) {
 
   const { 计算后属性, 计算后目标 } = useMemo(() => {
     return {
-      计算后属性: getIncomeData(characterData, data),
+      计算后属性: getIncomeData(characterData, data.增益集合?.[0]),
       计算后目标: currentTarget,
     }
   }, [characterData])
@@ -49,7 +50,7 @@ function EnchantGainIncomeCard(params: EnchantGainIncomeCardProps) {
 
 export default EnchantGainIncomeCard
 
-const getIncomeData = (characterData: CharacterFinalDTO, data: EnchantDTO) => {
+const getIncomeData = (characterData: CharacterFinalDTO, data: SKillGainData) => {
   const newData = { ...characterData }
   let 数值 = data.增益数值
   switch (data.增益类型) {
