@@ -13,12 +13,16 @@ ConfigProvider.config({
 })
 
 import App from './pages/index'
+import { Provider } from 'react-redux'
+import store from '@/store/index'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as any)
 root.render(
-  <ConfigProvider>
-    <Layout>
-      <App />
-    </Layout>
-  </ConfigProvider>
+  <Provider store={store}>
+    <ConfigProvider>
+      <Layout>
+        <App />
+      </Layout>
+    </ConfigProvider>
+  </Provider>
 )

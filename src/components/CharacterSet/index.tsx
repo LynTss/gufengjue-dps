@@ -1,23 +1,31 @@
-import React, { useEffect, useState } from 'react'
-import { CharacterFinalDTO } from '@/@types/character'
+import React, { useEffect } from 'react'
 import { Button, Form, InputNumber, Select, Tooltip } from 'antd'
 import { QuestionCircleOutlined } from '@ant-design/icons'
 import { 目标集合 } from '@/data/constant'
 import skillCycle from '@/data/skillCycle'
 import './index.css'
+import { useAppDispatch, useAppSelector } from '@/hooks'
+
+import {
+  setCharacterData,
+  setCurrentCycle,
+  setCurrentTarget,
+  setDpsTime,
+} from '@/store/basicReducer'
 
 interface CharacterSetProps {
-  characterData: CharacterFinalDTO
-  onChange: (any) => void
-  currentTarget: any
-  currentCycleName: any
+  getDps: () => void
 }
 
 function CharacterSet(props: CharacterSetProps) {
-  const { characterData, onChange, currentTarget, currentCycleName } = props
+  const { getDps } = props
   const [form] = Form.useForm()
+  const dispatch = useAppDispatch()
 
-  const [time, setTime] = useState<any>(localStorage.getItem('计算时间') || 300)
+  const characterData = useAppSelector((state) => state?.basic?.characterData)
+  const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
+  const currentTargetName = useAppSelector((state) => state?.basic?.currentTargetName)
+  const dpsTime = useAppSelector((state) => state?.basic?.dpsTime)
 
   useEffect(() => {
     if (characterData) {
@@ -27,37 +35,50 @@ function CharacterSet(props: CharacterSetProps) {
     }
   }, [characterData])
 
-  const setCurrentTarget = (val) => {
-    onChange &&
-      onChange({
-        characterData: characterData,
-        time,
-        currentCycleName,
-        currentTarget: val,
-      })
+  const getDpsFunction = () => {
+    setTimeout(() => {
+      getDps()
+    }, 0)
   }
 
-  const setCurrentCycleName = (val) => {
-    onChange &&
-      onChange({
-        characterData: characterData,
-        time,
-        currentCycleName: val,
-        currentTarget,
-      })
+  const setCurrentTargetVal = (val) => {
+    const target = 目标集合?.find((item) => item.名称 === val)
+    if (target) {
+      localStorage?.setItem('当前目标', val)
+      dispatch(
+        setCurrentTarget({
+          name: val,
+          target,
+        })
+      )
+      getDpsFunction()
+    }
+  }
+
+  const setDpsTimeVal = (val) => {
+    localStorage?.setItem('计算时间', val)
+    dispatch(setDpsTime(val))
+    getDpsFunction()
+  }
+
+  const setCurrentCycleVal = (val) => {
+    const cycle = skillCycle?.find((item) => item.name === val)?.cycle || []
+    if (cycle) {
+      localStorage?.setItem('当前循环', val)
+      dispatch(
+        setCurrentCycle({
+          name: val,
+          cycle,
+        })
+      )
+      getDpsFunction()
+    }
   }
 
   const beforeOnchange = (value) => {
-    if (value) {
-      localStorage?.setItem('character_data', JSON.stringify(value))
-    }
-    onChange &&
-      onChange({
-        characterData: value,
-        time,
-        currentTarget,
-        currentCycleName,
-      })
+    localStorage?.setItem('character_data', JSON.stringify(value))
+    setCharacterData({ ...value })
+    getDpsFunction()
   }
 
   return (
@@ -67,10 +88,9 @@ function CharacterSet(props: CharacterSetProps) {
           <h1 className="label">当前目标</h1>
           <Select
             className="current-boss"
-            value={currentTarget}
+            value={currentTargetName}
             onChange={(v) => {
-              localStorage?.setItem('当前目标', v)
-              setCurrentTarget(v)
+              setCurrentTargetVal(v)
             }}
           >
             {目标集合.map((item) => {
@@ -88,8 +108,7 @@ function CharacterSet(props: CharacterSetProps) {
             value={currentCycleName}
             className="current-boss"
             onChange={(v) => {
-              localStorage?.setItem('当前循环', v)
-              setCurrentCycleName(v)
+              setCurrentCycleVal(v)
             }}
           >
             {skillCycle.map((item) => {
@@ -106,12 +125,11 @@ function CharacterSet(props: CharacterSetProps) {
           <InputNumber
             className="current-boss"
             addonAfter="秒"
-            value={+time}
+            value={+dpsTime}
             min={1}
             max={600}
             onChange={(v) => {
-              localStorage?.setItem('计算时间', (v || 300)?.toString())
-              setTime(v)
+              setDpsTimeVal(v)
             }}
           />
         </div>

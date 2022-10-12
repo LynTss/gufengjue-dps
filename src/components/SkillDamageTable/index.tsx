@@ -7,9 +7,13 @@ import {
   skillStandardDps,
 } from '../../utils/skill-dps'
 import GuFengJueSkillDataDTO from '../../data/skill'
+import { useAppSelector } from '@/hooks'
 import './index.css'
 
-function SkillDamageTable({ characterData, currentTarget }) {
+function SkillDamageTable() {
+  const characterData = useAppSelector((state) => state?.basic?.characterData)
+  const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
+
   const data = GuFengJueSkillDataDTO
 
   const columns = [
@@ -126,6 +130,7 @@ function SkillDamageTable({ characterData, currentTarget }) {
     <div className={'skillDamageTableWrap'}>
       <h1>技能详细数据及计算过程数据</h1>
       <Table
+        rowKey={'技能名称'}
         className={'skillDamageTable'}
         dataSource={data}
         pagination={false}

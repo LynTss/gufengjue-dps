@@ -1,24 +1,17 @@
-import { CharacterFinalDTO } from '@/@types/character'
 import React, { forwardRef, useImperativeHandle, useState } from 'react'
 import { DpsListData, getDpsTotal } from './utils'
 import { message, Tooltip } from 'antd'
-import skillCycle from '@/data/skillCycle'
 import { EnchantGainDTO } from '@/data/enchantGain'
 import { QuestionCircleOutlined } from '@ant-design/icons'
 import EnchantGainIncomeCard from './EnchantGainIncomeCard'
-import './index.css'
 import DpsCount from './DpsCount'
+import './index.css'
+import { useAppSelector } from '@/hooks'
 
-interface DpsProps {
-  characterData: CharacterFinalDTO
-  currentCycleName: string
-  currentTarget: any
-}
-
-function Dps(params: DpsProps, ref) {
-  const { characterData, currentCycleName, currentTarget } = params
-  const currentCycle =
-    skillCycle.find((item) => item.name === currentCycleName)?.cycle || skillCycle[0]?.cycle
+function Dps(props, ref) {
+  const characterData = useAppSelector((state) => state?.basic?.characterData)
+  const currentCycle = useAppSelector((state) => state?.basic?.currentCycle)
+  const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
 
   const [dps, setDps] = useState<number>(0)
   const [total, setTotal] = useState<number>(0)
