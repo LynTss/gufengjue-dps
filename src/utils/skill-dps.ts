@@ -13,7 +13,7 @@ import { guoshiFangyu, guoshiPofang } from './help'
  * @name 破招原始伤害计算
  */
 export const getPoDps = (破招值, 技能伤害系数) => {
-  return 破招值 * 技能伤害系数
+  return Math.floor(破招值 * 技能伤害系数)
 }
 
 /**
