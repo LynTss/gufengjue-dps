@@ -105,6 +105,9 @@ function CharacterSet({ getDpsFunction }) {
       >
         <InputNumber min={0} max={99999999} />
       </Form.Item>
+      <Form.Item label={<span className={'item-label'}>破招值</span>} name="破招值">
+        <InputNumber min={0} max={99999999} />
+      </Form.Item>
       <Form.Item className={'jisuan'} wrapperCol={{ offset: 8, span: 16 }}>
         <Button className="jisuan-button" type="primary" htmlType="submit">
           计算

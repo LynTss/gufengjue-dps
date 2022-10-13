@@ -25,7 +25,6 @@ function Pages() {
 
   return (
     <div>
-      <h1 style={{ color: 'red', textAlign: 'center', fontSize: 50 }}>目前没计算破招</h1>
       <BasicSet getDps={getDps} />
       <Dps ref={dpsRef} />
       {calculated ? <SkillDamageTable /> : <Notice />}

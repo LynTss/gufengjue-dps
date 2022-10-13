@@ -122,6 +122,11 @@ const weisheng_cang44_cycle: CycleDTO[] = [
     技能名称: '流血·四',
     技能数量: 18,
   },
+  {
+    技能名称: '破',
+    技能数量: 31,
+    技能增益列表: [{ 增益名称: '灭影随风-威升', 增益技能数: 15 }],
+  },
 ]
 
 export default weisheng_cang44_cycle

@@ -6,4 +6,5 @@ export const DEFAULT_CHARACTER = {
   会心效果值: 0,
   武器伤害_最小值: 0,
   武器伤害_最大值: 0,
+  破招值: 0,
 }

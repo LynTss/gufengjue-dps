@@ -10,18 +10,37 @@ import { 属性系数, 每等级减伤 } from '@/data/constant'
 import { guoshiFangyu, guoshiPofang } from './help'
 
 /**
- * @name 技能原始伤害计算
+ * @name 破招原始伤害计算
+ */
+export const getPoDps = (破招值, 技能伤害系数) => {
+  return 破招值 * 技能伤害系数
+}
+
+/**
+ * @name 原始伤害计算
  * @params (INT(基础伤害)+INT(攻击力*攻击系数)+INT(武器伤害*武伤系数))*伤害计算次数
  */
 export const skillBasicDps = (skillConfig: SkillBasicDTO, characterConfig: CharacterFinalDTO) => {
-  const { 武器伤害_最小值 = 0, 武器伤害_最大值 = 0, 面板攻击 } = characterConfig
+  const { 武器伤害_最小值 = 0, 武器伤害_最大值 = 0, 面板攻击, 破招值 } = characterConfig
   const {
+    技能名称,
     武器伤害系数,
     技能基础伤害_最小值 = 0,
     技能基础伤害_最大值 = 0,
     伤害计算次数 = 1,
     技能伤害系数,
   } = skillConfig
+  if (技能名称 === '破') {
+    const poDps = getPoDps(破招值, 技能伤害系数)
+    console.log('破招值', 破招值)
+    console.log('技能伤害系数', 技能伤害系数)
+    console.log('poDps', poDps)
+    return {
+      min: poDps,
+      max: poDps,
+    }
+  }
+
   function getSkill(damage, weapon_damage) {
     return (
       Math.floor(面板攻击 * 技能伤害系数) +
