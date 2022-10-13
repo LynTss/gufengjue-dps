@@ -11,7 +11,7 @@ import { useAppSelector } from '@/hooks'
 import './index.css'
 
 function SkillDamageTable() {
-  const characterData = useAppSelector((state) => state?.basic?.characterData)
+  const characterFinalData = useAppSelector((state) => state?.basic?.characterFinalData)
   const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
 
   const data = GuFengJueSkillDataDTO
@@ -54,30 +54,30 @@ function SkillDamageTable() {
       title: '原始伤害-min',
       dataIndex: 'yuanshi_min',
       render: (_, row) => {
-        return skillBasicDps(row, characterData)?.min
+        return skillBasicDps(row, characterFinalData)?.min
       },
     },
     {
       title: '原始伤害-max',
       dataIndex: 'yuanshi_max',
       render: (_, row) => {
-        return skillBasicDps(row, characterData)?.max
+        return skillBasicDps(row, characterFinalData)?.max
       },
     },
     {
       title: '基准伤害-min',
       dataIndex: 'jizhun_min',
       render: (_, row) => {
-        const damage = skillBasicDps(row, characterData)?.min
-        return skillStandardDps(damage, characterData, currentTarget)
+        const damage = skillBasicDps(row, characterFinalData)?.min
+        return skillStandardDps(damage, characterFinalData, currentTarget)
       },
     },
     {
       title: '基准伤害-min',
       dataIndex: 'jizhun_max',
       render: (_, row) => {
-        const damage = skillBasicDps(row, characterData)?.max
-        return skillStandardDps(damage, characterData, currentTarget)
+        const damage = skillBasicDps(row, characterFinalData)?.max
+        return skillStandardDps(damage, characterFinalData, currentTarget)
       },
     },
     {
@@ -87,9 +87,9 @@ function SkillDamageTable() {
       fix: 'right',
       width: 120,
       render: (_, row) => {
-        const damage = skillBasicDps(row, characterData)?.min
-        const standard_min = skillStandardDps(damage, characterData, currentTarget)
-        return skillDengjijianshangDps(standard_min, characterData, currentTarget)
+        const damage = skillBasicDps(row, characterFinalData)?.min
+        const standard_min = skillStandardDps(damage, characterFinalData, currentTarget)
+        return skillDengjijianshangDps(standard_min, characterFinalData, currentTarget)
       },
     },
     {
@@ -99,9 +99,9 @@ function SkillDamageTable() {
       fix: 'right',
       width: 120,
       render: (_, row) => {
-        const damage = skillBasicDps(row, characterData)?.max
-        const standard_min = skillStandardDps(damage, characterData, currentTarget)
-        return skillDengjijianshangDps(standard_min, characterData, currentTarget)
+        const damage = skillBasicDps(row, characterFinalData)?.max
+        const standard_min = skillStandardDps(damage, characterFinalData, currentTarget)
+        return skillDengjijianshangDps(standard_min, characterFinalData, currentTarget)
       },
     },
     {
@@ -111,7 +111,7 @@ function SkillDamageTable() {
       fix: 'right',
       width: 120,
       render: (_, row) => {
-        return skillFinalDps(row, characterData, currentTarget)?.min
+        return skillFinalDps(row, characterFinalData, currentTarget)?.min
       },
     },
     {
@@ -121,7 +121,7 @@ function SkillDamageTable() {
       fix: 'right',
       width: 120,
       render: (_, row) => {
-        return skillFinalDps(row, characterData, currentTarget)?.max
+        return skillFinalDps(row, characterFinalData, currentTarget)?.max
       },
     },
   ]

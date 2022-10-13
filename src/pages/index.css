@@ -1,0 +1,7 @@
+.main-wrapper {
+  position: absolute;
+  background: var(--ant-primary-color);
+  height: 100vh;
+  z-index: 1;
+  width: 100%;
+}

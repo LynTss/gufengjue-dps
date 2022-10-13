@@ -11,7 +11,7 @@ import { skillFinalDps } from '@/utils/skill-dps'
 
 interface GetDpsTotalParams {
   currentCycle: CycleDTO[]
-  characterData: CharacterFinalDTO
+  characterFinalData: CharacterFinalDTO
   当前目标: TargetDTO
 }
 
@@ -23,7 +23,7 @@ export interface DpsListData {
 
 // 计算技能循环总输出
 export const getDpsTotal = (props: GetDpsTotalParams) => {
-  const { currentCycle, characterData, 当前目标 } = props
+  const { currentCycle, characterFinalData, 当前目标 } = props
   // 总dps
   let total = 0
   // 每个技能的dps总和列表
@@ -31,7 +31,7 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
   // 遍历循环，获取每一个技能的总输出
   currentCycle.forEach((item) => {
     // 获取循环内某个技能的总dps
-    const skillDpsAll = getSingleSkillTotalDps(item, characterData, 当前目标)
+    const skillDpsAll = getSingleSkillTotalDps(item, characterFinalData, 当前目标)
     dpsList.push({
       name: item.技能名称,
       dps: skillDpsAll,

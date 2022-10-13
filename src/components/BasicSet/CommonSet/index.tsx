@@ -5,6 +5,7 @@ import skillCycle from '@/data/skillCycle'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 
 import { setCurrentCycle, setCurrentTarget, setDpsTime } from '@/store/basicReducer'
+import './index.css'
 
 function CommonSet({ getDpsFunction }) {
   const dispatch = useAppDispatch()
@@ -47,55 +48,62 @@ function CommonSet({ getDpsFunction }) {
   }
 
   return (
-    <div className={'current-target'}>
-      <div className="current-wrap">
-        <h1 className="label">当前目标</h1>
-        <Select
-          className="current-boss"
-          value={currentTargetName}
-          onChange={(v) => {
-            setCurrentTargetVal(v)
-          }}
-        >
-          {目标集合.map((item) => {
-            return (
-              <Select.Option value={item?.名称} key={item.名称}>
-                {item.名称}
-              </Select.Option>
-            )
-          })}
-        </Select>
+    <div className={'common-set'}>
+      <h1 className={'common-title'}>基础设置</h1>
+      <div className="common-item">
+        <h1 className="common-label">当前目标</h1>
+        <div className="common-content">
+          <Select
+            className="current-boss"
+            value={currentTargetName}
+            onChange={(v) => {
+              setCurrentTargetVal(v)
+            }}
+          >
+            {目标集合.map((item) => {
+              return (
+                <Select.Option value={item?.名称} key={item.名称}>
+                  {item.名称}
+                </Select.Option>
+              )
+            })}
+          </Select>
+        </div>
       </div>
-      <div className="current-wrap">
-        <h1 className="label">当前循环</h1>
-        <Select
-          value={currentCycleName}
-          className="current-boss"
-          onChange={(v) => {
-            setCurrentCycleVal(v)
-          }}
-        >
-          {skillCycle.map((item) => {
-            return (
-              <Select.Option value={item?.name} key={item.name}>
-                {item.name}
-              </Select.Option>
-            )
-          })}
-        </Select>
+      <div className="common-item">
+        <h1 className="common-label">当前循环</h1>
+        <div className="common-content">
+          <Select
+            value={currentCycleName}
+            className="current-boss"
+            onChange={(v) => {
+              setCurrentCycleVal(v)
+            }}
+          >
+            {skillCycle.map((item) => {
+              return (
+                <Select.Option value={item?.name} key={item.name}>
+                  {item.name}
+                </Select.Option>
+              )
+            })}
+          </Select>
+        </div>
       </div>
-      <div className="current-wrap">
-        <h1 className="label">输出时间</h1>
-        <InputNumber
-          className="current-boss"
-          addonAfter="秒"
-          value={+dpsTime}
-          min={1}
-          max={600}
-          onChange={(v) => {
-            setDpsTimeVal(v)
-          }}
-        />
+      <div className="common-item">
+        <h1 className="common-label">输出时间</h1>
+        <div className="common-content">
+          <InputNumber
+            className="current-boss"
+            addonAfter="秒"
+            value={+dpsTime}
+            min={1}
+            max={600}
+            onChange={(v) => {
+              setDpsTimeVal(v)
+            }}
+          />
+        </div>
       </div>
     </div>
   )

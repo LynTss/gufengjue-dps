@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '@/store/index'
 
-import { CharacterFinalDTO, TargetDTO } from '@/@types/character'
+import { CharacterBasicDTO, CharacterFinalDTO, TargetDTO } from '@/@types/character'
 import { CycleDTO } from '@/@types/cycle'
 import {
   getDefaultCharacter,
@@ -11,8 +11,10 @@ import {
 } from '@/utils/default'
 
 interface BasicState {
-  // 角色面板属性信息
-  characterData: CharacterFinalDTO
+  // 角色面板属性信息（不包含各种数据增益。只为装备带来的基础属性
+  characterBasicData: CharacterBasicDTO
+  // 常驻增益计算后的属性，如（奇穴强膂、阵眼常驻增益、秀气、雷等buff）
+  characterFinalData: CharacterFinalDTO
   // 当前输出计算循环
   currentCycle: CycleDTO[]
   // 当前输出计算循环名
@@ -26,7 +28,8 @@ interface BasicState {
 }
 
 const initialState: BasicState = {
-  characterData: getDefaultCharacter(),
+  characterBasicData: getDefaultCharacter(),
+  characterFinalData: getDefaultCharacter(),
   currentCycle: getDefaultCycle()?.cycle,
   currentCycleName: getDefaultCycle()?.name,
   currentTarget: getDefaultTarget()?.target,
@@ -38,8 +41,11 @@ export const counterSlice = createSlice({
   name: 'basic',
   initialState,
   reducers: {
-    setCharacterData: (state, action: PayloadAction<CharacterFinalDTO>) => {
-      state.characterData = { ...action.payload }
+    setCharacterBasicData: (state, action: PayloadAction<CharacterBasicDTO>) => {
+      state.characterBasicData = { ...action.payload }
+    },
+    setCharacterFinalData: (state, action: PayloadAction<CharacterFinalDTO>) => {
+      state.characterFinalData = { ...action.payload }
     },
     setCurrentCycle: (state, action: PayloadAction<{ cycle: CycleDTO[]; name: string }>) => {
       state.currentCycle = [...action.payload.cycle]
@@ -55,7 +61,12 @@ export const counterSlice = createSlice({
   },
 })
 
-export const { setCharacterData, setCurrentCycle, setCurrentTarget, setDpsTime } =
-  counterSlice.actions // 导出操作state的喊出
+export const {
+  setCharacterBasicData,
+  setCharacterFinalData,
+  setCurrentCycle,
+  setCurrentTarget,
+  setDpsTime,
+} = counterSlice.actions // 导出操作state的喊出
 export const selectCount = (state: RootState) => state
 export default counterSlice.reducer // 导出当前reducer在store/index.ts中记性全局挂

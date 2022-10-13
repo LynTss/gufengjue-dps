@@ -9,26 +9,26 @@ import { SKillGainData } from '@/@types/skill'
 
 interface EnchantGainIncomeCardProps {
   currentCycle: CycleDTO[]
-  characterData: CharacterFinalDTO
+  characterFinalData: CharacterFinalDTO
   currentTarget: any
   totalDps: number
   data: EnchantDTO
 }
 
 function EnchantGainIncomeCard(params: EnchantGainIncomeCardProps) {
-  const { currentCycle, characterData, currentTarget, totalDps, data } = params
+  const { currentCycle, characterFinalData, currentTarget, totalDps, data } = params
 
   const { 计算后属性, 计算后目标 } = useMemo(() => {
     return {
-      计算后属性: getIncomeData(characterData, data.增益集合?.[0]),
+      计算后属性: getIncomeData(characterFinalData, data.增益集合?.[0]),
       计算后目标: currentTarget,
     }
-  }, [characterData])
+  }, [characterFinalData])
 
   const getDpsIncomePercent = (): number => {
     const { totalDps: newTotalDps } = getDpsTotal({
       currentCycle,
-      characterData: 计算后属性,
+      characterFinalData: 计算后属性,
       当前目标: 计算后目标,
     })
 
@@ -50,8 +50,8 @@ function EnchantGainIncomeCard(params: EnchantGainIncomeCardProps) {
 
 export default EnchantGainIncomeCard
 
-const getIncomeData = (characterData: CharacterFinalDTO, data: SKillGainData) => {
-  const newData = { ...characterData }
+const getIncomeData = (characterFinalData: CharacterFinalDTO, data: SKillGainData) => {
+  const newData = { ...characterFinalData }
   let 数值 = data.增益数值
   switch (data.增益类型) {
     case GainTypeEnum.力道:

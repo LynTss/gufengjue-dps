@@ -1,6 +1,8 @@
 .dps {
-  width: 100%;
+  flex: 1 1;
   display: flex;
+  margin-left: 16px;
+  color: #fff;
 }
 
 .dps-line {

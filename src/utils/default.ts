@@ -3,7 +3,7 @@ import skillCycle from '@/data/skillCycle'
 import { DEFAULT_CHARACTER } from '@/pages/constant'
 
 export const getDefaultCharacter = () => {
-  const sessionCharacter = localStorage.getItem('character_data')
+  const sessionCharacter = localStorage.getItem('character_data_basic')
   if (sessionCharacter) {
     try {
       const obj = JSON.parse(sessionCharacter)

@@ -1,0 +1,7 @@
+.character-set {
+  display: flex;
+  padding-top: 8px;
+}
+.character-set .ant-btn +.ant-btn {
+  margin-left: 16px;
+}

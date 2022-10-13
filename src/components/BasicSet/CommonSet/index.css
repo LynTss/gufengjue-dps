@@ -1,0 +1,27 @@
+.common-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color:var(--ant-primary-color);
+}
+
+.common-item {
+  display: flex;
+  margin-bottom: 8px;
+  height: 32px;
+}
+
+.common-label {
+  width: 70px;
+  text-align: left;
+  line-height: 32px;;
+  font-size: 14px;
+  margin: 0 4px 0 0;
+}
+
+.common-content {
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  overflow: hidden;
+}

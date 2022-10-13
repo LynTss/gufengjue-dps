@@ -1,0 +1,33 @@
+.character-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color:var(--ant-primary-color);
+}
+
+.character-item {
+  display: flex;
+  margin-bottom: 8px;
+  height: 32px;
+}
+
+.character-label {
+  width: 70px;
+  text-align: left;
+  line-height: 32px;;
+  font-size: 14px;
+  margin: 0 4px 0 0;
+}
+
+.character-content {
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  overflow: hidden;
+  line-height: 32px;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  padding: 0 11px;
+}

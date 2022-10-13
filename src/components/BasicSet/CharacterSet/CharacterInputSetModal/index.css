@@ -1,0 +1,27 @@
+.character-input-set-modal .ant-form-item {
+  margin-bottom: 16px;
+}
+.character-input-set-modal .ant-modal-body {
+  padding: 16px 24px;
+}
+
+.character-input-set-modal .ant-form-item-label {
+  width: 130px;
+  text-align: right;
+}
+
+.character-input-set-modal .ant-form-item-label .anticon {
+  vertical-align: -1;
+  font-size: 14px;
+  margin-left: 8px;
+  color: #ccc
+}
+
+.character-input-set-modal .ant-form-item-control-input-content .ant-input-number {
+  width: 100%;
+}
+
+.character-input-set-modal .ant-form-item.jisuan {
+  text-align: right;
+  margin-bottom: 0;
+}

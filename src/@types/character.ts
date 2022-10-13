@@ -1,23 +1,12 @@
-import { EquipmentDTO } from './equipment'
-
 /**
- * @name 个人基础属性信息模型
+ * 属性通用模型
  */
-export interface CharacterBasicDTO {
-  /**
-   * @name 攻击力-面板攻击力
-   * @description 显示在面板上的实际攻击力
-   */
-  面板攻击: number
+export interface BasicDataDTO {
   /**
    * @name 攻击力-基础攻击力
    * @description 显示的基础攻击力
    */
   基础攻击: number
-  /**
-   * @name 个人等级
-   */
-  等级: number
   /**
    * @name 破防值
    * @description 游戏内现实的具体破防值
@@ -34,50 +23,56 @@ export interface CharacterBasicDTO {
    */
   力道: number
   /**
+   * @name 体质
+   */
+  体质: number
+  /**
    * @name 加速值
    * @description 游戏内现实的具体无双值
    */
   加速值: number
+  /**
+   * @name 破招值
+   * @description 游戏内现实的具体无双值
+   */
+  破招值: number
+  /**
+   * @name 武器伤害_最小值
+   */
+  武器伤害_最小值: number
+  /**
+   * @name 武器伤害_最大值
+   */
+  武器伤害_最大值: number
+  /**
+   * @name 会心值
+   */
+  会心值: number
+  /**
+   * @name 会心效果值
+   */
+  会心效果值: number
 }
 
 /**
- * @name 个人最终属性信息模型
+ * @name 角色面板属性信息（不包含各种数据增益。只为装备带来的基础属性
  */
-export interface CharacterFinalDTO extends Partial<EquipmentDTO> {
-  /**
-   * @name 攻击力-面板攻击力
-   * @description 显示在面板上的实际攻击力
-   */
-  面板攻击: number
-  /**
-   * @name 攻击力-基础攻击力
-   * @description 显示的基础攻击力
-   */
-  基础攻击?: number
+export interface CharacterBasicDTO extends BasicDataDTO {
   /**
    * @name 个人等级
    */
-  等级?: number
+  等级: number
   /**
-   * @name 破防值
-   * @description 游戏内现实的具体破防值
+   * @name 强膂
    */
-  破防值: number
+  强膂?: number
+}
+
+export interface CharacterFinalDTO extends CharacterBasicDTO {
   /**
-   * @name 无双值
-   * @description 游戏内现实的具体无双值
+   * @name 面板攻击
    */
-  无双值: number
-  /**
-   * @name 力道
-   * @description 游戏内现实的具体无双值
-   */
-  力道?: number
-  /**
-   * @name 加速值
-   * @description 游戏内现实的具体无双值
-   */
-  加速值?: number
+  面板攻击: number
 }
 
 /**
