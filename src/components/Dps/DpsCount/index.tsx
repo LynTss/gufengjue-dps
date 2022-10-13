@@ -9,7 +9,7 @@ function DpsCount({ dps, dpsList, total }) {
     const liuxueList: DpsListData[] = []
 
     list.forEach((item) => {
-      if (item.name.includes('起落势')) {
+      if (item.name.includes('断云势')) {
         qiluoshiList.push(item)
       } else if (item.name.includes('流血')) {
         liuxueList.push(item)
@@ -33,7 +33,7 @@ function DpsCount({ dps, dpsList, total }) {
       })
 
       resList.push({
-        name: '起落势',
+        name: '断云势',
         number: qiluoshiNumber,
         dps: qiluoshiDps,
       })

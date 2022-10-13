@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 // import { CharacterFinalDTO } from '@/@types/character'
 import SkillDamageTable from '@/components/SkillDamageTable'
-import CharacterSet from '@/components/CharacterSet'
+import BasicSet from '@/components/BasicSet'
 import Notice from '@/components/Notice'
 import Dps from '@/components/Dps'
 
@@ -25,7 +25,7 @@ function Pages() {
 
   return (
     <div>
-      <CharacterSet getDps={getDps} />
+      <BasicSet getDps={getDps} />
       <Dps ref={dpsRef} />
       {calculated ? <SkillDamageTable /> : <Notice />}
     </div>
