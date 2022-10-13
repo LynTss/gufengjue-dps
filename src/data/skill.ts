@@ -156,7 +156,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能伤害系数: 4.062508769,
     技能基础伤害_最小值: 1450,
     技能基础伤害_最大值: 1525,
-    武器伤害系数: 3, // !描述3 实测试1
+    武器伤害系数: 2, // !描述3 实测试1
     伤害计算次数: 1,
     技能增益列表: gufengduanlangGainDTO,
   },
