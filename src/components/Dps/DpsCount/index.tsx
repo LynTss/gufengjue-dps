@@ -49,7 +49,7 @@ function DpsCount({ dps, dpsList, total }) {
       })
 
       resList.push({
-        name: '流血',
+        name: '流血（DOT）',
         number: number,
         dps: dps,
       })
