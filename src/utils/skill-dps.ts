@@ -32,9 +32,6 @@ export const skillBasicDps = (skillConfig: SkillBasicDTO, characterConfig: Chara
   } = skillConfig
   if (技能名称 === '破') {
     const poDps = getPoDps(破招值, 技能伤害系数)
-    console.log('破招值', 破招值)
-    console.log('技能伤害系数', 技能伤害系数)
-    console.log('poDps', poDps)
     return {
       min: poDps,
       max: poDps,

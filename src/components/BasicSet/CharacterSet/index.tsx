@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import { Button, Form, InputNumber, Tooltip } from 'antd'
 import { QuestionCircleOutlined } from '@ant-design/icons'
-import { useAppSelector } from '@/hooks'
+import { useAppDispatch, useAppSelector } from '@/hooks'
 import { setCharacterData } from '@/store/basicReducer'
 
 function CharacterSet({ getDpsFunction }) {
   const [form] = Form.useForm()
 
+  const dispatch = useAppDispatch()
   const characterData = useAppSelector((state) => state?.basic?.characterData)
 
   useEffect(() => {
@@ -15,11 +16,11 @@ function CharacterSet({ getDpsFunction }) {
         ...characterData,
       })
     }
-  }, [characterData])
+  }, [])
 
   const beforeOnchange = (value) => {
     localStorage?.setItem('character_data', JSON.stringify(value))
-    setCharacterData({ ...value })
+    dispatch(setCharacterData(value))
     getDpsFunction()
   }
   return (
