@@ -1,4 +1,5 @@
 import React from 'react'
+import ImgBg from '../../assets/main.jpg'
 import './index.css'
 
 interface LayoutProps {
@@ -7,7 +8,12 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = (props) => {
   const { children } = props
-  return <div className="layout">{children}</div>
+  return (
+    <div className="layout">
+      <div className="layout-wrapper">{children}</div>
+      <img className="layout-bg" src={ImgBg} alt="" />
+    </div>
+  )
 }
 
 export default Layout

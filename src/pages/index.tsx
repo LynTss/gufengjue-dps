@@ -3,11 +3,11 @@ import React, { useRef } from 'react'
 import BasicSet from '@/components/BasicSet'
 // import Notice from '@/components/Notice'
 import Dps from '@/components/Dps'
+import TitleTip from '@/components/TitleTip'
+import Log from '@/components/Log'
 import './index.css'
 
 function Pages() {
-  // const [calculated, setCalculated] = useState(false)
-
   const dpsRef = useRef<any>()
 
   const getDps = () => {
@@ -16,8 +16,10 @@ function Pages() {
 
   return (
     <>
+      <TitleTip />
       <BasicSet getDps={getDps} />
       <Dps ref={dpsRef} />
+      <Log />
     </>
   )
 }

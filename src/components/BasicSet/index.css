@@ -1,14 +1,17 @@
 .basic-set {
   display: block;
-  height: calc(100vh - 72px);
-  background:#fff;
+  /* width: 328px; */
   border-radius: 4px;
-  padding: 24px;
+  background:#fff;
+  height: calc(100vh - 72px);
   overflow-y: auto;
+  padding: 24px;
+  position: relative;
 }
 
 .basic-set-info {
   width: 300px;
+  padding-bottom: 100px;
 }
 
 .basic-set .ant-divider {

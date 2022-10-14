@@ -1,11 +1,33 @@
 .layout {
   width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  box-sizing: border-box;
   position: relative;
   height: 100vh;
+  /* background: var(--ant-primary-color); */
+  overflow: hidden;
+}
+
+.layout-wrapper {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 2;
+  margin: auto;
+  display: flex;
   padding: 36px;
-  background: var(--ant-primary-color);
+  flex-direction: row;
+  box-sizing: border-box;
+  /* background: #08122b; */
+  background-image: linear-gradient(to right, #08122b 30%, rgba(8, 18, 43, 0) 100%)
+}
+
+.layout-bg {
+  position: absolute;
+  display: block;
+  height: 120vh;
+  right: 0;
+  top: -10vh;
+  z-index: 1;
+  margin: auto;
 }

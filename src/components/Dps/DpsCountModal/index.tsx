@@ -1,7 +1,9 @@
+import { Modal } from 'antd'
 import React, { useMemo } from 'react'
 import { DpsListData } from '../utils'
+import './index.css'
 
-function DpsCount({ dps, dpsList, total }) {
+function DpsCountModal({ visible, onClose, dpsList, total }) {
   const sortDpsList = useMemo(() => {
     const list = [...dpsList]
     const resList: DpsListData[] = []
@@ -63,8 +65,16 @@ function DpsCount({ dps, dpsList, total }) {
   }, [dpsList])
 
   return (
-    <div>
-      {dps ? (
+    <Modal
+      className="dps-count-modal"
+      width={700}
+      centered
+      title={'技能统计'}
+      visible={visible}
+      onCancel={() => onClose()}
+      footer={false}
+    >
+      <div>
         <div className={'dps-skill-count'}>
           <div className={'dps-line dps-total'}>
             <span>技能名称</span>
@@ -75,25 +85,25 @@ function DpsCount({ dps, dpsList, total }) {
             </div>
           </div>
         </div>
-      ) : null}
-      {sortDpsList?.length ? (
-        <div className={'dps-skill-count'}>
-          {sortDpsList.map((item) => {
-            return (
-              <div className={'dps-line'} key={item.name}>
-                <span>{item.name}</span>
-                <div className={'dps-count'}>
-                  <span className="dps-count-1">{item.number}</span>
-                  <span className="dps-count-2">{item.dps}</span>
-                  <span className="dps-count-3">{((item.dps / total) * 100).toFixed(2)}%</span>
+        {sortDpsList?.length ? (
+          <div className={'dps-skill-count'}>
+            {sortDpsList.map((item) => {
+              return (
+                <div className={'dps-line'} key={item.name}>
+                  <span>{item.name}</span>
+                  <div className={'dps-count'}>
+                    <span className="dps-count-1">{item.number}</span>
+                    <span className="dps-count-2">{item.dps}</span>
+                    <span className="dps-count-3">{((item.dps / total) * 100).toFixed(2)}%</span>
+                  </div>
                 </div>
-              </div>
-            )
-          })}
-        </div>
-      ) : null}
-    </div>
+              )
+            })}
+          </div>
+        ) : null}
+      </div>
+    </Modal>
   )
 }
 
-export default DpsCount
+export default DpsCountModal

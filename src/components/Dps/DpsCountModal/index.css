@@ -1,0 +1,44 @@
+.dps-count-modal {
+  max-height: calc(100vh - 24px)
+}
+
+.dps-count-modal .ant-modal-body {
+  padding: 12px 24px 24px;
+}
+
+.dps-line {
+  display: flex;
+  font-size: 18px;
+  border-bottom: 1px solid #dfdfdf;
+  justify-content: space-between;
+}
+
+.dps-total {
+  color: var(--ant-primary-color);
+}
+
+.dps-count {
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dps-count-1 {
+  width: 25%;
+}
+
+.dps-count-2 {
+  width: 40%;
+  text-align: right;
+}
+
+.dps-count-3 {
+  width: 30%;
+  text-align: right;
+}
+
+
+.dps-number {
+  border: 1px solid #999;
+  margin-bottom: 24px;
+}

@@ -1,12 +1,11 @@
-import React, { forwardRef, useImperativeHandle, useState } from 'react'
-import { DpsListData, getDpsTotal } from './utils'
-import { message, Tooltip } from 'antd'
-import { EnchantGainDTO } from '@/data/enchantGain'
-import { QuestionCircleOutlined } from '@ant-design/icons'
-import EnchantGainIncomeCard from './EnchantGainIncomeCard'
-import DpsCount from './DpsCount'
-import './index.css'
+import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import { Divider, message } from 'antd'
 import { useAppSelector } from '@/hooks'
+
+import { DpsListData, getDpsTotal } from './utils'
+import DpsCountModal from './DpsCountModal/index'
+import Income from './Income'
+import './index.css'
 
 function Dps(props, ref) {
   const characterFinalData = useAppSelector((state) => state?.basic?.characterFinalData)
@@ -16,6 +15,9 @@ function Dps(props, ref) {
   const [dps, setDps] = useState<number>(0)
   const [total, setTotal] = useState<number>(0)
   const [dpsList, setDpsList] = useState<DpsListData[]>([])
+  const [dpsCountModalVisible, setDpsCountModalVisible] = useState<boolean>(false)
+
+  const incomeRef = useRef<any>()
 
   useImperativeHandle(ref, () => ({
     getDps: startDps,
@@ -39,45 +41,31 @@ function Dps(props, ref) {
     setDps(Math.floor(totalDps / time))
     setTotal(totalDps)
     setDpsList(dpsList)
+    setTimeout(() => {
+      incomeRef?.current?.initChart()
+    })
   }
 
-  return (
+  return dps ? (
     <div className={'dps'}>
-      <div className={'dps-skill-count-wrap'}>
-        <DpsCount dps={dps} dpsList={dpsList} total={total} />
-      </div>
-      {dps ? (
-        <div className={'right'}>
-          <div className="dps-number">
-            <div className={'dps-number-header'}>期望DPS</div>
-            <div className={'dps-number-text'}>{dps}</div>
-          </div>
-          <div className={'income'}>
-            <div className={'income-title'}>
-              属性收益
-              <Tooltip title="该收益为110级附魔收益，即221攻击/110力道/332武伤/491破防/491无双/491会心/491会效/491破招，仅供参考">
-                <QuestionCircleOutlined />
-              </Tooltip>
-            </div>
-            <div className={'income-wrap'}>
-              {EnchantGainDTO.map((item) => {
-                return (
-                  <EnchantGainIncomeCard
-                    key={item.附魔名称}
-                    totalDps={total}
-                    data={item}
-                    currentCycle={currentCycle}
-                    characterFinalData={characterFinalData}
-                    currentTarget={currentTarget}
-                  />
-                )
-              })}
-            </div>
-          </div>
+      <h1 className={'dps-title'}>伤害计算</h1>
+      <Divider />
+      <div className={'dps-number-count'}>
+        <div className={'dps-number-count-text'}>{dps}</div>
+        <div className={'dps-number-count-skill'} onClick={() => setDpsCountModalVisible(true)}>
+          技能统计
         </div>
-      ) : null}
+      </div>
+      <p className={'dps-number-tip'}>数值仅供参考，请以实际游戏内实装系数为准</p>
+      <Income totalDps={total} ref={incomeRef} />
+      <DpsCountModal
+        total={total}
+        visible={dpsCountModalVisible}
+        onClose={() => setDpsCountModalVisible(false)}
+        dpsList={dpsList}
+      />
     </div>
-  )
+  ) : null
 }
 
 export default forwardRef(Dps)

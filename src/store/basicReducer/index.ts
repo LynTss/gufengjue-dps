@@ -29,7 +29,21 @@ interface BasicState {
 
 const initialState: BasicState = {
   characterBasicData: getDefaultCharacter(),
-  characterFinalData: getDefaultCharacter(),
+  characterFinalData: {
+    面板攻击: 0,
+    等级: 120,
+    基础攻击: 0,
+    破防值: 0,
+    力道: 0,
+    体质: 0,
+    加速值: 0,
+    破招值: 0,
+    无双值: 0,
+    武器伤害_最小值: 0,
+    武器伤害_最大值: 0,
+    会心值: 0,
+    会心效果值: 0,
+  },
   currentCycle: getDefaultCycle()?.cycle,
   currentCycleName: getDefaultCycle()?.name,
   currentTarget: getDefaultTarget()?.target,

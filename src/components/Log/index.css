@@ -1,0 +1,36 @@
+.log-wrap {
+  width: 348px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 36px;
+  color: #fff;
+  margin: 0;
+  line-height: 36px;
+  font-size: 14px;
+}
+
+.log {
+  cursor: pointer;
+  transition: .2s;
+}
+
+.log-wrap .log:hover {
+  color: #ddd ;
+}
+
+.log-modal .ant-modal-body{
+  min-height: 400px;
+}
+
+.log-line .ant-timeline-item-content{
+  top: -6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.log-version {
+  font-weight: 700;;
+  color: var(--ant-primary-color);
+}

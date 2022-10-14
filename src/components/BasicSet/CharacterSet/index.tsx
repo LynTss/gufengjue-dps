@@ -7,6 +7,7 @@ import './index.css'
 
 function CharacterSet({ getDpsFunction }) {
   const [characterInputSetModalVisible, setCharacterInputSetModalVisible] = useState<boolean>(false)
+
   return (
     <div className={'character-set'}>
       <Button onClick={() => setCharacterInputSetModalVisible(true)}>属性录入</Button>

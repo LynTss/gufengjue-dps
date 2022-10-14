@@ -1,0 +1,12 @@
+.title-tip {
+  width: 348px;
+  position: fixed;
+  bottom: 0;
+  left: 36px;
+  color: #fff;
+  margin: 0;
+  line-height: 36px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}

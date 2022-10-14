@@ -15,7 +15,6 @@ function CharacterInputSetModal({ visible, onClose }) {
 
   useEffect(() => {
     if (characterBasicData && visible) {
-      console.log('characterBasicData', characterBasicData)
       form.setFieldsValue({
         ...characterBasicData,
       })
