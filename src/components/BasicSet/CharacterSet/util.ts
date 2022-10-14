@@ -38,5 +38,5 @@ export const getLidaoJiachengHuixin = (会心值, 面板力道) => {
 }
 
 export const getLidaoJiachengPofang = (破防值, 面板力道) => {
-  return (破防值 || 0) + Math.floor(面板力道 * 加成系数.力道加成破防)
+  return (破防值 || 0) + Math.round(面板力道 * 加成系数.力道加成破防)
 }

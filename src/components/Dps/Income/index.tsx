@@ -129,8 +129,8 @@ const getIncomeData = (characterFinalData: CharacterFinalDTO, data: SKillGainDat
       newData.面板攻击 =
         (newData.面板攻击 || 0) +
         Math.floor(数值 * 加成系数.力道加成面板攻击) +
-        Math.floor(数值 * 加成系数.力道加成基础攻击)
-      newData.破防值 = (newData.破防值 || 0) + Math.floor(数值 * 加成系数.力道加成破防)
+        Math.round(数值 * 加成系数.力道加成基础攻击)
+      newData.破防值 = (newData.破防值 || 0) + Math.round(数值 * 加成系数.力道加成破防)
       newData.会心值 = (newData.会心值 || 0) + Math.floor(数值 * 加成系数.力道加成会心)
       break
     case GainTypeEnum.外攻会心效果等级:
