@@ -13,6 +13,8 @@ import { SKillGainData } from '@/@types/skill'
 import { getDpsTotal } from '../utils'
 import './index.css'
 import { Tooltip } from 'antd'
+import { getLidao } from '@/components/BasicSet/CharacterSet/util'
+import { 加成系数 } from '@/data/constant'
 
 function Income({ totalDps }, ref) {
   const currentCycle = useAppSelector((state) => state.basic.currentCycle)
@@ -122,12 +124,14 @@ const getIncomeData = (characterFinalData: CharacterFinalDTO, data: SKillGainDat
   let 数值 = data.增益数值
   switch (data.增益类型) {
     case GainTypeEnum.力道:
-      数值 = Math.floor(数值 * 1.1)
+      数值 = getLidao(数值, true)
       newData.力道 = (newData.力道 || 0) + 数值
       newData.面板攻击 =
-        (newData.面板攻击 || 0) + Math.floor(数值 * 0.1505165424349418) + Math.floor(数值 * 1.6)
-      newData.破防值 = (newData.破防值 || 0) + Math.floor(数值 * 0.3010330848698836)
-      newData.会心值 = (newData.会心值 || 0) + Math.floor(数值 * 0.25)
+        (newData.面板攻击 || 0) +
+        Math.floor(数值 * 加成系数.力道加成面板攻击) +
+        Math.floor(数值 * 加成系数.力道加成基础攻击)
+      newData.破防值 = (newData.破防值 || 0) + Math.floor(数值 * 加成系数.力道加成破防)
+      newData.会心值 = (newData.会心值 || 0) + Math.floor(数值 * 加成系数.力道加成会心)
       break
     case GainTypeEnum.外攻会心效果等级:
       newData.会心效果值 = (newData.会心效果值 || 0) + 数值
