@@ -26,7 +26,7 @@ export enum GainTypeEnum {
   加速 = '加速',
 }
 
-// 技能增伤类型
+// 镶嵌增伤类型
 export enum EquipmentInlayEnum {
   力道 = '力道',
   攻击 = '攻击',
@@ -47,4 +47,16 @@ export enum EquipmentTypeEnum {
   特效武器 = '特效武器',
   小CW = '小CW',
   大CW = '大CW',
+}
+
+export enum WuCaiShiGainNameEnum {
+  力道 = '力道',
+  外功攻击 = '外功攻击',
+  外功破防等级 = '外功破防等级',
+  外功会心效果等级 = '外功会心效果等级',
+  近战武器伤害 = '近战武器伤害',
+  加速等级 = '加速等级',
+  外功会心等级 = '外功会心等级',
+  无双等级 = '无双等级',
+  破招值 = '破招值',
 }

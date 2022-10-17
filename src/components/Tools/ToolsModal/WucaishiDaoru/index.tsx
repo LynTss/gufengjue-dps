@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Button, Input, message } from 'antd'
-import { zhuangbeidaoru } from '@/utils/tools'
+import { wucaishidaoru } from '@/utils/tools'
 import './index.css'
 
-function ZhuangbeiDaoru() {
+function WucaishiDaoru() {
   const [inputValue, setInputValue] = useState<string>()
   const [shuju, setShuju] = useState<any>()
 
@@ -11,17 +11,9 @@ function ZhuangbeiDaoru() {
     if (inputValue) {
       try {
         const data = JSON.parse(inputValue)
-        const i = zhuangbeidaoru(data?.list)
+        const i = wucaishidaoru(data?.list)
         let strI = JSON.stringify(i)
         strI = strI
-          .replaceAll(`"EquipmentTypeEnum.切糕"`, `EquipmentTypeEnum.切糕`)
-          .replaceAll(`"EquipmentTypeEnum.特效武器"`, `EquipmentTypeEnum.特效武器`)
-          .replaceAll(`"EquipmentTypeEnum.小CW"`, `EquipmentTypeEnum.小CW`)
-          .replaceAll(`"EquipmentTypeEnum.大CW"`, `EquipmentTypeEnum.大CW`)
-          .replaceAll(`"EquipmentTypeEnum.门派套装"`, `EquipmentTypeEnum.门派套装`)
-          .replaceAll(`"EquipmentTypeEnum.副本精简"`, `EquipmentTypeEnum.副本精简`)
-          .replaceAll(`"EquipmentTypeEnum.试炼精简"`, `EquipmentTypeEnum.试炼精简`)
-          .replaceAll(`"EquipmentTypeEnum.普通"`, `EquipmentTypeEnum.普通`)
           .replaceAll(`"GainTypeEnum.体质"`, `GainTypeEnum.体质`)
           .replaceAll(`"GainTypeEnum.力道"`, `GainTypeEnum.力道`)
           .replaceAll(`"GainTypeEnum.基础攻击"`, `GainTypeEnum.基础攻击`)
@@ -31,14 +23,19 @@ function ZhuangbeiDaoru() {
           .replaceAll(`"GainTypeEnum.外攻会心效果等级"`, `GainTypeEnum.外攻会心效果等级`)
           .replaceAll(`"GainTypeEnum.外攻破防等级"`, `GainTypeEnum.外攻破防等级`)
           .replaceAll(`"GainTypeEnum.无双等级"`, `GainTypeEnum.无双等级`)
-          .replaceAll(`"EquipmentInlayEnum.力道"`, `EquipmentInlayEnum.力道`)
-          .replaceAll(`"EquipmentInlayEnum.攻击"`, `EquipmentInlayEnum.攻击`)
-          .replaceAll(`"EquipmentInlayEnum.破招"`, `EquipmentInlayEnum.破招`)
-          .replaceAll(`"EquipmentInlayEnum.会心"`, `EquipmentInlayEnum.会心`)
-          .replaceAll(`"EquipmentInlayEnum.会效"`, `EquipmentInlayEnum.会效`)
-          .replaceAll(`"EquipmentInlayEnum.破防"`, `EquipmentInlayEnum.破防`)
-          .replaceAll(`"EquipmentInlayEnum.加速"`, `EquipmentInlayEnum.加速`)
-          .replaceAll(`"EquipmentInlayEnum.无双"`, `EquipmentInlayEnum.无双`)
+          .replaceAll(`"GainTypeEnum.近战武器伤害"`, `GainTypeEnum.近战武器伤害`)
+          .replaceAll(`"WuCaiShiGainNameEnum.力道"`, `WuCaiShiGainNameEnum.力道`)
+          .replaceAll(`"WuCaiShiGainNameEnum.外功攻击"`, `WuCaiShiGainNameEnum.外功攻击`)
+          .replaceAll(`"WuCaiShiGainNameEnum.破招值"`, `WuCaiShiGainNameEnum.破招值`)
+          .replaceAll(`"WuCaiShiGainNameEnum.外功会心等级"`, `WuCaiShiGainNameEnum.外功会心等级`)
+          .replaceAll(
+            `"WuCaiShiGainNameEnum.外功会心效果等级"`,
+            `WuCaiShiGainNameEnum.外功会心效果等级`
+          )
+          .replaceAll(`"WuCaiShiGainNameEnum.外功破防等级"`, `WuCaiShiGainNameEnum.外功破防等级`)
+          .replaceAll(`"WuCaiShiGainNameEnum.无双等级"`, `WuCaiShiGainNameEnum.无双等级`)
+          .replaceAll(`"WuCaiShiGainNameEnum.近战武器伤害"`, `WuCaiShiGainNameEnum.近战武器伤害`)
+          .replaceAll(`"WuCaiShiGainNameEnum.加速等级"`, `WuCaiShiGainNameEnum.加速等级`)
         setShuju(strI)
       } catch (e) {
         message.error(`转化失败e${e}`)
@@ -49,7 +46,7 @@ function ZhuangbeiDaoru() {
   }
 
   const copy = () => {
-    const res = document.getElementById('tools-daoru-zhuangbei-result')
+    const res = document.getElementById('tools-daoru-wucaishi-result')
     if (res) {
       const text = res?.innerHTML
       if (text) {
@@ -85,7 +82,7 @@ function ZhuangbeiDaoru() {
         <Button onClick={getDetail}>转换</Button>
       </div>
       {shuju && (
-        <div id="tools-daoru-zhuangbei-result" className={'tools-daoru-result'}>
+        <div id="tools-daoru-wucaishi-result" className={'tools-daoru-result'}>
           {shuju}
         </div>
       )}
@@ -93,4 +90,4 @@ function ZhuangbeiDaoru() {
   )
 }
 
-export default ZhuangbeiDaoru
+export default WucaishiDaoru

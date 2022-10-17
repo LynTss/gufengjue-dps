@@ -11,10 +11,10 @@ import { CharacterFinalDTO } from '@/@types/character'
 import { GainTypeEnum } from '@/@types/enum'
 import { SKillGainData } from '@/@types/skill'
 import { getDpsTotal } from '../utils'
-import './index.css'
 import { Tooltip } from 'antd'
 import { getLidao } from '@/components/BasicSet/CharacterSet/util'
 import { 加成系数 } from '@/data/constant'
+import './index.css'
 
 function Income({ totalDps }, ref) {
   const currentCycle = useAppSelector((state) => state.basic.currentCycle)
@@ -36,7 +36,7 @@ function Income({ totalDps }, ref) {
   }
 
   const getDataSource = () => {
-    return EnchantGainDTO.map((item) => {
+    return EnchantGainDTO.filter((item) => item.附魔名称 === '加速').map((item) => {
       return {
         key: item.附魔名称,
         收益: getAfterIncomeDpsPercent(item),
