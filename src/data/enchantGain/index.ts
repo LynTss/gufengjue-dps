@@ -7,7 +7,7 @@ export const EnchantGainDTO: EnchantDTO[] = [
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻攻击,
+        增益类型: GainTypeEnum.基础攻击,
         增益数值: 221,
       },
     ],
@@ -37,7 +37,7 @@ export const EnchantGainDTO: EnchantDTO[] = [
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.破防,
+        增益类型: GainTypeEnum.外攻破防等级,
         增益数值: 491,
       },
     ],

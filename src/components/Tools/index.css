@@ -1,0 +1,20 @@
+.tools-wrapper {
+  position: fixed;
+  top: 0;
+  left: calc(328px + 36px + 32px);
+  color: #fff;
+  margin: 0;
+  line-height: 36px;
+  font-size: 14px;
+  text-align: right;
+}
+
+.tools-btn {
+  opacity: 0;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.tools-btn:hover {
+  opacity: 0.1;
+}

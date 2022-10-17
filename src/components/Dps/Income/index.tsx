@@ -139,10 +139,10 @@ const getIncomeData = (characterFinalData: CharacterFinalDTO, data: SKillGainDat
     case GainTypeEnum.外攻会心等级:
       newData.会心值 = (newData.会心值 || 0) + 数值
       break
-    case GainTypeEnum.外攻攻击:
+    case GainTypeEnum.基础攻击:
       newData.面板攻击 = (newData.面板攻击 || 0) + 数值
       break
-    case GainTypeEnum.破防:
+    case GainTypeEnum.外攻破防等级:
       newData.破防值 = (newData.破防值 || 0) + 数值
       break
     case GainTypeEnum.近战武器伤害:

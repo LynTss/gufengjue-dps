@@ -6,6 +6,7 @@ import Dps from '@/components/Dps'
 import TitleTip from '@/components/TitleTip'
 import Log from '@/components/Log'
 import './index.css'
+import Tools from '@/components/Tools'
 
 function Pages() {
   const dpsRef = useRef<any>()
@@ -16,10 +17,16 @@ function Pages() {
 
   return (
     <>
+      {/* 顶部说明 */}
       <TitleTip />
+      {/* 角色设置 */}
       <BasicSet getDps={getDps} />
+      {/* Dps计算 */}
       <Dps ref={dpsRef} />
+      {/* 更新日志 */}
       <Log />
+      {/* 开发者工具 */}
+      <Tools />
     </>
   )
 }

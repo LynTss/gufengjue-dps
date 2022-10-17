@@ -212,7 +212,7 @@ const switchGain = (人物属性, 增益, 技能增伤, 郭氏额外会效果值
   let 计算后额外会心率 = 额外会心率
   if (增益计算类型 === GainDpsTypeEnum.A) {
     switch (增益类型) {
-      case GainTypeEnum.破防百分比:
+      case GainTypeEnum.外攻破防百分比:
         计算后人物属性.破防值 = guoshiPercent(计算后人物属性.破防值, 增益数值)
         break
       case GainTypeEnum.外攻会心百分比:

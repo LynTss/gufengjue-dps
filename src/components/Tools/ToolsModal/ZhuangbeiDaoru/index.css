@@ -1,0 +1,23 @@
+.tools-daoru-input {
+  height: 200px;
+  margin-bottom: 16px;
+}
+
+.tools-daoru-btns {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  justify-content: flex-end;
+}
+
+.tools-daoru-btns .ant-btn + .ant-btn {
+  margin-left: 16px;
+}
+
+.tools-daoru-result {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 16px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+}
