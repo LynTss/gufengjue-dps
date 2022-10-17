@@ -9,10 +9,13 @@ import {
   getDefaultTarget,
   getDefaultTime,
 } from '@/utils/default'
+import { EquipmentBasicDTO } from '@/@types/equipment'
 
 interface BasicState {
   // 角色面板属性信息（不包含各种数据增益。只为装备带来的基础属性
   characterBasicData: CharacterBasicDTO
+  // 角色装备属性信息（不包含各种数据增益。只为装备带来的基础属性
+  equipmentBasicData: EquipmentBasicDTO
   // 常驻增益计算后的属性，如（奇穴强膂、阵眼常驻增益、秀气、雷等buff）
   characterFinalData: CharacterFinalDTO
   // 当前输出计算循环
@@ -29,6 +32,7 @@ interface BasicState {
 
 const initialState: BasicState = {
   characterBasicData: getDefaultCharacter(),
+  equipmentBasicData: getDefaultCharacter(),
   characterFinalData: {
     面板攻击: 0,
     等级: 120,

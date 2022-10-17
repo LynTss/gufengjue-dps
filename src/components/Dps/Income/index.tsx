@@ -36,7 +36,7 @@ function Income({ totalDps }, ref) {
   }
 
   const getDataSource = () => {
-    return EnchantGainDTO.filter((item) => item.附魔名称 === '加速').map((item) => {
+    return EnchantGainDTO.filter((item) => item.附魔名称 !== '加速').map((item) => {
       return {
         key: item.附魔名称,
         收益: getAfterIncomeDpsPercent(item),

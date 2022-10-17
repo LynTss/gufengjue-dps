@@ -1,3 +1,4 @@
+import { EquipmentPositionEnum } from './enum'
 /**
  * @name 附魔数据模型
  */
@@ -13,7 +14,11 @@ export interface EnchantDTO {
   /**
    * @name 增益集合
    */
-  增益集合: SKillGainData[]
+  增益集合?: SKillGainData[]
+  /**
+   * @name 附魔支持部位
+   */
+  附魔支持部位?: EquipmentPositionEnum[]
 }
 export interface WuCaiShiDTO {
   五彩石名称: string

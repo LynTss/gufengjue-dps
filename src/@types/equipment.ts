@@ -1,4 +1,35 @@
-import { EquipmentInlayEnum, EquipmentTypeEnum, GainTypeEnum } from '@/@types/enum'
+import {
+  EquipmentInlayEnum,
+  EquipmentPositionEnum,
+  EquipmentTypeEnum,
+  GainTypeEnum,
+} from '@/@types/enum'
+
+/**
+ * @name 配装器装备信息模型
+ */
+export interface EquipmentBasicDTO {
+  /**
+   * @name 装备名称
+   */
+  装备名称: string
+  /**
+   * @name 当前精炼等级
+   */
+  当前精炼等级: number
+  /**
+   * @name 镶嵌孔数组
+   */
+  镶嵌孔数组: EquipmentInlayDTO[]
+  /**
+   * @name 附魔名
+   */
+  附魔: string
+  /**
+   * @name 装备部位
+   */
+  装备部位: EquipmentPositionEnum
+}
 
 /**
  * @name 装备属性信息模型
@@ -60,7 +91,7 @@ export interface EquipmentInlayDTO {
   /**
    * @name 镶嵌孔名
    */
-  镶嵌类型: EquipmentInlayEnum
+  镶嵌类型?: EquipmentInlayEnum
   /**
    * @name 镶嵌宝石等级
    */

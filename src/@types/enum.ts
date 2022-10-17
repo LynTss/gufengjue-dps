@@ -38,6 +38,7 @@ export enum EquipmentInlayEnum {
   加速 = '加速',
 }
 
+// 装备类型
 export enum EquipmentTypeEnum {
   普通 = '普通',
   副本精简 = '副本精简',
@@ -49,6 +50,7 @@ export enum EquipmentTypeEnum {
   大CW = '大CW',
 }
 
+// 五彩石增益类型
 export enum WuCaiShiGainNameEnum {
   力道 = '力道',
   外功攻击 = '外功攻击',
@@ -59,4 +61,35 @@ export enum WuCaiShiGainNameEnum {
   外功会心等级 = '外功会心等级',
   无双等级 = '无双等级',
   破招值 = '破招值',
+}
+
+/**
+ * @name 装备部位
+ */
+export enum EquipmentPositionEnum {
+  帽子 = '帽子',
+  衣服 = '衣服',
+  腰带 = '腰带',
+  护腕 = '护腕',
+  下装 = '下装',
+  鞋子 = '鞋子',
+  项链 = '项链',
+  腰坠 = '腰坠',
+  戒指 = '戒指',
+  远程武器 = '远程武器',
+  近身武器 = '近身武器',
+}
+
+// 装备附魔名称枚举
+export enum EnchantNameEnum {
+  攻击221 = '攻击+221',
+  力道110 = '力道+110',
+  武伤332 = '武伤+332',
+  破防491 = '破防+491',
+  无双491 = '无双+491',
+  无双174 = '无双+174',
+  会心491 = '会心+491',
+  会效491 = '会效+491',
+  破招491 = '破招+491',
+  加速491 = '加速+491',
 }
