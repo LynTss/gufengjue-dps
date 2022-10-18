@@ -51,7 +51,7 @@ const getCharacterData = (key: string, characterFinalData: CharacterFinalDTO) =>
         <>
           <span>{(((characterFinalData.加速值 || 0) / 属性系数.急速) * 100).toFixed(2) + `%`}</span>
           <span>
-            {characterFinalData.加速值 < 95
+            {(characterFinalData.加速值 || 0) < 95
               ? '零段加速'
               : characterFinalData.加速值 < 4241
               ? '一段加速'
