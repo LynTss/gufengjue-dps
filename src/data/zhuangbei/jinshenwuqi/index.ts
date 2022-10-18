@@ -3,6 +3,8 @@ import { EquipmentDTO } from './../../../@types/equipment'
 
 const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
   {
+    id: 32585,
+    uid: '189136',
     装备名称: '双横刀',
     装备品级: 9300,
     武器伤害_最小值: 2163,
@@ -22,6 +24,8 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
     ],
   },
   {
+    id: 32621,
+    uid: '189226',
     装备名称: '重行刀',
     装备品级: 9300,
     武器伤害_最小值: 2163,
@@ -41,6 +45,8 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
     ],
   },
   {
+    id: 32657,
+    uid: '189316',
     装备名称: '戏涛刀',
     装备品级: 9300,
     武器伤害_最小值: 2163,
@@ -60,6 +66,8 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
     ],
   },
   {
+    id: 32693,
+    uid: '189406',
     装备名称: '复影刀',
     装备品级: 9300,
     武器伤害_最小值: 2163,
@@ -79,6 +87,8 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
     ],
   },
   {
+    id: 34343,
+    uid: '205965',
     装备名称: '寻踪觅宝·乘光刀',
     装备品级: 9300,
     武器伤害_最小值: 2163,
@@ -98,6 +108,8 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
     ],
   },
   {
+    id: 32735,
+    uid: '189490',
     装备名称: '风波恶箕刀',
     装备品级: 9700,
     武器伤害_最小值: 2256,
@@ -117,6 +129,8 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
     ],
   },
   {
+    id: 32765,
+    uid: '189550',
     装备名称: '寻踪觅宝·乘光刀',
     装备品级: 10000,
     武器伤害_最小值: 2326,
@@ -136,6 +150,8 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
     ],
   },
   {
+    id: 33479,
+    uid: '202752',
     装备名称: '沉龙荡波·耀月',
     装备品级: 10000,
     武器伤害_最小值: 2326,
@@ -155,6 +171,8 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
     ],
   },
   {
+    id: 32807,
+    uid: '189845',
     装备名称: '补刀宗',
     装备品级: 10150,
     武器伤害_最小值: 2361,
@@ -174,6 +192,8 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
     ],
   },
   {
+    id: 32849,
+    uid: '189941',
     装备名称: '数据丢失-未知',
     装备品级: 11150,
     武器伤害_最小值: 2593,
@@ -193,6 +213,8 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
     ],
   },
   {
+    id: 32953,
+    uid: '200334',
     装备名称: '游空',
     装备品级: 11150,
     武器伤害_最小值: 2593,
@@ -212,6 +234,8 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
     ],
   },
   {
+    id: 32989,
+    uid: '200376',
     装备名称: '阻烟波',
     装备品级: 11150,
     武器伤害_最小值: 2593,
@@ -231,6 +255,8 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
     ],
   },
   {
+    id: 33021,
+    uid: '200524',
     装备名称: '万里飞鸿',
     装备品级: 11300,
     武器伤害_最小值: 2628,

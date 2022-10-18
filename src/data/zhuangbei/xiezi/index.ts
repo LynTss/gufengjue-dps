@@ -3,6 +3,8 @@ import { EquipmentDTO } from './../../../@types/equipment'
 
 const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
   {
+    id: 91422,
+    uid: '200658',
     装备名称: '无封鞋',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -15,6 +17,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91421,
+    uid: '200657',
     装备名称: '无封鞋',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -26,6 +30,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91420,
+    uid: '200656',
     装备名称: '无封鞋',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -36,6 +42,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 94041,
+    uid: '205920',
     装备名称: '寻踪觅宝·光熙靴',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -49,6 +57,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 90653,
+    uid: '189331',
     装备名称: '拭江靴',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -62,6 +72,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 90545,
+    uid: '189061',
     装备名称: '羡双靴',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -75,6 +87,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 90581,
+    uid: '189151',
     装备名称: '曲郦靴',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -88,6 +102,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 90617,
+    uid: '189241',
     装备名称: '项昌靴',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -101,6 +117,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 90521,
+    uid: '189013',
     装备名称: '天穆鞋',
     装备品级: 9400,
     装备类型: EquipmentTypeEnum.普通,
@@ -114,6 +132,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 91453,
+    uid: '200713',
     装备名称: '无封鞋',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -125,6 +145,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91454,
+    uid: '200714',
     装备名称: '无封鞋',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -137,6 +159,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91452,
+    uid: '200712',
     装备名称: '无封鞋',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -147,6 +171,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 90683,
+    uid: '189421',
     装备名称: '箕宥靴',
     装备品级: 9700,
     装备类型: EquipmentTypeEnum.普通,
@@ -160,6 +186,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91486,
+    uid: '200770',
     装备名称: '无封鞋',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -172,6 +200,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91485,
+    uid: '200769',
     装备名称: '无封鞋',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -183,6 +213,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91484,
+    uid: '200768',
     装备名称: '无封鞋',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -193,6 +225,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 90821,
+    uid: '189637',
     装备名称: '星演·寒云靴',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -206,6 +240,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 90719,
+    uid: '189505',
     装备名称: '寻踪觅宝·光熙靴',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -219,6 +255,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 92499,
+    uid: '202695',
     装备名称: '沉龙荡波·淘浪靴',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -232,6 +270,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 90930,
+    uid: '189770',
     装备名称: '闲月靴',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -245,6 +285,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 90894,
+    uid: '189710',
     装备名称: '玄卢靴',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -258,6 +300,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 91517,
+    uid: '200825',
     装备名称: '无封鞋',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -269,6 +313,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91518,
+    uid: '200826',
     装备名称: '无封鞋',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -281,6 +327,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91516,
+    uid: '200824',
     装备名称: '无封鞋',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -291,6 +339,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91548,
+    uid: '200880',
     装备名称: '无封鞋',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -301,6 +351,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 91549,
+    uid: '200881',
     装备名称: '无封鞋',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -312,6 +364,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91550,
+    uid: '200882',
     装备名称: '无封鞋',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -324,6 +378,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91580,
+    uid: '200936',
     装备名称: '无封鞋',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -334,6 +390,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91581,
+    uid: '200937',
     装备名称: '无封鞋',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -345,6 +403,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91582,
+    uid: '200938',
     装备名称: '无封鞋',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -357,6 +417,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91134,
+    uid: '200126',
     装备名称: '承霁·惊寰靴',
     装备品级: 11000,
     装备类型: EquipmentTypeEnum.门派套装,
@@ -370,6 +432,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91207,
+    uid: '200199',
     装备名称: '绝塞靴',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -383,6 +447,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 90966,
+    uid: '189866',
     装备名称: '湘灿靴',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -396,6 +462,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 91243,
+    uid: '200259',
     装备名称: '金瓯靴',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -409,6 +477,8 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91303,
+    uid: '200473',
     装备名称: '暮祁靴',
     装备品级: 11300,
     装备类型: EquipmentTypeEnum.切糕,

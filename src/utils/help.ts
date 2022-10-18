@@ -1,4 +1,4 @@
-import { 属性系数 } from '@/data/constant'
+import { 属性系数, 精炼加成系数 } from '@/data/constant'
 
 /**
  * @name 郭氏基础系数算法
@@ -89,4 +89,11 @@ export const getlocalStorage = (key) => {
   } else {
     return objString
   }
+}
+
+/**
+ * @name 精炼加成系数
+ */
+export const jinglianJieguo = (jichu, dengji) => {
+  return jichu + Math.round(jichu * 精炼加成系数[dengji])
 }

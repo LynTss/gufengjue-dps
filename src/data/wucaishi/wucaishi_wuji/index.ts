@@ -1,6 +1,7 @@
+import { WuCaiShiDTO } from '@/@types/enchant'
 import { GainTypeEnum, WuCaiShiGainNameEnum } from '@/@types/enum'
 
-const wucaishi_wuji = [
+const wucaishi_wuji: WuCaiShiDTO[] = [
   {
     五彩石名称: '彩·真刚·锐刃·狂攻(伍)',
     五彩石等级: 5,

@@ -3,6 +3,8 @@ import { EquipmentDTO } from './../../../@types/equipment'
 
 const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
   {
+    id: 91398,
+    uid: '200634',
     装备名称: '无封头饰',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -15,6 +17,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91397,
+    uid: '200633',
     装备名称: '无封头饰',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -26,6 +30,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 91396,
+    uid: '200632',
     装备名称: '无封头饰',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -36,6 +42,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 94047,
+    uid: '205926',
     装备名称: '寻踪觅宝·光熙帽',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -49,6 +57,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 90665,
+    uid: '189343',
     装备名称: '拭江冠',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -62,6 +72,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 90557,
+    uid: '189073',
     装备名称: '羡双冠',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -75,6 +87,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 90593,
+    uid: '189163',
     装备名称: '曲郦冠',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -88,6 +102,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 90629,
+    uid: '189253',
     装备名称: '项昌冠',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -101,6 +117,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 90527,
+    uid: '189019',
     装备名称: '天牧帽',
     装备品级: 9400,
     装备类型: EquipmentTypeEnum.普通,
@@ -114,6 +132,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91428,
+    uid: '200688',
     装备名称: '无封头饰',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -124,6 +144,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91430,
+    uid: '200690',
     装备名称: '无封头饰',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -136,6 +158,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91429,
+    uid: '200689',
     装备名称: '无封头饰',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -147,6 +171,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 90695,
+    uid: '189433',
     装备名称: '箕宥帽',
     装备品级: 9700,
     装备类型: EquipmentTypeEnum.普通,
@@ -160,6 +186,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91461,
+    uid: '200745',
     装备名称: '无封头饰',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -171,6 +199,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91462,
+    uid: '200746',
     装备名称: '无封头饰',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -183,6 +213,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91460,
+    uid: '200744',
     装备名称: '无封头饰',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -193,6 +225,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 92511,
+    uid: '202707',
     装备名称: '沉龙荡波·淘浪冠',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -206,6 +240,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 90850,
+    uid: '189666',
     装备名称: '星演·寒云冠',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -219,6 +255,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 90725,
+    uid: '189511',
     装备名称: '寻踪觅宝·光熙帽',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -232,6 +270,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 90942,
+    uid: '189782',
     装备名称: '闲月帽',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -245,6 +285,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 90906,
+    uid: '189722',
     装备名称: '玄卢冠',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -252,12 +294,14 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
       { 增益数值: 3289, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 638, 增益类型: GainTypeEnum.力道 },
       { 增益数值: 1035, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 3201, 增益类型: GainTypeEnum.外攻会心百分比 },
+      { 增益数值: 3201, 增益类型: GainTypeEnum.外攻会心等级 },
       { 增益数值: 2845, 增益类型: GainTypeEnum.无双等级 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91339,
+    uid: '200539',
     装备名称: '客行江湖·近楼冠',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -265,22 +309,26 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
       { 增益数值: 3289, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 638, 增益类型: GainTypeEnum.力道 },
       { 增益数值: 1035, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 3201, 增益类型: GainTypeEnum.外攻会心百分比 },
+      { 增益数值: 3201, 增益类型: GainTypeEnum.外攻会心等级 },
       { 增益数值: 2845, 增益类型: GainTypeEnum.破招 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91492,
+    uid: '200800',
     装备名称: '无封头饰',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
     装备增益: [
       { 增益数值: 2720, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 6075, 增益类型: GainTypeEnum.无双等级 },
+      { 增益数值: 6075, 增益类型: GainTypeEnum.外攻会心等级 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 91493,
+    uid: '200801',
     装备名称: '无封头饰',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -292,28 +340,34 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 91494,
+    uid: '200802',
     装备名称: '无封头饰',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
     装备增益: [
       { 增益数值: 2320, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 2502, 增益类型: GainTypeEnum.破招 },
+      { 增益数值: 2502, 增益类型: GainTypeEnum.外攻破防等级 },
       { 增益数值: 2502, 增益类型: GainTypeEnum.外攻会心等级 },
       { 增益数值: 1787, 增益类型: GainTypeEnum.无双等级 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91524,
+    uid: '200856',
     装备名称: '无封头饰',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
     装备增益: [
       { 增益数值: 2813, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 6099, 增益类型: GainTypeEnum.无双等级 },
+      { 增益数值: 6099, 增益类型: GainTypeEnum.外攻破防等级 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91525,
+    uid: '200857',
     装备名称: '无封头饰',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -325,18 +379,22 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91526,
+    uid: '200858',
     装备名称: '无封头饰',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
     装备增益: [
       { 增益数值: 2399, 增益类型: GainTypeEnum.基础攻击 },
       { 增益数值: 1848, 增益类型: GainTypeEnum.破招 },
-      { 增益数值: 3512, 增益类型: GainTypeEnum.外攻会心效果等级 },
-      { 增益数值: 1848, 增益类型: GainTypeEnum.外攻会心效果等级 },
+      { 增益数值: 3512, 增益类型: GainTypeEnum.外攻会心等级 },
+      { 增益数值: 1848, 增益类型: GainTypeEnum.无双等级 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91558,
+    uid: '200914',
     装备名称: '无封头饰',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -349,17 +407,21 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91557,
+    uid: '200913',
     装备名称: '无封头饰',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
     装备增益: [
       { 增益数值: 2479, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 3819, 增益类型: GainTypeEnum.破招 },
-      { 增益数值: 3628, 增益类型: GainTypeEnum.外攻破防等级 },
+      { 增益数值: 3819, 增益类型: GainTypeEnum.外攻会心等级 },
+      { 增益数值: 3628, 增益类型: GainTypeEnum.无双等级 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91556,
+    uid: '200912',
     装备名称: '无封头饰',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -370,6 +432,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91163,
+    uid: '200155',
     装备名称: '承霁·惊寰冠',
     装备品级: 11000,
     装备类型: EquipmentTypeEnum.门派套装,
@@ -383,6 +447,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91219,
+    uid: '200211',
     装备名称: '绝塞冠',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -396,6 +462,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 90978,
+    uid: '189878',
     装备名称: '湘灿冠',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -409,6 +477,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91357,
+    uid: '200563',
     装备名称: '客行江湖·琳琅冠',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -422,6 +492,8 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91255,
+    uid: '200271',
     装备名称: '金瓯帽',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -435,14 +507,16 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 91315,
+    uid: '200485',
     装备名称: '暮祁冠',
     装备品级: 11300,
-    装备类型: EquipmentTypeEnum.普通,
+    装备类型: EquipmentTypeEnum.切糕,
     装备增益: [
       { 增益数值: 3662, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 710, 增益类型: GainTypeEnum.力道 },
       { 增益数值: 1152, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 3563, 增益类型: GainTypeEnum.加速 },
+      { 增益数值: 3563, 增益类型: GainTypeEnum.外攻会心等级 },
       { 增益数值: 3167, 增益类型: GainTypeEnum.破招 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],

@@ -62,10 +62,11 @@ export interface CharacterBasicDTO extends BasicDataDTO {
    * @name 个人等级
    */
   等级: number
-  /**
-   * @name 强膂
-   */
-  强膂?: number
+}
+
+export interface FinalCharterBasicDataDTO {
+  basicData: CharacterBasicDTO
+  finalData: CharacterFinalDTO
 }
 
 export interface CharacterFinalDTO extends CharacterBasicDTO {

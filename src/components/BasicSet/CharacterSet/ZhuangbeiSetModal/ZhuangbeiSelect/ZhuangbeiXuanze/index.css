@@ -1,0 +1,33 @@
+.zhuangbei-select {
+  width: 300px;
+}
+
+.zhuangbei-miaoshu-label+.zhuangbei-miaoshu-label {
+  margin-left: 4px;
+}
+
+.zhuangbei-select-item .ant-select-item-option-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.zhuangbei-select-name {
+  /* font-size: 16px; */
+  font-weight: 700;
+  margin-right: 8px;
+  /* color: #1AA174; */
+  color: var(--ant-primary-color);
+}
+
+.zhuangbei-select-shuoming {
+  color: #666
+}
+
+.zhuangbei-miaoshu-label-jingjian {
+  color: #F34242;
+}
+
+.zhuangbei-select-level {
+  color: #333;
+}

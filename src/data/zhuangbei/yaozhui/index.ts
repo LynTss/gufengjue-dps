@@ -3,6 +3,8 @@ import { EquipmentDTO } from './../../../@types/equipment'
 
 const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
   {
+    id: 34482,
+    uid: '200674',
     装备名称: '无封腰坠',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -15,6 +17,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 34481,
+    uid: '200673',
     装备名称: '无封腰坠',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -26,6 +30,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 34480,
+    uid: '200672',
     装备名称: '无封腰坠',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -36,6 +42,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }],
   },
   {
+    id: 34213,
+    uid: '189091',
     装备名称: '羡双坠',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -49,6 +57,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 34267,
+    uid: '189361',
     装备名称: '拭江坠',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -62,6 +72,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 34249,
+    uid: '189271',
     装备名称: '项昌坠',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -75,6 +87,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34231,
+    uid: '189181',
     装备名称: '曲郦坠',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -88,6 +102,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 34195,
+    uid: '189031',
     装备名称: '天绥坠',
     装备品级: 9400,
     装备类型: EquipmentTypeEnum.普通,
@@ -101,6 +117,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 34498,
+    uid: '200730',
     装备名称: '无封腰坠',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -113,6 +131,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }],
   },
   {
+    id: 34497,
+    uid: '200729',
     装备名称: '无封腰坠',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -124,6 +144,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }],
   },
   {
+    id: 34401,
+    uid: '200419',
     装备名称: '元雾坠',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.普通,
@@ -137,6 +159,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 34496,
+    uid: '200728',
     装备名称: '无封腰坠',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -147,6 +171,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 34514,
+    uid: '200786',
     装备名称: '无封腰坠',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -159,6 +185,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34513,
+    uid: '200785',
     装备名称: '无封腰坠',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -170,6 +198,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 34512,
+    uid: '200784',
     装备名称: '无封腰坠',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -180,6 +210,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34413,
+    uid: '200431',
     装备名称: '元雾坠',
     装备品级: 10100,
     装备类型: EquipmentTypeEnum.普通,
@@ -193,6 +225,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 34297,
+    uid: '189740',
     装备名称: '玄卢坠',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -206,6 +240,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 34315,
+    uid: '189800',
     装备名称: '闲月坠',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -219,6 +255,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 34528,
+    uid: '200840',
     装备名称: '无封腰坠',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -229,6 +267,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }],
   },
   {
+    id: 34529,
+    uid: '200841',
     装备名称: '无封腰坠',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -240,6 +280,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 34530,
+    uid: '200842',
     装备名称: '无封腰坠',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -252,6 +294,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 34544,
+    uid: '200896',
     装备名称: '无封腰坠',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -262,6 +306,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 34545,
+    uid: '200897',
     装备名称: '无封腰坠',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -273,6 +319,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }],
   },
   {
+    id: 34546,
+    uid: '200898',
     装备名称: '无封腰坠',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -285,6 +333,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }],
   },
   {
+    id: 34425,
+    uid: '200443',
     装备名称: '元雾坠',
     装备品级: 10700,
     装备类型: EquipmentTypeEnum.普通,
@@ -298,6 +348,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 34560,
+    uid: '200952',
     装备名称: '无封腰坠',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -308,6 +360,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34561,
+    uid: '200953',
     装备名称: '无封腰坠',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -319,6 +373,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 34562,
+    uid: '200954',
     装备名称: '无封腰坠',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -331,6 +387,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34381,
+    uid: '200343',
     装备名称: '青苍坠',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.副本精简,
@@ -344,6 +402,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34369,
+    uid: '200289',
     装备名称: '金瓯坠',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -357,6 +417,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 34351,
+    uid: '200229',
     装备名称: '绝塞坠',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -370,6 +432,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 34333,
+    uid: '189896',
     装备名称: '湘灿坠',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -383,6 +447,8 @@ const ZHUANGBEI_YAOZHUI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 34437,
+    uid: '200455',
     装备名称: '元雾坠',
     装备品级: 11300,
     装备类型: EquipmentTypeEnum.普通,

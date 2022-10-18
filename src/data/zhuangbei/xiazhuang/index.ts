@@ -3,6 +3,8 @@ import { EquipmentDTO } from './../../../@types/equipment'
 
 const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
   {
+    id: 91414,
+    uid: '200650',
     装备名称: '无封裤',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -15,6 +17,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91413,
+    uid: '200649',
     装备名称: '无封裤',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -26,6 +30,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91412,
+    uid: '200648',
     装备名称: '无封裤',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -36,6 +42,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 90587,
+    uid: '189157',
     装备名称: '曲郦裤',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -49,6 +57,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 90551,
+    uid: '189067',
     装备名称: '羡双裤',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -62,6 +72,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 90623,
+    uid: '189247',
     装备名称: '项昌裤',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -75,6 +87,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 90659,
+    uid: '189337',
     装备名称: '拭江裤',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -88,6 +102,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 91446,
+    uid: '200706',
     装备名称: '无封裤',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -100,6 +116,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91445,
+    uid: '200705',
     装备名称: '无封裤',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -111,6 +129,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91444,
+    uid: '200704',
     装备名称: '无封裤',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -121,6 +141,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 90689,
+    uid: '189427',
     装备名称: '箕宥裤',
     装备品级: 9700,
     装备类型: EquipmentTypeEnum.普通,
@@ -134,6 +156,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 91478,
+    uid: '200762',
     装备名称: '无封裤',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -146,6 +170,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91477,
+    uid: '200761',
     装备名称: '无封裤',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -157,6 +183,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91476,
+    uid: '200760',
     装备名称: '无封裤',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -167,6 +195,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 92505,
+    uid: '202701',
     装备名称: '沉龙荡波·淘浪裤',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -180,6 +210,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 90936,
+    uid: '189776',
     装备名称: '闲月裤',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -193,6 +225,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 90900,
+    uid: '189716',
     装备名称: '玄卢下裳',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -206,6 +240,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91333,
+    uid: '200533',
     装备名称: '客行江湖·近楼裤',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -219,6 +255,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 91508,
+    uid: '200816',
     装备名称: '无封裤',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -229,6 +267,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91509,
+    uid: '200817',
     装备名称: '无封裤',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -240,6 +280,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91510,
+    uid: '200818',
     装备名称: '无封裤',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -252,6 +294,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91542,
+    uid: '200874',
     装备名称: '无封裤',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -264,6 +308,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91541,
+    uid: '200873',
     装备名称: '无封裤',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -275,6 +321,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91540,
+    uid: '200872',
     装备名称: '无封裤',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -285,6 +333,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 91574,
+    uid: '200930',
     装备名称: '无封裤',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -297,6 +347,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91573,
+    uid: '200929',
     装备名称: '无封裤',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -308,6 +360,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91572,
+    uid: '200928',
     装备名称: '无封裤',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -318,6 +372,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91351,
+    uid: '200557',
     装备名称: '客行江湖·琳琅下裳',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -331,6 +387,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 91288,
+    uid: '200400',
     装备名称: '会乡裤',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.副本精简,
@@ -343,6 +401,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 90972,
+    uid: '189872',
     装备名称: '湘灿衣',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -356,6 +416,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 91213,
+    uid: '200205',
     装备名称: '绝塞下裳',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -369,6 +431,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91249,
+    uid: '200265',
     装备名称: '金瓯裤',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -382,6 +446,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 91284,
+    uid: '200396',
     装备名称: '阔海裤',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.副本精简,
@@ -394,6 +460,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91285,
+    uid: '200397',
     装备名称: '追度裤',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.副本精简,
@@ -406,6 +474,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91286,
+    uid: '200398',
     装备名称: '遥约裤',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.副本精简,
@@ -418,6 +488,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91309,
+    uid: '200479',
     装备名称: '暮祁裤',
     装备品级: 11300,
     装备类型: EquipmentTypeEnum.切糕,

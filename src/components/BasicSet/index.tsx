@@ -27,7 +27,7 @@ function BasicSet(props: CharacterSetProps) {
 
   useEffect(() => {
     if (characterBasicData) {
-      const final = getFinalCharacterBasicData(characterBasicData, false)
+      const final = getFinalCharacterBasicData(characterBasicData)
       dispatch(setCharacterFinalData(final))
     }
   }, [])

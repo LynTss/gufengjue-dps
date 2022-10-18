@@ -15,6 +15,8 @@ export const zhuangbeidaoru = (list: MoHeZhuangBeiShuJu[]) => {
     }
     const name = item.Name || '数据丢失-未知'
     return {
+      id: item.ID,
+      uid: item.UiID,
       装备名称: name,
       装备品级: item.Level,
       ...wuqishanghaiObj,
@@ -79,6 +81,8 @@ const getXiangqian = (data: string[]) => {
 }
 
 interface MoHeZhuangBeiShuJu {
+  ID: number // id
+  UiID: string // uuid
   Name: string // 装备名称
   Level: number // 装备品级
   MaxStrengthLevel: string // 最大精炼等级

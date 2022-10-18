@@ -8,46 +8,46 @@ import {
 
 // 用于增益计算的附魔
 export const EnchantGainDTO: EnchantDTO[] = [
-  {
-    附魔名称: '攻击',
-    增益集合: [
-      {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.基础攻击,
-        增益数值: 221,
-      },
-    ],
-  },
-  {
-    附魔名称: '力道',
-    增益集合: [
-      {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.力道,
-        增益数值: 110,
-      },
-    ],
-  },
-  {
-    附魔名称: '武伤',
-    增益集合: [
-      {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.近战武器伤害,
-        增益数值: 332,
-      },
-    ],
-  },
-  {
-    附魔名称: '破防',
-    增益集合: [
-      {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻破防等级,
-        增益数值: 491,
-      },
-    ],
-  },
+  // {
+  //   附魔名称: '攻击',
+  //   增益集合: [
+  //     {
+  //       增益计算类型: GainDpsTypeEnum.A,
+  //       增益类型: GainTypeEnum.基础攻击,
+  //       增益数值: 221,
+  //     },
+  //   ],
+  // },
+  // {
+  //   附魔名称: '力道',
+  //   增益集合: [
+  //     {
+  //       增益计算类型: GainDpsTypeEnum.A,
+  //       增益类型: GainTypeEnum.力道,
+  //       增益数值: 110,
+  //     },
+  //   ],
+  // },
+  // {
+  //   附魔名称: '武伤',
+  //   增益集合: [
+  //     {
+  //       增益计算类型: GainDpsTypeEnum.A,
+  //       增益类型: GainTypeEnum.近战武器伤害,
+  //       增益数值: 332,
+  //     },
+  //   ],
+  // },
+  // {
+  //   附魔名称: '破防',
+  //   增益集合: [
+  //     {
+  //       增益计算类型: GainDpsTypeEnum.A,
+  //       增益类型: GainTypeEnum.外攻破防等级,
+  //       增益数值: 491,
+  //     },
+  //   ],
+  // },
   {
     附魔名称: '无双',
     增益集合: [
@@ -58,46 +58,46 @@ export const EnchantGainDTO: EnchantDTO[] = [
       },
     ],
   },
-  {
-    附魔名称: '会心',
-    增益集合: [
-      {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻会心等级,
-        增益数值: 491,
-      },
-    ],
-  },
-  {
-    附魔名称: '会效',
-    增益集合: [
-      {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻会心效果等级,
-        增益数值: 491,
-      },
-    ],
-  },
-  {
-    附魔名称: '破招',
-    增益集合: [
-      {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.破招,
-        增益数值: 491,
-      },
-    ],
-  },
-  {
-    附魔名称: '加速',
-    增益集合: [
-      {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.加速,
-        增益数值: 491,
-      },
-    ],
-  },
+  // {
+  //   附魔名称: '会心',
+  //   增益集合: [
+  //     {
+  //       增益计算类型: GainDpsTypeEnum.A,
+  //       增益类型: GainTypeEnum.外攻会心等级,
+  //       增益数值: 491,
+  //     },
+  //   ],
+  // },
+  // {
+  //   附魔名称: '会效',
+  //   增益集合: [
+  //     {
+  //       增益计算类型: GainDpsTypeEnum.A,
+  //       增益类型: GainTypeEnum.外攻会心效果等级,
+  //       增益数值: 491,
+  //     },
+  //   ],
+  // },
+  // {
+  //   附魔名称: '破招',
+  //   增益集合: [
+  //     {
+  //       增益计算类型: GainDpsTypeEnum.A,
+  //       增益类型: GainTypeEnum.破招,
+  //       增益数值: 491,
+  //     },
+  //   ],
+  // },
+  // {
+  //   附魔名称: '加速',
+  //   增益集合: [
+  //     {
+  //       增益计算类型: GainDpsTypeEnum.A,
+  //       增益类型: GainTypeEnum.加速,
+  //       增益数值: 491,
+  //     },
+  //   ],
+  // },
 ]
 
 // 用于装备上的所有附魔
@@ -123,7 +123,7 @@ export const AllEnchantDTO: EnchantDTO[] = [
       EquipmentPositionEnum.护腕,
       EquipmentPositionEnum.下装,
       EquipmentPositionEnum.戒指,
-      EquipmentPositionEnum.远程武器,
+      EquipmentPositionEnum.暗器,
     ],
     增益集合: [
       {
@@ -135,7 +135,7 @@ export const AllEnchantDTO: EnchantDTO[] = [
   },
   {
     附魔名称: EnchantNameEnum.武伤332,
-    附魔支持部位: [EquipmentPositionEnum.近身武器],
+    附魔支持部位: [EquipmentPositionEnum.武器],
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
@@ -149,7 +149,7 @@ export const AllEnchantDTO: EnchantDTO[] = [
     附魔支持部位: [
       EquipmentPositionEnum.护腕,
       EquipmentPositionEnum.下装,
-      EquipmentPositionEnum.远程武器,
+      EquipmentPositionEnum.暗器,
     ],
     增益集合: [
       {
@@ -223,7 +223,7 @@ export const AllEnchantDTO: EnchantDTO[] = [
     附魔支持部位: [
       EquipmentPositionEnum.帽子,
       EquipmentPositionEnum.鞋子,
-      EquipmentPositionEnum.远程武器,
+      EquipmentPositionEnum.暗器,
     ],
     增益集合: [
       {

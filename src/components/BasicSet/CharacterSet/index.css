@@ -3,6 +3,7 @@
   justify-content: space-between;
   padding-top: 8px;
 }
+
 .character-set .ant-btn {
   width: calc(50% - 4px);
 }

@@ -1,6 +1,6 @@
 import { 目标集合 } from '@/data/constant'
 import skillCycle from '@/data/skillCycle'
-import { DEFAULT_CHARACTER } from '@/pages/constant'
+import { DEFAULT_CHARACTER, DEFAULT_EQUIPMENT } from '@/pages/constant'
 
 export const getDefaultCharacter = () => {
   const sessionCharacter = localStorage.getItem('character_data_basic')
@@ -15,6 +15,22 @@ export const getDefaultCharacter = () => {
     }
   } else {
     return Object.assign({}, DEFAULT_CHARACTER)
+  }
+}
+
+export const getDefaultEquipment = () => {
+  const localEquipment = localStorage.getItem('zhuangbei_data_basic')
+  if (localEquipment) {
+    try {
+      const obj = JSON.parse(localEquipment)
+      if (obj) {
+        return Object.assign({}, DEFAULT_EQUIPMENT, obj)
+      }
+    } catch {
+      return Object.assign({}, DEFAULT_EQUIPMENT)
+    }
+  } else {
+    return Object.assign({}, DEFAULT_EQUIPMENT)
   }
 }
 

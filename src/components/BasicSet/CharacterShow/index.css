@@ -22,7 +22,7 @@
 .character-content {
   display: flex;
   flex: 1 1;
-  flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
   line-height: 32px;
   font-size: 14px;

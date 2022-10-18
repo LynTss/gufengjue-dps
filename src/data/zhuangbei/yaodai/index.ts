@@ -3,6 +3,8 @@ import { EquipmentDTO } from './../../../@types/equipment'
 
 const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
   {
+    id: 90539,
+    uid: '189055',
     装备名称: '羡双腰带',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -16,6 +18,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 94035,
+    uid: '205914',
     装备名称: '寻踪觅宝·光熙腰带',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -29,6 +33,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 90647,
+    uid: '189325',
     装备名称: '拭江腰带',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -42,6 +48,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 90575,
+    uid: '189145',
     装备名称: '曲郦腰带',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -55,6 +63,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 90611,
+    uid: '189235',
     装备名称: '项昌腰带',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -68,6 +78,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.无双 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 90515,
+    uid: '189007',
     装备名称: '天纲腰带',
     装备品级: 9400,
     装备类型: EquipmentTypeEnum.普通,
@@ -81,6 +93,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.无双 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 90792,
+    uid: '189608',
     装备名称: '星演·寒云护腰',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -94,6 +108,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 92493,
+    uid: '202689',
     装备名称: '沉龙荡波·淘浪腰带',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -107,6 +123,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 90713,
+    uid: '189499',
     装备名称: '寻踪觅宝·光熙腰带',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -120,6 +138,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 90888,
+    uid: '189704',
     装备名称: '玄卢带',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -133,6 +153,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.无双 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 90924,
+    uid: '189764',
     装备名称: '闲月腰带',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -146,6 +168,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91105,
+    uid: '200097',
     装备名称: '承霁·惊寰腰带',
     装备品级: 11000,
     装备类型: EquipmentTypeEnum.门派套装,
@@ -159,6 +183,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 90960,
+    uid: '189860',
     装备名称: '湘灿腰带',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -172,6 +198,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 91201,
+    uid: '200193',
     装备名称: '绝塞带',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -185,6 +213,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.无双 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 91237,
+    uid: '200253',
     装备名称: '金瓯腰带',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -198,6 +228,21 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91268,
+    uid: '200380',
+    装备名称: '竹波腰带',
+    装备品级: 11150,
+    装备类型: EquipmentTypeEnum.副本精简,
+    装备增益: [
+      { 增益数值: 2811, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 2312, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 4861, 增益类型: GainTypeEnum.无双等级 },
+    ],
+    镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
+  },
+  {
+    id: 91269,
+    uid: '200381',
     装备名称: '落枫腰带',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.副本精简,
@@ -210,6 +255,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91270,
+    uid: '200382',
     装备名称: '片笺腰带',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.副本精简,
@@ -222,6 +269,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91272,
+    uid: '200384',
     装备名称: '远江腰带',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.副本精简,
@@ -234,14 +283,15 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
-    装备名称: '远江腰带',
+    id: 91297,
+    uid: '200467',
+    装备名称: '暮祁腰带',
     装备品级: 11300,
     装备类型: EquipmentTypeEnum.切糕,
     装备增益: [
       { 增益数值: 2848, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 552, 增益类型: GainTypeEnum.力道 },
       { 增益数值: 896, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 552, 增益类型: GainTypeEnum.力道 },
       { 增益数值: 2771, 增益类型: GainTypeEnum.外攻会心等级 },
       { 增益数值: 2463, 增益类型: GainTypeEnum.破招 },
     ],

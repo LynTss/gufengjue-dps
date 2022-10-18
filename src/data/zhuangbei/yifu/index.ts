@@ -3,6 +3,8 @@ import { EquipmentDTO } from './../../../@types/equipment'
 
 const ZHUANGBEI_YIFU: EquipmentDTO[] = [
   {
+    id: 90563,
+    uid: '189079',
     装备名称: '羡双衣',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -16,6 +18,8 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 90599,
+    uid: '189169',
     装备名称: '曲郦衣',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -29,6 +33,8 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 90635,
+    uid: '189259',
     装备名称: '项昌衣',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -42,6 +48,8 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 90671,
+    uid: '189349',
     装备名称: '拭江衣',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -55,6 +63,23 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.会效 }],
   },
   {
+    id: 94053,
+    uid: '205932',
+    装备名称: '寻踪觅宝·光熙衣',
+    装备品级: 9300,
+    装备类型: EquipmentTypeEnum.普通,
+    装备增益: [
+      { 增益数值: 3349, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 649, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 1053, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 3258, 增益类型: GainTypeEnum.加速 },
+      { 增益数值: 2896, 增益类型: GainTypeEnum.破招 },
+    ],
+    镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
+  },
+  {
+    id: 90701,
+    uid: '189439',
     装备名称: '箕宥衫',
     装备品级: 9700,
     装备类型: EquipmentTypeEnum.普通,
@@ -68,6 +93,8 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 90731,
+    uid: '189517',
     装备名称: '寻踪觅宝·光熙衣',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -81,6 +108,8 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 90879,
+    uid: '189695',
     装备名称: '星演·寒云衫',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -94,6 +123,8 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.会效 }],
   },
   {
+    id: 92517,
+    uid: '202713',
     装备名称: '沉龙荡波·淘浪衣',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -107,6 +138,8 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 90912,
+    uid: '189728',
     装备名称: '玄卢衫',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -120,6 +153,8 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 90948,
+    uid: '189788',
     装备名称: '闲月衣',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -133,6 +168,8 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 91192,
+    uid: '200184',
     装备名称: '承霁·惊寰衣',
     装备品级: 11000,
     装备类型: EquipmentTypeEnum.门派套装,
@@ -146,6 +183,8 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.会效 }],
   },
   {
+    id: 90984,
+    uid: '189884',
     装备名称: '湘灿裳',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -159,6 +198,8 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.会效 }],
   },
   {
+    id: 91225,
+    uid: '200217',
     装备名称: '绝塞衫',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -172,6 +213,8 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 91261,
+    uid: '200277',
     装备名称: '金瓯衣',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -185,15 +228,17 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 91321,
+    uid: '200491',
     装备名称: '暮祁衣',
     装备品级: 11300,
-    装备类型: EquipmentTypeEnum.普通,
+    装备类型: EquipmentTypeEnum.切糕,
     装备增益: [
       { 增益数值: 4069, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 789, 增益类型: GainTypeEnum.力道 },
       { 增益数值: 1280, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 3959, 增益类型: GainTypeEnum.外攻会心等级 },
-      { 增益数值: 3519, 增益类型: GainTypeEnum.破招 },
+      { 增益数值: 3959, 增益类型: GainTypeEnum.外攻破防等级 },
+      { 增益数值: 3519, 增益类型: GainTypeEnum.无双等级 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },

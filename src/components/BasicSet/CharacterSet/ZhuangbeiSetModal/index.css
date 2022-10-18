@@ -1,0 +1,80 @@
+.zhuangbei-input-set-modal .ant-form-item {
+  margin-bottom: 12px;
+}
+.zhuangbei-input-set-modal .ant-modal-body {
+  padding: 16px 24px;
+}
+
+.zhuangbei-input-set-modal .ant-form-item-label {
+  display: inline-block;
+  text-align: right;
+}
+
+.zhuangbei-input-set-modal .ant-modal-content {
+  min-width: 1124px;
+  min-height: 116px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+}
+
+.zhuangbei-input-set-modal .ant-form-item.jisuan {
+  text-align: right;
+  margin-bottom: 0;
+}
+
+.zhuangbei-select {
+  display: flex;
+}
+
+.zhuangbei-form-header {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.zhuangbei-form-title {
+  font-size: 16px;
+  color: var(--ant-primary-color);
+  font-weight: 700;
+  margin: 0;
+}
+
+.zhuangbei-form-left-1 {
+  width: 340px;
+}
+
+.zhuangbei-form-left-2 {
+  width: 64px;
+}
+
+.zhuangbei-form-left-3 {
+  width: 280px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.zhuangbei-form-left-4 {
+  width: 142px;
+  padding-left: 16px;
+}
+
+.zhuangbei-form-left-5 {
+  width: 100px;
+}
+
+.zhuangbei-form-set-btn{
+  margin-left: 8px;
+}
+
+.zhuangbei-input-set-modal-form {
+  display: flex;
+}
+
+.zhuangbei-input-set-modal-form-left {
+  width: 820px;
+}
+
+.zhuangbei-input-set-modal-form-right {
+  width: calc(100% - 820px);
+  padding-left: 10px;
+}

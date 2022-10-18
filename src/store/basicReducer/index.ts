@@ -5,6 +5,7 @@ import { CharacterBasicDTO, CharacterFinalDTO, TargetDTO } from '@/@types/charac
 import { CycleDTO } from '@/@types/cycle'
 import {
   getDefaultCharacter,
+  getDefaultEquipment,
   getDefaultCycle,
   getDefaultTarget,
   getDefaultTime,
@@ -32,7 +33,7 @@ interface BasicState {
 
 const initialState: BasicState = {
   characterBasicData: getDefaultCharacter(),
-  equipmentBasicData: getDefaultCharacter(),
+  equipmentBasicData: getDefaultEquipment(),
   characterFinalData: {
     面板攻击: 0,
     等级: 120,
@@ -62,6 +63,9 @@ export const counterSlice = createSlice({
     setCharacterBasicData: (state, action: PayloadAction<CharacterBasicDTO>) => {
       state.characterBasicData = { ...action.payload }
     },
+    setEquipmentBasicData: (state, action: PayloadAction<EquipmentBasicDTO>) => {
+      state.equipmentBasicData = { ...action.payload }
+    },
     setCharacterFinalData: (state, action: PayloadAction<CharacterFinalDTO>) => {
       state.characterFinalData = { ...action.payload }
     },
@@ -81,6 +85,7 @@ export const counterSlice = createSlice({
 
 export const {
   setCharacterBasicData,
+  setEquipmentBasicData,
   setCharacterFinalData,
   setCurrentCycle,
   setCurrentTarget,

@@ -19,11 +19,16 @@ import './index.css'
 function Income({ totalDps }, ref) {
   const currentCycle = useAppSelector((state) => state.basic.currentCycle)
   const characterFinalData = useAppSelector((state) => state.basic.characterFinalData)
+  const equipmentBasicData = useAppSelector((state) => state.basic.equipmentBasicData)
   const currentTarget = useAppSelector((state) => state.basic.currentTarget)
   const [chartData, setChartData] = useState<any>()
 
   const getAfterIncomeDpsPercent = (data) => {
-    const 计算后属性 = getIncomeData(characterFinalData, data.增益集合?.[0])
+    const 计算后属性 = getIncomeData(
+      characterFinalData,
+      data.增益集合?.[0],
+      equipmentBasicData.openQiangLv
+    )
     const 计算后目标 = currentTarget
 
     const { totalDps: newTotalDps } = getDpsTotal({
@@ -119,13 +124,18 @@ function Income({ totalDps }, ref) {
 
 export default forwardRef(Income)
 
-const getIncomeData = (characterFinalData: CharacterFinalDTO, data: SKillGainData) => {
+const getIncomeData = (
+  characterFinalData: CharacterFinalDTO,
+  data: SKillGainData,
+  openQiangLv: boolean
+) => {
   const newData = { ...characterFinalData }
   let 数值 = data.增益数值
   switch (data.增益类型) {
     case GainTypeEnum.力道:
-      数值 = getLidao(数值, true)
+      数值 = getLidao(数值, !!openQiangLv)
       newData.力道 = (newData.力道 || 0) + 数值
+      newData.基础攻击 = (newData.基础攻击 || 0) + Math.round(数值 * 加成系数.力道加成基础攻击)
       newData.面板攻击 =
         (newData.面板攻击 || 0) +
         Math.floor(数值 * 加成系数.力道加成面板攻击) +
@@ -140,6 +150,7 @@ const getIncomeData = (characterFinalData: CharacterFinalDTO, data: SKillGainDat
       newData.会心值 = (newData.会心值 || 0) + 数值
       break
     case GainTypeEnum.基础攻击:
+      newData.基础攻击 = (newData.基础攻击 || 0) + 数值
       newData.面板攻击 = (newData.面板攻击 || 0) + 数值
       break
     case GainTypeEnum.外攻破防等级:

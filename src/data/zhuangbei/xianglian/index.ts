@@ -3,6 +3,8 @@ import { EquipmentDTO } from './../../../@types/equipment'
 
 const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
   {
+    id: 34474,
+    uid: '200666',
     装备名称: '无封项链',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -15,6 +17,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34473,
+    uid: '200665',
     装备名称: '无封项链',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -26,6 +30,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 34472,
+    uid: '200664',
     装备名称: '无封项链',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -36,6 +42,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34207,
+    uid: '189085',
     装备名称: '羡双链',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -49,6 +57,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 34261,
+    uid: '189355',
     装备名称: '拭江链',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -62,6 +72,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34225,
+    uid: '189175',
     装备名称: '曲郦链',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -75,6 +87,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 34243,
+    uid: '189265',
     装备名称: '项昌链',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -88,6 +102,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34189,
+    uid: '189025',
     装备名称: '天飞链',
     装备品级: 9400,
     装备类型: EquipmentTypeEnum.普通,
@@ -101,6 +117,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 34490,
+    uid: '200722',
     装备名称: '无封项链',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -113,6 +131,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34489,
+    uid: '200721',
     装备名称: '无封项链',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -124,6 +144,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 34488,
+    uid: '200720',
     装备名称: '无封项链',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -134,6 +156,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }],
   },
   {
+    id: 34395,
+    uid: '200413',
     装备名称: '元雾链',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.普通,
@@ -147,6 +171,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 34279,
+    uid: '189445',
     装备名称: '箕宥链',
     装备品级: 9700,
     装备类型: EquipmentTypeEnum.普通,
@@ -160,6 +186,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 34504,
+    uid: '200776',
     装备名称: '无封项链',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -170,6 +198,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 34505,
+    uid: '200777',
     装备名称: '无封项链',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -181,6 +211,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }],
   },
   {
+    id: 34506,
+    uid: '200778',
     装备名称: '无封项链',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -193,6 +225,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 34407,
+    uid: '200425',
     装备名称: '元雾链',
     装备品级: 10100,
     装备类型: EquipmentTypeEnum.普通,
@@ -206,6 +240,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 34309,
+    uid: '189794',
     装备名称: '闲月项饰',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -219,6 +255,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34291,
+    uid: '189734',
     装备名称: '玄卢链',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -232,6 +270,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 34520,
+    uid: '200832',
     装备名称: '无封项链',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -242,6 +282,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34521,
+    uid: '200833',
     装备名称: '无封项链',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -253,6 +295,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 34522,
+    uid: '200834',
     装备名称: '无封项链',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -265,6 +309,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34538,
+    uid: '200890',
     装备名称: '无封项链',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -277,6 +323,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34536,
+    uid: '200888',
     装备名称: '无封项链',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -287,6 +335,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }],
   },
   {
+    id: 34537,
+    uid: '200889',
     装备名称: '无封项链',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -298,6 +348,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 34419,
+    uid: '200437',
     装备名称: '元雾链',
     装备品级: 10700,
     装备类型: EquipmentTypeEnum.普通,
@@ -311,6 +363,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 34554,
+    uid: '200946',
     装备名称: '无封项链',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -323,6 +377,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 34553,
+    uid: '200945',
     装备名称: '无封项链',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -334,6 +390,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }],
   },
   {
+    id: 34552,
+    uid: '200944',
     装备名称: '无封项链',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -344,6 +402,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 34327,
+    uid: '189890',
     装备名称: '湘灿链',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -357,6 +417,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34345,
+    uid: '200223',
     装备名称: '绝塞链',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -370,6 +432,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 34363,
+    uid: '200283',
     装备名称: '金瓯项饰',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -383,6 +447,8 @@ const ZHUANGBEI_XIANGLIAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 34431,
+    uid: '200449',
     装备名称: '元雾链',
     装备品级: 11300,
     装备类型: EquipmentTypeEnum.普通,

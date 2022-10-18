@@ -3,6 +3,8 @@ import { EquipmentDTO } from './../../../@types/equipment'
 
 const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
   {
+    id: 91406,
+    uid: '200642',
     装备名称: '无封护臂',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -15,6 +17,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91405,
+    uid: '200641',
     装备名称: '无封护臂',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -26,6 +30,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91404,
+    uid: '200640',
     装备名称: '无封护臂',
     装备品级: 9150,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -36,6 +42,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 90533,
+    uid: '189049',
     装备名称: '羡双护手',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -49,6 +57,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 94029,
+    uid: '205908',
     装备名称: '寻踪觅宝·光熙袖',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -62,6 +72,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 90569,
+    uid: '189139',
     装备名称: '曲郦护手',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -75,6 +87,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 90605,
+    uid: '189229',
     装备名称: '项昌袖',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -88,6 +102,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 90641,
+    uid: '189319',
     装备名称: '拭江袖',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
@@ -101,6 +117,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.无双 }, { 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 90509,
+    uid: '189001',
     装备名称: '天南护手',
     装备品级: 9400,
     装备类型: EquipmentTypeEnum.普通,
@@ -114,6 +132,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91438,
+    uid: '200698',
     装备名称: '无封护臂',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -126,6 +146,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91437,
+    uid: '200697',
     装备名称: '无封护臂',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -137,6 +159,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 91436,
+    uid: '200696',
     装备名称: '无封护臂',
     装备品级: 9500,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -147,6 +171,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 90677,
+    uid: '189415',
     装备名称: '箕宥袖',
     装备品级: 9700,
     装备类型: EquipmentTypeEnum.普通,
@@ -160,6 +186,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91470,
+    uid: '200754',
     装备名称: '无封护臂',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -172,6 +200,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91469,
+    uid: '200753',
     装备名称: '无封护臂',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -183,6 +213,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91468,
+    uid: '200752',
     装备名称: '无封护臂',
     装备品级: 9850,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -193,6 +225,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 92487,
+    uid: '202683',
     装备名称: '沉龙荡波·淘浪护手',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -206,6 +240,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 90707,
+    uid: '189493',
     装备名称: '寻踪觅宝·光熙袖',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -219,6 +255,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 90763,
+    uid: '189579',
     装备名称: '星演·寒云护手',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
@@ -232,6 +270,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 90918,
+    uid: '189758',
     装备名称: '闲月护手',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -245,6 +285,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.无双 }, { 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 90882,
+    uid: '189698',
     装备名称: '玄卢护手',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -258,6 +300,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91327,
+    uid: '200527',
     装备名称: '客行江湖·近楼护手',
     装备品级: 10150,
     装备类型: EquipmentTypeEnum.普通,
@@ -271,6 +315,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91501,
+    uid: '200809',
     装备名称: '无封护臂',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -282,6 +328,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91502,
+    uid: '200810',
     装备名称: '无封护臂',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -294,6 +342,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91500,
+    uid: '200808',
     装备名称: '无封护臂',
     装备品级: 10200,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -304,6 +354,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91532,
+    uid: '200864',
     装备名称: '无封护臂',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -314,6 +366,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91533,
+    uid: '200865',
     装备名称: '无封护臂',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -325,6 +379,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 91534,
+    uid: '200866',
     装备名称: '无封护臂',
     装备品级: 10550,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -337,6 +393,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91564,
+    uid: '200920',
     装备名称: '无封护臂',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -347,6 +405,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
+    id: 91565,
+    uid: '200921',
     装备名称: '无封护臂',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -358,6 +418,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91566,
+    uid: '200922',
     装备名称: '无封护臂',
     装备品级: 10900,
     装备类型: EquipmentTypeEnum.试炼精简,
@@ -370,6 +432,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91076,
+    uid: '200068',
     装备名称: '承霁·惊寰护手',
     装备品级: 11000,
     装备类型: EquipmentTypeEnum.门派套装,
@@ -383,6 +447,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 90954,
+    uid: '189854',
     装备名称: '湘灿护手',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -396,6 +462,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91280,
+    uid: '200392',
     装备名称: '忘泉护腕',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.副本精简,
@@ -408,6 +476,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
   {
+    id: 91278,
+    uid: '200390',
     装备名称: '冷烽护腕',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.副本精简,
@@ -420,6 +490,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91277,
+    uid: '200389',
     装备名称: '青梧护腕',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.副本精简,
@@ -432,6 +504,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91195,
+    uid: '200187',
     装备名称: '绝塞护手',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -445,6 +519,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91345,
+    uid: '200551',
     装备名称: '客行江湖·琳琅护手',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -458,6 +534,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 91276,
+    uid: '200388',
     装备名称: '弥狂护腕',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.副本精简,
@@ -470,6 +548,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91231,
+    uid: '200247',
     装备名称: '金瓯护手',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
@@ -483,6 +563,8 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.无双 }, { 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
   {
+    id: 91291,
+    uid: '200461',
     装备名称: '暮祁袖',
     装备品级: 11300,
     装备类型: EquipmentTypeEnum.切糕,

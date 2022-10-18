@@ -1,6 +1,7 @@
 import {
+  EnchantNameEnum,
+  EquipmentCharacterPositionEnum,
   EquipmentInlayEnum,
-  EquipmentPositionEnum,
   EquipmentTypeEnum,
   GainTypeEnum,
 } from '@/@types/enum'
@@ -10,9 +11,27 @@ import {
  */
 export interface EquipmentBasicDTO {
   /**
-   * @name 装备名称
+   * @name 装备列表
    */
-  装备名称: string
+  equipments: EquipmentListDTO[]
+  /**
+   * @name 五彩石名称
+   */
+  wucaishi: string
+  /**
+   * @name 奇穴是否启用强膂
+   */
+  openQiangLv: boolean
+}
+
+/**
+ * @name 配装器装备信息模型-装备列表
+ */
+export interface EquipmentListDTO {
+  /**
+   * @name 装备id
+   */
+  id: number
   /**
    * @name 当前精炼等级
    */
@@ -24,17 +43,25 @@ export interface EquipmentBasicDTO {
   /**
    * @name 附魔名
    */
-  附魔: string
+  附魔?: EnchantNameEnum
   /**
    * @name 装备部位
    */
-  装备部位: EquipmentPositionEnum
+  装备部位: EquipmentCharacterPositionEnum
 }
 
 /**
  * @name 装备属性信息模型
  */
 export interface EquipmentDTO {
+  /**
+   * @name 装备id
+   */
+  id?: number
+  /**
+   * @name 装备iid
+   */
+  uid?: string
   /**
    * @name 装备名称
    */
