@@ -52,7 +52,7 @@ export const getFinalCharacterBasicDataByEquipment = (
     破招值: 0,
     武器伤害_最小值: 0,
     武器伤害_最大值: 0,
-    会心值: 2800,
+    会心值: 2775 + 26, // 自带2775 自带41身法+26会心
     会心效果值: 0,
   }
   let openQiangLv = false
