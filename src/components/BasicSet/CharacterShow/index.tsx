@@ -18,11 +18,9 @@ function CharacterShow() {
         return (
           <div className="character-item" key={item}>
             <h1 className="character-label">{item}</h1>
-            <div className="character-content">
-              <Tooltip title={getCharacterDataNumber(item, characterFinalData)}>
-                {getCharacterData(item, characterFinalData)}
-              </Tooltip>
-            </div>
+            <Tooltip placement="topLeft" title={getCharacterDataNumber(item, characterFinalData)}>
+              <div className="character-content">{getCharacterData(item, characterFinalData)}</div>
+            </Tooltip>
           </div>
         )
       })}
@@ -51,7 +49,7 @@ const getCharacterData = (key: string, characterFinalData: CharacterFinalDTO) =>
     case '加速':
       return (
         <>
-          <span>{((characterFinalData.加速值 / 属性系数.急速) * 100).toFixed(2) + `%`}</span>
+          <span>{(((characterFinalData.加速值 || 0) / 属性系数.急速) * 100).toFixed(2) + `%`}</span>
           <span>
             {characterFinalData.加速值 < 95
               ? '零段加速'
