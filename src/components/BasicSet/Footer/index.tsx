@@ -1,11 +1,11 @@
-import { Button, message } from 'antd'
+import { Button } from 'antd'
 import React from 'react'
 import './index.css'
 
-function Footer({ getDpsFunction }) {
+function Footer({ getDpsFunction, setZengyiVisible }) {
   return (
     <div className={'basic-footer'}>
-      <Button className={'basic-footer-zengyi'} onClick={() => message.success('coming soon')}>
+      <Button className={'basic-footer-zengyi'} onClick={() => setZengyiVisible()}>
         增益选项
       </Button>
       <Button className={'basic-footer-btn'} type="primary" onClick={() => getDpsFunction()}>

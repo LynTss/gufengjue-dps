@@ -1,6 +1,6 @@
 import { 目标集合 } from '@/data/constant'
 import skillCycle from '@/data/skillCycle'
-import { DEFAULT_CHARACTER, DEFAULT_EQUIPMENT } from '@/pages/constant'
+import { DEFAULT_CHARACTER, DEFAULT_EQUIPMENT, ZENGYI_DATA_DEFAULT } from '@/pages/constant'
 
 export const getDefaultCharacter = () => {
   const sessionCharacter = localStorage.getItem('character_data_basic')
@@ -15,6 +15,35 @@ export const getDefaultCharacter = () => {
     }
   } else {
     return Object.assign({}, DEFAULT_CHARACTER)
+  }
+}
+
+export const getDefaultZengyiData = () => {
+  const sessionCharacter = localStorage.getItem('zengyi_data')
+  if (sessionCharacter) {
+    try {
+      const obj = JSON.parse(sessionCharacter)
+      if (obj) {
+        return Object.assign({}, ZENGYI_DATA_DEFAULT, obj)
+      }
+    } catch {
+      return Object.assign({}, ZENGYI_DATA_DEFAULT)
+    }
+  } else {
+    return Object.assign({}, ZENGYI_DATA_DEFAULT)
+  }
+}
+
+export const getDefaultZengyiQiyong = () => {
+  const sessiongQiyong = localStorage.getItem('zengyi_qiyong')
+  if (sessiongQiyong) {
+    try {
+      return +sessiongQiyong ? true : false || false
+    } catch {
+      return +sessiongQiyong ? true : false || false
+    }
+  } else {
+    return false
   }
 }
 

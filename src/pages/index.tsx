@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 // import SkillDamageTable from '@/components/SkillDamageTable'
 import BasicSet from '@/components/BasicSet'
 // import Notice from '@/components/Notice'
@@ -10,6 +10,7 @@ import Tools from '@/components/Tools'
 
 function Pages() {
   const dpsRef = useRef<any>()
+  const [zengyiVisible, setZengyiVisible] = useState<boolean>(false)
 
   const getDps = () => {
     dpsRef?.current?.getDps()
@@ -20,9 +21,9 @@ function Pages() {
       {/* 顶部说明 */}
       <TitleTip />
       {/* 角色设置 */}
-      <BasicSet getDps={getDps} />
+      <BasicSet getDps={getDps} zengyiVisible={zengyiVisible} setZengyiVisible={setZengyiVisible} />
       {/* Dps计算 */}
-      <Dps ref={dpsRef} />
+      <Dps zengyiVisible={zengyiVisible} ref={dpsRef} />
       {/* 更新日志 */}
       <Log />
       {/* 开发者工具 */}

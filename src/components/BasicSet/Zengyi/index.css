@@ -1,0 +1,23 @@
+.zengyi-wrapper {
+  padding: 0 0 16px 12px;
+  margin-left: 12px;
+  height: calc(100vh - 114px);
+  border-left: 1px solid #f0f0f0
+}
+
+.zengyi-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--ant-primary-color);
+}
+
+.zengyiqiyong {
+  height: 32px;
+  line-height: 32px;
+  margin-bottom: 8px;
+}
+
+.xuanze-zhenyan .ant-select{
+  width: 100%;
+}

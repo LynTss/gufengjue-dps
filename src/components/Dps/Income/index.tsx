@@ -2,7 +2,7 @@
  * 收益展示
  */
 
-import React, { forwardRef, useImperativeHandle, useState } from 'react'
+import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
 import * as G2 from '@antv/g2'
 import { EnchantGainDTO } from '@/data/enchantGain'
 import { useAppSelector } from '@/hooks'
@@ -16,11 +16,13 @@ import { getLidao } from '@/components/BasicSet/CharacterSet/util'
 import { 加成系数 } from '@/data/constant'
 import './index.css'
 
-function Income({ totalDps }, ref) {
+function Income({ totalDps, zengyiVisible }, ref) {
   const currentCycle = useAppSelector((state) => state.basic.currentCycle)
   const characterFinalData = useAppSelector((state) => state.basic.characterFinalData)
   const equipmentBasicData = useAppSelector((state) => state.basic.equipmentBasicData)
   const currentTarget = useAppSelector((state) => state.basic.currentTarget)
+  const zengyiQiyong = useAppSelector((state) => state.basic.zengyiQiyong)
+  const zengyixuanxiangData = useAppSelector((state) => state.basic.zengyixuanxiangData)
   const [chartData, setChartData] = useState<any>()
 
   const getAfterIncomeDpsPercent = (data) => {
@@ -35,6 +37,8 @@ function Income({ totalDps }, ref) {
       currentCycle,
       characterFinalData: 计算后属性,
       当前目标: 计算后目标,
+      zengyiQiyong,
+      zengyixuanxiangData,
     })
 
     return Number(((newTotalDps / totalDps - 1) * 100).toFixed(4))
@@ -52,6 +56,12 @@ function Income({ totalDps }, ref) {
   useImperativeHandle(ref, () => ({
     initChart: initChart,
   }))
+
+  useEffect(() => {
+    setTimeout(() => {
+      chartData && chartData.forceFit()
+    }, 200)
+  }, [zengyiVisible])
 
   const initChart = () => {
     const chart = chartData

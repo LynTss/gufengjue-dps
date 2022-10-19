@@ -1,5 +1,5 @@
 .basic-set {
-  display: block;
+  display: flex;
   /* width: 328px; */
   border-radius: 4px;
   background:#fff;
@@ -16,4 +16,13 @@
 
 .basic-set .ant-divider {
   margin: 12px 0;
+}
+
+.basic-set-zengyi {
+  width: 0;
+  transition: width .2s;
+}
+
+.basic-set-zengyi.basic-set-zengyi-visible {
+  width: 300px;
 }

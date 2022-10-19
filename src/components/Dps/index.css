@@ -5,6 +5,11 @@
   color: #fff;
   padding: 24px;
   border-radius: 4px;
+  transition: width .2s;
+}
+
+.dps.dps-zengyi-visible {
+  width: calc(100vw - 348px - 300px - 36px - 36px);
 }
 
 .dps .ant-divider {

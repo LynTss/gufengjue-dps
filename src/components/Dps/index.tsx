@@ -8,9 +8,12 @@ import Income from './Income'
 import './index.css'
 
 function Dps(props, ref) {
+  const { zengyiVisible } = props
   const characterFinalData = useAppSelector((state) => state?.basic?.characterFinalData)
   const currentCycle = useAppSelector((state) => state?.basic?.currentCycle)
   const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
+  const zengyixuanxiangData = useAppSelector((state) => state?.basic?.zengyixuanxiangData)
+  const zengyiQiyong = useAppSelector((state) => state?.basic?.zengyiQiyong)
 
   const [dps, setDps] = useState<number>(0)
   const [total, setTotal] = useState<number>(0)
@@ -36,6 +39,8 @@ function Dps(props, ref) {
       currentCycle,
       characterFinalData,
       当前目标: currentTarget,
+      zengyiQiyong,
+      zengyixuanxiangData,
     })
     const time = +(localStorage.getItem('计算时间') || 300)
     setDps(Math.floor(totalDps / time))
@@ -47,7 +52,7 @@ function Dps(props, ref) {
   }
 
   return dps ? (
-    <div className={'dps'}>
+    <div className={`dps ${zengyiVisible ? `dps-zengyi-visible` : ''}`}>
       <h1 className={'dps-title'}>伤害计算</h1>
       <Divider />
       <div className={'dps-number-count'}>
@@ -57,7 +62,7 @@ function Dps(props, ref) {
         </div>
       </div>
       <p className={'dps-number-tip'}>数值仅供参考，请以实际游戏内实装系数为准</p>
-      <Income totalDps={total} ref={incomeRef} />
+      <Income zengyiVisible={zengyiVisible} totalDps={total} ref={incomeRef} />
       <DpsCountModal
         total={total}
         visible={dpsCountModalVisible}

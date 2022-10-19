@@ -9,13 +9,16 @@ import { getFinalCharacterBasicData } from './CharacterSet/util'
 import { setCharacterFinalData } from '@/store/basicReducer'
 import Footer from './Footer'
 import './index.css'
+import Zengyi from './Zengyi'
 
 interface CharacterSetProps {
   getDps: () => void
+  zengyiVisible: boolean
+  setZengyiVisible: (e: boolean) => void
 }
 
 function BasicSet(props: CharacterSetProps) {
-  const { getDps } = props
+  const { getDps, zengyiVisible, setZengyiVisible } = props
   const dispatch = useAppDispatch()
   const characterBasicData = useAppSelector((state) => state.basic.characterBasicData)
 
@@ -44,7 +47,13 @@ function BasicSet(props: CharacterSetProps) {
         <CharacterSet getDpsFunction={getDpsFunction} />
         <Divider />
         {/* 底部配置 */}
-        <Footer getDpsFunction={getDpsFunction} />
+        <Footer
+          getDpsFunction={getDpsFunction}
+          setZengyiVisible={() => setZengyiVisible(zengyiVisible ? false : true)}
+        />
+      </div>
+      <div className={`basic-set-zengyi ${zengyiVisible ? 'basic-set-zengyi-visible' : null}`}>
+        <Zengyi getDpsFunction={getDpsFunction} />
       </div>
     </div>
   )
