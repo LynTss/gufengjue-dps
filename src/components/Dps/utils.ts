@@ -218,8 +218,8 @@ const switchGain = (人物属性, 增益, 技能增伤, 郭氏额外会效果值
       case GainTypeEnum.外攻会心百分比:
         计算后人物属性.会心值 = guoshiPercent(计算后人物属性.会心值, 增益数值)
         break
-      case GainTypeEnum.外攻会心效果百分比:
-        计算后郭氏额外会效果值 = 计算后郭氏额外会效果值 + guoshiBasic(增益数值)
+      case GainTypeEnum.外攻会心效果等级:
+        计算后人物属性.会心效果值 = +guoshiBasic(增益数值)
         break
       case GainTypeEnum.伤害百分比:
         计算后技能增伤 = 计算后技能增伤 + 增益数值
@@ -230,8 +230,16 @@ const switchGain = (人物属性, 增益, 技能增伤, 郭氏额外会效果值
     }
   } else if (增益计算类型 === GainDpsTypeEnum.B) {
     switch (增益类型) {
+      // 所有秘籍的会心按独立数值想买计算
       case GainTypeEnum.外攻会心百分比:
         计算后额外会心率 = 计算后额外会心率 + 增益数值
+        break
+      // 所有秘籍的会效按郭氏数值计算
+      case GainTypeEnum.外攻会心效果等级:
+        计算后郭氏额外会效果值 = 计算后郭氏额外会效果值 + 增益数值
+        break
+      case GainTypeEnum.外攻会心效果百分比:
+        计算后郭氏额外会效果值 = 计算后郭氏额外会效果值 + guoshiBasic(增益数值)
         break
       case GainTypeEnum.伤害百分比:
         计算后技能增伤 = 计算后技能增伤 * (1 + 增益数值)

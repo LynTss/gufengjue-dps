@@ -46,7 +46,7 @@ const liukeyuGainDTO: SkillGainDTO[] = [
     增益集合: [
       {
         增益类型: GainTypeEnum.外攻会心百分比,
-        增益计算类型: GainDpsTypeEnum.A,
+        增益计算类型: GainDpsTypeEnum.B,
         增益数值: 0.02,
       },
     ],
@@ -57,7 +57,7 @@ const liukeyuGainDTO: SkillGainDTO[] = [
     增益集合: [
       {
         增益类型: GainTypeEnum.外攻会心百分比,
-        增益计算类型: GainDpsTypeEnum.A,
+        增益计算类型: GainDpsTypeEnum.B,
         增益数值: 0.03,
       },
     ],
@@ -69,7 +69,7 @@ const liukeyuGainDTO: SkillGainDTO[] = [
     增益集合: [
       {
         增益类型: GainTypeEnum.外攻会心百分比,
-        增益计算类型: GainDpsTypeEnum.A,
+        增益计算类型: GainDpsTypeEnum.B,
         增益数值: 0.04,
       },
     ],

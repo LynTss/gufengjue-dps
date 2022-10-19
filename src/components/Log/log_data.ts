@@ -1,5 +1,9 @@
 export default [
   {
+    version: '0.0.4',
+    content: '更新所有技能会心秘籍的计算算法',
+  },
+  {
     version: '0.0.3',
     content: '新增内置配装器，帮助更快设置自身属性',
   },

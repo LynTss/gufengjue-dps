@@ -33,7 +33,7 @@ export const guoshiResult = (basic, guoshizhi, jichuxishu = 1) => {
  */
 export const guoshiHuixin = (huixinzhi, shuliang) => {
   const guoshihuixinzhi = Math.floor((huixinzhi * 1024) / 属性系数.会心)
-  return Math.ceil((guoshihuixinzhi / 1024 + 0.0003) * shuliang)
+  return Math.ceil((guoshihuixinzhi / 1024) * shuliang)
 }
 
 /**
@@ -41,7 +41,7 @@ export const guoshiHuixin = (huixinzhi, shuliang) => {
  */
 export const guoshiHuixinLv = (huixinzhi) => {
   const guoshihuixinzhi = Math.floor((huixinzhi * 1024) / 属性系数.会心)
-  return guoshihuixinzhi / 1024 + 0.0003
+  return guoshihuixinzhi / 1024
 }
 
 /**

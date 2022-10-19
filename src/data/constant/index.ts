@@ -6,6 +6,7 @@ import { TargetDTO } from '@/@types/character'
 
 export const 自身等级 = 120 // 当前角色等级
 export const 每等级减伤 = 0.05
+export const 每等级减伤系数 = 51
 
 // 120级自身属性系数
 // 数据源：https://www.jx3box.com/bps/45088
