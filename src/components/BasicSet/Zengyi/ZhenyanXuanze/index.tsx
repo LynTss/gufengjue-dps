@@ -4,7 +4,7 @@ import React from 'react'
 
 function ZhenyanXuanze(props: SelectProps) {
   return (
-    <Select placeholder="请选择阵眼" {...props}>
+    <Select allowClear placeholder="请选择阵眼" {...props}>
       {Zhenyan_DATA.map((item) => {
         return (
           <Select.Option key={item.阵眼名称} value={item.阵眼名称}>
