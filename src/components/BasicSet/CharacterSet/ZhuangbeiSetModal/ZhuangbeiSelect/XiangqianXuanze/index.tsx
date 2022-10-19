@@ -43,7 +43,7 @@ function XiangqianXuanze(props: XiangqianXuanzeProps) {
                 >
                   {list.map((a) => (
                     <Select.Option value={a} key={`${indexKey}${item.镶嵌类型}${index}${a}`}>
-                      {a}
+                      <span className={`xiangqian-number-${a}`}>{a}</span>
                     </Select.Option>
                   ))}
                 </Select>

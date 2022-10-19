@@ -80,7 +80,11 @@ function WuCaiShiXuanZe(props: WuCaiShiXuanZeProps) {
         <Radio.Button value={5}>五级</Radio.Button>
         <Radio.Button value={6}>六级</Radio.Button>
       </Radio.Group>
-      {value ? <div className="wucaishi-value">{value}</div> : null}
+      {value ? (
+        <div className={`wucaishi-value ${jibie === 6 ? 'wucaishi-value-6' : 'wucaishi-value-5'}`}>
+          {value}
+        </div>
+      ) : null}
     </div>
   )
 }

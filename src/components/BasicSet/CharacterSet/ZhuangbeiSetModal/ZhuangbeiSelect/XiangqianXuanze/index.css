@@ -23,3 +23,22 @@
 .xiangqian-select.ant-select.ant-select-in-form-item {
   width: 52px;
 }
+.xiangqian-number-1,
+.xiangqian-number-2,
+.xiangqian-number-3,
+.xiangqian-number-4,
+.xiangqian-number-5 {
+  color: #333;
+}
+
+.xiangqian-number-6 {
+  color: #000;
+}
+
+.xiangqian-number-7 {
+  color: #ff2dff;
+}
+
+.xiangqian-number-8 {
+  color: #f90;
+}

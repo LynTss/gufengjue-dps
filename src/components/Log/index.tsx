@@ -23,7 +23,13 @@ function Log() {
           {log_data.map((item) => {
             return (
               <Timeline.Item key={item.version}>
-                <span>{item.content}</span>
+                <div>
+                  {Array.isArray(item.content)
+                    ? item.content.map((a) => {
+                        return <p key={a}>{a}</p>
+                      })
+                    : item.content}
+                </div>
                 <span className="log-version">{item.version}</span>
               </Timeline.Item>
             )

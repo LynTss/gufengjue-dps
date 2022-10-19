@@ -10,8 +10,15 @@
   margin-top: 12px;
   font-size: 16px;
   line-height: 30px;
-  color: #ff2dff;
   border: 1px solid #d9d9d9;
   padding: 0 11px;
   text-align: center;
+}
+
+.wucaishi-value-5 {
+  color: #f90;
+}
+
+.wucaishi-value-6 {
+  color: #ff2dff;
 }
