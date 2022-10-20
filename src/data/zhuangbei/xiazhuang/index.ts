@@ -374,7 +374,7 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
   {
     id: 91351,
     uid: '200557',
-    装备名称: '客行江湖·琳琅下裳',
+    装备名称: '客行江湖·凶炽下裳',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [
@@ -468,8 +468,8 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     装备增益: [
       { 增益数值: 4015, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 2720, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 3907, 增益类型: GainTypeEnum.破招 },
-      { 增益数值: 3907, 增益类型: GainTypeEnum.外攻破防等级 },
+      { 增益数值: 4124, 增益类型: GainTypeEnum.破招 },
+      { 增益数值: 4124, 增益类型: GainTypeEnum.外攻破防等级 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
@@ -482,7 +482,7 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
     装备增益: [
       { 增益数值: 4015, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 2332, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 2387, 增益类型: GainTypeEnum.破招 },
+      { 增益数值: 2279, 增益类型: GainTypeEnum.破招 },
       { 增益数值: 6945, 增益类型: GainTypeEnum.无双等级 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],

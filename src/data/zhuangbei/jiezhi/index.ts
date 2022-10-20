@@ -140,7 +140,7 @@ const ZHUANGBEI_JIEZHI: EquipmentDTO[] = [
   {
     id: 34449,
     uid: '200569',
-    装备名称: '客行江湖·琳琅戒',
+    装备名称: '客行江湖·凶炽戒',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [
@@ -189,8 +189,8 @@ const ZHUANGBEI_JIEZHI: EquipmentDTO[] = [
     装备增益: [
       { 增益数值: 2008, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 1360, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 1953, 增益类型: GainTypeEnum.破招 },
-      { 增益数值: 1953, 增益类型: GainTypeEnum.外攻破防等级 },
+      { 增益数值: 2062, 增益类型: GainTypeEnum.破招 },
+      { 增益数值: 2062, 增益类型: GainTypeEnum.外攻破防等级 },
     ],
     镶嵌孔数组: [],
   },
@@ -203,7 +203,7 @@ const ZHUANGBEI_JIEZHI: EquipmentDTO[] = [
     装备增益: [
       { 增益数值: 2008, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 1652, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 3472, 增益类型: GainTypeEnum.无双等级 },
+      { 增益数值: 3418, 增益类型: GainTypeEnum.无双等级 },
     ],
     镶嵌孔数组: [],
   },

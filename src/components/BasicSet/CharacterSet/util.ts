@@ -47,7 +47,7 @@ export const getFinalCharacterBasicDataByEquipment = (
     破防值: 0,
     无双值: 0,
     力道: 41,
-    体质: 0,
+    体质: 41,
     加速值: 0,
     破招值: 0,
     武器伤害_最小值: 0,
@@ -70,13 +70,14 @@ export const getFinalCharacterBasicDataByEquipment = (
       basicDTO = switchZhuangbei(data[item], basicDTO)
     }
   })
+  let 面板力道 = basicDTO.力道
   if (openQiangLv) {
-    const 面板力道 = getLidao(basicDTO.力道, true)
-    basicDTO.力道 = 面板力道
-    basicDTO.基础攻击 = getJiChuGongJI(basicDTO.基础攻击, 面板力道)
-    basicDTO.会心值 = getLidaoJiachengHuixin(basicDTO.会心值, 面板力道)
-    basicDTO.破防值 = getLidaoJiachengPofang(basicDTO.破防值, 面板力道)
+    面板力道 = getLidao(basicDTO.力道, true)
   }
+  basicDTO.力道 = 面板力道
+  basicDTO.基础攻击 = getJiChuGongJI(basicDTO.基础攻击, 面板力道)
+  basicDTO.会心值 = getLidaoJiachengHuixin(basicDTO.会心值, 面板力道)
+  basicDTO.破防值 = getLidaoJiachengPofang(basicDTO.破防值, 面板力道)
   const finalData = getFinalCharacterBasicData(basicDTO)
   return { basicData: basicDTO, finalData }
 }
@@ -99,6 +100,7 @@ export const switchZhuangbei = (
   data.forEach((a) => {
     const zhuangbei = ZUANGBEI_DATA[a?.装备部位]?.find((b) => b.id === a.id)
     if (zhuangbei) {
+      // console.log('zhuangbei', zhuangbei)
       if (zhuangbei?.武器伤害_最大值 && zhuangbei.武器伤害_最小值) {
         newObj.武器伤害_最小值 += zhuangbei.武器伤害_最小值
         newObj.武器伤害_最大值 += zhuangbei.武器伤害_最大值
@@ -122,6 +124,7 @@ export const switchZhuangbei = (
           })
         }
       }
+      console.log(`装备${zhuangbei.装备名称}后`, newObj)
     }
   })
   return newObj
@@ -136,6 +139,7 @@ const switchData = (
   switch (增益类型) {
     case GainTypeEnum.力道:
       newObj.力道 += 数值
+      console.log('力道', Math.floor(数值 * 加成系数.力道加成基础攻击))
       break
     case GainTypeEnum.体质:
       newObj.体质 += 数值
@@ -144,6 +148,7 @@ const switchData = (
       newObj.加速值 += 数值
       break
     case GainTypeEnum.基础攻击:
+      console.log('数值', 数值)
       newObj.基础攻击 += 数值
       break
     case GainTypeEnum.外攻会心等级:

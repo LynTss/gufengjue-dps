@@ -434,7 +434,7 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
   {
     id: 91076,
     uid: '200068',
-    装备名称: '承霁·惊寰护手',
+    装备名称: '揽江·远帆护手',
     装备品级: 11000,
     装备类型: EquipmentTypeEnum.门派套装,
     装备增益: [
@@ -447,30 +447,15 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
-    id: 90954,
-    uid: '189854',
-    装备名称: '湘灿护手',
-    装备品级: 11150,
-    装备类型: EquipmentTypeEnum.普通,
-    装备增益: [
-      { 增益数值: 2811, 增益类型: GainTypeEnum.体质 },
-      { 增益数值: 545, 增益类型: GainTypeEnum.力道 },
-      { 增益数值: 884, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 2735, 增益类型: GainTypeEnum.外攻会心等级 },
-      { 增益数值: 2431, 增益类型: GainTypeEnum.破招 },
-    ],
-    镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
-  },
-  {
     id: 91280,
     uid: '200392',
-    装备名称: '忘泉护腕',
+    装备名称: '摇撼护腕',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.副本精简,
     装备增益: [
       { 增益数值: 2811, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 1632, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 1671, 增益类型: GainTypeEnum.破招 },
+      { 增益数值: 1595, 增益类型: GainTypeEnum.破招 },
       { 增益数值: 4861, 增益类型: GainTypeEnum.无双等级 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
@@ -478,7 +463,7 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
   {
     id: 91278,
     uid: '200390',
-    装备名称: '冷烽护腕',
+    装备名称: '克尽护腕',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.副本精简,
     装备增益: [
@@ -492,7 +477,7 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
   {
     id: 91277,
     uid: '200389',
-    装备名称: '青梧护腕',
+    装备名称: '山扉护腕',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.副本精简,
     装备增益: [
@@ -504,9 +489,23 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 91276,
+    uid: '200388',
+    装备名称: '云章护腕',
+    装备品级: 11150,
+    装备类型: EquipmentTypeEnum.副本精简,
+    装备增益: [
+      { 增益数值: 2811, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 1904, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 2886, 增益类型: GainTypeEnum.破招 },
+      { 增益数值: 2886, 增益类型: GainTypeEnum.外攻破防等级 },
+    ],
+    镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
+  },
+  {
     id: 91195,
     uid: '200187',
-    装备名称: '绝塞护手',
+    装备名称: '旋山护手',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [
@@ -521,7 +520,7 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
   {
     id: 91345,
     uid: '200551',
-    装备名称: '客行江湖·琳琅护手',
+    装备名称: '客行江湖·凶炽护手',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [
@@ -534,23 +533,9 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
-    id: 91276,
-    uid: '200388',
-    装备名称: '弥狂护腕',
-    装备品级: 11150,
-    装备类型: EquipmentTypeEnum.副本精简,
-    装备增益: [
-      { 增益数值: 2811, 增益类型: GainTypeEnum.体质 },
-      { 增益数值: 1904, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 2735, 增益类型: GainTypeEnum.破招 },
-      { 增益数值: 2735, 增益类型: GainTypeEnum.外攻破防等级 },
-    ],
-    镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
-  },
-  {
     id: 91231,
     uid: '200247',
-    装备名称: '金瓯护手',
+    装备名称: '烟梦护手',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [

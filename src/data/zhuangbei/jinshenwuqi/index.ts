@@ -236,7 +236,7 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
   {
     id: 32989,
     uid: '200376',
-    装备名称: '阻烟波',
+    装备名称: '风波还',
     装备品级: 11150,
     武器伤害_最小值: 2593,
     武器伤害_最大值: 4322,
@@ -246,7 +246,7 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
       { 增益数值: 934, 增益类型: GainTypeEnum.力道 },
       { 增益数值: 3618, 增益类型: GainTypeEnum.基础攻击 },
       { 增益数值: 4688, 增益类型: GainTypeEnum.外攻破防等级 },
-      { 增益数值: 4167, 增益类型: GainTypeEnum.无双等级 },
+      { 增益数值: 5000, 增益类型: GainTypeEnum.无双等级 },
     ],
     镶嵌孔数组: [
       { 镶嵌类型: EquipmentInlayEnum.攻击 },
