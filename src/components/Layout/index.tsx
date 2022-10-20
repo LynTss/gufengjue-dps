@@ -1,5 +1,8 @@
 import React from 'react'
-import ImgBg from '../../assets/main-2.jpg'
+// import ImgBg from '../../assets/main.jpg'
+import ImgBg_1 from '../../assets/bg/1.jpeg'
+import ImgBg_2 from '../../assets/bg/2.jpeg'
+import ImgBg_3 from '../../assets/bg/3.jpeg'
 import './index.css'
 
 interface LayoutProps {
@@ -8,10 +11,19 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = (props) => {
   const { children } = props
+  const random = Math.random()
+  const mapKey = random < 0.34 ? 1 : random < 0.67 ? 2 : 3
+
+  const imgMap = {
+    1: ImgBg_1,
+    2: ImgBg_2,
+    3: ImgBg_3,
+  }
+
   return (
     <div className="layout">
       <div className="layout-wrapper">{children}</div>
-      <img className="layout-bg" src={ImgBg} alt="" />
+      <img className="layout-bg" src={imgMap[mapKey]} alt="" />
     </div>
   )
 }
