@@ -25,9 +25,9 @@
 .layout-bg {
   position: absolute;
   display: block;
-  height: 120vh;
+  height: 100vh;
   right: 0;
-  top: -10vh;
+  top: 0;
   z-index: 1;
   margin: auto;
 }
