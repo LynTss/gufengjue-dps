@@ -170,7 +170,7 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
   {
     id: 91105,
     uid: '200097',
-    装备名称: '承霁·远帆腰带',
+    装备名称: '揽江·远帆腰带',
     装备品级: 11000,
     装备类型: EquipmentTypeEnum.门派套装,
     装备增益: [
