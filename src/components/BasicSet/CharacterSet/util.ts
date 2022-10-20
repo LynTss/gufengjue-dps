@@ -160,6 +160,7 @@ const switchData = (
       newObj.武器伤害_最大值 += 数值
       break
     case GainTypeEnum.破招:
+      console.log('数值-1', 数值)
       newObj.破招值 += 数值
       break
     case GainTypeEnum.无双等级:

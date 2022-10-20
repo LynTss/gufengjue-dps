@@ -11,6 +11,8 @@ function CharacterShow() {
 
   const mapKeyList = ['力道', '攻击力', '会心', '会心效果', '破防', '无双', '破招', '加速']
 
+  console.log('characterFinalData', characterFinalData)
+
   return (
     <div className={'character-show'}>
       <h1 className={'character-title'}>角色属性</h1>

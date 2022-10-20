@@ -1,5 +1,5 @@
 import { QixueListDTO } from '@/@types/qixue'
-import QIXUEIMG_QIXUE from '../../../public/qixue/qixue.jpg'
+import QIXUEIMG_QIXUE from '../../assets/qixue/qixue.jpg'
 
 const 奇穴数据: QixueListDTO[] = [
   {
@@ -23,18 +23,12 @@ const 奇穴数据: QixueListDTO[] = [
   },
   {
     奇穴层数: '第四层',
-    奇穴列表: [
-      { 奇穴名称: '放皓', 奇穴图片: QIXUEIMG_QIXUE },
-      { 奇穴名称: '遏云势', 奇穴图片: QIXUEIMG_QIXUE },
-    ],
+    奇穴列表: [{ 奇穴名称: '放皓', 奇穴图片: QIXUEIMG_QIXUE }],
   },
   {
     奇穴层数: '第五层',
     是否不可编辑: true,
-    奇穴列表: [
-      { 奇穴名称: '流岚', 奇穴图片: QIXUEIMG_QIXUE },
-      { 奇穴名称: '威升', 奇穴图片: QIXUEIMG_QIXUE },
-    ],
+    奇穴列表: [{ 奇穴名称: '威升', 奇穴图片: QIXUEIMG_QIXUE }],
   },
   {
     奇穴层数: '第六层',
@@ -68,8 +62,9 @@ const 奇穴数据: QixueListDTO[] = [
   {
     奇穴层数: '第十一层',
     奇穴列表: [
-      { 奇穴名称: '戗风', 奇穴图片: QIXUEIMG_QIXUE },
+      { 奇穴名称: '戗风', 是否不可编辑: true, 奇穴图片: QIXUEIMG_QIXUE },
       { 奇穴名称: '斩颓', 奇穴图片: QIXUEIMG_QIXUE },
+      { 奇穴名称: '流岚', 奇穴图片: QIXUEIMG_QIXUE },
     ],
   },
   {

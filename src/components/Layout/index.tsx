@@ -1,5 +1,5 @@
 import React from 'react'
-import ImgBg from '../../assets/main.jpg'
+import ImgBg from '../../assets/main-2.jpg'
 import './index.css'
 
 interface LayoutProps {

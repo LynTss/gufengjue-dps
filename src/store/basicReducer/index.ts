@@ -9,11 +9,8 @@ import {
   getDefaultCycle,
   getDefaultTarget,
   getDefaultTime,
-  getDefaultZengyiData,
-  getDefaultZengyiQiyong,
 } from '@/utils/default'
 import { EquipmentBasicDTO } from '@/@types/equipment'
-import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 
 interface BasicState {
   // 角色面板属性信息（不包含各种数据增益。只为装备带来的基础属性
@@ -32,16 +29,10 @@ interface BasicState {
   currentTargetName: string
   // dps计算时间
   dpsTime: number
-  // 增益选项
-  zengyixuanxiangData: ZengyixuanxiangDataDTO
-  // 增益是否启用
-  zengyiQiyong: boolean
 }
 
 const initialState: BasicState = {
   characterBasicData: getDefaultCharacter(),
-  zengyixuanxiangData: getDefaultZengyiData(),
-  zengyiQiyong: getDefaultZengyiQiyong(),
   equipmentBasicData: getDefaultEquipment(),
   characterFinalData: {
     面板攻击: 0,
@@ -72,12 +63,6 @@ export const counterSlice = createSlice({
     setCharacterBasicData: (state, action: PayloadAction<CharacterBasicDTO>) => {
       state.characterBasicData = { ...action.payload }
     },
-    setZengyixuanxiangData: (state, action: PayloadAction<ZengyixuanxiangDataDTO>) => {
-      state.zengyixuanxiangData = { ...action.payload }
-    },
-    setZengyiQiyong: (state, action: PayloadAction<boolean>) => {
-      state.zengyiQiyong = action.payload
-    },
     setEquipmentBasicData: (state, action: PayloadAction<EquipmentBasicDTO>) => {
       state.equipmentBasicData = { ...action.payload }
     },
@@ -105,8 +90,6 @@ export const {
   setCurrentCycle,
   setCurrentTarget,
   setDpsTime,
-  setZengyixuanxiangData,
-  setZengyiQiyong,
 } = counterSlice.actions // 导出操作state的喊出
 export const selectCount = (state: RootState) => state
 export default counterSlice.reducer // 导出当前reducer在store/index.ts中记性全局挂
