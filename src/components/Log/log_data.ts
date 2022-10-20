@@ -1,5 +1,9 @@
 export default [
   {
+    version: '0.0.6',
+    content: '更新流岚计算，默认内置了流岚和2件套的加成',
+  },
+  {
     version: '0.0.5',
     content: '放开增益选项，开放阵眼选择能力',
   },

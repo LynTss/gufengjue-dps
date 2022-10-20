@@ -419,7 +419,7 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
   {
     id: 91134,
     uid: '200126',
-    装备名称: '承霁·惊寰靴',
+    装备名称: '揽江·远帆履',
     装备品级: 11000,
     装备类型: EquipmentTypeEnum.门派套装,
     装备增益: [

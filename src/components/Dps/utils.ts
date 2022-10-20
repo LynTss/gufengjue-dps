@@ -79,10 +79,12 @@ export const getSingleSkillTotalDps = (
   if (当前技能属性) {
     let 无增益技能数 = 循环?.技能数量
     let 技能增伤 = 1
-    let 郭氏额外会效果值 = 0
-    let 额外会心率 = 0
+    // 暴力默认计算了2件套收益
+    let 郭氏额外会效果值 = 41
+    let 额外会心率 = 0.04
     let 计算目标 = 当前目标
     let 最终人物属性 = 人物属性
+
     if (zengyixuanxiangData) {
       const {
         计算后人物属性,

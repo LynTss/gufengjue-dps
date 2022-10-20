@@ -170,7 +170,7 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
   {
     id: 91192,
     uid: '200184',
-    装备名称: '承霁·惊寰衣',
+    装备名称: '揽江·远帆衣',
     装备品级: 11000,
     装备类型: EquipmentTypeEnum.门派套装,
     装备增益: [

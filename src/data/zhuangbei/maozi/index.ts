@@ -434,7 +434,7 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
   {
     id: 91163,
     uid: '200155',
-    装备名称: '承霁·惊寰冠',
+    装备名称: '揽江·远帆帽',
     装备品级: 11000,
     装备类型: EquipmentTypeEnum.门派套装,
     装备增益: [
@@ -479,7 +479,7 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
   {
     id: 91357,
     uid: '200563',
-    装备名称: '客行江湖·琳琅冠',
+    装备名称: '客行江湖·凶炽冠',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [

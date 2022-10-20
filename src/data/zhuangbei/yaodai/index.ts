@@ -170,7 +170,7 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
   {
     id: 91105,
     uid: '200097',
-    装备名称: '承霁·惊寰腰带',
+    装备名称: '承霁·远帆腰带',
     装备品级: 11000,
     装备类型: EquipmentTypeEnum.门派套装,
     装备增益: [
@@ -236,7 +236,7 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     装备增益: [
       { 增益数值: 2811, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 2312, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 4861, 增益类型: GainTypeEnum.无双等级 },
+      { 增益数值: 4786, 增益类型: GainTypeEnum.无双等级 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }, { 镶嵌类型: EquipmentInlayEnum.无双 }],
   },
@@ -249,8 +249,8 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     装备增益: [
       { 增益数值: 2811, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 1904, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 2735, 增益类型: GainTypeEnum.破招 },
-      { 增益数值: 2735, 增益类型: GainTypeEnum.外攻破防等级 },
+      { 增益数值: 2886, 增益类型: GainTypeEnum.破招 },
+      { 增益数值: 2886, 增益类型: GainTypeEnum.外攻破防等级 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
