@@ -160,7 +160,7 @@ export const getGainTotalDps = (
 
   // 计算技能常驻固定增益（秘籍、奇穴）等
   当前技能属性.技能增益列表.forEach((增益) => {
-    if (增益.是否启用) {
+    if (增益.常驻增益) {
       if (增益.增益集合?.length) {
         增益.增益集合?.forEach((增益数值信息) => {
           const {
@@ -237,7 +237,7 @@ export const getNoGainSkillTotalDps = (
 
   // 计算技能常驻固定增益（秘籍、奇穴）等
   当前技能属性.技能增益列表.forEach((增益) => {
-    if (增益.是否启用) {
+    if (增益.常驻增益) {
       if (增益.增益集合?.length) {
         增益.增益集合?.forEach((增益数值信息) => {
           const {

@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import { setZengyixuanxiangData, setZengyiQiyong } from '@/store/basicReducer'
+import { setZengyixuanxiangData, setZengyiQiyong } from '@/store/zengyiReducer'
 import { Checkbox } from 'antd'
 import React from 'react'
 import './index.css'
@@ -7,8 +7,8 @@ import ZhenyanXuanze from './ZhenyanXuanze'
 
 function Zengyi({ getDpsFunction }) {
   const dispatch = useAppDispatch()
-  const zengyixuanxiangData = useAppSelector((state) => state.basic.zengyixuanxiangData)
-  const zengyiQiyong = useAppSelector((state) => state.basic.zengyiQiyong)
+  const zengyixuanxiangData = useAppSelector((state) => state.zengyi.zengyixuanxiangData)
+  const zengyiQiyong = useAppSelector((state) => state.zengyi.zengyiQiyong)
 
   const zhenyanOnChange = (e) => {
     const newData = { ...zengyixuanxiangData, 阵眼: e }

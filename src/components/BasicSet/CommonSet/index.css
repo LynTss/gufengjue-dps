@@ -1,8 +1,22 @@
 .common-title {
   font-size: 16px;
   font-weight: 700;
+  line-height: 24px;
   margin-bottom: 8px;
   color:var(--ant-primary-color);
+  display: flex;
+  justify-content: space-between;
+}
+
+.common-title-zengyi {
+  color: #ED4F00;
+  border-color: #ED4F00;
+}
+
+.common-title-zengyi:hover,
+.common-title-zengyi:focus {
+  color: #fa7528;
+  border-color: #fa7528;
 }
 
 .common-item {

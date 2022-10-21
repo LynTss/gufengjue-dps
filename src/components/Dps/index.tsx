@@ -12,8 +12,8 @@ function Dps(props, ref) {
   const characterFinalData = useAppSelector((state) => state?.basic?.characterFinalData)
   const currentCycle = useAppSelector((state) => state?.basic?.currentCycle)
   const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
-  const zengyixuanxiangData = useAppSelector((state) => state?.basic?.zengyixuanxiangData)
-  const zengyiQiyong = useAppSelector((state) => state?.basic?.zengyiQiyong)
+  const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
+  const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
 
   const [dps, setDps] = useState<number>(0)
   const [total, setTotal] = useState<number>(0)

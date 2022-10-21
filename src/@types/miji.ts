@@ -43,6 +43,14 @@ export interface MijiBasicDataDTO {
    */
   秘籍名称: string
   /**
+   * @name 计算时是否为常驻增益
+   */
+  常驻增益?: boolean
+  /**
+   * @name 是否为必备增益
+   */
+  必备秘籍?: boolean
+  /**
    * @name 增益集合
    */
   增益集合?: SKillGainData[]

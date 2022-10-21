@@ -19,7 +19,6 @@ const canglangsandie2GainDTO: SkillGainDTO[] = [
       },
     ],
     增益所在位置: '奇穴',
-    是否启用: true,
   },
 ]
 

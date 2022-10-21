@@ -1,15 +1,17 @@
 import React from 'react'
-import { InputNumber, Select } from 'antd'
+import { Button, InputNumber, Select } from 'antd'
 import { 目标集合 } from '@/data/constant'
-import skillCycle from '@/data/skillCycle'
+// import skillCycle from '@/data/skillCycle'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 
-import { setCurrentCycle, setCurrentTarget, setDpsTime } from '@/store/basicReducer'
+import { setCurrentTarget, setDpsTime } from '@/store/basicReducer'
+import MijiSet from './MijiSet'
 import './index.css'
+import QixueSet from './QixueSet'
 
-function CommonSet({ getDpsFunction }) {
+function CommonSet({ getDpsFunction, setZengyiVisible }) {
   const dispatch = useAppDispatch()
-  const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
+  // const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
   const currentTargetName = useAppSelector((state) => state?.basic?.currentTargetName)
   const dpsTime = useAppSelector((state) => state?.basic?.dpsTime)
 
@@ -33,23 +35,33 @@ function CommonSet({ getDpsFunction }) {
     getDpsFunction()
   }
 
-  const setCurrentCycleVal = (val) => {
-    const cycle = skillCycle?.find((item) => item.name === val)?.cycle || []
-    if (cycle) {
-      localStorage?.setItem('当前循环', val)
-      dispatch(
-        setCurrentCycle({
-          name: val,
-          cycle,
-        })
-      )
-      getDpsFunction()
-    }
-  }
+  // const setCurrentCycleVal = (val) => {
+  //   const cycle = skillCycle?.find((item) => item.name === val)?.cycle || []
+  //   if (cycle) {
+  //     localStorage?.setItem('当前循环', val)
+  //     dispatch(
+  //       setCurrentCycle({
+  //         name: val,
+  //         cycle,
+  //       })
+  //     )
+  //     getDpsFunction()
+  //   }
+  // }
 
   return (
     <div className={'common-set'}>
-      <h1 className={'common-title'}>基础设置</h1>
+      <h1 className={'common-title'}>
+        基础设置
+        <Button
+          type="text"
+          size="small"
+          className={'common-title-zengyi'}
+          onClick={() => setZengyiVisible()}
+        >
+          增益选项
+        </Button>
+      </h1>
       <div className="common-item">
         <h1 className="common-label">当前目标</h1>
         <div className="common-content">
@@ -70,7 +82,7 @@ function CommonSet({ getDpsFunction }) {
           </Select>
         </div>
       </div>
-      <div className="common-item">
+      {/* <div className="common-item">
         <h1 className="common-label">当前循环</h1>
         <div className="common-content">
           <Select
@@ -89,7 +101,7 @@ function CommonSet({ getDpsFunction }) {
             })}
           </Select>
         </div>
-      </div>
+      </div> */}
       <div className="common-item">
         <h1 className="common-label">输出时间</h1>
         <div className="common-content">
@@ -104,6 +116,10 @@ function CommonSet({ getDpsFunction }) {
             }}
           />
         </div>
+      </div>
+      <div className="common-item">
+        <MijiSet getDpsFunction={getDpsFunction} />
+        <QixueSet />
       </div>
     </div>
   )

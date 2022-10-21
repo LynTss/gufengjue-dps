@@ -20,9 +20,12 @@
 
 .basic-set-zengyi {
   width: 0;
-  transition: width .2s;
+  opacity: 0;
+  transition: .2s;
+  /* overflow: hidden; */
 }
 
 .basic-set-zengyi.basic-set-zengyi-visible {
   width: 300px;
+  opacity: 1;
 }

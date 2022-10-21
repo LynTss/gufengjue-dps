@@ -1,4 +1,3 @@
-import { GainDpsTypeEnum, GainTypeEnum } from '../../@types/enum'
 import { SkillGainDTO } from '../../@types/skill'
 import commonGainDTO from './common'
 

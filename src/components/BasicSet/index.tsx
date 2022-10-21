@@ -39,22 +39,21 @@ function BasicSet(props: CharacterSetProps) {
     <div className={'basic-set'}>
       <div className={'basic-set-info'}>
         {/* 公用设置/目标/循环/输出时间 */}
-        <CommonSet getDpsFunction={getDpsFunction} />
+        <CommonSet
+          getDpsFunction={getDpsFunction}
+          setZengyiVisible={() => setZengyiVisible(zengyiVisible ? false : true)}
+        />
         <Divider />
         {/* 属性展示 */}
         <CharacterShow />
         {/* 属性录入 */}
         <CharacterSet getDpsFunction={getDpsFunction} />
-        <Divider />
-        {/* 底部配置 */}
-        <Footer
-          getDpsFunction={getDpsFunction}
-          setZengyiVisible={() => setZengyiVisible(zengyiVisible ? false : true)}
-        />
       </div>
       <div className={`basic-set-zengyi ${zengyiVisible ? 'basic-set-zengyi-visible' : null}`}>
         <Zengyi getDpsFunction={getDpsFunction} />
       </div>
+      {/* 底部配置 */}
+      <Footer getDpsFunction={getDpsFunction} />
     </div>
   )
 }

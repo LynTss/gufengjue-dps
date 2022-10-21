@@ -1,6 +1,11 @@
 import { 目标集合 } from '@/data/constant'
 import skillCycle from '@/data/skillCycle'
-import { DEFAULT_CHARACTER, DEFAULT_EQUIPMENT, ZENGYI_DATA_DEFAULT } from '@/pages/constant'
+import {
+  DEFAULT_CHARACTER,
+  DEFAULT_EQUIPMENT,
+  DEFAULT_MIJI_SELECTED_DATA,
+  ZENGYI_DATA_DEFAULT,
+} from '@/pages/constant'
 
 export const getDefaultCharacter = () => {
   const sessionCharacter = localStorage.getItem('character_data_basic')
@@ -81,4 +86,20 @@ export const getDefaultTarget = () => {
 
 export const getDefaultTime = () => {
   return +(localStorage.getItem('计算时间') || 300)
+}
+
+export const getDefaultMijiSelectedData = () => {
+  const localEquipment = localStorage.getItem('miji_selected_data')
+  if (localEquipment) {
+    try {
+      const obj = JSON.parse(localEquipment)
+      if (obj) {
+        return Object.assign({}, DEFAULT_MIJI_SELECTED_DATA, obj)
+      }
+    } catch {
+      return Object.assign({}, DEFAULT_MIJI_SELECTED_DATA)
+    }
+  } else {
+    return Object.assign({}, DEFAULT_MIJI_SELECTED_DATA)
+  }
 }
