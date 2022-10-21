@@ -1,17 +1,17 @@
 import React from 'react'
 import { Button, InputNumber, Select } from 'antd'
 import { 目标集合 } from '@/data/constant'
-// import skillCycle from '@/data/skillCycle'
+import skillCycle from '@/data/skillCycle'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 
-import { setCurrentTarget, setDpsTime } from '@/store/basicReducer'
+import { setCurrentTarget, setCurrentCycle, setDpsTime } from '@/store/basicReducer'
 import MijiSet from './MijiSet'
 import './index.css'
 import QixueSet from './QixueSet'
 
 function CommonSet({ getDpsFunction, setZengyiVisible }) {
   const dispatch = useAppDispatch()
-  // const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
+  const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
   const currentTargetName = useAppSelector((state) => state?.basic?.currentTargetName)
   const dpsTime = useAppSelector((state) => state?.basic?.dpsTime)
 
@@ -35,19 +35,24 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
     getDpsFunction()
   }
 
-  // const setCurrentCycleVal = (val) => {
-  //   const cycle = skillCycle?.find((item) => item.name === val)?.cycle || []
-  //   if (cycle) {
-  //     localStorage?.setItem('当前循环', val)
-  //     dispatch(
-  //       setCurrentCycle({
-  //         name: val,
-  //         cycle,
-  //       })
-  //     )
-  //     getDpsFunction()
-  //   }
-  // }
+  const setCurrentCycleVal = (val) => {
+    const cycle = skillCycle?.find((item) => item.name === val)?.cycle || []
+    if (cycle) {
+      if (val === '溃延驭耀') {
+        setDpsTimeVal(292)
+      } else {
+        setDpsTimeVal(300)
+      }
+      localStorage?.setItem('当前循环', val)
+      dispatch(
+        setCurrentCycle({
+          name: val,
+          cycle,
+        })
+      )
+      getDpsFunction()
+    }
+  }
 
   return (
     <div className={'common-set'}>
@@ -82,7 +87,7 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
           </Select>
         </div>
       </div>
-      {/* <div className="common-item">
+      <div className="common-item">
         <h1 className="common-label">当前循环</h1>
         <div className="common-content">
           <Select
@@ -101,7 +106,7 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
             })}
           </Select>
         </div>
-      </div> */}
+      </div>
       <div className="common-item">
         <h1 className="common-label">输出时间</h1>
         <div className="common-content">

@@ -14,7 +14,7 @@ export const EnchantGainDTO: EnchantDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.基础攻击,
-        增益数值: 221,
+        增益数值: 326,
       },
     ],
   },
@@ -24,7 +24,7 @@ export const EnchantGainDTO: EnchantDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.力道,
-        增益数值: 110,
+        增益数值: 162,
       },
     ],
   },
@@ -34,7 +34,7 @@ export const EnchantGainDTO: EnchantDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.近战武器伤害,
-        增益数值: 332,
+        增益数值: 489,
       },
     ],
   },
@@ -44,7 +44,7 @@ export const EnchantGainDTO: EnchantDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻破防等级,
-        增益数值: 491,
+        增益数值: 723,
       },
     ],
   },
@@ -54,7 +54,7 @@ export const EnchantGainDTO: EnchantDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.无双等级,
-        增益数值: 491,
+        增益数值: 723,
       },
     ],
   },
@@ -64,7 +64,7 @@ export const EnchantGainDTO: EnchantDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心等级,
-        增益数值: 491,
+        增益数值: 723,
       },
     ],
   },
@@ -74,7 +74,7 @@ export const EnchantGainDTO: EnchantDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心效果等级,
-        增益数值: 491,
+        增益数值: 723,
       },
     ],
   },
@@ -84,7 +84,7 @@ export const EnchantGainDTO: EnchantDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.破招,
-        增益数值: 491,
+        增益数值: 723,
       },
     ],
   },
@@ -94,7 +94,7 @@ export const EnchantGainDTO: EnchantDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.加速,
-        增益数值: 491,
+        增益数值: 723,
       },
     ],
   },
@@ -230,6 +230,126 @@ export const AllEnchantDTO: EnchantDTO[] = [
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.加速,
         增益数值: 491,
+      },
+    ],
+  },
+  {
+    附魔名称: EnchantNameEnum.攻击326,
+    附魔支持部位: [
+      EquipmentPositionEnum.帽子,
+      EquipmentPositionEnum.鞋子,
+      EquipmentPositionEnum.戒指,
+    ],
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.基础攻击,
+        增益数值: 326,
+      },
+    ],
+  },
+  {
+    附魔名称: EnchantNameEnum.力道162,
+    附魔支持部位: [
+      EquipmentPositionEnum.护腕,
+      EquipmentPositionEnum.下装,
+      EquipmentPositionEnum.戒指,
+      EquipmentPositionEnum.暗器,
+    ],
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.力道,
+        增益数值: 162,
+      },
+    ],
+  },
+  {
+    附魔名称: EnchantNameEnum.武伤489,
+    附魔支持部位: [EquipmentPositionEnum.武器],
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.近战武器伤害,
+        增益数值: 489,
+      },
+    ],
+  },
+  {
+    附魔名称: EnchantNameEnum.破防723,
+    附魔支持部位: [
+      EquipmentPositionEnum.护腕,
+      EquipmentPositionEnum.下装,
+      EquipmentPositionEnum.暗器,
+    ],
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.外攻破防等级,
+        增益数值: 723,
+      },
+    ],
+  },
+  {
+    附魔名称: EnchantNameEnum.无双723,
+    附魔支持部位: [EquipmentPositionEnum.护腕, EquipmentPositionEnum.下装],
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.无双等级,
+        增益数值: 723,
+      },
+    ],
+  },
+  {
+    附魔名称: EnchantNameEnum.会心723,
+    附魔支持部位: [EquipmentPositionEnum.护腕, EquipmentPositionEnum.下装],
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.外攻会心等级,
+        增益数值: 723,
+      },
+    ],
+  },
+  {
+    附魔名称: EnchantNameEnum.会效723,
+    附魔支持部位: [],
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.外攻会心效果等级,
+        增益数值: 723,
+      },
+    ],
+  },
+  {
+    附魔名称: EnchantNameEnum.破招723,
+    附魔支持部位: [
+      EquipmentPositionEnum.帽子,
+      EquipmentPositionEnum.鞋子,
+      EquipmentPositionEnum.戒指,
+    ],
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.破招,
+        增益数值: 723,
+      },
+    ],
+  },
+  {
+    附魔名称: EnchantNameEnum.加速723,
+    附魔支持部位: [
+      EquipmentPositionEnum.帽子,
+      EquipmentPositionEnum.鞋子,
+      EquipmentPositionEnum.暗器,
+    ],
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.加速,
+        增益数值: 723,
       },
     ],
   },

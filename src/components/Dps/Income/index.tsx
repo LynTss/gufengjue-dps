@@ -124,7 +124,11 @@ function Income({ totalDps, zengyiVisible }, ref) {
       <div className={'income-chart'} id="income-chart" />
       <div className={'income-chart-title'}>
         属性收益
-        <Tooltip title="该收益为110级附魔收益，即221攻击/110力道/332武伤/491破防/491无双/491会心/491会效/491破招，仅供参考">
+        <Tooltip
+          title={`该收益为120级附魔收益，即${EnchantGainDTO.map(
+            (item) => `${item.增益集合?.[0]?.增益数值}${item.附魔名称}`
+          ).join('/')}，仅供参考`}
+        >
           <QuestionCircleOutlined />
         </Tooltip>
       </div>
