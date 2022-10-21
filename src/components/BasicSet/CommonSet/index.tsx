@@ -36,6 +36,11 @@ function CommonSet({ getDpsFunction }) {
   const setCurrentCycleVal = (val) => {
     const cycle = skillCycle?.find((item) => item.name === val)?.cycle || []
     if (cycle) {
+      if (val === '溃延驭耀') {
+        setDpsTimeVal(292)
+      } else {
+        setDpsTimeVal(300)
+      }
       localStorage?.setItem('当前循环', val)
       dispatch(
         setCurrentCycle({
