@@ -133,7 +133,7 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
                       max={100}
                       addonAfter={'%'}
                       onChange={(e) => onChangeZengyi(null, item, item.层数, e)}
-                      defaultValue={item?.覆盖率 * 100}
+                      defaultValue={item?.覆盖率}
                     />
                   </div>
                 ) : null}
