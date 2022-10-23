@@ -12,7 +12,7 @@ export const DEFAULT_CHARACTER = {
 }
 
 export const ZENGYI_DATA_DEFAULT = {
-  阵眼: '刀宗阵（阵眼）',
+  阵眼: '刀宗阵(阵眼)',
   小吃: [
     '断浪·太后饼（外攻）',
     '断浪·三鲜粥（力道）',
