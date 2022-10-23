@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import React, { forwardRef, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { Divider, message } from 'antd'
 import { useAppSelector } from '@/hooks'
 
@@ -13,6 +13,7 @@ function Dps(props, ref) {
   const currentCycle = useAppSelector((state) => state?.basic?.currentCycle)
   const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
   const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
+  const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
   const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
 
   const [dps, setDps] = useState<number>(0)
@@ -26,8 +27,12 @@ function Dps(props, ref) {
     getDps: startDps,
   }))
 
+  const 参与计算循环 = useMemo(() => {
+    return currentCycle
+  }, [currentCycle])
+
   const startDps = () => {
-    if (!currentCycle || !characterFinalData) {
+    if (!currentCycle?.length || !characterFinalData) {
       message.error('请先设置个人属性和目标')
       return
     }
@@ -36,9 +41,10 @@ function Dps(props, ref) {
 
   const getDps = () => {
     const { totalDps, dpsList } = getDpsTotal({
-      currentCycle,
+      currentCycle: 参与计算循环,
       characterFinalData,
       当前目标: currentTarget,
+      skillBasicData,
       zengyiQiyong,
       zengyixuanxiangData,
     })

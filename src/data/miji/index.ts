@@ -17,7 +17,7 @@ const skillMijiBasicData: SkillMijiBasicDataDTO[] = [
   },
   {
     描述技能名称: '沧浪三叠',
-    生效技能: ['沧浪三叠势·一', '沧浪三叠·二', '沧浪三叠·三'],
+    生效技能: ['沧浪三叠·一', '沧浪三叠·二', '沧浪三叠·三'],
     秘籍列表: Miji_Canglangsandie,
   },
   {

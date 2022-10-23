@@ -24,7 +24,7 @@ function CharacterInputSetModal({ visible, onClose }) {
   const beforeOnchange = (value) => {
     localStorage?.setItem('character_data_basic', JSON.stringify(value))
     dispatch(setCharacterBasicData(value))
-    const final = getFinalCharacterBasicData(value)
+    const final = getFinalCharacterBasicData(value, false)
     dispatch(setCharacterFinalData(final))
     onClose(true)
   }

@@ -74,6 +74,10 @@ export interface CharacterFinalDTO extends CharacterBasicDTO {
    * @name 面板攻击
    */
   面板攻击: number
+  /**
+   * @name 强膂
+   */
+  强膂?: boolean
 }
 
 /**

@@ -1,3 +1,4 @@
+import { TuanduiZengyi_DATA } from './../../data/tuanduizengyi/index'
 import { getLidaoJiachengPofang } from './../BasicSet/CharacterSet/util'
 import {
   getMianBanGongJI,
@@ -17,17 +18,18 @@ import { CharacterFinalDTO } from '@/@types/character'
 import { CycleDTO, CycleGain } from '@/@types/cycle'
 import { GainTypeEnum } from '@/@types/enum'
 import { SkillBasicDTO, SKillGainData } from '@/@types/skill'
-import GuFengJueSkillDataDTO from '@/data/skill'
 import { guoshiPercent } from '@/utils/help'
 import { skillFinalDps } from '@/utils/skill-dps'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { Zhenyan_DATA } from '@/data/zhenyan'
 import { 加成系数 } from '@/data/constant'
+import XIAOCHI_DATA from '@/data/xiaochi'
 
 interface GetDpsTotalParams {
   currentCycle: CycleDTO[]
   characterFinalData: CharacterFinalDTO
   当前目标: TargetDTO
+  skillBasicData: SkillBasicDTO[]
   zengyiQiyong: boolean
   zengyixuanxiangData: ZengyixuanxiangDataDTO
 }
@@ -40,7 +42,14 @@ export interface DpsListData {
 
 // 计算技能循环总输出
 export const getDpsTotal = (props: GetDpsTotalParams) => {
-  const { currentCycle, characterFinalData, 当前目标, zengyiQiyong, zengyixuanxiangData } = props
+  const {
+    currentCycle,
+    characterFinalData,
+    当前目标,
+    skillBasicData,
+    zengyiQiyong,
+    zengyixuanxiangData,
+  } = props
   // 总dps
   let total = 0
   // 每个技能的dps总和列表
@@ -52,6 +61,7 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
       item,
       characterFinalData,
       当前目标,
+      skillBasicData,
       zengyiQiyong ? zengyixuanxiangData : undefined
     )
     dpsList.push({
@@ -70,10 +80,11 @@ export const getSingleSkillTotalDps = (
   循环: CycleDTO,
   人物属性: CharacterFinalDTO,
   当前目标: TargetDTO,
+  skillBasicData: SkillBasicDTO[],
   zengyixuanxiangData?: ZengyixuanxiangDataDTO
 ) => {
   // 在技能数据模型中找到当前执行循环内技能的数据，获取各种系数
-  const 当前技能属性 = GuFengJueSkillDataDTO.find((item) => item.技能名称 === 循环?.技能名称)
+  const 当前技能属性 = skillBasicData.find((item) => item.技能名称 === 循环?.技能名称)
   // 总输出
   let totalDps = 0
   if (当前技能属性) {
@@ -123,7 +134,6 @@ export const getSingleSkillTotalDps = (
         totalDps = totalDps + 期望技能总伤
       })
     }
-
     // 判断常规未增益技能的总伤
     const { 期望技能总伤 } = getNoGainSkillTotalDps(
       当前技能属性,
@@ -314,24 +324,47 @@ const switchGain = (
   技能增伤: number,
   郭氏额外会效果值: number,
   额外会心率: number,
-  当前目标: TargetDTO
+  当前目标: TargetDTO,
+  飘黄?
 ) => {
   const { 增益数值, 增益类型, 增益计算类型 } = 增益
   const 计算后人物属性 = { ...人物属性 }
   let 计算后技能增伤 = 技能增伤
   let 计算后郭氏额外会效果值 = 郭氏额外会效果值
   let 计算后额外会心率 = 额外会心率
-  const 计算后目标 = 当前目标
+  let 计算后目标 = 当前目标
   let 力道提升值 = 0
-  const 计算力道 = 0
+  const 强膂 = 人物属性?.强膂
+  if (飘黄) {
+    console.log('计算后目标-1', 计算后目标)
+    console.log('增益', 增益)
+    console.log(
+      '增益?.增益计算类型 === GainTypeEnum.郭氏无视防御',
+      增益?.增益计算类型 === GainTypeEnum.郭氏无视防御
+    )
+  }
+
+  if (增益?.增益类型 === GainTypeEnum.郭氏无视防御) {
+    console.log('计算后目标', 计算后目标)
+  }
 
   if (增益计算类型 === GainDpsTypeEnum.A) {
     switch (增益类型) {
+      case GainTypeEnum.基础攻击:
+        计算后人物属性.基础攻击 = 计算后人物属性.基础攻击 + 增益数值
+        计算后人物属性.面板攻击 = 计算后人物属性.面板攻击 + 增益数值
+        break
       case GainTypeEnum.外攻破防百分比:
         计算后人物属性.破防值 = guoshiPercent(计算后人物属性.破防值, 增益数值)
         break
+      case GainTypeEnum.外攻破防等级:
+        计算后人物属性.破防值 = 计算后人物属性.破防值 + 增益数值
+        break
       case GainTypeEnum.外攻会心百分比:
         计算后人物属性.会心值 = guoshiPercent(计算后人物属性.会心值, 增益数值)
+        break
+      case GainTypeEnum.外攻会心等级:
+        计算后人物属性.会心值 = 计算后人物属性.会心值 + 增益数值
         break
       case GainTypeEnum.外攻会心效果等级:
         计算后人物属性.会心效果值 = +guoshiBasic(增益数值)
@@ -341,6 +374,24 @@ const switchGain = (
         break
       case GainTypeEnum.破招:
         计算后人物属性.破招值 = 计算后人物属性.破招值 + 增益数值
+        break
+      case GainTypeEnum.无视防御:
+        计算后目标.防御点数 =
+          计算后目标.防御点数 - 增益数值 > 0 ? 计算后目标.防御点数 - 增益数值 : 0
+        break
+      case GainTypeEnum.力道:
+        // 计算强膂有点问题
+        力道提升值 = getLidao(增益数值, 强膂)
+        计算后人物属性.力道 = 计算后人物属性.力道 + 力道提升值
+        计算后人物属性.基础攻击 + Math.floor(力道提升值 * 加成系数.力道加成基础攻击)
+        计算后人物属性.面板攻击 =
+          getMianBanGongJI(计算后人物属性.面板攻击, 力道提升值) +
+          Math.floor(力道提升值 * 加成系数.力道加成基础攻击)
+        计算后人物属性.会心值 = getLidaoJiachengHuixin(计算后人物属性.会心值, 力道提升值)
+        计算后人物属性.破防值 = getLidaoJiachengPofang(计算后人物属性.破防值, 力道提升值)
+        break
+      case GainTypeEnum.无双等级:
+        计算后人物属性.无双值 = 计算后人物属性.无双值 + 增益数值
         break
       default:
         console.error(`存在未计算增益${增益?.增益类型}`, 增益)
@@ -364,8 +415,21 @@ const switchGain = (
         计算后郭氏额外会效果值 = 计算后郭氏额外会效果值 + guoshiBasic(增益数值)
         break
       case GainTypeEnum.郭氏无视防御:
-        计算后目标.防御点数 =
-          计算后目标.防御点数 - Math.floor((计算后目标?.防御点数 * 增益数值) / 1024)
+        if (计算后目标?.防御点数) {
+          if (计算后目标.防御点数 > Math.floor((计算后目标?.防御点数 * 增益数值) / 1024)) {
+            计算后目标 = {
+              ...计算后目标,
+              防御点数: 计算后目标.防御点数 - Math.floor((计算后目标?.防御点数 * 增益数值) / 1024),
+            }
+          } else {
+            console.log('计算后目标.防御点数', 计算后目标.防御点数)
+            计算后目标 = {
+              ...计算后目标,
+              防御点数: 0,
+            }
+          }
+        }
+        console.log('计算后目标.防御点数-2', 计算后目标.防御点数)
         break
       case GainTypeEnum.郭氏外攻破防等级:
         计算后人物属性.破防值 = guoshiResult(计算后人物属性.破防值, 增益数值)
@@ -381,17 +445,28 @@ const switchGain = (
       case GainTypeEnum.郭氏外攻会心效果等级:
         计算后郭氏额外会效果值 = 计算后郭氏额外会效果值 + 增益数值
         break
-      case GainTypeEnum.郭氏力道:
+      case GainTypeEnum.力道:
         // 计算强膂有点问题
-        力道提升值 =
-          getLidao(计算后人物属性.力道, true, 增益数值) - getLidao(计算后人物属性.力道, true)
+        力道提升值 = getLidao(增益数值, 强膂)
         计算后人物属性.力道 = 计算后人物属性.力道 + 力道提升值
         计算后人物属性.基础攻击 + Math.floor(力道提升值 * 加成系数.力道加成基础攻击)
         计算后人物属性.面板攻击 =
-          getMianBanGongJI(计算后人物属性.面板攻击, 计算力道) +
+          getMianBanGongJI(计算后人物属性.面板攻击, 力道提升值) +
           Math.floor(力道提升值 * 加成系数.力道加成基础攻击)
-        计算后人物属性.会心值 = getLidaoJiachengHuixin(计算后人物属性.会心值, 计算力道)
-        计算后人物属性.破防值 = getLidaoJiachengPofang(计算后人物属性.破防值, 计算力道)
+        计算后人物属性.会心值 = getLidaoJiachengHuixin(计算后人物属性.会心值, 力道提升值)
+        计算后人物属性.破防值 = getLidaoJiachengPofang(计算后人物属性.破防值, 力道提升值)
+        break
+      case GainTypeEnum.郭氏力道:
+        // 计算强膂有点问题
+        力道提升值 =
+          getLidao(计算后人物属性.力道, 强膂, 增益数值) - getLidao(计算后人物属性.力道, 强膂)
+        计算后人物属性.力道 = 计算后人物属性.力道 + 力道提升值
+        计算后人物属性.基础攻击 + Math.floor(力道提升值 * 加成系数.力道加成基础攻击)
+        计算后人物属性.面板攻击 =
+          getMianBanGongJI(计算后人物属性.面板攻击, 力道提升值) +
+          Math.floor(力道提升值 * 加成系数.力道加成基础攻击)
+        计算后人物属性.会心值 = getLidaoJiachengHuixin(计算后人物属性.会心值, 力道提升值)
+        计算后人物属性.破防值 = getLidaoJiachengPofang(计算后人物属性.破防值, 力道提升值)
         break
       default:
         console.error(`存在未计算增益${增益?.增益类型}`, 增益)
@@ -462,6 +537,75 @@ const getZengyi = (
         计算郭氏额外会效果值 = 计算后郭氏额外会效果值
         计算额外会心率 = 计算后额外会心率
         计算目标 = 计算后计算目标
+      })
+    }
+  }
+
+  if (增益数据?.小吃) {
+    const 小吃数据集合 = XIAOCHI_DATA.filter((item) => 增益数据?.小吃?.includes(item.小吃名称))
+    if (小吃数据集合?.length) {
+      小吃数据集合.forEach((a) => {
+        if (a?.增益集合?.length) {
+          a?.增益集合.map((c) => {
+            const {
+              计算后人物属性,
+              计算后技能增伤,
+              计算后郭氏额外会效果值,
+              计算后额外会心率,
+              计算后目标: 计算后计算目标,
+            } = switchGain(
+              计算人物属性,
+              c,
+              计算技能增伤,
+              计算郭氏额外会效果值,
+              计算额外会心率,
+              计算目标
+            )
+            计算人物属性 = { ...计算后人物属性 }
+            计算技能增伤 = 计算后技能增伤
+            计算郭氏额外会效果值 = 计算后郭氏额外会效果值
+            计算额外会心率 = 计算后额外会心率
+            计算目标 = 计算后计算目标
+          })
+        }
+      })
+    }
+  }
+
+  if (增益数据?.团队增益?.length) {
+    const 团队增益集合 = 增益数据?.团队增益
+      ?.filter((item) => item.启用)
+      .map((item) => {
+        return TuanduiZengyi_DATA.find((a) => a.增益名称 === item.增益名称)
+      })
+
+    if (团队增益集合?.length) {
+      团队增益集合.forEach((item) => {
+        if (item?.增益名称 === '飘黄') {
+          console.log('item', item)
+        }
+        item?.增益集合.map((c) => {
+          const {
+            计算后人物属性,
+            计算后技能增伤,
+            计算后郭氏额外会效果值,
+            计算后额外会心率,
+            计算后目标: 计算后计算目标,
+          } = switchGain(
+            计算人物属性,
+            { ...c, 增益数值: (c?.增益数值 * item?.层数 * item?.覆盖率) / 100 },
+            计算技能增伤,
+            计算郭氏额外会效果值,
+            计算额外会心率,
+            计算目标,
+            item?.增益名称 === '飘黄'
+          )
+          计算人物属性 = { ...计算后人物属性 }
+          计算技能增伤 = 计算后技能增伤
+          计算郭氏额外会效果值 = 计算后郭氏额外会效果值
+          计算额外会心率 = 计算后额外会心率
+          计算目标 = 计算后计算目标
+        })
       })
     }
   }

@@ -23,6 +23,11 @@
   display: flex;
   margin-bottom: 8px;
   height: 32px;
+  justify-content: space-between;
+}
+
+.common-item>.ant-btn{
+  width:calc(50% - 4px);
 }
 
 .common-label {

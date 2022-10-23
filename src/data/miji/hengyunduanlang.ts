@@ -36,7 +36,7 @@ const Miji_Hengyunduanlang: MijiBasicDataDTO[] = [
     ],
   },
   {
-    秘籍名称: '3%伤害',
+    秘籍名称: '3%会心',
     常驻增益: true,
     增益集合: [
       {

@@ -1,0 +1,14 @@
+.miji-set-button {
+  width: calc(50% - 4px);
+}
+
+.miji-selected-item {
+  margin-bottom: 16px;
+}
+
+.miji-skill-title {
+  font-size: 16px;
+  color: var(--ant-primary-color);
+  font-weight: 700;
+  margin-bottom:8px;
+}

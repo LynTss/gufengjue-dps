@@ -9,9 +9,13 @@ import XIANGQIAN_DATA from '@/data/xiangqian'
 import ZUANGBEI_DATA from '@/data/zhuangbei'
 import { jinglianJieguo } from '@/utils/help'
 
-export const getFinalCharacterBasicData = (data: CharacterBasicDTO): CharacterFinalDTO => {
+export const getFinalCharacterBasicData = (
+  data: CharacterBasicDTO,
+  openQiangLv: boolean
+): CharacterFinalDTO => {
   return {
     ...data,
+    强膂: openQiangLv,
     面板攻击: getMianBanGongJI(data?.基础攻击, data?.力道),
   }
 }
@@ -78,7 +82,7 @@ export const getFinalCharacterBasicDataByEquipment = (
   basicDTO.基础攻击 = getJiChuGongJI(basicDTO.基础攻击, 面板力道)
   basicDTO.会心值 = getLidaoJiachengHuixin(basicDTO.会心值, 面板力道)
   basicDTO.破防值 = getLidaoJiachengPofang(basicDTO.破防值, 面板力道)
-  const finalData = getFinalCharacterBasicData(basicDTO)
+  const finalData = getFinalCharacterBasicData(basicDTO, openQiangLv)
   return { basicData: basicDTO, finalData }
 }
 
@@ -100,7 +104,6 @@ export const switchZhuangbei = (
   data.forEach((a) => {
     const zhuangbei = ZUANGBEI_DATA[a?.装备部位]?.find((b) => b.id === a.id)
     if (zhuangbei) {
-      // console.log('zhuangbei', zhuangbei)
       if (zhuangbei?.武器伤害_最大值 && zhuangbei.武器伤害_最小值) {
         newObj.武器伤害_最小值 += zhuangbei.武器伤害_最小值
         newObj.武器伤害_最大值 += zhuangbei.武器伤害_最大值
@@ -124,7 +127,6 @@ export const switchZhuangbei = (
           })
         }
       }
-      console.log(`装备${zhuangbei.装备名称}后`, newObj)
     }
   })
   return newObj
@@ -139,7 +141,6 @@ const switchData = (
   switch (增益类型) {
     case GainTypeEnum.力道:
       newObj.力道 += 数值
-      console.log('力道', Math.floor(数值 * 加成系数.力道加成基础攻击))
       break
     case GainTypeEnum.体质:
       newObj.体质 += 数值
@@ -148,7 +149,6 @@ const switchData = (
       newObj.加速值 += 数值
       break
     case GainTypeEnum.基础攻击:
-      console.log('数值', 数值)
       newObj.基础攻击 += 数值
       break
     case GainTypeEnum.外攻会心等级:
@@ -165,7 +165,6 @@ const switchData = (
       newObj.武器伤害_最大值 += 数值
       break
     case GainTypeEnum.破招:
-      console.log('数值-1', 数值)
       newObj.破招值 += 数值
       break
     case GainTypeEnum.无双等级:

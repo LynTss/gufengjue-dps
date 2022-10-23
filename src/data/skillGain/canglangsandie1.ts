@@ -7,6 +7,7 @@ const canglangsandie1GainDTO: SkillGainDTO[] = [
   {
     增益名称: '放皓·沧浪一',
     增益所在位置: '奇穴',
+    常驻增益: true,
     增益集合: [
       {
         增益类型: GainTypeEnum.外攻会心百分比,

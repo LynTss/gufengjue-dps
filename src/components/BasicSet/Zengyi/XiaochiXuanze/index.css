@@ -1,0 +1,20 @@
+.zengyi-xiaochi-xuanze {
+  padding-top: 16px;
+}
+
+.zengyi-xiaochi-item {
+  display: flex;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.zengyi-xiaochi-title {
+  width: 60px;
+  font-size: 14px;
+  margin-right: 4px;
+  margin-bottom: 0;
+}
+
+.zengyi-xiaochi-select {
+  flex: 1;
+}

@@ -4,7 +4,9 @@ import React from 'react'
 function QixueSet() {
   return (
     <>
-      <Button onClick={() => message.success('comming soon')}>奇穴设置</Button>
+      <Button className="qixue-set-button" disabled onClick={() => message.success('comming soon')}>
+        奇穴设置
+      </Button>
     </>
   )
 }

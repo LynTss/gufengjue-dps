@@ -6,8 +6,8 @@ import { useAppDispatch, useAppSelector } from '@/hooks'
 
 import { setCurrentTarget, setCurrentCycle, setDpsTime } from '@/store/basicReducer'
 import MijiSet from './MijiSet'
-import './index.css'
 import QixueSet from './QixueSet'
+import './index.css'
 
 function CommonSet({ getDpsFunction, setZengyiVisible }) {
   const dispatch = useAppDispatch()

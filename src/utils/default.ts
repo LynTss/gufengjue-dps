@@ -94,12 +94,13 @@ export const getDefaultMijiSelectedData = () => {
     try {
       const obj = JSON.parse(localEquipment)
       if (obj) {
-        return Object.assign({}, DEFAULT_MIJI_SELECTED_DATA, obj)
+        return [...(obj || [])]
       }
+      return [...DEFAULT_MIJI_SELECTED_DATA]
     } catch {
-      return Object.assign({}, DEFAULT_MIJI_SELECTED_DATA)
+      return [...DEFAULT_MIJI_SELECTED_DATA]
     }
   } else {
-    return Object.assign({}, DEFAULT_MIJI_SELECTED_DATA)
+    return [...DEFAULT_MIJI_SELECTED_DATA]
   }
 }

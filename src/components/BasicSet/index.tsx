@@ -21,6 +21,7 @@ function BasicSet(props: CharacterSetProps) {
   const { getDps, zengyiVisible, setZengyiVisible } = props
   const dispatch = useAppDispatch()
   const characterBasicData = useAppSelector((state) => state.basic.characterBasicData)
+  const equipmentBasicData = useAppSelector((state) => state.basic.equipmentBasicData)
 
   const getDpsFunction = () => {
     setTimeout(() => {
@@ -30,7 +31,7 @@ function BasicSet(props: CharacterSetProps) {
 
   useEffect(() => {
     if (characterBasicData) {
-      const final = getFinalCharacterBasicData(characterBasicData)
+      const final = getFinalCharacterBasicData(characterBasicData, equipmentBasicData?.openQiangLv)
       dispatch(setCharacterFinalData(final))
     }
   }, [])

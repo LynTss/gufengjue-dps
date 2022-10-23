@@ -2,7 +2,7 @@
   width: 300px;
   padding: 0 0 16px 12px;
   margin-left: 12px;
-  height: calc(100vh - 114px);
+  min-height: calc(100vh - 114px);
   border-left: 1px solid #f0f0f0
 }
 
@@ -11,6 +11,12 @@
   font-weight: 700;
   margin-bottom: 8px;
   color: var(--ant-primary-color);
+}
+
+.zengyi-title-tip {
+  font-size: 12px;
+  margin-left: 12px;
+  color: #f90;
 }
 
 .zengyiqiyong {

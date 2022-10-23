@@ -23,6 +23,8 @@ function Income({ totalDps, zengyiVisible }, ref) {
   const currentTarget = useAppSelector((state) => state.basic.currentTarget)
   const zengyiQiyong = useAppSelector((state) => state.zengyi.zengyiQiyong)
   const zengyixuanxiangData = useAppSelector((state) => state.zengyi.zengyixuanxiangData)
+  const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
+
   const [chartData, setChartData] = useState<any>()
 
   const getAfterIncomeDpsPercent = (data) => {
@@ -37,6 +39,7 @@ function Income({ totalDps, zengyiVisible }, ref) {
       currentCycle,
       characterFinalData: 计算后属性,
       当前目标: 计算后目标,
+      skillBasicData,
       zengyiQiyong,
       zengyixuanxiangData,
     })
