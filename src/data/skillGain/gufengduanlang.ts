@@ -7,7 +7,7 @@ const gufengduanlangGainDTO: SkillGainDTO[] = [
   {
     增益名称: '套装10%',
     增益所在位置: '套装',
-    常驻增益: true,
+    常驻增益: false,
     增益集合: [
       {
         增益类型: GainTypeEnum.伤害百分比,

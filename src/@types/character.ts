@@ -78,6 +78,10 @@ export interface CharacterFinalDTO extends CharacterBasicDTO {
    * @name 强膂
    */
   强膂?: boolean
+  /**
+   * @name 套装会心会效
+   */
+  套装会心会效?: boolean
 }
 
 /**

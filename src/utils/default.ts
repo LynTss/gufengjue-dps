@@ -53,7 +53,7 @@ export const getDefaultZengyiQiyong = () => {
 }
 
 export const getDefaultEquipment = () => {
-  const localEquipment = localStorage.getItem('zhuangbei_data_basic')
+  const localEquipment = localStorage.getItem('zhuangbei_data_basic_1')
   if (localEquipment) {
     try {
       const obj = JSON.parse(localEquipment)

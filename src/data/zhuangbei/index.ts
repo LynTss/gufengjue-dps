@@ -10,6 +10,10 @@ import ZHUANGBEI_JIEZHI from './jiezhi'
 import ZHUANGBEI_YUANCHENGWUQI from './yuanchengwuqi'
 import ZHUANGBEI_JINSHENWUQI from './jinshenwuqi'
 
+// 2件套会心 4件套孤锋10%
+export const 童装_1Ids = [91076, 91163, 91134, 91105, 91192]
+// export const 童装_2Ids = [91076, 91163, 91134, 91105, 91192]
+
 const ZUANGBEI_DATA = {
   帽子: ZHUANGBEI_MAOZI,
   衣服: ZHUANGBEI_YIFU,

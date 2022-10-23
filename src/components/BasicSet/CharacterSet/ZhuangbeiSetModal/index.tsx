@@ -14,12 +14,15 @@ import './index.css'
 import WuCaiShiXuanZe from './WuCaiShiXuanZe'
 import ValueCheckBox from '@/components/common/ValueCheckBox'
 import { getFinalCharacterBasicDataByEquipment } from '../util'
+import { 童装_1Ids } from '@/data/zhuangbei'
+import { setSkillBasicData } from '@/store/zengyiReducer'
 
 function ZhuangbeiSet({ visible, onClose }) {
   const [form] = Form.useForm()
 
   const dispatch = useAppDispatch()
   const equipmentBasicData = useAppSelector((state) => state?.basic?.equipmentBasicData)
+  const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
 
   useEffect(() => {
     if (equipmentBasicData && visible) {
@@ -44,21 +47,52 @@ function ZhuangbeiSet({ visible, onClose }) {
 
   const onOk = () => {
     form.validateFields().then((value) => {
+      let 套装_1数量 = 0
+      // let 套装_2数量 = 0
       const data: EquipmentBasicDTO = {
         wucaishi: value?.wucaishi,
         openQiangLv: value?.openQiangLv,
         equipments: Object.keys(value)
           .filter((item) => !['wucaishi', 'openQiangLv'].includes(item))
           .map((item) => {
+            if (童装_1Ids.includes(value[item]?.id)) {
+              套装_1数量 = 套装_1数量 + 1
+            }
             return value[item]
           }),
+        taozhuangShuanghui: false,
       }
-      localStorage?.setItem('zhuangbei_data_basic', JSON.stringify(data))
+      data.taozhuangShuanghui = 套装_1数量 >= 2
+      localStorage?.setItem('zhuangbei_data_basic_1', JSON.stringify(data))
       dispatch(setEquipmentBasicData(data))
       const { basicData, finalData } = getFinalCharacterBasicDataByEquipment(data)
       localStorage?.setItem('character_data_basic', JSON.stringify(basicData))
       dispatch(setCharacterBasicData(basicData))
-      dispatch(setCharacterFinalData(finalData))
+      dispatch(setCharacterFinalData({ ...finalData, 套装会心会效: 套装_1数量 >= 2 }))
+
+      if (套装_1数量 > 3) {
+        const newSkillBasicData = skillBasicData.map((item) => {
+          return {
+            ...item,
+            技能增益列表:
+              item?.技能名称 === '孤锋破浪'
+                ? item.技能增益列表.map((a) => {
+                    if (a.增益名称 === '套装10%') {
+                      return {
+                        ...a,
+                        常驻增益: true,
+                      }
+                    } else {
+                      return {
+                        ...a,
+                      }
+                    }
+                  })
+                : item.技能增益列表,
+          }
+        })
+        dispatch(setSkillBasicData(newSkillBasicData))
+      }
       onClose(true)
     })
   }

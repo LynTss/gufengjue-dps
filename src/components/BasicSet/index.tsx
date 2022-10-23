@@ -10,6 +10,8 @@ import { setCharacterFinalData } from '@/store/basicReducer'
 import Footer from './Footer'
 import './index.css'
 import Zengyi from './Zengyi'
+import { setSkillBasicData } from '@/store/zengyiReducer'
+import { getSkillBasicData } from './CommonSet/MijiSet/utils'
 
 interface CharacterSetProps {
   getDps: () => void
@@ -22,6 +24,8 @@ function BasicSet(props: CharacterSetProps) {
   const dispatch = useAppDispatch()
   const characterBasicData = useAppSelector((state) => state.basic.characterBasicData)
   const equipmentBasicData = useAppSelector((state) => state.basic.equipmentBasicData)
+  const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
+  const mijiSelectedData = useAppSelector((state) => state?.zengyi?.mijiSelectedData)
 
   const getDpsFunction = () => {
     setTimeout(() => {
@@ -32,7 +36,40 @@ function BasicSet(props: CharacterSetProps) {
   useEffect(() => {
     if (characterBasicData) {
       const final = getFinalCharacterBasicData(characterBasicData, equipmentBasicData?.openQiangLv)
-      dispatch(setCharacterFinalData(final))
+      dispatch(
+        setCharacterFinalData({ ...final, 套装会心会效: equipmentBasicData?.taozhuangShuanghui })
+      )
+
+      let newSkillBasicData = [...skillBasicData]
+      // 进入以后默认设置秘籍选项
+      if (mijiSelectedData?.length) {
+        newSkillBasicData = getSkillBasicData(newSkillBasicData, mijiSelectedData)
+      }
+
+      newSkillBasicData = newSkillBasicData.map((item) => {
+        return {
+          ...item,
+          技能增益列表:
+            item?.技能名称 === '孤锋破浪'
+              ? [
+                  ...item.技能增益列表.map((a) => {
+                    if (a.增益名称 === '套装10%') {
+                      return {
+                        ...a,
+                        常驻增益: true,
+                      }
+                    } else {
+                      return {
+                        ...a,
+                      }
+                    }
+                  }),
+                ]
+              : item.技能增益列表,
+        }
+      })
+
+      dispatch(setSkillBasicData(newSkillBasicData))
     }
   }, [])
 

@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import skillMijiBasicData from '@/data/miji'
 import { Button, Checkbox, Col, Drawer, message, Row } from 'antd'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { setMijiSelectedData, setSkillBasicData } from '@/store/zengyiReducer'
 import { MijiBasicDataDTO, SkillMijiBasicDataDTO } from '@/@types/miji'
 import { getSkillBasicData } from './utils'
@@ -12,14 +12,6 @@ function MijiSet({ getDpsFunction }) {
   const dispatch = useAppDispatch()
   const mijiSelectedData = useAppSelector((state) => state?.zengyi?.mijiSelectedData)
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
-
-  useEffect(() => {
-    // 进入以后默认设置秘籍选项
-    if (mijiSelectedData?.length) {
-      const newSkillBasicData = getSkillBasicData(skillBasicData, mijiSelectedData)
-      dispatch(setSkillBasicData(newSkillBasicData))
-    }
-  }, [])
 
   const selectMiji = (e, mijiData: MijiBasicDataDTO, skillData: SkillMijiBasicDataDTO) => {
     const newData = mijiSelectedData.map((item) => {
@@ -46,6 +38,7 @@ function MijiSet({ getDpsFunction }) {
         return { ...item }
       }
     })
+    localStorage.setItem('miji_selected_data', JSON.stringify(newData))
     dispatch(setMijiSelectedData(newData))
 
     const newSkillBasicData = getSkillBasicData(skillBasicData, newData)

@@ -91,10 +91,15 @@ export const getSingleSkillTotalDps = (
     let 无增益技能数 = 循环?.技能数量
     let 技能增伤 = 1
     // 暴力默认计算了2件套收益
-    let 郭氏额外会效果值 = 41
-    let 额外会心率 = 0.04
+    let 郭氏额外会效果值 = 0
+    let 额外会心率 = 0
     let 计算目标 = 当前目标
     let 最终人物属性 = 人物属性
+
+    if (人物属性?.套装会心会效) {
+      郭氏额外会效果值 = 郭氏额外会效果值 + 41
+      额外会心率 = 额外会心率 + 0.04
+    }
 
     if (zengyixuanxiangData) {
       const {
@@ -389,6 +394,9 @@ const switchGain = (
       case GainTypeEnum.无双等级:
         计算后人物属性.无双值 = 计算后人物属性.无双值 + 增益数值
         break
+      case GainTypeEnum.加速:
+        计算后人物属性.加速值 = 计算后人物属性.加速值 + 增益数值
+        break
       default:
         console.error(`存在未计算增益${增益?.增益类型}`, 增益)
         break
@@ -427,6 +435,9 @@ const switchGain = (
         break
       case GainTypeEnum.郭氏外攻破防等级:
         计算后人物属性.破防值 = guoshiResult(计算后人物属性.破防值, 增益数值)
+        break
+      case GainTypeEnum.加速:
+        计算后人物属性.加速值 = 计算后人物属性.加速值 + 增益数值
         break
       case GainTypeEnum.郭氏无双等级:
         计算后人物属性.无双值 = guoshiResult(计算后人物属性.无双值, 增益数值)

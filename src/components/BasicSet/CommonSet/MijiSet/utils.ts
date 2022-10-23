@@ -46,5 +46,6 @@ export const getSkillMijiZengyi = (
       zengyiList = zengyiList?.concat(newList)
     }
   })
+
   return zengyiList
 }
