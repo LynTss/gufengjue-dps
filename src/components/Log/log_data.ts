@@ -1,7 +1,7 @@
 export default [
   {
     version: '1.0.0',
-    content: ['更新团队增益', '更新小吃'],
+    content: ['发布1.0正式版', '更新团队增益、小吃等'],
   },
   {
     version: '0.0.7',
