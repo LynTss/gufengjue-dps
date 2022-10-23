@@ -1,5 +1,9 @@
 export default [
   {
+    version: '1.0.0',
+    content: ['更新团队增益', '更新小吃'],
+  },
+  {
     version: '0.0.7',
     content: [
       '修改了孤锋破浪的武器伤害系数100% => 250%',

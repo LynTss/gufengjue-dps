@@ -48,7 +48,6 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
       ]
     }
 
-    console.log('newData', newData)
     saveDataAndGetDps(newData)
   }
 

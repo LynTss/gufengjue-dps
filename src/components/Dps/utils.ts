@@ -363,8 +363,17 @@ const switchGain = (
         计算后人物属性.破招值 = 计算后人物属性.破招值 + 增益数值
         break
       case GainTypeEnum.无视防御:
-        计算后目标.防御点数 =
-          计算后目标.防御点数 - 增益数值 > 0 ? 计算后目标.防御点数 - 增益数值 : 0
+        if (计算后目标.防御点数 - 增益数值 > 0) {
+          计算后目标 = {
+            ...计算后目标,
+            防御点数: 计算后目标.防御点数 - 增益数值,
+          }
+        } else {
+          计算后目标 = {
+            ...计算后目标,
+            防御点数: 0,
+          }
+        }
         break
       case GainTypeEnum.力道:
         // 计算强膂有点问题
@@ -526,8 +535,6 @@ const getZengyi = (
     }
   }
 
-  console.log('增益数据', 增益数据)
-
   if (增益数据?.小吃) {
     const 小吃数据集合 = XIAOCHI_DATA.filter((item) => 增益数据?.小吃?.includes(item.小吃名称))
     if (小吃数据集合?.length) {
@@ -574,6 +581,7 @@ const getZengyi = (
       团队增益集合.forEach((item) => {
         // eslint-disable-next-line @typescript-eslint/no-extra-semi
         ;(item?.增益集合 || []).map((c) => {
+          const 数值 = (c?.增益数值 * item?.层数 * item?.覆盖率) / 100
           const {
             计算后人物属性,
             计算后技能增伤,
@@ -582,7 +590,7 @@ const getZengyi = (
             计算后目标: 计算后计算目标,
           } = switchGain(
             计算人物属性,
-            { ...c, 增益数值: (c?.增益数值 * item?.层数 * item?.覆盖率) / 100 },
+            { ...c, 增益数值: 数值 },
             计算技能增伤,
             计算郭氏额外会效果值,
             计算额外会心率,
