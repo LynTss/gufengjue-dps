@@ -203,7 +203,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
   },
   {
     增益名称: '号令三军',
-    层数: 1,
+    层数: 36,
     覆盖率: 20,
     层数选项数组: [
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
@@ -220,7 +220,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
   },
   {
     增益名称: '朝圣言',
-    层数: 1,
+    层数: 18,
     覆盖率: 6.6, // 持续8秒，CD5分钟，一般一直刷2分钟一次
     层数选项数组: [
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
@@ -236,7 +236,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
   },
   {
     增益名称: '鸿法',
-    层数: 1,
+    层数: 20,
     覆盖率: 50,
     覆盖率支持手动录入: true,
     层数选项数组: [
