@@ -10,7 +10,12 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
 
   const [visible, setVisible] = useState<boolean>(false)
 
-  const onChangeZengyi = (e: boolean, zengyi: TuanduiZengyiBasicDataDTO) => {
+  const onChangeZengyi = (
+    e: boolean | null,
+    zengyi: TuanduiZengyiBasicDataDTO,
+    cengshu?,
+    fugailv?
+  ) => {
     const exist = zengyixuanxiangData?.团队增益?.some((item) => item.增益名称 === zengyi?.增益名称)
     const newData: ZengyixuanxiangDataDTO = {
       ...zengyixuanxiangData,
@@ -21,7 +26,9 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
         if (item.增益名称 === zengyi?.增益名称) {
           return {
             ...item,
-            启用: e,
+            启用: e === null ? item?.启用 : e,
+            层数: cengshu || item?.层数,
+            覆盖率: fugailv || item?.覆盖率,
           }
         } else {
           return {
@@ -34,15 +41,14 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
         ...newData.团队增益,
         {
           增益名称: zengyi?.增益名称,
-          启用: e,
-          层数: zengyi?.层数,
-          覆盖率: zengyi?.覆盖率,
+          启用: e === null ? true : e,
+          层数: cengshu || zengyi?.层数,
+          覆盖率: fugailv || zengyi?.覆盖率,
         },
       ]
     }
 
     console.log('newData', newData)
-
     saveDataAndGetDps(newData)
   }
 
@@ -82,6 +88,9 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
         {TuanduiZengyi_DATA.filter(
           (item) => item.层数选项数组?.length || item?.覆盖率支持手动录入
         ).map((item) => {
+          const 当前增益选项 = (zengyixuanxiangData?.团队增益 || []).find(
+            (a) => item?.增益名称 === a?.增益名称
+          )
           return (
             <div
               className={`tuandui-zengyi-detail-item ${
@@ -97,9 +106,11 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
                   <div className={'tuandui-zengyi-content-item'}>
                     <span className="tuandui-zengyi-content-item-title">层数</span>
                     <Select
+                      value={当前增益选项?.层数}
                       className="t-z-c-content"
                       placeholder="请选择"
                       defaultValue={item?.层数}
+                      onChange={(e) => onChangeZengyi(null, item, e)}
                     >
                       {item?.层数选项数组?.map((a) => {
                         return (
@@ -118,9 +129,11 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
                       className="t-z-c-content"
                       placeholder="请输入覆盖率"
                       min={0}
+                      value={当前增益选项?.覆盖率}
                       precision={2}
                       max={100}
                       addonAfter={'%'}
+                      onChange={(e) => onChangeZengyi(null, item, item.层数, e)}
                       defaultValue={item?.覆盖率 * 100}
                     />
                   </div>

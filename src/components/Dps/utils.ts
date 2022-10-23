@@ -324,8 +324,7 @@ const switchGain = (
   技能增伤: number,
   郭氏额外会效果值: number,
   额外会心率: number,
-  当前目标: TargetDTO,
-  飘黄?
+  当前目标: TargetDTO
 ) => {
   const { 增益数值, 增益类型, 增益计算类型 } = 增益
   const 计算后人物属性 = { ...人物属性 }
@@ -335,18 +334,6 @@ const switchGain = (
   let 计算后目标 = 当前目标
   let 力道提升值 = 0
   const 强膂 = 人物属性?.强膂
-  if (飘黄) {
-    console.log('计算后目标-1', 计算后目标)
-    console.log('增益', 增益)
-    console.log(
-      '增益?.增益计算类型 === GainTypeEnum.郭氏无视防御',
-      增益?.增益计算类型 === GainTypeEnum.郭氏无视防御
-    )
-  }
-
-  if (增益?.增益类型 === GainTypeEnum.郭氏无视防御) {
-    console.log('计算后目标', 计算后目标)
-  }
 
   if (增益计算类型 === GainDpsTypeEnum.A) {
     switch (增益类型) {
@@ -422,14 +409,12 @@ const switchGain = (
               防御点数: 计算后目标.防御点数 - Math.floor((计算后目标?.防御点数 * 增益数值) / 1024),
             }
           } else {
-            console.log('计算后目标.防御点数', 计算后目标.防御点数)
             计算后目标 = {
               ...计算后目标,
               防御点数: 0,
             }
           }
         }
-        console.log('计算后目标.防御点数-2', 计算后目标.防御点数)
         break
       case GainTypeEnum.郭氏外攻破防等级:
         计算后人物属性.破防值 = guoshiResult(计算后人物属性.破防值, 增益数值)
@@ -541,6 +526,8 @@ const getZengyi = (
     }
   }
 
+  console.log('增益数据', 增益数据)
+
   if (增益数据?.小吃) {
     const 小吃数据集合 = XIAOCHI_DATA.filter((item) => 增益数据?.小吃?.includes(item.小吃名称))
     if (小吃数据集合?.length) {
@@ -576,15 +563,17 @@ const getZengyi = (
     const 团队增益集合 = 增益数据?.团队增益
       ?.filter((item) => item.启用)
       .map((item) => {
-        return TuanduiZengyi_DATA.find((a) => a.增益名称 === item.增益名称)
+        return {
+          ...TuanduiZengyi_DATA.find((a) => a.增益名称 === item.增益名称),
+          层数: item?.层数,
+          覆盖率: item?.覆盖率,
+        }
       })
 
     if (团队增益集合?.length) {
       团队增益集合.forEach((item) => {
-        if (item?.增益名称 === '飘黄') {
-          console.log('item', item)
-        }
-        item?.增益集合.map((c) => {
+        // eslint-disable-next-line @typescript-eslint/no-extra-semi
+        ;(item?.增益集合 || []).map((c) => {
           const {
             计算后人物属性,
             计算后技能增伤,
@@ -597,8 +586,7 @@ const getZengyi = (
             计算技能增伤,
             计算郭氏额外会效果值,
             计算额外会心率,
-            计算目标,
-            item?.增益名称 === '飘黄'
+            计算目标
           )
           计算人物属性 = { ...计算后人物属性 }
           计算技能增伤 = 计算后技能增伤
