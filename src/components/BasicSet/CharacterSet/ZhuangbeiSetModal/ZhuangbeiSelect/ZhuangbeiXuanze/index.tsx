@@ -55,7 +55,7 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
                 {(getZhuangbeiZengyiMiaoshu(item) || []).map((a) => (
                   <span
                     className={`zhuangbei-miaoshu-label ${
-                      a === '精简' ? 'zhuangbei-miaoshu-label-jingjian' : ''
+                      a === '精简' || a === '特效' ? 'zhuangbei-miaoshu-label-jingjian' : ''
                     }`}
                     key={`${item.装备名称}-${a}-${indexKey}`}
                   >
@@ -78,6 +78,9 @@ export default forwardRef(ZhuangbeiXuanze)
 export const getZhuangbeiZengyiMiaoshu = (data: EquipmentDTO) => {
   const { 装备增益, 装备类型 } = data
   const strList: string[] = []
+  if ([EquipmentTypeEnum.特效武器].includes(装备类型)) {
+    strList.push('特效')
+  }
   if ([EquipmentTypeEnum.副本精简, EquipmentTypeEnum.试炼精简].includes(装备类型)) {
     strList.push('精简')
   }

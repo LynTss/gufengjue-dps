@@ -26,6 +26,14 @@ export interface EquipmentBasicDTO {
    * @name 套装双会
    */
   taozhuangShuanghui: boolean
+  /**
+   * @name 水特效武器
+   */
+  shuitexiaoWuqi: boolean
+  /**
+   * @name 特效腰坠
+   */
+  texiaoyaozhui: boolean
 }
 
 /**

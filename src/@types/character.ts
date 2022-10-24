@@ -82,6 +82,14 @@ export interface CharacterFinalDTO extends CharacterBasicDTO {
    * @name 套装会心会效
    */
   套装会心会效?: boolean
+  /**
+   * @name 水特效武器
+   */
+  水特效武器?: boolean
+  /**
+   * @name 特效腰坠
+   */
+  风特效腰坠?: boolean
 }
 
 /**

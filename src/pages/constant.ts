@@ -285,6 +285,8 @@ export const DEFAULT_EQUIPMENT = {
     },
   ],
   taozhuangShuanghui: true,
+  shuitexiaoWuqi: true,
+  texiaoyaozhui: true,
 }
 
 export const DEFAULT_MIJI_SELECTED_DATA: MijiSelectedData[] = [

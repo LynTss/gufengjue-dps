@@ -37,7 +37,12 @@ function BasicSet(props: CharacterSetProps) {
     if (characterBasicData) {
       const final = getFinalCharacterBasicData(characterBasicData, equipmentBasicData?.openQiangLv)
       dispatch(
-        setCharacterFinalData({ ...final, 套装会心会效: equipmentBasicData?.taozhuangShuanghui })
+        setCharacterFinalData({
+          ...final,
+          套装会心会效: equipmentBasicData?.taozhuangShuanghui,
+          水特效武器: equipmentBasicData?.shuitexiaoWuqi,
+          风特效腰坠: equipmentBasicData?.texiaoyaozhui,
+        })
       )
 
       let newSkillBasicData = [...skillBasicData]
