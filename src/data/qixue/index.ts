@@ -33,7 +33,10 @@ const 奇穴数据: QixueListDTO[] = [
   {
     奇穴层数: '第六层',
     是否不可编辑: true,
-    奇穴列表: [{ 奇穴名称: '击懈', 奇穴图片: QIXUEIMG_QIXUE }],
+    奇穴列表: [
+      { 奇穴名称: '击懈', 奇穴图片: QIXUEIMG_QIXUE },
+      { 奇穴名称: '观衅', 奇穴图片: QIXUEIMG_QIXUE },
+    ],
   },
   {
     奇穴层数: '第七层',
@@ -50,20 +53,23 @@ const 奇穴数据: QixueListDTO[] = [
   {
     奇穴层数: '第九层',
     是否不可编辑: true,
-    奇穴列表: [{ 奇穴名称: '驭耀', 奇穴图片: QIXUEIMG_QIXUE }],
+    奇穴列表: [
+      { 奇穴名称: '驭耀', 奇穴图片: QIXUEIMG_QIXUE },
+      { 奇穴名称: '周流', 是否不可编辑: true, 奇穴图片: QIXUEIMG_QIXUE },
+    ],
   },
   {
     奇穴层数: '第十层',
     奇穴列表: [
       { 奇穴名称: '强膂', 奇穴图片: QIXUEIMG_QIXUE },
-      { 奇穴名称: '抵极', 是否不可编辑: true, 奇穴图片: QIXUEIMG_QIXUE },
+      // { 奇穴名称: '抵极', 是否不可编辑: true, 奇穴图片: QIXUEIMG_QIXUE },
     ],
   },
   {
     奇穴层数: '第十一层',
     奇穴列表: [
-      { 奇穴名称: '戗风', 是否不可编辑: true, 奇穴图片: QIXUEIMG_QIXUE },
-      { 奇穴名称: '斩颓', 奇穴图片: QIXUEIMG_QIXUE },
+      // { 奇穴名称: '戗风', 是否不可编辑: true, 奇穴图片: QIXUEIMG_QIXUE },
+      // { 奇穴名称: '斩颓', 是否不可编辑: true, 奇穴图片: QIXUEIMG_QIXUE },
       { 奇穴名称: '流岚', 奇穴图片: QIXUEIMG_QIXUE },
     ],
   },
