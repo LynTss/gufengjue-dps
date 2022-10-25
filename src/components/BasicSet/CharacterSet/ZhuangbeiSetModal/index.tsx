@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Form, Modal } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 // import { useAppSelector } from '@/hooks'
@@ -23,6 +23,7 @@ function ZhuangbeiSet({ visible, onClose }) {
   const dispatch = useAppDispatch()
   const equipmentBasicData = useAppSelector((state) => state?.basic?.equipmentBasicData)
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
+  const [默认镶嵌宝石等级, 设置默认镶嵌宝石等级] = useState<number>(8)
 
   useEffect(() => {
     if (equipmentBasicData && visible) {
@@ -141,6 +142,7 @@ function ZhuangbeiSet({ visible, onClose }) {
             res[item.key] = { ...newObj }
           }
         })
+      设置默认镶嵌宝石等级(number)
       form.setFieldsValue({
         ...res,
       })
@@ -174,14 +176,21 @@ function ZhuangbeiSet({ visible, onClose }) {
               onClick={() => setAllXiangQian(6)}
               className={'zhuangbei-form-set-btn'}
             >
-              全部六级
+              全六级
+            </Button>
+            <Button
+              size="small"
+              onClick={() => setAllXiangQian(7)}
+              className={'zhuangbei-form-set-btn'}
+            >
+              全七级
             </Button>
             <Button
               size="small"
               onClick={() => setAllXiangQian(8)}
               className={'zhuangbei-form-set-btn'}
             >
-              全部八级
+              全八级
             </Button>
           </div>
         </div>
@@ -198,7 +207,7 @@ function ZhuangbeiSet({ visible, onClose }) {
             const data = EquipmentCharacterPositionEnum[item]
             return (
               <Form.Item label={data} name={`${data}${item}`} key={`${data}${item}`}>
-                <ZhuangbeiSelect type={data} indexKey={item} />
+                <ZhuangbeiSelect 默认镶嵌宝石等级={默认镶嵌宝石等级} type={data} indexKey={item} />
               </Form.Item>
             )
           })}

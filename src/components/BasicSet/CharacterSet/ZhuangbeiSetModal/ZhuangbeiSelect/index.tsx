@@ -21,10 +21,11 @@ interface ZhuangbeiSelectProps {
   onChange?: (e: EquipmentListDTO) => void
   type: EquipmentPositionEnum
   indexKey: string
+  默认镶嵌宝石等级: number
 }
 
 function ZhuangbeiSelect(props: ZhuangbeiSelectProps) {
-  const { value, onChange, type, indexKey } = props
+  const { value, onChange, type, 默认镶嵌宝石等级, indexKey } = props
 
   const list: EquipmentDTO[] = useMemo(() => {
     return ZUANGBEI_DATA[type] || []
@@ -39,7 +40,7 @@ function ZhuangbeiSelect(props: ZhuangbeiSelectProps) {
         镶嵌孔数组: obj?.镶嵌孔数组?.map((item) => {
           return {
             ...item,
-            镶嵌宝石等级: 6,
+            镶嵌宝石等级: 默认镶嵌宝石等级,
           }
         }),
         当前精炼等级: getZuiDaJingLian(obj),
