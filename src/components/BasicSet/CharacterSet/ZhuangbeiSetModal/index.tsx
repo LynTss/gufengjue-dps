@@ -110,6 +110,7 @@ function ZhuangbeiSet({ visible, onClose }) {
       form.setFieldsValue({
         ...res,
       })
+      formValueChange(undefined, res)
     })
   }
 
