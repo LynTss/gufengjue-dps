@@ -9,21 +9,29 @@ import {
 } from '@/store/basicReducer'
 import { EquipmentCharacterPositionEnum } from '@/@types/enum'
 import ZhuangbeiSelect from './ZhuangbeiSelect'
-import { EquipmentBasicDTO } from '@/@types/equipment'
-import './index.css'
 import WuCaiShiXuanZe from './WuCaiShiXuanZe'
 import ValueCheckBox from '@/components/common/ValueCheckBox'
 import { getFinalCharacterBasicDataByEquipment } from '../util'
-import { 套装_1Ids, 特效_武器Ids, 特效_腰椎Ids } from '@/data/zhuangbei'
 import { setSkillBasicData } from '@/store/zengyiReducer'
+import './index.css'
+import { getNewEquipmentData, gufengBufferKillData } from './utils'
+import { getDpsTotal } from '@/components/Dps/utils'
 
 function ZhuangbeiSet({ visible, onClose }) {
   const [form] = Form.useForm()
 
   const dispatch = useAppDispatch()
   const equipmentBasicData = useAppSelector((state) => state?.basic?.equipmentBasicData)
+  const currentDps = useAppSelector((state) => state?.basic?.currentDps)
+  const dpsTime = useAppSelector((state) => state?.basic?.dpsTime)
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
+  const currentCycle = useAppSelector((state) => state?.basic?.currentCycle)
+  const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
+  const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
+  const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
+
   const [默认镶嵌宝石等级, 设置默认镶嵌宝石等级] = useState<number>(8)
+  const [afterDps, setAfterDps] = useState<number>(0)
 
   useEffect(() => {
     if (equipmentBasicData && visible) {
@@ -48,34 +56,7 @@ function ZhuangbeiSet({ visible, onClose }) {
 
   const onOk = () => {
     form.validateFields().then((value) => {
-      let 套装_1数量 = 0
-      let isTexiaoWuqi = false
-      let isTexiaoYaozhui = false
-      // let 套装_2数量 = 0
-      const data: EquipmentBasicDTO = {
-        wucaishi: value?.wucaishi,
-        openQiangLv: value?.openQiangLv,
-        equipments: Object.keys(value)
-          .filter((item) => !['wucaishi', 'openQiangLv'].includes(item))
-          .map((item) => {
-            if (套装_1Ids.includes(value[item]?.id)) {
-              套装_1数量 = 套装_1数量 + 1
-            }
-            if (特效_武器Ids.includes(value[item]?.id)) {
-              isTexiaoWuqi = true
-            }
-            if (特效_腰椎Ids.includes(value[item]?.id)) {
-              isTexiaoYaozhui = true
-            }
-            return value[item]
-          }),
-        taozhuangShuanghui: false,
-        shuitexiaoWuqi: false,
-        texiaoyaozhui: false,
-      }
-      data.taozhuangShuanghui = 套装_1数量 >= 2
-      data.shuitexiaoWuqi = !!isTexiaoWuqi
-      data.texiaoyaozhui = !!isTexiaoYaozhui
+      const data = getNewEquipmentData(value)
       localStorage?.setItem('zhuangbei_data_basic_1', JSON.stringify(data))
       dispatch(setEquipmentBasicData(data))
       const { basicData, finalData } = getFinalCharacterBasicDataByEquipment(data)
@@ -84,33 +65,13 @@ function ZhuangbeiSet({ visible, onClose }) {
       dispatch(
         setCharacterFinalData({
           ...finalData,
-          套装会心会效: 套装_1数量 >= 2,
-          水特效武器: !!isTexiaoWuqi,
-          风特效腰坠: !!isTexiaoYaozhui,
+          套装会心会效: data.taozhuangShuanghui,
+          水特效武器: data.shuitexiaoWuqi,
+          风特效腰坠: data.texiaoyaozhui,
         })
       )
-
-      if (套装_1数量 > 3) {
-        const newSkillBasicData = skillBasicData.map((item) => {
-          return {
-            ...item,
-            技能增益列表:
-              item?.技能名称 === '孤锋破浪'
-                ? item.技能增益列表.map((a) => {
-                    if (a.增益名称 === '套装10%') {
-                      return {
-                        ...a,
-                        常驻增益: true,
-                      }
-                    } else {
-                      return {
-                        ...a,
-                      }
-                    }
-                  })
-                : item.技能增益列表,
-          }
-        })
+      if (data.taozhuangJineng) {
+        const newSkillBasicData = gufengBufferKillData(skillBasicData)
         dispatch(setSkillBasicData(newSkillBasicData))
       }
       onClose(true)
@@ -147,6 +108,35 @@ function ZhuangbeiSet({ visible, onClose }) {
         ...res,
       })
     })
+  }
+
+  // 更换装备计算dps
+  const formValueChange = (_, value) => {
+    try {
+      const data = getNewEquipmentData(value)
+      const { finalData } = getFinalCharacterBasicDataByEquipment(data)
+      const final = {
+        ...finalData,
+        套装会心会效: data.taozhuangShuanghui,
+        水特效武器: data.shuitexiaoWuqi,
+        风特效腰坠: data.texiaoyaozhui,
+      }
+      let newSkillBasicData = skillBasicData
+      if (data.taozhuangJineng) {
+        newSkillBasicData = gufengBufferKillData(skillBasicData)
+      }
+      const { totalDps } = getDpsTotal({
+        currentCycle: currentCycle,
+        characterFinalData: final,
+        当前目标: currentTarget,
+        skillBasicData: newSkillBasicData,
+        zengyiQiyong,
+        zengyixuanxiangData,
+      })
+      setAfterDps(Math.floor(totalDps / dpsTime))
+    } catch (_) {
+      setAfterDps(0)
+    }
   }
 
   return (
@@ -201,7 +191,12 @@ function ZhuangbeiSet({ visible, onClose }) {
           <h1 className="zhuangbei-form-title">五彩石</h1>
         </div>
       </div>
-      <Form colon={false} className="zhuangbei-input-set-modal-form" form={form}>
+      <Form
+        colon={false}
+        onValuesChange={formValueChange}
+        className="zhuangbei-input-set-modal-form"
+        form={form}
+      >
         <div className="zhuangbei-input-set-modal-form-left">
           {Object.keys(EquipmentCharacterPositionEnum).map((item) => {
             const data = EquipmentCharacterPositionEnum[item]
@@ -219,6 +214,24 @@ function ZhuangbeiSet({ visible, onClose }) {
           <Form.Item name={`openQiangLv`}>
             <ValueCheckBox>启用强膂</ValueCheckBox>
           </Form.Item>
+          {currentDps !== afterDps && afterDps ? (
+            <div className={'dps-diff'}>
+              <div className="dps-diff-item">
+                <div className="dps-diff-title">更换前</div>
+                <p className="dps-diff-dps">{currentDps}</p>
+              </div>
+              <div className="dps-diff-item">
+                <div className="dps-diff-title">替换后</div>
+                <p
+                  className={`dps-diff-dps ${
+                    afterDps > currentDps ? 'dps-diff-up' : 'dps-diff-down'
+                  }`}
+                >
+                  {afterDps}
+                </p>
+              </div>
+            </div>
+          ) : null}
         </div>
       </Form>
     </Modal>

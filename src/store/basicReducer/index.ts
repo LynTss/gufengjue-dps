@@ -27,6 +27,8 @@ interface BasicState {
   currentTarget: TargetDTO
   // 当前输出计算目标名
   currentTargetName: string
+  // 当前计算过的dps
+  currentDps: number
   // dps计算时间
   dpsTime: number
 }
@@ -49,6 +51,7 @@ const initialState: BasicState = {
     会心值: 0,
     会心效果值: 0,
   },
+  currentDps: 0,
   currentCycle: getDefaultCycle()?.cycle,
   currentCycleName: getDefaultCycle()?.name,
   currentTarget: getDefaultTarget()?.target,
@@ -80,6 +83,9 @@ export const counterSlice = createSlice({
     setDpsTime: (state, action: PayloadAction<number>) => {
       state.dpsTime = action.payload
     },
+    setCurrentDps: (state, action: PayloadAction<number>) => {
+      state.currentDps = action.payload
+    },
   },
 })
 
@@ -90,6 +96,7 @@ export const {
   setCurrentCycle,
   setCurrentTarget,
   setDpsTime,
+  setCurrentDps,
 } = counterSlice.actions // 导出操作state的喊出
 export const selectCount = (state: RootState) => state
 export default counterSlice.reducer // 导出当前reducer在store/index.ts中记性全局挂

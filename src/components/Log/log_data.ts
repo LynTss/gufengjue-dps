@@ -1,5 +1,9 @@
 export default [
   {
+    version: '1.0.2',
+    content: ['更新周流循环', '配装器内新增dps对比能力'],
+  },
+  {
     version: '1.0.1',
     content: ['更新装备属性、名称', '添加绝地天通刀(无特效)'],
   },

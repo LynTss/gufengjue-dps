@@ -34,6 +34,10 @@ export interface EquipmentBasicDTO {
    * @name 特效腰坠
    */
   texiaoyaozhui: boolean
+  /**
+   * @name 套装技能加成
+   */
+  taozhuangJineng: boolean
 }
 
 /**

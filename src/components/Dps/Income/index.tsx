@@ -2,7 +2,7 @@
  * 收益展示
  */
 
-import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import * as G2 from '@antv/g2'
 import { EnchantGainDTO } from '@/data/enchantGain'
 import { useAppSelector } from '@/hooks'
@@ -26,6 +26,7 @@ function Income({ totalDps, zengyiVisible }, ref) {
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
 
   const [chartData, setChartData] = useState<any>()
+  const limitRef: any = useRef<any>()
 
   const getAfterIncomeDpsPercent = (data) => {
     const 计算后属性 = getIncomeData(
@@ -61,12 +62,23 @@ function Income({ totalDps, zengyiVisible }, ref) {
   }))
 
   useEffect(() => {
+    limitRef.current = false
+    return () => {
+      limitRef.current = false
+    }
+  }, [])
+
+  useEffect(() => {
     setTimeout(() => {
       chartData && chartData.forceFit()
     }, 200)
   }, [zengyiVisible])
 
   const initChart = () => {
+    if (limitRef.current) {
+      return
+    }
+    limitRef.current = true
     const chart = chartData
       ? chartData
       : new G2.Chart({
@@ -120,6 +132,9 @@ function Income({ totalDps, zengyiVisible }, ref) {
     const dataSource = getDataSource()
     chart.data(dataSource)
     chart.render()
+    setTimeout(() => {
+      limitRef.current = false
+    }, 10)
   }
 
   return (

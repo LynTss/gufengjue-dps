@@ -78,3 +78,41 @@
   width: calc(100% - 820px);
   padding-left: 10px;
 }
+
+.dps-diff-item {
+  margin-bottom: 16px;
+}
+
+.dps-diff-item + .dps-diff-item {
+  margin: 0;
+}
+
+.dps-diff {
+  padding-top: 142px;
+}
+
+.dps-diff-title {
+  font-size: 16px;
+  color: var(--ant-primary-color);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.dps-diff-dps {
+  font-size: 32px;
+  margin-bottom: 0;
+  padding: 12px 0;
+  line-height: 32px;
+  color: #666;
+  text-align: center;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;;
+}
+
+.dps-diff-dps.dps-diff-up {
+  color: #2AC88F;
+}
+
+.dps-diff-dps.dps-diff-down {
+  color: #F34242;
+}

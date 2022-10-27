@@ -70,7 +70,9 @@ export const getFinalCharacterBasicDataByEquipment = (
       if (wucaishi) {
         basicDTO = switchWuCaiShi(wucaishi, basicDTO)
       }
-    } else if (['taozhuangShuanghui', 'shuitexiaoWuqi', 'texiaoyaozhui'].includes(item)) {
+    } else if (
+      ['taozhuangShuanghui', 'shuitexiaoWuqi', 'texiaoyaozhui', 'taozhuangJineng'].includes(item)
+    ) {
       basicDTO = { ...basicDTO }
     } else {
       basicDTO = switchZhuangbei(data[item], basicDTO)

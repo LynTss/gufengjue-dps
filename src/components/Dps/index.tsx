@@ -1,22 +1,25 @@
 import React, { forwardRef, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { Divider, message } from 'antd'
-import { useAppSelector } from '@/hooks'
+import { useAppDispatch, useAppSelector } from '@/hooks'
 
 import { DpsListData, getDpsTotal } from './utils'
 import DpsCountModal from './DpsCountModal/index'
 import Income from './Income'
 import './index.css'
+import { setCurrentDps } from '@/store/basicReducer'
 
 function Dps(props, ref) {
   const { zengyiVisible } = props
+  const dispatch = useAppDispatch()
   const characterFinalData = useAppSelector((state) => state?.basic?.characterFinalData)
   const currentCycle = useAppSelector((state) => state?.basic?.currentCycle)
   const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
+  const currentDps = useAppSelector((state) => state?.basic?.currentDps)
+  const dpsTime = useAppSelector((state) => state.basic.dpsTime)
   const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
   const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
 
-  const [dps, setDps] = useState<number>(0)
   const [total, setTotal] = useState<number>(0)
   const [dpsList, setDpsList] = useState<DpsListData[]>([])
   const [dpsCountModalVisible, setDpsCountModalVisible] = useState<boolean>(false)
@@ -48,21 +51,20 @@ function Dps(props, ref) {
       zengyiQiyong,
       zengyixuanxiangData,
     })
-    const time = +(localStorage.getItem('计算时间') || 300)
-    setDps(Math.floor(totalDps / time))
     setTotal(totalDps)
     setDpsList(dpsList)
     setTimeout(() => {
       incomeRef?.current?.initChart()
     })
+    dispatch(setCurrentDps(Math.floor(totalDps / dpsTime)))
   }
 
-  return dps ? (
+  return currentDps ? (
     <div className={`dps ${zengyiVisible ? `dps-zengyi-visible` : ''}`}>
       <h1 className={'dps-title'}>伤害计算</h1>
       <Divider />
       <div className={'dps-number-count'}>
-        <div className={'dps-number-count-text'}>{dps}</div>
+        <div className={'dps-number-count-text'}>{currentDps}</div>
         <div className={'dps-number-count-skill'} onClick={() => setDpsCountModalVisible(true)}>
           技能统计
         </div>
