@@ -34,7 +34,13 @@
 .dps-number-tip {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 32px;
+  margin-bottom: 8px;
+}
+
+.dps-income-tip {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 12px;
 }
 
 .dps-number-count-text {

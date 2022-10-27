@@ -63,6 +63,7 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
       当前目标,
       skillBasicData,
       zengyiQiyong ? zengyixuanxiangData : undefined
+      // 是否郭氏计算
     )
     dpsList.push({
       name: item.技能名称,
@@ -82,6 +83,7 @@ export const getSingleSkillTotalDps = (
   当前目标: TargetDTO,
   skillBasicData: SkillBasicDTO[],
   zengyixuanxiangData?: ZengyixuanxiangDataDTO
+  // 是否郭氏计算?: boolean
 ) => {
   // 在技能数据模型中找到当前执行循环内技能的数据，获取各种系数
   const 当前技能属性 = skillBasicData.find((item) => item.技能名称 === 循环?.技能名称)
