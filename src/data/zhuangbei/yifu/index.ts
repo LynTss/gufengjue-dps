@@ -3,6 +3,36 @@ import { EquipmentDTO } from './../../../@types/equipment'
 
 const ZHUANGBEI_YIFU: EquipmentDTO[] = [
   {
+    id: 90395,
+    uid: '188707',
+    装备名称: '垣翰衫',
+    装备品级: 9300,
+    装备类型: EquipmentTypeEnum.普通,
+    装备增益: [
+      { 增益数值: 3349, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 649, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 1053, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 3258, 增益类型: GainTypeEnum.加速 },
+      { 增益数值: 2896, 增益类型: GainTypeEnum.无双等级 },
+    ],
+    镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.破招 }],
+  },
+  {
+    id: 90431,
+    uid: '188797',
+    装备名称: '忆敬衫',
+    装备品级: 9300,
+    装备类型: EquipmentTypeEnum.普通,
+    装备增益: [
+      { 增益数值: 3349, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 649, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 1053, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 3258, 增益类型: GainTypeEnum.外攻破防等级 },
+      { 增益数值: 2896, 增益类型: GainTypeEnum.无双等级 },
+    ],
+    镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
+  },
+  {
     id: 90563,
     uid: '189079',
     装备名称: '羡双衣',
@@ -63,32 +93,47 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.会效 }],
   },
   {
-    id: 94053,
-    uid: '205932',
-    装备名称: '寻踪觅宝·光熙衣',
+    id: 90359,
+    uid: '188617',
+    装备名称: '重关衫',
     装备品级: 9300,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [
       { 增益数值: 3349, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 649, 增益类型: GainTypeEnum.力道 },
       { 增益数值: 1053, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 3258, 增益类型: GainTypeEnum.加速 },
+      { 增益数值: 3258, 增益类型: GainTypeEnum.外攻会心等级 },
       { 增益数值: 2896, 增益类型: GainTypeEnum.破招 },
+    ],
+    镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
+  },
+  {
+    id: 94053,
+    uid: '205932',
+    装备名称: '寻踪觅宝·遮澜衣',
+    装备品级: 9600,
+    装备类型: EquipmentTypeEnum.普通,
+    装备增益: [
+      { 增益数值: 3457, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 670, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 1087, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 3363, 增益类型: GainTypeEnum.加速 },
+      { 增益数值: 2990, 增益类型: GainTypeEnum.破招 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
   {
     id: 90701,
     uid: '189439',
-    装备名称: '箕宥衫',
-    装备品级: 9700,
+    装备名称: '女义衫',
+    装备品级: 9600,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [
-      { 增益数值: 3493, 增益类型: GainTypeEnum.体质 },
-      { 增益数值: 677, 增益类型: GainTypeEnum.力道 },
-      { 增益数值: 1099, 增益类型: GainTypeEnum.基础攻击 },
-      { 增益数值: 3399, 增益类型: GainTypeEnum.破招 },
-      { 增益数值: 3021, 增益类型: GainTypeEnum.无双等级 },
+      { 增益数值: 3457, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 670, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 1087, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 3363, 增益类型: GainTypeEnum.破招 },
+      { 增益数值: 2990, 增益类型: GainTypeEnum.无双等级 },
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
@@ -110,7 +155,7 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
   {
     id: 90879,
     uid: '189695',
-    装备名称: '星演·寒云衫',
+    装备名称: '展锋·飞空衫',
     装备品级: 10000,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [
@@ -200,7 +245,7 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
   {
     id: 91225,
     uid: '200217',
-    装备名称: '绝塞衫',
+    装备名称: '旋山衫',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [
@@ -215,7 +260,7 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
   {
     id: 91261,
     uid: '200277',
-    装备名称: '金瓯衣',
+    装备名称: '烟梦衣',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [

@@ -49,7 +49,15 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
             label={item.装备名称}
           >
             <div>
-              <span className={'zhuangbei-select-name'}>{item.装备名称}</span>
+              <span
+                className={`zhuangbei-select-name ${
+                  [EquipmentTypeEnum.大CW, EquipmentTypeEnum.小CW].includes(item.装备类型)
+                    ? 'zhuangbei-select-name-cw'
+                    : ''
+                }`}
+              >
+                {item.装备名称}
+              </span>
               <span className={'zhuangbei-select-shuoming'}>
                 {`(`}
                 {(getZhuangbeiZengyiMiaoshu(item) || []).map((a) => (
