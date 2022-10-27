@@ -52,6 +52,9 @@ function ZhuangbeiSet({ visible, onClose }) {
       })
       form.setFieldsValue(newObj)
     }
+    if (!visible) {
+      setAfterDps(0)
+    }
   }, [visible])
 
   const onOk = () => {
