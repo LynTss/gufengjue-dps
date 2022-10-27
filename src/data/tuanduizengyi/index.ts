@@ -52,12 +52,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.力道,
-        增益数值: 111,
-      },
-      {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻会心等级,
-        增益数值: 70,
+        增益数值: 224,
       },
     ],
   },
@@ -115,6 +110,18 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
     ],
   },
   {
+    增益名称: '仙王蛊鼎',
+    层数: 1,
+    覆盖率: 21,
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.伤害百分比,
+        增益数值: 0.08,
+      },
+    ],
+  },
+  {
     增益名称: '秋肃',
     层数: 1,
     覆盖率: 100,
@@ -146,7 +153,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.无视防御,
-        增益数值: 2300,
+        增益数值: 1529,
       },
     ],
   },
@@ -221,7 +228,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
   {
     增益名称: '朝圣言',
     层数: 24,
-    覆盖率: 6.6, // 持续8秒，CD5分钟，一般一直刷2分钟一次
+    覆盖率: 7, // 持续8秒，CD5分钟，一般一直刷2分钟一次
     层数选项数组: [
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
     ],
