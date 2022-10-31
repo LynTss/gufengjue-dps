@@ -16,7 +16,7 @@ import { setSkillBasicData } from '@/store/zengyiReducer'
 import './index.css'
 import { getNewEquipmentData, gufengBufferKillData } from './utils'
 import { getDpsTotal } from '@/components/Dps/utils'
-import { getDpsTime } from '@/utils/skill-dps'
+import { getDpsTime, getZengyiJiasu } from '@/utils/skill-dps'
 import { 属性系数 } from '@/data/constant'
 
 function ZhuangbeiSet({ visible, onClose }) {
@@ -134,7 +134,13 @@ function ZhuangbeiSet({ visible, onClose }) {
       if (data.taozhuangJineng) {
         newSkillBasicData = gufengBufferKillData(skillBasicData)
       }
-      const dpsTime = getDpsTime(currentCycleName, final, network)
+      const dpsTime = getDpsTime(
+        currentCycleName,
+        final,
+        network,
+        zengyiQiyong,
+        zengyixuanxiangData
+      )
       const { totalDps } = getDpsTotal({
         currentCycle: currentCycle,
         characterFinalData: final,
@@ -143,7 +149,8 @@ function ZhuangbeiSet({ visible, onClose }) {
         zengyiQiyong,
         zengyixuanxiangData,
       })
-      设置加速(final.加速值)
+      const 增益加速 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
+      设置加速(final.加速值 + 增益加速)
       setAfterDps(Math.floor(totalDps / dpsTime))
     } catch (_) {
       设置加速(null)

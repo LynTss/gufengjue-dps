@@ -9,6 +9,9 @@ import { SkillBasicDTO } from '@/@types/skill'
 import { 属性系数, 每等级减伤 } from '@/data/constant'
 import { guoshiFangyu, guoshiPofang } from './help'
 import All_Cycle_Data from '@/data/skillCycle'
+import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
+import XIAOCHI_DATA from '@/data/xiaochi'
+import { GainTypeEnum } from '@/@types/enum'
 
 /**
  * @name 破招原始伤害计算
@@ -131,11 +134,14 @@ export const skillWushuangDps = (damage: number, characterConfig: CharacterFinal
 export const getDpsTime = (
   currentCycleName: string,
   characterFinalData: CharacterFinalDTO,
-  network: number
+  network: number,
+  zengyiQiyong: boolean,
+  zengyixuanxiangData: ZengyixuanxiangDataDTO
 ): number => {
   let time = 300
   const currentCycleConfig = All_Cycle_Data.find((item) => item.name === currentCycleName)
-  const 加速等级 = 获取加速等级(characterFinalData.加速值)
+  const 增益加速等级 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
+  const 加速等级 = 获取加速等级(characterFinalData.加速值 + 增益加速等级)
   if (currentCycleConfig) {
     let 总帧数 = 0
     currentCycleConfig.cycleList.forEach((item) => {
@@ -144,7 +150,6 @@ export const getDpsTime = (
     })
     time = 总帧数 / 16
   }
-  console.log('time', time)
   return time
 }
 
@@ -160,4 +165,19 @@ const 获取加速等级 = (number) => {
     : number < 19316
     ? 4
     : 5
+}
+
+export const getZengyiJiasu = (zengyixuanxiangData: ZengyixuanxiangDataDTO) => {
+  let number = 0
+  ;(zengyixuanxiangData.小吃 || []).forEach((item) => {
+    const currentXiaochi = XIAOCHI_DATA.find((a) => a.小吃名称 === item)
+    if (currentXiaochi && currentXiaochi.增益集合?.length) {
+      currentXiaochi.增益集合.forEach((a) => {
+        if (a.增益类型 === GainTypeEnum.加速) {
+          number = number + a.增益数值
+        }
+      })
+    }
+  })
+  return number
 }

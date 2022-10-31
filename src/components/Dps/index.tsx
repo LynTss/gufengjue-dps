@@ -18,8 +18,8 @@ function Dps(props, ref) {
   const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
   const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
   const currentDps = useAppSelector((state) => state?.basic?.currentDps)
-  const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
+  const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
   const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
 
   const [total, setTotal] = useState<number>(0)
@@ -45,7 +45,13 @@ function Dps(props, ref) {
   }
 
   const getDps = () => {
-    const dpsTime = getDpsTime(currentCycleName, characterFinalData, network)
+    const dpsTime = getDpsTime(
+      currentCycleName,
+      characterFinalData,
+      network,
+      zengyiQiyong,
+      zengyixuanxiangData
+    )
     const { totalDps, dpsList } = getDpsTotal({
       currentCycle: 参与计算循环,
       characterFinalData,
