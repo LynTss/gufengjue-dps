@@ -2,7 +2,7 @@
  * 常量文件
  */
 
-import { TargetDTO } from '@/@types/character'
+import { NetworkDTO, TargetDTO } from '@/@types/character'
 
 export const 自身等级 = 120 // 当前角色等级
 export const 每等级减伤 = 0.05
@@ -77,3 +77,18 @@ export const 精炼加成系数 = {
   9: 0.153,
   10: 0.185,
 }
+
+export const 延迟设定: NetworkDTO[] = [
+  {
+    label: '珠海刀宗（30以下）',
+    value: 1,
+  },
+  {
+    label: '普通人（30-90）',
+    value: 2,
+  },
+  {
+    label: '卡鬼（90以上）',
+    value: 3,
+  },
+]

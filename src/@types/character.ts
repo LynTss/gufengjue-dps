@@ -117,3 +117,8 @@ export interface TargetDTO {
    */
   防御值: number
 }
+
+export interface NetworkDTO {
+  label: string
+  value: number
+}

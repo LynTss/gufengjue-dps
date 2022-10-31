@@ -8,6 +8,7 @@ import { CharacterFinalDTO, TargetDTO } from '@/@types/character'
 import { SkillBasicDTO } from '@/@types/skill'
 import { 属性系数, 每等级减伤 } from '@/data/constant'
 import { guoshiFangyu, guoshiPofang } from './help'
+import All_Cycle_Data from '@/data/skillCycle'
 
 /**
  * @name 破招原始伤害计算
@@ -124,4 +125,39 @@ export const skillDengjijianshangDps = (
 export const skillWushuangDps = (damage: number, characterConfig: CharacterFinalDTO) => {
   const guoshiWuShuang = guoshiXishuBasic(characterConfig.无双值, 属性系数.无双)
   return guoshiResult(damage, guoshiWuShuang)
+}
+
+// 获取加速、延迟计算后的时间
+export const getDpsTime = (
+  currentCycleName: string,
+  characterFinalData: CharacterFinalDTO,
+  network: number
+): number => {
+  let time = 300
+  const currentCycleConfig = All_Cycle_Data.find((item) => item.name === currentCycleName)
+  const 加速等级 = 获取加速等级(characterFinalData.加速值)
+  if (currentCycleConfig) {
+    let 总帧数 = 0
+    currentCycleConfig.cycleList.forEach((item) => {
+      const 循环帧 = (item.循环完整帧数 - item.计算技能数 * (加速等级 - network)) * item.循环次数
+      总帧数 = 总帧数 + 循环帧
+    })
+    time = 总帧数 / 16
+  }
+  console.log('time', time)
+  return time
+}
+
+const 获取加速等级 = (number) => {
+  return (number || 0) < 95
+    ? 0
+    : number < 4241
+    ? 1
+    : number < 8857
+    ? 2
+    : number < 13851
+    ? 3
+    : number < 19316
+    ? 4
+    : 5
 }

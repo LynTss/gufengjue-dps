@@ -1,27 +1,42 @@
-import yujiyuyao_chifeng from './yujiyuyao_chifeng'
-import yujiyuyao_yingziqishou from './yujiyuyao_yingziqishou'
-// import kuiyaniyuyao from './kuiyanyuyao'
-import zhouliu from './zhouliu'
+import yuyao from './yuyao'
+// import zhouliu_2 from './zhouliu_2'
+import zhouliu_3 from './zhouliu_3'
 
-export default [
-  // {
-  //   name: '雨积击懈驭耀',
-  //   cycle: yujiyjixieuyao,
-  // },
+const All_Cycle_Data = [
   {
-    name: '雨积观衅驭耀-驰起手',
-    cycle: yujiyuyao_chifeng,
-  },
-  {
-    name: '雨积观衅驭耀-驰+影起手',
-    cycle: yujiyuyao_yingziqishou,
+    name: '驭耀',
+    cycle: yuyao,
+    cycleList: [
+      { 计算技能数: 10, 循环完整帧数: 224, 循环次数: 1 },
+      { 计算技能数: 15, 循环完整帧数: 312, 循环次数: 14 },
+    ],
   },
   // {
-  //   name: '溃延驭耀',
-  //   cycle: kuiyaniyuyao,
+  //   name: '周流2.0',
+  //   cycle: zhouliu_2,
+  //   cycleList: [
+  //     { 计算技能数: 4, 循环完整帧数: 96, 循环次数: 5 },
+  //     { 计算技能数: 5, 循环完整帧数: 104, 循环次数: 2 },
+  //     { 计算技能数: 5, 循环完整帧数: 120, 循环次数: 2 },
+  //     { 计算技能数: 6, 循环完整帧数: 128, 循环次数: 7 },
+  //     { 计算技能数: 8, 循环完整帧数: 160, 循环次数: 6 },
+  //     { 计算技能数: 8, 循环完整帧数: 184, 循环次数: 2 },
+  //     { 计算技能数: 10, 循环完整帧数: 224, 循环次数: 6 },
+  //   ],
   // },
   {
-    name: '周流',
-    cycle: zhouliu,
+    name: '周流3.0',
+    cycle: zhouliu_3,
+    cycleList: [
+      { 计算技能数: 4, 循环完整帧数: 96, 循环次数: 5 },
+      { 计算技能数: 5, 循环完整帧数: 104, 循环次数: 2 },
+      { 计算技能数: 5, 循环完整帧数: 120, 循环次数: 2 },
+      { 计算技能数: 6, 循环完整帧数: 128, 循环次数: 7 },
+      { 计算技能数: 8, 循环完整帧数: 160, 循环次数: 6 },
+      { 计算技能数: 8, 循环完整帧数: 184, 循环次数: 2 },
+      { 计算技能数: 10, 循环完整帧数: 224, 循环次数: 6 },
+    ],
   },
 ]
+
+export default All_Cycle_Data

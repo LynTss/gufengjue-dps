@@ -1,10 +1,10 @@
 import React from 'react'
-import { Button, InputNumber, Select } from 'antd'
-import { 目标集合 } from '@/data/constant'
+import { Button, Select } from 'antd'
+import { 延迟设定, 目标集合 } from '@/data/constant'
 import skillCycle from '@/data/skillCycle'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 
-import { setCurrentTarget, setCurrentCycle, setDpsTime } from '@/store/basicReducer'
+import { setCurrentTarget, setCurrentCycle, setNetwork } from '@/store/basicReducer'
 import MijiSet from './MijiSet'
 import QixueSet from './QixueSet'
 import './index.css'
@@ -13,7 +13,7 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
   const dispatch = useAppDispatch()
   const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
   const currentTargetName = useAppSelector((state) => state?.basic?.currentTargetName)
-  const dpsTime = useAppSelector((state) => state?.basic?.dpsTime)
+  const network = useAppSelector((state) => state?.basic?.network)
 
   const setCurrentTargetVal = (val) => {
     const target = 目标集合?.find((item) => item.名称 === val)
@@ -29,20 +29,15 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
     }
   }
 
-  const setDpsTimeVal = (val) => {
-    localStorage?.setItem('计算时间', val)
-    dispatch(setDpsTime(val))
+  const handleChangeNetwork = (val) => {
+    localStorage?.setItem('network_data', val)
+    dispatch(setNetwork(val))
     getDpsFunction()
   }
 
   const setCurrentCycleVal = (val) => {
     const cycle = skillCycle?.find((item) => item.name === val)?.cycle || []
     if (cycle) {
-      if (val === '溃延驭耀') {
-        setDpsTimeVal(292)
-      } else {
-        setDpsTimeVal(300)
-      }
       localStorage?.setItem('当前循环', val)
       dispatch(
         setCurrentCycle({
@@ -108,18 +103,17 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
         </div>
       </div>
       <div className="common-item">
-        <h1 className="common-label">输出时间</h1>
+        <h1 className="common-label">网络延迟</h1>
         <div className="common-content">
-          <InputNumber
-            className="current-boss"
-            addonAfter="秒"
-            value={+dpsTime}
-            min={1}
-            max={600}
-            onChange={(v) => {
-              setDpsTimeVal(v)
-            }}
-          />
+          <Select value={network} onChange={handleChangeNetwork}>
+            {延迟设定.map((item) => {
+              return (
+                <Select.Option key={item.value} value={item.value}>
+                  {item.label}
+                </Select.Option>
+              )
+            })}
+          </Select>
         </div>
       </div>
       <div className="common-item">

@@ -16,6 +16,7 @@ import { setSkillBasicData } from '@/store/zengyiReducer'
 import './index.css'
 import { getNewEquipmentData, gufengBufferKillData } from './utils'
 import { getDpsTotal } from '@/components/Dps/utils'
+import { getDpsTime } from '@/utils/skill-dps'
 
 function ZhuangbeiSet({ visible, onClose }) {
   const [form] = Form.useForm()
@@ -23,9 +24,10 @@ function ZhuangbeiSet({ visible, onClose }) {
   const dispatch = useAppDispatch()
   const equipmentBasicData = useAppSelector((state) => state?.basic?.equipmentBasicData)
   const currentDps = useAppSelector((state) => state?.basic?.currentDps)
-  const dpsTime = useAppSelector((state) => state?.basic?.dpsTime)
+  const network = useAppSelector((state) => state?.basic?.network)
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
   const currentCycle = useAppSelector((state) => state?.basic?.currentCycle)
+  const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
   const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
   const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
   const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
@@ -129,6 +131,7 @@ function ZhuangbeiSet({ visible, onClose }) {
       if (data.taozhuangJineng) {
         newSkillBasicData = gufengBufferKillData(skillBasicData)
       }
+      const dpsTime = getDpsTime(currentCycleName, final, network)
       const { totalDps } = getDpsTotal({
         currentCycle: currentCycle,
         characterFinalData: final,

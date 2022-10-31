@@ -9,6 +9,7 @@ import {
   getDefaultCycle,
   getDefaultTarget,
   getDefaultTime,
+  getDefaultNetwork,
 } from '@/utils/default'
 import { EquipmentBasicDTO } from '@/@types/equipment'
 
@@ -31,11 +32,14 @@ interface BasicState {
   currentDps: number
   // dps计算时间
   dpsTime: number
+  // 网络延迟
+  network: number
 }
 
 const initialState: BasicState = {
   characterBasicData: getDefaultCharacter(),
   equipmentBasicData: getDefaultEquipment(),
+  network: getDefaultNetwork(),
   characterFinalData: {
     面板攻击: 0,
     等级: 120,
@@ -83,6 +87,9 @@ export const counterSlice = createSlice({
     setDpsTime: (state, action: PayloadAction<number>) => {
       state.dpsTime = action.payload
     },
+    setNetwork: (state, action: PayloadAction<number>) => {
+      state.network = action.payload
+    },
     setCurrentDps: (state, action: PayloadAction<number>) => {
       state.currentDps = action.payload
     },
@@ -96,6 +103,7 @@ export const {
   setCurrentCycle,
   setCurrentTarget,
   setDpsTime,
+  setNetwork,
   setCurrentDps,
 } = counterSlice.actions // 导出操作state的喊出
 export const selectCount = (state: RootState) => state

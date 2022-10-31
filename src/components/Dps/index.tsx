@@ -7,15 +7,17 @@ import DpsCountModal from './DpsCountModal/index'
 import Income from './Income'
 import './index.css'
 import { setCurrentDps } from '@/store/basicReducer'
+import { getDpsTime } from '@/utils/skill-dps'
 
 function Dps(props, ref) {
   const { zengyiVisible } = props
   const dispatch = useAppDispatch()
+  const network = useAppSelector((state) => state?.basic?.network)
   const characterFinalData = useAppSelector((state) => state?.basic?.characterFinalData)
   const currentCycle = useAppSelector((state) => state?.basic?.currentCycle)
+  const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
   const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
   const currentDps = useAppSelector((state) => state?.basic?.currentDps)
-  const dpsTime = useAppSelector((state) => state.basic.dpsTime)
   const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
   const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
@@ -43,6 +45,7 @@ function Dps(props, ref) {
   }
 
   const getDps = () => {
+    const dpsTime = getDpsTime(currentCycleName, characterFinalData, network)
     const { totalDps, dpsList } = getDpsTotal({
       currentCycle: 参与计算循环,
       characterFinalData,

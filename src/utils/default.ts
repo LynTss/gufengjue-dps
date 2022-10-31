@@ -52,6 +52,15 @@ export const getDefaultZengyiQiyong = () => {
   }
 }
 
+export const getDefaultNetwork = () => {
+  const localNetwork = localStorage.getItem('network_data')
+  if (localNetwork) {
+    return +localNetwork
+  } else {
+    return 2
+  }
+}
+
 export const getDefaultEquipment = () => {
   const localEquipment = localStorage.getItem('zhuangbei_data_basic_1')
   if (localEquipment) {
@@ -85,7 +94,7 @@ export const getDefaultTarget = () => {
 }
 
 export const getDefaultTime = () => {
-  return +(localStorage.getItem('计算时间') || 300)
+  return +(localStorage.getItem('计算时间') || 306)
 }
 
 export const getDefaultMijiSelectedData = () => {
