@@ -88,7 +88,7 @@ export const 延迟设定: NetworkDTO[] = [
     value: 2,
   },
   {
-    label: '卡鬼（90以上）',
+    label: '我命由我不由天（90以上）',
     value: 3,
   },
 ]
