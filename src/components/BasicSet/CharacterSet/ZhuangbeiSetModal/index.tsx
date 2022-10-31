@@ -17,6 +17,7 @@ import './index.css'
 import { getNewEquipmentData, gufengBufferKillData } from './utils'
 import { getDpsTotal } from '@/components/Dps/utils'
 import { getDpsTime } from '@/utils/skill-dps'
+import { 属性系数 } from '@/data/constant'
 
 function ZhuangbeiSet({ visible, onClose }) {
   const [form] = Form.useForm()
@@ -34,6 +35,7 @@ function ZhuangbeiSet({ visible, onClose }) {
 
   const [默认镶嵌宝石等级, 设置默认镶嵌宝石等级] = useState<number>(8)
   const [afterDps, setAfterDps] = useState<number>(0)
+  const [加速, 设置加速] = useState<number | null>(null)
 
   useEffect(() => {
     if (equipmentBasicData && visible) {
@@ -56,6 +58,7 @@ function ZhuangbeiSet({ visible, onClose }) {
     }
     if (!visible) {
       setAfterDps(0)
+      设置加速(null)
     }
   }, [visible])
 
@@ -140,8 +143,10 @@ function ZhuangbeiSet({ visible, onClose }) {
         zengyiQiyong,
         zengyixuanxiangData,
       })
+      设置加速(final.加速值)
       setAfterDps(Math.floor(totalDps / dpsTime))
     } catch (_) {
+      设置加速(null)
       setAfterDps(0)
     }
   }
@@ -221,6 +226,24 @@ function ZhuangbeiSet({ visible, onClose }) {
           <Form.Item name={`openQiangLv`}>
             <ValueCheckBox>启用强膂</ValueCheckBox>
           </Form.Item>
+          {加速 !== null ? (
+            <div className="time-label">
+              <div>{(((加速 || 0) / 属性系数.急速) * 100).toFixed(2) + '%'}</div>
+              <div>
+                {(加速 || 0) < 95
+                  ? '零段加速'
+                  : 加速 < 4241
+                  ? '一段加速'
+                  : 加速 < 8857
+                  ? '二段加速'
+                  : 加速 < 13851
+                  ? '三段加速'
+                  : 加速 < 19316
+                  ? '四段加速'
+                  : '五段加速'}
+              </div>
+            </div>
+          ) : null}
           {currentDps !== afterDps && afterDps ? (
             <div className={'dps-diff'}>
               <div className="dps-diff-item">
