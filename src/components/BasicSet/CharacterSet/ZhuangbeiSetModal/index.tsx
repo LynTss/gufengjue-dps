@@ -66,6 +66,10 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         切糕会心: equipmentBasicData.qiegaotaozhuanghuixin,
         切糕无双: equipmentBasicData.qiegaotaozhuangwushuang,
       })
+      const data = getNewEquipmentData(newObj)
+      const { finalData } = getFinalCharacterBasicDataByEquipment(data)
+      const 增益加速 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
+      设置加速(finalData.加速值 + 增益加速)
     }
     if (!visible) {
       setAfterDps(0)
