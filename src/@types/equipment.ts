@@ -35,9 +35,17 @@ export interface EquipmentBasicDTO {
    */
   texiaoyaozhui: boolean
   /**
-   * @name 套装技能加成
+   * @name 套装技能加成次数
    */
-  taozhuangJineng: boolean
+  taozhuangJineng: number
+  /**
+   * @name 切糕套装会心
+   */
+  qiegaotaozhuanghuixin: number
+  /**
+   * @name 切糕套装无双
+   */
+  qiegaotaozhuangwushuang: number
 }
 
 /**

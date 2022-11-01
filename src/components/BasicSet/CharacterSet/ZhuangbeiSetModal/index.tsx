@@ -18,8 +18,9 @@ import { getNewEquipmentData, gufengBufferKillData } from './utils'
 import { getDpsTotal } from '@/components/Dps/utils'
 import { getDpsTime, getZengyiJiasu } from '@/utils/skill-dps'
 import { 属性系数 } from '@/data/constant'
+import ZhuangBeiZengYiTip from './ZhuangBeiZengYiTip'
 
-function ZhuangbeiSet({ visible, onClose }) {
+function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
   const [form] = Form.useForm()
 
   const dispatch = useAppDispatch()
@@ -33,6 +34,7 @@ function ZhuangbeiSet({ visible, onClose }) {
   const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
   const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
 
+  const [zhuangbeizengyi, setZhuangbeizengyi] = useState<any>()
   const [默认镶嵌宝石等级, 设置默认镶嵌宝石等级] = useState<number>(8)
   const [afterDps, setAfterDps] = useState<number>(0)
   const [加速, 设置加速] = useState<number | null>(null)
@@ -55,10 +57,20 @@ function ZhuangbeiSet({ visible, onClose }) {
         }
       })
       form.setFieldsValue(newObj)
+      getDpsFunction()
+      setZhuangbeizengyi({
+        套装双会: equipmentBasicData.taozhuangShuanghui,
+        套装孤锋: equipmentBasicData.taozhuangJineng,
+        特效武器: equipmentBasicData.shuitexiaoWuqi,
+        特效腰坠: equipmentBasicData.texiaoyaozhui,
+        切糕会心: equipmentBasicData.qiegaotaozhuanghuixin,
+        切糕无双: equipmentBasicData.qiegaotaozhuangwushuang,
+      })
     }
     if (!visible) {
       setAfterDps(0)
       设置加速(null)
+      setZhuangbeizengyi(null)
     }
   }, [visible])
 
@@ -76,12 +88,12 @@ function ZhuangbeiSet({ visible, onClose }) {
           套装会心会效: data.taozhuangShuanghui,
           水特效武器: data.shuitexiaoWuqi,
           风特效腰坠: data.texiaoyaozhui,
+          切糕双会: data?.qiegaotaozhuanghuixin,
+          切糕无双: data?.qiegaotaozhuangwushuang,
         })
       )
-      if (data.taozhuangJineng) {
-        const newSkillBasicData = gufengBufferKillData(skillBasicData)
-        dispatch(setSkillBasicData(newSkillBasicData))
-      }
+      const newSkillBasicData = gufengBufferKillData(skillBasicData, data.taozhuangJineng)
+      dispatch(setSkillBasicData(newSkillBasicData))
       onClose(true)
     })
   }
@@ -129,11 +141,11 @@ function ZhuangbeiSet({ visible, onClose }) {
         套装会心会效: data.taozhuangShuanghui,
         水特效武器: data.shuitexiaoWuqi,
         风特效腰坠: data.texiaoyaozhui,
+        切糕双会: data.qiegaotaozhuanghuixin,
+        切糕无双: data.qiegaotaozhuangwushuang,
       }
       let newSkillBasicData = skillBasicData
-      if (data.taozhuangJineng) {
-        newSkillBasicData = gufengBufferKillData(skillBasicData)
-      }
+      newSkillBasicData = gufengBufferKillData(skillBasicData, data.taozhuangJineng)
       const dpsTime = getDpsTime(
         currentCycleName,
         final,
@@ -152,6 +164,14 @@ function ZhuangbeiSet({ visible, onClose }) {
       const 增益加速 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
       设置加速(final.加速值 + 增益加速)
       setAfterDps(Math.floor(totalDps / dpsTime))
+      setZhuangbeizengyi({
+        套装双会: data.taozhuangShuanghui,
+        套装孤锋: data.taozhuangJineng,
+        特效武器: data.shuitexiaoWuqi,
+        特效腰坠: data.texiaoyaozhui,
+        切糕会心: data?.qiegaotaozhuanghuixin,
+        切糕无双: data?.qiegaotaozhuangwushuang,
+      })
     } catch (_) {
       设置加速(null)
       setAfterDps(0)
@@ -233,6 +253,18 @@ function ZhuangbeiSet({ visible, onClose }) {
           <Form.Item name={`openQiangLv`}>
             <ValueCheckBox>启用强膂</ValueCheckBox>
           </Form.Item>
+          {zhuangbeizengyi ? (
+            <div className={'zhuangbei-zengyi-wrapper'}>
+              <div className={'zhuangbei-zengyi-title'}>装备增益</div>
+              <div className="zhuangbei-zengyi-content">
+                {Object.keys(zhuangbeizengyi).map((item) => {
+                  return (
+                    <ZhuangBeiZengYiTip key={item} zengyiType={item} data={zhuangbeizengyi[item]} />
+                  )
+                })}
+              </div>
+            </div>
+          ) : null}
           {加速 !== null ? (
             <div className="time-label">
               <div>{(((加速 || 0) / 属性系数.急速) * 100).toFixed(2) + '%'}</div>

@@ -4,8 +4,22 @@ import commonGainDTO from './common'
 
 const gufengduanlangGainDTO: SkillGainDTO[] = [
   ...commonGainDTO,
+  // 4件套
   {
-    增益名称: '套装10%',
+    增益名称: '套装10%_1',
+    增益所在位置: '套装',
+    常驻增益: false,
+    增益集合: [
+      {
+        增益类型: GainTypeEnum.伤害百分比,
+        增益计算类型: GainDpsTypeEnum.A,
+        增益数值: 0.1,
+      },
+    ],
+  },
+  // 2件套
+  {
+    增益名称: '套装10%_2',
     增益所在位置: '套装',
     常驻增益: false,
     增益集合: [

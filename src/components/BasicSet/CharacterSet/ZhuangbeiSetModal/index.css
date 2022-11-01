@@ -88,21 +88,21 @@
 }
 
 .dps-diff {
-  padding-top: 106px;
+  padding-top: 16px;
 }
 
-.dps-diff-title {
-  font-size: 16px;
+.dps-diff-title,.time-label-title,.zhuangbei-zengyi-title {
+  font-size: 14px;
   color: var(--ant-primary-color);
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .dps-diff-dps {
-  font-size: 32px;
+  font-size: 28px;
   margin-bottom: 0;
-  padding: 12px 0;
-  line-height: 32px;
+  padding: 8px 0;
+  line-height: 28px;
   color: #666;
   text-align: center;
   border: 1px solid #d9d9d9;
@@ -122,4 +122,14 @@
   padding: 6px 0;
   display: flex;
   justify-content: space-around;
+}
+
+.zhuangbei-zengyi-wrapper {
+  margin-bottom: 12px;
+}
+
+.zhuangbei-zengyi-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }

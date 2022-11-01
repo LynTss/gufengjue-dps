@@ -12,9 +12,12 @@ import ZHUANGBEI_JINSHENWUQI from './jinshenwuqi'
 
 // 2件套会心 4件套孤锋10%
 export const 套装_1Ids = [91076, 91163, 91134, 91105, 91192]
+// 2件套孤锋10% 4件套会心
+export const 套装_2Ids = [90763, 90850, 90821, 90792, 90879]
 export const 特效_武器Ids = [32989]
 export const 特效_腰椎Ids = [34381]
-// export const 套装_2Ids = [91076, 91163, 91134, 91105, 91192]
+// 切糕套装
+export const 切糕套装_1Ids = [91291, 91315, 91309, 91303, 91297, 91321]
 
 const ZUANGBEI_DATA = {
   帽子: ZHUANGBEI_MAOZI,

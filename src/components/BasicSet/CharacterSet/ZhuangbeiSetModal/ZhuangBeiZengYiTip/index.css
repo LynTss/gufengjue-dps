@@ -1,0 +1,16 @@
+.zhuangbei-zengyi-item {
+  width: calc(50% - 8px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 20px;
+  margin: 4px 0;
+}
+
+.zhuangbei-zengyi-value {
+  color: #F34242;  
+}
+
+.zhuangbei-zengyi-value-open {
+  color: #2AC88F;
+}

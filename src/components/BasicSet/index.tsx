@@ -42,6 +42,8 @@ function BasicSet(props: CharacterSetProps) {
           套装会心会效: equipmentBasicData?.taozhuangShuanghui,
           水特效武器: equipmentBasicData?.shuitexiaoWuqi,
           风特效腰坠: equipmentBasicData?.texiaoyaozhui,
+          切糕双会: equipmentBasicData?.qiegaotaozhuanghuixin,
+          切糕无双: equipmentBasicData?.qiegaotaozhuangwushuang,
         })
       )
 
@@ -50,30 +52,31 @@ function BasicSet(props: CharacterSetProps) {
       if (mijiSelectedData?.length) {
         newSkillBasicData = getSkillBasicData(newSkillBasicData, mijiSelectedData)
       }
-
       newSkillBasicData = newSkillBasicData.map((item) => {
         return {
           ...item,
           技能增益列表:
             item?.技能名称 === '孤锋破浪'
-              ? [
-                  ...item.技能增益列表.map((a) => {
-                    if (a.增益名称 === '套装10%') {
+              ? item.技能增益列表.map((a) => {
+                  if (a.增益名称 === '套装10%_1' || a.增益名称 === '套装10%_2') {
+                    if (a.增益名称 === '套装10%_1') {
                       return {
                         ...a,
-                        常驻增益: true,
+                        常驻增益: equipmentBasicData.taozhuangJineng >= 1,
                       }
                     } else {
                       return {
                         ...a,
+                        常驻增益: equipmentBasicData.taozhuangJineng === 2,
                       }
                     }
-                  }),
-                ]
+                  } else {
+                    return { ...a }
+                  }
+                })
               : item.技能增益列表,
         }
       })
-
       dispatch(setSkillBasicData(newSkillBasicData))
     }
   }, [])

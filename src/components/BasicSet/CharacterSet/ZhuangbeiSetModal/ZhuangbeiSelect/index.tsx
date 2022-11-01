@@ -46,7 +46,6 @@ function ZhuangbeiSelect(props: ZhuangbeiSelectProps) {
         当前精炼等级: getZuiDaJingLian(obj),
         id: e,
         装备部位: EquipmentCharacterPositionEnum[indexKey],
-        附魔: 当前装备支持附魔列表?.[0]?.附魔名称,
       } as any)
   }
 

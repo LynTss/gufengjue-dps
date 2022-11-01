@@ -26,6 +26,7 @@ function CharacterSet({ getDpsFunction }) {
       />
       <ZhuangbeiSetModal
         visible={zhuangbeiSetModalVisible}
+        getDpsFunction={getDpsFunction}
         onClose={(refreshDps) => {
           setZhuangbeiSetModalVisible(false)
           if (refreshDps) {
