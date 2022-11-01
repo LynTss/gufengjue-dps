@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Form, Modal } from 'antd'
+import { Button, Form, Modal, Tooltip } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 // import { useAppSelector } from '@/hooks'
 import {
@@ -267,7 +267,11 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           ) : null}
           {加速 !== null ? (
             <div className="time-label">
-              <div>{(((加速 || 0) / 属性系数.急速) * 100).toFixed(2) + '%'}</div>
+              <div>
+                <Tooltip title={加速}>
+                  {(((加速 || 0) / 属性系数.急速) * 100).toFixed(2) + '%'}
+                </Tooltip>
+              </div>
               <div>
                 {(加速 || 0) < 95
                   ? '零段加速'
