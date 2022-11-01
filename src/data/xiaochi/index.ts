@@ -47,6 +47,17 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
     ],
   },
   {
+    小吃名称: '断浪·上品活气散（加速）',
+    小吃部位: XiaochiTypeEnum.药品增强,
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.加速,
+        增益数值: 1627,
+      },
+    ],
+  },
+  {
     小吃名称: '断浪·上品大力丸（力道）',
     小吃部位: XiaochiTypeEnum.药品辅助,
     增益集合: [
@@ -102,6 +113,17 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
     ],
   },
   {
+    小吃名称: '断浪·红烧扣肉（加速）',
+    小吃部位: XiaochiTypeEnum.食品增强,
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.加速,
+        增益数值: 1266,
+      },
+    ],
+  },
+  {
     小吃名称: '断浪·三鲜粥（力道）',
     小吃部位: XiaochiTypeEnum.食品辅助,
     增益集合: [
@@ -130,7 +152,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.加速,
-        增益数值: 111,
+        增益数值: 234,
       },
     ],
   },
@@ -141,7 +163,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.加速,
-        增益数值: 222,
+        增益数值: 468,
       },
     ],
   },
@@ -152,7 +174,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.加速,
-        增益数值: 333,
+        增益数值: 702,
       },
     ],
   },
@@ -163,7 +185,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.加速,
-        增益数值: 444,
+        增益数值: 936,
       },
     ],
   },
