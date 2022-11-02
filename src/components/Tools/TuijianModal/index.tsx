@@ -1,4 +1,4 @@
-import { Modal, Tabs } from 'antd'
+import { Divider, Modal, Tabs } from 'antd'
 import React from 'react'
 import './index.css'
 
@@ -11,7 +11,12 @@ function TuijianModal({ visible, onClose }) {
         <div className="tuijian-content">
           <p>
             入门推荐： 先使用
-            <a href="https://www.jx3box.com/macro/45077" target="_blank" rel="noreferrer">
+            <a
+              style={{ padding: '0 8px' }}
+              href="https://www.jx3box.com/macro/45077"
+              target="_blank"
+              rel="noreferrer"
+            >
               驭耀一键宏
             </a>
             熟悉刀宗循环，熟悉锐意及开游的位置
@@ -42,6 +47,7 @@ function TuijianModal({ visible, onClose }) {
               不要在灭影快好的时候放。不要在70以上锐意时候放。不要在自身带识破的时候放。
             </span>
           </p>
+          <Divider />
           <p>
             周流讲解视频1：
             <a href="https://www.bilibili.com/video/BV1nR4y1Q7wu/" target="_blank" rel="noreferrer">
@@ -58,13 +64,16 @@ function TuijianModal({ visible, onClose }) {
               周流全面讲解视频
             </a>
           </p>
+          <Divider />
           <p>周流辅助宏可以暂时先使用老天一的辅助宏，结合自己的实际情况修改</p>
           <p className="tuijian-important">
             宏只有结合自己的实际使用修改才最佳，切勿盲目照搬他人的宏
           </p>
-          <h3>标准</h3>
+          <p>练习周流建议尽量在副本中练习，不然很可能导致木桩熟手副本懵逼的情况</p>
+          <p>如果练习周流的过程中，5分钟无法打到137孤以上，请继续实战多多练习</p>
+          <Divider />
+          <h4>标准</h4>
           <p>5分钟打完141孤峰</p>
-          <p>如果练习周流的过程中，5分钟无法打到137孤以上，dps不如驭耀。请继续练习</p>
         </div>
       ),
     },
