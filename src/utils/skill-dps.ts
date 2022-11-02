@@ -145,10 +145,11 @@ export const getDpsTime = (
   if (currentCycleConfig) {
     let 总帧数 = 0
     currentCycleConfig.cycleList.forEach((item) => {
-      const 循环帧 = (item.循环完整帧数 - item.计算技能数 * (加速等级 - network)) * item.循环次数
+      const 循环帧 =
+        (item.循环完整帧数 - item.计算技能数 * (加速等级 * 0.5 - network * 0.5)) * item.循环次数
       总帧数 = 总帧数 + 循环帧
     })
-    time = 总帧数 / 16
+    time = 总帧数 / 16 + 18
   }
   return time
 }

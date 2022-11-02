@@ -1,20 +1,20 @@
-import React from 'react'
-import { Table } from 'antd'
+import React, { useState } from 'react'
+import { Modal, Table } from 'antd'
 import {
   skillBasicDps,
   skillDengjijianshangDps,
   skillFinalDps,
   skillStandardDps,
 } from '../../utils/skill-dps'
-import GuFengJueSkillDataDTO from '../../data/skill'
 import { useAppSelector } from '@/hooks'
 import './index.css'
 
 function SkillDamageTable() {
   const characterFinalData = useAppSelector((state) => state?.basic?.characterFinalData)
   const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
+  const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
 
-  const data = GuFengJueSkillDataDTO
+  const [visible, setVisible] = useState(false)
 
   const columns = [
     {
@@ -127,16 +127,28 @@ function SkillDamageTable() {
   ]
 
   return (
-    <div className={'skillDamageTableWrap'}>
-      <h1>技能详细数据及计算过程数据</h1>
-      <Table
-        rowKey={'技能名称'}
-        className={'skillDamageTable'}
-        dataSource={data}
-        pagination={false}
-        columns={columns}
-        scroll={{ x: 1300 }}
-      />
+    <div className="skill-dmage-wrapper">
+      <Modal
+        title={'技能详细数据及计算过程数据'}
+        centered
+        footer={null}
+        width={'100%'}
+        className={'skillDmageVisible'}
+        visible={visible}
+        onCancel={() => setVisible(false)}
+      >
+        <Table
+          rowKey={'技能名称'}
+          className={'skillDamageTable'}
+          dataSource={skillBasicData}
+          pagination={false}
+          columns={columns}
+          scroll={{ x: 1300 }}
+        />
+      </Modal>
+      <span className="skillDamageBtn" onClick={() => setVisible(true)}>
+        单技能数据
+      </span>
     </div>
   )
 }

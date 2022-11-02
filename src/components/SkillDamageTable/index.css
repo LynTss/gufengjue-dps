@@ -1,8 +1,27 @@
-.skillDamageTableWrap {
-  padding: 20px 0;
+.skill-dmage-wrapper{
+  position: fixed;
+  top: 0;
+  right: 36px;
+  color: #fff;
+  margin: 0;
+  text-align: right;
 }
+
 .skillDamageTable th {
   white-space: nowrap;
+}
+
+.skillDamageBtn {
+  opacity: 0;
+  cursor: pointer;
+  color:#fff;
+  line-height: 36px;
+  font-size: 14px;
+  transition: .2s;
+}
+
+.skillDamageBtn:hover {
+  opacity: 1;
 }
 
 .skillDamageTable th.keyTable-1.ant-table-cell {

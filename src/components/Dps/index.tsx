@@ -65,6 +65,7 @@ function Dps(props, ref) {
     setTimeout(() => {
       incomeRef?.current?.initChart()
     })
+    console.log('dpsTime', dpsTime)
     dispatch(setCurrentDps(Math.floor(totalDps / dpsTime)))
   }
 

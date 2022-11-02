@@ -184,7 +184,14 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
 
   return (
     <Modal
-      title="配装器"
+      title={
+        <span>
+          配装器
+          <span style={{ color: '#F34242', fontSize: 14, marginLeft: 16 }}>
+            目前二段加速循环需要更改，暂时只推荐一段加速配装
+          </span>
+        </span>
+      }
       className={'zhuangbei-input-set-modal'}
       visible={visible}
       width={1124}
