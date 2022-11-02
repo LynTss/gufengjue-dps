@@ -1,0 +1,19 @@
+.tuijian-wrapper {
+  position: fixed;
+  top: 0;
+  right: 36px;
+  margin: 0;
+  line-height: 36px;
+  font-size: 14px;
+  text-align: right;
+}
+
+.tuijian-btn {
+  transition: .2s;
+  color: #fff;
+  cursor: pointer;
+}
+
+.tuijian-btn:hover {
+  color: #ddd;
+}

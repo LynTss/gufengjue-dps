@@ -7,6 +7,7 @@ import TitleTip from '@/components/TitleTip'
 import Log from '@/components/Log'
 import Tools from '@/components/Tools'
 import SkillDamageTable from '@/components/SkillDamageTable'
+import ShangshouZhinan from '@/components/ShangshouZhinan'
 import './index.css'
 
 function Pages() {
@@ -31,6 +32,8 @@ function Pages() {
       <Tools />
       {/* 技能详情 */}
       <SkillDamageTable />
+      {/* 上手推荐 */}
+      <ShangshouZhinan />
     </>
   )
 }
