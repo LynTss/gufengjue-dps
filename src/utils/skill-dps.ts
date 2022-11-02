@@ -160,7 +160,7 @@ export const getDpsTime = (
       const 循环帧 = (item.循环完整帧数 - item.计算技能数 * (-network * 0.5)) * item.循环次数
       总帧数 = 总帧数 + 循环帧
     })
-    time = (总帧数 + (加速等级 < 1 ? 400 : 0)) / 16 + 18
+    time = (总帧数 + (加速等级 < 1 ? 300 : 0)) / 16 + 18
   }
   return time
 }
