@@ -37,6 +37,12 @@ function TuijianModal({ visible, onClose }) {
         <div className="tuijian-content">
           <p>那么大家都说的周流如何去打呢，可以先看一下两个视频加深对周流的理解</p>
           <p>
+            周流开游原则：
+            <span className="tuijian-important">
+              不要在灭影快好的时候放。不要在70以上锐意时候放。不要在自身带识破的时候放。
+            </span>
+          </p>
+          <p>
             周流讲解视频1：
             <a href="https://www.bilibili.com/video/BV1nR4y1Q7wu/" target="_blank" rel="noreferrer">
               老天一驭耀、周流讲解视频
