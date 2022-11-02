@@ -1,0 +1,16 @@
+.tuijian-modal .ant-modal-body {
+  min-height: 500px;
+}
+
+.tuijian-tip {
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.tuijian-important {
+  color: #ED4F00
+}
+
+.tuijian-content p {
+  margin-bottom: 12px;
+}
