@@ -1,7 +1,9 @@
 import yuyao_3 from './yuyao_3'
 import yuyao from './yuyao'
-import zhouliu_2 from './zhouliu_2'
-import zhouliu_3 from './zhouliu_3'
+import zhouliu_130 from './zhouliu_130'
+import zhouliu_137 from './zhouliu_137'
+import zhouliu_141 from './zhouliu_141'
+import zhouliu_145 from './zhouliu_145'
 
 const All_Cycle_Data = [
   {
@@ -21,8 +23,8 @@ const All_Cycle_Data = [
     ],
   },
   {
-    name: '平民周流',
-    cycle: zhouliu_2,
+    name: '菜周（130）',
+    cycle: zhouliu_130,
     cycleList: [
       { 计算技能数: 4, 循环完整帧数: 96, 循环次数: 5 },
       { 计算技能数: 5, 循环完整帧数: 104, 循环次数: 2 },
@@ -34,8 +36,34 @@ const All_Cycle_Data = [
     ],
   },
   {
-    name: '周流3.0',
-    cycle: zhouliu_3,
+    name: '练习周流（137）',
+    cycle: zhouliu_137,
+    cycleList: [
+      { 计算技能数: 4, 循环完整帧数: 96, 循环次数: 5 },
+      { 计算技能数: 5, 循环完整帧数: 104, 循环次数: 2 },
+      { 计算技能数: 5, 循环完整帧数: 120, 循环次数: 2 },
+      { 计算技能数: 6, 循环完整帧数: 128, 循环次数: 7 },
+      { 计算技能数: 8, 循环完整帧数: 160, 循环次数: 6 },
+      { 计算技能数: 8, 循环完整帧数: 184, 循环次数: 2 },
+      { 计算技能数: 10, 循环完整帧数: 224, 循环次数: 6 },
+    ],
+  },
+  {
+    name: '周流入门（141）',
+    cycle: zhouliu_141,
+    cycleList: [
+      { 计算技能数: 4, 循环完整帧数: 96, 循环次数: 5 },
+      { 计算技能数: 5, 循环完整帧数: 104, 循环次数: 2 },
+      { 计算技能数: 5, 循环完整帧数: 120, 循环次数: 2 },
+      { 计算技能数: 6, 循环完整帧数: 128, 循环次数: 7 },
+      { 计算技能数: 8, 循环完整帧数: 160, 循环次数: 6 },
+      { 计算技能数: 8, 循环完整帧数: 184, 循环次数: 2 },
+      { 计算技能数: 10, 循环完整帧数: 224, 循环次数: 6 },
+    ],
+  },
+  {
+    name: '周流萌新（145）',
+    cycle: zhouliu_145,
     cycleList: [
       { 计算技能数: 4, 循环完整帧数: 96, 循环次数: 5 },
       { 计算技能数: 5, 循环完整帧数: 104, 循环次数: 2 },
