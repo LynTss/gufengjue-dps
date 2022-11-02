@@ -23,7 +23,7 @@ const All_Cycle_Data = [
     ],
   },
   {
-    name: '菜周（130）',
+    name: '菜周（133）',
     cycle: zhouliu_130,
     cycleList: [
       { 计算技能数: 4, 循环完整帧数: 96, 循环次数: 5 },
