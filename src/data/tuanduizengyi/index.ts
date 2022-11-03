@@ -176,6 +176,18 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
     ],
   },
   {
+    增益名称: '虚弱',
+    层数: 1,
+    覆盖率: 100,
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.B,
+        增益类型: GainTypeEnum.郭氏无视防御,
+        增益数值: 51,
+      },
+    ],
+  },
+  {
     增益名称: '振奋',
     层数: 70,
     覆盖率: 100,

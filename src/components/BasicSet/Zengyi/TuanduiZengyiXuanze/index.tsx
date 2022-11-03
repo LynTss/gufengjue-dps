@@ -59,7 +59,7 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
             (a) => item?.增益名称 === a?.增益名称
           )?.启用
           return (
-            <Col span={8} key={item.增益名称}>
+            <Col span={6} key={item.增益名称}>
               <Checkbox
                 checked={当前增益选项}
                 className="tuandui-zengyi-checkbox"
