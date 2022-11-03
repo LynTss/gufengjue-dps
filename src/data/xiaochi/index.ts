@@ -196,7 +196,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.力道,
-        增益数值: 24,
+        增益数值: 52,
       },
     ],
   },
@@ -207,7 +207,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.力道,
-        增益数值: 48,
+        增益数值: 104,
       },
     ],
   },
@@ -218,7 +218,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.力道,
-        增益数值: 72,
+        增益数值: 156,
       },
     ],
   },
@@ -229,7 +229,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.力道,
-        增益数值: 96,
+        增益数值: 208,
       },
     ],
   },

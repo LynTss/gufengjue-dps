@@ -14,7 +14,7 @@ const canglangsandie2GainDTO: SkillGainDTO[] = [
         增益数值: 0.2,
       },
       {
-        增益类型: GainTypeEnum.外攻会心效果等级,
+        增益类型: GainTypeEnum.郭氏外攻会心效果等级,
         增益计算类型: GainDpsTypeEnum.B,
         增益数值: 204,
       },

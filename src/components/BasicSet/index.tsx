@@ -42,7 +42,7 @@ function BasicSet(props: CharacterSetProps) {
           套装会心会效: equipmentBasicData?.taozhuangShuanghui,
           水特效武器: equipmentBasicData?.shuitexiaoWuqi,
           风特效腰坠: equipmentBasicData?.texiaoyaozhui,
-          切糕双会: equipmentBasicData?.qiegaotaozhuanghuixin,
+          切糕会心: equipmentBasicData?.qiegaotaozhuanghuixin,
           切糕无双: equipmentBasicData?.qiegaotaozhuangwushuang,
         })
       )

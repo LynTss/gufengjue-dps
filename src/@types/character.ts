@@ -93,7 +93,7 @@ export interface CharacterFinalDTO extends CharacterBasicDTO {
   /**
    * @name 切糕双会加成数量
    */
-  切糕双会?: number
+  切糕会心?: number
   /**
    * @name 切糕无双加成数量
    */

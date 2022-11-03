@@ -17,7 +17,7 @@ const commonGainDTO: SkillGainDTO[] = [
         增益数值: 0.1,
       },
       {
-        增益类型: GainTypeEnum.外攻会心效果等级,
+        增益类型: GainTypeEnum.郭氏外攻会心效果等级,
         增益计算类型: GainDpsTypeEnum.B,
         增益数值: 102,
       },

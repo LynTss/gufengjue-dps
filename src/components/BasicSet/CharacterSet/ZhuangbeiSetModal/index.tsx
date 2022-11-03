@@ -92,7 +92,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           套装会心会效: data.taozhuangShuanghui,
           水特效武器: data.shuitexiaoWuqi,
           风特效腰坠: data.texiaoyaozhui,
-          切糕双会: data?.qiegaotaozhuanghuixin,
+          切糕会心: data?.qiegaotaozhuanghuixin,
           切糕无双: data?.qiegaotaozhuangwushuang,
         })
       )
@@ -145,7 +145,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         套装会心会效: data.taozhuangShuanghui,
         水特效武器: data.shuitexiaoWuqi,
         风特效腰坠: data.texiaoyaozhui,
-        切糕双会: data.qiegaotaozhuanghuixin,
+        切糕会心: data.qiegaotaozhuanghuixin,
         切糕无双: data.qiegaotaozhuangwushuang,
       }
       let newSkillBasicData = skillBasicData
