@@ -162,6 +162,7 @@ export const getDpsTime = (
     })
     time = (总帧数 + (加速等级 < 1 ? 300 : 0)) / 16 + 18
   }
+  console.log('战斗时间', time)
   return time
 }
 
