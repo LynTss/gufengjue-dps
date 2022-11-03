@@ -1,8 +1,8 @@
 import React from 'react'
 // import ImgBg from '../../assets/main.jpg'
-import ImgBg_1 from '../../assets/bg/1.jpeg'
-import ImgBg_2 from '../../assets/bg/2.jpeg'
-import ImgBg_3 from '../../assets/bg/3.jpeg'
+import ImgBg_1 from '../../assets/bg/1.jpg'
+import ImgBg_2 from '../../assets/bg/2.jpg'
+import ImgBg_3 from '../../assets/bg/3.jpg'
 import './index.css'
 
 interface LayoutProps {
