@@ -76,7 +76,8 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
       </Row>
       <div className="tuandui-zengyi-btn-wrap">
         <Button size="small" className="tuandui-zengyi-btn" onClick={() => setVisible(true)}>
-          部分增益层数/覆盖率设置
+          {/* 部分增益层数/覆盖率设置 */}
+          部分增益层数/覆盖率展示
         </Button>
       </div>
       <Modal
@@ -85,10 +86,11 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
         visible={visible}
         title={
           <span>
+            部分增益层数/覆盖率展示
             {/* 部分增益层数/覆盖率设置 */}
-            <span style={{ color: '#F34242', fontSize: 14 }}>
+            {/* <span style={{ color: '#F34242', fontSize: 14 }}>
               为避免有人恶意输入100%覆盖率带节奏，暂时不开放编辑
-            </span>
+            </span> */}
           </span>
         }
         onCancel={() => setVisible(false)}
