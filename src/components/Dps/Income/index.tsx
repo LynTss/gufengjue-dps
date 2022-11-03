@@ -224,7 +224,9 @@ function Income({ zengyiVisible }, ref) {
         <div className="income-type-wrapper">
           <div className={'income-chart-title'}>
             属性收益
-            <Tooltip title={`由于小吃、附魔等属性比例不同，做不同选项仅供参考`}>
+            <Tooltip
+              title={`由于小吃、附魔等属性比例不同，做不同选项仅供参考。附魔按120级附魔计算/小吃小药按断浪紫色计算/五行石按八级镶嵌计算`}
+            >
               <QuestionCircleOutlined />
             </Tooltip>
           </div>
