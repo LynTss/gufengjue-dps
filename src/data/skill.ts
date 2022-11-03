@@ -199,7 +199,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能增益列表: commonGainDTO,
   },
   {
-    技能名称: '横刀',
+    技能名称: '云刀',
     技能伤害系数: 0.1,
     技能基础伤害_最小值: 0,
     技能基础伤害_最大值: 0,

@@ -26,7 +26,7 @@
 
 .tuandui-zengyi-detail-modal .ant-modal-body{
   max-height: calc(100vh - 108px - 48px);
-  padding: 12px 24px;
+  padding: 12px 24px 36px;
   overflow-y: auto;
   display: flex;
   flex-wrap: wrap;

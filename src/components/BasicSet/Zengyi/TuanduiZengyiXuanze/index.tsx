@@ -10,6 +10,9 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
 
   const [visible, setVisible] = useState<boolean>(false)
 
+  // 暂时不开放编辑
+  const openEdit = true
+
   const onChangeZengyi = (
     e: boolean | null,
     zengyi: TuanduiZengyiBasicDataDTO,
@@ -80,7 +83,14 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
         className="tuandui-zengyi-detail-modal"
         centered
         visible={visible}
-        title={'部分增益层数/覆盖率设置'}
+        title={
+          <span>
+            {/* 部分增益层数/覆盖率设置 */}
+            <span style={{ color: '#F34242', fontSize: 14 }}>
+              为避免有人恶意输入100%覆盖率带节奏，暂时不开放编辑
+            </span>
+          </span>
+        }
         onCancel={() => setVisible(false)}
         footer={null}
       >
@@ -108,6 +118,7 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
                       value={当前增益选项?.层数}
                       className="t-z-c-content"
                       placeholder="请选择"
+                      disabled={openEdit}
                       defaultValue={item?.层数}
                       onChange={(e) => onChangeZengyi(null, item, e)}
                     >
@@ -125,6 +136,7 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
                   <div className={'tuandui-zengyi-content-item'}>
                     <span className="tuandui-zengyi-content-item-title">覆盖率</span>
                     <InputNumber
+                      disabled={openEdit}
                       className="t-z-c-content"
                       placeholder="请输入覆盖率"
                       min={0}
