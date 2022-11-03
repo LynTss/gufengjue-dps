@@ -122,6 +122,69 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
     ],
   },
   {
+    增益名称: '酒中仙',
+    层数: 1,
+    覆盖率: 100,
+    增益集合: [
+      {
+        增益类型: GainTypeEnum.外攻会心百分比,
+        增益计算类型: GainDpsTypeEnum.B,
+        增益数值: 0.1,
+      },
+    ],
+  },
+  {
+    增益名称: '剑锋百锻',
+    层数: 1,
+    覆盖率: 25,
+    覆盖率支持手动录入: true,
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.B,
+        增益类型: GainTypeEnum.郭氏武器伤害,
+        增益数值: 716,
+      },
+    ],
+  },
+  {
+    增益名称: '炽炎',
+    层数: 1,
+    覆盖率: 25,
+    覆盖率支持手动录入: true,
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.伤害百分比,
+        增益数值: 0.0126,
+      },
+    ],
+  },
+  {
+    增益名称: '疏狂',
+    层数: 1,
+    覆盖率: 20,
+    覆盖率支持手动录入: true,
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.B,
+        增益类型: GainTypeEnum.郭氏基础攻击,
+        增益数值: 307,
+      },
+    ],
+  },
+  {
+    增益名称: '戒火斩',
+    层数: 1,
+    覆盖率: 100,
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.伤害百分比,
+        增益数值: 0.02,
+      },
+    ],
+  },
+  {
     增益名称: '秋肃',
     层数: 1,
     覆盖率: 100,
@@ -130,6 +193,19 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.伤害百分比,
         增益数值: 0.05,
+      },
+    ],
+  },
+  {
+    增益名称: '皎肃',
+    层数: 1,
+    覆盖率: 14,
+    覆盖率支持手动录入: true,
+    增益集合: [
+      {
+        增益类型: GainTypeEnum.郭氏外攻会心效果等级,
+        增益计算类型: GainDpsTypeEnum.B,
+        增益数值: 51,
       },
     ],
   },
@@ -154,6 +230,19 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.无视防御,
         增益数值: 1529,
+      },
+    ],
+  },
+  {
+    增益名称: '乘龙箭',
+    层数: 1,
+    覆盖率: 33,
+    覆盖率支持手动录入: true,
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.B,
+        增益类型: GainTypeEnum.郭氏无视防御,
+        增益数值: 102,
       },
     ],
   },

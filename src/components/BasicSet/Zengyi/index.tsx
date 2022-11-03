@@ -34,14 +34,14 @@ function Zengyi({ getDpsFunction }) {
   return (
     <div className="zengyi-wrapper">
       <h1 className="zengyi-title">
-        增益设置
-        <span className={'zengyi-title-tip'}>增益暂未体现在面板，不影响计算</span>
-      </h1>
-      <div className={'zengyiqiyong'}>
+        <div className="zengyi-title-text">
+          增益设置
+          <span className={'zengyi-title-tip'}>增益暂未体现在面板，不影响计算</span>
+        </div>
         <Checkbox checked={!!zengyiQiyong} onChange={(e) => changeZengyiQiyong(e?.target?.checked)}>
-          增益是否启用
+          是否启用
         </Checkbox>
-      </div>
+      </h1>
       <div className="xuanze-zhenyan">
         <ZhenyanXuanze value={zengyixuanxiangData?.阵眼 || undefined} onChange={zhenyanOnChange} />
       </div>

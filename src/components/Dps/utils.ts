@@ -481,6 +481,10 @@ const switchGain = (
         计算后人物属性.面板攻击 =
           计算后人物属性.面板攻击 + Math.floor((计算后人物属性.基础攻击 * 增益数值) / 1024)
         break
+      case GainTypeEnum.郭氏武器伤害:
+        计算后人物属性.武器伤害_最小值 = guoshiResult(计算后人物属性.武器伤害_最小值, 增益数值)
+        计算后人物属性.武器伤害_最大值 = guoshiResult(计算后人物属性.武器伤害_最大值, 增益数值)
+        break
       case GainTypeEnum.郭氏外攻会心效果等级:
         计算后郭氏额外会效果值 = 计算后郭氏额外会效果值 + 增益数值
         break

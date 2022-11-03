@@ -30,7 +30,13 @@
   justify-content: space-between;
 }
 
+.log-content-text {
+  flex: 1;
+}
+
 .log-version {
-  font-weight: 700;;
+  min-width: 80px;
+  text-align: right;
+  font-weight: 700;
   color: var(--ant-primary-color);
 }
