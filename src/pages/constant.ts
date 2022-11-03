@@ -124,7 +124,7 @@ export const ZENGYI_DATA_DEFAULT = {
       增益名称: '号令三军',
       启用: true,
       层数: 36,
-      覆盖率: 10,
+      覆盖率: 20,
     },
   ],
 }
