@@ -69,8 +69,7 @@ export const skillStandardDps = (
   const { 破防值 } = characterConfig
   const { 防御点数, 防御系数 } = 当前目标
   const guoshiPofangzhi = guoshiPofang(破防值)
-  // 流岚暴力临时解法
-  const guoshiFangyuzhi = guoshiFangyu(防御点数 * 0.65, 防御系数)
+  const guoshiFangyuzhi = guoshiFangyu(防御点数, 防御系数)
   const y = 1024 + guoshiPofangzhi - Math.floor(((1024 + guoshiPofangzhi) * guoshiFangyuzhi) / 1024)
 
   return Math.floor((damage * y) / 1024)

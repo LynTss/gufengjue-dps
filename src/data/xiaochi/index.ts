@@ -14,17 +14,6 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
     ],
   },
   {
-    小吃名称: '断浪·上品凝神散（破招）',
-    小吃部位: XiaochiTypeEnum.药品增强,
-    增益集合: [
-      {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.破招,
-        增益数值: 1627,
-      },
-    ],
-  },
-  {
     小吃名称: '断浪·上品破秽散（破防）',
     小吃部位: XiaochiTypeEnum.药品增强,
     增益集合: [
@@ -42,6 +31,17 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心等级,
+        增益数值: 1627,
+      },
+    ],
+  },
+  {
+    小吃名称: '断浪·上品凝神散（破招）',
+    小吃部位: XiaochiTypeEnum.药品增强,
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.破招,
         增益数值: 1627,
       },
     ],
@@ -80,17 +80,6 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
     ],
   },
   {
-    小吃名称: '断浪·白肉血肠（破招）',
-    小吃部位: XiaochiTypeEnum.食品增强,
-    增益集合: [
-      {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.破招,
-        增益数值: 1266,
-      },
-    ],
-  },
-  {
     小吃名称: '断浪·红烧排骨（破防）',
     小吃部位: XiaochiTypeEnum.食品增强,
     增益集合: [
@@ -108,6 +97,17 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心等级,
+        增益数值: 1266,
+      },
+    ],
+  },
+  {
+    小吃名称: '断浪·白肉血肠（破招）',
+    小吃部位: XiaochiTypeEnum.食品增强,
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.破招,
         增益数值: 1266,
       },
     ],

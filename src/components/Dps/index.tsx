@@ -59,6 +59,7 @@ function Dps(props, ref) {
       skillBasicData,
       zengyiQiyong,
       zengyixuanxiangData,
+      dpsTime,
     })
     setTotal(totalDps)
     setDpsList(dpsList)
@@ -79,10 +80,7 @@ function Dps(props, ref) {
         </div>
       </div>
       <p className={'dps-number-tip'}>数值仅供参考，请以实际游戏内实装系数为准</p>
-      <p className={'dps-income-tip'}>
-        下列收益计算表，由于采用郭氏计算，导致存在计算阈值使收益不线性。会尽快寻求合理的计算方案。当前使用时请仅用作脱掉某附魔以后计算附魔收益
-      </p>
-      <Income zengyiVisible={zengyiVisible} totalDps={total} ref={incomeRef} />
+      <Income zengyiVisible={zengyiVisible} ref={incomeRef} />
       <DpsCountModal
         total={total}
         visible={dpsCountModalVisible}

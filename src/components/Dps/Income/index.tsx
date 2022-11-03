@@ -4,19 +4,34 @@
 
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import * as G2 from '@antv/g2'
-import { EnchantGainDTO } from '@/data/enchantGain'
 import { useAppSelector } from '@/hooks'
 import { QuestionCircleOutlined } from '@ant-design/icons'
 import { CharacterFinalDTO } from '@/@types/character'
 import { GainTypeEnum } from '@/@types/enum'
 import { SKillGainData } from '@/@types/skill'
-import { getDpsTotal } from '../utils'
-import { Tooltip } from 'antd'
-import { getLidao } from '@/components/BasicSet/CharacterSet/util'
+// import { getDpsTotal } from '../utils'
+import { getNotGuoDpsTotal } from './utils' // 使用不郭计算方式
+import { message, Radio, Tooltip } from 'antd'
 import { 加成系数 } from '@/data/constant'
 import './index.css'
+import { getDpsTime } from '@/utils/skill-dps'
+import {
+  IncomeFumo,
+  IncomeDataDTO,
+  IncomeXiaoyao,
+  IncomeXiaochi,
+  IncomeWuxingshi,
+} from '@/data/income'
 
-function Income({ totalDps, zengyiVisible }, ref) {
+const checkTypeList = [
+  { label: '附魔', list: IncomeFumo },
+  { label: '小药', list: IncomeXiaoyao },
+  { label: '小吃', list: IncomeXiaochi },
+  { label: '五行石 ', list: IncomeWuxingshi },
+  // { label: '五彩石', list: EnchantGainDTO },
+]
+
+function Income({ zengyiVisible }, ref) {
   const currentCycle = useAppSelector((state) => state.basic.currentCycle)
   const characterFinalData = useAppSelector((state) => state.basic.characterFinalData)
   const equipmentBasicData = useAppSelector((state) => state.basic.equipmentBasicData)
@@ -25,9 +40,18 @@ function Income({ totalDps, zengyiVisible }, ref) {
   const zengyixuanxiangData = useAppSelector((state) => state.zengyi.zengyixuanxiangData)
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
 
+  const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
+  const network = useAppSelector((state) => state?.basic?.network)
+
   const [chartData, setChartData] = useState<any>()
+  const [currentIncomeType, setCunrrentIncomeType] = useState<string>('附魔')
+  // const [currentIncomeList, setCunrrentIncomeList] = useState<IncomeDataDTO[]>(IncomeFumo)
+
+  const currentIncomeList = useRef<IncomeDataDTO[]>(IncomeFumo)
+
   const limitRef: any = useRef<any>()
 
+  // 计算单点增益
   const getAfterIncomeDpsPercent = (data) => {
     const 计算后属性 = getIncomeData(
       characterFinalData,
@@ -36,30 +60,86 @@ function Income({ totalDps, zengyiVisible }, ref) {
     )
     const 计算后目标 = currentTarget
 
-    const { totalDps: newTotalDps } = getDpsTotal({
+    const dpsTime = getDpsTime(
+      currentCycleName,
+      characterFinalData,
+      network,
+      zengyiQiyong,
+      zengyixuanxiangData
+    )
+
+    const { totalDps: oldDps } = getNotGuoDpsTotal({
+      currentCycle,
+      characterFinalData: characterFinalData,
+      当前目标: 计算后目标,
+      skillBasicData,
+      zengyiQiyong,
+      zengyixuanxiangData,
+      dpsTime,
+    })
+
+    const { totalDps: newTotalDps } = getNotGuoDpsTotal({
       currentCycle,
       characterFinalData: 计算后属性,
       当前目标: 计算后目标,
       skillBasicData,
       zengyiQiyong,
       zengyixuanxiangData,
+      dpsTime,
     })
 
-    return Number(((newTotalDps / totalDps - 1) * 100).toFixed(4))
+    return Number((newTotalDps / oldDps - 1) * 100)
   }
 
   const getDataSource = () => {
-    return EnchantGainDTO.filter((item) => item.附魔名称 !== '加速').map((item) => {
+    const list = currentIncomeList?.current || IncomeFumo
+    return list.map((item) => {
+      const 单点增益 = getAfterIncomeDpsPercent(item)
+      const 增益数值: number = item?.增益集合?.[0]?.增益数值 || 1
+      const 收益 = Number((单点增益 * 增益数值).toFixed(4))
+
       return {
-        key: item.附魔名称,
-        收益: getAfterIncomeDpsPercent(item),
+        key: item.收益计算名称,
+        收益: 收益,
       }
     })
+    // 力道线性计算测试算法
+    // const list = Array.from({ length: 100 }, (v, k) => k).map((item) => {
+    //   return {
+    //     附魔名称: `力道${item + 1}0`,
+    //     增益集合: [
+    //       {
+    //         增益计算类型: GainDpsTypeEnum.A,
+    //         增益类型: GainTypeEnum.力道,
+    //         增益数值: 10 * (item + 1),
+    //       },
+    //     ],
+    //   }
+    // })
+    // return list
+    //   .filter((item) => item.附魔名称 !== '加速')
+    //   .map((item) => {
+    //     return {
+    //       key: item.附魔名称,
+    //       收益: getAfterIncomeDpsPercent(item),
+    //     }
+    //   })
   }
 
   useImperativeHandle(ref, () => ({
     initChart: initChart,
   }))
+
+  const handleChangeType = (e) => {
+    const list = checkTypeList?.find((item) => item.label === e)?.list
+    if (list) {
+      currentIncomeList.current = list
+      setCunrrentIncomeType(e)
+      initChart()
+    } else {
+      message.error('出现异常，请联系开发者')
+    }
+  }
 
   useEffect(() => {
     limitRef.current = false
@@ -138,19 +218,32 @@ function Income({ totalDps, zengyiVisible }, ref) {
   }
 
   return (
-    <div>
-      <div className={'income-chart'} id="income-chart" />
-      <div className={'income-chart-title'}>
-        属性收益
-        <Tooltip
-          title={`该收益为120级附魔收益，即${EnchantGainDTO.map(
-            (item) => `${item.增益集合?.[0]?.增益数值}${item.附魔名称}`
-          ).join('/')}，仅供参考`}
-        >
-          <QuestionCircleOutlined />
-        </Tooltip>
+    <>
+      <div>
+        <div className={'income-chart'} id="income-chart" />
+        <div className="income-type-wrapper">
+          <div className={'income-chart-title'}>
+            属性收益
+            <Tooltip title={`由于小吃、附魔等属性比例不同，做不同选项仅供参考`}>
+              <QuestionCircleOutlined />
+            </Tooltip>
+          </div>
+          <Radio.Group
+            className="income-type-select-radio"
+            value={currentIncomeType}
+            onChange={(e) => handleChangeType(e?.target.value)}
+          >
+            {checkTypeList.map((item) => {
+              return (
+                <Radio.Button key={item.label} value={item.label}>
+                  {item.label}
+                </Radio.Button>
+              )
+            })}
+          </Radio.Group>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
@@ -162,18 +255,19 @@ const getIncomeData = (
   openQiangLv: boolean
 ) => {
   const newData = { ...characterFinalData }
-  let 数值 = data.增益数值
+  // let 数值 = 1 data.增益数值
+  let 数值 = 1
   switch (data.增益类型) {
     case GainTypeEnum.力道:
-      数值 = getLidao(数值, !!openQiangLv)
+      数值 = openQiangLv ? 数值 * 1.1 : 数值
       newData.力道 = (newData.力道 || 0) + 数值
-      newData.基础攻击 = (newData.基础攻击 || 0) + Math.round(数值 * 加成系数.力道加成基础攻击)
+      newData.基础攻击 = (newData.基础攻击 || 0) + 数值 * 加成系数.力道加成基础攻击
       newData.面板攻击 =
         (newData.面板攻击 || 0) +
-        Math.floor(数值 * 加成系数.力道加成面板攻击) +
-        Math.round(数值 * 加成系数.力道加成基础攻击)
-      newData.破防值 = (newData.破防值 || 0) + Math.round(数值 * 加成系数.力道加成破防)
-      newData.会心值 = (newData.会心值 || 0) + Math.floor(数值 * 加成系数.力道加成会心)
+        数值 * 加成系数.力道加成面板攻击 +
+        数值 * 加成系数.力道加成基础攻击
+      newData.破防值 = (newData.破防值 || 0) + 数值 * 加成系数.力道加成破防
+      newData.会心值 = (newData.会心值 || 0) + 数值 * 加成系数.力道加成会心
       break
     case GainTypeEnum.外攻会心效果等级:
       newData.会心效果值 = (newData.会心效果值 || 0) + 数值

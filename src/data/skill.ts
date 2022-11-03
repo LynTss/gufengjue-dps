@@ -12,6 +12,7 @@ import hengyunduanlangGainDTO from './skillGain/hengyunduanlang'
 import gufengduanlangGainDTO from './skillGain/gufengduanlang'
 import chushiyuGainDTO from './skillGain/chushiyu'
 import bishijixuGainDTO from './skillGain/bishijixu'
+import { GainDpsTypeEnum, GainTypeEnum } from '@/@types/enum'
 
 const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
   {
@@ -251,6 +252,37 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     武器伤害系数: 0,
     伤害计算次数: 1,
     技能增益列表: commonGainDTO,
+  },
+  {
+    技能名称: '破',
+    技能伤害系数: 13.1925 * 0.48,
+    技能基础伤害_最小值: 0,
+    技能基础伤害_最大值: 0,
+    武器伤害系数: 0,
+    伤害计算次数: 1,
+    技能增益列表: commonGainDTO,
+  },
+  {
+    技能名称: '逐云寒蕊',
+    技能伤害系数: 1.274,
+    技能基础伤害_最小值: 0,
+    技能基础伤害_最大值: 0,
+    武器伤害系数: 0,
+    伤害计算次数: 1,
+    技能增益列表: [
+      {
+        增益名称: '飘黄',
+        增益所在位置: '套装',
+        常驻增益: true,
+        增益集合: [
+          {
+            增益类型: GainTypeEnum.郭氏无视防御,
+            增益计算类型: GainDpsTypeEnum.B,
+            增益数值: 1024,
+          },
+        ],
+      },
+    ],
   },
 ]
 export default GuFengJueSkillDataDTO

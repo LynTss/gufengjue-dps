@@ -1,28 +1,15 @@
-import { TuanduiZengyi_DATA } from './../../data/tuanduizengyi/index'
-import { getLidaoJiachengPofang } from './../BasicSet/CharacterSet/util'
-import {
-  getMianBanGongJI,
-  getLidao,
-  getLidaoJiachengHuixin,
-} from '@/components/BasicSet/CharacterSet/util'
-import { GainDpsTypeEnum } from './../../@types/enum'
+import { 每等级减伤 } from '@/data/constant'
+// !收益采用非郭式算法
+import { TuanduiZengyi_DATA } from './../../../data/tuanduizengyi/index'
+import { GainDpsTypeEnum } from './../../../@types/enum'
 import { TargetDTO } from '@/@types/character'
-import {
-  guoshiBasic,
-  guoshiHuixin,
-  guoshiHuixinLv,
-  guoshiHuixinshanghai,
-  guoshiResult,
-} from '@/utils/help'
 import { CharacterFinalDTO } from '@/@types/character'
 import { CycleDTO, CycleGain } from '@/@types/cycle'
 import { GainTypeEnum } from '@/@types/enum'
 import { SkillBasicDTO, SKillGainData } from '@/@types/skill'
-import { guoshiPercent } from '@/utils/help'
-import { skillFinalDps } from '@/utils/skill-dps'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { Zhenyan_DATA } from '@/data/zhenyan'
-import { 加成系数 } from '@/data/constant'
+import { 加成系数, 属性系数 } from '@/data/constant'
 import XIAOCHI_DATA from '@/data/xiaochi'
 import ZhuangbeiGainList from '@/data/zhuangbei/zhuangbeiGain'
 
@@ -43,7 +30,7 @@ export interface DpsListData {
 }
 
 // 计算技能循环总输出
-export const getDpsTotal = (props: GetDpsTotalParams) => {
+export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
   const {
     currentCycle,
     characterFinalData,
@@ -259,25 +246,26 @@ const getSkillDamage = (
   const 目标 = {
     ...当前目标,
     防御点数:
-      guoshiResult(当前目标.防御点数, -郭式无视防御) > 0
-        ? guoshiResult(当前目标.防御点数, -郭式无视防御)
+      当前目标.防御点数 * (1 - 郭式无视防御 / 1024) > 0
+        ? 当前目标.防御点数 * (1 - 郭式无视防御 / 1024)
         : 0,
   }
-
   const { min, max } = skillFinalDps(当前技能属性, 最终人物属性, 目标)
 
   const 最小技能总伤 = min * 技能增伤
   const 最大技能总伤 = max * 技能增伤
 
-  const 平均伤害 = Math.floor((最小技能总伤 + 最大技能总伤) / 2)
+  const 平均伤害 = (最小技能总伤 + 最大技能总伤) / 2
 
-  const 会心数量 = guoshiHuixin(最终人物属性.会心值, 技能总数)
+  const 会心数量 = (最终人物属性.会心值 / 属性系数.会心) * 技能总数
 
-  const 会心期望率 = guoshiHuixinLv(最终人物属性.会心值) + 额外会心率
+  const 会心期望率 = 最终人物属性.会心值 / 属性系数.会心 + 额外会心率
 
-  const 会心实际伤害 = guoshiHuixinshanghai(最终人物属性.会心效果值, 平均伤害, 郭氏额外会效果值)
+  const 面板会心效果 = 最终人物属性.会心效果值 / 属性系数.会效
+  const 郭式额外会心效果 = 郭氏额外会效果值 / 1024
+  const 会心实际伤害 = 平均伤害 * 1.75 + 平均伤害 * 面板会心效果 + 平均伤害 * 郭式额外会心效果
 
-  const 期望技能总伤 = Math.floor(平均伤害 + 会心期望率 * (会心实际伤害 - 平均伤害)) * 技能总数
+  const 期望技能总伤 = (平均伤害 + 会心期望率 * (会心实际伤害 - 平均伤害)) * 技能总数
 
   return { 期望技能总伤, 会心数量 }
 }
@@ -302,7 +290,6 @@ const switchGain = (
   let 计算后额外会心率 = 额外会心率
   let 计算后目标 = 当前目标
   let 计算后郭式无视防御 = 郭式无视防御
-
   let 力道提升值 = 0
   const 强膂 = 人物属性?.强膂
 
@@ -318,7 +305,7 @@ const switchGain = (
       计算后人物属性.会心值 = 计算后人物属性.会心值 + 增益数值
       break
     case GainTypeEnum.外攻破防百分比:
-      计算后人物属性.破防值 = guoshiPercent(计算后人物属性.破防值, 增益数值)
+      计算后人物属性.破防值 = 计算后人物属性.破防值 * (1 + 增益数值)
       break
     case GainTypeEnum.破招:
       计算后人物属性.破招值 = 计算后人物属性.破招值 + 增益数值
@@ -338,14 +325,15 @@ const switchGain = (
       break
     case GainTypeEnum.力道:
       // 计算强膂有点问题
-      力道提升值 = getLidao(增益数值, 强膂)
+      力道提升值 = 强膂 ? 增益数值 * 1.1 : 增益数值
       计算后人物属性.力道 = 计算后人物属性.力道 + 力道提升值
-      计算后人物属性.基础攻击 + Math.floor(力道提升值 * 加成系数.力道加成基础攻击)
+      计算后人物属性.基础攻击 + 力道提升值 * 加成系数.力道加成基础攻击
       计算后人物属性.面板攻击 =
-        getMianBanGongJI(计算后人物属性.面板攻击, 力道提升值) +
-        Math.floor(力道提升值 * 加成系数.力道加成基础攻击)
-      计算后人物属性.会心值 = getLidaoJiachengHuixin(计算后人物属性.会心值, 力道提升值)
-      计算后人物属性.破防值 = getLidaoJiachengPofang(计算后人物属性.破防值, 力道提升值)
+        计算后人物属性.面板攻击 +
+        力道提升值 * 加成系数.力道加成面板攻击 +
+        力道提升值 * 加成系数.力道加成基础攻击
+      计算后人物属性.会心值 = 计算后人物属性.会心值 + 力道提升值 * 加成系数.力道加成会心
+      计算后人物属性.破防值 = 计算后人物属性.破防值 + 力道提升值 * 加成系数.力道加成破防
       break
     case GainTypeEnum.无双等级:
       计算后人物属性.无双值 = 计算后人物属性.无双值 + 增益数值
@@ -360,37 +348,37 @@ const switchGain = (
       计算后郭氏额外会效果值 = 计算后郭氏额外会效果值 + 增益数值
       break
     case GainTypeEnum.外攻会心效果百分比:
-      计算后郭氏额外会效果值 = 计算后郭氏额外会效果值 + guoshiBasic(增益数值)
+      计算后郭氏额外会效果值 = 计算后郭氏额外会效果值 + 增益数值 * 1024
       break
     case GainTypeEnum.郭氏无视防御:
       计算后郭式无视防御 = 计算后郭式无视防御 + 增益数值
       break
     case GainTypeEnum.郭氏外攻破防等级:
-      计算后人物属性.破防值 = guoshiResult(计算后人物属性.破防值, 增益数值)
+      计算后人物属性.破防值 = 计算后人物属性.破防值 * (1 + 增益数值 / 1024)
       break
     case GainTypeEnum.郭氏无双等级:
-      计算后人物属性.无双值 = guoshiResult(计算后人物属性.无双值, 增益数值)
+      计算后人物属性.无双值 = 计算后人物属性.无双值 * (1 + 增益数值 / 1024)
       break
     case GainTypeEnum.郭氏基础攻击:
-      计算后人物属性.基础攻击 = guoshiResult(计算后人物属性.基础攻击, 增益数值)
+      计算后人物属性.基础攻击 = 计算后人物属性.基础攻击 * (1 + 增益数值 / 1024)
       计算后人物属性.面板攻击 =
-        计算后人物属性.面板攻击 + Math.floor((计算后人物属性.基础攻击 * 增益数值) / 1024)
+        计算后人物属性.面板攻击 + (计算后人物属性.基础攻击 * 增益数值) / 1024
       break
     case GainTypeEnum.郭氏武器伤害:
-      计算后人物属性.武器伤害_最小值 = guoshiResult(计算后人物属性.武器伤害_最小值, 增益数值)
-      计算后人物属性.武器伤害_最大值 = guoshiResult(计算后人物属性.武器伤害_最大值, 增益数值)
+      计算后人物属性.武器伤害_最小值 = 计算后人物属性.武器伤害_最小值 * (1 + 增益数值 / 1024)
+      计算后人物属性.武器伤害_最大值 = 计算后人物属性.武器伤害_最大值 * (1 + 增益数值 / 1024)
       break
     case GainTypeEnum.郭氏力道:
       // 计算强膂有点问题
-      力道提升值 =
-        getLidao(计算后人物属性.力道, 强膂, 增益数值) - getLidao(计算后人物属性.力道, 强膂)
+      力道提升值 = (计算后人物属性.力道 * (增益数值 + 102)) / 1024
       计算后人物属性.力道 = 计算后人物属性.力道 + 力道提升值
-      计算后人物属性.基础攻击 + Math.floor(力道提升值 * 加成系数.力道加成基础攻击)
+      计算后人物属性.基础攻击 + 力道提升值 * 加成系数.力道加成基础攻击
       计算后人物属性.面板攻击 =
-        getMianBanGongJI(计算后人物属性.面板攻击, 力道提升值) +
-        Math.floor(力道提升值 * 加成系数.力道加成基础攻击)
-      计算后人物属性.会心值 = getLidaoJiachengHuixin(计算后人物属性.会心值, 力道提升值)
-      计算后人物属性.破防值 = getLidaoJiachengPofang(计算后人物属性.破防值, 力道提升值)
+        计算后人物属性.面板攻击 +
+        力道提升值 * 加成系数.力道加成面板攻击 +
+        力道提升值 * 加成系数.力道加成基础攻击
+      计算后人物属性.会心值 = 计算后人物属性.会心值 + 力道提升值 * 加成系数.力道加成会心
+      计算后人物属性.破防值 = 计算后人物属性.破防值 + 力道提升值 * 加成系数.力道加成破防
       break
     default:
       if (![GainTypeEnum.伤害百分比, GainTypeEnum.外攻会心百分比].includes(增益?.增益类型)) {
@@ -405,7 +393,7 @@ const switchGain = (
         计算后技能增伤 = 计算后技能增伤 + 增益数值
         break
       case GainTypeEnum.外攻会心百分比:
-        计算后人物属性.会心值 = guoshiPercent(计算后人物属性.会心值, 增益数值)
+        计算后人物属性.会心值 = 计算后人物属性.会心值 * (1 + 增益数值)
         break
       default:
         break
@@ -515,4 +503,112 @@ const getSortZengyiList = (list: SKillGainData[]): SKillGainData[] => {
   })
 
   return newList
+}
+
+/**
+ * @name 原始伤害计算
+ * @params (INT(基础伤害)+INT(攻击力*攻击系数)+INT(武器伤害*武伤系数))*伤害计算次数
+ */
+export const skillBasicDps = (skillConfig: SkillBasicDTO, characterConfig: CharacterFinalDTO) => {
+  const { 武器伤害_最小值 = 0, 武器伤害_最大值 = 0, 面板攻击, 破招值 } = characterConfig
+  const {
+    技能名称,
+    武器伤害系数,
+    技能基础伤害_最小值 = 0,
+    技能基础伤害_最大值 = 0,
+    伤害计算次数 = 1,
+    技能伤害系数,
+  } = skillConfig
+  if (技能名称 === '破') {
+    const poDps = 破招值 * 技能伤害系数
+    return {
+      min: poDps,
+      max: poDps,
+    }
+  }
+
+  function getSkill(damage, weapon_damage) {
+    return 面板攻击 * 技能伤害系数 + damage + weapon_damage * 武器伤害系数
+  }
+  const min = getSkill(技能基础伤害_最小值, 武器伤害_最小值) * 伤害计算次数
+  const max = getSkill(技能基础伤害_最大值, 武器伤害_最大值) * 伤害计算次数
+
+  return {
+    min,
+    max,
+  }
+}
+
+/**
+ * @name 技能基准伤害
+ * @params 基准伤害，参与最终无双、技能增伤等计算
+ */
+export const skillStandardDps = (
+  damage: number,
+  characterConfig: CharacterFinalDTO,
+  当前目标: TargetDTO
+) => {
+  const { 破防值 } = characterConfig
+  const { 防御点数, 防御系数 } = 当前目标
+
+  const 破防百分比 = 破防值 / 属性系数.破防
+
+  // 流岚暴力临时解法
+  const 防御减伤 = 防御点数 / (防御点数 + 防御系数)
+
+  return damage * (1 + 破防百分比) * (1 - 防御减伤)
+}
+
+/**
+ * @name 技能最终伤害计算
+ * @params 基准伤害，参与最终无双、技能增伤等计算
+ */
+export const skillFinalDpsFunction = (
+  damage: number,
+  characterConfig: CharacterFinalDTO,
+  当前目标: TargetDTO
+) => {
+  // 计算目标等级减伤
+  const r_dengjijianshang = skillDengjijianshangDps(damage, characterConfig, 当前目标)
+  // 无双增伤
+  const r_wushuang = skillWushuangDps(r_dengjijianshang, characterConfig)
+
+  return r_wushuang
+}
+
+/**
+ * @name 技能最终伤害调用函数
+ * @param characterConfig
+ * @returns
+ */
+export const skillFinalDps = (
+  skillConfig: SkillBasicDTO,
+  characterConfig: CharacterFinalDTO,
+  当前目标: TargetDTO
+) => {
+  const { min, max } = skillBasicDps(skillConfig, characterConfig)
+  const standard_min = skillStandardDps(min, characterConfig, 当前目标)
+  const standard_max = skillStandardDps(max, characterConfig, 当前目标)
+  return {
+    min: skillFinalDpsFunction(standard_min, characterConfig, 当前目标),
+    max: skillFinalDpsFunction(standard_max, characterConfig, 当前目标),
+  }
+}
+
+// 等级减伤dps
+export const skillDengjijianshangDps = (
+  damage: number,
+  characterConfig: CharacterFinalDTO,
+  当前目标: TargetDTO
+) => {
+  const levelDiff = Math.abs((characterConfig?.等级 || 120) - 当前目标.等级)
+  const levelReduce = levelDiff * 每等级减伤
+  const levelReducePoint = -levelReduce
+  return damage * (1 + levelReducePoint)
+}
+
+// 无双计算后dps
+export const skillWushuangDps = (damage: number, characterConfig: CharacterFinalDTO) => {
+  const 无双百分比 = characterConfig.无双值 / 属性系数.无双
+  return damage * (1 + 无双百分比)
 }

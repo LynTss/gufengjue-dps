@@ -164,6 +164,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         skillBasicData: newSkillBasicData,
         zengyiQiyong,
         zengyixuanxiangData,
+        dpsTime,
       })
       const 增益加速 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
       设置加速(final.加速值 + 增益加速)

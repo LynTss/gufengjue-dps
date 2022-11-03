@@ -4,8 +4,10 @@
 }
 
 .income-chart-title {
+  display: inline-block;
   text-align: center;
   line-height: 20px;
+  margin-right: 16px;
   font-size: 16px;
 }
 
@@ -14,4 +16,20 @@
   margin-left: 8px;
   font-size: 14px;
   color: #ccc;
+}
+
+.income-type-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.income-type-select-radio .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  background: #fff;
+  color: var(--ant-primary-color);
+}
+
+.income-type-select-radio .ant-radio-button-wrapper {
+  color: #fff;
+  background: none;
 }

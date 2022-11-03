@@ -73,14 +73,9 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
   {
     增益名称: '飘黄',
     层数: 1,
-    覆盖率: 16, // 10秒 60秒CD
-    覆盖率支持手动录入: true,
+    覆盖率: 13, // 10秒 60秒CD
     增益集合: [
-      {
-        增益计算类型: GainDpsTypeEnum.B,
-        增益类型: GainTypeEnum.郭氏无视防御,
-        增益数值: 1024,
-      },
+      // 特殊处理
     ],
   },
   {
