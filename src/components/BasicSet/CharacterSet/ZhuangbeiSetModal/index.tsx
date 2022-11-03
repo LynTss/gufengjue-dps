@@ -188,7 +188,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         <span>
           配装器
           <span style={{ color: '#F34242', fontSize: 14, marginLeft: 16 }}>
-            目前二段加速循环需要更改，暂时只推荐一段加速配装
+            暂时只推荐1段加速配装，0段、2段伤害计算不准确
           </span>
         </span>
       }
