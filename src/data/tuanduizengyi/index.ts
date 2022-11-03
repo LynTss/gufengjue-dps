@@ -137,7 +137,6 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
     增益名称: '剑锋百锻',
     层数: 1,
     覆盖率: 25,
-    覆盖率支持手动录入: true,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.B,
