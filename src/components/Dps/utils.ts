@@ -1,24 +1,12 @@
 import { TuanduiZengyi_DATA } from './../../data/tuanduizengyi/index'
-import { getLidaoJiachengPofang } from './../BasicSet/CharacterSet/util'
-import {
-  getMianBanGongJI,
-  getLidao,
-  getLidaoJiachengHuixin,
-} from '@/components/BasicSet/CharacterSet/util'
+import { getMianBanGongJI, getLidaoJiachengHuixin } from '@/components/BasicSet/CharacterSet/util'
 import { GainDpsTypeEnum } from './../../@types/enum'
 import { TargetDTO } from '@/@types/character'
-import {
-  guoshiBasic,
-  guoshiHuixin,
-  guoshiHuixinLv,
-  guoshiHuixinshanghai,
-  guoshiResult,
-} from '@/utils/help'
+import { guoshiHuixin, guoshiHuixinLv, guoshiHuixinshanghai, guoshiResult } from '@/utils/help'
 import { CharacterFinalDTO } from '@/@types/character'
 import { CycleDTO, CycleGain } from '@/@types/cycle'
 import { GainTypeEnum } from '@/@types/enum'
 import { SkillBasicDTO, SKillGainData } from '@/@types/skill'
-import { guoshiPercent } from '@/utils/help'
 import { skillFinalDps } from '@/utils/skill-dps'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { Zhenyan_DATA } from '@/data/zhenyan'
@@ -199,38 +187,149 @@ export const geSkillTotalDps = (
   总增益集合: SKillGainData[]
 ) => {
   let 最终人物属性 = { ...人物属性 }
+  let 计算目标 = 当前目标
   let 计算技能增伤 = 1
   let 计算郭氏额外会效果值 = 0
   let 计算额外会心率 = 0
   let 计算郭式无视防御 = 0
-  let 计算目标 = 当前目标
+  let 计算力道加成 = 0
+  let 计算郭氏力道 = 0
+  let 计算郭氏无双等级 = 0
+  let 计算郭氏破防等级 = 0
+  let 计算郭氏基础攻击 = 0
+  let 计算郭氏武器伤害 = 0
   // 对增益集合进行排序，先计算数值。后计算百分比
   const 当前技能计算增益集合: SKillGainData[] = getSortZengyiList(总增益集合)
 
-  当前技能计算增益集合.forEach((增益数值信息) => {
-    const {
-      计算后人物属性,
-      计算后技能增伤,
-      计算后郭氏额外会效果值,
-      计算后额外会心率,
-      计算后目标,
-      计算后郭式无视防御,
-    } = switchGain(
-      最终人物属性,
-      增益数值信息,
-      计算技能增伤,
-      计算郭氏额外会效果值,
-      计算额外会心率,
-      计算目标,
-      计算郭式无视防御
-    )
-    最终人物属性 = { ...计算后人物属性 }
-    计算技能增伤 = 计算后技能增伤
-    计算郭氏额外会效果值 = 计算后郭氏额外会效果值
-    计算额外会心率 = 计算后额外会心率
-    计算目标 = 计算后目标
-    计算郭式无视防御 = 计算后郭式无视防御
-  })
+  // 单独先计算力道增益的收益
+  当前技能计算增益集合
+    .filter((item) => [GainTypeEnum.力道, GainTypeEnum.郭氏力道].includes(item.增益类型))
+    .forEach((增益数值信息) => {
+      const {
+        计算后人物属性,
+        计算后目标,
+        计算后技能增伤,
+        计算后郭氏额外会效果值,
+        计算后额外会心率,
+        计算后郭式无视防御,
+        计算后力道加成,
+        计算后郭氏力道,
+        计算后郭氏无双等级,
+        计算后郭氏破防等级,
+        计算后郭氏基础攻击,
+        计算后郭氏武器伤害,
+      } = switchGain(
+        最终人物属性,
+        增益数值信息,
+        计算目标,
+        计算技能增伤,
+        计算郭氏额外会效果值,
+        计算额外会心率,
+        计算郭式无视防御,
+        计算力道加成,
+        计算郭氏力道,
+        计算郭氏无双等级,
+        计算郭氏破防等级,
+        计算郭氏基础攻击,
+        计算郭氏武器伤害
+      )
+      最终人物属性 = { ...计算后人物属性 }
+      计算技能增伤 = 计算后技能增伤
+      计算郭氏额外会效果值 = 计算后郭氏额外会效果值
+      计算额外会心率 = 计算后额外会心率
+      计算目标 = 计算后目标
+      计算郭式无视防御 = 计算后郭式无视防御
+      计算力道加成 = 计算后力道加成
+      计算郭氏力道 = 计算后郭氏力道
+      计算郭氏无双等级 = 计算后郭氏无双等级
+      计算郭氏破防等级 = 计算后郭氏破防等级
+      计算郭氏基础攻击 = 计算后郭氏基础攻击
+      计算郭氏武器伤害 = 计算后郭氏武器伤害
+    })
+
+  // 计算力道带来的面板增益
+  const 强膂郭氏力道 = 最终人物属性?.强膂 ? 102 : 0
+  // 郭氏力道在是否开启强膂下的提升百分比
+  const guoLidaoPercent =
+    (1024 + 计算郭氏力道 + 强膂郭氏力道) / 1024 / ((1024 + 强膂郭氏力道) / 1024) - 1
+  // 郭式力道对人物属性力道的提升值
+  const 郭式力道对人物属性力道的提升值 = Math.floor(最终人物属性.力道 * guoLidaoPercent)
+  // 力道数值的提升值
+  const 力道提升值 =
+    计算力道加成 + Math.floor((计算力道加成 * (计算郭氏力道 + 强膂郭氏力道)) / 1024)
+
+  const 总力道提升值 = 郭式力道对人物属性力道的提升值 + 力道提升值
+
+  最终人物属性 = {
+    ...最终人物属性,
+    力道: 最终人物属性.力道 + 总力道提升值,
+    基础攻击: 最终人物属性.基础攻击 + Math.round(总力道提升值 * 加成系数.力道加成基础攻击),
+    面板攻击:
+      getMianBanGongJI(最终人物属性.面板攻击, 总力道提升值) +
+      Math.round(总力道提升值 * 加成系数.力道加成基础攻击),
+    会心值: getLidaoJiachengHuixin(最终人物属性.会心值, 总力道提升值),
+    破防值: getLidaoJiachengHuixin(最终人物属性.破防值, 总力道提升值),
+  }
+
+  // 计算力道后再计算其他收益
+  当前技能计算增益集合
+    .filter((item) => ![GainTypeEnum.力道, GainTypeEnum.郭氏力道].includes(item.增益类型))
+    .forEach((增益数值信息) => {
+      const {
+        计算后人物属性,
+        计算后目标,
+        计算后技能增伤,
+        计算后郭氏额外会效果值,
+        计算后额外会心率,
+        计算后郭式无视防御,
+        计算后力道加成,
+        计算后郭氏力道,
+        计算后郭氏无双等级,
+        计算后郭氏破防等级,
+        计算后郭氏基础攻击,
+        计算后郭氏武器伤害,
+      } = switchGain(
+        最终人物属性,
+        增益数值信息,
+        计算目标,
+        计算技能增伤,
+        计算郭氏额外会效果值,
+        计算额外会心率,
+        计算郭式无视防御,
+        计算力道加成,
+        计算郭氏力道,
+        计算郭氏无双等级,
+        计算郭氏破防等级,
+        计算郭氏基础攻击,
+        计算郭氏武器伤害
+      )
+      最终人物属性 = { ...计算后人物属性 }
+      计算技能增伤 = 计算后技能增伤
+      计算郭氏额外会效果值 = 计算后郭氏额外会效果值
+      计算额外会心率 = 计算后额外会心率
+      计算目标 = 计算后目标
+      计算郭式无视防御 = 计算后郭式无视防御
+      计算力道加成 = 计算后力道加成
+      计算郭氏力道 = 计算后郭氏力道
+      计算郭氏无双等级 = 计算后郭氏无双等级
+      计算郭氏破防等级 = 计算后郭氏破防等级
+      计算郭氏基础攻击 = 计算后郭氏基础攻击
+      计算郭氏武器伤害 = 计算后郭氏武器伤害
+    })
+
+  最终人物属性 = {
+    ...最终人物属性,
+    无双值: 最终人物属性.无双值 + Math.floor((最终人物属性.无双值 * 计算郭氏无双等级) / 1024),
+    破防值: 最终人物属性.破防值 + Math.floor((最终人物属性.破防值 * 计算郭氏破防等级) / 1024),
+    基础攻击: 最终人物属性.基础攻击 + Math.floor((最终人物属性.基础攻击 * 计算郭氏基础攻击) / 1024),
+    面板攻击: 最终人物属性.面板攻击 + Math.floor((最终人物属性.基础攻击 * 计算郭氏基础攻击) / 1024),
+    武器伤害_最小值:
+      最终人物属性.武器伤害_最小值 +
+      Math.floor((最终人物属性.武器伤害_最小值 * 计算郭氏武器伤害) / 1024),
+    武器伤害_最大值:
+      最终人物属性.武器伤害_最小值 +
+      Math.floor((最终人物属性.武器伤害_最大值 * 计算郭氏武器伤害) / 1024),
+  }
 
   const { 期望技能总伤, 会心数量 } = getSkillDamage(
     当前技能属性,
@@ -289,22 +388,31 @@ const getSkillDamage = (
 const switchGain = (
   人物属性: CharacterFinalDTO,
   增益: SKillGainData,
+  当前目标: TargetDTO,
   技能增伤: number,
   郭氏额外会效果值: number,
   额外会心率: number,
-  当前目标: TargetDTO,
-  郭式无视防御: number
+  郭式无视防御: number,
+  计算力道加成: number,
+  计算郭氏力道: number,
+  计算郭氏无双等级: number,
+  计算郭氏破防等级: number,
+  计算郭氏基础攻击: number,
+  计算郭氏武器伤害: number
 ) => {
-  const { 增益数值, 增益类型, 增益计算类型 } = 增益
+  const { 增益数值, 增益类型 } = 增益
   const 计算后人物属性 = { ...人物属性 }
   let 计算后技能增伤 = 技能增伤
   let 计算后郭氏额外会效果值 = 郭氏额外会效果值
   let 计算后额外会心率 = 额外会心率
   let 计算后目标 = 当前目标
   let 计算后郭式无视防御 = 郭式无视防御
-
-  let 力道提升值 = 0
-  const 强膂 = 人物属性?.强膂
+  let 计算后力道加成 = 计算力道加成
+  let 计算后郭氏力道 = 计算郭氏力道
+  let 计算后郭氏无双等级 = 计算郭氏无双等级
+  let 计算后郭氏破防等级 = 计算郭氏破防等级
+  let 计算后郭氏基础攻击 = 计算郭氏基础攻击
+  let 计算后郭氏武器伤害 = 计算郭氏武器伤害
 
   switch (增益类型) {
     case GainTypeEnum.基础攻击:
@@ -316,9 +424,6 @@ const switchGain = (
       break
     case GainTypeEnum.外攻会心等级:
       计算后人物属性.会心值 = 计算后人物属性.会心值 + 增益数值
-      break
-    case GainTypeEnum.外攻破防百分比:
-      计算后人物属性.破防值 = guoshiPercent(计算后人物属性.破防值, 增益数值)
       break
     case GainTypeEnum.破招:
       计算后人物属性.破招值 = 计算后人物属性.破招值 + 增益数值
@@ -337,15 +442,7 @@ const switchGain = (
       }
       break
     case GainTypeEnum.力道:
-      // 计算强膂有点问题
-      力道提升值 = getLidao(增益数值, 强膂)
-      计算后人物属性.力道 = 计算后人物属性.力道 + 力道提升值
-      计算后人物属性.基础攻击 + Math.floor(力道提升值 * 加成系数.力道加成基础攻击)
-      计算后人物属性.面板攻击 =
-        getMianBanGongJI(计算后人物属性.面板攻击, 力道提升值) +
-        Math.floor(力道提升值 * 加成系数.力道加成基础攻击)
-      计算后人物属性.会心值 = getLidaoJiachengHuixin(计算后人物属性.会心值, 力道提升值)
-      计算后人物属性.破防值 = getLidaoJiachengPofang(计算后人物属性.破防值, 力道提升值)
+      计算后力道加成 = 计算后力道加成 + 增益数值
       break
     case GainTypeEnum.无双等级:
       计算后人物属性.无双值 = 计算后人物属性.无双值 + 增益数值
@@ -353,84 +450,58 @@ const switchGain = (
     case GainTypeEnum.加速:
       计算后人物属性.加速值 = 计算后人物属性.加速值 + 增益数值
       break
+    case GainTypeEnum.近战武器伤害:
+      计算后人物属性.武器伤害_最小值 += 增益数值
+      计算后人物属性.武器伤害_最大值 += 增益数值
+      break
     case GainTypeEnum.外攻会心效果等级:
       计算后人物属性.会心效果值 = 计算后人物属性.会心效果值 + 增益数值
       break
     case GainTypeEnum.郭氏外攻会心效果等级:
       计算后郭氏额外会效果值 = 计算后郭氏额外会效果值 + 增益数值
       break
-    case GainTypeEnum.外攻会心效果百分比:
-      计算后郭氏额外会效果值 = 计算后郭氏额外会效果值 + guoshiBasic(增益数值)
+    case GainTypeEnum.外攻会心百分比:
+      计算后额外会心率 = 计算后额外会心率 + 增益数值
       break
     case GainTypeEnum.郭氏无视防御:
       计算后郭式无视防御 = 计算后郭式无视防御 + 增益数值
       break
     case GainTypeEnum.郭氏外攻破防等级:
-      计算后人物属性.破防值 = guoshiResult(计算后人物属性.破防值, 增益数值)
+      计算后郭氏破防等级 = 计算后郭氏破防等级 + 增益数值
       break
     case GainTypeEnum.郭氏无双等级:
-      计算后人物属性.无双值 = guoshiResult(计算后人物属性.无双值, 增益数值)
+      计算后郭氏无双等级 = 计算后郭氏无双等级 + 增益数值
       break
     case GainTypeEnum.郭氏基础攻击:
-      计算后人物属性.基础攻击 = guoshiResult(计算后人物属性.基础攻击, 增益数值)
-      计算后人物属性.面板攻击 =
-        计算后人物属性.面板攻击 + Math.floor((计算后人物属性.基础攻击 * 增益数值) / 1024)
+      计算后郭氏基础攻击 = 计算后郭氏基础攻击 + 增益数值
       break
     case GainTypeEnum.郭氏武器伤害:
-      计算后人物属性.武器伤害_最小值 = guoshiResult(计算后人物属性.武器伤害_最小值, 增益数值)
-      计算后人物属性.武器伤害_最大值 = guoshiResult(计算后人物属性.武器伤害_最大值, 增益数值)
+      计算后郭氏武器伤害 = 计算后郭氏武器伤害 + 增益数值
       break
     case GainTypeEnum.郭氏力道:
-      // 计算强膂有点问题
-      力道提升值 =
-        getLidao(计算后人物属性.力道, 强膂, 增益数值) - getLidao(计算后人物属性.力道, 强膂)
-      计算后人物属性.力道 = 计算后人物属性.力道 + 力道提升值
-      计算后人物属性.基础攻击 + Math.floor(力道提升值 * 加成系数.力道加成基础攻击)
-      计算后人物属性.面板攻击 =
-        getMianBanGongJI(计算后人物属性.面板攻击, 力道提升值) +
-        Math.floor(力道提升值 * 加成系数.力道加成基础攻击)
-      计算后人物属性.会心值 = getLidaoJiachengHuixin(计算后人物属性.会心值, 力道提升值)
-      计算后人物属性.破防值 = getLidaoJiachengPofang(计算后人物属性.破防值, 力道提升值)
+      计算后郭氏力道 = 计算后郭氏力道 + 增益数值
+      break
+    case GainTypeEnum.伤害百分比:
+      计算后技能增伤 = 计算后技能增伤 + 增益数值
       break
     default:
-      if (![GainTypeEnum.伤害百分比, GainTypeEnum.外攻会心百分比].includes(增益?.增益类型)) {
-        console.warn(`存在未计算增益${增益?.增益类型}`, 增益)
-      }
+      console.warn(`存在未计算增益${增益?.增益类型}`, 增益)
       break
-  }
-
-  if (增益计算类型 === GainDpsTypeEnum.A) {
-    switch (增益类型) {
-      case GainTypeEnum.伤害百分比:
-        计算后技能增伤 = 计算后技能增伤 + 增益数值
-        break
-      case GainTypeEnum.外攻会心百分比:
-        计算后人物属性.会心值 = guoshiPercent(计算后人物属性.会心值, 增益数值)
-        break
-      default:
-        break
-    }
-  } else if (增益计算类型 === GainDpsTypeEnum.B) {
-    switch (增益类型) {
-      case GainTypeEnum.伤害百分比:
-        计算后技能增伤 = 计算后技能增伤 * (1 + 增益数值)
-        break
-      // 所有秘籍的会心按独立数值想买计算
-      case GainTypeEnum.外攻会心百分比:
-        计算后额外会心率 = 计算后额外会心率 + 增益数值
-        break
-      default:
-        break
-    }
   }
 
   return {
     计算后人物属性,
+    计算后目标,
     计算后技能增伤,
     计算后郭氏额外会效果值,
     计算后额外会心率,
-    计算后目标,
     计算后郭式无视防御,
+    计算后力道加成,
+    计算后郭氏力道,
+    计算后郭氏无双等级,
+    计算后郭氏破防等级,
+    计算后郭氏基础攻击,
+    计算后郭氏武器伤害,
   }
 }
 

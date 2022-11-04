@@ -120,7 +120,6 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
                       value={当前增益选项?.层数}
                       className="t-z-c-content"
                       placeholder="请选择"
-                      disabled={openEdit}
                       defaultValue={item?.层数}
                       onChange={(e) => onChangeZengyi(null, item, e)}
                     >

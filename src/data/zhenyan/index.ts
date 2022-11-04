@@ -154,8 +154,8 @@ export const Zhenyan_DATA: ZhenyanGainDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.B,
         计算位置: ZengyanZengyiPositionEnum.角色属性,
-        增益类型: GainTypeEnum.外攻会心效果百分比,
-        增益数值: 0.15,
+        增益类型: GainTypeEnum.郭氏外攻会心效果等级,
+        增益数值: 154,
       },
       {
         增益计算类型: GainDpsTypeEnum.B,

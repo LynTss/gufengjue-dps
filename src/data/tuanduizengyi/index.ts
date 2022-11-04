@@ -57,20 +57,6 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
     ],
   },
   {
-    增益名称: '配伍',
-    层数: 1,
-    覆盖率: 100,
-    层数选项数组: [1, 2, 3, 4, 5],
-    覆盖率支持手动录入: true,
-    增益集合: [
-      {
-        增益计算类型: GainDpsTypeEnum.B,
-        增益类型: GainTypeEnum.郭氏力道,
-        增益数值: 10,
-      },
-    ],
-  },
-  {
     增益名称: '飘黄',
     层数: 1,
     覆盖率: 13, // 10秒 60秒CD

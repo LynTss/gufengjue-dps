@@ -25,17 +25,17 @@ export const getLidao = (力道, 强膂, 额外郭氏力道 = 0) => {
 }
 
 export const getJiChuGongJI = (基础攻击, 面板力道) => {
-  const 力道加成基础攻击 = Math.floor(面板力道 * 加成系数.力道加成基础攻击)
+  const 力道加成基础攻击 = Math.round(面板力道 * 加成系数.力道加成基础攻击)
   return 基础攻击 + 力道加成基础攻击
 }
 
 export const getMianBanGongJI = (基础攻击, 面板力道) => {
-  const 力道加成面板攻击 = Math.floor(面板力道 * 加成系数.力道加成面板攻击)
+  const 力道加成面板攻击 = Math.round(面板力道 * 加成系数.力道加成面板攻击)
   return 基础攻击 + 力道加成面板攻击
 }
 
 export const getLidaoJiachengHuixin = (会心值, 面板力道) => {
-  return (会心值 || 0) + Math.floor(面板力道 * 加成系数.力道加成会心)
+  return (会心值 || 0) + Math.round(面板力道 * 加成系数.力道加成会心)
 }
 
 export const getLidaoJiachengPofang = (破防值, 面板力道) => {

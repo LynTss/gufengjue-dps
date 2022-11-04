@@ -43,12 +43,6 @@ export const ZENGYI_DATA_DEFAULT = {
       覆盖率: 100,
     },
     {
-      增益名称: '配伍',
-      启用: true,
-      层数: 5,
-      覆盖率: 50,
-    },
-    {
       增益名称: '梅花三弄',
       启用: true,
       层数: 1,
@@ -63,7 +57,7 @@ export const ZENGYI_DATA_DEFAULT = {
     {
       增益名称: '振奋',
       启用: true,
-      层数: 70,
+      层数: 40,
       覆盖率: 100,
     },
     {
