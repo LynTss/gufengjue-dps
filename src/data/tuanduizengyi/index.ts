@@ -257,6 +257,19 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
     ],
   },
   {
+    增益名称: '寒啸千军',
+    层数: 1,
+    覆盖率: 50,
+    覆盖率支持手动录入: true,
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.B,
+        增益类型: GainTypeEnum.郭氏外攻破防等级,
+        增益数值: 204,
+      },
+    ],
+  },
+  {
     增益名称: '振奋',
     层数: 40,
     覆盖率: 100,
@@ -273,19 +286,6 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻破防等级,
         增益数值: 60,
-      },
-    ],
-  },
-  {
-    增益名称: '寒啸千军',
-    层数: 1,
-    覆盖率: 50,
-    覆盖率支持手动录入: true,
-    增益集合: [
-      {
-        增益计算类型: GainDpsTypeEnum.B,
-        增益类型: GainTypeEnum.郭氏外攻破防等级,
-        增益数值: 204,
       },
     ],
   },
