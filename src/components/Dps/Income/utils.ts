@@ -610,7 +610,7 @@ const getSortZengyiList = (list: SKillGainData[]): SKillGainData[] => {
     return SortKeyList.indexOf(a.增益类型) - SortKeyList.indexOf(b.增益类型)
   })
 
-  return newList
+  return newList.filter((item) => !!item)
 }
 
 /**
