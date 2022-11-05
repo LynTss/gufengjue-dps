@@ -285,11 +285,29 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
             <div className={'zhuangbei-zengyi-wrapper'}>
               <div className={'zhuangbei-zengyi-title'}>装备增益</div>
               <div className="zhuangbei-zengyi-content">
-                {Object.keys(zhuangbeizengyi).map((item) => {
-                  return (
-                    <ZhuangBeiZengYiTip key={item} zengyiType={item} data={zhuangbeizengyi[item]} />
-                  )
-                })}
+                {Object.keys(zhuangbeizengyi)
+                  .filter((item) => {
+                    if (item === '特效武器') {
+                      if (zhuangbeizengyi.大CW || zhuangbeizengyi.小CW) {
+                        return false
+                      } else {
+                        return true
+                      }
+                    } else if (['大CW', '小CW'].includes(item)) {
+                      return !!zhuangbeizengyi[item]
+                    } else {
+                      return true
+                    }
+                  })
+                  .map((item) => {
+                    return (
+                      <ZhuangBeiZengYiTip
+                        key={item}
+                        zengyiType={item}
+                        data={zhuangbeizengyi[item]}
+                      />
+                    )
+                  })}
               </div>
             </div>
           ) : null}
