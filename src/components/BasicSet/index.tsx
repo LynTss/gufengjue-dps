@@ -41,6 +41,8 @@ function BasicSet(props: CharacterSetProps) {
           ...final,
           套装会心会效: equipmentBasicData?.taozhuangShuanghui,
           水特效武器: equipmentBasicData?.shuitexiaoWuqi,
+          大橙武特效: equipmentBasicData?.dachengwu,
+          小橙武特效: equipmentBasicData?.xiaochengwu,
           风特效腰坠: equipmentBasicData?.texiaoyaozhui,
           切糕会心: equipmentBasicData?.qiegaotaozhuanghuixin,
           切糕无双: equipmentBasicData?.qiegaotaozhuangwushuang,
@@ -69,6 +71,22 @@ function BasicSet(props: CharacterSetProps) {
                         ...a,
                         常驻增益: equipmentBasicData.taozhuangJineng === 2,
                       }
+                    }
+                  } else if (a.增益名称 === 'CW5%') {
+                    return {
+                      ...a,
+                      常驻增益: !!equipmentBasicData.dachengwu,
+                    }
+                  } else {
+                    return { ...a }
+                  }
+                })
+              : item?.技能名称.includes('沧浪三叠')
+              ? item.技能增益列表.map((a) => {
+                  if (a.增益名称 === 'CW5%') {
+                    return {
+                      ...a,
+                      常驻增益: !!equipmentBasicData.dachengwu,
                     }
                   } else {
                     return { ...a }

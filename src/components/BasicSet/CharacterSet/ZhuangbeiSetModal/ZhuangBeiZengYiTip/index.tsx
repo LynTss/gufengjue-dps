@@ -28,6 +28,14 @@ function ZhuangBeiZengYiTip({ zengyiType, data }) {
           ? data
             ? '开启'
             : '关闭'
+          : zengyiType === '大CW'
+          ? data
+            ? '开启'
+            : '关闭'
+          : zengyiType === '小CW'
+          ? data
+            ? '开启'
+            : '关闭'
           : '未知'}
       </div>
     </div>

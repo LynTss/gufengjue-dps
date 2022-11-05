@@ -91,6 +91,14 @@ export interface CharacterFinalDTO extends CharacterBasicDTO {
    */
   风特效腰坠?: boolean
   /**
+   * @name 大橙武特效
+   */
+  大橙武特效?: boolean
+  /**
+   * @name 大橙武特效
+   */
+  小橙武特效?: boolean
+  /**
    * @name 切糕双会加成数量
    */
   切糕会心?: number

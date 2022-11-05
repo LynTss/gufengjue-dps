@@ -14,7 +14,7 @@ import ValueCheckBox from '@/components/common/ValueCheckBox'
 import { getFinalCharacterBasicDataByEquipment } from '../util'
 import { setSkillBasicData } from '@/store/zengyiReducer'
 import './index.css'
-import { getNewEquipmentData, gufengBufferKillData } from './utils'
+import { getNewEquipmentData, getSkillCycleGainData } from './utils'
 import { getDpsTotal } from '@/components/Dps/utils'
 import { getDpsTime, getZengyiJiasu } from '@/utils/skill-dps'
 import { 属性系数 } from '@/data/constant'
@@ -62,6 +62,8 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         套装双会: equipmentBasicData.taozhuangShuanghui,
         套装孤锋: equipmentBasicData.taozhuangJineng,
         特效武器: equipmentBasicData.shuitexiaoWuqi,
+        大CW: equipmentBasicData.dachengwu,
+        小CW: equipmentBasicData.xiaochengwu,
         特效腰坠: equipmentBasicData.texiaoyaozhui,
         切糕会心: equipmentBasicData.qiegaotaozhuanghuixin,
         切糕无双: equipmentBasicData.qiegaotaozhuangwushuang,
@@ -91,12 +93,18 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           ...finalData,
           套装会心会效: data.taozhuangShuanghui,
           水特效武器: data.shuitexiaoWuqi,
+          大橙武特效: equipmentBasicData?.dachengwu,
+          小橙武特效: equipmentBasicData?.xiaochengwu,
           风特效腰坠: data.texiaoyaozhui,
           切糕会心: data?.qiegaotaozhuanghuixin,
           切糕无双: data?.qiegaotaozhuangwushuang,
         })
       )
-      const newSkillBasicData = gufengBufferKillData(skillBasicData, data.taozhuangJineng)
+      const newSkillBasicData = getSkillCycleGainData(
+        skillBasicData,
+        data.taozhuangJineng,
+        data.dachengwu
+      )
       dispatch(setSkillBasicData(newSkillBasicData))
       onClose(true)
     })
@@ -144,12 +152,18 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         ...finalData,
         套装会心会效: data.taozhuangShuanghui,
         水特效武器: data.shuitexiaoWuqi,
+        大橙武特效: equipmentBasicData?.dachengwu,
+        小橙武特效: equipmentBasicData?.xiaochengwu,
         风特效腰坠: data.texiaoyaozhui,
         切糕会心: data.qiegaotaozhuanghuixin,
         切糕无双: data.qiegaotaozhuangwushuang,
       }
       let newSkillBasicData = skillBasicData
-      newSkillBasicData = gufengBufferKillData(skillBasicData, data.taozhuangJineng)
+      newSkillBasicData = getSkillCycleGainData(
+        skillBasicData,
+        data.taozhuangJineng,
+        data.dachengwu
+      )
       const dpsTime = getDpsTime(
         currentCycleName,
         final,
@@ -173,6 +187,8 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         套装双会: data.taozhuangShuanghui,
         套装孤锋: data.taozhuangJineng,
         特效武器: data.shuitexiaoWuqi,
+        大CW: data.dachengwu,
+        小CW: data.xiaochengwu,
         特效腰坠: data.texiaoyaozhui,
         切糕会心: data?.qiegaotaozhuanghuixin,
         切糕无双: data?.qiegaotaozhuangwushuang,

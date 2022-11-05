@@ -222,6 +222,8 @@ export const DEFAULT_EQUIPMENT = {
   ],
   taozhuangShuanghui: true,
   shuitexiaoWuqi: true,
+  dachengwu: false,
+  xiaochengwu: false,
   texiaoyaozhui: true,
   taozhuangJineng: 1,
   qiegaotaozhuanghuixin: 1,
