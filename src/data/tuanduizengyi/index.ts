@@ -68,7 +68,6 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
     增益名称: '左旋右转',
     层数: 1,
     覆盖率: 100,
-    覆盖率支持手动录入: true,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
