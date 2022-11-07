@@ -18,7 +18,7 @@ function Zengyi({ getDpsFunction }) {
   }
 
   const saveDataAndGetDps = (newData) => {
-    localStorage?.setItem('zengyi_data', JSON.stringify(newData))
+    localStorage?.setItem('zengyi_data_1', JSON.stringify(newData))
     dispatch(setZengyixuanxiangData(newData))
     if (zengyiQiyong) {
       getDpsFunction()
