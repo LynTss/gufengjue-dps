@@ -73,7 +73,7 @@ function TuijianModal({ visible, onClose }) {
           <p>如果练习周流的过程中，5分钟无法打到137孤以上，请继续实战多多练习</p>
           <Divider />
           <h4>标准</h4>
-          <p>5分钟打完141孤峰</p>
+          <p>5分钟打完141孤锋</p>
         </div>
       ),
     },
@@ -107,7 +107,7 @@ function TuijianModal({ visible, onClose }) {
       }
       centered
       width={800}
-      visible={visible}
+      open={visible}
       onCancel={() => onClose(false)}
       footer={null}
     >

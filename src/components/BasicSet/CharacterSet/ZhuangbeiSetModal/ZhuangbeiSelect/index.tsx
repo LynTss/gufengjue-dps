@@ -24,7 +24,7 @@ interface ZhuangbeiSelectProps {
   默认镶嵌宝石等级: number
 }
 
-function ZhuangbeiSelect(props: ZhuangbeiSelectProps) {
+function ZhuangbeiSelect(props: ZhuangbeiSelectProps, ref) {
   const { value, onChange, type, 默认镶嵌宝石等级, indexKey } = props
 
   const list: EquipmentDTO[] = useMemo(() => {
@@ -90,7 +90,7 @@ function ZhuangbeiSelect(props: ZhuangbeiSelectProps) {
   }, [type])
 
   return (
-    <div className={'zhuangbei-form-item'}>
+    <div className={'zhuangbei-form-item'} ref={ref}>
       <div className="zhuangbei-form-item-left-1">
         <ZhuangbeiXuanze
           value={value?.id}

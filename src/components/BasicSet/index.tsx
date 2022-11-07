@@ -88,6 +88,11 @@ function BasicSet(props: CharacterSetProps) {
                       ...a,
                       常驻增益: !!equipmentBasicData.dachengwu,
                     }
+                  } else if (a.增益名称 === '小CW会心5%') {
+                    return {
+                      ...a,
+                      常驻增益: !!equipmentBasicData.xiaochengwu,
+                    }
                   } else {
                     return { ...a }
                   }

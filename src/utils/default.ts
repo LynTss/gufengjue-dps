@@ -24,7 +24,7 @@ export const getDefaultCharacter = () => {
 }
 
 export const getDefaultZengyiData = () => {
-  const sessionCharacter = localStorage.getItem('zengyi_data')
+  const sessionCharacter = localStorage.getItem('zengyi_data_1.1.1')
   if (sessionCharacter) {
     try {
       const obj = JSON.parse(sessionCharacter)

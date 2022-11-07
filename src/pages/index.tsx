@@ -9,6 +9,7 @@ import Tools from '@/components/Tools'
 import SkillDamageTable from '@/components/SkillDamageTable'
 import ShangshouZhinan from '@/components/ShangshouZhinan'
 import './index.css'
+import ClearCache from '@/components/ClearCache'
 
 function Pages() {
   const dpsRef = useRef<any>()
@@ -34,6 +35,8 @@ function Pages() {
       <SkillDamageTable />
       {/* 上手推荐 */}
       <ShangshouZhinan />
+      {/* 清除缓存 */}
+      <ClearCache />
     </>
   )
 }

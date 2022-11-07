@@ -70,7 +70,7 @@ function DpsCountModal({ visible, onClose, dpsList, total }) {
       width={700}
       centered
       title={'技能统计'}
-      visible={visible}
+      open={visible}
       onCancel={() => onClose()}
       footer={false}
     >

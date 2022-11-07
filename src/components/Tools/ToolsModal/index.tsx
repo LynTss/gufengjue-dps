@@ -15,7 +15,7 @@ function ToolsModal({ visible, onClose }) {
       title={'开发者工具'}
       centered
       width={800}
-      visible={visible}
+      open={visible}
       onCancel={() => onClose(false)}
       footer={null}
     >

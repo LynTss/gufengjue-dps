@@ -93,8 +93,8 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           ...finalData,
           套装会心会效: data.taozhuangShuanghui,
           水特效武器: data.shuitexiaoWuqi,
-          大橙武特效: equipmentBasicData?.dachengwu,
-          小橙武特效: equipmentBasicData?.xiaochengwu,
+          大橙武特效: data?.dachengwu,
+          小橙武特效: data?.xiaochengwu,
           风特效腰坠: data.texiaoyaozhui,
           切糕会心: data?.qiegaotaozhuanghuixin,
           切糕无双: data?.qiegaotaozhuangwushuang,
@@ -103,7 +103,8 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
       const newSkillBasicData = getSkillCycleGainData(
         skillBasicData,
         data.taozhuangJineng,
-        data.dachengwu
+        data.dachengwu,
+        data.xiaochengwu
       )
       dispatch(setSkillBasicData(newSkillBasicData))
       onClose(true)
@@ -152,8 +153,8 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         ...finalData,
         套装会心会效: data.taozhuangShuanghui,
         水特效武器: data.shuitexiaoWuqi,
-        大橙武特效: equipmentBasicData?.dachengwu,
-        小橙武特效: equipmentBasicData?.xiaochengwu,
+        大橙武特效: data?.dachengwu,
+        小橙武特效: data?.xiaochengwu,
         风特效腰坠: data.texiaoyaozhui,
         切糕会心: data.qiegaotaozhuanghuixin,
         切糕无双: data.qiegaotaozhuangwushuang,
@@ -162,7 +163,8 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
       newSkillBasicData = getSkillCycleGainData(
         skillBasicData,
         data.taozhuangJineng,
-        data.dachengwu
+        data.dachengwu,
+        data.xiaochengwu
       )
       const dpsTime = getDpsTime(
         currentCycleName,
@@ -210,7 +212,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         </span>
       }
       className={'zhuangbei-input-set-modal'}
-      visible={visible}
+      open={visible}
       width={1124}
       destroyOnClose
       okText="保存并计算"

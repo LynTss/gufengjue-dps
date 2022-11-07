@@ -67,13 +67,13 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
   {
     增益名称: '左旋右转',
     层数: 1,
-    覆盖率: 90,
+    覆盖率: 100,
     覆盖率支持手动录入: true,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.破招,
-        增益数值: 1500,
+        增益数值: 4500,
       },
     ],
   },
@@ -98,7 +98,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.伤害百分比,
-        增益数值: 0.08,
+        增益数值: 0.12,
       },
     ],
   },
@@ -172,7 +172,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.伤害百分比,
-        增益数值: 0.05,
+        增益数值: 0.06,
       },
     ],
   },

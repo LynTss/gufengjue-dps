@@ -15,7 +15,7 @@ function Log() {
         title="更新日志"
         centered
         className="log-modal"
-        visible={visible}
+        open={visible}
         onCancel={() => setVisible(false)}
         footer={null}
       >

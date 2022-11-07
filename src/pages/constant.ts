@@ -52,7 +52,7 @@ export const ZENGYI_DATA_DEFAULT = {
       增益名称: '左旋右转',
       启用: true,
       层数: 1,
-      覆盖率: 90,
+      覆盖率: 100,
     },
     {
       增益名称: '振奋',
@@ -64,7 +64,7 @@ export const ZENGYI_DATA_DEFAULT = {
       增益名称: '朝圣言',
       启用: true,
       层数: 24,
-      覆盖率: 6.6,
+      覆盖率: 7,
     },
     {
       增益名称: '鸿法',

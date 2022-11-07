@@ -33,7 +33,7 @@ function CharacterInputSetModal({ visible, onClose }) {
     <Modal
       title="属性录入"
       className={'character-input-set-modal'}
-      visible={visible}
+      open={visible}
       width={500}
       destroyOnClose
       footer={null}

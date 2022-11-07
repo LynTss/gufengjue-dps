@@ -134,7 +134,7 @@ function SkillDamageTable() {
         footer={null}
         width={'100%'}
         className={'skillDmageVisible'}
-        visible={visible}
+        open={visible}
         onCancel={() => setVisible(false)}
       >
         <Table

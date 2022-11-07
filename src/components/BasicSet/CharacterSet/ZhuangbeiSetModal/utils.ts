@@ -78,7 +78,12 @@ export const getNewEquipmentData = (value) => {
   return data
 }
 
-export const getSkillCycleGainData = (skillBasicData, taozhuangJineng: number, dachengwu) => {
+export const getSkillCycleGainData = (
+  skillBasicData,
+  taozhuangJineng: number,
+  dachengwu: boolean,
+  xiaochengwu: boolean
+) => {
   return skillBasicData.map((item) => {
     return {
       ...item,
@@ -112,6 +117,11 @@ export const getSkillCycleGainData = (skillBasicData, taozhuangJineng: number, d
                 return {
                   ...a,
                   常驻增益: !!dachengwu,
+                }
+              } else if (a.增益名称 === '小CW会心5%') {
+                return {
+                  ...a,
+                  常驻增益: !!xiaochengwu,
                 }
               } else {
                 return { ...a }

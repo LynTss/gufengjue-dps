@@ -1,0 +1,19 @@
+.cache-wrapper {
+  position: fixed;
+  bottom: 0;
+  right: 36px;
+  margin: 0;
+  line-height: 36px;
+  font-size: 14px;
+  text-align: right;
+}
+
+.cache-btn {
+  transition: .2s;
+  color: #fff;
+  cursor: pointer;
+}
+
+.cache-btn:hover {
+  color: #ddd;
+}

@@ -56,7 +56,7 @@ function MijiSet({ getDpsFunction }) {
       <Drawer
         title={'秘籍设置'}
         width={348 + 36}
-        visible={visible}
+        open={visible}
         mask={false}
         placement="left"
         onClose={() => {

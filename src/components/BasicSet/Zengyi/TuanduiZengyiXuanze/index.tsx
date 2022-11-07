@@ -83,7 +83,7 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
       <Modal
         className="tuandui-zengyi-detail-modal"
         centered
-        visible={visible}
+        open={visible}
         title={
           <span>
             部分增益层数/覆盖率展示

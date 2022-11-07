@@ -20,7 +20,7 @@ export const 特效_腰椎Ids = [34381]
 export const 切糕套装_1Ids = [91291, 91315, 91309, 91303, 91297, 91321]
 // 大CW特效Ids
 export const 大CW特效Ids = [33107, 33137, 34373, 34403, 34433]
-export const 小CW特效Ids: number[] = []
+export const 小CW特效Ids: number[] = [34313]
 
 const ZUANGBEI_DATA = {
   帽子: ZHUANGBEI_MAOZI,

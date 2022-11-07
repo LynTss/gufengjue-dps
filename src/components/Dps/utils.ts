@@ -201,8 +201,6 @@ export const geSkillTotalDps = (
   // 对增益集合进行排序，先计算数值。后计算百分比
   const 当前技能计算增益集合: SKillGainData[] = getSortZengyiList(总增益集合)
 
-  console.log('当前技能计算增益集合', 当前技能计算增益集合)
-
   // 单独先计算力道增益的收益
   当前技能计算增益集合
     .filter((item) => [GainTypeEnum.力道, GainTypeEnum.郭氏力道].includes(item.增益类型))
