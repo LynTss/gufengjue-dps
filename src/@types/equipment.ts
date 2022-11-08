@@ -54,6 +54,26 @@ export interface EquipmentBasicDTO {
    * @name 小橙武特效
    */
   xiaochengwu: boolean
+  /**
+   * @name 装备大附魔_伤帽
+   */
+  大附魔_伤帽?: boolean
+  /**
+   * @name 装备大附魔_伤衣
+   */
+  大附魔_伤衣?: boolean
+  /**
+   * @name 装备大附魔_伤腰
+   */
+  大附魔_伤腰?: boolean
+  /**
+   * @name 装备大附魔_伤腕
+   */
+  大附魔_伤腕?: boolean
+  /**
+   * @name 装备大附魔_伤鞋
+   */
+  大附魔_伤鞋?: boolean
 }
 
 /**

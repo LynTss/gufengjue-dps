@@ -46,6 +46,11 @@ function BasicSet(props: CharacterSetProps) {
           风特效腰坠: equipmentBasicData?.texiaoyaozhui,
           切糕会心: equipmentBasicData?.qiegaotaozhuanghuixin,
           切糕无双: equipmentBasicData?.qiegaotaozhuangwushuang,
+          大附魔_伤帽: equipmentBasicData?.大附魔_伤帽,
+          大附魔_伤衣: equipmentBasicData?.大附魔_伤衣,
+          大附魔_伤腰: equipmentBasicData?.大附魔_伤腰,
+          大附魔_伤腕: equipmentBasicData?.大附魔_伤腕,
+          大附魔_伤鞋: equipmentBasicData?.大附魔_伤鞋,
         })
       )
 

@@ -5,7 +5,7 @@ import zhouliu_137 from './zhouliu_137'
 import zhouliu_141 from './zhouliu_141'
 import zhouliu_141_heng from './zhouliu_141_heng'
 import zhouliu_145 from './zhouliu_145'
-// import zhouliu_cw_ou from './zhouliu_cw_ou'
+import zhouliu_cw_ou from './zhouliu_cw_ou'
 
 const All_Cycle_Data = [
   {
@@ -96,19 +96,19 @@ const All_Cycle_Data = [
     ],
     type: '周流',
   },
-  // {
-  //   name: 'CW周流（欧皇）',
-  //   cycle: zhouliu_cw_ou,
-  //   cycleList: [
-  //     { 计算技能数: 4, 循环完整帧数: 96, 循环次数: 5 },
-  //     { 计算技能数: 5, 循环完整帧数: 104, 循环次数: 2 },
-  //     { 计算技能数: 5, 循环完整帧数: 120, 循环次数: 2 },
-  //     { 计算技能数: 6, 循环完整帧数: 128, 循环次数: 7 },
-  //     { 计算技能数: 8, 循环完整帧数: 160, 循环次数: 6 },
-  //     { 计算技能数: 8, 循环完整帧数: 184, 循环次数: 2 },
-  //     { 计算技能数: 10, 循环完整帧数: 224, 循环次数: 6 },
-  //   ],
-  // },
+  {
+    name: 'CW周流（欧皇）',
+    cycle: zhouliu_cw_ou,
+    cycleList: [
+      { 计算技能数: 4, 循环完整帧数: 96, 循环次数: 5 },
+      { 计算技能数: 5, 循环完整帧数: 104, 循环次数: 2 },
+      { 计算技能数: 5, 循环完整帧数: 120, 循环次数: 2 },
+      { 计算技能数: 6, 循环完整帧数: 128, 循环次数: 7 },
+      { 计算技能数: 8, 循环完整帧数: 160, 循环次数: 6 },
+      { 计算技能数: 8, 循环完整帧数: 184, 循环次数: 2 },
+      { 计算技能数: 10, 循环完整帧数: 224, 循环次数: 6 },
+    ],
+  },
 ]
 
 export default All_Cycle_Data

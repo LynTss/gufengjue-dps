@@ -64,26 +64,45 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
       },
     ])
   }
-
   if (characterFinalData?.套装会心会效) {
     // 偷懒覆盖率测试80%左右
     总增益集合 = 总增益集合.concat(ZhuangbeiGainList.套装会心会效)
   }
-
   if (characterFinalData?.切糕会心 && characterFinalData?.切糕会心 > 0) {
     总增益集合 = 总增益集合.concat(ZhuangbeiGainList.切糕会心)
   }
-
   if (characterFinalData?.切糕无双 && characterFinalData?.切糕无双 > 0) {
     总增益集合 = 总增益集合.concat(ZhuangbeiGainList.切糕无双)
   }
-
   if (characterFinalData?.水特效武器) {
     总增益集合 = 总增益集合.concat(ZhuangbeiGainList.水特效武器)
   }
-
   if (characterFinalData?.风特效腰坠) {
     总增益集合 = 总增益集合.concat(ZhuangbeiGainList.风特效腰坠)
+  }
+  // 大附魔增益
+  if (characterFinalData?.大附魔_伤帽) {
+    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.大附魔_伤帽)
+  }
+  if (characterFinalData?.大附魔_伤衣) {
+    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.大附魔_伤衣)
+  }
+  if (characterFinalData?.大附魔_伤腰) {
+    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.大附魔_伤腰)
+  }
+  if (characterFinalData?.大附魔_伤腕) {
+    最终循环.push({
+      技能名称: '昆吾·弦刃',
+      技能数量: Math.floor(dpsTime / 10),
+      技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor((dpsTime / 10) * 0.4) }],
+    })
+  }
+  if (characterFinalData?.大附魔_伤鞋) {
+    最终循环.push({
+      技能名称: '昆吾·折锋',
+      技能数量: Math.floor(dpsTime / 10),
+      技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor((dpsTime / 10) * 0.4) }],
+    })
   }
 
   if (zengyiQiyong && zengyixuanxiangData) {

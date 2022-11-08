@@ -80,6 +80,11 @@ export const getFinalCharacterBasicDataByEquipment = (
         'taozhuangJineng',
         'qiegaotaozhuanghuixin',
         'qiegaotaozhuangwushuang',
+        '大附魔_伤帽',
+        '大附魔_伤衣',
+        '大附魔_伤腰',
+        '大附魔_伤腕',
+        '大附魔_伤鞋',
       ].includes(item)
     ) {
       basicDTO = { ...basicDTO }

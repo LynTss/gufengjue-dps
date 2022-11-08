@@ -46,5 +46,28 @@ const ZhuangbeiGainList = {
       增益数值: 640, // 按覆盖率10%算
     },
   ],
+  大附魔_伤帽: [
+    {
+      增益计算类型: GainDpsTypeEnum.A,
+      增益类型: GainTypeEnum.外攻破防等级,
+      增益数值: 904,
+    },
+  ],
+  大附魔_伤衣: [
+    {
+      增益计算类型: GainDpsTypeEnum.A,
+      增益类型: GainTypeEnum.基础攻击,
+      增益数值: 408,
+    },
+  ],
+  大附魔_伤腰: [
+    {
+      增益计算类型: GainDpsTypeEnum.A,
+      增益类型: GainTypeEnum.伤害百分比,
+      增益数值: (0.038 * 8) / 30, // 按30% 1% 和 70% 5% 的中间值算 30秒触发一次，时常8秒
+    },
+  ],
+  大附魔_伤腕: [],
+  大附魔_伤鞋: [],
 }
 export default ZhuangbeiGainList

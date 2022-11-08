@@ -270,6 +270,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     武器伤害系数: 0,
     伤害计算次数: 1,
     技能增益列表: [
+      ...commonGainDTO,
       {
         增益名称: '飘黄',
         增益所在位置: '套装',
@@ -283,6 +284,26 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
         ],
       },
     ],
+  },
+  {
+    // 伤腕
+    技能名称: '昆吾·弦刃',
+    技能伤害系数: 0.57,
+    技能基础伤害_最小值: 0,
+    技能基础伤害_最大值: 0,
+    武器伤害系数: 0,
+    伤害计算次数: 1,
+    技能增益列表: commonGainDTO,
+  },
+  {
+    // 伤鞋
+    技能名称: '昆吾·折锋',
+    技能伤害系数: 0.57,
+    技能基础伤害_最小值: 0,
+    技能基础伤害_最大值: 0,
+    武器伤害系数: 0,
+    伤害计算次数: 1,
+    技能增益列表: commonGainDTO,
   },
 ]
 export default GuFengJueSkillDataDTO

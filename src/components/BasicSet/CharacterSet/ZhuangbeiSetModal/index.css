@@ -11,7 +11,7 @@
 }
 
 .zhuangbei-input-set-modal .ant-modal-content {
-  min-width: 1124px;
+  min-width: 1224px;
   min-height: 116px;
   max-height: calc(100vh - 32px);
   overflow-y: auto;
@@ -54,12 +54,17 @@
 }
 
 .zhuangbei-form-left-4 {
-  width: 142px;
+  width: 136px;
   padding-left: 16px;
 }
 
 .zhuangbei-form-left-5 {
+  width: 80px;
+}
+
+.zhuangbei-form-left-6 {
   width: 100px;
+  padding-left: 8px;
 }
 
 .zhuangbei-form-set-btn{
@@ -74,8 +79,12 @@
   width: 820px;
 }
 
+.zhuangbei-set-dafumo-wrapper {
+  width: 80px;
+}
+
 .zhuangbei-input-set-modal-form-right {
-  width: calc(100% - 820px);
+  width: calc(100% - 820px - 80px);
   padding-left: 10px;
 }
 

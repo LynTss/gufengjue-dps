@@ -55,6 +55,11 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
     const newObj = {
       wucaishi: data.wucaishi,
       openQiangLv: data.openQiangLv,
+      大附魔_伤帽: data?.大附魔_伤帽,
+      大附魔_伤衣: data?.大附魔_伤衣,
+      大附魔_伤腰: data?.大附魔_伤腰,
+      大附魔_伤腕: data?.大附魔_伤腕,
+      大附魔_伤鞋: data?.大附魔_伤鞋,
     }
     ;(data.equipments || []).map((item) => {
       item.装备部位
@@ -100,6 +105,11 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           风特效腰坠: data.texiaoyaozhui,
           切糕会心: data?.qiegaotaozhuanghuixin,
           切糕无双: data?.qiegaotaozhuangwushuang,
+          大附魔_伤帽: data?.大附魔_伤帽,
+          大附魔_伤衣: data?.大附魔_伤衣,
+          大附魔_伤腰: data?.大附魔_伤腰,
+          大附魔_伤腕: data?.大附魔_伤腕,
+          大附魔_伤鞋: data?.大附魔_伤鞋,
         })
       )
       const newSkillBasicData = getSkillCycleGainData(
@@ -118,7 +128,19 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
     form?.validateFields().then((values) => {
       const res = { ...values }
       Object.keys(values)
-        .filter((item) => res[item] && item !== 'wucaishi' && item !== 'openQiangLv')
+        .filter(
+          (item) =>
+            res[item] &&
+            ![
+              'wucaishi',
+              'openQiangLv',
+              '大附魔_伤帽',
+              '大附魔_伤衣',
+              '大附魔_伤腰',
+              '大附魔_伤腕',
+              '大附魔_伤鞋',
+            ].includes(item)
+        )
         .map((item) => {
           return {
             ...values[item],
@@ -160,6 +182,11 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         风特效腰坠: data.texiaoyaozhui,
         切糕会心: data.qiegaotaozhuanghuixin,
         切糕无双: data.qiegaotaozhuangwushuang,
+        大附魔_伤帽: data?.大附魔_伤帽,
+        大附魔_伤衣: data?.大附魔_伤衣,
+        大附魔_伤腰: data?.大附魔_伤腰,
+        大附魔_伤腕: data?.大附魔_伤腕,
+        大附魔_伤鞋: data?.大附魔_伤鞋,
       }
       let newSkillBasicData = skillBasicData
       newSkillBasicData = getSkillCycleGainData(
@@ -252,7 +279,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
       }
       className={'zhuangbei-input-set-modal'}
       open={visible}
-      width={1124}
+      width={1224}
       destroyOnClose
       okText="保存并计算"
       onOk={onOk}
@@ -296,6 +323,9 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           <h1 className="zhuangbei-form-title">附魔</h1>
         </div>
         <div className="zhuangbei-form-left-5">
+          <h1 className="zhuangbei-form-title">大附魔</h1>
+        </div>
+        <div className="zhuangbei-form-left-6">
           <h1 className="zhuangbei-form-title">五彩石</h1>
         </div>
       </div>
@@ -314,6 +344,23 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
               </Form.Item>
             )
           })}
+        </div>
+        <div className="zhuangbei-set-dafumo-wrapper">
+          <Form.Item name={`大附魔_伤帽`}>
+            <ValueCheckBox>伤帽</ValueCheckBox>
+          </Form.Item>
+          <Form.Item name={`大附魔_伤衣`}>
+            <ValueCheckBox>伤衣</ValueCheckBox>
+          </Form.Item>
+          <Form.Item name={`大附魔_伤腰`}>
+            <ValueCheckBox>伤腰</ValueCheckBox>
+          </Form.Item>
+          <Form.Item name={`大附魔_伤腕`}>
+            <ValueCheckBox>伤腕</ValueCheckBox>
+          </Form.Item>
+          <Form.Item name={`大附魔_伤鞋`}>
+            <ValueCheckBox>伤鞋</ValueCheckBox>
+          </Form.Item>
         </div>
         <div className="zhuangbei-input-set-modal-form-right">
           <Form.Item name={`wucaishi`}>

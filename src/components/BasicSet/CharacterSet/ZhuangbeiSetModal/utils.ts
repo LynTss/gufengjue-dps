@@ -21,8 +21,24 @@ export const getNewEquipmentData = (value) => {
   const data: EquipmentBasicDTO = {
     wucaishi: value?.wucaishi,
     openQiangLv: value?.openQiangLv,
+    大附魔_伤帽: value?.大附魔_伤帽,
+    大附魔_伤衣: value?.大附魔_伤衣,
+    大附魔_伤腰: value?.大附魔_伤腰,
+    大附魔_伤腕: value?.大附魔_伤腕,
+    大附魔_伤鞋: value?.大附魔_伤鞋,
     equipments: Object.keys(value)
-      .filter((item) => !['wucaishi', 'openQiangLv'].includes(item))
+      .filter(
+        (item) =>
+          ![
+            'wucaishi',
+            'openQiangLv',
+            '大附魔_伤帽',
+            '大附魔_伤衣',
+            '大附魔_伤腰',
+            '大附魔_伤腕',
+            '大附魔_伤鞋',
+          ].includes(item)
+      )
       .map((item) => {
         if (套装_1Ids.includes(value[item]?.id)) {
           套装_1数量 = 套装_1数量 + 1

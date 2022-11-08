@@ -3,6 +3,28 @@ import { EquipmentDTO } from './../../../@types/equipment'
 
 const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
   {
+    id: 34445,
+    uid: '206277',
+    装备名称: '善臻',
+    装备品级: 5690,
+    武器伤害_最小值: 2083,
+    武器伤害_最大值: 3472,
+    装备类型: EquipmentTypeEnum.小CW,
+    装备增益: [
+      { 增益数值: 3415, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 662, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 2523, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 2677, 增益类型: GainTypeEnum.外攻会心等级 },
+      { 增益数值: 2769, 增益类型: GainTypeEnum.外攻破防等级 },
+      { 增益数值: 923, 增益类型: GainTypeEnum.加速 },
+    ],
+    镶嵌孔数组: [
+      { 镶嵌类型: EquipmentInlayEnum.攻击 },
+      { 镶嵌类型: EquipmentInlayEnum.力道 },
+      { 镶嵌类型: EquipmentInlayEnum.破防 },
+    ],
+  },
+  {
     id: 34164,
     uid: '205495',
     装备名称: '九野',

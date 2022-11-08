@@ -106,6 +106,26 @@ export interface CharacterFinalDTO extends CharacterBasicDTO {
    * @name 切糕无双加成数量
    */
   切糕无双?: number
+  /**
+   * @name 装备大附魔_伤帽
+   */
+  大附魔_伤帽?: boolean
+  /**
+   * @name 装备大附魔_伤衣
+   */
+  大附魔_伤衣?: boolean
+  /**
+   * @name 装备大附魔_伤腰
+   */
+  大附魔_伤腰?: boolean
+  /**
+   * @name 装备大附魔_伤腕
+   */
+  大附魔_伤腕?: boolean
+  /**
+   * @name 装备大附魔_伤鞋
+   */
+  大附魔_伤鞋?: boolean
 }
 
 /**
