@@ -8,8 +8,8 @@ import Log from '@/components/Log'
 import Tools from '@/components/Tools'
 import SkillDamageTable from '@/components/SkillDamageTable'
 import ShangshouZhinan from '@/components/ShangshouZhinan'
-import './index.css'
 import ClearCache from '@/components/ClearCache'
+import './index.css'
 
 function Pages() {
   const dpsRef = useRef<any>()

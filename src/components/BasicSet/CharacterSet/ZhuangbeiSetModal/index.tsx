@@ -19,6 +19,7 @@ import { getDpsTotal } from '@/components/Dps/utils'
 import { getDpsTime, getZengyiJiasu } from '@/utils/skill-dps'
 import { 属性系数 } from '@/data/constant'
 import ZhuangBeiZengYiTip from './ZhuangBeiZengYiTip'
+import { 驭耀英雄平民, 周流英雄平民, 周流英雄切糕 } from './peizhuangfangan'
 
 function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
   const [form] = Form.useForm()
@@ -41,37 +42,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
 
   useEffect(() => {
     if (equipmentBasicData && visible) {
-      const newObj = {
-        wucaishi: equipmentBasicData.wucaishi,
-        openQiangLv: equipmentBasicData.openQiangLv,
-      }
-      ;(equipmentBasicData.equipments || []).map((item) => {
-        item.装备部位
-      })
-      Object.keys(EquipmentCharacterPositionEnum).map((item, index) => {
-        const o = equipmentBasicData.equipments?.find(
-          (a, i) => a.装备部位 === EquipmentCharacterPositionEnum[item] && index === i
-        )
-        if (o) {
-          newObj[`${EquipmentCharacterPositionEnum[item]}${item}`] = o
-        }
-      })
-      form.setFieldsValue(newObj)
-      getDpsFunction()
-      setZhuangbeizengyi({
-        套装双会: equipmentBasicData.taozhuangShuanghui,
-        套装孤锋: equipmentBasicData.taozhuangJineng,
-        特效武器: equipmentBasicData.shuitexiaoWuqi,
-        大CW: equipmentBasicData.dachengwu,
-        小CW: equipmentBasicData.xiaochengwu,
-        特效腰坠: equipmentBasicData.texiaoyaozhui,
-        切糕会心: equipmentBasicData.qiegaotaozhuanghuixin,
-        切糕无双: equipmentBasicData.qiegaotaozhuangwushuang,
-      })
-      const data = getNewEquipmentData(newObj)
-      const { finalData } = getFinalCharacterBasicDataByEquipment(data)
-      const 增益加速 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
-      设置加速(finalData.加速值 + 增益加速)
+      initEquipment(equipmentBasicData)
     }
     if (!visible) {
       setAfterDps(0)
@@ -79,6 +50,37 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
       setZhuangbeizengyi(null)
     }
   }, [visible])
+
+  const initEquipment = (data) => {
+    const newObj = {
+      wucaishi: data.wucaishi,
+      openQiangLv: data.openQiangLv,
+    }
+    ;(data.equipments || []).map((item) => {
+      item.装备部位
+    })
+    Object.keys(EquipmentCharacterPositionEnum).map((item, index) => {
+      const o = data.equipments?.find(
+        (a, i) => a.装备部位 === EquipmentCharacterPositionEnum[item] && index === i
+      )
+      if (o) {
+        newObj[`${EquipmentCharacterPositionEnum[item]}${item}`] = o
+      }
+    })
+    form.setFieldsValue(newObj)
+    getDpsFunction()
+    setZhuangbeizengyi({
+      套装双会: data.taozhuangShuanghui,
+      套装孤锋: data.taozhuangJineng,
+      特效武器: data.shuitexiaoWuqi,
+      大CW: data.dachengwu,
+      小CW: data.xiaochengwu,
+      特效腰坠: data.texiaoyaozhui,
+      切糕会心: data.qiegaotaozhuanghuixin,
+      切糕无双: data.qiegaotaozhuangwushuang,
+    })
+    formValueChange(undefined, newObj)
+  }
 
   const onOk = () => {
     form.validateFields().then((value) => {
@@ -201,15 +203,52 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
     }
   }
 
+  const 装备推荐列表 = [
+    {
+      label: '驭耀英雄平民',
+      data: 驭耀英雄平民,
+      tip: '平民配装不吃弘法，经济实惠，个人想法仅供参考',
+    },
+    {
+      label: '周流英雄平民',
+      data: 周流英雄平民,
+      tip: '平民配装不吃弘法，经济实惠，个人想法仅供参考',
+    },
+    {
+      label: '周流英雄切糕',
+      data: 周流英雄切糕,
+      tip: '切糕配装，略有成本，非极限dps，个人想法仅供参考',
+    },
+  ]
+
   return (
     <Modal
       title={
-        <span>
-          配装器
-          <span style={{ color: '#F34242', fontSize: 14, marginLeft: 16 }}>
-            暂时只推荐1段加速配装，0段、2段伤害计算不准确
+        <div className="zhuangbei-input-set-modal-title">
+          <span>
+            配装器
+            <span style={{ color: '#F34242', fontSize: 14, marginLeft: 16 }}>
+              暂时只推荐1段加速配装，0段、2段伤害计算不准确
+            </span>
           </span>
-        </span>
+          <span className="zhuangbei-input-peizhuangtuijian">
+            配装切换没有更换循环，只是装备切换。
+            {装备推荐列表.map((item) => {
+              return (
+                <Tooltip key={item.label} title={item.tip}>
+                  <Button
+                    size="small"
+                    onClick={() => {
+                      initEquipment(item.data)
+                    }}
+                  >
+                    {item.label}
+                  </Button>
+                </Tooltip>
+              )
+            })}
+          </span>
+        </div>
       }
       className={'zhuangbei-input-set-modal'}
       open={visible}
