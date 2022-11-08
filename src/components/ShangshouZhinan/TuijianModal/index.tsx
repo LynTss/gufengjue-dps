@@ -43,9 +43,12 @@ function TuijianModal({ visible, onClose }) {
           <p>那么大家都说的周流如何去打呢，可以先看一下两个视频加深对周流的理解</p>
           <p>
             周流开游原则：
-            <span className="tuijian-important">
-              不要在灭影快好的时候放。不要在70以上锐意时候放。不要在自身带识破的时候放。
-            </span>
+            <p>
+              <span className="tuijian-important">
+                不要在灭影快好的时候放。不要在70以上锐意时候放。不要在自身带识破的时候放。
+              </span>
+              <span className="tuijian-very-important">黑鬼在boss快要点名的时候不要放。</span>
+            </p>
           </p>
           <Divider />
           <p>
