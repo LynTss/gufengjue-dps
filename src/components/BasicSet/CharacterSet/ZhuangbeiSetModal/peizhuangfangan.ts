@@ -1,5 +1,5 @@
 export const 驭耀英雄平民 = {
-  wucaishi: '彩·力道·斩铁·狂攻(陆)',
+  wucaishi: '彩·真刚·斩铁·狂攻(陆)',
   openQiangLv: 1,
   equipments: [
     {
