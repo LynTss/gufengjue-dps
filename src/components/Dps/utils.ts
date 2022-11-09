@@ -99,7 +99,7 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
   }
   if (characterFinalData?.大附魔_伤鞋) {
     最终循环.push({
-      技能名称: '昆吾·折锋',
+      技能名称: '刃凌',
       技能数量: Math.floor(dpsTime / 10),
       技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor((dpsTime / 10) * 0.4) }],
     })

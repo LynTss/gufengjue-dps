@@ -265,6 +265,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
                 <Tooltip key={item.label} title={item.tip}>
                   <Button
                     size="small"
+                    type="primary"
                     onClick={() => {
                       initEquipment(item.data)
                     }}
