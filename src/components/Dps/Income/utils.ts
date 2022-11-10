@@ -108,7 +108,7 @@ export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
 
   if (characterFinalData?.大橙武特效) {
     const 行总数列表 = 最终循环
-      .filter((i) => i.技能名称.includes('孤锋'))
+      .filter((i) => i.技能名称.includes('行云势'))
       .map((i) => {
         return { 技能数量: i.技能数量, 灭影数量: i.技能增益列表?.[0]?.增益技能数 }
       })
