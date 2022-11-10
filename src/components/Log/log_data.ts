@@ -1,5 +1,9 @@
 export default [
   {
+    version: '1.1.4',
+    content: ['配装器戒指增加橙戒', '新增娱乐CW循环（风雪哥哥提供）'],
+  },
+  {
     version: '1.1.3',
     content: [
       '更新了大附魔',

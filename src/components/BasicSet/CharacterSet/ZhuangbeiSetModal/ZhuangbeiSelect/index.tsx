@@ -137,6 +137,8 @@ export const getZuiDaJingLian = (data?: EquipmentDTO) => {
       return 8
     case EquipmentTypeEnum.副本精简:
       return 4
+    case EquipmentTypeEnum.橙戒:
+      return 8
     case EquipmentTypeEnum.特效武器:
       return 4
     case EquipmentTypeEnum.试炼精简:

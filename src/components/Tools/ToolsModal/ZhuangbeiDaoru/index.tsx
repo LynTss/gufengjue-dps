@@ -20,6 +20,7 @@ function ZhuangbeiDaoru() {
           .replaceAll(`"EquipmentTypeEnum.大CW"`, `EquipmentTypeEnum.大CW`)
           .replaceAll(`"EquipmentTypeEnum.门派套装"`, `EquipmentTypeEnum.门派套装`)
           .replaceAll(`"EquipmentTypeEnum.副本精简"`, `EquipmentTypeEnum.副本精简`)
+          .replaceAll(`"EquipmentTypeEnum.橙戒"`, `EquipmentTypeEnum.橙戒`)
           .replaceAll(`"EquipmentTypeEnum.试炼精简"`, `EquipmentTypeEnum.试炼精简`)
           .replaceAll(`"EquipmentTypeEnum.普通"`, `EquipmentTypeEnum.普通`)
           .replaceAll(`"GainTypeEnum.体质"`, `GainTypeEnum.体质`)

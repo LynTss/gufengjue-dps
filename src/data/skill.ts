@@ -16,6 +16,15 @@ import { GainDpsTypeEnum, GainTypeEnum } from '@/@types/enum'
 
 const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
   {
+    技能名称: '行云势·神兵',
+    技能伤害系数: 0.375,
+    技能基础伤害_最小值: 0,
+    技能基础伤害_最大值: 0,
+    武器伤害系数: 0,
+    伤害计算次数: 1,
+    技能增益列表: commonGainDTO,
+  },
+  {
     技能名称: '行云势·一',
     技能伤害系数: 1.2656,
     技能基础伤害_最小值: 180,

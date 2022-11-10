@@ -36,6 +36,8 @@ export const zhuangbeidaoru = (list: MoHeZhuangBeiShuJu[]) => {
         ? `EquipmentTypeEnum.副本精简`
         : +item.MaxStrengthLevel === 3
         ? `EquipmentTypeEnum.试炼精简`
+        : +item.MaxStrengthLevel === 8
+        ? `EquipmentTypeEnum.橙戒`
         : +item.MaxStrengthLevel === 6
         ? `EquipmentTypeEnum.普通`
         : `未匹配`,

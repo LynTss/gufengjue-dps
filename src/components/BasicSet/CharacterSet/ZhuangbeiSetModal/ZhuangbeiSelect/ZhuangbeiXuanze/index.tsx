@@ -51,7 +51,9 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
             <div>
               <span
                 className={`zhuangbei-select-name ${
-                  [EquipmentTypeEnum.大CW, EquipmentTypeEnum.小CW].includes(item.装备类型)
+                  [EquipmentTypeEnum.大CW, EquipmentTypeEnum.小CW, EquipmentTypeEnum.橙戒].includes(
+                    item.装备类型
+                  )
                     ? 'zhuangbei-select-name-cw'
                     : ''
                 }`}
