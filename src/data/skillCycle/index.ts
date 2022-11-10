@@ -1,4 +1,4 @@
-import yuyao_3 from './yuyao_3'
+// import yuyao_3 from './yuyao_3'
 import yuyao from './yuyao'
 import zhouliu_130 from './zhouliu_130'
 import zhouliu_137 from './zhouliu_137'
@@ -8,15 +8,15 @@ import zhouliu_145 from './zhouliu_145'
 import zhouliu_cw_fx from './zhouliu_cw_fx'
 
 const All_Cycle_Data = [
-  {
-    name: '驭耀3.0',
-    cycle: yuyao_3,
-    cycleList: [
-      { 计算技能数: 12, 循环完整帧数: 296, 循环次数: 1 },
-      { 计算技能数: 14, 循环完整帧数: 312, 循环次数: 14 },
-    ],
-    type: '驭耀',
-  },
+  // {
+  //   name: '驭耀3.0',
+  //   cycle: yuyao_3,
+  //   cycleList: [
+  //     { 计算技能数: 12, 循环完整帧数: 296, 循环次数: 1 },
+  //     { 计算技能数: 14, 循环完整帧数: 312, 循环次数: 14 },
+  //   ],
+  //   type: '驭耀',
+  // },
   {
     name: '驭耀4.0',
     cycle: yuyao,

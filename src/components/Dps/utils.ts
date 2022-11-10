@@ -104,6 +104,25 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
       技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor((dpsTime / 10) * 0.4) }],
     })
   }
+  if (characterFinalData?.大橙武特效) {
+    const 行总数列表 = 最终循环
+      .filter((i) => i.技能名称.includes('行云势'))
+      .map((i) => {
+        return { 技能数量: i.技能数量, 灭影数量: i.技能增益列表?.[0]?.增益技能数 }
+      })
+    let 行总数 = 0
+    let 灭影行总数 = 0
+    const 触发率 = 0.5
+    行总数列表.forEach((i) => {
+      行总数 = 行总数 + i.技能数量
+      灭影行总数 = 灭影行总数 + (i?.灭影数量 || 0)
+    })
+    最终循环.push({
+      技能名称: '行云势·神兵',
+      技能数量: Math.floor(行总数 * 触发率),
+      技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor(灭影行总数 * 触发率) }],
+    })
+  }
 
   if (zengyiQiyong && zengyixuanxiangData) {
     const 团队增益增益集合 = getZengyi(zengyixuanxiangData)
