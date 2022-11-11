@@ -136,6 +136,21 @@ export const AllEnchantDTO: EnchantDTO[] = [
     ],
   },
   {
+    附魔名称: EnchantNameEnum.加速362,
+    附魔支持部位: [
+      EquipmentPositionEnum.帽子,
+      EquipmentPositionEnum.鞋子,
+      EquipmentPositionEnum.暗器,
+    ],
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.加速,
+        增益数值: 362,
+      },
+    ],
+  },
+  {
     附魔名称: EnchantNameEnum.加速491,
     附魔支持部位: [
       EquipmentPositionEnum.帽子,

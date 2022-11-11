@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Form, Modal, Tooltip } from 'antd'
+
 import { useAppDispatch, useAppSelector } from '@/hooks'
-// import { useAppSelector } from '@/hooks'
 import {
   setEquipmentBasicData,
   setCharacterFinalData,
   setCharacterBasicData,
 } from '@/store/basicReducer'
 import { EquipmentCharacterPositionEnum } from '@/@types/enum'
+import { 属性系数 } from '@/data/constant'
+import { getDpsTime, getZengyiJiasu } from '@/utils/skill-dps'
+import { setSkillBasicData } from '@/store/zengyiReducer'
+import ValueCheckBox from '@/components/common/ValueCheckBox'
+import { getDpsTotal } from '@/components/Dps/utils'
+
+import { getFinalCharacterBasicDataByEquipment } from '../util'
+import { getNewEquipmentData, getSkillCycleGainData } from './utils'
+import { 驭耀英雄平民, 周流英雄平民, 周流英雄切糕 } from './peizhuangfangan'
+import ZhuangBeiZengYiTip from './ZhuangBeiZengYiTip'
 import ZhuangbeiSelect from './ZhuangbeiSelect'
 import WuCaiShiXuanZe from './WuCaiShiXuanZe'
-import ValueCheckBox from '@/components/common/ValueCheckBox'
-import { getFinalCharacterBasicDataByEquipment } from '../util'
-import { setSkillBasicData } from '@/store/zengyiReducer'
+import MohedaoruModal from './MohedaoruModal'
 import './index.css'
-import { getNewEquipmentData, getSkillCycleGainData } from './utils'
-import { getDpsTotal } from '@/components/Dps/utils'
-import { getDpsTime, getZengyiJiasu } from '@/utils/skill-dps'
-import { 属性系数 } from '@/data/constant'
-import ZhuangBeiZengYiTip from './ZhuangBeiZengYiTip'
-import { 驭耀英雄平民, 周流英雄平民, 周流英雄切糕 } from './peizhuangfangan'
 
 function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
   const [form] = Form.useForm()
@@ -39,6 +41,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
   const [默认镶嵌宝石等级, 设置默认镶嵌宝石等级] = useState<number>(8)
   const [afterDps, setAfterDps] = useState<number>(0)
   const [加速, 设置加速] = useState<number | null>(null)
+  const [moHeDaoRuVisible, setMoHeDaoRuVisible] = useState(false)
 
   useEffect(() => {
     if (equipmentBasicData && visible) {
@@ -188,6 +191,18 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         大附魔_伤腕: data?.大附魔_伤腕,
         大附魔_伤鞋: data?.大附魔_伤鞋,
       }
+      const 增益加速 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
+      设置加速(final.加速值 + 增益加速)
+      setZhuangbeizengyi({
+        套装双会: data.taozhuangShuanghui,
+        套装孤锋: data.taozhuangJineng,
+        特效武器: data.shuitexiaoWuqi,
+        大CW: data.dachengwu,
+        小CW: data.xiaochengwu,
+        特效腰坠: data.texiaoyaozhui,
+        切糕会心: data?.qiegaotaozhuanghuixin,
+        切糕无双: data?.qiegaotaozhuangwushuang,
+      })
       let newSkillBasicData = skillBasicData
       newSkillBasicData = getSkillCycleGainData(
         skillBasicData,
@@ -211,19 +226,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         zengyixuanxiangData,
         dpsTime,
       })
-      const 增益加速 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
-      设置加速(final.加速值 + 增益加速)
       setAfterDps(Math.floor(totalDps / dpsTime))
-      setZhuangbeizengyi({
-        套装双会: data.taozhuangShuanghui,
-        套装孤锋: data.taozhuangJineng,
-        特效武器: data.shuitexiaoWuqi,
-        大CW: data.dachengwu,
-        小CW: data.xiaochengwu,
-        特效腰坠: data.texiaoyaozhui,
-        切糕会心: data?.qiegaotaozhuanghuixin,
-        切糕无双: data?.qiegaotaozhuangwushuang,
-      })
     } catch (_) {
       设置加速(null)
       setAfterDps(0)
@@ -247,6 +250,13 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
       tip: '切糕配装，略有成本，非极限dps，个人想法仅供参考',
     },
   ]
+
+  // 导入魔盒配装数据
+  const mohedaoru = (e) => {
+    console.log('导入数据', e)
+    formValueChange(undefined, e)
+    form.setFieldsValue({ ...e })
+  }
 
   return (
     <Modal
@@ -282,8 +292,14 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
       open={visible}
       width={1224}
       destroyOnClose
-      okText="保存并计算"
-      onOk={onOk}
+      footer={
+        <div>
+          <Button onClick={() => setMoHeDaoRuVisible(true)}>魔盒配装导入</Button>
+          <Button type="primary" onClick={() => onOk()}>
+            保存并计算
+          </Button>
+        </div>
+      }
       centered
       onCancel={() => onClose()}
     >
@@ -442,6 +458,11 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           ) : null}
         </div>
       </Form>
+      <MohedaoruModal
+        visible={moHeDaoRuVisible}
+        onClose={() => setMoHeDaoRuVisible(false)}
+        onOk={(e) => mohedaoru(e)}
+      />
     </Modal>
   )
 }

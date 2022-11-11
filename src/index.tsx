@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { ConfigProvider } from 'antd'
 import 'antd/dist/antd.variable.min.css'
 import antdZhCN from 'antd/lib/locale-provider/zh_CN'
+import '@/utils/axios'
 import Layout from './components/Layout'
 import './style/base.css'
 
