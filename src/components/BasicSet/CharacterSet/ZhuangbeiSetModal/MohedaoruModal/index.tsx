@@ -164,7 +164,7 @@ const getEquipData = (data) => {
         const fumoValue = basicData?.enhance?.Attribute1Value1
         if (
           (!FumoMap[fumoType] || !EnchantNameEnum[`${FumoMap[fumoType]}${fumoValue}`]) &&
-          fumoType !== 'atVitalityBase'
+          !['atVitalityBase', 'atDecriticalDamageBase', 'atToughnessBase'].includes(fumoType)
         ) {
           msg = `存在计算器未内置附魔${fumoType}${fumoValue}`
         }
