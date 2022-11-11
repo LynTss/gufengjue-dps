@@ -174,9 +174,6 @@ const getEquipData = (data) => {
           id: basicData?.equip.ID,
           装备部位: EquipPositionMap[item].split('_')?.[0],
           镶嵌孔数组: basicData?.embedding?.map((a) => {
-            if (!XiangQianKOngMeiju[a?.raw?.[0]]) {
-              msg = `存在计算器未内置镶嵌孔${a?.raw?.[0]}`
-            }
             return {
               镶嵌类型: XiangQianKOngMeiju[a?.raw?.[0]],
               镶嵌宝石等级: a?.level,
