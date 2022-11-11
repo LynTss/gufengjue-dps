@@ -162,8 +162,11 @@ const getEquipData = (data) => {
         const basicData = data[item]
         const fumoType = basicData?.enhance?.Attribute1ID
         const fumoValue = basicData?.enhance?.Attribute1Value1
-        if (!FumoMap[fumoType] || EnchantNameEnum[`${FumoMap[fumoType]}${fumoValue}`]) {
-          msg = '存在计算器未内置附魔'
+        if (
+          (!FumoMap[fumoType] || !EnchantNameEnum[`${FumoMap[fumoType]}${fumoValue}`]) &&
+          fumoType !== 'atVitalityBase'
+        ) {
+          msg = `存在计算器未内置附魔${fumoType}${fumoValue}`
         }
         equip[EquipPositionMap[item]] = {
           当前精炼等级: basicData?.strength,
@@ -171,7 +174,7 @@ const getEquipData = (data) => {
           装备部位: EquipPositionMap[item].split('_')?.[0],
           镶嵌孔数组: basicData?.embedding?.map((a) => {
             if (!XiangQianKOngMeiju[a?.raw?.[0]]) {
-              msg = '存在计算器未内置镶嵌孔'
+              msg = `存在计算器未内置镶嵌孔${a?.raw?.[0]}`
             }
             return {
               镶嵌类型: XiangQianKOngMeiju[a?.raw?.[0]],
@@ -196,12 +199,12 @@ const getEquipData = (data) => {
   }
   return {
     equip,
-    errorMsg: (
+    errorMsg: msg ? (
       <span>
         <p>{msg}</p>
         <p>请联系计算器作者（QQ：372103645）并提供异常的配装ID</p>
       </span>
-    ),
+    ) : null,
   }
 }
 

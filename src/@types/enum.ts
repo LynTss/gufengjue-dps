@@ -119,6 +119,7 @@ export enum EquipmentCharacterPositionEnum {
 export enum EnchantNameEnum {
   攻击221 = '攻击+221',
   力道110 = '力道+110',
+  武伤268 = '武伤+268',
   武伤332 = '武伤+332',
   破防491 = '破防+491',
   无双491 = '无双+491',
