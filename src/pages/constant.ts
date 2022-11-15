@@ -67,7 +67,7 @@ export const ZENGYI_DATA_DEFAULT = {
       覆盖率: 7,
     },
     {
-      增益名称: '鸿法',
+      增益名称: '弘法',
       启用: true,
       层数: 20,
       覆盖率: 50,

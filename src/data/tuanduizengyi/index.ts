@@ -322,7 +322,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
     ],
   },
   {
-    增益名称: '鸿法',
+    增益名称: '弘法',
     层数: 20,
     覆盖率: 50,
     覆盖率支持手动录入: true,
