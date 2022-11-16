@@ -113,7 +113,7 @@ const All_Cycle_Data = [
     type: '周流',
   },
   {
-    name: '周纵_1.0',
+    name: '周流纵宕（1.0）',
     cycle: zhouliu_zong_1,
     cycleList: [
       { 计算技能数: 4, 循环完整帧数: 96, 循环次数: 5 },
