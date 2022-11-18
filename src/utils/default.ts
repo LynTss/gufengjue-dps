@@ -43,12 +43,12 @@ export const getDefaultZengyiQiyong = () => {
   const sessiongQiyong = localStorage.getItem('zengyi_qiyong')
   if (sessiongQiyong) {
     try {
-      return +sessiongQiyong ? true : false || false
+      return +sessiongQiyong ? true : false || true
     } catch {
-      return +sessiongQiyong ? true : false || false
+      return +sessiongQiyong ? true : false || true
     }
   } else {
-    return false
+    return true
   }
 }
 
