@@ -13,7 +13,7 @@ import './index.css'
 
 function Pages() {
   const dpsRef = useRef<any>()
-  const [zengyiVisible, setZengyiVisible] = useState<boolean>(false)
+  const [zengyiVisible, setZengyiVisible] = useState<boolean>(true)
 
   const getDps = () => {
     dpsRef?.current?.getDps()
