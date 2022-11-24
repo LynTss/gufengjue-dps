@@ -67,6 +67,12 @@ function TuijianModal({ visible, onClose }) {
               周流全面讲解视频
             </a>
           </p>
+          <p>
+            周纵讲解视频：
+            <a href="https://www.bilibili.com/video/BV1e44y1Q7H8/">
+              周纵讲解视频，简单易懂（新手推荐）
+            </a>
+          </p>
           <Divider />
           <p>周流辅助宏可以暂时先使用老天一的辅助宏，结合自己的实际情况修改</p>
           <p className="tuijian-important">
@@ -76,7 +82,7 @@ function TuijianModal({ visible, onClose }) {
           <p>如果练习周流的过程中，5分钟无法打到137孤以上，请继续实战多多练习</p>
           <Divider />
           <h4>标准</h4>
-          <p>5分钟打完141孤锋</p>
+          <p>5分钟打完141/153孤锋</p>
         </div>
       ),
     },
