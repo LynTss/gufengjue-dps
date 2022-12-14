@@ -1,4 +1,4 @@
-import { CycleDTO } from '../../@types/cycle'
+import { CycleDTO } from '../../../@types/cycle'
 
 const weisheng_cang_cycle: CycleDTO[] = [
   {
@@ -100,6 +100,14 @@ const weisheng_cang_cycle: CycleDTO[] = [
   {
     技能名称: '云刀',
     技能数量: 200,
+  },
+  {
+    技能名称: '横云断浪',
+    技能数量: 14,
+  },
+  {
+    技能名称: '流血·四',
+    技能数量: 42,
   },
 ]
 

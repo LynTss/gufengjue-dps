@@ -1,4 +1,4 @@
-import { CycleDTO } from '../../@types/cycle'
+import { CycleDTO } from '../../../@types/cycle'
 
 const weisheng_cang_cycle: CycleDTO[] = [
   {
