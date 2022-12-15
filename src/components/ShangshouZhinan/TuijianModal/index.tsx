@@ -31,7 +31,7 @@ function TuijianModal({ visible, onClose }) {
               起手4破
             </a>
           </p>
-          <p>合格标准：5分钟可以打完121孤锋</p>
+          <p>合格标准：5分3秒左右可以打完121孤锋</p>
         </div>
       ),
     },
@@ -82,7 +82,7 @@ function TuijianModal({ visible, onClose }) {
           <p>如果练习周流的过程中，5分钟无法打到137孤以上，请继续实战多多练习</p>
           <Divider />
           <h4>标准</h4>
-          <p>5分钟打完141/153孤锋</p>
+          <p>5分左右打完141+孤锋14横</p>
         </div>
       ),
     },
