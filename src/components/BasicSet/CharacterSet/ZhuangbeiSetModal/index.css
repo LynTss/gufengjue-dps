@@ -86,6 +86,13 @@
 .zhuangbei-input-set-modal-form-right {
   width: calc(100% - 820px - 80px);
   padding-left: 10px;
+  position: relative;
+}
+
+.zhuangbei-input-set-modal-form-qianglv {
+  position: absolute;
+  top: -37px;
+  right: 0px;
 }
 
 .dps-diff-item {

@@ -1,6 +1,7 @@
 import { EquipmentBasicDTO } from '@/@types/equipment'
 import {
   切糕套装_1Ids,
+  冬至套装_1Ids,
   大CW特效Ids,
   套装_1Ids,
   套装_2Ids,
@@ -13,6 +14,7 @@ export const getNewEquipmentData = (value) => {
   let 套装_1数量 = 0
   let 套装_2数量 = 0
   let 切糕_1数量 = 0
+  let 冬至_1数量 = 0
   let isTexiaoWuqi = false
   let isTexiaoYaozhui = false
   let isDaCw = false
@@ -55,6 +57,9 @@ export const getNewEquipmentData = (value) => {
         if (切糕套装_1Ids.includes(value[item]?.id)) {
           切糕_1数量 = 切糕_1数量 + 1
         }
+        if (冬至套装_1Ids.includes(value[item]?.id)) {
+          冬至_1数量 = 冬至_1数量 + 1
+        }
         if (大CW特效Ids.includes(value[item]?.id)) {
           isDaCw = true
         }
@@ -69,6 +74,7 @@ export const getNewEquipmentData = (value) => {
     taozhuangJineng: 0,
     qiegaotaozhuanghuixin: 0,
     qiegaotaozhuangwushuang: 0,
+    dongzhitaozhuangshuxing: false,
     dachengwu: false,
     xiaochengwu: false,
   }
@@ -84,6 +90,10 @@ export const getNewEquipmentData = (value) => {
   }
   if (切糕_1数量 >= 4) {
     data.qiegaotaozhuangwushuang = data.qiegaotaozhuangwushuang + 1
+  }
+
+  if (冬至_1数量 >= 2) {
+    data.dongzhitaozhuangshuxing = true
   }
 
   data.shuitexiaoWuqi = !!isTexiaoWuqi

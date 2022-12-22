@@ -106,6 +106,7 @@ export const 驭耀英雄平民 = {
   taozhuangJineng: 1,
   qiegaotaozhuanghuixin: 0,
   qiegaotaozhuangwushuang: 0,
+  dongzhitaozhuangshuxing: false,
   dachengwu: false,
   xiaochengwu: false,
 }
@@ -218,6 +219,7 @@ export const 周流英雄平民 = {
   taozhuangJineng: 1,
   qiegaotaozhuanghuixin: 0,
   qiegaotaozhuangwushuang: 0,
+  dongzhitaozhuangshuxing: false,
   dachengwu: false,
   xiaochengwu: false,
 }
@@ -330,6 +332,7 @@ export const 周流英雄切糕 = {
   taozhuangJineng: 1,
   qiegaotaozhuanghuixin: 1,
   qiegaotaozhuangwushuang: 0,
+  dongzhitaozhuangshuxing: false,
   dachengwu: false,
   xiaochengwu: false,
 }

@@ -80,6 +80,7 @@ export const getFinalCharacterBasicDataByEquipment = (
         'taozhuangJineng',
         'qiegaotaozhuanghuixin',
         'qiegaotaozhuangwushuang',
+        'dongzhitaozhuangshuxing',
         '大附魔_伤帽',
         '大附魔_伤衣',
         '大附魔_伤腰',

@@ -75,6 +75,9 @@ export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
   if (characterFinalData?.切糕无双 && characterFinalData?.切糕无双 > 0) {
     总增益集合 = 总增益集合.concat(ZhuangbeiGainList.切糕无双)
   }
+  if (characterFinalData?.冬至套装) {
+    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.冬至套装)
+  }
   if (characterFinalData?.水特效武器) {
     总增益集合 = 总增益集合.concat(ZhuangbeiGainList.水特效武器)
   }

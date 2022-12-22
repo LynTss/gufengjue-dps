@@ -86,6 +86,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
       特效腰坠: data.texiaoyaozhui,
       切糕会心: data.qiegaotaozhuanghuixin,
       切糕无双: data.qiegaotaozhuangwushuang,
+      冬至套装: data?.dongzhitaozhuangshuxing,
     })
     formValueChange(undefined, newObj)
   }
@@ -108,6 +109,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           风特效腰坠: data.texiaoyaozhui,
           切糕会心: data?.qiegaotaozhuanghuixin,
           切糕无双: data?.qiegaotaozhuangwushuang,
+          冬至套装: data?.dongzhitaozhuangshuxing,
           大附魔_伤帽: data?.大附魔_伤帽,
           大附魔_伤衣: data?.大附魔_伤衣,
           大附魔_伤腰: data?.大附魔_伤腰,
@@ -185,6 +187,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         风特效腰坠: data.texiaoyaozhui,
         切糕会心: data.qiegaotaozhuanghuixin,
         切糕无双: data.qiegaotaozhuangwushuang,
+        冬至套装: data?.dongzhitaozhuangshuxing,
         大附魔_伤帽: data?.大附魔_伤帽,
         大附魔_伤衣: data?.大附魔_伤衣,
         大附魔_伤腰: data?.大附魔_伤腰,
@@ -202,6 +205,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         特效腰坠: data.texiaoyaozhui,
         切糕会心: data?.qiegaotaozhuanghuixin,
         切糕无双: data?.qiegaotaozhuangwushuang,
+        冬至套装: data?.dongzhitaozhuangshuxing,
       })
       let newSkillBasicData = skillBasicData
       newSkillBasicData = getSkillCycleGainData(
@@ -383,7 +387,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           <Form.Item name={`wucaishi`}>
             <WuCaiShiXuanZe />
           </Form.Item>
-          <Form.Item name={`openQiangLv`}>
+          <Form.Item className="zhuangbei-input-set-modal-form-qianglv" name={`openQiangLv`}>
             <ValueCheckBox>启用强膂</ValueCheckBox>
           </Form.Item>
           {zhuangbeizengyi ? (
@@ -398,7 +402,9 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
                       } else {
                         return true
                       }
-                    } else if (['大CW', '小CW'].includes(item)) {
+                    } else if (
+                      ['大CW', '小CW', '冬至套装', '切糕会心', '切糕无双'].includes(item)
+                    ) {
                       return !!zhuangbeizengyi[item]
                     } else {
                       return true

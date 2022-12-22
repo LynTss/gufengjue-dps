@@ -47,6 +47,10 @@ export interface EquipmentBasicDTO {
    */
   qiegaotaozhuangwushuang: number
   /**
+   * @name 冬至套装无双
+   */
+  dongzhitaozhuangshuxing: boolean
+  /**
    * @name 大橙武特效
    */
   dachengwu: boolean

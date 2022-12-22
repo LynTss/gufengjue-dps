@@ -28,6 +28,10 @@ function ZhuangBeiZengYiTip({ zengyiType, data }) {
           ? data
             ? '开启'
             : '关闭'
+          : zengyiType === '冬至套装'
+          ? data
+            ? '开启'
+            : '关闭'
           : zengyiType === '大CW'
           ? data
             ? '开启'

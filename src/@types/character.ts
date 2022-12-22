@@ -107,6 +107,10 @@ export interface CharacterFinalDTO extends CharacterBasicDTO {
    */
   切糕无双?: number
   /**
+   * @NAME 冬至套装全属性加成
+   */
+  冬至套装?: boolean
+  /**
    * @name 装备大附魔_伤帽
    */
   大附魔_伤帽?: boolean

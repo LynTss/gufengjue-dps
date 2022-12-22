@@ -31,6 +31,18 @@ const ZhuangbeiGainList = {
       增益数值: 1090,
     },
   ],
+  冬至套装: [
+    {
+      增益计算类型: GainDpsTypeEnum.A,
+      增益类型: GainTypeEnum.力道,
+      增益数值: 248,
+    },
+    {
+      增益计算类型: GainDpsTypeEnum.A,
+      增益类型: GainTypeEnum.外攻会心等级,
+      增益数值: 157,
+    },
+  ],
   水特效武器: [
     {
       增益计算类型: GainDpsTypeEnum.A,

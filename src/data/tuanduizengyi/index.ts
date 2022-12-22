@@ -338,4 +338,23 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       },
     ],
   },
+
+  {
+    增益名称: '吟冬卧雪',
+    层数: 8,
+    覆盖率: 100,
+    层数选项数组: [1, 2, 3, 4, 5, 6, 7, 8],
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.外攻破防等级,
+        增益数值: 76,
+      },
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.外攻会心等级,
+        增益数值: 76,
+      },
+    ],
+  },
 ]
