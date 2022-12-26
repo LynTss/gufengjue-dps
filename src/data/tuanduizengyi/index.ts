@@ -348,12 +348,12 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻破防等级,
-        增益数值: 76,
+        增益数值: 126,
       },
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心等级,
-        增益数值: 76,
+        增益数值: 126,
       },
     ],
   },
