@@ -98,7 +98,7 @@ export const getDefaultTime = () => {
 }
 
 export const getDefaultMijiSelectedData = () => {
-  const localEquipment = localStorage.getItem('miji_selected_data')
+  const localEquipment = localStorage.getItem('miji_selected_data_1')
   if (localEquipment) {
     try {
       const obj = JSON.parse(localEquipment)

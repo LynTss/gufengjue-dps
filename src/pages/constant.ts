@@ -237,7 +237,7 @@ export const DEFAULT_MIJI_SELECTED_DATA: MijiSelectedData[] = [
   },
   {
     技能名称: '停云势',
-    技能已选秘籍: ['3%伤害', '4%伤害', '3%会心', '4%会心'],
+    技能已选秘籍: ['5%伤害', '4%伤害'],
   },
   {
     技能名称: '留客雨',
@@ -265,6 +265,6 @@ export const DEFAULT_MIJI_SELECTED_DATA: MijiSelectedData[] = [
   },
   {
     技能名称: '触石雨',
-    技能已选秘籍: ['4%伤害', '5%伤害', '4%会心', '5%会心'],
+    技能已选秘籍: ['4%伤害', '3%伤害'],
   },
 ]

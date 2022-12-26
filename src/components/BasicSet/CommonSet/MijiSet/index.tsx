@@ -38,7 +38,7 @@ function MijiSet({ getDpsFunction }) {
         return { ...item }
       }
     })
-    localStorage.setItem('miji_selected_data', JSON.stringify(newData))
+    localStorage.setItem('miji_selected_data_1', JSON.stringify(newData))
     dispatch(setMijiSelectedData(newData))
 
     const newSkillBasicData = getSkillBasicData(skillBasicData, newData)
