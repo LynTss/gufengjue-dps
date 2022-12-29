@@ -1,5 +1,9 @@
 export default [
   {
+    version: '1.2.2',
+    content: ['新增龙门特效武器四绝分海刀'],
+  },
+  {
     version: '1.2.1',
     content: [
       '新增冬至装备岚峰·刀功系列',

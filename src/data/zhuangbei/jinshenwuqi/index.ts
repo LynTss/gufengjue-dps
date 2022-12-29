@@ -495,6 +495,27 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
     ],
   },
   {
+    id: 34553,
+    uid: '207511',
+    装备名称: '四绝分海刀',
+    装备品级: 10600,
+    武器伤害_最小值: 2465,
+    武器伤害_最大值: 4109,
+    装备类型: EquipmentTypeEnum.特效武器,
+    装备增益: [
+      { 增益数值: 4580, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 888, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 3440, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 4457, 增益类型: GainTypeEnum.外攻破防等级 },
+      { 增益数值: 4754, 增益类型: GainTypeEnum.破招 },
+    ],
+    镶嵌孔数组: [
+      { 镶嵌类型: EquipmentInlayEnum.攻击 },
+      { 镶嵌类型: EquipmentInlayEnum.力道 },
+      { 镶嵌类型: EquipmentInlayEnum.破防 },
+    ],
+  },
+  {
     id: 32849,
     uid: '189941',
     装备名称: '夕云',

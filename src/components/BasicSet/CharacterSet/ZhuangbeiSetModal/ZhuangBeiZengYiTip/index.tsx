@@ -16,6 +16,10 @@ function ZhuangBeiZengYiTip({ zengyiType, data }) {
           ? data
             ? '开启'
             : '关闭'
+          : zengyiType === '龙门武器'
+          ? data
+            ? '开启'
+            : '关闭'
           : zengyiType === '特效腰坠'
           ? data
             ? '开启'

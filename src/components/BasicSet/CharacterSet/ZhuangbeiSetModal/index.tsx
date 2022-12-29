@@ -81,6 +81,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
       套装双会: data.taozhuangShuanghui,
       套装孤锋: data.taozhuangJineng,
       特效武器: data.shuitexiaoWuqi,
+      龙门武器: data.longmenWuqi,
       大CW: data.dachengwu,
       小CW: data.xiaochengwu,
       特效腰坠: data.texiaoyaozhui,
@@ -104,6 +105,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           ...finalData,
           套装会心会效: data.taozhuangShuanghui,
           水特效武器: data.shuitexiaoWuqi,
+          龙门武器: data?.longmenWuqi,
           大橙武特效: data?.dachengwu,
           小橙武特效: data?.xiaochengwu,
           风特效腰坠: data.texiaoyaozhui,
@@ -182,6 +184,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         ...finalData,
         套装会心会效: data.taozhuangShuanghui,
         水特效武器: data.shuitexiaoWuqi,
+        龙门武器: data?.longmenWuqi,
         大橙武特效: data?.dachengwu,
         小橙武特效: data?.xiaochengwu,
         风特效腰坠: data.texiaoyaozhui,
@@ -200,6 +203,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         套装双会: data.taozhuangShuanghui,
         套装孤锋: data.taozhuangJineng,
         特效武器: data.shuitexiaoWuqi,
+        龙门武器: data.longmenWuqi,
         大CW: data.dachengwu,
         小CW: data.xiaochengwu,
         特效腰坠: data.texiaoyaozhui,
@@ -397,13 +401,19 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
                 {Object.keys(zhuangbeizengyi)
                   .filter((item) => {
                     if (item === '特效武器') {
-                      if (zhuangbeizengyi.大CW || zhuangbeizengyi.小CW) {
+                      if (
+                        zhuangbeizengyi.大CW ||
+                        zhuangbeizengyi.小CW ||
+                        zhuangbeizengyi.龙门武器
+                      ) {
                         return false
                       } else {
                         return true
                       }
                     } else if (
-                      ['大CW', '小CW', '冬至套装', '切糕会心', '切糕无双'].includes(item)
+                      ['大CW', '小CW', '冬至套装', '切糕会心', '切糕无双', '龙门武器'].includes(
+                        item
+                      )
                     ) {
                       return !!zhuangbeizengyi[item]
                     } else {

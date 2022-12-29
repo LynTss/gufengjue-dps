@@ -7,6 +7,7 @@ import {
   套装_2Ids,
   小CW特效Ids,
   特效_武器Ids,
+  龙门_武器Ids,
   特效_腰椎Ids,
 } from '@/data/zhuangbei'
 
@@ -16,6 +17,7 @@ export const getNewEquipmentData = (value) => {
   let 切糕_1数量 = 0
   let 冬至_1数量 = 0
   let isTexiaoWuqi = false
+  let isLongmenWuqi = false
   let isTexiaoYaozhui = false
   let isDaCw = false
   let isXiaoCw = false
@@ -51,6 +53,9 @@ export const getNewEquipmentData = (value) => {
         if (特效_武器Ids.includes(value[item]?.id)) {
           isTexiaoWuqi = true
         }
+        if (龙门_武器Ids.includes(value[item]?.id)) {
+          isLongmenWuqi = true
+        }
         if (特效_腰椎Ids.includes(value[item]?.id)) {
           isTexiaoYaozhui = true
         }
@@ -70,6 +75,7 @@ export const getNewEquipmentData = (value) => {
       }),
     taozhuangShuanghui: false,
     shuitexiaoWuqi: false,
+    longmenWuqi: false,
     texiaoyaozhui: false,
     taozhuangJineng: 0,
     qiegaotaozhuanghuixin: 0,
@@ -97,6 +103,7 @@ export const getNewEquipmentData = (value) => {
   }
 
   data.shuitexiaoWuqi = !!isTexiaoWuqi
+  data.longmenWuqi = !!isLongmenWuqi
   data.texiaoyaozhui = !!isTexiaoYaozhui
   data.dachengwu = !!isDaCw
   data.xiaochengwu = !!isXiaoCw

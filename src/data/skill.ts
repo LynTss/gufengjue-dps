@@ -313,5 +313,15 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     伤害计算次数: 1,
     技能增益列表: commonGainDTO,
   },
+  {
+    // 龙门武器
+    技能名称: '剑风',
+    技能伤害系数: 0,
+    技能基础伤害_最小值: 3040,
+    技能基础伤害_最大值: 3040,
+    武器伤害系数: 0,
+    伤害计算次数: 1,
+    技能增益列表: commonGainDTO,
+  },
 ]
 export default GuFengJueSkillDataDTO

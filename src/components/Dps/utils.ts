@@ -80,6 +80,14 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
   if (characterFinalData?.水特效武器) {
     总增益集合 = 总增益集合.concat(ZhuangbeiGainList.水特效武器)
   }
+  if (characterFinalData?.龙门武器) {
+    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.龙门武器)
+    最终循环.push({
+      技能名称: '剑风',
+      技能数量: Math.floor((dpsTime * 6) / 30),
+      技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor(((dpsTime * 6) / 30) * 0.4) }],
+    })
+  }
   if (characterFinalData?.风特效腰坠) {
     总增益集合 = 总增益集合.concat(ZhuangbeiGainList.风特效腰坠)
   }

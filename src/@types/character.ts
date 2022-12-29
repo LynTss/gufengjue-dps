@@ -87,6 +87,10 @@ export interface CharacterFinalDTO extends CharacterBasicDTO {
    */
   水特效武器?: boolean
   /**
+   * @name 龙门武器
+   */
+  龙门武器?: boolean
+  /**
    * @name 特效腰坠
    */
   风特效腰坠?: boolean

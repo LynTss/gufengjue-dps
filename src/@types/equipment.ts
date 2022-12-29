@@ -31,6 +31,10 @@ export interface EquipmentBasicDTO {
    */
   shuitexiaoWuqi: boolean
   /**
+   * @name 龙门武器
+   */
+  longmenWuqi: boolean
+  /**
    * @name 特效腰坠
    */
   texiaoyaozhui: boolean

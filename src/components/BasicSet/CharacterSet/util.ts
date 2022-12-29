@@ -74,6 +74,7 @@ export const getFinalCharacterBasicDataByEquipment = (
       [
         'taozhuangShuanghui',
         'shuitexiaoWuqi',
+        'longmenWuqi',
         'dachengwu',
         'xiaochengwu',
         'texiaoyaozhui',
