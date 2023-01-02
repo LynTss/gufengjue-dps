@@ -1,3 +1,4 @@
+import { EquipmentPositionEnum } from '@/@types/enum'
 import { EquipmentBasicDTO } from '@/@types/equipment'
 import {
   切糕套装_1Ids,
@@ -53,7 +54,10 @@ export const getNewEquipmentData = (value) => {
         if (特效_武器Ids.includes(value[item]?.id)) {
           isTexiaoWuqi = true
         }
-        if (龙门_武器Ids.includes(value[item]?.id)) {
+        if (
+          龙门_武器Ids.includes(value[item]?.id) &&
+          value[item]?.装备部位 === EquipmentPositionEnum.武器
+        ) {
           isLongmenWuqi = true
         }
         if (特效_腰椎Ids.includes(value[item]?.id)) {
