@@ -462,6 +462,21 @@ const ZHUANGBEI_YUANCHENGWUQI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }],
   },
   {
+    id: 6_32810,
+    uid: '189848',
+    装备名称: '择逸录·扶',
+    装备品级: 10800,
+    装备类型: EquipmentTypeEnum.普通,
+    装备增益: [
+      { 增益数值: 2333, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 452, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 734, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 2270, 增益类型: GainTypeEnum.外攻破防等级 },
+      { 增益数值: 2018, 增益类型: GainTypeEnum.破招 },
+    ],
+    镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }],
+  },
+  {
     id: 33073,
     uid: '200960',
     装备名称: '无封囊',
