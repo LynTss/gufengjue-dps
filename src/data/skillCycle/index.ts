@@ -1,5 +1,6 @@
 import yuyao from './yuyao'
 import zhouliu_zhenji from './zhouliu_zhenji'
+import zhouliu_jiepo from './zhouliu_jiepo'
 import zhouliu_cw_fx from './zhouliu_cw_fx'
 
 const All_Cycle_Data = [
@@ -11,6 +12,20 @@ const All_Cycle_Data = [
       { 计算技能数: 15, 循环完整帧数: 312, 循环次数: 14 },
     ],
     type: '驭耀',
+  },
+  {
+    name: '周流界破',
+    cycle: zhouliu_jiepo,
+    cycleList: [
+      { 计算技能数: 4, 循环完整帧数: 96, 循环次数: 5 },
+      { 计算技能数: 5, 循环完整帧数: 104, 循环次数: 2 },
+      { 计算技能数: 5, 循环完整帧数: 120, 循环次数: 2 },
+      { 计算技能数: 6, 循环完整帧数: 128, 循环次数: 7 },
+      { 计算技能数: 8, 循环完整帧数: 166, 循环次数: 6 },
+      { 计算技能数: 8, 循环完整帧数: 190, 循环次数: 2 },
+      { 计算技能数: 10, 循环完整帧数: 230, 循环次数: 6 },
+    ],
+    type: '周流',
   },
   {
     name: '周流镇机',
