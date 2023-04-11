@@ -45,7 +45,7 @@ export const ZENGYI_DATA_DEFAULT = {
     {
       增益名称: '梅花三弄',
       启用: true,
-      层数: 1,
+      层数: 80,
       覆盖率: 75,
     },
     {
