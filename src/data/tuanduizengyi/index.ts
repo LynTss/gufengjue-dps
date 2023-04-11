@@ -33,6 +33,23 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
     ],
   },
   {
+    增益名称: '水煮鱼',
+    层数: 1,
+    覆盖率: 100,
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.无双等级,
+        增益数值: 100,
+      },
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.破招,
+        增益数值: 100,
+      },
+    ],
+  },
+  {
     增益名称: '撼如雷',
     层数: 1,
     覆盖率: 100,
