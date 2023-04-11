@@ -40,6 +40,17 @@ export const AllEnchantDTO: EnchantDTO[] = [
     ],
   },
   {
+    附魔名称: EnchantNameEnum.武伤244,
+    附魔支持部位: [EquipmentPositionEnum.武器],
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.近战武器伤害,
+        增益数值: 244,
+      },
+    ],
+  },
+  {
     附魔名称: EnchantNameEnum.武伤268,
     附魔支持部位: [EquipmentPositionEnum.武器],
     增益集合: [
