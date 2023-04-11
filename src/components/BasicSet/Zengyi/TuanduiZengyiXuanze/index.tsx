@@ -11,7 +11,7 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
   const [visible, setVisible] = useState<boolean>(false)
 
   // 暂时不开放编辑
-  const openEdit = true
+  // const openEdit = true
 
   const onChangeZengyi = (
     e: boolean | null,
@@ -137,7 +137,7 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
                   <div className={'tuandui-zengyi-content-item'}>
                     <span className="tuandui-zengyi-content-item-title">覆盖率</span>
                     <InputNumber
-                      disabled={openEdit}
+                      // disabled={openEdit}
                       className="t-z-c-content"
                       placeholder="请输入覆盖率"
                       min={0}
