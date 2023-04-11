@@ -85,7 +85,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.B,
         增益类型: GainTypeEnum.郭氏无视防御,
-        增益数值: 307,
+        增益数值: 154,
       },
     ],
   },
