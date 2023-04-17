@@ -98,7 +98,7 @@ function Income({ zengyiVisible }, ref) {
       const 收益 = Number((单点增益 * 增益数值).toFixed(4))
 
       return {
-        key: item.收益计算名称,
+        key: item.收益计算名称.replace('+', ''),
         收益: 收益,
       }
     })

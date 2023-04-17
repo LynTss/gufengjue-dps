@@ -1,4 +1,10 @@
-import { GainDpsTypeEnum, GainTypeEnum, XiaochiTypeEnum } from '@/@types/enum'
+import {
+  CommonEnchantNum,
+  EnchantNameEnum,
+  GainDpsTypeEnum,
+  GainTypeEnum,
+  XiaochiTypeEnum,
+} from '@/@types/enum'
 import { SKillGainData } from '@/@types/skill'
 import XIANGQIAN_DATA from '../xiangqian'
 import XIAOCHI_DATA from '../xiaochi'
@@ -10,85 +16,86 @@ export interface IncomeDataDTO {
    */
   增益集合?: SKillGainData[]
 }
+
 // 用于收益计算的附魔
 export const IncomeFumo: IncomeDataDTO[] = [
   {
-    收益计算名称: '攻击326',
+    收益计算名称: EnchantNameEnum.攻击360,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.基础攻击,
-        增益数值: 326,
+        增益数值: 360,
       },
     ],
   },
   {
-    收益计算名称: '力道162',
+    收益计算名称: EnchantNameEnum.力道179,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.力道,
-        增益数值: 162,
+        增益数值: 179,
       },
     ],
   },
   {
-    收益计算名称: '武伤489',
+    收益计算名称: EnchantNameEnum.武伤540,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.近战武器伤害,
-        增益数值: 489,
+        增益数值: 540,
       },
     ],
   },
   {
-    收益计算名称: '破防723',
+    收益计算名称: EnchantNameEnum.破防2_紫,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻破防等级,
-        增益数值: 723,
+        增益数值: +CommonEnchantNum.赛季2_紫,
       },
     ],
   },
   {
-    收益计算名称: '无双723',
+    收益计算名称: EnchantNameEnum.无双2_紫,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.无双等级,
-        增益数值: 723,
+        增益数值: +CommonEnchantNum.赛季2_紫,
       },
     ],
   },
   {
-    收益计算名称: '会心723',
+    收益计算名称: EnchantNameEnum.会心2_紫,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心等级,
-        增益数值: 723,
+        增益数值: +CommonEnchantNum.赛季2_紫,
       },
     ],
   },
   {
-    收益计算名称: '会效723',
+    收益计算名称: EnchantNameEnum.会效2_紫,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心效果等级,
-        增益数值: 723,
+        增益数值: +CommonEnchantNum.赛季2_紫,
       },
     ],
   },
   {
-    收益计算名称: '破招723',
+    收益计算名称: EnchantNameEnum.破招2_紫,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.破招,
-        增益数值: 723,
+        增益数值: +CommonEnchantNum.赛季2_紫,
       },
     ],
   },
