@@ -75,11 +75,20 @@ export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
   if (characterFinalData?.切糕无双 && characterFinalData?.切糕无双 > 0) {
     总增益集合 = 总增益集合.concat(ZhuangbeiGainList.切糕无双)
   }
+  if (characterFinalData?.切糕会心_2 && characterFinalData?.切糕会心_2 > 0) {
+    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.切糕会心_2)
+  }
+  if (characterFinalData?.切糕无双_2 && characterFinalData?.切糕无双_2 > 0) {
+    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.切糕无双_2)
+  }
   if (characterFinalData?.冬至套装) {
     总增益集合 = 总增益集合.concat(ZhuangbeiGainList.冬至套装)
   }
   if (characterFinalData?.水特效武器) {
     总增益集合 = 总增益集合.concat(ZhuangbeiGainList.水特效武器)
+  }
+  if (characterFinalData?.水特效武器_2) {
+    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.水特效武器_2)
   }
   if (characterFinalData?.龙门武器) {
     总增益集合 = 总增益集合.concat(ZhuangbeiGainList.龙门武器)
@@ -91,6 +100,9 @@ export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
   }
   if (characterFinalData?.风特效腰坠) {
     总增益集合 = 总增益集合.concat(ZhuangbeiGainList.风特效腰坠)
+  }
+  if (characterFinalData?.风特效腰坠_2) {
+    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.风特效腰坠_2)
   }
   // 大附魔增益
   if (characterFinalData?.大附魔_伤帽) {

@@ -31,6 +31,10 @@ export interface EquipmentBasicDTO {
    */
   shuitexiaoWuqi: boolean
   /**
+   * @name 水特效武器_2赛季
+   */
+  shuitexiaoWuqi_2: boolean
+  /**
    * @name 龙门武器
    */
   longmenWuqi: boolean
@@ -38,6 +42,10 @@ export interface EquipmentBasicDTO {
    * @name 特效腰坠
    */
   texiaoyaozhui: boolean
+  /**
+   * @name 特效腰坠_2赛季
+   */
+  texiaoyaozhui_2: boolean
   /**
    * @name 套装技能加成次数
    */
@@ -47,9 +55,17 @@ export interface EquipmentBasicDTO {
    */
   qiegaotaozhuanghuixin: number
   /**
+   * @name 切糕套装会心_2赛季
+   */
+  qiegaotaozhuanghuixin_2: number
+  /**
    * @name 切糕套装无双
    */
   qiegaotaozhuangwushuang: number
+  /**
+   * @name 切糕套装无双_2赛季
+   */
+  qiegaotaozhuangwushuang_2: number
   /**
    * @name 冬至套装无双
    */

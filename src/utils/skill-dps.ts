@@ -135,7 +135,8 @@ export const getDpsTime = (
   characterFinalData: CharacterFinalDTO,
   network: number,
   zengyiQiyong: boolean,
-  zengyixuanxiangData: ZengyixuanxiangDataDTO
+  zengyixuanxiangData: ZengyixuanxiangDataDTO,
+  cons = true
 ): number => {
   let time = 300
   const currentCycleConfig = All_Cycle_Data.find((item) => item.name === currentCycleName)
@@ -161,7 +162,10 @@ export const getDpsTime = (
     })
     time = (总帧数 + (加速等级 < 1 ? 300 : 0)) / 16 + 18
   }
-  console.log('战斗时间', time)
+  if (cons) {
+    console.log('战斗时间', time)
+  }
+  // console.log('战斗时间', time)
   return time
 }
 

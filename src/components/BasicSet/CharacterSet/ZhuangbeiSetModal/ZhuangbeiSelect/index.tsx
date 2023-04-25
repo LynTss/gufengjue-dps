@@ -12,9 +12,9 @@ import {
 import { AllEnchantDTO } from '@/data/enchantGain'
 import ZhuangbeiXuanze from './ZhuangbeiXuanze'
 import JinglianXuanze from './JinglianXuanze'
-import './index.css'
 import XiangqianXuanze from './XiangqianXuanze'
 import FumoXuanze from './FumoXuanze'
+import './index.css'
 
 interface ZhuangbeiSelectProps {
   value?: EquipmentListDTO

@@ -21,6 +21,7 @@ import ZhuangBeiZengYiTip from './ZhuangBeiZengYiTip'
 import ZhuangbeiSelect from './ZhuangbeiSelect'
 import WuCaiShiXuanZe from './WuCaiShiXuanZe'
 import MohedaoruModal from './MohedaoruModal'
+import MaxDpsFunc from './MaxDpsFunc'
 import './index.css'
 
 function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
@@ -45,6 +46,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
 
   useEffect(() => {
     if (equipmentBasicData && visible) {
+      console.log('equipmentBasicData', equipmentBasicData)
       initEquipment(equipmentBasicData)
     }
     if (!visible) {
@@ -80,13 +82,13 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
     setZhuangbeizengyi({
       套装双会: data.taozhuangShuanghui,
       套装孤锋: data.taozhuangJineng,
-      特效武器: data.shuitexiaoWuqi,
       龙门武器: data.longmenWuqi,
       大CW: data.dachengwu,
       小CW: data.xiaochengwu,
-      特效腰坠: data.texiaoyaozhui,
-      切糕会心: data.qiegaotaozhuanghuixin,
-      切糕无双: data.qiegaotaozhuangwushuang,
+      特效武器: data.shuitexiaoWuqi || data.shuitexiaoWuqi_2,
+      特效腰坠: data.texiaoyaozhui || data.texiaoyaozhui_2,
+      切糕会心: data.qiegaotaozhuanghuixin || data.qiegaotaozhuanghuixin_2,
+      切糕无双: data.qiegaotaozhuangwushuang || data.qiegaotaozhuangwushuang_2,
       冬至套装: data?.dongzhitaozhuangshuxing,
     })
     formValueChange(undefined, newObj)
@@ -105,12 +107,16 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           ...finalData,
           套装会心会效: data.taozhuangShuanghui,
           水特效武器: data.shuitexiaoWuqi,
+          水特效武器_2: data.shuitexiaoWuqi_2,
           龙门武器: data?.longmenWuqi,
           大橙武特效: data?.dachengwu,
           小橙武特效: data?.xiaochengwu,
           风特效腰坠: data.texiaoyaozhui,
+          风特效腰坠_2: data.texiaoyaozhui_2,
           切糕会心: data?.qiegaotaozhuanghuixin,
           切糕无双: data?.qiegaotaozhuangwushuang,
+          切糕会心_2: data?.qiegaotaozhuanghuixin_2,
+          切糕无双_2: data?.qiegaotaozhuangwushuang_2,
           冬至套装: data?.dongzhitaozhuangshuxing,
           大附魔_伤帽: data?.大附魔_伤帽,
           大附魔_伤衣: data?.大附魔_伤衣,
@@ -179,17 +185,22 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
   const formValueChange = (_, value) => {
     try {
       const data = getNewEquipmentData(value)
+      console.log('value', value)
       const { finalData } = getFinalCharacterBasicDataByEquipment(data)
       const final = {
         ...finalData,
         套装会心会效: data.taozhuangShuanghui,
         水特效武器: data.shuitexiaoWuqi,
+        水特效武器_2: data.shuitexiaoWuqi_2,
         龙门武器: data?.longmenWuqi,
         大橙武特效: data?.dachengwu,
         小橙武特效: data?.xiaochengwu,
         风特效腰坠: data.texiaoyaozhui,
+        风特效腰坠_2: data.texiaoyaozhui_2,
         切糕会心: data.qiegaotaozhuanghuixin,
         切糕无双: data.qiegaotaozhuangwushuang,
+        切糕会心_2: data.qiegaotaozhuanghuixin_2,
+        切糕无双_2: data.qiegaotaozhuangwushuang_2,
         冬至套装: data?.dongzhitaozhuangshuxing,
         大附魔_伤帽: data?.大附魔_伤帽,
         大附魔_伤衣: data?.大附魔_伤衣,
@@ -202,13 +213,13 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
       setZhuangbeizengyi({
         套装双会: data.taozhuangShuanghui,
         套装孤锋: data.taozhuangJineng,
-        特效武器: data.shuitexiaoWuqi,
         龙门武器: data.longmenWuqi,
         大CW: data.dachengwu,
         小CW: data.xiaochengwu,
-        特效腰坠: data.texiaoyaozhui,
-        切糕会心: data?.qiegaotaozhuanghuixin,
-        切糕无双: data?.qiegaotaozhuangwushuang,
+        特效武器: data.shuitexiaoWuqi || data.shuitexiaoWuqi_2,
+        特效腰坠: data.texiaoyaozhui || data.texiaoyaozhui_2,
+        切糕会心: data.qiegaotaozhuanghuixin || data.qiegaotaozhuanghuixin_2,
+        切糕无双: data.qiegaotaozhuangwushuang || data.qiegaotaozhuangwushuang_2,
         冬至套装: data?.dongzhitaozhuangshuxing,
       })
       let newSkillBasicData = skillBasicData
@@ -234,6 +245,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         zengyixuanxiangData,
         dpsTime,
       })
+      console.log('战斗时间', dpsTime)
       setAfterDps(Math.floor(totalDps / dpsTime))
     } catch (_) {
       设置加速(null)
@@ -245,17 +257,17 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
     {
       label: '驭耀英雄平民',
       data: 驭耀英雄平民,
-      tip: '平民配装不吃弘法，经济实惠，个人想法仅供参考',
+      tip: '配装切换没有更换循环，只是装备切换。',
     },
     {
       label: '周流英雄平民',
       data: 周流英雄平民,
-      tip: '平民配装不吃弘法，经济实惠，个人想法仅供参考',
+      tip: '配装切换没有更换循环，只是装备切换。',
     },
     {
       label: '周流英雄切糕',
       data: 周流英雄切糕,
-      tip: '切糕配装，略有成本，非极限dps，个人想法仅供参考',
+      tip: '配装切换没有更换循环，只是装备切换。',
     },
   ]
 
@@ -277,7 +289,63 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
             </span>
           </span>
           <span className="zhuangbei-input-peizhuangtuijian">
-            配装切换没有更换循环，只是装备切换。
+            <Button
+              disabled
+              size="small"
+              type="primary"
+              danger
+              onClick={() => {
+                Modal.confirm({
+                  title: '警告',
+                  content:
+                    '本模式可能会造成蓝屏，黑屏等不可控现象，对自己电脑没自信的请勿打开，如果因此产生数据或硬件损失本人概不负责。这可能需要几分钟',
+                  type: 'warning',
+                  onOk() {
+                    MaxDpsFunc({
+                      skillBasicData,
+                      currentCycle,
+                      currentCycleName,
+                      currentTarget,
+                      zengyixuanxiangData,
+                      zengyiQiyong,
+                      network,
+                      equipmentBasicData,
+                      withWufeng: true,
+                    })
+                  },
+                })
+              }}
+            >
+              智能最优推荐
+            </Button>
+            {/* <Button
+              disabled
+              size="small"
+              type="primary"
+              danger
+              onClick={() => {
+                Modal.confirm({
+                  title: '警告',
+                  content:
+                    '本模式可能会造成蓝屏，黑屏等不可控现象，对自己电脑没自信的请勿打开，如果因此产生数据或硬件损失本人概不负责。这可能需要几分钟',
+                  type: 'warning',
+                  onOk() {
+                    MaxDpsFunc({
+                      skillBasicData,
+                      currentCycle,
+                      currentCycleName,
+                      currentTarget,
+                      zengyixuanxiangData,
+                      zengyiQiyong,
+                      network,
+                      equipmentBasicData,
+                    })
+                  },
+                })
+              }}
+            >
+              智能最优推荐-过滤无封
+            </Button> */}
             {装备推荐列表.map((item) => {
               return (
                 <Tooltip key={item.label} title={item.tip}>

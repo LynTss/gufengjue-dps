@@ -1,0 +1,23 @@
+.max_name {
+  margin-right: 16px;
+}
+
+.max_dps {
+  font-size: 16px;
+  color: var(--ant-primary-color);
+  font-weight: 700;
+}
+
+.diff_name {
+  color: #2AC88F;
+}
+
+.max_title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.max_item {
+  margin-bottom: 4px;
+}
