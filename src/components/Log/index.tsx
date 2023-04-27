@@ -30,6 +30,7 @@ function Log() {
         更新日志
       </span>
       <Modal
+        width={600}
         title="新版本公告"
         centered
         open={newVersionModalVisible}
@@ -54,6 +55,7 @@ function Log() {
         </Timeline>
       </Modal>
       <Modal
+        width={600}
         title="更新日志"
         centered
         className="log-modal"

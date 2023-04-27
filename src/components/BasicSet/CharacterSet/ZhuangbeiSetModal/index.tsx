@@ -9,7 +9,7 @@ import {
 } from '@/store/basicReducer'
 import { EquipmentCharacterPositionEnum } from '@/@types/enum'
 import { 属性系数 } from '@/data/constant'
-import { getDpsTime, getZengyiJiasu } from '@/utils/skill-dps'
+import { getDpsTime, getTrueCycleByName, getZengyiJiasu } from '@/utils/skill-dps'
 import { setSkillBasicData } from '@/store/zengyiReducer'
 import ValueCheckBox from '@/components/common/ValueCheckBox'
 import { getDpsTotal } from '@/components/Dps/utils'
@@ -234,8 +234,10 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         zengyiQiyong,
         zengyixuanxiangData
       )
+
+      const trueCycle = getTrueCycleByName(currentCycleName, currentCycle, final)
       const { totalDps } = getDpsTotal({
-        currentCycle: currentCycle,
+        currentCycle: trueCycle,
         characterFinalData: final,
         当前目标: currentTarget,
         skillBasicData: newSkillBasicData,
@@ -255,17 +257,14 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
   //   {
   //     label: '驭耀英雄平民',
   //     data: 驭耀英雄平民,
-  //     tip: '配装切换没有更换循环，只是装备切换。',
   //   },
   //   {
   //     label: '周流英雄平民',
   //     data: 周流英雄平民,
-  //     tip: '配装切换没有更换循环，只是装备切换。',
   //   },
   //   {
   //     label: '周流英雄切糕',
   //     data: 周流英雄切糕,
-  //     tip: '配装切换没有更换循环，只是装备切换。',
   //   },
   // ]
 

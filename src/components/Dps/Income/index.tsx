@@ -8,7 +8,7 @@ import { useAppSelector } from '@/hooks'
 import { QuestionCircleOutlined } from '@ant-design/icons'
 import { getNotGuoDpsTotal } from './utils' // 使用不郭计算方式
 import { message, Radio, Tooltip } from 'antd'
-import { getDpsTime } from '@/utils/skill-dps'
+import { getDpsTime, getTrueCycleByName } from '@/utils/skill-dps'
 import {
   IncomeFumo,
   IncomeDataDTO,
@@ -57,8 +57,11 @@ function Income({ zengyiVisible }, ref) {
       zengyixuanxiangData
     )
 
+    // 获取实际循环
+    const trueCycle = getTrueCycleByName(currentCycleName, currentCycle, characterFinalData)
+
     const { totalDps: oldDps } = getNotGuoDpsTotal({
-      currentCycle,
+      currentCycle: trueCycle,
       characterFinalData,
       当前目标: 计算后目标,
       skillBasicData,
@@ -77,7 +80,7 @@ function Income({ zengyiVisible }, ref) {
     ]
 
     const { totalDps: newTotalDps } = getNotGuoDpsTotal({
-      currentCycle,
+      currentCycle: trueCycle,
       characterFinalData,
       当前目标: 计算后目标,
       skillBasicData,

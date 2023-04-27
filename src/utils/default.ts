@@ -78,7 +78,7 @@ export const getDefaultEquipment = () => {
 }
 
 export const getDefaultCycle = () => {
-  const currentCycleName = localStorage.getItem('当前循环') || skillCycle[0]?.name
+  const currentCycleName = localStorage.getItem('当前循环_1') || skillCycle[0]?.name
   return {
     name: currentCycleName,
     cycle: skillCycle.find((item) => item.name === currentCycleName)?.cycle || skillCycle[0]?.cycle,

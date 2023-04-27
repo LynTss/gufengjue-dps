@@ -38,7 +38,7 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
   const setCurrentCycleVal = (val) => {
     const cycle = skillCycle?.find((item) => item.name === val)?.cycle || []
     if (cycle) {
-      localStorage?.setItem('当前循环', val)
+      localStorage?.setItem('当前循环_1', val)
       dispatch(
         setCurrentCycle({
           name: val,
@@ -92,13 +92,15 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
               setCurrentCycleVal(v)
             }}
           >
-            {skillCycle.map((item) => {
-              return (
-                <Select.Option value={item?.name} key={item.name}>
-                  {item.name}
-                </Select.Option>
-              )
-            })}
+            {skillCycle
+              .filter((item) => !item.hide)
+              .map((item) => {
+                return (
+                  <Select.Option value={item?.name} key={item.name}>
+                    {item.name}
+                  </Select.Option>
+                )
+              })}
           </Select>
         </div>
       </div>

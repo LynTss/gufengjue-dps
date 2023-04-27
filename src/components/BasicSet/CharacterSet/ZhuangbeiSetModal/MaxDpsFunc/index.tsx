@@ -9,7 +9,7 @@ import {
 import { EquipmentDTO } from '@/@types/equipment'
 import ZUANGBEI_DATA from '@/data/zhuangbei'
 import { getZuiDaJingLian } from '../ZhuangbeiSelect'
-import { getDpsTime } from '@/utils/skill-dps'
+import { getDpsTime, getTrueCycleByName } from '@/utils/skill-dps'
 import { getDpsTotal } from '@/components/Dps/utils'
 import { getNewEquipmentData, getSkillCycleGainData } from '../utils'
 import { getFinalCharacterBasicDataByEquipment } from '../../util'
@@ -154,8 +154,12 @@ const getDps = (
     zengyixuanxiangData,
     false
   )
+
+  // 获取实际循环
+  const trueCycle = getTrueCycleByName(currentCycleName, currentCycle, final)
+
   const { totalDps } = getDpsTotal({
-    currentCycle: currentCycle,
+    currentCycle: trueCycle,
     characterFinalData: final,
     当前目标: currentTarget,
     skillBasicData: newSkillBasicData,

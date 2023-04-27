@@ -7,7 +7,7 @@ import DpsCountModal from './DpsCountModal/index'
 import Income from './Income'
 import './index.css'
 import { setCurrentDps } from '@/store/basicReducer'
-import { getDpsTime } from '@/utils/skill-dps'
+import { getDpsTime, getTrueCycleByName } from '@/utils/skill-dps'
 
 function Dps(props, ref) {
   const { zengyiVisible } = props
@@ -52,8 +52,12 @@ function Dps(props, ref) {
       zengyiQiyong,
       zengyixuanxiangData
     )
+
+    // 获取实际循环
+    const trueCycle = getTrueCycleByName(currentCycleName, 参与计算循环, characterFinalData)
+
     const { totalDps, dpsList } = getDpsTotal({
-      currentCycle: 参与计算循环,
+      currentCycle: trueCycle,
       characterFinalData,
       当前目标: currentTarget,
       skillBasicData,
