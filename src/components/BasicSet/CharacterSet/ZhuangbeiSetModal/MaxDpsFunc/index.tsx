@@ -335,7 +335,7 @@ const getFumo = (data) => {
   } else if ([EquipmentPositionEnum.帽子, EquipmentPositionEnum.戒指].includes(部位)) {
     return `破招+799`
   } else if ([EquipmentPositionEnum.衣服, EquipmentPositionEnum.腰带].includes(部位)) {
-    return `无双+217`
+    return `无双+240`
   } else if (
     [EquipmentPositionEnum.护腕, EquipmentPositionEnum.下装, EquipmentPositionEnum.暗器].includes(
       部位
