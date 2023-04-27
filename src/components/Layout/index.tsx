@@ -13,13 +13,14 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = (props) => {
   const { children } = props
   const random = Math.random()
-  const mapKey = random < 0.34 ? 1 : random < 0.67 ? 2 : 3
   const closeBackgroundImg = useAppSelector((state) => state?.basic?.closeBackgroundImg)
 
+  const mapKey = random < 0.00001 ? 4 : random < 0.34 ? 1 : random < 0.67 ? 2 : 3
   const imgMap = {
     1: ImgBg_1,
     2: ImgBg_2,
     3: ImgBg_3,
+    // 4: ImgBg_18,
   }
 
   return (
