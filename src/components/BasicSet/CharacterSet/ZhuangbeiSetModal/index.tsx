@@ -46,7 +46,6 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
 
   useEffect(() => {
     if (equipmentBasicData && visible) {
-      console.log('equipmentBasicData', equipmentBasicData)
       initEquipment(equipmentBasicData)
     }
     if (!visible) {
@@ -185,7 +184,6 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
   const formValueChange = (_, value) => {
     try {
       const data = getNewEquipmentData(value)
-      console.log('value', value)
       const { finalData } = getFinalCharacterBasicDataByEquipment(data)
       const final = {
         ...finalData,
