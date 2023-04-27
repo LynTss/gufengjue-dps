@@ -12,6 +12,7 @@
   transition: .2s;
   color: #fff;
   cursor: pointer;
+  margin-left: 16px;
 }
 
 .cache-btn:hover {

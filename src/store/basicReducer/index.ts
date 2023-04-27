@@ -10,6 +10,7 @@ import {
   getDefaultTarget,
   getDefaultTime,
   getDefaultNetwork,
+  getCloseBackgroundImg,
 } from '@/utils/default'
 import { EquipmentBasicDTO } from '@/@types/equipment'
 
@@ -34,6 +35,8 @@ interface BasicState {
   dpsTime: number
   // 网络延迟
   network: number
+  // 关闭背景
+  closeBackgroundImg: boolean
 }
 
 const initialState: BasicState = {
@@ -61,6 +64,7 @@ const initialState: BasicState = {
   currentTarget: getDefaultTarget()?.target,
   currentTargetName: getDefaultTarget()?.name,
   dpsTime: getDefaultTime(),
+  closeBackgroundImg: getCloseBackgroundImg(),
 }
 
 export const counterSlice = createSlice({
@@ -93,6 +97,9 @@ export const counterSlice = createSlice({
     setCurrentDps: (state, action: PayloadAction<number>) => {
       state.currentDps = action.payload
     },
+    setCloseBackgroundImg: (state, action: PayloadAction<boolean>) => {
+      state.closeBackgroundImg = action.payload
+    },
   },
 })
 
@@ -105,6 +112,7 @@ export const {
   setDpsTime,
   setNetwork,
   setCurrentDps,
+  setCloseBackgroundImg,
 } = counterSlice.actions // 导出操作state的喊出
 export const selectCount = (state: RootState) => state
 export default counterSlice.reducer // 导出当前reducer在store/index.ts中记性全局挂

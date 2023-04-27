@@ -97,6 +97,10 @@ export const getDefaultTime = () => {
   return +(localStorage.getItem('计算时间') || 306)
 }
 
+export const getCloseBackgroundImg = () => {
+  return !!(+(localStorage.getItem('close_background_img') || '') || false)
+}
+
 export const getDefaultMijiSelectedData = () => {
   const localEquipment = localStorage.getItem('miji_selected_data_1')
   if (localEquipment) {
