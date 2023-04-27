@@ -688,7 +688,7 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     uid: '207851',
     装备名称: '濯心·锋虹冠',
     装备品级: 12300,
-    装备类型: EquipmentTypeEnum.普通,
+    装备类型: EquipmentTypeEnum.门派套装,
     装备增益: [
       { 增益数值: 3986, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 773, 增益类型: GainTypeEnum.力道 },

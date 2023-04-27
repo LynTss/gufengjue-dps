@@ -16,7 +16,7 @@ import { getDpsTotal } from '@/components/Dps/utils'
 
 import { getFinalCharacterBasicDataByEquipment } from '../util'
 import { getNewEquipmentData, getSkillCycleGainData } from './utils'
-import { 驭耀英雄平民, 周流英雄平民, 周流英雄切糕 } from './peizhuangfangan'
+// import { 驭耀英雄平民, 周流英雄平民, 周流英雄切糕 } from './peizhuangfangan'
 import ZhuangBeiZengYiTip from './ZhuangBeiZengYiTip'
 import ZhuangbeiSelect from './ZhuangbeiSelect'
 import WuCaiShiXuanZe from './WuCaiShiXuanZe'
@@ -253,23 +253,23 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
     }
   }
 
-  const 装备推荐列表 = [
-    {
-      label: '驭耀英雄平民',
-      data: 驭耀英雄平民,
-      tip: '配装切换没有更换循环，只是装备切换。',
-    },
-    {
-      label: '周流英雄平民',
-      data: 周流英雄平民,
-      tip: '配装切换没有更换循环，只是装备切换。',
-    },
-    {
-      label: '周流英雄切糕',
-      data: 周流英雄切糕,
-      tip: '配装切换没有更换循环，只是装备切换。',
-    },
-  ]
+  // const 装备推荐列表 = [
+  //   {
+  //     label: '驭耀英雄平民',
+  //     data: 驭耀英雄平民,
+  //     tip: '配装切换没有更换循环，只是装备切换。',
+  //   },
+  //   {
+  //     label: '周流英雄平民',
+  //     data: 周流英雄平民,
+  //     tip: '配装切换没有更换循环，只是装备切换。',
+  //   },
+  //   {
+  //     label: '周流英雄切糕',
+  //     data: 周流英雄切糕,
+  //     tip: '配装切换没有更换循环，只是装备切换。',
+  //   },
+  // ]
 
   // 导入魔盒配装数据
   const mohedaoru = (e) => {
@@ -290,7 +290,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           </span>
           <span className="zhuangbei-input-peizhuangtuijian">
             <Button
-              disabled
+              // disabled
               size="small"
               type="primary"
               danger
@@ -298,7 +298,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
                 Modal.confirm({
                   title: '警告',
                   content:
-                    '本模式可能会造成蓝屏，黑屏等不可控现象，对自己电脑没自信的请勿打开，如果因此产生数据或硬件损失本人概不负责。这可能需要几分钟',
+                    '本模式可能会造成蓝屏，黑屏等不可控现象，对自己电脑没自信的请勿打开，如果因此产生数据或硬件损失本人概不负责。由于浏览器算力限制，当前算法固定4件套+特效腰坠武器，仅供娱乐。切勿当真。这可能需要几分钟。',
                   type: 'warning',
                   onOk() {
                     MaxDpsFunc({
@@ -316,10 +316,9 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
                 })
               }}
             >
-              智能最优推荐
+              智能推荐
             </Button>
-            {/* <Button
-              disabled
+            <Button
               size="small"
               type="primary"
               danger
@@ -327,7 +326,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
                 Modal.confirm({
                   title: '警告',
                   content:
-                    '本模式可能会造成蓝屏，黑屏等不可控现象，对自己电脑没自信的请勿打开，如果因此产生数据或硬件损失本人概不负责。这可能需要几分钟',
+                    '本模式可能会造成蓝屏，黑屏等不可控现象，对自己电脑没自信的请勿打开，如果因此产生数据或硬件损失本人概不负责。由于浏览器算力限制，当前算法固定4件套+特效腰坠武器，仅供娱乐。切勿当真。这可能需要几分钟。',
                   type: 'warning',
                   onOk() {
                     MaxDpsFunc({
@@ -344,9 +343,9 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
                 })
               }}
             >
-              智能最优推荐-过滤无封
-            </Button> */}
-            {装备推荐列表.map((item) => {
+              智能推荐-过滤无封
+            </Button>
+            {/* {装备推荐列表.map((item) => {
               return (
                 <Tooltip key={item.label} title={item.tip}>
                   <Button
@@ -360,7 +359,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
                   </Button>
                 </Tooltip>
               )
-            })}
+            })} */}
           </span>
         </div>
       }

@@ -307,7 +307,7 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     uid: '207880',
     装备名称: '濯心·锋虹衣',
     装备品级: 12300,
-    装备类型: EquipmentTypeEnum.普通,
+    装备类型: EquipmentTypeEnum.门派套装,
     装备增益: [
       { 增益数值: 4429, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 859, 增益类型: GainTypeEnum.力道 },

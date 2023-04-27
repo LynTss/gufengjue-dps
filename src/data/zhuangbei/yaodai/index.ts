@@ -377,7 +377,7 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     uid: '207793',
     装备名称: '濯心·锋虹腰带',
     装备品级: 12300,
-    装备类型: EquipmentTypeEnum.普通,
+    装备类型: EquipmentTypeEnum.门派套装,
     装备增益: [
       { 增益数值: 3100, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 601, 增益类型: GainTypeEnum.力道 },

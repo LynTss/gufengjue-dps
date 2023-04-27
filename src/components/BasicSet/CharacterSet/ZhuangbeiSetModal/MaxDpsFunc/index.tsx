@@ -240,10 +240,10 @@ const getAllList = (withWufeng) => {
 export default MaxDpsFunc
 
 const guilvguize = (item: EquipmentDTO, withWufeng) => {
-  if (withWufeng && item.装备类型 === EquipmentTypeEnum.试炼精简 && item.装备品级 >= 10900) {
+  if (withWufeng && item.装备类型 === EquipmentTypeEnum.试炼精简 && item.装备品级 >= 12100) {
     return true
   }
-  if (item.装备品级 < 11150) {
+  if (item.装备品级 < 12450) {
     return false
   }
   if ([EquipmentTypeEnum.切糕, EquipmentTypeEnum.副本精简].includes(item.装备类型)) {
@@ -262,57 +262,57 @@ const 固定部位 = ['_1', '_3', '_4', '_6', '_8', '_12']
 const 固定id = [
   {
     position: '帽子_1',
-    id: 91163,
-    uid: '200155',
-    装备名称: '揽江·远帆帽',
-    装备品级: 11000,
-    装备类型: EquipmentTypeEnum.门派套装,
+    id: 94335,
+    uid: '207851',
+    装备名称: '濯心·锋虹冠',
+    装备品级: 12300,
+    装备类型: EquipmentTypeEnum.普通,
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
     position: '腰带_3',
-    id: 91105,
-    uid: '200097',
-    装备名称: '揽江·远帆护腰',
-    装备品级: 11000,
+    id: 94277,
+    uid: '207793',
+    装备名称: '濯心·锋虹腰带',
+    装备品级: 12300,
     装备类型: EquipmentTypeEnum.门派套装,
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
     position: '护腕_4',
-    id: 91076,
-    uid: '200068',
-    装备名称: '揽江·远帆护手',
-    装备品级: 11000,
+    id: 94248,
+    uid: '207764',
+    装备名称: '濯心·锋虹护手',
+    装备品级: 12300,
     装备类型: EquipmentTypeEnum.门派套装,
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
     position: '鞋子_6',
-    id: 91134,
-    uid: '200126',
-    装备名称: '揽江·远帆履',
-    装备品级: 11000,
+    id: 94306,
+    uid: '207822',
+    装备名称: '濯心·锋虹靴',
+    装备品级: 12300,
     装备类型: EquipmentTypeEnum.门派套装,
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
     position: '腰坠_8',
-    id: 34381,
-    uid: '200343',
-    装备名称: '风落秋',
-    装备品级: 11150,
+    id: 37719,
+    uid: '208033',
+    装备名称: '恸黄沙',
+    装备品级: 12450,
     装备类型: EquipmentTypeEnum.副本精简,
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
     position: '武器_12',
-    id: 32989,
-    uid: '200376',
-    装备名称: '风波还',
-    装备品级: 11150,
-    武器伤害_最小值: 2593,
-    武器伤害_最大值: 4322,
+    id: 34765,
+    uid: '208066',
+    装备名称: '踏刀行',
+    装备品级: 12450,
+    武器伤害_最小值: 2896,
+    武器伤害_最大值: 4827,
     装备类型: EquipmentTypeEnum.特效武器,
     镶嵌孔数组: [
       { 镶嵌类型: EquipmentInlayEnum.攻击 },
