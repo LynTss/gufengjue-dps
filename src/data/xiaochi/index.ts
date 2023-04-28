@@ -9,7 +9,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.基础攻击,
-        增益数值: 733,
+        增益数值: 810,
       },
     ],
   },
@@ -20,7 +20,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻破防等级,
-        增益数值: 1627,
+        增益数值: 1799,
       },
     ],
   },
@@ -31,7 +31,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心等级,
-        增益数值: 1627,
+        增益数值: 1799,
       },
     ],
   },
@@ -42,7 +42,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.破招,
-        增益数值: 1627,
+        增益数值: 1799,
       },
     ],
   },
@@ -53,7 +53,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.加速,
-        增益数值: 1627,
+        增益数值: 1799,
       },
     ],
   },
@@ -64,7 +64,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.力道,
-        增益数值: 365,
+        增益数值: 403,
       },
     ],
   },
@@ -75,7 +75,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.基础攻击,
-        增益数值: 570,
+        增益数值: 630,
       },
     ],
   },
@@ -86,7 +86,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻破防等级,
-        增益数值: 1266,
+        增益数值: 1399,
       },
     ],
   },
@@ -97,7 +97,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心等级,
-        增益数值: 1266,
+        增益数值: 1399,
       },
     ],
   },
@@ -108,7 +108,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.破招,
-        增益数值: 1266,
+        增益数值: 1399,
       },
     ],
   },
@@ -119,7 +119,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.加速,
-        增益数值: 1266,
+        增益数值: 1399,
       },
     ],
   },
@@ -130,7 +130,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.力道,
-        增益数值: 284,
+        增益数值: 314,
       },
     ],
   },
@@ -141,7 +141,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.基础攻击,
-        增益数值: 489,
+        增益数值: 540,
       },
     ],
   },
@@ -152,7 +152,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.加速,
-        增益数值: 234,
+        增益数值: 259,
       },
     ],
   },
@@ -163,7 +163,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.加速,
-        增益数值: 468,
+        增益数值: 518,
       },
     ],
   },
@@ -174,7 +174,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.加速,
-        增益数值: 702,
+        增益数值: 777,
       },
     ],
   },
@@ -185,7 +185,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.加速,
-        增益数值: 936,
+        增益数值: 1036,
       },
     ],
   },
@@ -196,7 +196,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.力道,
-        增益数值: 52,
+        增益数值: 58,
       },
     ],
   },
@@ -207,7 +207,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.力道,
-        增益数值: 104,
+        增益数值: 116,
       },
     ],
   },
@@ -218,7 +218,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.力道,
-        增益数值: 156,
+        增益数值: 174,
       },
     ],
   },
@@ -229,7 +229,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.力道,
-        增益数值: 208,
+        增益数值: 232,
       },
     ],
   },
@@ -240,7 +240,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.无双等级,
-        增益数值: 586,
+        增益数值: 648,
       },
     ],
   },
@@ -251,7 +251,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.破招,
-        增益数值: 586,
+        增益数值: 648,
       },
     ],
   },
@@ -262,7 +262,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.基础攻击,
-        增益数值: 262,
+        增益数值: 290,
       },
     ],
   },
@@ -273,7 +273,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻破防等级,
-        增益数值: 586,
+        增益数值: 648,
       },
     ],
   },
@@ -284,7 +284,7 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心等级,
-        增益数值: 586,
+        增益数值: 648,
       },
     ],
   },
@@ -295,17 +295,17 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.基础攻击,
-        增益数值: 326,
+        增益数值: 360,
       },
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心等级,
-        增益数值: 723,
+        增益数值: 800,
       },
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.破招,
-        增益数值: 723,
+        增益数值: 800,
       },
     ],
   },
