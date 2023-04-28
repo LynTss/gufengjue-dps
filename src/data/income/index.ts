@@ -50,52 +50,52 @@ export const IncomeFumo: IncomeDataDTO[] = [
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.破防2_紫,
+    收益计算名称: EnchantNameEnum.破防799,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻破防等级,
-        增益数值: +CommonEnchantNum.赛季2_紫,
+        增益数值: +CommonEnchantNum.赛季799,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.无双2_紫,
+    收益计算名称: EnchantNameEnum.无双799,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.无双等级,
-        增益数值: +CommonEnchantNum.赛季2_紫,
+        增益数值: +CommonEnchantNum.赛季799,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.会心2_紫,
+    收益计算名称: EnchantNameEnum.会心799,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心等级,
-        增益数值: +CommonEnchantNum.赛季2_紫,
+        增益数值: +CommonEnchantNum.赛季799,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.会效2_紫,
+    收益计算名称: EnchantNameEnum.会效799,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心效果等级,
-        增益数值: +CommonEnchantNum.赛季2_紫,
+        增益数值: +CommonEnchantNum.赛季799,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.破招2_紫,
+    收益计算名称: EnchantNameEnum.破招799,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.破招,
-        增益数值: +CommonEnchantNum.赛季2_紫,
+        增益数值: +CommonEnchantNum.赛季799,
       },
     ],
   },
