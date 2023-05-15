@@ -60,7 +60,8 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
       {
         增益计算类型: GainDpsTypeEnum.B,
         增益类型: GainTypeEnum.郭氏无视防御,
-        增益数值: 358,
+        // 增益数值: 358,
+        增益数值: 410,
       },
     ])
   }
