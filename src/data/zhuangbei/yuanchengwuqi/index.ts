@@ -548,7 +548,7 @@ const ZHUANGBEI_YUANCHENGWUQI: EquipmentDTO[] = [
   {
     id: 32956,
     uid: '200337',
-    装备名称: '测试装备',
+    装备名称: '度飞囊',
     装备品级: 11150,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [
@@ -701,7 +701,7 @@ const ZHUANGBEI_YUANCHENGWUQI: EquipmentDTO[] = [
   {
     id: 34768,
     uid: '208101',
-    装备名称: '度飞囊',
+    装备名称: '微花囊',
     装备品级: 12450,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [
