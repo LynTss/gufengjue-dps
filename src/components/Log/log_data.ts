@@ -1,5 +1,9 @@
 export default [
   {
+    version: '2.0.2',
+    content: ['6月19日技改更新', '断云势伤害降低10%'],
+  },
+  {
     version: '2.0.1',
     content: [
       '5月15日技改更新',
