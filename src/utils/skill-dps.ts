@@ -6,7 +6,7 @@ import { guoshiXishuBasic, guoshiResult, guoshiBasic } from './help'
  */
 import { CharacterFinalDTO, TargetDTO } from '@/@types/character'
 import { SkillBasicDTO } from '@/@types/skill'
-import { 属性系数, 每等级减伤 } from '@/data/constant'
+import { 属性系数, 每等级减伤, 非侠系数 } from '@/data/constant'
 import { guoshiFangyu, guoshiPofang } from './help'
 import All_Cycle_Data from '@/data/skillCycle'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
@@ -88,8 +88,10 @@ export const skillFinalDpsFunction = (
   const r_dengjijianshang = skillDengjijianshangDps(damage, characterConfig, 当前目标)
   // 无双增伤
   const r_wushuang = skillWushuangDps(r_dengjijianshang, characterConfig)
+  // 非侠增伤
+  const r_feixia = r_wushuang* 非侠系数
 
-  return Math.floor(r_wushuang)
+  return Math.floor(r_feixia)
 }
 
 /**

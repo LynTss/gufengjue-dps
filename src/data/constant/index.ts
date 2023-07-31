@@ -4,6 +4,9 @@
 
 import { NetworkDTO, TargetDTO } from '@/@types/character'
 
+// 刀宗非侠系数
+export const 非侠系数 = 1.06
+
 export const 自身等级 = 120 // 当前角色等级
 export const 每等级减伤 = 0.05
 export const 每等级减伤系数 = 51

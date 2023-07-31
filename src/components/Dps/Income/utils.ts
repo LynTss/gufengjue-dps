@@ -1,4 +1,4 @@
-import { 每等级减伤 } from '@/data/constant'
+import { 每等级减伤, 非侠系数 } from '@/data/constant'
 // !收益采用非郭式算法
 import { TuanduiZengyi_DATA } from './../../../data/tuanduizengyi/index'
 import { GainDpsTypeEnum } from './../../../@types/enum'
@@ -738,8 +738,10 @@ export const skillFinalDpsFunction = (
   const r_dengjijianshang = skillDengjijianshangDps(damage, characterConfig, 当前目标)
   // 无双增伤
   const r_wushuang = skillWushuangDps(r_dengjijianshang, characterConfig)
+  // 非侠增伤
+  const r_feixia = r_wushuang * 非侠系数
 
-  return r_wushuang
+  return r_feixia
 }
 
 /**
