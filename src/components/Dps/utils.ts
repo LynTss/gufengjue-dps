@@ -1,3 +1,4 @@
+import { getLidaoJiachengPofang } from './../BasicSet/CharacterSet/util'
 import { TuanduiZengyi_DATA } from './../../data/tuanduizengyi/index'
 import { getMianBanGongJI, getLidaoJiachengHuixin } from '@/components/BasicSet/CharacterSet/util'
 import { GainDpsTypeEnum } from './../../@types/enum'
@@ -330,7 +331,8 @@ export const geSkillTotalDps = (
       getMianBanGongJI(最终人物属性.面板攻击, 总力道提升值) +
       Math.round(总力道提升值 * 加成系数.力道加成基础攻击),
     会心值: getLidaoJiachengHuixin(最终人物属性.会心值, 总力道提升值),
-    破防值: getLidaoJiachengHuixin(最终人物属性.破防值, 总力道提升值),
+    // 破防值: getLidaoJiachengHuixin(最终人物属性.破防值, 总力道提升值),
+    破防值: getLidaoJiachengPofang(最终人物属性.破防值, 总力道提升值),
   }
 
   // 计算力道后再计算其他收益
