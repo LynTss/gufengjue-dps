@@ -10,11 +10,12 @@ import { EquipmentDTO } from '@/@types/equipment'
 import ZUANGBEI_DATA from '@/data/zhuangbei'
 import { getZuiDaJingLian } from '../ZhuangbeiSelect'
 import { getDpsTime, getTrueCycleByName } from '@/utils/skill-dps'
-import { getDpsTotal } from '@/components/Dps/utils'
+import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
 import { getNewEquipmentData, getSkillCycleGainData } from '../utils'
 import { getFinalCharacterBasicDataByEquipment } from '../../util'
 import { Modal } from 'antd'
 import './index.css'
+import { CharacterFinalDTO } from '@/@types/character'
 
 const MaxDpsFunc = ({
   skillBasicData,
@@ -118,33 +119,35 @@ const getDps = (
 ) => {
   const data = getNewEquipmentData(value)
   const { finalData } = getFinalCharacterBasicDataByEquipment(data)
-  const final = {
+  const final: CharacterFinalDTO = {
     ...finalData,
-    套装会心会效: data.taozhuangShuanghui,
-    水特效武器: data.shuitexiaoWuqi,
-    水特效武器_2: data.shuitexiaoWuqi_2,
-    龙门武器: data?.longmenWuqi,
-    大橙武特效: data?.dachengwu,
-    小橙武特效: data?.xiaochengwu,
-    风特效腰坠: data.texiaoyaozhui,
-    风特效腰坠_2: data.texiaoyaozhui_2,
-    切糕会心: data.qiegaotaozhuanghuixin,
-    切糕无双: data.qiegaotaozhuangwushuang,
-    切糕会心_2: data.qiegaotaozhuanghuixin_2,
-    切糕无双_2: data.qiegaotaozhuangwushuang_2,
-    冬至套装: data?.dongzhitaozhuangshuxing,
-    大附魔_伤帽: data?.大附魔_伤帽,
-    大附魔_伤衣: data?.大附魔_伤衣,
-    大附魔_伤腰: data?.大附魔_伤腰,
-    大附魔_伤腕: data?.大附魔_伤腕,
-    大附魔_伤鞋: data?.大附魔_伤鞋,
+    装备增益: {
+      套装会心会效: data.套装会心会效,
+      水特效武器: data.水特效武器,
+      水特效武器_2: data.水特效武器_2,
+      龙门武器: data?.龙门武器,
+      大橙武特效: data?.大橙武特效,
+      小橙武特效: data?.小橙武特效,
+      风特效腰坠: data.风特效腰坠,
+      风特效腰坠_2: data.风特效腰坠_2,
+      切糕会心: data.切糕会心,
+      切糕无双: data.切糕无双,
+      切糕会心_2: data.切糕会心_2,
+      切糕无双_2: data.切糕无双_2,
+      冬至套装: data?.冬至套装,
+      大附魔_伤帽: data?.大附魔_伤帽,
+      大附魔_伤衣: data?.大附魔_伤衣,
+      大附魔_伤腰: data?.大附魔_伤腰,
+      大附魔_伤腕: data?.大附魔_伤腕,
+      大附魔_伤鞋: data?.大附魔_伤鞋,
+    },
   }
   let newSkillBasicData = skillBasicData
   newSkillBasicData = getSkillCycleGainData(
     skillBasicData,
-    data.taozhuangJineng,
-    data.dachengwu,
-    data.xiaochengwu
+    data.套装技能,
+    data.大橙武特效,
+    data.小橙武特效
   )
   const dpsTime = getDpsTime(
     currentCycleName,

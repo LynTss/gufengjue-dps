@@ -6,7 +6,7 @@ import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } f
 import * as G2 from '@antv/g2'
 import { useAppSelector } from '@/hooks'
 import { QuestionCircleOutlined } from '@ant-design/icons'
-import { getNotGuoDpsTotal } from './utils' // 使用不郭计算方式
+import { getNotGuoDpsTotal } from '../wu_guoshi_dps_utils' // 使用不郭计算方式
 import { message, Radio, Tooltip } from 'antd'
 import { getDpsTime, getTrueCycleByName } from '@/utils/skill-dps'
 import {

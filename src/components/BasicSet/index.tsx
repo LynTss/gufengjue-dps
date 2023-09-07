@@ -39,24 +39,26 @@ function BasicSet(props: CharacterSetProps) {
       dispatch(
         setCharacterFinalData({
           ...final,
-          套装会心会效: equipmentBasicData?.taozhuangShuanghui,
-          水特效武器: equipmentBasicData?.shuitexiaoWuqi,
-          水特效武器_2: equipmentBasicData?.shuitexiaoWuqi_2,
-          龙门武器: equipmentBasicData?.longmenWuqi,
-          大橙武特效: equipmentBasicData?.dachengwu,
-          小橙武特效: equipmentBasicData?.xiaochengwu,
-          风特效腰坠: equipmentBasicData?.texiaoyaozhui,
-          风特效腰坠_2: equipmentBasicData?.texiaoyaozhui_2,
-          切糕会心: equipmentBasicData?.qiegaotaozhuanghuixin,
-          切糕无双: equipmentBasicData?.qiegaotaozhuangwushuang,
-          切糕会心_2: equipmentBasicData?.qiegaotaozhuanghuixin_2,
-          切糕无双_2: equipmentBasicData?.qiegaotaozhuangwushuang_2,
-          冬至套装: equipmentBasicData?.dongzhitaozhuangshuxing,
-          大附魔_伤帽: equipmentBasicData?.大附魔_伤帽,
-          大附魔_伤衣: equipmentBasicData?.大附魔_伤衣,
-          大附魔_伤腰: equipmentBasicData?.大附魔_伤腰,
-          大附魔_伤腕: equipmentBasicData?.大附魔_伤腕,
-          大附魔_伤鞋: equipmentBasicData?.大附魔_伤鞋,
+          装备增益: {
+            套装会心会效: equipmentBasicData?.套装会心会效,
+            水特效武器: equipmentBasicData?.水特效武器,
+            水特效武器_2: equipmentBasicData?.水特效武器_2,
+            龙门武器: equipmentBasicData?.龙门武器,
+            大橙武特效: equipmentBasicData?.大橙武特效,
+            小橙武特效: equipmentBasicData?.小橙武特效,
+            风特效腰坠: equipmentBasicData?.风特效腰坠,
+            风特效腰坠_2: equipmentBasicData?.风特效腰坠_2,
+            切糕会心: equipmentBasicData?.切糕会心,
+            切糕无双: equipmentBasicData?.切糕无双,
+            切糕会心_2: equipmentBasicData?.切糕会心_2,
+            切糕无双_2: equipmentBasicData?.切糕无双_2,
+            冬至套装: equipmentBasicData?.冬至套装,
+            大附魔_伤帽: equipmentBasicData?.大附魔_伤帽,
+            大附魔_伤衣: equipmentBasicData?.大附魔_伤衣,
+            大附魔_伤腰: equipmentBasicData?.大附魔_伤腰,
+            大附魔_伤腕: equipmentBasicData?.大附魔_伤腕,
+            大附魔_伤鞋: equipmentBasicData?.大附魔_伤鞋,
+          },
         })
       )
 
@@ -75,18 +77,18 @@ function BasicSet(props: CharacterSetProps) {
                     if (a.增益名称 === '套装10%_1') {
                       return {
                         ...a,
-                        常驻增益: equipmentBasicData.taozhuangJineng >= 1,
+                        常驻增益: equipmentBasicData.套装技能 >= 1,
                       }
                     } else {
                       return {
                         ...a,
-                        常驻增益: equipmentBasicData.taozhuangJineng === 2,
+                        常驻增益: equipmentBasicData.套装技能 === 2,
                       }
                     }
                   } else if (a.增益名称 === 'CW5%') {
                     return {
                       ...a,
-                      常驻增益: !!equipmentBasicData.dachengwu,
+                      常驻增益: !!equipmentBasicData.大橙武特效,
                     }
                   } else {
                     return { ...a }
@@ -97,12 +99,12 @@ function BasicSet(props: CharacterSetProps) {
                   if (a.增益名称 === 'CW5%') {
                     return {
                       ...a,
-                      常驻增益: !!equipmentBasicData.dachengwu,
+                      常驻增益: !!equipmentBasicData.大橙武特效,
                     }
                   } else if (a.增益名称 === '小CW会心5%') {
                     return {
                       ...a,
-                      常驻增益: !!equipmentBasicData.xiaochengwu,
+                      常驻增益: !!equipmentBasicData.小橙武特效,
                     }
                   } else {
                     return { ...a }

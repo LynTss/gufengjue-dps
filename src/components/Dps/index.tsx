@@ -2,12 +2,12 @@ import React, { forwardRef, useImperativeHandle, useMemo, useRef, useState } fro
 import { Divider, message } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 
-import { DpsListData, getDpsTotal } from './utils'
+import { DpsListData, getDpsTotal } from './guoshi_dps_utils'
 import DpsCountModal from './DpsCountModal/index'
 import Income from './Income'
-import './index.css'
 import { setCurrentDps } from '@/store/basicReducer'
 import { getDpsTime, getTrueCycleByName } from '@/utils/skill-dps'
+import './index.css'
 
 function Dps(props, ref) {
   const { zengyiVisible } = props
@@ -65,6 +65,7 @@ function Dps(props, ref) {
       zengyixuanxiangData,
       dpsTime,
     })
+
     setTotal(totalDps)
     setDpsList(dpsList)
     setTimeout(() => {

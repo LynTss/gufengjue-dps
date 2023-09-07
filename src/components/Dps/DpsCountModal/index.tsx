@@ -1,6 +1,6 @@
 import { Modal } from 'antd'
 import React, { useMemo } from 'react'
-import { DpsListData } from '../utils'
+import { DpsListData } from '../guoshi_dps_utils'
 import './index.css'
 
 function DpsCountModal({ visible, onClose, dpsList, total }) {

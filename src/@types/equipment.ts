@@ -25,59 +25,59 @@ export interface EquipmentBasicDTO {
   /**
    * @name 套装双会
    */
-  taozhuangShuanghui: boolean
+  套装会心会效: boolean
   /**
    * @name 水特效武器
    */
-  shuitexiaoWuqi: boolean
+  水特效武器: boolean
   /**
    * @name 水特效武器_2赛季
    */
-  shuitexiaoWuqi_2: boolean
+  水特效武器_2: boolean
   /**
    * @name 龙门武器
    */
-  longmenWuqi: boolean
+  龙门武器: boolean
   /**
    * @name 特效腰坠
    */
-  texiaoyaozhui: boolean
+  风特效腰坠: boolean
   /**
    * @name 特效腰坠_2赛季
    */
-  texiaoyaozhui_2: boolean
+  风特效腰坠_2: boolean
   /**
    * @name 套装技能加成次数
    */
-  taozhuangJineng: number
+  套装技能: number
   /**
    * @name 切糕套装会心
    */
-  qiegaotaozhuanghuixin: number
+  切糕会心: number
   /**
    * @name 切糕套装会心_2赛季
    */
-  qiegaotaozhuanghuixin_2: number
+  切糕会心_2: number
   /**
    * @name 切糕套装无双
    */
-  qiegaotaozhuangwushuang: number
+  切糕无双: number
   /**
    * @name 切糕套装无双_2赛季
    */
-  qiegaotaozhuangwushuang_2: number
+  切糕无双_2: number
   /**
    * @name 冬至套装无双
    */
-  dongzhitaozhuangshuxing: boolean
+  冬至套装: boolean
   /**
    * @name 大橙武特效
    */
-  dachengwu: boolean
+  大橙武特效: boolean
   /**
    * @name 小橙武特效
    */
-  xiaochengwu: boolean
+  小橙武特效: boolean
   /**
    * @name 装备大附魔_伤帽
    */

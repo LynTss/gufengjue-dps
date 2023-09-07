@@ -89,7 +89,7 @@ export const skillFinalDpsFunction = (
   // 无双增伤
   const r_wushuang = skillWushuangDps(r_dengjijianshang, characterConfig)
   // 非侠增伤
-  const r_feixia = r_wushuang* 非侠系数
+  const r_feixia = r_wushuang * 非侠系数
 
   return Math.floor(r_feixia)
 }
@@ -206,7 +206,7 @@ export const getTrueCycleName = (
   currentCycleName: string,
   characterFinalData: CharacterFinalDTO
 ) => {
-  if (characterFinalData?.大橙武特效 && currentCycleName?.includes('周流')) {
+  if (characterFinalData?.装备增益?.大橙武特效 && currentCycleName?.includes('周流')) {
     return `${currentCycleName}_cw`
   }
   return currentCycleName
@@ -217,7 +217,7 @@ export const getTrueCycleByName = (
   currentCycle: any,
   characterFinalData: CharacterFinalDTO
 ) => {
-  if (characterFinalData?.大橙武特效 && currentCycleName?.includes('周流')) {
+  if (characterFinalData?.装备增益?.大橙武特效 && currentCycleName?.includes('周流')) {
     const trueName = `${currentCycleName}_cw`
     return All_Cycle_Data?.find((item) => item.name === trueName)?.cycle || currentCycle
   }
