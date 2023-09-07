@@ -163,16 +163,16 @@ export const getSkillCycleGainData = (
                     ...a,
                     常驻增益: 套装技能 >= 1,
                   }
-                } else if (a.增益名称 === 'CW5%') {
-                  return {
-                    ...a,
-                    常驻增益: !!大橙武特效,
-                  }
                 } else {
                   return {
                     ...a,
                     常驻增益: 套装技能 === 2,
                   }
+                }
+              } else if (a.增益名称 === 'CW5%') {
+                return {
+                  ...a,
+                  常驻增益: !!大橙武特效,
                 }
               } else {
                 return { ...a }

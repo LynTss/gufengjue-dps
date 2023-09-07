@@ -143,12 +143,14 @@ const getDps = (
     },
   }
   let newSkillBasicData = skillBasicData
+
   newSkillBasicData = getSkillCycleGainData(
     skillBasicData,
     data.套装技能,
     data.大橙武特效,
     data.小橙武特效
   )
+
   const dpsTime = getDpsTime(
     currentCycleName,
     final,

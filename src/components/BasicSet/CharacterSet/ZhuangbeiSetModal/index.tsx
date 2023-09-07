@@ -226,12 +226,16 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         冬至套装: data?.冬至套装,
       })
       let newSkillBasicData = skillBasicData
+
       newSkillBasicData = getSkillCycleGainData(
         skillBasicData,
         data.套装技能,
         data.大橙武特效,
         data.小橙武特效
       )
+
+      console.log('newSkillBasicData', newSkillBasicData)
+
       const dpsTime = getDpsTime(
         currentCycleName,
         final,
