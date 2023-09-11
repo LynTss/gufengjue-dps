@@ -348,5 +348,23 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     伤害计算次数: 1,
     技能增益列表: commonGainDTO,
   },
+  {
+    技能名称: '潋风·携刃',
+    技能伤害系数: 0.9374916,
+    技能基础伤害_最小值: 78,
+    技能基础伤害_最大值: 88,
+    武器伤害系数: 0,
+    伤害计算次数: 1,
+    技能增益列表: commonGainDTO,
+  },
+  {
+    技能名称: '潋风·拓锋',
+    技能伤害系数: 1.874983,
+    技能基础伤害_最小值: 78,
+    技能基础伤害_最大值: 88,
+    武器伤害系数: 0,
+    伤害计算次数: 1,
+    技能增益列表: commonGainDTO,
+  },
 ]
 export default GuFengJueSkillDataDTO

@@ -1,5 +1,9 @@
 export default [
   {
+    version: '2.0.6',
+    content: ['技改内容'],
+  },
+  {
     version: '2.0.5',
     content: [
       '修复了大橙武对孤锋破浪的5%伤害加成未生效问题',

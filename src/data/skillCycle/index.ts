@@ -1,7 +1,8 @@
 import yuyao from './yuyao'
 import zhouliu_jiepo from './zhouliu_jiepo'
 import zhouliu_cw_jiepo from './zhouliu_cw_jiepo'
-// import zhouliu_zhenji from './zhouliu_zhenji'
+import lianfeng from './lianfeng'
+// import lianfeng_2 from './lianfeng_2'
 // import zhouliu_cw_zhenji from './zhouliu_cw_zhenji'
 // import zhouliu_jiepo_风雪 from './zhouliu_jiepo_风雪'
 
@@ -30,6 +31,16 @@ const All_Cycle_Data = [
       { 计算技能数: 15, 循环完整帧数: 300, 循环次数: 14 },
     ],
     type: '驭耀',
+  },
+  {
+    name: '潋风',
+    title: '潋风',
+    cycle: lianfeng,
+    cycleList: [
+      { 计算技能数: 10, 循环完整帧数: 242, 循环次数: 1 },
+      { 计算技能数: 15, 循环完整帧数: 305, 循环次数: 14 },
+    ],
+    type: '潋风',
   },
   {
     name: '周流_cw',
