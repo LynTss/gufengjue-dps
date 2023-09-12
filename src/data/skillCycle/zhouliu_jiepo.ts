@@ -107,3 +107,18 @@ const weisheng_cang_cycle: CycleDTO[] = [
 ]
 
 export default weisheng_cang_cycle
+
+export const 循环默认奇穴 = [
+  '渊冲',
+  '聚疏',
+  '溃延',
+  '放皓',
+  '威声',
+  '观衅',
+  '界破',
+  '长溯',
+  '周流',
+  '强膂',
+  '流岚',
+  '截辕',
+]

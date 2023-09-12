@@ -120,3 +120,18 @@ const cycle: CycleDTO[] = [
 ]
 
 export default cycle
+
+export const 循环默认奇穴 = [
+  '渊冲',
+  '聚疏',
+  '雨积',
+  '放皓',
+  '电逝',
+  '击懈',
+  '界破',
+  '长溯',
+  '涣衍',
+  '连亘',
+  '流岚',
+  '潋风',
+]

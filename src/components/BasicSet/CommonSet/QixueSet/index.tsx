@@ -48,6 +48,7 @@ function QixueSet({ getDpsFunction }) {
         open={drawerOpen}
         placement="bottom"
         height={200}
+        mask={false}
         className={'qixue-set-drawer'}
       >
         <Form form={form} className={'qixue-set-drawer-wrap'}>

@@ -276,10 +276,15 @@ export const getTrueCycleByName = (
     return res
   })
 
+  const 总孤峰次数 = trueCycle?.find((item) => item?.技能名称 === '孤锋破浪')?.技能数量 || 0
+
+  // 长溯 * 4
+  const 孤峰计算额外次数 = qixueData?.includes('长溯') ? 4 : 1
+
+  const 释放孤峰次数 = (总孤峰次数 - 1) / 孤峰计算额外次数
+
   // 特殊处理界破
   if (qixueData?.includes('界破')) {
-    const 总孤峰次数 = trueCycle?.find((item) => item?.技能名称 === '孤锋破浪')?.技能数量 || 0
-    const 释放孤峰次数 = (总孤峰次数 - 1) / 4
     // 说明已经计算过界破了
     if (trueCycle?.some((item) => item.技能名称 === '界破')) {
       trueCycle = [...trueCycle]
@@ -292,6 +297,18 @@ export const getTrueCycleByName = (
         }
       })
       trueCycle = [...trueCycle, { 技能名称: '界破', 技能数量: 释放孤峰次数 }]
+    }
+  }
+
+  // 特殊处理鸣锋
+  if (qixueData?.includes('鸣锋')) {
+    const 总横云次数 = trueCycle?.find((item) => item?.技能名称 === '横云断浪')?.技能数量 || 0
+
+    // 说明已经计算过界破了
+    if (trueCycle?.some((item) => item.技能名称 === '鸣锋')) {
+      trueCycle = [...trueCycle]
+    } else {
+      trueCycle = [...trueCycle, { 技能名称: '鸣锋', 技能数量: 释放孤峰次数 + 总横云次数 }]
     }
   }
 

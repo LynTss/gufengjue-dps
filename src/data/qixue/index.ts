@@ -108,10 +108,10 @@ export const 奇穴数据: QixueListDTO[] = [
   },
   // 8
   {
-    是否不可编辑: true,
+    // 是否不可编辑: true,
     奇穴列表: [
       { 奇穴名称: '长溯', 奇穴图片: 'https://icon.jx3box.com/icon/18247.png' },
-      { 奇穴名称: '鸣锋', 是否不可编辑: true, 奇穴图片: 'https://icon.jx3box.com/icon/18246.png' },
+      { 奇穴名称: '鸣锋', 奇穴图片: 'https://icon.jx3box.com/icon/18246.png' },
       { 奇穴名称: '摧朽', 是否不可编辑: true, 奇穴图片: 'https://icon.jx3box.com/icon/18232.png' },
       { 奇穴名称: '识意', 是否不可编辑: true, 奇穴图片: 'https://icon.jx3box.com/icon/17765.png' },
       { 奇穴名称: '敛摄', 是否不可编辑: true, 奇穴图片: 'https://icon.jx3box.com/icon/18235.png' },
@@ -130,6 +130,7 @@ export const 奇穴数据: QixueListDTO[] = [
   },
   // 10
   {
+    是否不可编辑: true,
     奇穴列表: [
       { 奇穴名称: '殊际', 是否不可编辑: true, 奇穴图片: 'https://icon.jx3box.com/icon/18242.png' },
       { 奇穴名称: '涤瑕', 奇穴图片: 'https://icon.jx3box.com/icon/17758.png' },
