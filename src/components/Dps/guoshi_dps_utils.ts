@@ -14,6 +14,7 @@ import { Zhenyan_DATA } from '@/data/zhenyan'
 import { 加成系数 } from '@/data/constant'
 import XIAOCHI_DATA from '@/data/xiaochi'
 import ZhuangbeiGainList from '@/data/zhuangbei/zhuangbeiGain'
+import { 获取力道奇穴加成后面板 } from '@/data/qixue'
 
 interface GetDpsTotalParams {
   currentCycle: CycleDTO[]
@@ -23,6 +24,7 @@ interface GetDpsTotalParams {
   zengyiQiyong: boolean
   zengyixuanxiangData: ZengyixuanxiangDataDTO
   dpsTime: number
+  开启强膂: boolean
 }
 
 export interface DpsListData {
@@ -41,15 +43,15 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
     zengyiQiyong,
     zengyixuanxiangData,
     dpsTime,
+    开启强膂,
   } = props
   // 总dps
   let total = 0
   // 每个技能的dps总和列表
   const dpsList: DpsListData[] = []
   const 计算目标 = 当前目标
-  const 最终人物属性 = {
-    ...characterFinalData,
-  }
+
+  const 最终人物属性 = 获取力道奇穴加成后面板(characterFinalData, 开启强膂)
 
   // 获取装备增益等带来的最终增益集合
   let 总增益集合: SKillGainData[] = getAllGainData(characterFinalData, [])
@@ -70,8 +72,6 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
     }
   }
 
-  console.log('最终循环----1', 最终循环)
-
   // 遍历循环，获取每一个技能的总输出
   最终循环.forEach((item) => {
     // 获取循环内某个技能的总dps
@@ -80,7 +80,8 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
       最终人物属性,
       计算目标,
       skillBasicData,
-      总增益集合
+      总增益集合,
+      开启强膂
       // 是否郭氏计算
     )
     dpsList.push({
@@ -215,7 +216,8 @@ export const getSingleSkillTotalDps = (
   最终人物属性: CharacterFinalDTO,
   计算目标: TargetDTO,
   skillBasicData: SkillBasicDTO[],
-  总增益集合: SKillGainData[]
+  总增益集合: SKillGainData[],
+  开启强膂: boolean
   // 是否郭氏计算?: boolean
 ) => {
   // 在技能数据模型中找到当前执行循环内技能的数据，获取各种系数
@@ -244,7 +246,8 @@ export const getSingleSkillTotalDps = (
           最终人物属性,
           增益.增益技能数,
           计算目标,
-          [...技能增益集合, ...技能独立增益集合列表]
+          [...技能增益集合, ...技能独立增益集合列表],
+          开启强膂
         )
         totalDps = totalDps + 期望技能总伤
       })
@@ -256,7 +259,8 @@ export const getSingleSkillTotalDps = (
       最终人物属性,
       无增益技能数,
       计算目标,
-      技能增益集合
+      技能增益集合,
+      开启强膂
     )
 
     totalDps = totalDps + 期望技能总伤
@@ -272,7 +276,8 @@ export const geSkillTotalDps = (
   人物属性: CharacterFinalDTO,
   技能总数: number,
   当前目标: TargetDTO,
-  总增益集合: SKillGainData[]
+  总增益集合: SKillGainData[],
+  开启强膂: boolean
 ) => {
   let 最终人物属性 = { ...人物属性 }
   let 计算目标 = 当前目标
@@ -335,8 +340,9 @@ export const geSkillTotalDps = (
       计算郭氏武器伤害 = 计算后郭氏武器伤害
     })
 
+  // 设立和面板的强膂计算无关，只影响团队增益中力道加成收到强膂的影响
   // 计算力道带来的面板增益
-  const 强膂郭氏力道 = 最终人物属性?.强膂 ? 102 : 0
+  const 强膂郭氏力道 = 开启强膂 ? 102 : 0
   // 郭氏力道在是否开启强膂下的提升百分比
   const guoLidaoPercent =
     (1024 + 计算郭氏力道 + 强膂郭氏力道) / 1024 / ((1024 + 强膂郭氏力道) / 1024) - 1
@@ -348,6 +354,8 @@ export const geSkillTotalDps = (
 
   const 总力道提升值 = 郭式力道对人物属性力道的提升值 + 力道提升值
 
+  // console.log('初始人物属性', 最终人物属性)
+
   最终人物属性 = {
     ...最终人物属性,
     力道: 最终人物属性.力道 + 总力道提升值,
@@ -356,9 +364,10 @@ export const geSkillTotalDps = (
       getMianBanGongJI(最终人物属性.面板攻击, 总力道提升值) +
       Math.round(总力道提升值 * 加成系数.力道加成基础攻击),
     会心值: getLidaoJiachengHuixin(最终人物属性.会心值, 总力道提升值),
-    // 破防值: getLidaoJiachengHuixin(最终人物属性.破防值, 总力道提升值),
     破防值: getLidaoJiachengPofang(最终人物属性.破防值, 总力道提升值),
   }
+
+  // console.log('最终人物属性', 最终人物属性)
 
   // 计算力道后再计算其他收益
   当前技能计算增益集合

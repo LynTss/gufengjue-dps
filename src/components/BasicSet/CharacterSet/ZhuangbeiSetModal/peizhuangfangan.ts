@@ -1,6 +1,5 @@
 export const 驭耀英雄平民 = {
   wucaishi: '彩·真刚·斩铁·狂攻(陆)',
-  openQiangLv: 1,
   大附魔_伤帽: 1,
   大附魔_伤衣: 1,
   大附魔_伤腰: 1,
@@ -114,7 +113,6 @@ export const 驭耀英雄平民 = {
 
 export const 周流英雄平民 = {
   wucaishi: '彩·无双·斩铁·狂攻(陆)',
-  openQiangLv: 1,
   大附魔_伤帽: 1,
   大附魔_伤衣: 1,
   大附魔_伤腰: 1,
@@ -228,7 +226,6 @@ export const 周流英雄平民 = {
 
 export const 周流英雄切糕 = {
   wucaishi: '彩·痛击·斩铁·狂攻(陆)',
-  openQiangLv: 1,
   大附魔_伤帽: 1,
   大附魔_伤衣: 1,
   大附魔_伤腰: 1,

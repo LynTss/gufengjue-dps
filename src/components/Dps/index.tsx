@@ -8,6 +8,7 @@ import Income from './Income'
 import { setCurrentDps } from '@/store/basicReducer'
 import { getDpsTime, getTrueCycleByName } from '@/utils/skill-dps'
 import './index.css'
+import { 判断是否开启力道加成奇穴 } from '@/data/qixue'
 
 function Dps(props, ref) {
   const { zengyiVisible } = props
@@ -21,6 +22,9 @@ function Dps(props, ref) {
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
   const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
   const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
+
+  const qixueData = useAppSelector((state) => state.basic.qixueData)
+  const isOpenQiangLv = 判断是否开启力道加成奇穴(qixueData)
 
   const [total, setTotal] = useState<number>(0)
   const [dpsList, setDpsList] = useState<DpsListData[]>([])
@@ -54,16 +58,23 @@ function Dps(props, ref) {
     )
 
     // 获取实际循环
-    const trueCycle = getTrueCycleByName(currentCycleName, 参与计算循环, characterFinalData)
+    const { trueCycle, trueSkillBasicData } = getTrueCycleByName(
+      currentCycleName,
+      参与计算循环,
+      characterFinalData,
+      qixueData,
+      skillBasicData
+    )
 
     const { totalDps, dpsList } = getDpsTotal({
       currentCycle: trueCycle,
       characterFinalData,
       当前目标: currentTarget,
-      skillBasicData,
+      skillBasicData: trueSkillBasicData,
       zengyiQiyong,
       zengyixuanxiangData,
       dpsTime,
+      开启强膂: isOpenQiangLv,
     })
 
     setTotal(totalDps)

@@ -5,6 +5,7 @@ import {
   DEFAULT_EQUIPMENT,
   DEFAULT_MIJI_SELECTED_DATA,
   ZENGYI_DATA_DEFAULT,
+  DEFAULT_QIXUE_VALUE,
 } from '@/pages/constant'
 
 export const getDefaultCharacter = () => {
@@ -115,5 +116,20 @@ export const getDefaultMijiSelectedData = () => {
     }
   } else {
     return [...DEFAULT_MIJI_SELECTED_DATA]
+  }
+}
+
+// 获取奇穴
+export const getDefaultQixue = () => {
+  const sessionCharacter = localStorage.getItem('daozong_qixue_data')
+  if (sessionCharacter) {
+    try {
+      const array = JSON.parse(sessionCharacter)
+      return [...(array || DEFAULT_QIXUE_VALUE)]
+    } catch {
+      return [...DEFAULT_QIXUE_VALUE]
+    }
+  } else {
+    return [...DEFAULT_QIXUE_VALUE]
   }
 }

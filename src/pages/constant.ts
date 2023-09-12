@@ -11,6 +11,22 @@ export const DEFAULT_CHARACTER = {
   破招值: 0,
 }
 
+// 默认奇穴
+export const DEFAULT_QIXUE_VALUE = [
+  '渊冲',
+  '聚疏',
+  '溃延',
+  '放皓',
+  '威声',
+  '观衅',
+  '界破',
+  '长溯',
+  '周流',
+  '强膂',
+  '流岚',
+  '截辕',
+]
+
 export const ZENGYI_DATA_DEFAULT = {
   阵眼: '刀宗阵(阵眼)',
   小吃: [
@@ -119,7 +135,6 @@ export const ZENGYI_DATA_DEFAULT = {
 
 export const DEFAULT_EQUIPMENT = {
   wucaishi: '彩·痛击·斩铁·狂攻(陆)',
-  openQiangLv: 1,
   大附魔_伤帽: 1,
   大附魔_伤衣: 1,
   大附魔_伤腰: 1,

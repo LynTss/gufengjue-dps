@@ -15,6 +15,7 @@ import {
   getZengyi,
   switchGain,
 } from './guoshi_dps_utils'
+import { 获取力道奇穴加成后面板 } from '@/data/qixue'
 
 interface GetDpsTotalParams {
   currentCycle: CycleDTO[]
@@ -25,6 +26,7 @@ interface GetDpsTotalParams {
   zengyixuanxiangData: ZengyixuanxiangDataDTO
   dpsTime: number
   默认增益集合?: SKillGainData[]
+  开启强膂: boolean
 }
 
 export interface DpsListData {
@@ -44,15 +46,15 @@ export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
     zengyixuanxiangData,
     dpsTime,
     默认增益集合,
+    开启强膂,
   } = props
   // 总dps
   let total = 0
   // 每个技能的dps总和列表
   const dpsList: DpsListData[] = []
   const 计算目标 = 当前目标
-  const 最终人物属性 = {
-    ...characterFinalData,
-  }
+
+  const 最终人物属性 = 获取力道奇穴加成后面板(characterFinalData, 开启强膂)
 
   // 获取装备增益等带来的最终增益集合
   let 总增益集合: SKillGainData[] = getAllGainData(characterFinalData, 默认增益集合)
@@ -81,7 +83,8 @@ export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
       最终人物属性,
       计算目标,
       skillBasicData,
-      总增益集合
+      总增益集合,
+      开启强膂
       // 是否郭氏计算
     )
     dpsList.push({
@@ -101,7 +104,8 @@ export const getSingleSkillTotalDps = (
   最终人物属性: CharacterFinalDTO,
   计算目标: TargetDTO,
   skillBasicData: SkillBasicDTO[],
-  总增益集合: SKillGainData[]
+  总增益集合: SKillGainData[],
+  开启强膂: boolean
   // 是否郭氏计算?: boolean
 ) => {
   // 在技能数据模型中找到当前执行循环内技能的数据，获取各种系数
@@ -130,7 +134,8 @@ export const getSingleSkillTotalDps = (
           最终人物属性,
           增益.增益技能数,
           计算目标,
-          [...技能增益集合, ...技能独立增益集合列表]
+          [...技能增益集合, ...技能独立增益集合列表],
+          开启强膂
         )
         totalDps = totalDps + 期望技能总伤
       })
@@ -142,7 +147,8 @@ export const getSingleSkillTotalDps = (
       最终人物属性,
       无增益技能数,
       计算目标,
-      技能增益集合
+      技能增益集合,
+      开启强膂
     )
 
     totalDps = totalDps + 期望技能总伤
@@ -158,7 +164,8 @@ export const geSkillTotalDps = (
   人物属性: CharacterFinalDTO,
   技能总数: number,
   当前目标: TargetDTO,
-  总增益集合: SKillGainData[]
+  总增益集合: SKillGainData[],
+  开启强膂: boolean
 ) => {
   let 最终人物属性 = { ...人物属性 }
   let 计算目标 = 当前目标
@@ -222,7 +229,7 @@ export const geSkillTotalDps = (
     })
 
   // 计算力道带来的面板增益
-  const 强膂郭氏力道 = 最终人物属性?.强膂 ? 102 : 0
+  const 强膂郭氏力道 = 开启强膂 ? 102 : 0
   // 郭氏力道在是否开启强膂下的提升百分比
   const guoLidaoPercent =
     (1024 + 计算郭氏力道 + 强膂郭氏力道) / 1024 / ((1024 + 强膂郭氏力道) / 1024) - 1

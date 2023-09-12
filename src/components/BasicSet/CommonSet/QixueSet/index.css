@@ -1,3 +1,108 @@
 .qixue-set-button {
   width: calc(50% - 4px);
 }
+
+.qixue-set-drawer .ant-drawer-body {
+  display: flex;
+  align-items: center;
+}
+
+.qixue-set-drawer-wrap {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.qixue-set-item {
+  width: calc(100vw / 12 - 24px);
+  margin: 0;
+}
+
+.qixue-set-item-title {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.qixue-set-item-select-option {
+  display: flex;
+  align-items: center;
+  padding-right: 24px;
+}
+
+.qixue-set-item-select-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 8px;
+  margin-left: 2px;
+}
+
+.qixue-set-item-select-text {
+  font-size: 18px;
+  line-height: 32px;;
+}
+
+.qixue-set-item-select.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  height: calc(100vw / 12 - 24px);
+  padding: 0;
+  border-radius: 25%;
+}
+
+.qixue-set-item-select.ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+.qixue-set-item-select.ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
+  padding-right: 0;
+}
+
+.qixue-set-item-select.ant-select-single .ant-select-selector .ant-select-selection-item {
+  width: calc(100vw / 12 - 24px);
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+
+.qixue-set-item-select .ant-select-selection-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.qixue-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.qixue-label:hover .qixue-label-text {
+  color: var(--ant-primary-color);
+}
+
+.qixue-label-img {
+  display: block;
+  margin:0 auto;
+  width: 60%;
+  border-radius: 50%;
+}
+
+.qixue-label-text {
+  display: block;
+  width: 100%;
+  line-height: 22px;
+  font-size: 14px;
+  margin-top: -12px;
+  transition: color .2s;
+}
+
+.qixue-set-item-select-popup .ant-select-item-option-content {
+  display: flex;
+  align-items: center;
+}

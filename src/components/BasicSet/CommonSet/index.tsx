@@ -120,7 +120,7 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
       </div>
       <div className="common-item">
         <MijiSet getDpsFunction={getDpsFunction} />
-        <QixueSet />
+        <QixueSet getDpsFunction={getDpsFunction} />
       </div>
     </div>
   )

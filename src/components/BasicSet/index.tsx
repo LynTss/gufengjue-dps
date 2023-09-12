@@ -35,7 +35,7 @@ function BasicSet(props: CharacterSetProps) {
 
   useEffect(() => {
     if (characterBasicData) {
-      const final = getFinalCharacterBasicData(characterBasicData, equipmentBasicData?.openQiangLv)
+      const final = getFinalCharacterBasicData(characterBasicData)
       dispatch(
         setCharacterFinalData({
           ...final,

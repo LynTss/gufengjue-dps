@@ -27,6 +27,7 @@ const MaxDpsFunc = ({
   network,
   equipmentBasicData,
   withWufeng = false,
+  qixueData,
 }) => {
   // 获取全部的装备组合
   const startTime = new Date().valueOf()
@@ -40,15 +41,19 @@ const MaxDpsFunc = ({
   let maxDpsItem: any = { dps: 0 }
 
   allDpsParams.forEach((item) => {
-    const { totalDps, dpsTime } = getDps(item, {
-      skillBasicData,
-      currentCycle,
-      currentCycleName,
-      currentTarget,
-      zengyixuanxiangData,
-      zengyiQiyong,
-      network,
-    })
+    const { totalDps, dpsTime } = getDps(
+      item,
+      {
+        skillBasicData,
+        currentCycle,
+        currentCycleName,
+        currentTarget,
+        zengyixuanxiangData,
+        zengyiQiyong,
+        network,
+      },
+      qixueData
+    )
     const dps = totalDps / dpsTime
     if (dps > maxDpsItem?.dps) {
       maxDpsItem = {
@@ -115,7 +120,8 @@ const getDps = (
     zengyixuanxiangData,
     zengyiQiyong,
     network,
-  }
+  },
+  qixueData
 ) => {
   const data = getNewEquipmentData(value)
   const { finalData } = getFinalCharacterBasicDataByEquipment(data)
@@ -161,16 +167,23 @@ const getDps = (
   )
 
   // 获取实际循环
-  const trueCycle = getTrueCycleByName(currentCycleName, currentCycle, final)
+  const { trueCycle, trueSkillBasicData } = getTrueCycleByName(
+    currentCycleName,
+    currentCycle,
+    final,
+    qixueData,
+    newSkillBasicData
+  )
 
   const { totalDps } = getDpsTotal({
     currentCycle: trueCycle,
     characterFinalData: final,
     当前目标: currentTarget,
-    skillBasicData: newSkillBasicData,
+    skillBasicData: trueSkillBasicData,
     zengyiQiyong,
     zengyixuanxiangData,
     dpsTime,
+    开启强膂: true,
   })
 
   // console.log('dps', totalDps)
@@ -202,7 +215,6 @@ const getAllDpsParams = (list) => {
     // console.log('zhuangbeiObj', zhuangbeiObj)
 
     return {
-      openQiangLv: 1,
       wucaishi: '彩·破招·斩铁·狂攻(陆)',
       大附魔_伤帽: 1,
       大附魔_伤腕: 1,

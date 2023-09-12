@@ -19,10 +19,6 @@ export interface EquipmentBasicDTO {
    */
   wucaishi: string
   /**
-   * @name 奇穴是否启用强膂
-   */
-  openQiangLv: boolean
-  /**
    * @name 套装双会
    */
   套装会心会效: boolean

@@ -17,13 +17,13 @@ import {
   IncomeWuxingshi,
 } from '@/data/income'
 import './index.css'
+import { 判断是否开启力道加成奇穴 } from '@/data/qixue'
 
 const checkTypeList = [
   { label: '附魔', list: IncomeFumo },
   { label: '小药', list: IncomeXiaoyao },
   { label: '小吃', list: IncomeXiaochi },
   { label: '五行石 ', list: IncomeWuxingshi },
-  // { label: '五彩石', list: EnchantGainDTO },
 ]
 
 function Income({ zengyiVisible }, ref) {
@@ -33,6 +33,9 @@ function Income({ zengyiVisible }, ref) {
   const zengyiQiyong = useAppSelector((state) => state.zengyi.zengyiQiyong)
   const zengyixuanxiangData = useAppSelector((state) => state.zengyi.zengyixuanxiangData)
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
+
+  const qixueData = useAppSelector((state) => state.basic.qixueData)
+  const isOpenQiangLv = 判断是否开启力道加成奇穴(qixueData)
 
   const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
   const network = useAppSelector((state) => state?.basic?.network)
@@ -58,16 +61,23 @@ function Income({ zengyiVisible }, ref) {
     )
 
     // 获取实际循环
-    const trueCycle = getTrueCycleByName(currentCycleName, currentCycle, characterFinalData)
+    const { trueCycle, trueSkillBasicData } = getTrueCycleByName(
+      currentCycleName,
+      currentCycle,
+      characterFinalData,
+      qixueData,
+      skillBasicData
+    )
 
     const { totalDps: oldDps } = getNotGuoDpsTotal({
       currentCycle: trueCycle,
       characterFinalData,
       当前目标: 计算后目标,
-      skillBasicData,
+      skillBasicData: trueSkillBasicData,
       zengyiQiyong,
       zengyixuanxiangData,
       dpsTime,
+      开启强膂: isOpenQiangLv,
     })
 
     const 增益集合 = [
@@ -83,11 +93,12 @@ function Income({ zengyiVisible }, ref) {
       currentCycle: trueCycle,
       characterFinalData,
       当前目标: 计算后目标,
-      skillBasicData,
+      skillBasicData: trueSkillBasicData,
       zengyiQiyong,
       zengyixuanxiangData,
       dpsTime,
       默认增益集合: 增益集合,
+      开启强膂: isOpenQiangLv,
     })
 
     return Number((newTotalDps / oldDps - 1) * 100)

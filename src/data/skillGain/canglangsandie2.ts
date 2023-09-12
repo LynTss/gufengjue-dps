@@ -6,7 +6,7 @@ const canglangsandie2GainDTO: SkillGainDTO[] = [
   ...canglangsandieGainDTO,
   {
     增益名称: '放皓·沧浪二',
-    常驻增益: true,
+    常驻增益: false,
     增益集合: [
       {
         增益类型: GainTypeEnum.外攻会心百分比,

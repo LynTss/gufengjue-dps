@@ -7,6 +7,7 @@ const guyingshiGainDTO: SkillGainDTO[] = [
   {
     增益名称: '雨积',
     增益所在位置: '奇穴',
+    常驻增益: false,
     增益集合: [
       {
         增益类型: GainTypeEnum.伤害百分比,

@@ -35,7 +35,6 @@ export const getNewEquipmentData = (value) => {
   // let 套装_2数量 = 0
   const data: EquipmentBasicDTO = {
     wucaishi: value?.wucaishi,
-    openQiangLv: value?.openQiangLv,
     大附魔_伤帽: value?.大附魔_伤帽,
     大附魔_伤衣: value?.大附魔_伤衣,
     大附魔_伤腰: value?.大附魔_伤腰,
@@ -46,7 +45,6 @@ export const getNewEquipmentData = (value) => {
         (item) =>
           ![
             'wucaishi',
-            'openQiangLv',
             '大附魔_伤帽',
             '大附魔_伤衣',
             '大附魔_伤腰',

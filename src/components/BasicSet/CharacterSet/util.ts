@@ -9,13 +9,9 @@ import XIANGQIAN_DATA from '@/data/xiangqian'
 import ZUANGBEI_DATA from '@/data/zhuangbei'
 import { jinglianJieguo } from '@/utils/help'
 
-export const getFinalCharacterBasicData = (
-  data: CharacterBasicDTO,
-  openQiangLv: boolean
-): CharacterFinalDTO => {
+export const getFinalCharacterBasicData = (data: CharacterBasicDTO): CharacterFinalDTO => {
   return {
     ...data,
-    强膂: openQiangLv,
     面板攻击: getMianBanGongJI(data?.基础攻击, data?.力道),
   }
 }
@@ -59,11 +55,8 @@ export const getFinalCharacterBasicDataByEquipment = (
     会心值: 2775 + 26, // 自带2775 自带41身法+26会心
     会心效果值: 0,
   }
-  let openQiangLv = false
   Object.keys(data).map((item) => {
-    if (item === 'openQiangLv') {
-      openQiangLv = data[item] ? true : false
-    } else if (item === 'wucaishi') {
+    if (item === 'wucaishi') {
       const wucaishi = WUCAISHI_DATA[5]
         .concat(WUCAISHI_DATA[6])
         .find((a) => a.五彩石名称 === data[item])
@@ -98,15 +91,10 @@ export const getFinalCharacterBasicDataByEquipment = (
       basicDTO = switchZhuangbei(data[item], basicDTO)
     }
   })
-  let 面板力道 = basicDTO.力道
-  if (openQiangLv) {
-    面板力道 = getLidao(basicDTO.力道, true)
-  }
-  basicDTO.力道 = 面板力道
-  basicDTO.基础攻击 = getJiChuGongJI(basicDTO.基础攻击, 面板力道)
-  basicDTO.会心值 = getLidaoJiachengHuixin(basicDTO.会心值, 面板力道)
-  basicDTO.破防值 = getLidaoJiachengPofang(basicDTO.破防值, 面板力道)
-  const finalData = getFinalCharacterBasicData(basicDTO, openQiangLv)
+  basicDTO.基础攻击 = getJiChuGongJI(basicDTO.基础攻击, basicDTO.力道)
+  basicDTO.会心值 = getLidaoJiachengHuixin(basicDTO.会心值, basicDTO.力道)
+  basicDTO.破防值 = getLidaoJiachengPofang(basicDTO.破防值, basicDTO.力道)
+  const finalData = getFinalCharacterBasicData(basicDTO)
   return { basicData: basicDTO, finalData }
 }
 

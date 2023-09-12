@@ -6,7 +6,7 @@ const canglangsandie3GainDTO: SkillGainDTO[] = [
   ...canglangsandieGainDTO,
   {
     增益名称: '放皓·沧浪三',
-    常驻增益: true,
+    常驻增益: false,
     增益所在位置: '奇穴',
     增益集合: [
       {

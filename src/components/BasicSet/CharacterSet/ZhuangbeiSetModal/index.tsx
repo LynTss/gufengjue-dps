@@ -22,8 +22,9 @@ import ZhuangbeiSelect from './ZhuangbeiSelect'
 import WuCaiShiXuanZe from './WuCaiShiXuanZe'
 import MohedaoruModal from './MohedaoruModal'
 import MaxDpsFunc from './MaxDpsFunc'
-import './index.css'
 import { CharacterFinalDTO } from '@/@types/character'
+import { 判断是否开启力道加成奇穴 } from '@/data/qixue'
+import './index.css'
 
 function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
   const [form] = Form.useForm()
@@ -38,6 +39,9 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
   const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
   const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
   const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
+
+  const qixueData = useAppSelector((state) => state.basic.qixueData)
+  const isOpenQiangLv = 判断是否开启力道加成奇穴(qixueData)
 
   const [zhuangbeizengyi, setZhuangbeizengyi] = useState<any>()
   const [默认镶嵌宝石等级, 设置默认镶嵌宝石等级] = useState<number>(8)
@@ -59,7 +63,6 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
   const initEquipment = (data) => {
     const newObj = {
       wucaishi: data.wucaishi,
-      openQiangLv: data.openQiangLv,
       大附魔_伤帽: data?.大附魔_伤帽,
       大附魔_伤衣: data?.大附魔_伤衣,
       大附魔_伤腰: data?.大附魔_伤腰,
@@ -148,7 +151,6 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
             res[item] &&
             ![
               'wucaishi',
-              'openQiangLv',
               '大附魔_伤帽',
               '大附魔_伤衣',
               '大附魔_伤腰',
@@ -244,15 +246,22 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         zengyixuanxiangData
       )
 
-      const trueCycle = getTrueCycleByName(currentCycleName, currentCycle, final)
+      const { trueCycle, trueSkillBasicData } = getTrueCycleByName(
+        currentCycleName,
+        currentCycle,
+        final,
+        qixueData,
+        newSkillBasicData
+      )
       const { totalDps } = getDpsTotal({
         currentCycle: trueCycle,
         characterFinalData: final,
         当前目标: currentTarget,
-        skillBasicData: newSkillBasicData,
+        skillBasicData: trueSkillBasicData,
         zengyiQiyong,
         zengyixuanxiangData,
         dpsTime,
+        开启强膂: isOpenQiangLv,
       })
       console.log('战斗时间', dpsTime)
       setAfterDps(Math.floor(totalDps / dpsTime))
@@ -317,6 +326,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
                       network,
                       equipmentBasicData,
                       withWufeng: true,
+                      qixueData,
                     })
                   },
                 })
@@ -344,6 +354,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
                       zengyiQiyong,
                       network,
                       equipmentBasicData,
+                      qixueData,
                     })
                   },
                 })
@@ -463,9 +474,6 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         <div className="zhuangbei-input-set-modal-form-right">
           <Form.Item name={`wucaishi`}>
             <WuCaiShiXuanZe />
-          </Form.Item>
-          <Form.Item className="zhuangbei-input-set-modal-form-qianglv" name={`openQiangLv`}>
-            <ValueCheckBox>启用强膂</ValueCheckBox>
           </Form.Item>
           {zhuangbeizengyi ? (
             <div className={'zhuangbei-zengyi-wrapper'}>
