@@ -241,6 +241,7 @@ export const getSingleSkillTotalDps = (
       循环?.技能增益列表.forEach((增益) => {
         无增益技能数 = 无增益技能数 - 增益.增益技能数
         const 技能独立增益集合列表: SKillGainData[] = getGainList(增益, 当前技能属性)
+
         const { 期望技能总伤 } = geSkillTotalDps(
           当前技能属性,
           最终人物属性,
