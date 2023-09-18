@@ -28,6 +28,7 @@ interface GetDpsTotalParams {
 }
 
 export interface DpsListData {
+  countName?: string // 用于显示在统计记录里的dps
   name: string // 技能名称
   number: number // 技能数量
   dps: number // 技能总输出
@@ -56,14 +57,25 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
   // 获取装备增益等带来的最终增益集合
   let 总增益集合: SKillGainData[] = getAllGainData(characterFinalData, [])
 
+  // 判断是不是单技能统计循环。如果是则不计入
+  const isSingeSkillCycle = currentCycle?.find((item) => item?.技能名称 === '云刀')?.技能数量 === 1
+
   // 根据增益信息修改最终循环内容
-  const 最终循环: CycleDTO[] = getFinalCycleData(characterFinalData, [...currentCycle], dpsTime)
+  const 最终循环: CycleDTO[] = getFinalCycleData(
+    characterFinalData,
+    [...currentCycle],
+    dpsTime,
+    isSingeSkillCycle
+  )
 
   if (zengyiQiyong && zengyixuanxiangData) {
     const 团队增益增益集合 = getZengyi(zengyixuanxiangData)
     总增益集合 = 总增益集合.concat(团队增益增益集合)
 
-    if (zengyixuanxiangData?.团队增益.find((item) => item.增益名称 === '飘黄' && !!item.启用)) {
+    if (
+      !isSingeSkillCycle &&
+      zengyixuanxiangData?.团队增益.find((item) => item.增益名称 === '飘黄' && !!item.启用)
+    ) {
       最终循环.push({
         技能名称: '逐云寒蕊',
         技能数量: Math.floor(dpsTime * 0.13),
@@ -85,6 +97,7 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
       // 是否郭氏计算
     )
     dpsList.push({
+      countName: item.统计用技能名称,
       name: item.技能名称,
       dps: skillDpsAll,
       number: item.技能数量,
@@ -99,48 +112,53 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
 export const getFinalCycleData = (
   characterFinalData: CharacterFinalDTO,
   currentCycle,
-  dpsTime
+  dpsTime,
+  isSingeSkillCycle
 ): CycleDTO[] => {
   const 最终循环: CycleDTO[] = [...currentCycle]
-  if (characterFinalData?.装备增益?.大附魔_伤腕) {
-    最终循环.push({
-      技能名称: '昆吾·弦刃',
-      技能数量: Math.floor(dpsTime / 10),
-      技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor((dpsTime / 10) * 0.4) }],
-    })
-  }
-  if (characterFinalData?.装备增益?.大附魔_伤鞋) {
-    最终循环.push({
-      技能名称: '刃凌',
-      技能数量: Math.floor(dpsTime / 10),
-      技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor((dpsTime / 10) * 0.4) }],
-    })
-  }
-  if (characterFinalData?.装备增益?.大橙武特效) {
-    const 行总数列表 = 最终循环
-      .filter((i) => i.技能名称.includes('行云势'))
-      .map((i) => {
-        return { 技能数量: i.技能数量, 灭影数量: i.技能增益列表?.[0]?.增益技能数 }
+  if (!isSingeSkillCycle) {
+    if (characterFinalData?.装备增益?.大附魔_伤腕) {
+      最终循环.push({
+        技能名称: '昆吾·弦刃',
+        技能数量: Math.floor(dpsTime / 10),
+        技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor((dpsTime / 10) * 0.4) }],
       })
-    let 行总数 = 0
-    let 灭影行总数 = 0
-    const 触发率 = 0.5
-    行总数列表.forEach((i) => {
-      行总数 = 行总数 + i.技能数量
-      灭影行总数 = 灭影行总数 + (i?.灭影数量 || 0)
-    })
-    最终循环.push({
-      技能名称: '行云势·神兵',
-      技能数量: Math.floor(行总数 * 触发率),
-      技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor(灭影行总数 * 触发率) }],
-    })
-  }
-  if (characterFinalData?.装备增益?.龙门武器) {
-    最终循环.push({
-      技能名称: '剑风',
-      技能数量: Math.floor((dpsTime * 6) / 30),
-      技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor(((dpsTime * 6) / 30) * 0.4) }],
-    })
+    }
+    if (characterFinalData?.装备增益?.大附魔_伤鞋) {
+      最终循环.push({
+        技能名称: '刃凌',
+        技能数量: Math.floor(dpsTime / 10),
+        技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor((dpsTime / 10) * 0.4) }],
+      })
+    }
+    if (characterFinalData?.装备增益?.大橙武特效) {
+      const 行总数列表 = 最终循环
+        .filter((i) => i.技能名称.includes('行云势'))
+        .map((i) => {
+          return { 技能数量: i.技能数量, 灭影数量: i.技能增益列表?.[0]?.增益技能数 }
+        })
+      let 行总数 = 0
+      let 灭影行总数 = 0
+      const 触发率 = 0.5
+      行总数列表.forEach((i) => {
+        行总数 = 行总数 + i.技能数量
+        灭影行总数 = 灭影行总数 + (i?.灭影数量 || 0)
+      })
+      最终循环.push({
+        技能名称: '行云势·神兵',
+        技能数量: Math.floor(行总数 * 触发率),
+        技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor(灭影行总数 * 触发率) }],
+      })
+    }
+    if (characterFinalData?.装备增益?.龙门武器) {
+      最终循环.push({
+        技能名称: '剑风',
+        技能数量: Math.floor((dpsTime * 6) / 30),
+        技能增益列表: [
+          { 增益名称: '灭影随风', 增益技能数: Math.floor(((dpsTime * 6) / 30) * 0.4) },
+        ],
+      })
+    }
   }
   return 最终循环
 }

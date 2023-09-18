@@ -15,6 +15,11 @@ export interface CycleDTO {
    * @name 技能增益描述
    */
   技能增益列表?: CycleGain[]
+  /**
+   * @name 统计用技能名称
+   * @description 如果有则优先展示
+   */
+  统计用技能名称?: string
 }
 
 export interface CycleGain {

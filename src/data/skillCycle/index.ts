@@ -5,6 +5,7 @@ import lianfeng_huanyan_7, { 循环默认奇穴 as lianfeng_7_qixue } from './li
 import lianfeng_huanyan_dandao, {
   循环默认奇穴 as lianfeng_dandao_qixue,
 } from './lianfeng_huanyan_dandao'
+import single_skill_cycle, { 循环默认奇穴 as single_skill_cycle_qixue } from './single_skill_cycle'
 
 const All_Cycle_Data = [
   {
@@ -55,6 +56,14 @@ const All_Cycle_Data = [
     ],
     type: '潋风',
     qixue: lianfeng_dandao_qixue,
+  },
+  {
+    name: '单技能伤害期望统计-仅参考',
+    title: '单技能伤害期望统计-仅参考',
+    cycle: single_skill_cycle,
+    cycleList: [{ 计算技能数: 1, 循环完整帧数: 1, 循环次数: 1 }],
+    type: '单技能统计',
+    qixue: single_skill_cycle_qixue,
   },
   {
     name: '周流_cw',

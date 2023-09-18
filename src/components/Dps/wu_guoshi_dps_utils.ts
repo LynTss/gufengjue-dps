@@ -59,10 +59,18 @@ export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
   // 获取装备增益等带来的最终增益集合
   let 总增益集合: SKillGainData[] = getAllGainData(characterFinalData, 默认增益集合)
 
-  // 根据增益信息修改最终循环内容
-  const 最终循环: CycleDTO[] = getFinalCycleData(characterFinalData, [...currentCycle], dpsTime)
+  // 判断是不是单技能统计循环。如果是则不计入
+  const isSingeSkillCycle = currentCycle?.find((item) => item?.技能名称 === '云刀')?.技能数量 === 1
 
-  if (zengyiQiyong && zengyixuanxiangData) {
+  // 根据增益信息修改最终循环内容
+  const 最终循环: CycleDTO[] = getFinalCycleData(
+    characterFinalData,
+    [...currentCycle],
+    dpsTime,
+    isSingeSkillCycle
+  )
+
+  if (!isSingeSkillCycle && zengyiQiyong && zengyixuanxiangData) {
     const 团队增益增益集合 = getZengyi(zengyixuanxiangData)
     总增益集合 = 总增益集合.concat(团队增益增益集合)
 
