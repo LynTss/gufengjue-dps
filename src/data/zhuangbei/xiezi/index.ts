@@ -728,6 +728,21 @@ const ZHUANGBEI_XIEZI: EquipmentDTO[] = [
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破招 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
+  {
+    id: 999999_6,
+    uid: '999999_6',
+    装备名称: '体服12850PVP',
+    装备品级: 12850,
+    装备类型: EquipmentTypeEnum.普通,
+    装备增益: [
+      { 增益数值: 4164, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 628, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 1019, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 3152, 增益类型: GainTypeEnum.外攻破防等级 },
+      // { 增益数值: 1801, 增益类型: GainTypeEnum.破招 },
+    ],
+    镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
+  },
 ]
 
 export default ZHUANGBEI_XIEZI

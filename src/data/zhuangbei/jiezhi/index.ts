@@ -489,6 +489,32 @@ const ZHUANGBEI_JIEZHI: EquipmentDTO[] = [
     ],
     镶嵌孔数组: [],
   },
+  {
+    id: 999999_9,
+    uid: '999999_9',
+    装备名称: '体服12850PVP-会心',
+    装备品级: 12850,
+    装备类型: EquipmentTypeEnum.普通,
+    装备增益: [
+      { 增益数值: 4164, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 449, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 728, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 2251, 增益类型: GainTypeEnum.外攻会心等级 },
+    ],
+  },
+  {
+    id: 999999_10,
+    uid: '999999_10',
+    装备名称: '体服12850PVP-破防',
+    装备品级: 12850,
+    装备类型: EquipmentTypeEnum.普通,
+    装备增益: [
+      { 增益数值: 4164, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 449, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 728, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 2251, 增益类型: GainTypeEnum.外攻破防等级 },
+    ],
+  },
 ]
 
 export default ZHUANGBEI_JIEZHI

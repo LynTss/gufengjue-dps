@@ -773,6 +773,21 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
+  {
+    id: 999999_1_2,
+    uid: '999999_1_2',
+    装备名称: '体服12850PVP',
+    装备品级: 12850,
+    装备类型: EquipmentTypeEnum.普通,
+    装备增益: [
+      { 增益数值: 4164, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 808, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 1310, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 4052, 增益类型: GainTypeEnum.外攻破防等级 },
+      // { 增益数值: 1801, 增益类型: GainTypeEnum.破招 },
+    ],
+    镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }],
+  },
 ]
 
 export default ZHUANGBEI_MAOZI

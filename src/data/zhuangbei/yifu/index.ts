@@ -377,6 +377,21 @@ const ZHUANGBEI_YIFU: EquipmentDTO[] = [
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
   },
+  {
+    id: 999999_2,
+    uid: '999999_2',
+    装备名称: '体服12850PVP',
+    装备品级: 12850,
+    装备类型: EquipmentTypeEnum.普通,
+    装备增益: [
+      { 增益数值: 4627, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 897, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 1456, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 4502, 增益类型: GainTypeEnum.外攻破防等级 },
+      // { 增益数值: 2001, 增益类型: GainTypeEnum.破招 },
+    ],
+    镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }],
+  },
 ]
 
 export default ZHUANGBEI_YIFU

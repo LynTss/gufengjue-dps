@@ -728,6 +728,20 @@ const ZHUANGBEI_YUANCHENGWUQI: EquipmentDTO[] = [
     ],
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }],
   },
+  {
+    id: 999999_11,
+    uid: '999999_11',
+    装备名称: '体服12850PVP',
+    装备品级: 12850,
+    装备类型: EquipmentTypeEnum.普通,
+    装备增益: [
+      { 增益数值: 4164, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 538, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 873, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 2701, 增益类型: GainTypeEnum.外攻破防等级 },
+    ],
+    镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }],
+  },
 ]
 
 export default ZHUANGBEI_YUANCHENGWUQI
