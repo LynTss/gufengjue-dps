@@ -38,4 +38,14 @@ export const LidaoEnchantDTO: EnchantDTO[] = [
     ],
     增益集合: [{ 增益计算类型: GainDpsTypeEnum.A, 增益类型: GainTypeEnum.力道, 增益数值: 179 }],
   },
+  {
+    附魔名称: EnchantNameEnum.力道198,
+    附魔支持部位: [
+      EquipmentPositionEnum.护腕,
+      EquipmentPositionEnum.下装,
+      EquipmentPositionEnum.戒指,
+      EquipmentPositionEnum.暗器,
+    ],
+    增益集合: [{ 增益计算类型: GainDpsTypeEnum.A, 增益类型: GainTypeEnum.身法, 增益数值: 198 }],
+  },
 ]

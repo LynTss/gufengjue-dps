@@ -21,7 +21,7 @@ import ZhuangBeiZengYiTip from './ZhuangBeiZengYiTip'
 import ZhuangbeiSelect from './ZhuangbeiSelect'
 import WuCaiShiXuanZe from './WuCaiShiXuanZe'
 import MohedaoruModal from './MohedaoruModal'
-import MaxDpsFunc from './MaxDpsFunc'
+// import MaxDpsFunc from './MaxDpsFunc'
 import { CharacterFinalDTO } from '@/@types/character'
 import { 判断是否开启力道加成奇穴 } from '@/data/qixue'
 import './index.css'
@@ -303,7 +303,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
               暂时只推荐1段加速配装，0段、2段伤害计算不准确
             </span>
           </span>
-          <span className="zhuangbei-input-peizhuangtuijian">
+          {/* <span className="zhuangbei-input-peizhuangtuijian">
             <Button
               // disabled
               size="small"
@@ -362,22 +362,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
             >
               智能推荐-过滤无封
             </Button>
-            {/* {装备推荐列表.map((item) => {
-              return (
-                <Tooltip key={item.label} title={item.tip}>
-                  <Button
-                    size="small"
-                    type="primary"
-                    onClick={() => {
-                      initEquipment(item.data)
-                    }}
-                  >
-                    {item.label}
-                  </Button>
-                </Tooltip>
-              )
-            })} */}
-          </span>
+          </span> */}
         </div>
       }
       className={'zhuangbei-input-set-modal'}
