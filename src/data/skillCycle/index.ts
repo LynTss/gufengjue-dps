@@ -1,7 +1,7 @@
 import zhouliu_jiepo, { 循环默认奇穴 as zhouliuqixue } from './zhouliu_jiepo'
 import zhouliu_cw_jiepo from './zhouliu_cw_jiepo'
-import lianfeng_2, { 循环默认奇穴 as lianfengqixue } from './lianfeng_2'
-import lianfeng_huanyan_7, { 循环默认奇穴 as lianfeng_7_qixue } from './lianfeng_huanyan_7'
+// import lianfeng_2, { 循环默认奇穴 as lianfengqixue } from './lianfeng_2'
+// import lianfeng_huanyan_7, { 循环默认奇穴 as lianfeng_7_qixue } from './lianfeng_huanyan_7'
 import lianfeng_huanyan_dandao, {
   循环默认奇穴 as lianfeng_dandao_qixue,
 } from './lianfeng_huanyan_dandao'
@@ -24,31 +24,31 @@ const All_Cycle_Data = [
     type: '周流',
     qixue: zhouliuqixue,
   },
+  // {
+  //   name: '潋风-驭耀',
+  //   title: '潋风-驭耀',
+  //   cycle: lianfeng_2,
+  //   cycleList: [
+  //     { 计算技能数: 10, 循环完整帧数: 242, 循环次数: 1 },
+  //     { 计算技能数: 15, 循环完整帧数: 305, 循环次数: 14 },
+  //   ],
+  //   type: '潋风',
+  //   qixue: lianfengqixue,
+  // },
+  // {
+  //   name: '潋风-连亘-涣衍-单双刀',
+  //   title: '潋风-连亘-涣衍-单双刀',
+  //   cycle: lianfeng_huanyan_7,
+  //   cycleList: [
+  //     { 计算技能数: 10, 循环完整帧数: 242, 循环次数: 1 },
+  //     { 计算技能数: 15, 循环完整帧数: 305, 循环次数: 14 },
+  //   ],
+  //   type: '潋风',
+  //   qixue: lianfeng_7_qixue,
+  // },
   {
-    name: '潋风-驭耀',
-    title: '潋风-驭耀',
-    cycle: lianfeng_2,
-    cycleList: [
-      { 计算技能数: 10, 循环完整帧数: 242, 循环次数: 1 },
-      { 计算技能数: 15, 循环完整帧数: 305, 循环次数: 14 },
-    ],
-    type: '潋风',
-    qixue: lianfengqixue,
-  },
-  {
-    name: '潋风-连亘-涣衍-单双刀',
-    title: '潋风-连亘-涣衍-单双刀',
-    cycle: lianfeng_huanyan_7,
-    cycleList: [
-      { 计算技能数: 10, 循环完整帧数: 242, 循环次数: 1 },
-      { 计算技能数: 15, 循环完整帧数: 305, 循环次数: 14 },
-    ],
-    type: '潋风',
-    qixue: lianfeng_7_qixue,
-  },
-  {
-    name: '潋风-连亘-涣衍-疯狂单刀',
-    title: '潋风-连亘-涣衍-疯狂单刀',
+    name: '潋风-连亘-涣衍-单刀',
+    title: '潋风-连亘-涣衍-单刀',
     cycle: lianfeng_huanyan_dandao,
     cycleList: [
       { 计算技能数: 10, 循环完整帧数: 242, 循环次数: 1 },
