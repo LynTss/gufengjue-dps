@@ -11,12 +11,12 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.无双等级,
-        增益数值: 130,
+        增益数值: 192,
       },
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.破招,
-        增益数值: 130,
+        增益数值: 192,
       },
     ],
   },
@@ -33,7 +33,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
     ],
   },
   {
-    增益名称: '水煮鱼',
+    增益名称: '水煮鱼炼',
     层数: 1,
     覆盖率: 100,
     增益集合: [
@@ -46,6 +46,23 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.破招,
         增益数值: 100,
+      },
+    ],
+  },
+  {
+    增益名称: '水煮鱼百',
+    层数: 1,
+    覆盖率: 100,
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.无双等级,
+        增益数值: 400,
+      },
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.破招,
+        增益数值: 400,
       },
     ],
   },
@@ -390,53 +407,4 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       },
     ],
   },
-  // {
-  //   增益名称: '无双粽子',
-  //   层数: 1,
-  //   覆盖率: 100,
-  //   增益集合: [
-  //     {
-  //       增益计算类型: GainDpsTypeEnum.A,
-  //       增益类型: GainTypeEnum.无双等级,
-  //       增益数值: 4548,
-  //     },
-  //   ],
-  // },
-  // {
-  //   增益名称: '武伤粽子',
-  //   层数: 1,
-  //   覆盖率: 100,
-  //   增益集合: [
-  //     {
-  //       增益计算类型: GainDpsTypeEnum.B,
-  //       增益类型: GainTypeEnum.近战武器伤害,
-  //       增益数值: 1360,
-  //     },
-  //   ],
-  // },
-  // {
-  //   增益名称: '梅花_旧',
-  //   层数: 1,
-  //   覆盖率: 75,
-  //   覆盖率支持手动录入: true,
-  //   增益集合: [
-  //     {
-  //       增益计算类型: GainDpsTypeEnum.B,
-  //       增益类型: GainTypeEnum.郭氏无视防御,
-  //       增益数值: 154,
-  //     },
-  //   ],
-  // },
-  // {
-  //   增益名称: '左旋_旧',
-  //   层数: 1,
-  //   覆盖率: 100,
-  //   增益集合: [
-  //     {
-  //       增益计算类型: GainDpsTypeEnum.A,
-  //       增益类型: GainTypeEnum.破招,
-  //       增益数值: 4500,
-  //     },
-  //   ],
-  // },
 ]

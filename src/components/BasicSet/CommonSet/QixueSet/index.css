@@ -5,6 +5,7 @@
 .qixue-set-drawer .ant-drawer-body {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .qixue-set-drawer-wrap {
@@ -12,10 +13,11 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  max-width: 1366px;
 }
 
 .qixue-set-item {
-  width: calc(100vw / 12 - 24px);
+  width: calc(100% / 12 - 24px);
   margin: 0;
 }
 
