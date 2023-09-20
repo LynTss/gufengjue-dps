@@ -300,7 +300,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           <span>
             配装器
             <span style={{ color: '#F34242', fontSize: 14, marginLeft: 16 }}>
-              暂时只推荐1段加速配装，0段、2段伤害计算不准确
+              体服1段、2段加速均可，看自己延迟决定。体服版本暂无CW循环
             </span>
           </span>
           {/* <span className="zhuangbei-input-peizhuangtuijian">
