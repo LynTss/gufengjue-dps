@@ -16,8 +16,8 @@ import {
   IncomeXiaochi,
   IncomeWuxingshi,
 } from '@/data/income'
+import { 判断是否开启力道加成奇穴, 判断是否开启无视防御奇穴 } from '@/data/qixue'
 import './index.css'
-import { 判断是否开启力道加成奇穴 } from '@/data/qixue'
 
 const checkTypeList = [
   { label: '附魔', list: IncomeFumo },
@@ -36,6 +36,7 @@ function Income({ zengyiVisible }, ref) {
 
   const qixueData = useAppSelector((state) => state.basic.qixueData)
   const isOpenQiangLv = 判断是否开启力道加成奇穴(qixueData)
+  const 开启流岚 = 判断是否开启无视防御奇穴(qixueData)
 
   const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
   const network = useAppSelector((state) => state?.basic?.network)
@@ -78,6 +79,7 @@ function Income({ zengyiVisible }, ref) {
       zengyixuanxiangData,
       dpsTime,
       开启强膂: isOpenQiangLv,
+      开启流岚,
     })
 
     const 增益集合 = [
@@ -99,6 +101,7 @@ function Income({ zengyiVisible }, ref) {
       dpsTime,
       默认增益集合: 增益集合,
       开启强膂: isOpenQiangLv,
+      开启流岚,
     })
 
     return Number((newTotalDps / oldDps - 1) * 100)

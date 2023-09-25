@@ -23,7 +23,7 @@ import WuCaiShiXuanZe from './WuCaiShiXuanZe'
 import MohedaoruModal from './MohedaoruModal'
 // import MaxDpsFunc from './MaxDpsFunc'
 import { CharacterFinalDTO } from '@/@types/character'
-import { 判断是否开启力道加成奇穴 } from '@/data/qixue'
+import { 判断是否开启力道加成奇穴, 判断是否开启无视防御奇穴 } from '@/data/qixue'
 import './index.css'
 
 function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
@@ -42,6 +42,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
 
   const qixueData = useAppSelector((state) => state.basic.qixueData)
   const isOpenQiangLv = 判断是否开启力道加成奇穴(qixueData)
+  const 开启流岚 = 判断是否开启无视防御奇穴(qixueData)
 
   const [zhuangbeizengyi, setZhuangbeizengyi] = useState<any>()
   const [默认镶嵌宝石等级, 设置默认镶嵌宝石等级] = useState<number>(8)
@@ -262,6 +263,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         zengyixuanxiangData,
         dpsTime,
         开启强膂: isOpenQiangLv,
+        开启流岚,
       })
       console.log('战斗时间', dpsTime)
       setAfterDps(Math.floor(totalDps / dpsTime))

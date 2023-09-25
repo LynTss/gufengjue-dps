@@ -25,6 +25,7 @@ interface GetDpsTotalParams {
   zengyixuanxiangData: ZengyixuanxiangDataDTO
   dpsTime: number
   开启强膂: boolean
+  开启流岚: boolean
 }
 
 export interface DpsListData {
@@ -45,6 +46,7 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
     zengyixuanxiangData,
     dpsTime,
     开启强膂,
+    开启流岚,
   } = props
   // 总dps
   let total = 0
@@ -55,7 +57,7 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
   const 最终人物属性 = 获取力道奇穴加成后面板(characterFinalData, 开启强膂)
 
   // 获取装备增益等带来的最终增益集合
-  let 总增益集合: SKillGainData[] = getAllGainData(characterFinalData, [])
+  let 总增益集合: SKillGainData[] = getAllGainData(characterFinalData, [], 开启流岚)
 
   // 判断是不是单技能统计循环。如果是则不计入
   const isSingeSkillCycle = currentCycle?.find((item) => item?.技能名称 === '云刀')?.技能数量 === 1
@@ -166,12 +168,12 @@ export const getFinalCycleData = (
 // 统计增益，获取增益的集合
 export const getAllGainData = (
   characterFinalData: CharacterFinalDTO,
-  defaultGainData?
+  defaultGainData?,
+  开启流岚?
 ): SKillGainData[] => {
   let 总增益集合: SKillGainData[] = [...(defaultGainData || [])]
 
-  // 诸怀奇穴更改后删除
-  const 开启流岚 = true
+  // 流岚奇穴更改后删除
   if (开启流岚 == true) {
     总增益集合 = 总增益集合.concat([
       {

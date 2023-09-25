@@ -12,9 +12,14 @@ import {
 import { 加成系数 } from '../constant'
 
 export const 力道加成奇穴 = '强膂'
+export const 无视防御奇穴 = '流岚'
 
 export const 判断是否开启力道加成奇穴 = (data) => {
   return data?.some((item) => item === 力道加成奇穴)
+}
+
+export const 判断是否开启无视防御奇穴 = (data) => {
+  return data?.some((item) => item === 无视防御奇穴)
 }
 
 export const 奇穴数据: QixueListDTO[] = [
@@ -141,9 +146,9 @@ export const 奇穴数据: QixueListDTO[] = [
   },
   // 11
   {
-    是否不可编辑: true,
+    // 是否不可编辑: true,
     奇穴列表: [
-      { 奇穴名称: '戗风', 是否不可编辑: true, 奇穴图片: 'https://icon.jx3box.com/icon/17755.png' },
+      { 奇穴名称: '戗风', 奇穴图片: 'https://icon.jx3box.com/icon/17755.png' },
       { 奇穴名称: '流岚', 奇穴图片: 'https://icon.jx3box.com/icon/17742.png' },
       { 奇穴名称: '斩颓', 是否不可编辑: true, 奇穴图片: 'https://icon.jx3box.com/icon/17754.png' },
       { 奇穴名称: '泯息', 是否不可编辑: true, 奇穴图片: 'https://icon.jx3box.com/icon/18238.png' },
