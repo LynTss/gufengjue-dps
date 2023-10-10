@@ -81,7 +81,6 @@ function Income({ zengyiVisible }, ref) {
       开启强膂: isOpenQiangLv,
       开启流岚,
     })
-
     const 增益集合 = [
       ...data.增益集合.map((item) => {
         return {

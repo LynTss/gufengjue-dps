@@ -237,8 +237,6 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         data.小橙武特效
       )
 
-      console.log('newSkillBasicData', newSkillBasicData)
-
       const dpsTime = getDpsTime(
         currentCycleName,
         final,

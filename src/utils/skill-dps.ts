@@ -232,8 +232,6 @@ export const getTrueCycleByName = (
     trueCycle = All_Cycle_Data?.find((item) => item.name === trueName)?.cycle || currentCycle
   }
 
-  console.log('currentCycleName', currentCycleName)
-
   // 根据奇穴类型处理各类循环
   const 全部奇穴信息: QixueDataDTO[] = getAllQixueData(qixueData)
 
