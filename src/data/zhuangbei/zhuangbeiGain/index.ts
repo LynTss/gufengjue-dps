@@ -21,28 +21,28 @@ const ZhuangbeiGainList = {
     {
       增益计算类型: GainDpsTypeEnum.A,
       增益类型: GainTypeEnum.外攻会心等级,
-      增益数值: 1090,
+      增益数值: 1215,
     },
   ],
   切糕无双: [
     {
       增益计算类型: GainDpsTypeEnum.A,
       增益类型: GainTypeEnum.无双等级,
-      增益数值: 1090,
+      增益数值: 1215,
     },
   ],
   切糕会心_2: [
     {
       增益计算类型: GainDpsTypeEnum.A,
       增益类型: GainTypeEnum.外攻会心等级,
-      增益数值: 1215,
+      增益数值: 1354,
     },
   ],
   切糕无双_2: [
     {
       增益计算类型: GainDpsTypeEnum.A,
       增益类型: GainTypeEnum.无双等级,
-      增益数值: 1215,
+      增益数值: 1354,
     },
   ],
   冬至套装: [
@@ -61,16 +61,16 @@ const ZhuangbeiGainList = {
     {
       增益计算类型: GainDpsTypeEnum.A,
       增益类型: GainTypeEnum.基础攻击,
-      增益数值: 670,
-      // 按覆盖率100%算 一层67 10层670
+      增益数值: 880,
+      // 按覆盖率100%算 一层88 10层880
     },
   ],
   水特效武器_2: [
     {
       增益计算类型: GainDpsTypeEnum.A,
       增益类型: GainTypeEnum.基础攻击,
-      增益数值: 880,
-      // 按覆盖率100%算 一层88 10层880
+      增益数值: 1150,
+      // 按覆盖率100%算 一层115 10层1150
     },
   ],
   龙门武器: [
@@ -89,14 +89,14 @@ const ZhuangbeiGainList = {
     {
       增益计算类型: GainDpsTypeEnum.A,
       增益类型: GainTypeEnum.外攻破防等级,
-      增益数值: 640, // 按覆盖率10%算
+      增益数值: 833, // 按覆盖率10%算
     },
   ],
   风特效腰坠_2: [
     {
       增益计算类型: GainDpsTypeEnum.A,
       增益类型: GainTypeEnum.外攻破防等级,
-      增益数值: 833, // 按覆盖率10%算
+      增益数值: 1084, // 按覆盖率10%算
     },
   ],
   大附魔_伤帽: [

@@ -31,7 +31,7 @@ const All_Cycle_Data = [
     cycle: 潋风,
     cycleList: [
       { 计算技能数: 10, 循环完整帧数: 242, 循环次数: 1 },
-      { 计算技能数: 15, 循环完整帧数: 305, 循环次数: 14 },
+      { 计算技能数: 15, 循环完整帧数: 315, 循环次数: 14 },
     ],
     type: '潋风',
     qixue: 潋风奇穴,
@@ -42,7 +42,7 @@ const All_Cycle_Data = [
     cycle: lianfeng_huanyan_dandao,
     cycleList: [
       { 计算技能数: 10, 循环完整帧数: 242, 循环次数: 1 },
-      { 计算技能数: 15, 循环完整帧数: 305, 循环次数: 14 },
+      { 计算技能数: 15, 循环完整帧数: 319, 循环次数: 14 },
     ],
     type: '潋风',
     qixue: lianfeng_dandao_qixue,
