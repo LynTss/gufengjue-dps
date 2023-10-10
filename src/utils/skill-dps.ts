@@ -250,7 +250,8 @@ export const getTrueCycleByName = (
             if (增益.增益名称 === 当前奇穴?.奇穴加成对应关系?.[item.技能名称]) {
               return {
                 ...增益,
-                常驻增益: true,
+                常驻增益: 当前奇穴?.奇穴加成类型 === '常驻',
+                增益启用开关: 当前奇穴?.奇穴加成类型 !== '无增益',
               }
             } else {
               return { ...增益 }
@@ -265,7 +266,8 @@ export const getTrueCycleByName = (
             if (增益.增益名称 === 当前奇穴.奇穴名称) {
               return {
                 ...增益,
-                常驻增益: true,
+                常驻增益: 当前奇穴?.奇穴加成类型 === '常驻',
+                增益启用开关: 当前奇穴?.奇穴加成类型 !== '无增益',
               }
             } else {
               return { ...增益 }
@@ -283,7 +285,7 @@ export const getTrueCycleByName = (
   // 长溯 * 4
   const 孤峰计算额外次数 = qixueData?.includes('长溯') ? 4 : 1
 
-  const 释放孤峰次数 = (总孤峰次数 - 1) / 孤峰计算额外次数
+  const 释放孤峰次数 = Math.floor((总孤峰次数 - 1) / 孤峰计算额外次数)
 
   // 特殊处理界破
   if (qixueData?.includes('界破')) {

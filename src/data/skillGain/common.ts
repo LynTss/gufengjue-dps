@@ -5,6 +5,7 @@ const commonGainDTO: SkillGainDTO[] = [
   {
     增益名称: '灭影随风',
     增益所在位置: '技能',
+    增益启用开关: true,
     增益集合: [
       {
         增益类型: GainTypeEnum.郭氏外攻破防等级,

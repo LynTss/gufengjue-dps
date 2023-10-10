@@ -30,6 +30,10 @@ export interface QixueDataDTO {
    */
   奇穴图片: string
   /**
+   * @name 奇穴加成类型
+   */
+  奇穴加成类型: '常驻' | '部分数量加成' | '无增益'
+  /**
    * @name 奇穴加成技能
    */
   奇穴加成技能?: string[] | '通用'

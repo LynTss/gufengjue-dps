@@ -13,6 +13,14 @@ import gufengduanlangGainDTO from './skillGain/gufengduanlang'
 import chushiyuGainDTO from './skillGain/chushiyu'
 import bishijixuGainDTO from './skillGain/bishijixu'
 import { GainDpsTypeEnum, GainTypeEnum } from '@/@types/enum'
+import {
+  liuxue1GainDTO,
+  liuxue2GainDTO,
+  liuxue3GainDTO,
+  liuxue4GainDTO,
+  liuxue5GainDTO,
+  liuxue6GainDTO,
+} from './skillGain/liuxue'
 
 const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
   {
@@ -229,7 +237,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: liuxue1GainDTO,
   },
   {
     技能名称: '流血·二',
@@ -238,7 +246,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 2,
-    技能增益列表: commonGainDTO,
+    技能增益列表: liuxue2GainDTO,
   },
   {
     技能名称: '流血·三',
@@ -247,7 +255,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 3,
-    技能增益列表: commonGainDTO,
+    技能增益列表: liuxue3GainDTO,
   },
   {
     技能名称: '流血·四',
@@ -256,7 +264,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 4,
-    技能增益列表: commonGainDTO,
+    技能增益列表: liuxue4GainDTO,
   },
   {
     技能名称: '流血·五',
@@ -265,7 +273,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 5,
-    技能增益列表: commonGainDTO,
+    技能增益列表: liuxue5GainDTO,
   },
   {
     技能名称: '流血·六',
@@ -274,7 +282,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 6,
-    技能增益列表: commonGainDTO,
+    技能增益列表: liuxue6GainDTO,
   },
   {
     技能名称: '凝神势·破锋',

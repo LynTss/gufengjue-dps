@@ -636,7 +636,9 @@ export const getGainList = (增益: CycleGain, 当前技能属性: SkillBasicDTO
   let 增益集合列表: SKillGainData[] = []
 
   gainNameList.forEach((i) => {
-    const findGain = 当前技能属性?.技能增益列表.find((item) => item.增益名称 === i)
+    const findGain = 当前技能属性?.技能增益列表.find(
+      (item) => item.增益名称 === i && (item.常驻增益 || item.增益启用开关)
+    )
     if (findGain) {
       增益集合列表 = 增益集合列表.concat(findGain?.增益集合 || [])
     }
