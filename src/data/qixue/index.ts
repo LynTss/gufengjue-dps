@@ -359,7 +359,11 @@ export const 奇穴数据: QixueListDTO[] = [
         是否不可编辑: true,
         奇穴图片: 'https://icon.jx3box.com/icon/17766.png',
       },
-      { 奇穴名称: '潋风', 奇穴加成类型: '常驻', 奇穴图片: QIXUEIMG_QIXUE },
+      {
+        奇穴名称: '潋风',
+        奇穴加成类型: '常驻',
+        奇穴图片: 'https://icon.jx3box.com/icon/17744.png',
+      },
       {
         奇穴名称: '泽风同承',
         奇穴加成类型: '无增益',
