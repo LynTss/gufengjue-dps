@@ -232,6 +232,8 @@ export const getTrueCycleByName = (
     trueCycle = All_Cycle_Data?.find((item) => item.name === trueName)?.cycle || currentCycle
   }
 
+  console.log('currentCycleName', currentCycleName)
+
   // 根据奇穴类型处理各类循环
   const 全部奇穴信息: QixueDataDTO[] = getAllQixueData(qixueData)
 
@@ -276,6 +278,31 @@ export const getTrueCycleByName = (
         }
       }
     })
+
+    // 特殊处理镇机和承磊的连锁反应
+    if (res?.技能名称?.includes('断云势')) {
+      if (
+        全部奇穴信息?.some((item) => item.奇穴名称 === '承磊') &&
+        全部奇穴信息?.some((item) => item.奇穴名称 === '镇机')
+      ) {
+        res = {
+          ...res,
+          技能增益列表: res?.技能增益列表.map((a) => {
+            return a?.增益名称 === '镇机'
+              ? {
+                  ...a,
+                  增益集合: a?.增益集合?.map((b) => {
+                    return {
+                      ...b,
+                      增益数值: 0.9, // 6层承磊，每层15%
+                    }
+                  }),
+                }
+              : { ...a }
+          }),
+        }
+      }
+    }
 
     return res
   })
