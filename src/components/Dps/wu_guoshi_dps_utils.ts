@@ -3,7 +3,7 @@ import { 每等级减伤, 非侠系数 } from '@/data/constant'
 import { TargetDTO } from '@/@types/character'
 import { CharacterFinalDTO } from '@/@types/character'
 import { CycleDTO } from '@/@types/cycle'
-import { GainTypeEnum } from '@/@types/enum'
+import { GainDpsTypeEnum, GainTypeEnum } from '@/@types/enum'
 import { SkillBasicDTO, SKillGainData } from '@/@types/skill'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { 加成系数, 属性系数 } from '@/data/constant'
@@ -13,7 +13,8 @@ import {
   getGainList,
   getSortZengyiList,
   getZengyi,
-  switchGain,
+  switchGain_A,
+  switchGain_B,
 } from './guoshi_dps_utils'
 import { 获取力道奇穴加成后面板 } from '@/data/qixue'
 
@@ -180,6 +181,7 @@ export const geSkillTotalDps = (
   let 最终人物属性 = { ...人物属性 }
   let 计算目标 = 当前目标
   let 计算技能增伤 = 1
+  let 计算技能增伤_B类 = 1
   let 计算郭氏额外会效果值 = 0
   let 计算额外会心率 = 0
   let 计算郭式无视防御 = 0
@@ -209,7 +211,7 @@ export const geSkillTotalDps = (
         计算后郭氏破防等级,
         计算后郭氏基础攻击,
         计算后郭氏武器伤害,
-      } = switchGain(
+      } = switchGain_A(
         最终人物属性,
         增益数值信息,
         计算目标,
@@ -278,7 +280,7 @@ export const geSkillTotalDps = (
         计算后郭氏破防等级,
         计算后郭氏基础攻击,
         计算后郭氏武器伤害,
-      } = switchGain(
+      } = switchGain_A(
         最终人物属性,
         增益数值信息,
         计算目标,
@@ -306,6 +308,17 @@ export const geSkillTotalDps = (
       计算郭氏基础攻击 = 计算后郭氏基础攻击
       计算郭氏武器伤害 = 计算后郭氏武器伤害
     })
+
+  // 再计算独立增益集合
+  当前技能计算增益集合
+    .filter((item) => item.增益计算类型 === GainDpsTypeEnum.B)
+    .forEach((增益数值信息) => {
+      const { 计算后技能增伤 } = switchGain_B(增益数值信息, 计算技能增伤_B类)
+      计算技能增伤_B类 = 计算后技能增伤
+    })
+
+  // 将AB类技能增伤相乘
+  计算技能增伤 = 计算技能增伤 * 计算技能增伤_B类
 
   最终人物属性 = {
     ...最终人物属性,

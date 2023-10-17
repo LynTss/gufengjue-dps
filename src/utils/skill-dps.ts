@@ -239,7 +239,9 @@ export const getTrueCycleByName = (
     let res = { ...item }
     const 所有加成该技能的奇穴 = 全部奇穴信息?.filter(
       (奇穴) =>
-        奇穴?.奇穴加成对应关系?.[item.技能名称] || 奇穴?.奇穴加成技能?.includes(item?.技能名称)
+        奇穴?.奇穴加成对应关系?.[item.技能名称] ||
+        奇穴?.奇穴加成技能?.includes(item?.技能名称) ||
+        奇穴?.奇穴加成技能 === '通用'
     )
 
     所有加成该技能的奇穴.forEach((当前奇穴) => {
@@ -258,7 +260,10 @@ export const getTrueCycleByName = (
             }
           }),
         }
-      } else if (当前奇穴?.奇穴加成技能?.includes(item?.技能名称)) {
+      } else if (
+        当前奇穴?.奇穴加成技能?.includes(item?.技能名称) ||
+        当前奇穴?.奇穴加成技能 === '通用'
+      ) {
         res = {
           ...res,
           技能增益列表: res?.技能增益列表.map((增益) => {
