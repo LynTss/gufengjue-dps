@@ -58,6 +58,7 @@ const All_Cycle_Data = [
       { 计算技能数: 10, 循环完整帧数: 242, 循环次数: 1 },
       { 计算技能数: 15, 循环完整帧数: 319, 循环次数: 14 },
     ],
+    hide: true,
     type: '潋风',
     qixue: lianfeng_dandao_qixue,
   },
