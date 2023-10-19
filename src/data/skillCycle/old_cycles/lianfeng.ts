@@ -1,5 +1,5 @@
 // 理想潋风 - 已作废
-import { CycleDTO } from '../../@types/cycle'
+import { CycleDTO } from '../../../@types/cycle'
 
 const cycle: CycleDTO[] = [
   {

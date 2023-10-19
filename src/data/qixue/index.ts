@@ -219,6 +219,7 @@ export const 奇穴数据: QixueListDTO[] = [
       },
       {
         奇穴名称: '鸣锋',
+        是否不可编辑: true,
         奇穴加成类型: '常驻',
         奇穴图片: 'https://icon.jx3box.com/icon/18246.png',
       },
