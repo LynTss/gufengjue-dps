@@ -1,5 +1,5 @@
 .tuandui-zengyi {
-  padding-top: 8px;
+  padding-top: 4px;
 }
 
 .tuandui-zengyi-checkbox {
@@ -24,7 +24,7 @@
   text-align: right;
 }
 
-.tuandui-zengyi-detail-modal .ant-modal-body{
+.tuandui-zengyi-detail-modal .ant-modal-body {
   max-height: calc(100vh - 108px - 48px);
   padding: 12px 24px 36px;
   overflow-y: auto;
