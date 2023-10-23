@@ -119,7 +119,7 @@ export const IncomeXiaochi: IncomeDataDTO[] = XIAOCHI_DATA.filter(
   (item) => item.小吃部位 === XiaochiTypeEnum.食品增强
 )
   .map((item) => {
-    const name = item?.小吃名称?.split('（')?.[1].split('）')?.[0]
+    const name = item?.小吃名称?.split('（')?.[1]?.split('）')?.[0]
     return {
       收益计算名称: `${name}`,
       增益集合: item?.增益集合,

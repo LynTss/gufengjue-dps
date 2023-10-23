@@ -56,7 +56,7 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
 
   return (
     <div className="tuandui-zengyi">
-      <Row gutter={[8, 7]}>
+      <Row gutter={[8, 12]}>
         {TuanduiZengyi_DATA.map((item) => {
           const 当前增益选项 = (zengyixuanxiangData?.团队增益 || []).find(
             (a) => item?.增益名称 === a?.增益名称
