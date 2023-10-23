@@ -103,14 +103,16 @@ const ZhuangbeiGainList = {
     {
       增益计算类型: GainDpsTypeEnum.A,
       增益类型: GainTypeEnum.外攻破防等级,
-      增益数值: 999,
+      // 增益数值: 999,
+      增益数值: 1100,
     },
   ],
   大附魔_伤衣: [
     {
       增益计算类型: GainDpsTypeEnum.A,
       增益类型: GainTypeEnum.基础攻击,
-      增益数值: 450,
+      // 增益数值: 450,
+      增益数值: 500,
     },
   ],
   大附魔_伤腰: [
