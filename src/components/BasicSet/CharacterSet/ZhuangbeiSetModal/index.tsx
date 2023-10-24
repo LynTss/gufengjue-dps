@@ -300,7 +300,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           <span>
             配装器
             <span style={{ color: '#F34242', fontSize: 14, marginLeft: 16 }}>
-              体服目前只能2段加速，1段吃不到影子。暂无cw循环
+              体服目前只能2段加速，1段基本无法稳定打出拓锋。暂无cw循环
             </span>
           </span>
           {/* <span className="zhuangbei-input-peizhuangtuijian">
