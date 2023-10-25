@@ -236,8 +236,9 @@ export const Zhenyan_DATA: ZhenyanGainDTO[] = [
         增益计算类型: GainDpsTypeEnum.A,
         计算位置: ZengyanZengyiPositionEnum.伤害计算,
         增益类型: GainTypeEnum.郭氏基础攻击,
-        增益数值: 102 * 0.5,
-      }, // 第五层阵眼-技能基攻10%-覆盖率:50%
+        增益数值: 102 * 0.7,
+      }, // 更新第五层阵眼-技能基攻10%-覆盖率:50% => 70%
+      // 旧：第五层阵眼-技能基攻10%-覆盖率:50%
     ],
   },
   {
