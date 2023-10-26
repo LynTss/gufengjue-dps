@@ -100,7 +100,7 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     uid: '207764',
     装备名称: '濯心·锋虹护手',
     装备品级: 12300,
-    装备类型: EquipmentTypeEnum.普通,
+    装备类型: EquipmentTypeEnum.门派套装,
     装备增益: [
       { 增益数值: 3100, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 601, 增益类型: GainTypeEnum.力道 },
@@ -353,7 +353,7 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
     uid: '211675',
     装备名称: '灵源·休归护手',
     装备品级: 13750,
-    装备类型: EquipmentTypeEnum.普通,
+    装备类型: EquipmentTypeEnum.门派套装,
     装备增益: [
       { 增益数值: 3466, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 672, 增益类型: GainTypeEnum.力道 },
@@ -381,7 +381,7 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
   {
     id: 96476,
     uid: '212280',
-    装备名称: '湖静护手',
+    装备名称: '泉潺护手',
     装备品级: 13950,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [
@@ -506,7 +506,7 @@ const ZHUANGBEI_HUWAN: EquipmentDTO[] = [
   {
     id: 96366,
     uid: '212091',
-    装备名称: '雪舞袖',
+    装备名称: '风烈袖',
     装备品级: 14150,
     装备类型: EquipmentTypeEnum.切糕,
     装备增益: [

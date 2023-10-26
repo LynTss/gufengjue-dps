@@ -1,6 +1,6 @@
 import { GainTypeEnum, WuCaiShiGainNameEnum } from '@/@types/enum'
 
-const 切糕名标识 = ['暮祁', '雪舞', '雪漫', '风停']
+const 切糕名标识 = ['暮祁', '雪舞', '雪漫', '风停', '风烈']
 const 套装名标识 = ['揽江·', '濯心·', '灵源·']
 
 // 装备导入

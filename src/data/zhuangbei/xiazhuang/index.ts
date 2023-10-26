@@ -378,7 +378,7 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
   {
     id: 96494,
     uid: '212298',
-    装备名称: '湖静裤',
+    装备名称: '泉潺裤',
     装备品级: 13950,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [
@@ -476,7 +476,7 @@ const ZHUANGBEI_XIAZHUANG: EquipmentDTO[] = [
   {
     id: 96384,
     uid: '212109',
-    装备名称: '雪舞裤',
+    装备名称: '风烈裤',
     装备品级: 14150,
     装备类型: EquipmentTypeEnum.切糕,
     装备增益: [

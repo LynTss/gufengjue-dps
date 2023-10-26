@@ -296,7 +296,7 @@ const ZHUANGBEI_YUANCHENGWUQI: EquipmentDTO[] = [
   {
     id: 35837,
     uid: '212316',
-    装备名称: '湖静囊',
+    装备名称: '泉潺囊',
     装备品级: 13950,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [

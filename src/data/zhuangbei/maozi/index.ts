@@ -100,7 +100,7 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     uid: '207851',
     装备名称: '濯心·锋虹冠',
     装备品级: 12300,
-    装备类型: EquipmentTypeEnum.普通,
+    装备类型: EquipmentTypeEnum.门派套装,
     装备增益: [
       { 增益数值: 3986, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 773, 增益类型: GainTypeEnum.力道 },
@@ -298,7 +298,7 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
     uid: '211765',
     装备名称: '灵源·休归冠',
     装备品级: 13750,
-    装备类型: EquipmentTypeEnum.普通,
+    装备类型: EquipmentTypeEnum.门派套装,
     装备增益: [
       { 增益数值: 4456, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 864, 增益类型: GainTypeEnum.力道 },
@@ -356,7 +356,7 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
   {
     id: 96500,
     uid: '212304',
-    装备名称: '湖静冠',
+    装备名称: '泉潺冠',
     装备品级: 13950,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [
@@ -371,7 +371,7 @@ const ZHUANGBEI_MAOZI: EquipmentDTO[] = [
   {
     id: 96390,
     uid: '212115',
-    装备名称: '雪舞冠',
+    装备名称: '风烈冠',
     装备品级: 14150,
     装备类型: EquipmentTypeEnum.切糕,
     装备增益: [

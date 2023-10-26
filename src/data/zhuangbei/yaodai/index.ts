@@ -22,7 +22,7 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     uid: '207793',
     装备名称: '濯心·锋虹腰带',
     装备品级: 12300,
-    装备类型: EquipmentTypeEnum.普通,
+    装备类型: EquipmentTypeEnum.门派套装,
     装备增益: [
       { 增益数值: 3100, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 601, 增益类型: GainTypeEnum.力道 },
@@ -197,7 +197,7 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     uid: '211705',
     装备名称: '灵源·休归腰带',
     装备品级: 13750,
-    装备类型: EquipmentTypeEnum.普通,
+    装备类型: EquipmentTypeEnum.门派套装,
     装备增益: [
       { 增益数值: 3466, 增益类型: GainTypeEnum.体质 },
       { 增益数值: 672, 增益类型: GainTypeEnum.力道 },
@@ -304,7 +304,7 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
   {
     id: 96482,
     uid: '212286',
-    装备名称: '湖静腰带',
+    装备名称: '泉潺腰带',
     装备品级: 13950,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [
@@ -334,7 +334,7 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
   {
     id: 96372,
     uid: '212097',
-    装备名称: '雪舞腰带',
+    装备名称: '风烈腰带',
     装备品级: 14150,
     装备类型: EquipmentTypeEnum.切糕,
     装备增益: [
