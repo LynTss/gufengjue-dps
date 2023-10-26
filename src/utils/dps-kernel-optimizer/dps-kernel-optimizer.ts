@@ -1,180 +1,120 @@
-// import { CharacterFinalDTO } from '@/@types/character'
-import { OptimizationTool } from './optimization-tool'
-// import { GlobalParams } from './global'
-// import { 属性系数 } from '@/data/constant'
-// const { Matrix } = require('ml-matrix')
+import { CharacterFinalDTO, TargetDTO } from '@/@types/character'
+import { CycleDTO } from '@/@types/cycle'
+import { SkillBasicDTO } from '@/@types/skill'
+import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
+// import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
+import { optimizationTool } from './optimization-tool'
+// import { getNotGuoDpsTotal } from '@/components/Dps/wu_guoshi_dps_utils'
+// import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
+import { getNotGuoDpsTotal } from '@/components/Dps/wu_guoshi_dps_utils'
 
-const OptimizerArgs = {
-  LowerBound: [[0.0], [0.0]],
-  UpperBound: [[1.0], [1.0]],
-  InitialGuess: [[0.5], [0.5]],
+interface DpsKernelOptimizerParams {
+  // 以下为获取dps结果的的基本必要参数集
+  trueCycle: CycleDTO[]
+  characterFinalData: CharacterFinalDTO
+  currentTarget: TargetDTO
+  trueSkillBasicData: SkillBasicDTO[]
+  zengyixuanxiangData: ZengyixuanxiangDataDTO
+  zengyiQiyong: boolean
+  isOpenQiangLv: boolean
+  开启流岚: boolean
 }
 
-// const DPSKernelOptimizer = (originalShell: CharacterFinalDTO) => {
-//   const OriginalShell = originalShell
-//   const OriginalIChar = OriginalShell
-//   const OriginalFChar = OriginalShell
+// 计算dps最大期望值的算法
+const DpsKernelOptimizer = ({
+  trueCycle,
+  characterFinalData,
+  currentTarget,
+  trueSkillBasicData,
+  zengyiQiyong,
+  zengyixuanxiangData,
+  isOpenQiangLv,
+  开启流岚,
+}: DpsKernelOptimizerParams) => {
+  // 当前计算环境下的原属性总量
+  const basicDTO = { ...characterFinalData }
+  /**
+   * @name 传入BFGS算法的目标函数
+   * !假定当前已经穿上装备的属性总量中，会心+破防的总量不变。无双+破招的总量不变
+   * !动态计算会心在会心+破防的总量以及无双在无双+破招的总量中的占比，
+   * !以获得在当前宗莲不变时不同占比下的最高dps
+   * @param x
+   * @params x[0] 代表会心比例 即会心在会心+破防总量中的占比
+   * @params x[1] 代表无双比例 即会心在会心+破防总量中的占比
+   * @returns number
+   */
+  const getDpsFunction = (x) => {
+    const newCharacterData = getNewCharacterData(basicDTO, x?.[0], x?.[1])
 
-//   // const FIncrement = {
-//   //   会心: OriginalFChar.会心值 - OriginalIChar.会心值,
-//   //   无双: OriginalFChar.无双值 - OriginalIChar.无双值,
-//   // }
+    const { totalDps } = getNotGuoDpsTotal({
+      currentCycle: trueCycle,
+      characterFinalData: newCharacterData,
+      当前目标: currentTarget,
+      skillBasicData: trueSkillBasicData,
+      zengyiQiyong,
+      zengyixuanxiangData,
+      dpsTime: 300, // 这里只需要算总dps，算固定300秒的dps
+      开启强膂: isOpenQiangLv,
+      开启流岚,
+    })
 
-//   const XFStaticConst = GlobalParams(120)
+    // 由于dps太大，导致
+    return 100000000 / totalDps
+  }
 
-//   const CTOC_PointSum = OriginalFChar.会心值 + OriginalFChar.破防值 // 会破点数之和
-//   const WSPZ_PointSum = OriginalFChar.无双值 + OriginalFChar.破招值 // 无双破招点数之和
+  const maxObj = optimizationTool({ getDpsFunction, initialGuess: [0.3, 0.8], tol: 1e-12 })
 
-//   const OriginalPointSum = { CTOC: CTOC_PointSum, WSPZ: WSPZ_PointSum }
-
-//   // const BestProportion = null
-
-//   // 基于IChar的会心和无双值占比，获取对应的面板
-//   // <param name="ctProportion">会心占比（0~1），-1表示不变</param>
-//   // <param name="wsProportion">无双占比（0~1），-1表示不变</param>
-//   const GetCharInfo = (ctProportion = -1, wsProportion = -1) => {
-//     let iCT = OriginalIChar.会心值
-//     let iWS = OriginalIChar.无双值
-
-//     if (ctProportion >= 0 && ctProportion <= 1) {
-//       iCT = (OriginalPointSum.CTOC * ctProportion) / 属性系数?.会心
-//     }
-
-//     if (wsProportion >= 0 && wsProportion <= 1) {
-//       iWS = (OriginalPointSum.WSPZ * wsProportion) / XFStaticConst.会心
-//     }
-
-//     return _GetCharInfo(iCT, iWS)
-//   }
-
-//   // 将IChar的会心和无双设置为新值，获取对应的面板数值
-//   // <param name="ict"></param>
-//   // <param name="iws"></param>
-//   // <returns></returns>
-//   const _GetCharInfo = (ict, iws) => {
-//     const ioc = OriginalPointSum.CTOC - ict * XFStaticConst.会心
-//     const ipz = OriginalPointSum.WSPZ - iws * XFStaticConst.无双
-
-//     const res = {
-//       ict,
-//       iws,
-//       ioc,
-//       ipz,
-//     }
-//     // const res = new CharacterInfo(ict, iws, ioc, ipz, ict + FIncrement.会心, iws + FIncrement.无双)
-//     return res
-//   }
-
-//   // 修改会心比例和无双比例，计算当前DPS
-//   // <param name="ctProportion">会心比例</param>
-//   // <param name="wsProportion">无双比例</param>
-//   // <returns>DPS值</returns>
-//   const GetCurrentDPS = (ctProportion = -1, wsProportion = -1) => {
-//     console.log('ctProportion', ctProportion)
-//     console.log('wsProportion', wsProportion)
-//     const charInfo = GetNewFCharInfo(ctProportion, wsProportion)
-//     const newShell = charInfo.FChar
-//     // const DPS = newShell.CalcCurrent()
-//     console.log('newShell', newShell)
-//     const DPS = 1
-//     return DPS
-//   }
-
-//   // // <summary>
-//   // // 在会破属性之和保持不变的情况下，重新设置面板会心百分比
-//   // // </summary>
-//   // // <param name="ct">目标会心百分比</param>
-//   // const Reset_CT = (ct) => {
-//   //   const delta = CT_Point - ct * XFStaticConst.会心
-//   //   TransCTToOC(delta)
-//   // }
-
-//   // // <summary>
-//   // // 在无招属性之和保持不变的情况下，重新设置面板无双百分比
-//   // // </summary>
-//   // // <param name="ws">目标无双百分比</param>
-//   // const Reset_WS = (ws) => {
-//   //   const delta = WS_Point - ws * XFStaticConst.无双
-//   //   TransWSToPZ(delta)
-//   // }
-
-//   const GetNewFChar = (characterInfo?) => {
-//     const newFChar = OriginalFChar
-//     console.log('_', characterInfo)
-//     // newFChar.Reset_CT(characterInfo.FCT)
-//     // newFChar.Reset_WS(characterInfo.FWS)
-//     return newFChar
-//   }
-
-//   const GetNewFCharInfo = (ctProportion = -1, wsProportion = -1) => {
-//     const charinfo = GetCharInfo(ctProportion, wsProportion)
-//     const fchar = GetNewFChar(charinfo)
-//     // const res = new FullCharInfo(charinfo, fchar, ctProportion, wsProportion)
-//     const res = { ...charinfo, FChar: { ...fchar } }
-//     console.log('res', res)
-//     return res
-//   }
-
-//   // 向量化版本的GetCurrentDPS，并且求相反数，因为优化目标是最小化
-//   const GetNegativeCurrentDPSV = (x) => -GetCurrentDPS(x[0], x[1])
-
-//   // 寻找最优的会破比例
-//   const FindBestProportion = () => {
-//     const OPres: any = OptimizationTool(
-//       GetNegativeCurrentDPSV,
-//       OptimizerArgs.LowerBound,
-//       OptimizerArgs.UpperBound,
-//       OptimizerArgs.InitialGuess
-//     )
-
-//     console.log('OPres', OPres)
-//     // const pt = OPres.MinimizingPoint
-//     // var info = OPres.FunctionInfoAtMinimum;
-//     // const charInfo = GetNewFCharInfo(pt[0], pt[1])
-
-//     // const res = charInfo as any
-
-//     // res.Proceed()
-
-//     return {}
-//   }
-
-//   return FindBestProportion()
-// }
-
-// export { DPSKernelOptimizer }
-
-// 向量化版本的GetCurrentDPS，并且求相反数，因为优化目标是最小化
-const GetNegativeCurrentDPSV = (x) => -GetCurrentDPS(x[0], x[1])
-
-// 寻找最优的会破比例
-export const FindBestProportion = () => {
-  console.log('OptimizerArgs', OptimizerArgs)
-  const OPres: any = OptimizationTool(
-    GetNegativeCurrentDPSV,
-    OptimizerArgs.LowerBound,
-    OptimizerArgs.UpperBound,
-    OptimizerArgs.InitialGuess
+  const maxCharacterData = getNewCharacterData(
+    basicDTO,
+    maxObj?.solution?.[0],
+    maxObj?.solution?.[1]
   )
 
-  console.log('OPres', OPres)
-  // const pt = OPres.MinimizingPoint
-  // var info = OPres.FunctionInfoAtMinimum;
-  // const charInfo = GetNewFCharInfo(pt[0], pt[1])
-
-  // const res = charInfo as any
-
-  // res.Proceed()
-
-  return {}
+  return { maxCharacterData, maxObj }
 }
 
-// 修改会心比例和无双比例，计算当前DPS
-// <param name="ctProportion">会心比例</param>
-// <param name="wsProportion">无双比例</param>
-// <returns>DPS值</returns>
-const GetCurrentDPS = (ctProportion = -1, wsProportion = -1) => {
-  console.log('ctProportion', ctProportion)
-  console.log('wsProportion', wsProportion)
-  return 2000 * (1 + ctProportion) * (1 + wsProportion)
+/**
+ * @name getNewCharacterData
+ * @params x[0] 代表会心比例 即会心在会心+破防总量中的占比
+ * @params x[1] 代表无双比例 即会心在会心+破防总量中的占比
+ * @returns CharacterFinalDTO
+ */
+
+const getNewCharacterData = (basicDTO: CharacterFinalDTO, 会心比例, 无双比例) => {
+  let startDTO = { ...basicDTO }
+
+  let 新会心值 = startDTO?.会心值
+  let 新破防值 = startDTO?.破防值
+
+  let 新无双值 = startDTO?.无双值
+  let 新破招值 = startDTO?.破招值
+
+  if (会心比例 >= 0 && 会心比例 <= 1 && 无双比例 >= 0 && 无双比例 <= 1) {
+    const 会心破防总量 = startDTO?.会心值 + startDTO?.破防值
+    新会心值 = 会心破防总量 * 会心比例
+    新破防值 = 会心破防总量 - 新会心值
+
+    const 无双破招总量 = startDTO?.无双值 + startDTO?.破招值
+    新无双值 = 无双破招总量 * 无双比例
+    新破招值 = 无双破招总量 - 新无双值
+  } else {
+    startDTO = {
+      ...startDTO,
+      面板攻击: 0,
+      会心值: 0,
+      破防值: 0,
+      无双值: 0,
+      破招值: 0,
+    }
+  }
+
+  return {
+    ...startDTO,
+    会心值: 新会心值,
+    破防值: 新破防值,
+    无双值: 新无双值,
+    破招值: 新破招值,
+  }
 }
+
+export default DpsKernelOptimizer
