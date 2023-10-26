@@ -1,5 +1,4 @@
 import { QixueListDTO } from '@/@types/qixue'
-import QIXUEIMG_QIXUE from '../../assets/qixue/qixue.png'
 import { CharacterFinalDTO } from '@/@types/character'
 import {
   getMianBanGongJI,
@@ -303,7 +302,11 @@ export const 奇穴数据: QixueListDTO[] = [
         是否不可编辑: true,
         奇穴图片: 'https://icon.jx3box.com/icon/17761.png',
       },
-      { 奇穴名称: '连亘', 奇穴加成类型: '常驻', 奇穴图片: QIXUEIMG_QIXUE },
+      {
+        奇穴名称: '连亘',
+        奇穴加成类型: '常驻',
+        奇穴图片: 'https://icon.jx3box.com/icon/20070.png',
+      },
     ],
   },
   // 11

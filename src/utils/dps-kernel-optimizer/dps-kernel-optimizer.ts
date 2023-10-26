@@ -89,6 +89,7 @@ const getNewCharacterData = (basicDTO: CharacterFinalDTO, 会心比例, 无双�
   let 新无双值 = startDTO?.无双值
   let 新破招值 = startDTO?.破招值
 
+  // 为了取计算范围内0-1的范围属性，在超出范围的时候，直接暴力重置属性，以达到计算出来的结果（dps（较低，不列入计算的情况
   if (会心比例 >= 0 && 会心比例 <= 1 && 无双比例 >= 0 && 无双比例 <= 1) {
     const 会心破防总量 = startDTO?.会心值 + startDTO?.破防值
     新会心值 = 会心破防总量 * 会心比例
