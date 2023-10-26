@@ -5,7 +5,13 @@ import { CharacterFinalDTO } from '@/@types/character'
 
 import { Tooltip } from 'antd'
 import { 判断是否开启力道加成奇穴, 获取力道奇穴加成后面板 } from '@/data/qixue'
+// import { GlobalParams } from '@/utils/dps-kernel-optimizer/global'
 import './index.css'
+import { testTools } from '@/utils/dps-kernel-optimizer/tools'
+// import {
+// DPSKernelOptimizer,
+// FindBestProportion,
+// } from '@/utils/dps-kernel-optimizer/dps-kernel-optimizer'
 
 function CharacterShow() {
   const characterFinalData = useAppSelector((state) => state?.basic?.characterFinalData)
@@ -18,9 +24,20 @@ function CharacterShow() {
     ? 获取力道奇穴加成后面板(characterFinalData, openLidao)
     : characterFinalData
 
+  const getA = () => {
+    // console.log('GlobalParams', FindBestProportion())
+
+    const a = testTools()
+    console.log('a', a)
+  }
+
+  // console.log('OptimizationTool', OptimizationTool())
+
   return (
     <div className={'character-show'}>
-      <h1 className={'character-title'}>角色属性</h1>
+      <h1 className={'character-title'} onClick={getA}>
+        角色属性
+      </h1>
       {mapKeyList.map((item) => {
         return (
           <div className="character-item" key={item}>

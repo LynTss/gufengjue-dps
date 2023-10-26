@@ -21,6 +21,7 @@ import {
   liuxue5GainDTO,
   liuxue6GainDTO,
 } from './skillGain/liuxue'
+import { 属性系数 } from './constant'
 
 const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
   {
@@ -305,7 +306,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
   {
     技能名称: '破',
     // 技能伤害系数: 13.1925 * 0.48 * 1.05, // 修改过一次 原来没有1.05
-    技能伤害系数: 13.1925 * 0.48, // 修改过一次 原来没有1.05
+    技能伤害系数: 属性系数.破招基础系数 * 0.48, // 修改过一次 原来没有1.05
     技能基础伤害_最小值: 0,
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
