@@ -18,7 +18,6 @@ import './index.css'
 function CharacterShow() {
   const characterFinalData = useAppSelector((state) => state?.basic?.characterFinalData)
   const qixueData = useAppSelector((state) => state?.basic?.qixueData)
-  const openLidao = 判断是否开启力道加成奇穴(qixueData)
 
   const currentCycle = useAppSelector((state) => state?.basic?.currentCycle)
   const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
@@ -34,8 +33,8 @@ function CharacterShow() {
 
   const mapKeyList = ['力道', '攻击力', '会心', '会心效果', '破防', '无双', '破招', '加速']
 
-  const showData = openLidao
-    ? 获取力道奇穴加成后面板(characterFinalData, openLidao)
+  const showData = isOpenQiangLv
+    ? 获取力道奇穴加成后面板(characterFinalData, isOpenQiangLv)
     : characterFinalData
 
   const maxDpsData: any = useMemo(() => {
@@ -94,7 +93,7 @@ function CharacterShow() {
       </div>
       {mapKeyList.map((item) => {
         const maxObj: any = openBFGS
-          ? getCharacterMaxData(item, maxDpsData?.maxCharacterData, openLidao, showData)
+          ? getCharacterMaxData(item, maxDpsData?.maxCharacterData, isOpenQiangLv, showData)
           : {}
         return (
           <div className="character-item" key={item}>
