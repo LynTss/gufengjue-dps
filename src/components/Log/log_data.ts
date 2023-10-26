@@ -1,6 +1,6 @@
 export default [
   {
-    version: '2.1.1',
+    version: '2.1.0',
     content: [
       '万灵当歌版本技改，大量循环变动',
       '增加奇穴切换功能',
