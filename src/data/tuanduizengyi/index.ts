@@ -328,7 +328,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.无双等级,
-        增益数值: (400 + 200) / 2,
+        增益数值: (470 + 235) / 2,
       },
     ],
   },
@@ -344,7 +344,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.无双等级,
-        增益数值: 400,
+        增益数值: 470,
       },
     ],
   },
@@ -361,7 +361,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.无双等级,
-        增益数值: 400,
+        增益数值: 470,
       },
     ],
   },
