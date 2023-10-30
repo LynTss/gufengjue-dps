@@ -83,6 +83,7 @@ const All_Cycle_Data = [
     cycle: single_skill_cycle,
     cycleList: [{ 计算技能数: 1, 循环完整帧数: 1, 循环次数: 1 }],
     type: '单技能统计',
+    hide: true,
     qixue: single_skill_cycle_qixue,
   },
   // {
