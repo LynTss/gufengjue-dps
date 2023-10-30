@@ -9,8 +9,8 @@ import single_skill_cycle, { 循环默认奇穴 as single_skill_cycle_qixue } fr
 import 潋风4破, { 循环默认奇穴 as 潋风_4破奇穴 } from './潋风_4破'
 import 潋风6破, { 循环默认奇穴 as 潋风_6破奇穴 } from './潋风_6破'
 
-import CW特效期间总伤害 from './三沧孤伤害'
-import 潋风期间总伤害 from './潋风期间单刀伤害'
+// import CW特效期间总伤害 from './三沧孤伤害'
+// import 潋风期间总伤害 from './潋风期间单刀伤害'
 
 const All_Cycle_Data = [
   // {
@@ -53,18 +53,18 @@ const All_Cycle_Data = [
     type: '潋风',
     qixue: 潋风_6破奇穴,
   },
-  {
-    name: '潋风期间总伤害',
-    title: '潋风期间总伤害',
-    cycle: 潋风期间总伤害,
-    cycleList: [{ 计算技能数: 7, 循环完整帧数: 25, 循环次数: 1 }],
-  },
-  {
-    name: 'CW特效期间总伤害',
-    title: 'CW特效期间总伤害',
-    cycle: CW特效期间总伤害,
-    cycleList: [{ 计算技能数: 4, 循环完整帧数: 1, 循环次数: 1 }],
-  },
+  // {
+  //   name: '潋风期间总伤害',
+  //   title: '潋风期间总伤害',
+  //   cycle: 潋风期间总伤害,
+  //   cycleList: [{ 计算技能数: 7, 循环完整帧数: 25, 循环次数: 1 }],
+  // },
+  // {
+  //   name: 'CW特效期间总伤害',
+  //   title: 'CW特效期间总伤害',
+  //   cycle: CW特效期间总伤害,
+  //   cycleList: [{ 计算技能数: 4, 循环完整帧数: 1, 循环次数: 1 }],
+  // },
   // {
   //   name: '潋风-连亘-单刀',
   //   title: '潋风-连亘-单刀',
