@@ -31,6 +31,11 @@ export const AllEnchantDTO: EnchantDTO[] = [
     增益集合: [{ 增益计算类型: GainDpsTypeEnum.A, 增益类型: GainTypeEnum.无双等级, 增益数值: 240 }],
   },
   {
+    附魔名称: EnchantNameEnum.无双264,
+    附魔支持部位: [EquipmentPositionEnum.衣服, EquipmentPositionEnum.腰带],
+    增益集合: [{ 增益计算类型: GainDpsTypeEnum.A, 增益类型: GainTypeEnum.无双等级, 增益数值: 264 }],
+  },
+  {
     附魔名称: EnchantNameEnum.无双491,
     附魔支持部位: [EquipmentPositionEnum.护腕, EquipmentPositionEnum.下装],
     增益集合: [
