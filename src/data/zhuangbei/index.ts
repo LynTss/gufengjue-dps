@@ -30,9 +30,9 @@ export const 冬至套装_1Ids: number[] = []
 
 // 2件套会心 4件套孤锋10%
 export const 套装_1Ids: number[] = [96134, 96224, 96194, 96164, 96254]
+export const 套装_3Ids: number[] = []
 // 2件套孤锋10% 4件套会心
 export const 套装_2Ids: number[] = [94248, 94335, 94306, 94277, 94364]
-export const 套装_3Ids: number[] = []
 
 const ZUANGBEI_DATA = {
   帽子: ZHUANGBEI_MAOZI,

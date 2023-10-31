@@ -120,6 +120,7 @@ export enum EquipmentCharacterPositionEnum {
 }
 
 export enum CommonEnchantNum {
+  赛季442 = '442',
   赛季491 = '491',
   赛季723 = '723',
   赛季799 = '799',
@@ -183,6 +184,7 @@ export enum EnchantNameEnum {
   破招883 = `破招+883`,
   // 加速
   加速362 = '加速+362',
+  加速442 = `加速+442`,
   加速491 = `加速+491`,
   加速723 = `加速+723`,
   加速799 = `加速+799`,
