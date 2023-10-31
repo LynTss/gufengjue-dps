@@ -2,12 +2,13 @@ import React, { forwardRef, useImperativeHandle, useMemo, useRef, useState } fro
 import { Divider, message } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 
-import { DpsListData, getDpsTotal } from './utils'
+import { DpsListData, getDpsTotal } from './guoshi_dps_utils'
 import DpsCountModal from './DpsCountModal/index'
 import Income from './Income'
-import './index.css'
 import { setCurrentDps } from '@/store/basicReducer'
 import { getDpsTime, getTrueCycleByName } from '@/utils/skill-dps'
+import { 判断是否开启力道加成奇穴, 判断是否开启无视防御奇穴 } from '@/data/qixue'
+import './index.css'
 
 function Dps(props, ref) {
   const { zengyiVisible } = props
@@ -21,6 +22,10 @@ function Dps(props, ref) {
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
   const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
   const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
+
+  const qixueData = useAppSelector((state) => state.basic.qixueData)
+  const isOpenQiangLv = 判断是否开启力道加成奇穴(qixueData)
+  const 开启流岚 = 判断是否开启无视防御奇穴(qixueData)
 
   const [total, setTotal] = useState<number>(0)
   const [dpsList, setDpsList] = useState<DpsListData[]>([])
@@ -54,17 +59,26 @@ function Dps(props, ref) {
     )
 
     // 获取实际循环
-    const trueCycle = getTrueCycleByName(currentCycleName, 参与计算循环, characterFinalData)
+    const { trueCycle, trueSkillBasicData } = getTrueCycleByName(
+      currentCycleName,
+      参与计算循环,
+      characterFinalData,
+      qixueData,
+      skillBasicData
+    )
 
     const { totalDps, dpsList } = getDpsTotal({
       currentCycle: trueCycle,
       characterFinalData,
       当前目标: currentTarget,
-      skillBasicData,
+      skillBasicData: trueSkillBasicData,
       zengyiQiyong,
       zengyixuanxiangData,
       dpsTime,
+      开启强膂: isOpenQiangLv,
+      开启流岚,
     })
+
     setTotal(totalDps)
     setDpsList(dpsList)
     setTimeout(() => {

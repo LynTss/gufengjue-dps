@@ -154,7 +154,7 @@ const getPzData = (data) => {
 
 // 获取配装数据
 const getEquipData = (data) => {
-  const equip: any = { openQiangLv: 1 }
+  const equip: any = {}
   let msg = ''
   try {
     Object.keys(data).map((item) => {

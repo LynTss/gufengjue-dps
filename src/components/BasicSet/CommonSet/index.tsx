@@ -4,7 +4,7 @@ import { 延迟设定, 目标集合 } from '@/data/constant'
 import skillCycle from '@/data/skillCycle'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 
-import { setCurrentTarget, setCurrentCycle, setNetwork } from '@/store/basicReducer'
+import { setCurrentTarget, setCurrentCycle, setNetwork, setQixueData } from '@/store/basicReducer'
 import MijiSet from './MijiSet'
 import QixueSet from './QixueSet'
 import './index.css'
@@ -36,7 +36,8 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
   }
 
   const setCurrentCycleVal = (val) => {
-    const cycle = skillCycle?.find((item) => item.name === val)?.cycle || []
+    const cycleData = skillCycle?.find((item) => item.name === val)
+    const cycle = cycleData?.cycle || []
     if (cycle) {
       localStorage?.setItem('当前循环_1', val)
       dispatch(
@@ -45,6 +46,10 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
           cycle,
         })
       )
+      if (cycleData?.qixue) {
+        localStorage.setItem('daozong_qixue_data', JSON.stringify(cycleData?.qixue))
+        dispatch(setQixueData(cycleData?.qixue))
+      }
       getDpsFunction()
     }
   }
@@ -120,7 +125,7 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
       </div>
       <div className="common-item">
         <MijiSet getDpsFunction={getDpsFunction} />
-        <QixueSet />
+        <QixueSet getDpsFunction={getDpsFunction} />
       </div>
     </div>
   )

@@ -43,4 +43,11 @@ export const WushangEnchantDTO: EnchantDTO[] = [
       { 增益计算类型: GainDpsTypeEnum.A, 增益类型: GainTypeEnum.近战武器伤害, 增益数值: 540 },
     ],
   },
+  {
+    附魔名称: EnchantNameEnum.武伤597,
+    附魔支持部位: [EquipmentPositionEnum.武器],
+    增益集合: [
+      { 增益计算类型: GainDpsTypeEnum.A, 增益类型: GainTypeEnum.近战武器伤害, 增益数值: 597 },
+    ],
+  },
 ]

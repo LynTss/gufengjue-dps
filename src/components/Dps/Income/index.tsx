@@ -6,7 +6,7 @@ import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } f
 import * as G2 from '@antv/g2'
 import { useAppSelector } from '@/hooks'
 import { QuestionCircleOutlined } from '@ant-design/icons'
-import { getNotGuoDpsTotal } from './utils' // 使用不郭计算方式
+import { getNotGuoDpsTotal } from '../wu_guoshi_dps_utils' // 使用不郭计算方式
 import { message, Radio, Tooltip } from 'antd'
 import { getDpsTime, getTrueCycleByName } from '@/utils/skill-dps'
 import {
@@ -16,6 +16,7 @@ import {
   IncomeXiaochi,
   IncomeWuxingshi,
 } from '@/data/income'
+import { 判断是否开启力道加成奇穴, 判断是否开启无视防御奇穴 } from '@/data/qixue'
 import './index.css'
 
 const checkTypeList = [
@@ -23,7 +24,6 @@ const checkTypeList = [
   { label: '小药', list: IncomeXiaoyao },
   { label: '小吃', list: IncomeXiaochi },
   { label: '五行石 ', list: IncomeWuxingshi },
-  // { label: '五彩石', list: EnchantGainDTO },
 ]
 
 function Income({ zengyiVisible }, ref) {
@@ -33,6 +33,10 @@ function Income({ zengyiVisible }, ref) {
   const zengyiQiyong = useAppSelector((state) => state.zengyi.zengyiQiyong)
   const zengyixuanxiangData = useAppSelector((state) => state.zengyi.zengyixuanxiangData)
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
+
+  const qixueData = useAppSelector((state) => state.basic.qixueData)
+  const isOpenQiangLv = 判断是否开启力道加成奇穴(qixueData)
+  const 开启流岚 = 判断是否开启无视防御奇穴(qixueData)
 
   const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
   const network = useAppSelector((state) => state?.basic?.network)
@@ -58,18 +62,25 @@ function Income({ zengyiVisible }, ref) {
     )
 
     // 获取实际循环
-    const trueCycle = getTrueCycleByName(currentCycleName, currentCycle, characterFinalData)
+    const { trueCycle, trueSkillBasicData } = getTrueCycleByName(
+      currentCycleName,
+      currentCycle,
+      characterFinalData,
+      qixueData,
+      skillBasicData
+    )
 
     const { totalDps: oldDps } = getNotGuoDpsTotal({
       currentCycle: trueCycle,
       characterFinalData,
       当前目标: 计算后目标,
-      skillBasicData,
+      skillBasicData: trueSkillBasicData,
       zengyiQiyong,
       zengyixuanxiangData,
       dpsTime,
+      开启强膂: isOpenQiangLv,
+      开启流岚,
     })
-
     const 增益集合 = [
       ...data.增益集合.map((item) => {
         return {
@@ -83,11 +94,13 @@ function Income({ zengyiVisible }, ref) {
       currentCycle: trueCycle,
       characterFinalData,
       当前目标: 计算后目标,
-      skillBasicData,
+      skillBasicData: trueSkillBasicData,
       zengyiQiyong,
       zengyixuanxiangData,
       dpsTime,
       默认增益集合: 增益集合,
+      开启强膂: isOpenQiangLv,
+      开启流岚,
     })
 
     return Number((newTotalDps / oldDps - 1) * 100)

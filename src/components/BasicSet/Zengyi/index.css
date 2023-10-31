@@ -1,6 +1,6 @@
 .zengyi-wrapper {
   width: 400px;
-  padding: 0 0 16px 12px;
+  padding: 0 0 0 12px;
   margin-left: 12px;
   min-height: calc(100vh - 114px);
   border-left: 1px solid #f0f0f0
@@ -9,7 +9,7 @@
 .zengyi-title {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   align-items: center;
 }
 
@@ -31,6 +31,6 @@
   margin-bottom: 8px;
 }
 
-.xuanze-zhenyan .ant-select{
+.xuanze-zhenyan .ant-select {
   width: 100%;
 }

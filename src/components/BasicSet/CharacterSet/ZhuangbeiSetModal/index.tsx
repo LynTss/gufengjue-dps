@@ -12,7 +12,7 @@ import { 属性系数 } from '@/data/constant'
 import { getDpsTime, getTrueCycleByName, getZengyiJiasu } from '@/utils/skill-dps'
 import { setSkillBasicData } from '@/store/zengyiReducer'
 import ValueCheckBox from '@/components/common/ValueCheckBox'
-import { getDpsTotal } from '@/components/Dps/utils'
+import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
 
 import { getFinalCharacterBasicDataByEquipment } from '../util'
 import { getNewEquipmentData, getSkillCycleGainData } from './utils'
@@ -21,7 +21,9 @@ import ZhuangBeiZengYiTip from './ZhuangBeiZengYiTip'
 import ZhuangbeiSelect from './ZhuangbeiSelect'
 import WuCaiShiXuanZe from './WuCaiShiXuanZe'
 import MohedaoruModal from './MohedaoruModal'
-import MaxDpsFunc from './MaxDpsFunc'
+// import MaxDpsFunc from './MaxDpsFunc'
+import { CharacterFinalDTO } from '@/@types/character'
+import { 判断是否开启力道加成奇穴, 判断是否开启无视防御奇穴 } from '@/data/qixue'
 import './index.css'
 
 function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
@@ -37,6 +39,10 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
   const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
   const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
   const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
+
+  const qixueData = useAppSelector((state) => state.basic.qixueData)
+  const isOpenQiangLv = 判断是否开启力道加成奇穴(qixueData)
+  const 开启流岚 = 判断是否开启无视防御奇穴(qixueData)
 
   const [zhuangbeizengyi, setZhuangbeizengyi] = useState<any>()
   const [默认镶嵌宝石等级, 设置默认镶嵌宝石等级] = useState<number>(8)
@@ -58,7 +64,6 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
   const initEquipment = (data) => {
     const newObj = {
       wucaishi: data.wucaishi,
-      openQiangLv: data.openQiangLv,
       大附魔_伤帽: data?.大附魔_伤帽,
       大附魔_伤衣: data?.大附魔_伤衣,
       大附魔_伤腰: data?.大附魔_伤腰,
@@ -79,16 +84,16 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
     form.setFieldsValue(newObj)
     getDpsFunction()
     setZhuangbeizengyi({
-      套装双会: data.taozhuangShuanghui,
-      套装孤锋: data.taozhuangJineng,
-      龙门武器: data.longmenWuqi,
-      大CW: data.dachengwu,
-      小CW: data.xiaochengwu,
-      特效武器: data.shuitexiaoWuqi || data.shuitexiaoWuqi_2,
-      特效腰坠: data.texiaoyaozhui || data.texiaoyaozhui_2,
-      切糕会心: data.qiegaotaozhuanghuixin || data.qiegaotaozhuanghuixin_2,
-      切糕无双: data.qiegaotaozhuangwushuang || data.qiegaotaozhuangwushuang_2,
-      冬至套装: data?.dongzhitaozhuangshuxing,
+      套装双会: data.套装会心会效,
+      套装孤锋: data.套装技能,
+      龙门武器: data.龙门武器,
+      大CW: data.大橙武特效,
+      小CW: data.小橙武特效,
+      特效武器: data.水特效武器 || data.水特效武器_2,
+      特效腰坠: data.风特效腰坠 || data.风特效腰坠_2,
+      切糕会心: data.切糕会心 || data.切糕会心_2,
+      切糕无双: data.切糕无双 || data.切糕无双_2,
+      冬至套装: data?.冬至套装,
     })
     formValueChange(undefined, newObj)
   }
@@ -104,31 +109,33 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
       dispatch(
         setCharacterFinalData({
           ...finalData,
-          套装会心会效: data.taozhuangShuanghui,
-          水特效武器: data.shuitexiaoWuqi,
-          水特效武器_2: data.shuitexiaoWuqi_2,
-          龙门武器: data?.longmenWuqi,
-          大橙武特效: data?.dachengwu,
-          小橙武特效: data?.xiaochengwu,
-          风特效腰坠: data.texiaoyaozhui,
-          风特效腰坠_2: data.texiaoyaozhui_2,
-          切糕会心: data?.qiegaotaozhuanghuixin,
-          切糕无双: data?.qiegaotaozhuangwushuang,
-          切糕会心_2: data?.qiegaotaozhuanghuixin_2,
-          切糕无双_2: data?.qiegaotaozhuangwushuang_2,
-          冬至套装: data?.dongzhitaozhuangshuxing,
-          大附魔_伤帽: data?.大附魔_伤帽,
-          大附魔_伤衣: data?.大附魔_伤衣,
-          大附魔_伤腰: data?.大附魔_伤腰,
-          大附魔_伤腕: data?.大附魔_伤腕,
-          大附魔_伤鞋: data?.大附魔_伤鞋,
+          装备增益: {
+            套装会心会效: data.套装会心会效,
+            水特效武器: data.水特效武器,
+            水特效武器_2: data.水特效武器_2,
+            龙门武器: data?.龙门武器,
+            大橙武特效: data?.大橙武特效,
+            小橙武特效: data?.小橙武特效,
+            风特效腰坠: data.风特效腰坠,
+            风特效腰坠_2: data.风特效腰坠_2,
+            切糕会心: data?.切糕会心,
+            切糕无双: data?.切糕无双,
+            切糕会心_2: data?.切糕会心_2,
+            切糕无双_2: data?.切糕无双_2,
+            冬至套装: data?.冬至套装,
+            大附魔_伤帽: data?.大附魔_伤帽,
+            大附魔_伤衣: data?.大附魔_伤衣,
+            大附魔_伤腰: data?.大附魔_伤腰,
+            大附魔_伤腕: data?.大附魔_伤腕,
+            大附魔_伤鞋: data?.大附魔_伤鞋,
+          },
         })
       )
       const newSkillBasicData = getSkillCycleGainData(
         skillBasicData,
-        data.taozhuangJineng,
-        data.dachengwu,
-        data.xiaochengwu
+        data.套装技能,
+        data.大橙武特效,
+        data.小橙武特效
       )
       dispatch(setSkillBasicData(newSkillBasicData))
       onClose(true)
@@ -145,7 +152,6 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
             res[item] &&
             ![
               'wucaishi',
-              'openQiangLv',
               '大附魔_伤帽',
               '大附魔_伤衣',
               '大附魔_伤腰',
@@ -185,48 +191,52 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
     try {
       const data = getNewEquipmentData(value)
       const { finalData } = getFinalCharacterBasicDataByEquipment(data)
-      const final = {
+      const final: CharacterFinalDTO = {
         ...finalData,
-        套装会心会效: data.taozhuangShuanghui,
-        水特效武器: data.shuitexiaoWuqi,
-        水特效武器_2: data.shuitexiaoWuqi_2,
-        龙门武器: data?.longmenWuqi,
-        大橙武特效: data?.dachengwu,
-        小橙武特效: data?.xiaochengwu,
-        风特效腰坠: data.texiaoyaozhui,
-        风特效腰坠_2: data.texiaoyaozhui_2,
-        切糕会心: data.qiegaotaozhuanghuixin,
-        切糕无双: data.qiegaotaozhuangwushuang,
-        切糕会心_2: data.qiegaotaozhuanghuixin_2,
-        切糕无双_2: data.qiegaotaozhuangwushuang_2,
-        冬至套装: data?.dongzhitaozhuangshuxing,
-        大附魔_伤帽: data?.大附魔_伤帽,
-        大附魔_伤衣: data?.大附魔_伤衣,
-        大附魔_伤腰: data?.大附魔_伤腰,
-        大附魔_伤腕: data?.大附魔_伤腕,
-        大附魔_伤鞋: data?.大附魔_伤鞋,
+        装备增益: {
+          套装会心会效: data.套装会心会效,
+          水特效武器: data.水特效武器,
+          水特效武器_2: data.水特效武器_2,
+          龙门武器: data?.龙门武器,
+          大橙武特效: data?.大橙武特效,
+          小橙武特效: data?.小橙武特效,
+          风特效腰坠: data.风特效腰坠,
+          风特效腰坠_2: data.风特效腰坠_2,
+          切糕会心: data.切糕会心,
+          切糕无双: data.切糕无双,
+          切糕会心_2: data.切糕会心_2,
+          切糕无双_2: data.切糕无双_2,
+          冬至套装: data?.冬至套装,
+          大附魔_伤帽: data?.大附魔_伤帽,
+          大附魔_伤衣: data?.大附魔_伤衣,
+          大附魔_伤腰: data?.大附魔_伤腰,
+          大附魔_伤腕: data?.大附魔_伤腕,
+          大附魔_伤鞋: data?.大附魔_伤鞋,
+        },
       }
       const 增益加速 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
       设置加速(final.加速值 + 增益加速)
       setZhuangbeizengyi({
-        套装双会: data.taozhuangShuanghui,
-        套装孤锋: data.taozhuangJineng,
-        龙门武器: data.longmenWuqi,
-        大CW: data.dachengwu,
-        小CW: data.xiaochengwu,
-        特效武器: data.shuitexiaoWuqi || data.shuitexiaoWuqi_2,
-        特效腰坠: data.texiaoyaozhui || data.texiaoyaozhui_2,
-        切糕会心: data.qiegaotaozhuanghuixin || data.qiegaotaozhuanghuixin_2,
-        切糕无双: data.qiegaotaozhuangwushuang || data.qiegaotaozhuangwushuang_2,
-        冬至套装: data?.dongzhitaozhuangshuxing,
+        套装双会: data.套装会心会效,
+        套装孤锋: data.套装技能,
+        龙门武器: data.龙门武器,
+        大CW: data.大橙武特效,
+        小CW: data.小橙武特效,
+        特效武器: data.水特效武器 || data.水特效武器_2,
+        特效腰坠: data.风特效腰坠 || data.风特效腰坠_2,
+        切糕会心: data.切糕会心 || data.切糕会心_2,
+        切糕无双: data.切糕无双 || data.切糕无双_2,
+        冬至套装: data?.冬至套装,
       })
       let newSkillBasicData = skillBasicData
+
       newSkillBasicData = getSkillCycleGainData(
         skillBasicData,
-        data.taozhuangJineng,
-        data.dachengwu,
-        data.xiaochengwu
+        data.套装技能,
+        data.大橙武特效,
+        data.小橙武特效
       )
+
       const dpsTime = getDpsTime(
         currentCycleName,
         final,
@@ -235,15 +245,23 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         zengyixuanxiangData
       )
 
-      const trueCycle = getTrueCycleByName(currentCycleName, currentCycle, final)
+      const { trueCycle, trueSkillBasicData } = getTrueCycleByName(
+        currentCycleName,
+        currentCycle,
+        final,
+        qixueData,
+        newSkillBasicData
+      )
       const { totalDps } = getDpsTotal({
         currentCycle: trueCycle,
         characterFinalData: final,
         当前目标: currentTarget,
-        skillBasicData: newSkillBasicData,
+        skillBasicData: trueSkillBasicData,
         zengyiQiyong,
         zengyixuanxiangData,
         dpsTime,
+        开启强膂: isOpenQiangLv,
+        开启流岚,
       })
       console.log('战斗时间', dpsTime)
       setAfterDps(Math.floor(totalDps / dpsTime))
@@ -282,10 +300,10 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           <span>
             配装器
             <span style={{ color: '#F34242', fontSize: 14, marginLeft: 16 }}>
-              暂时只推荐1段加速配装，0段、2段伤害计算不准确
+              体服目前只能2段加速，1段基本无法稳定打出拓锋。暂无cw循环
             </span>
           </span>
-          <span className="zhuangbei-input-peizhuangtuijian">
+          {/* <span className="zhuangbei-input-peizhuangtuijian">
             <Button
               // disabled
               size="small"
@@ -308,6 +326,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
                       network,
                       equipmentBasicData,
                       withWufeng: true,
+                      qixueData,
                     })
                   },
                 })
@@ -335,6 +354,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
                       zengyiQiyong,
                       network,
                       equipmentBasicData,
+                      qixueData,
                     })
                   },
                 })
@@ -342,22 +362,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
             >
               智能推荐-过滤无封
             </Button>
-            {/* {装备推荐列表.map((item) => {
-              return (
-                <Tooltip key={item.label} title={item.tip}>
-                  <Button
-                    size="small"
-                    type="primary"
-                    onClick={() => {
-                      initEquipment(item.data)
-                    }}
-                  >
-                    {item.label}
-                  </Button>
-                </Tooltip>
-              )
-            })} */}
-          </span>
+          </span> */}
         </div>
       }
       className={'zhuangbei-input-set-modal'}
@@ -454,9 +459,6 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         <div className="zhuangbei-input-set-modal-form-right">
           <Form.Item name={`wucaishi`}>
             <WuCaiShiXuanZe />
-          </Form.Item>
-          <Form.Item className="zhuangbei-input-set-modal-form-qianglv" name={`openQiangLv`}>
-            <ValueCheckBox>启用强膂</ValueCheckBox>
           </Form.Item>
           {zhuangbeizengyi ? (
             <div className={'zhuangbei-zengyi-wrapper'}>

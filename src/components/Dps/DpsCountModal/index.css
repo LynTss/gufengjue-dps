@@ -1,16 +1,51 @@
 .dps-count-modal {
-  max-height: calc(100vh - 24px)
+  max-height: calc(100vh - 24px);
 }
 
 .dps-count-modal .ant-modal-body {
   padding: 12px 24px 24px;
 }
 
-.dps-line {
+.dps-line-header {
   display: flex;
   font-size: 18px;
-  border-bottom: 1px solid #dfdfdf;
   justify-content: space-between;
+  line-height: 30px;
+}
+
+.dps-line-wrap {
+  position: relative;
+  height: 30px;
+  border-bottom: 1px solid #fdfdfd;
+}
+
+.dps-line {
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  line-height: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+  transition: .2s;
+  padding: 0 8px;
+}
+
+.dps-line:hover {
+  background-color: var(--ant-primary-color);
+  color: #fff;
+}
+
+.dps-line-bg {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  height: 26px;
+  background-color: var(--ant-primary-color);
+  opacity: 0.2;
+  z-index: 100
 }
 
 .dps-total {

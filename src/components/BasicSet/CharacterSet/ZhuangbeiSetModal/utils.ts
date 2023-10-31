@@ -27,15 +27,14 @@ export const getNewEquipmentData = (value) => {
   let isTexiaoWuqi = false
   // 88
   let isTexiaoWuqi_2 = false
-  let isLongmenWuqi = false
-  let isTexiaoYaozhui = false
-  let isTexiaoYaozhui_2 = false
+  let is龙门武器 = false
+  let is风特效腰坠 = false
+  let is风特效腰坠_2 = false
   let isDaCw = false
   let isXiaoCw = false
   // let 套装_2数量 = 0
   const data: EquipmentBasicDTO = {
     wucaishi: value?.wucaishi,
-    openQiangLv: value?.openQiangLv,
     大附魔_伤帽: value?.大附魔_伤帽,
     大附魔_伤衣: value?.大附魔_伤衣,
     大附魔_伤腰: value?.大附魔_伤腰,
@@ -46,7 +45,6 @@ export const getNewEquipmentData = (value) => {
         (item) =>
           ![
             'wucaishi',
-            'openQiangLv',
             '大附魔_伤帽',
             '大附魔_伤衣',
             '大附魔_伤腰',
@@ -74,13 +72,13 @@ export const getNewEquipmentData = (value) => {
           龙门_武器Ids.includes(value[item]?.id) &&
           value[item]?.装备部位 === EquipmentPositionEnum.武器
         ) {
-          isLongmenWuqi = true
+          is龙门武器 = true
         }
         if (特效_腰椎Ids.includes(value[item]?.id)) {
-          isTexiaoYaozhui = true
+          is风特效腰坠 = true
         }
         if (特效_腰椎_2Ids.includes(value[item]?.id)) {
-          isTexiaoYaozhui_2 = true
+          is风特效腰坠_2 = true
         }
         if (切糕套装_1Ids.includes(value[item]?.id)) {
           切糕_1数量 = 切糕_1数量 + 1
@@ -99,57 +97,57 @@ export const getNewEquipmentData = (value) => {
         }
         return value[item]
       }),
-    taozhuangShuanghui: false,
-    shuitexiaoWuqi: false,
-    shuitexiaoWuqi_2: false,
-    longmenWuqi: false,
-    texiaoyaozhui: false,
-    texiaoyaozhui_2: false,
-    taozhuangJineng: 0,
-    qiegaotaozhuanghuixin: 0,
-    qiegaotaozhuanghuixin_2: 0,
-    qiegaotaozhuangwushuang: 0,
-    qiegaotaozhuangwushuang_2: 0,
-    dongzhitaozhuangshuxing: false,
-    dachengwu: false,
-    xiaochengwu: false,
+    套装会心会效: false,
+    水特效武器: false,
+    水特效武器_2: false,
+    龙门武器: false,
+    风特效腰坠: false,
+    风特效腰坠_2: false,
+    套装技能: 0,
+    切糕会心: 0,
+    切糕会心_2: 0,
+    切糕无双: 0,
+    切糕无双_2: 0,
+    冬至套装: false,
+    大橙武特效: false,
+    小橙武特效: false,
   }
-  data.taozhuangShuanghui = 套装_1数量 >= 2 || 套装_2数量 >= 4 || 套装_3数量 >= 4
-  if (套装_1数量 >= 4 || 套装_2数量 >= 2 || 套装_3数量 >= 2) {
-    data.taozhuangJineng = data.taozhuangJineng + 1
+  data.套装会心会效 = 套装_1数量 >= 2 || 套装_2数量 >= 4 || 套装_3数量 >= 2
+  if (套装_1数量 >= 4 || 套装_2数量 >= 2 || 套装_3数量 >= 4) {
+    data.套装技能 = data.套装技能 + 1
   }
   if (切糕_1数量 >= 2) {
-    data.qiegaotaozhuanghuixin = data.qiegaotaozhuanghuixin + 1
+    data.切糕会心 = data.切糕会心 + 1
   }
   if (切糕_1数量 >= 4) {
-    data.qiegaotaozhuangwushuang = data.qiegaotaozhuangwushuang + 1
+    data.切糕无双 = data.切糕无双 + 1
   }
   if (切糕_2数量 >= 2) {
-    data.qiegaotaozhuanghuixin_2 = data.qiegaotaozhuanghuixin_2 + 1
+    data.切糕会心_2 = data.切糕会心_2 + 1
   }
   if (切糕_2数量 >= 4) {
-    data.qiegaotaozhuangwushuang_2 = data.qiegaotaozhuangwushuang_2 + 1
+    data.切糕无双_2 = data.切糕无双_2 + 1
   }
   if (冬至_1数量 >= 2) {
-    data.dongzhitaozhuangshuxing = true
+    data.冬至套装 = true
   }
 
-  data.shuitexiaoWuqi = !!isTexiaoWuqi
-  data.shuitexiaoWuqi_2 = !!isTexiaoWuqi_2
-  data.longmenWuqi = !!isLongmenWuqi
-  data.texiaoyaozhui = !!isTexiaoYaozhui
-  data.texiaoyaozhui_2 = !!isTexiaoYaozhui_2
-  data.dachengwu = !!isDaCw
-  data.xiaochengwu = !!isXiaoCw
+  data.水特效武器 = !!isTexiaoWuqi
+  data.水特效武器_2 = !!isTexiaoWuqi_2
+  data.龙门武器 = !!is龙门武器
+  data.风特效腰坠 = !!is风特效腰坠
+  data.风特效腰坠_2 = !!is风特效腰坠_2
+  data.大橙武特效 = !!isDaCw
+  data.小橙武特效 = !!isXiaoCw
 
   return data
 }
 
 export const getSkillCycleGainData = (
   skillBasicData,
-  taozhuangJineng: number,
-  dachengwu: boolean,
-  xiaochengwu: boolean
+  套装技能: number,
+  大橙武特效: boolean,
+  小橙武特效: boolean
 ) => {
   return skillBasicData.map((item) => {
     return {
@@ -161,18 +159,18 @@ export const getSkillCycleGainData = (
                 if (a.增益名称 === '套装10%_1') {
                   return {
                     ...a,
-                    常驻增益: taozhuangJineng >= 1,
-                  }
-                } else if (a.增益名称 === 'CW5%') {
-                  return {
-                    ...a,
-                    常驻增益: !!dachengwu,
+                    常驻增益: 套装技能 >= 1,
                   }
                 } else {
                   return {
                     ...a,
-                    常驻增益: taozhuangJineng === 2,
+                    常驻增益: 套装技能 === 2,
                   }
+                }
+              } else if (a.增益名称 === 'CW5%') {
+                return {
+                  ...a,
+                  常驻增益: !!大橙武特效,
                 }
               } else {
                 return { ...a }
@@ -183,12 +181,12 @@ export const getSkillCycleGainData = (
               if (a.增益名称 === 'CW5%') {
                 return {
                   ...a,
-                  常驻增益: !!dachengwu,
+                  常驻增益: !!大橙武特效,
                 }
               } else if (a.增益名称 === '小CW会心5%') {
                 return {
                   ...a,
-                  常驻增益: !!xiaochengwu,
+                  常驻增益: !!小橙武特效,
                 }
               } else {
                 return { ...a }

@@ -75,81 +75,82 @@ export interface CharacterFinalDTO extends CharacterBasicDTO {
    */
   面板攻击: number
   /**
-   * @name 强膂
+   * @name 装备增益
    */
-  强膂?: boolean
-  /**
-   * @name 套装会心会效
-   */
-  套装会心会效?: boolean
-  /**
-   * @name 水特效武器
-   */
-  水特效武器?: boolean
-  /**
-   * @name 水特效武器_2赛季
-   */
-  水特效武器_2?: boolean
-  /**
-   * @name 龙门武器
-   */
-  龙门武器?: boolean
-  /**
-   * @name 特效腰坠
-   */
-  风特效腰坠?: boolean
-  /**
-   * @name 特效腰坠_2赛季
-   */
-  风特效腰坠_2?: boolean
-  /**
-   * @name 大橙武特效
-   */
-  大橙武特效?: boolean
-  /**
-   * @name 大橙武特效
-   */
-  小橙武特效?: boolean
-  /**
-   * @name 切糕双会加成数量
-   */
-  切糕会心?: number
-  /**
-   * @name 切糕无双加成数量
-   */
-  切糕无双?: number
-  /**
-   * @name 切糕双会加成数量_2赛季
-   */
-  切糕会心_2?: number
-  /**
-   * @name 切糕无双加成数量_2赛季
-   */
-  切糕无双_2?: number
-  /**
-   * @NAME 冬至套装全属性加成
-   */
-  冬至套装?: boolean
-  /**
-   * @name 装备大附魔_伤帽
-   */
-  大附魔_伤帽?: boolean
-  /**
-   * @name 装备大附魔_伤衣
-   */
-  大附魔_伤衣?: boolean
-  /**
-   * @name 装备大附魔_伤腰
-   */
-  大附魔_伤腰?: boolean
-  /**
-   * @name 装备大附魔_伤腕
-   */
-  大附魔_伤腕?: boolean
-  /**
-   * @name 装备大附魔_伤鞋
-   */
-  大附魔_伤鞋?: boolean
+  装备增益?: {
+    /**
+     * @name 套装会心会效
+     */
+    套装会心会效?: boolean
+    /**
+     * @name 水特效武器
+     */
+    水特效武器?: boolean
+    /**
+     * @name 水特效武器_2赛季
+     */
+    水特效武器_2?: boolean
+    /**
+     * @name 龙门武器
+     */
+    龙门武器?: boolean
+    /**
+     * @name 特效腰坠
+     */
+    风特效腰坠?: boolean
+    /**
+     * @name 特效腰坠_2赛季
+     */
+    风特效腰坠_2?: boolean
+    /**
+     * @name 大橙武特效
+     */
+    大橙武特效?: boolean
+    /**
+     * @name 大橙武特效
+     */
+    小橙武特效?: boolean
+    /**
+     * @name 切糕双会加成数量
+     */
+    切糕会心?: number
+    /**
+     * @name 切糕无双加成数量
+     */
+    切糕无双?: number
+    /**
+     * @name 切糕双会加成数量_2赛季
+     */
+    切糕会心_2?: number
+    /**
+     * @name 切糕无双加成数量_2赛季
+     */
+    切糕无双_2?: number
+    /**
+     * @NAME 冬至套装全属性加成
+     */
+    冬至套装?: boolean
+    /**
+     * @name 装备大附魔_伤帽
+     */
+    大附魔_伤帽?: boolean
+    /**
+     * @name 装备大附魔_伤衣
+     */
+    大附魔_伤衣?: boolean
+    /**
+     * @name 装备大附魔_伤腰
+     */
+    大附魔_伤腰?: boolean
+    /**
+     * @name 装备大附魔_伤腕
+     */
+    大附魔_伤腕?: boolean
+    /**
+     * @name 装备大附魔_伤鞋
+     */
+    大附魔_伤鞋?: boolean
+  }
 }
 
 /**

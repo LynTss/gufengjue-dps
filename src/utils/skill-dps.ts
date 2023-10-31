@@ -12,6 +12,9 @@ import All_Cycle_Data from '@/data/skillCycle'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import XIAOCHI_DATA from '@/data/xiaochi'
 import { GainTypeEnum } from '@/@types/enum'
+import 奇穴数据 from '@/data/qixue'
+import { QixueDataDTO } from '@/@types/qixue'
+import { CycleDTO } from '@/@types/cycle'
 
 /**
  * @name 破招原始伤害计算
@@ -89,7 +92,7 @@ export const skillFinalDpsFunction = (
   // 无双增伤
   const r_wushuang = skillWushuangDps(r_dengjijianshang, characterConfig)
   // 非侠增伤
-  const r_feixia = r_wushuang* 非侠系数
+  const r_feixia = r_wushuang * 非侠系数
 
   return Math.floor(r_feixia)
 }
@@ -147,6 +150,7 @@ export const getDpsTime = (
   const 增益加速等级 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
   const 加速等级 = 获取加速等级(characterFinalData.加速值 + 增益加速等级)
   // 暂时去除加速对延迟的计算，加速等级不够1断直接加帧
+
   // if (currentCycleConfig) {
   //   let 总帧数 = 0
   //   currentCycleConfig.cycleList.forEach((item) => {
@@ -164,7 +168,8 @@ export const getDpsTime = (
       const 循环帧 = (item.循环完整帧数 - item.计算技能数 * (1 - network * 0.5)) * item.循环次数
       总帧数 = 总帧数 + 循环帧
     })
-    time = (总帧数 + (加速等级 < 1 ? 300 : 0)) / 16 + 18
+    // TODO 修正加速计算
+    time = (总帧数 + (加速等级 < 1 ? 300 : 加速等级 === 2 ? -200 : 0)) / 16 + 18
   }
   if (cons) {
     console.log('战斗时间', time)
@@ -206,7 +211,7 @@ export const getTrueCycleName = (
   currentCycleName: string,
   characterFinalData: CharacterFinalDTO
 ) => {
-  if (characterFinalData?.大橙武特效 && currentCycleName?.includes('周流')) {
+  if (characterFinalData?.装备增益?.大橙武特效 && currentCycleName?.includes('周流')) {
     return `${currentCycleName}_cw`
   }
   return currentCycleName
@@ -214,12 +219,146 @@ export const getTrueCycleName = (
 
 export const getTrueCycleByName = (
   currentCycleName: string,
-  currentCycle: any,
-  characterFinalData: CharacterFinalDTO
+  currentCycle: CycleDTO[],
+  characterFinalData: CharacterFinalDTO,
+  qixueData: string[],
+  skillBasicData: SkillBasicDTO[]
 ) => {
-  if (characterFinalData?.大橙武特效 && currentCycleName?.includes('周流')) {
+  let trueCycle = [...currentCycle]
+  let newSkillBasicData = [...skillBasicData]
+  // 旧版大CW周流区别
+  if (characterFinalData?.装备增益?.大橙武特效 && currentCycleName?.includes('周流')) {
     const trueName = `${currentCycleName}_cw`
-    return All_Cycle_Data?.find((item) => item.name === trueName)?.cycle || currentCycle
+    trueCycle = All_Cycle_Data?.find((item) => item.name === trueName)?.cycle || currentCycle
   }
-  return currentCycle
+
+  // 根据奇穴类型处理各类循环
+  const 全部奇穴信息: QixueDataDTO[] = getAllQixueData(qixueData)
+
+  newSkillBasicData = newSkillBasicData.map((item) => {
+    let res = { ...item }
+    const 所有加成该技能的奇穴 = 全部奇穴信息?.filter(
+      (奇穴) =>
+        奇穴?.奇穴加成对应关系?.[item.技能名称] ||
+        奇穴?.奇穴加成技能?.includes(item?.技能名称) ||
+        奇穴?.奇穴加成技能 === '通用'
+    )
+
+    所有加成该技能的奇穴.forEach((当前奇穴) => {
+      if (当前奇穴?.奇穴加成对应关系?.[item.技能名称]) {
+        res = {
+          ...res,
+          技能增益列表: res?.技能增益列表.map((增益) => {
+            if (增益.增益名称 === 当前奇穴?.奇穴加成对应关系?.[item.技能名称]) {
+              return {
+                ...增益,
+                常驻增益: 当前奇穴?.奇穴加成类型 === '常驻',
+                增益启用开关: 当前奇穴?.奇穴加成类型 !== '无增益',
+              }
+            } else {
+              return { ...增益 }
+            }
+          }),
+        }
+      } else if (
+        当前奇穴?.奇穴加成技能?.includes(item?.技能名称) ||
+        当前奇穴?.奇穴加成技能 === '通用'
+      ) {
+        res = {
+          ...res,
+          技能增益列表: res?.技能增益列表.map((增益) => {
+            // console.log('a.增益名称', a.增益名称)
+            if (增益.增益名称 === 当前奇穴.奇穴名称) {
+              return {
+                ...增益,
+                常驻增益: 当前奇穴?.奇穴加成类型 === '常驻',
+                增益启用开关: 当前奇穴?.奇穴加成类型 !== '无增益',
+              }
+            } else {
+              return { ...增益 }
+            }
+          }),
+        }
+      }
+    })
+
+    // 特殊处理镇机和承磊的连锁反应
+    if (res?.技能名称?.includes('断云势')) {
+      if (
+        全部奇穴信息?.some((item) => item.奇穴名称 === '承磊') &&
+        全部奇穴信息?.some((item) => item.奇穴名称 === '镇机')
+      ) {
+        res = {
+          ...res,
+          技能增益列表: res?.技能增益列表.map((a) => {
+            return a?.增益名称 === '镇机'
+              ? {
+                  ...a,
+                  增益集合: a?.增益集合?.map((b) => {
+                    return {
+                      ...b,
+                      增益数值: 0.9, // 6层承磊，每层15%
+                    }
+                  }),
+                }
+              : { ...a }
+          }),
+        }
+      }
+    }
+
+    return res
+  })
+
+  const 总孤峰次数 = trueCycle?.find((item) => item?.技能名称 === '孤锋破浪')?.技能数量 || 0
+
+  // 长溯 * 4
+  const 孤峰计算额外次数 = qixueData?.includes('长溯') ? 4 : 1
+
+  const 释放孤峰次数 = Math.floor((总孤峰次数 - 1) / 孤峰计算额外次数)
+
+  // 特殊处理界破
+  if (qixueData?.includes('界破')) {
+    // 说明已经计算过界破了
+    if (trueCycle?.some((item) => item.技能名称 === '界破')) {
+      trueCycle = [...trueCycle]
+    } else {
+      trueCycle = trueCycle.map((item) => {
+        if (item.技能名称 === '避实击虚') {
+          return { ...item, 技能数量: item.技能数量 + 释放孤峰次数 }
+        } else {
+          return { ...item }
+        }
+      })
+      trueCycle = [...trueCycle, { 技能名称: '界破', 技能数量: 释放孤峰次数 }]
+    }
+  }
+
+  // 特殊处理鸣锋
+  if (qixueData?.includes('鸣锋')) {
+    const 总横云次数 = trueCycle?.find((item) => item?.技能名称 === '横云断浪')?.技能数量 || 0
+
+    // 说明已经计算过界破了
+    if (trueCycle?.some((item) => item.技能名称 === '鸣锋')) {
+      trueCycle = [...trueCycle]
+    } else {
+      trueCycle = [...trueCycle, { 技能名称: '鸣锋', 技能数量: 释放孤峰次数 + 总横云次数 }]
+    }
+  }
+
+  return {
+    trueCycle: trueCycle,
+    trueSkillBasicData: newSkillBasicData,
+  }
+}
+
+const getAllQixueData = (qixueData: string[]): QixueDataDTO[] => {
+  const res: QixueDataDTO[] = []
+  奇穴数据.forEach((item) => {
+    const findData = item.奇穴列表?.find((a) => qixueData?.includes(a.奇穴名称))
+    if (findData) {
+      res.push(findData)
+    }
+  })
+  return res
 }

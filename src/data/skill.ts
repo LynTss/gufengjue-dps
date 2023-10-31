@@ -13,6 +13,15 @@ import gufengduanlangGainDTO from './skillGain/gufengduanlang'
 import chushiyuGainDTO from './skillGain/chushiyu'
 import bishijixuGainDTO from './skillGain/bishijixu'
 import { GainDpsTypeEnum, GainTypeEnum } from '@/@types/enum'
+import {
+  liuxue1GainDTO,
+  liuxue2GainDTO,
+  liuxue3GainDTO,
+  liuxue4GainDTO,
+  liuxue5GainDTO,
+  liuxue6GainDTO,
+} from './skillGain/liuxue'
+import { 属性系数 } from './constant'
 
 const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
   {
@@ -229,7 +238,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: liuxue1GainDTO,
   },
   {
     技能名称: '流血·二',
@@ -238,7 +247,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 2,
-    技能增益列表: commonGainDTO,
+    技能增益列表: liuxue2GainDTO,
   },
   {
     技能名称: '流血·三',
@@ -247,7 +256,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 3,
-    技能增益列表: commonGainDTO,
+    技能增益列表: liuxue3GainDTO,
   },
   {
     技能名称: '流血·四',
@@ -256,7 +265,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 4,
-    技能增益列表: commonGainDTO,
+    技能增益列表: liuxue4GainDTO,
   },
   {
     技能名称: '流血·五',
@@ -265,7 +274,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 5,
-    技能增益列表: commonGainDTO,
+    技能增益列表: liuxue5GainDTO,
   },
   {
     技能名称: '流血·六',
@@ -274,7 +283,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 6,
-    技能增益列表: commonGainDTO,
+    技能增益列表: liuxue6GainDTO,
   },
   {
     技能名称: '凝神势·破锋',
@@ -286,9 +295,18 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能增益列表: commonGainDTO,
   },
   {
+    技能名称: '鸣锋',
+    技能伤害系数: 1.1,
+    技能基础伤害_最小值: 76,
+    技能基础伤害_最大值: 81,
+    武器伤害系数: 1,
+    伤害计算次数: 1,
+    技能增益列表: commonGainDTO,
+  },
+  {
     技能名称: '破',
     // 技能伤害系数: 13.1925 * 0.48 * 1.05, // 修改过一次 原来没有1.05
-    技能伤害系数: 13.1925 * 0.48, // 修改过一次 原来没有1.05
+    技能伤害系数: 属性系数.破招基础系数 * 0.48, // 修改过一次 原来没有1.05
     技能基础伤害_最小值: 0,
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
@@ -311,7 +329,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
         增益集合: [
           {
             增益类型: GainTypeEnum.郭氏无视防御,
-            增益计算类型: GainDpsTypeEnum.B,
+            增益计算类型: GainDpsTypeEnum.A,
             增益数值: 1024,
           },
         ],
@@ -344,6 +362,24 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能伤害系数: 0,
     技能基础伤害_最小值: 3040,
     技能基础伤害_最大值: 3040,
+    武器伤害系数: 0,
+    伤害计算次数: 1,
+    技能增益列表: commonGainDTO,
+  },
+  {
+    技能名称: '潋风·携刃',
+    技能伤害系数: 0.9374916 * 1.1,
+    技能基础伤害_最小值: 78,
+    技能基础伤害_最大值: 88,
+    武器伤害系数: 0,
+    伤害计算次数: 1,
+    技能增益列表: commonGainDTO,
+  },
+  {
+    技能名称: '潋风·拓锋',
+    技能伤害系数: 1.874983 * 1.1,
+    技能基础伤害_最小值: 78,
+    技能基础伤害_最大值: 88,
     武器伤害系数: 0,
     伤害计算次数: 1,
     技能增益列表: commonGainDTO,

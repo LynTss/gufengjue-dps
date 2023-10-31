@@ -20,82 +20,82 @@ export interface IncomeDataDTO {
 // 用于收益计算的附魔
 export const IncomeFumo: IncomeDataDTO[] = [
   {
-    收益计算名称: EnchantNameEnum.攻击360,
+    收益计算名称: EnchantNameEnum.攻击398,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.基础攻击,
-        增益数值: 360,
+        增益数值: 398,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.力道179,
+    收益计算名称: EnchantNameEnum.力道198,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.力道,
-        增益数值: 179,
+        增益数值: 198,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.武伤540,
+    收益计算名称: EnchantNameEnum.武伤597,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.近战武器伤害,
-        增益数值: 540,
+        增益数值: 597,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.破防799,
+    收益计算名称: EnchantNameEnum.破防883,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻破防等级,
-        增益数值: +CommonEnchantNum.赛季799,
+        增益数值: +CommonEnchantNum.赛季883,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.无双799,
+    收益计算名称: EnchantNameEnum.无双883,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.无双等级,
-        增益数值: +CommonEnchantNum.赛季799,
+        增益数值: +CommonEnchantNum.赛季883,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.会心799,
+    收益计算名称: EnchantNameEnum.会心883,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心等级,
-        增益数值: +CommonEnchantNum.赛季799,
+        增益数值: +CommonEnchantNum.赛季883,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.会效799,
+    收益计算名称: EnchantNameEnum.会效883,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心效果等级,
-        增益数值: +CommonEnchantNum.赛季799,
+        增益数值: +CommonEnchantNum.赛季883,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.破招799,
+    收益计算名称: EnchantNameEnum.破招883,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.破招,
-        增益数值: +CommonEnchantNum.赛季799,
+        增益数值: +CommonEnchantNum.赛季883,
       },
     ],
   },
@@ -119,7 +119,7 @@ export const IncomeXiaochi: IncomeDataDTO[] = XIAOCHI_DATA.filter(
   (item) => item.小吃部位 === XiaochiTypeEnum.食品增强
 )
   .map((item) => {
-    const name = item?.小吃名称?.split('（')?.[1].split('）')?.[0]
+    const name = item?.小吃名称?.split('（')?.[1]?.split('）')?.[0]
     return {
       收益计算名称: `${name}`,
       增益集合: item?.增益集合,
