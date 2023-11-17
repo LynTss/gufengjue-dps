@@ -1,11 +1,12 @@
 import React from 'react'
 import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
-import { 判断是否开启力道加成奇穴, 判断是否开启无视防御奇穴 } from '@/data/qixue'
+import { 判断是否开启无视防御奇穴, 判断是否开启力道加成奇穴 } from '@/data/qixue'
 import { Zhenyan_DATA } from '@/data/zhenyan'
 import { useAppSelector } from '@/hooks'
 import { getDpsTime, getTrueCycleByName } from '@/utils/skill-dps'
 import { Select, SelectProps } from 'antd'
 import { ZhenyanGainDTO } from '@/@types/zhenyan'
+
 import './index.css'
 
 function ZhenyanXuanze(props: SelectProps) {
@@ -21,7 +22,7 @@ function ZhenyanXuanze(props: SelectProps) {
 
   const qixueData = useAppSelector((state) => state.basic.qixueData)
   const 开启力道加成 = 判断是否开启力道加成奇穴(qixueData)
-  const 开启流岚 = 判断是否开启无视防御奇穴(qixueData)
+  const 开启无视防御 = 判断是否开启无视防御奇穴(qixueData)
 
   const 展示的阵眼数组 = () => {
     let list: ZhenyanGainDTO[] = [...Zhenyan_DATA]
@@ -38,14 +39,23 @@ function ZhenyanXuanze(props: SelectProps) {
       })
 
       list.sort((a, b) => (b?.伤害提升百分比 || 0) - (a?.伤害提升百分比 || 0))
+      list = list.map((item, index) => {
+        // 只展示前三名
+        return index < 3
+          ? {
+              ...item,
+              伤害排名: index + 1,
+            }
+          : item
+      })
 
-      const obj = list.find((item) => item?.阵眼名称 === zengyixuanxiangData?.阵眼)
+      // const obj = list.find((item) => item?.阵眼名称 === zengyixuanxiangData?.阵眼)
 
-      list = list.filter((item) => item?.阵眼名称 !== zengyixuanxiangData?.阵眼)
+      // list = list.filter((item) => item?.阵眼名称 !== zengyixuanxiangData?.阵眼)
 
-      if (obj) {
-        list.unshift(obj)
-      }
+      // if (obj) {
+      // list.unshift(obj)
+      // }
     }
 
     return list
@@ -80,7 +90,7 @@ function ZhenyanXuanze(props: SelectProps) {
       zengyixuanxiangData: newZengyi,
       dpsTime: dpsTime,
       开启强膂: 开启力道加成,
-      开启流岚,
+      开启流岚: 开启无视防御,
     })
 
     return totalDps / dpsTime
@@ -96,7 +106,15 @@ function ZhenyanXuanze(props: SelectProps) {
             value={item.阵眼名称}
             label={item.阵眼名称}
           >
-            {item.阵眼名称}
+            <div className={'zhenyan-option-text'}>
+              {item.伤害排名 ? (
+                <img
+                  className={`zhenyan-paiming`}
+                  src={require(`../../../../assets/paiming/paiming-${item.伤害排名}.png`)}
+                />
+              ) : null}
+              {item.阵眼名称}
+            </div>
             {item.伤害提升百分比 ? (
               <span
                 className={`zhenyan-baifenbi ${

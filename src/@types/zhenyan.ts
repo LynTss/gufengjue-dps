@@ -22,6 +22,10 @@ export interface ZhenyanGainDTO {
    * @name 伤害是否提升
    */
   伤害是否提升?: boolean
+  /**
+   * @name 伤害排名
+   */
+  伤害排名?: number
 }
 
 export interface ZengyanZengyiData extends SKillGainData {
