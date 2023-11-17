@@ -59,7 +59,7 @@ const DpsKernelOptimizer = ({
     })
 
     // 由于dps太大，导致用1除灰远小于计算容差，所以这里取一个较大的值去除以最终结果。以达到dps越大最终结果越小的目的，用于算法计算
-    return 100000000 / totalDps
+    return 100000 / totalDps
   }
 
   const maxObj = optimizationTool({ getDpsFunction, initialGuess: [0.3, 0.8], tol: 1e-12 })
@@ -107,6 +107,10 @@ const getNewCharacterData = (basicDTO: CharacterFinalDTO, 会心比例, 无双�
       无双值: 0,
       破招值: 0,
     }
+    新会心值 = 0
+    新破防值 = 0
+    新无双值 = 0
+    新破招值 = 0
   }
 
   return {

@@ -1,3 +1,41 @@
-.zengyi-wrapper {
-  padding: 16px 24px;
+.zhenyan-option .ant-select-item-option-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ant-select-selection-item .zhenyan-baifenbi,
+.ant-select-selection-item .zhenyan-paiming {
+  display: none;
+}
+
+.zhenyan-baifenbi {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.85)
+}
+
+.zhenyan-up {
+  color: #2AC88F
+}
+
+.zhenyan-down {
+  color: #F34242;
+}
+
+.zhenyan-option-text {
+  display: flex;
+  align-items: center;
+}
+
+.zhenyan-paiming {
+  display: block;
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+  /* overflow: hidden; */
+}
+
+.zhenyan-paiming-1 {
+  background-position: 20px 20px;
 }

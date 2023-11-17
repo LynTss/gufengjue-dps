@@ -11,7 +11,7 @@ import { SkillBasicDTO, SKillGainData } from '@/@types/skill'
 import { skillFinalDps } from '@/utils/skill-dps'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { Zhenyan_DATA } from '@/data/zhenyan'
-import { 加成系数 } from '@/data/constant'
+import { 加成系数, 属性系数 } from '@/data/constant'
 import XIAOCHI_DATA from '@/data/xiaochi'
 import ZhuangbeiGainList from '@/data/zhuangbei/zhuangbeiGain'
 import { 获取力道奇穴加成后面板 } from '@/data/qixue'
@@ -450,7 +450,7 @@ export const geSkillTotalDps = (
 
   最终人物属性 = {
     ...最终人物属性,
-    无双值: 最终人物属性.无双值 + Math.floor((最终人物属性.无双值 * 计算郭氏无双等级) / 1024),
+    无双值: 最终人物属性.无双值 + Math.floor((属性系数.无双 * 计算郭氏无双等级) / 1024),
     破防值: 最终人物属性.破防值 + Math.floor((最终人物属性.破防值 * 计算郭氏破防等级) / 1024),
     基础攻击: 最终人物属性.基础攻击 + Math.floor((最终人物属性.基础攻击 * 计算郭氏基础攻击) / 1024),
     面板攻击: 最终人物属性.面板攻击 + Math.floor((最终人物属性.基础攻击 * 计算郭氏基础攻击) / 1024),
