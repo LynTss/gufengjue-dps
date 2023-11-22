@@ -71,7 +71,6 @@ function CharacterShow() {
     characterFinalData,
     qixueData,
     skillBasicData,
-    characterFinalData,
     currentTarget,
     zengyiQiyong,
     zengyixuanxiangData,

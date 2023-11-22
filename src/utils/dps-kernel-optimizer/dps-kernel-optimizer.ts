@@ -107,6 +107,10 @@ const getNewCharacterData = (basicDTO: CharacterFinalDTO, 会心比例, 无双�
       无双值: 0,
       破招值: 0,
     }
+    新会心值 = 0
+    新破防值 = 0
+    新无双值 = 0
+    新破招值 = 0
   }
 
   return {

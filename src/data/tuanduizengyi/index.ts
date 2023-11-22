@@ -166,7 +166,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
     覆盖率: 100,
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
+        增益计算类型: GainDpsTypeEnum.C,
         增益类型: GainTypeEnum.伤害百分比,
         增益数值: 0.02,
       },
@@ -178,7 +178,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
     覆盖率: 100,
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
+        增益计算类型: GainDpsTypeEnum.C,
         增益类型: GainTypeEnum.伤害百分比,
         增益数值: 0.06,
       },

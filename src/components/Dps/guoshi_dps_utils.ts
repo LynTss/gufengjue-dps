@@ -11,7 +11,7 @@ import { SkillBasicDTO, SKillGainData } from '@/@types/skill'
 import { skillFinalDps } from '@/utils/skill-dps'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { Zhenyan_DATA } from '@/data/zhenyan'
-import { 加成系数 } from '@/data/constant'
+import { 加成系数, 属性系数 } from '@/data/constant'
 import XIAOCHI_DATA from '@/data/xiaochi'
 import ZhuangbeiGainList from '@/data/zhuangbei/zhuangbeiGain'
 import { 获取力道奇穴加成后面板 } from '@/data/qixue'
@@ -304,6 +304,8 @@ export const geSkillTotalDps = (
   let 计算目标 = 当前目标
   let 计算技能增伤 = 1
   let 计算技能增伤_B类 = 1
+  let 计算技能增伤_C类 = 1
+  let 计算技能增伤_D类 = 1
   let 计算郭氏额外会效果值 = 0
   let 计算额外会心率 = 0
   let 计算郭式无视防御 = 0
@@ -439,18 +441,25 @@ export const geSkillTotalDps = (
 
   // 再计算独立增益集合
   当前技能计算增益集合
-    .filter((item) => item.增益计算类型 === GainDpsTypeEnum.B)
+    .filter((item) =>
+      [GainDpsTypeEnum.B, GainDpsTypeEnum.C, GainDpsTypeEnum.D]?.includes(item.增益计算类型)
+    )
     .forEach((增益数值信息) => {
-      const { 计算后技能增伤 } = switchGain_B(增益数值信息, 计算技能增伤_B类)
-      计算技能增伤_B类 = 计算后技能增伤
+      if (增益数值信息.增益计算类型 === GainDpsTypeEnum.B) {
+        计算技能增伤_B类 = switchGain_独立增伤(增益数值信息, 计算技能增伤_B类)?.计算后技能增伤
+      } else if (增益数值信息.增益计算类型 === GainDpsTypeEnum.C) {
+        计算技能增伤_C类 = switchGain_独立增伤(增益数值信息, 计算技能增伤_C类)?.计算后技能增伤
+      } else if (增益数值信息.增益计算类型 === GainDpsTypeEnum.D) {
+        计算技能增伤_D类 = switchGain_独立增伤(增益数值信息, 计算技能增伤_D类)?.计算后技能增伤
+      }
     })
 
-  // 将AB类技能增伤相乘
-  计算技能增伤 = 计算技能增伤 * 计算技能增伤_B类
+  // 将ABCD类技能增伤相乘
+  计算技能增伤 = 计算技能增伤 * 计算技能增伤_B类 * 计算技能增伤_C类 * 计算技能增伤_D类
 
   最终人物属性 = {
     ...最终人物属性,
-    无双值: 最终人物属性.无双值 + Math.floor((最终人物属性.无双值 * 计算郭氏无双等级) / 1024),
+    无双值: 最终人物属性.无双值 + Math.floor((属性系数.无双 * 计算郭氏无双等级) / 1024),
     破防值: 最终人物属性.破防值 + Math.floor((最终人物属性.破防值 * 计算郭氏破防等级) / 1024),
     基础攻击: 最终人物属性.基础攻击 + Math.floor((最终人物属性.基础攻击 * 计算郭氏基础攻击) / 1024),
     面板攻击: 最终人物属性.面板攻击 + Math.floor((最终人物属性.基础攻击 * 计算郭氏基础攻击) / 1024),
@@ -640,9 +649,9 @@ export const switchGain_A = (
 /**
  * 计算不同的增益对属性、技能增伤的影响
  * 返回最终参与技能伤害计算的人物属性、技能增伤等数据
- * 计算B类增益，所有增益相加，结果和A类相乘
+ * 分别计算BCD类增益，同类增益相加，结果和A类相乘
  */
-export const switchGain_B = (增益: SKillGainData, B类增伤: number) => {
+export const switchGain_独立增伤 = (增益: SKillGainData, B类增伤: number) => {
   const { 增益数值, 增益类型 } = 增益
   let 计算后技能增伤 = B类增伤
   switch (增益类型) {
