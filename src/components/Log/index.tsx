@@ -50,7 +50,10 @@ function Log() {
                   })
                 : log_data?.[0].content}
             </div>
-            <span className="log-version">{log_data?.[0].version}</span>
+            <div className="log-right">
+              <p className="log-version">{log_data?.[0].version}</p>
+              <p className="log-date">{log_data?.[0].date || '-'}</p>
+            </div>
           </Timeline.Item>
         </Timeline>
       </Modal>

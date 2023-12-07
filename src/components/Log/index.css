@@ -20,11 +20,11 @@
   color: #ddd;
 }
 
-.log-modal .ant-modal-body{
+.log-modal .ant-modal-body {
   min-height: 400px;
 }
 
-.log-line .ant-timeline-item-content{
+.log-line .ant-timeline-item-content {
   top: -6px;
   display: flex;
   justify-content: space-between;
@@ -34,9 +34,21 @@
   flex: 1;
 }
 
+.log-right {
+  line-height: 20px;
+  font-size: 14px;
+  width: 150px;
+  ;
+  text-align: right;
+}
+
 .log-version {
   min-width: 80px;
   text-align: right;
   font-weight: 700;
   color: var(--ant-primary-color);
+}
+
+.log-date {
+  color: #666;
 }

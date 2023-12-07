@@ -217,7 +217,9 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.无视防御,
-        增益数值: 1529,
+        // 增益数值: 1529,
+        增益数值: 1397, // 奇穴描述是33%实际只有1397。好一个策划
+        // 破风1150 劲风1397 乘龙箭102 立地30 虚弱51
       },
     ],
   },
