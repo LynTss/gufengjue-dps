@@ -77,7 +77,10 @@ function Log() {
                       })
                     : item.content}
                 </div>
-                <span className="log-version">{item.version}</span>
+                <div className="log-right">
+                  <p className="log-version">{item.version}</p>
+                  <p className="log-date">{item.date || '-'}</p>
+                </div>
               </Timeline.Item>
             )
           })}
