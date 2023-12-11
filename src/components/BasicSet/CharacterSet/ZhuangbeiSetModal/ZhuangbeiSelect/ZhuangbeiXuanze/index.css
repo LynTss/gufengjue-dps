@@ -35,3 +35,15 @@
 .zhuangbei-select-level {
   color: #333;
 }
+
+.zhuangbei-diff {
+  margin-right: 8px;
+}
+
+.zhuangbei-down {
+  color: #F34242;
+}
+
+.zhuangbei-up {
+  color: #2AC88F;
+}

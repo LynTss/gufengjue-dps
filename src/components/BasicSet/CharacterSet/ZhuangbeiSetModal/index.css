@@ -1,6 +1,7 @@
 .zhuangbei-input-set-modal .ant-form-item {
   margin-bottom: 12px;
 }
+
 .zhuangbei-input-set-modal .ant-modal-body {
   padding: 16px 24px;
 }
@@ -40,6 +41,19 @@
 
 .zhuangbei-form-left-1 {
   width: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.zhuangbei-diff-btn {
+  margin-left: 8px;
+}
+
+.zhuangbei-diff-tip {
+  font-size: 14px;
+  color: #666;
+  margin-left: 8px;
 }
 
 .zhuangbei-form-left-2 {
@@ -67,7 +81,7 @@
   padding-left: 8px;
 }
 
-.zhuangbei-form-set-btn{
+.zhuangbei-form-set-btn {
   margin-left: 8px;
 }
 
@@ -89,7 +103,7 @@
   position: relative;
 }
 
-.zhuangbei-input-set-modal-form-qianglv {
+.zhuangbei-input-set-modal-form-luling {
   position: absolute;
   top: -37px;
   right: 0px;
@@ -99,7 +113,7 @@
   margin-bottom: 16px;
 }
 
-.dps-diff-item + .dps-diff-item {
+.dps-diff-item+.dps-diff-item {
   margin: 0;
 }
 
@@ -107,7 +121,9 @@
   padding-top: 16px;
 }
 
-.dps-diff-title,.time-label-title,.zhuangbei-zengyi-title {
+.dps-diff-title,
+.time-label-title,
+.zhuangbei-zengyi-title {
   font-size: 14px;
   color: var(--ant-primary-color);
   font-weight: 700;
@@ -122,7 +138,8 @@
   color: #666;
   text-align: center;
   border: 1px solid #d9d9d9;
-  border-radius: 8px;;
+  border-radius: 8px;
+  ;
 }
 
 .dps-diff-dps.dps-diff-up {
@@ -162,6 +179,6 @@
   justify-content: space-between;
 }
 
-.zhuangbei-input-set-modal-title .ant-btn + .ant-btn {
+.zhuangbei-input-set-modal-title .ant-btn+.ant-btn {
   margin-left: 8px;
 }

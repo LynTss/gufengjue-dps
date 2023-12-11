@@ -6,7 +6,7 @@ import { guoshiXishuBasic, guoshiResult, guoshiBasic } from './help'
  */
 import { CharacterFinalDTO, TargetDTO } from '@/@types/character'
 import { SkillBasicDTO } from '@/@types/skill'
-import { 属性系数, 每等级减伤, 非侠系数 } from '@/data/constant'
+import { 属性系数, 每等级减伤 } from '@/data/constant'
 import { guoshiFangyu, guoshiPofang } from './help'
 import All_Cycle_Data from '@/data/skillCycle'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
@@ -92,7 +92,7 @@ export const skillFinalDpsFunction = (
   // 无双增伤
   const r_wushuang = skillWushuangDps(r_dengjijianshang, characterConfig)
   // 非侠增伤
-  const r_feixia = r_wushuang * 非侠系数
+  const r_feixia = r_wushuang
 
   return Math.floor(r_feixia)
 }
@@ -149,18 +149,6 @@ export const getDpsTime = (
   const currentCycleConfig = All_Cycle_Data.find((item) => item.name === trueCurrentCycleName)
   const 增益加速等级 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
   const 加速等级 = 获取加速等级(characterFinalData.加速值 + 增益加速等级)
-  // 暂时去除加速对延迟的计算，加速等级不够1断直接加帧
-
-  // if (currentCycleConfig) {
-  //   let 总帧数 = 0
-  //   currentCycleConfig.cycleList.forEach((item) => {
-  //     const 循环帧 =
-  //       (item.循环完整帧数 - item.计算技能数 * (加速等级 - network * 0.5)) * item.循环次数
-  //     总帧数 = 总帧数 + 循环帧
-  //   })
-  //   time = 总帧数 / 16 + 18
-  // }
-  // return time
 
   if (currentCycleConfig) {
     let 总帧数 = 0
@@ -217,20 +205,62 @@ export const getTrueCycleName = (
   return currentCycleName
 }
 
-export const getTrueCycleByName = (
+export const 获取实际循环 = (
   currentCycleName: string,
   currentCycle: CycleDTO[],
   characterFinalData: CharacterFinalDTO,
-  qixueData: string[],
-  skillBasicData: SkillBasicDTO[]
+  qixueData: string[]
 ) => {
   let trueCycle = [...currentCycle]
-  let newSkillBasicData = [...skillBasicData]
   // 旧版大CW周流区别
   if (characterFinalData?.装备增益?.大橙武特效 && currentCycleName?.includes('周流')) {
     const trueName = `${currentCycleName}_cw`
     trueCycle = All_Cycle_Data?.find((item) => item.name === trueName)?.cycle || currentCycle
   }
+
+  const 总孤峰次数 = trueCycle?.find((item) => item?.技能名称 === '孤锋破浪')?.技能数量 || 0
+
+  // 长溯 * 4
+  const 孤峰计算额外次数 = qixueData?.includes('长溯') ? 4 : 1
+
+  const 释放孤峰次数 = Math.floor((总孤峰次数 - 1) / 孤峰计算额外次数)
+
+  // 特殊处理界破
+  if (qixueData?.includes('界破')) {
+    // 说明已经计算过界破了
+    if (trueCycle?.some((item) => item.技能名称 === '界破')) {
+      trueCycle = [...trueCycle]
+    } else {
+      trueCycle = trueCycle.map((item) => {
+        if (item.技能名称 === '避实击虚') {
+          return { ...item, 技能数量: item.技能数量 + 释放孤峰次数 }
+        } else {
+          return { ...item }
+        }
+      })
+      trueCycle = [...trueCycle, { 技能名称: '界破', 技能数量: 释放孤峰次数 }]
+    }
+  }
+
+  // 特殊处理鸣锋
+  if (qixueData?.includes('鸣锋')) {
+    const 总横云次数 = trueCycle?.find((item) => item?.技能名称 === '横云断浪')?.技能数量 || 0
+
+    // 说明已经计算过界破了
+    if (trueCycle?.some((item) => item.技能名称 === '鸣锋')) {
+      trueCycle = [...trueCycle]
+    } else {
+      trueCycle = [...trueCycle, { 技能名称: '鸣锋', 技能数量: 释放孤峰次数 + 总横云次数 }]
+    }
+  }
+  return trueCycle
+}
+
+export const 根据奇穴处理技能的基础增益信息 = (
+  skillBasicData: SkillBasicDTO[],
+  qixueData: string[]
+) => {
+  let newSkillBasicData = [...skillBasicData]
 
   // 根据奇穴类型处理各类循环
   const 全部奇穴信息: QixueDataDTO[] = getAllQixueData(qixueData)
@@ -310,46 +340,7 @@ export const getTrueCycleByName = (
     return res
   })
 
-  const 总孤峰次数 = trueCycle?.find((item) => item?.技能名称 === '孤锋破浪')?.技能数量 || 0
-
-  // 长溯 * 4
-  const 孤峰计算额外次数 = qixueData?.includes('长溯') ? 4 : 1
-
-  const 释放孤峰次数 = Math.floor((总孤峰次数 - 1) / 孤峰计算额外次数)
-
-  // 特殊处理界破
-  if (qixueData?.includes('界破')) {
-    // 说明已经计算过界破了
-    if (trueCycle?.some((item) => item.技能名称 === '界破')) {
-      trueCycle = [...trueCycle]
-    } else {
-      trueCycle = trueCycle.map((item) => {
-        if (item.技能名称 === '避实击虚') {
-          return { ...item, 技能数量: item.技能数量 + 释放孤峰次数 }
-        } else {
-          return { ...item }
-        }
-      })
-      trueCycle = [...trueCycle, { 技能名称: '界破', 技能数量: 释放孤峰次数 }]
-    }
-  }
-
-  // 特殊处理鸣锋
-  if (qixueData?.includes('鸣锋')) {
-    const 总横云次数 = trueCycle?.find((item) => item?.技能名称 === '横云断浪')?.技能数量 || 0
-
-    // 说明已经计算过界破了
-    if (trueCycle?.some((item) => item.技能名称 === '鸣锋')) {
-      trueCycle = [...trueCycle]
-    } else {
-      trueCycle = [...trueCycle, { 技能名称: '鸣锋', 技能数量: 释放孤峰次数 + 总横云次数 }]
-    }
-  }
-
-  return {
-    trueCycle: trueCycle,
-    trueSkillBasicData: newSkillBasicData,
-  }
+  return newSkillBasicData
 }
 
 const getAllQixueData = (qixueData: string[]): QixueDataDTO[] => {

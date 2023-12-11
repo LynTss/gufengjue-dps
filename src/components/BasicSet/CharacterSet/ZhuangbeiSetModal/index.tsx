@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Form, Modal, Tooltip } from 'antd'
+import { Button, Checkbox, Form, Modal, Tooltip } from 'antd'
 
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import {
@@ -9,21 +9,19 @@ import {
 } from '@/store/basicReducer'
 import { EquipmentCharacterPositionEnum } from '@/@types/enum'
 import { 属性系数 } from '@/data/constant'
-import { getDpsTime, getTrueCycleByName, getZengyiJiasu } from '@/utils/skill-dps'
+import { getZengyiJiasu } from '@/utils/skill-dps'
 import { setSkillBasicData } from '@/store/zengyiReducer'
 import ValueCheckBox from '@/components/common/ValueCheckBox'
-import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
 
 import { getFinalCharacterBasicDataByEquipment } from '../util'
 import { getNewEquipmentData, getSkillCycleGainData } from './utils'
-// import { 驭耀英雄平民, 周流英雄平民, 周流英雄切糕 } from './peizhuangfangan'
 import ZhuangBeiZengYiTip from './ZhuangBeiZengYiTip'
 import ZhuangbeiSelect from './ZhuangbeiSelect'
 import WuCaiShiXuanZe from './WuCaiShiXuanZe'
 import MohedaoruModal from './MohedaoruModal'
-// import MaxDpsFunc from './MaxDpsFunc'
 import { CharacterFinalDTO } from '@/@types/character'
-import { 判断是否开启力道加成奇穴, 判断是否开启无视防御奇穴 } from '@/data/qixue'
+import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
+import { QuestionCircleOutlined } from '@ant-design/icons'
 import './index.css'
 
 function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
@@ -32,23 +30,18 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
   const dispatch = useAppDispatch()
   const equipmentBasicData = useAppSelector((state) => state?.basic?.equipmentBasicData)
   const currentDps = useAppSelector((state) => state?.basic?.currentDps)
-  const network = useAppSelector((state) => state?.basic?.network)
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
-  const currentCycle = useAppSelector((state) => state?.basic?.currentCycle)
-  const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
-  const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
   const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
   const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
-
-  const qixueData = useAppSelector((state) => state.basic.qixueData)
-  const isOpenQiangLv = 判断是否开启力道加成奇穴(qixueData)
-  const 开启流岚 = 判断是否开启无视防御奇穴(qixueData)
 
   const [zhuangbeizengyi, setZhuangbeizengyi] = useState<any>()
   const [默认镶嵌宝石等级, 设置默认镶嵌宝石等级] = useState<number>(8)
   const [afterDps, setAfterDps] = useState<number>(0)
   const [加速, 设置加速] = useState<number | null>(null)
   const [moHeDaoRuVisible, setMoHeDaoRuVisible] = useState(false)
+
+  // 开启智能装备对比
+  const [openEquipmentDiff, setOpenEquipmentDiff] = useState<boolean>(false)
 
   useEffect(() => {
     if (equipmentBasicData && visible) {
@@ -215,6 +208,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         },
       }
       const 增益加速 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
+
       设置加速(final.加速值 + 增益加速)
       setZhuangbeizengyi({
         套装双会: data.套装会心会效,
@@ -228,63 +222,25 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         切糕无双: data.切糕无双 || data.切糕无双_2,
         冬至套装: data?.冬至套装,
       })
-      let newSkillBasicData = skillBasicData
 
-      newSkillBasicData = getSkillCycleGainData(
-        skillBasicData,
-        data.套装技能,
-        data.大橙武特效,
-        data.小橙武特效
+      const { dpsPerSecond } = dispatch(
+        currentDpsFunction({
+          更新角色面板: final,
+          更新技能基础数据: getSkillCycleGainData(
+            skillBasicData,
+            data.套装技能,
+            data.大橙武特效,
+            data.小橙武特效
+          ),
+        })
       )
 
-      const dpsTime = getDpsTime(
-        currentCycleName,
-        final,
-        network,
-        zengyiQiyong,
-        zengyixuanxiangData
-      )
-
-      const { trueCycle, trueSkillBasicData } = getTrueCycleByName(
-        currentCycleName,
-        currentCycle,
-        final,
-        qixueData,
-        newSkillBasicData
-      )
-      const { totalDps } = getDpsTotal({
-        currentCycle: trueCycle,
-        characterFinalData: final,
-        当前目标: currentTarget,
-        skillBasicData: trueSkillBasicData,
-        zengyiQiyong,
-        zengyixuanxiangData,
-        dpsTime,
-        开启强膂: isOpenQiangLv,
-        开启流岚,
-      })
-      console.log('战斗时间', dpsTime)
-      setAfterDps(Math.floor(totalDps / dpsTime))
+      setAfterDps(dpsPerSecond)
     } catch (_) {
       设置加速(null)
       setAfterDps(0)
     }
   }
-
-  // const 装备推荐列表 = [
-  //   {
-  //     label: '驭耀英雄平民',
-  //     data: 驭耀英雄平民,
-  //   },
-  //   {
-  //     label: '周流英雄平民',
-  //     data: 周流英雄平民,
-  //   },
-  //   {
-  //     label: '周流英雄切糕',
-  //     data: 周流英雄切糕,
-  //   },
-  // ]
 
   // 导入魔盒配装数据
   const mohedaoru = (e) => {
@@ -303,66 +259,6 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
               体服目前只能2段加速，1段基本无法稳定打出拓锋。暂无cw循环
             </span>
           </span>
-          {/* <span className="zhuangbei-input-peizhuangtuijian">
-            <Button
-              // disabled
-              size="small"
-              type="primary"
-              danger
-              onClick={() => {
-                Modal.confirm({
-                  title: '警告',
-                  content:
-                    '本模式可能会造成蓝屏，黑屏等不可控现象，对自己电脑没自信的请勿打开，如果因此产生数据或硬件损失本人概不负责。由于浏览器算力限制，当前算法固定4件套+特效腰坠武器，仅供娱乐。切勿当真。这可能需要几分钟。',
-                  type: 'warning',
-                  onOk() {
-                    MaxDpsFunc({
-                      skillBasicData,
-                      currentCycle,
-                      currentCycleName,
-                      currentTarget,
-                      zengyixuanxiangData,
-                      zengyiQiyong,
-                      network,
-                      equipmentBasicData,
-                      withWufeng: true,
-                      qixueData,
-                    })
-                  },
-                })
-              }}
-            >
-              智能推荐
-            </Button>
-            <Button
-              size="small"
-              type="primary"
-              danger
-              onClick={() => {
-                Modal.confirm({
-                  title: '警告',
-                  content:
-                    '本模式可能会造成蓝屏，黑屏等不可控现象，对自己电脑没自信的请勿打开，如果因此产生数据或硬件损失本人概不负责。由于浏览器算力限制，当前算法固定4件套+特效腰坠武器，仅供娱乐。切勿当真。这可能需要几分钟。',
-                  type: 'warning',
-                  onOk() {
-                    MaxDpsFunc({
-                      skillBasicData,
-                      currentCycle,
-                      currentCycleName,
-                      currentTarget,
-                      zengyixuanxiangData,
-                      zengyiQiyong,
-                      network,
-                      equipmentBasicData,
-                      qixueData,
-                    })
-                  },
-                })
-              }}
-            >
-              智能推荐-过滤无封
-            </Button>
-          </span> */}
         </div>
       }
       className={'zhuangbei-input-set-modal'}
@@ -383,6 +279,16 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
       <div className="zhuangbei-form-header">
         <div className="zhuangbei-form-left-1">
           <h1 className="zhuangbei-form-title">装备</h1>
+          <Checkbox
+            checked={openEquipmentDiff}
+            onChange={(e) => setOpenEquipmentDiff(e?.target?.checked)}
+            className={'zhuangbei-diff-btn'}
+          >
+            智能对比
+            <Tooltip title="对比默认精炼等级下切换至另一件装备dps波动。考虑性能当前仅放出12800+品装备及精简。如使用卡顿请及时反馈">
+              <QuestionCircleOutlined className={'zhuangbei-diff-tip'} />
+            </Tooltip>
+          </Checkbox>
         </div>
         <div className="zhuangbei-form-left-2">
           <h1 className="zhuangbei-form-title">精炼</h1>
@@ -434,7 +340,13 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
             const data = EquipmentCharacterPositionEnum[item]
             return (
               <Form.Item label={data} name={`${data}${item}`} key={`${data}${item}`}>
-                <ZhuangbeiSelect 默认镶嵌宝石等级={默认镶嵌宝石等级} type={data} indexKey={item} />
+                <ZhuangbeiSelect
+                  form={form}
+                  默认镶嵌宝石等级={默认镶嵌宝石等级}
+                  type={data}
+                  indexKey={item}
+                  openEquipmentDiff={openEquipmentDiff}
+                />
               </Form.Item>
             )
           })}

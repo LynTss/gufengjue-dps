@@ -3,6 +3,18 @@ import { SkillGainDTO } from '../../@types/skill'
 
 const commonGainDTO: SkillGainDTO[] = [
   {
+    增益名称: '非侠',
+    增益所在位置: '职业',
+    常驻增益: true,
+    增益集合: [
+      {
+        增益类型: GainTypeEnum.伤害百分比,
+        增益计算类型: GainDpsTypeEnum.D,
+        增益数值: 0.09,
+      },
+    ],
+  },
+  {
     增益名称: '灭影随风',
     增益所在位置: '技能',
     增益启用开关: true,

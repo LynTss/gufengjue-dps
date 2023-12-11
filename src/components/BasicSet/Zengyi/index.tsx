@@ -2,10 +2,10 @@ import { useAppDispatch, useAppSelector } from '@/hooks'
 import { setZengyixuanxiangData, setZengyiQiyong } from '@/store/zengyiReducer'
 import { Checkbox } from 'antd'
 import React from 'react'
-import './index.css'
 import TuanduiZengyiXuanze from './TuanduiZengyiXuanze'
 import XiaochiXuanze from './XiaochiXuanze'
 import ZhenyanXuanze from './ZhenyanXuanze'
+import './index.css'
 
 function Zengyi({ getDpsFunction }) {
   const dispatch = useAppDispatch()

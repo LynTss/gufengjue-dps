@@ -9,7 +9,7 @@ import {
   判断是否开启无视防御奇穴,
   获取力道奇穴加成后面板,
 } from '@/data/qixue'
-import { getTrueCycleByName } from '@/utils/skill-dps'
+import { 根据奇穴处理技能的基础增益信息, 获取实际循环 } from '@/utils/skill-dps'
 import DpsKernelOptimizer from '@/utils/dps-kernel-optimizer'
 import { QuestionCircleOutlined } from '@ant-design/icons'
 
@@ -31,7 +31,7 @@ function CharacterShow() {
 
   const [openBFGS, setOpenBFGS] = useState<boolean>(false)
 
-  const mapKeyList = ['力道', '攻击力', '会心', '会心效果', '破防', '无双', '破招', '加速']
+  const mapKeyList = ['力道', '攻击', '会心', '会效', '破防', '无双', '破招', '加速']
 
   const showData = isOpenQiangLv
     ? 获取力道奇穴加成后面板(characterFinalData, isOpenQiangLv)
@@ -41,14 +41,12 @@ function CharacterShow() {
     if (!openBFGS) {
       return {}
     }
+
     // 获取实际循环
-    const { trueCycle, trueSkillBasicData } = getTrueCycleByName(
-      currentCycleName,
-      currentCycle,
-      characterFinalData,
-      qixueData,
-      skillBasicData
-    )
+    const trueCycle = 获取实际循环(currentCycleName, currentCycle, characterFinalData, qixueData)
+
+    // 获取实际循环
+    const trueSkillBasicData = 根据奇穴处理技能的基础增益信息(skillBasicData, qixueData)
 
     if (characterFinalData?.力道) {
       const res = DpsKernelOptimizer({
@@ -82,7 +80,12 @@ function CharacterShow() {
   return (
     <div className={'character-show'}>
       <div className={'character-title-wrapper'}>
-        <h1 className={'character-title'}>角色属性</h1>
+        <h1 className={'character-title'}>
+          角色属性
+          <Tooltip title="增益、切糕、大附魔的数值加成暂未体现在面板显示，不影响计算">
+            <QuestionCircleOutlined className={'character-max-title-tip'} />
+          </Tooltip>
+        </h1>
         <Checkbox checked={openBFGS} onChange={(e) => setOpenBFGS(e?.target?.checked)}>
           优化算法
           <Tooltip title="采用拟牛顿法对属性做优化演算，仅能代表在当前已穿装备总属性容量不变的情况下的，各属性近似最优收益方向。仅作参考，开启后会消耗额外性能。">
@@ -125,11 +128,11 @@ const getCharacterData = (key: string, characterFinalData: CharacterFinalDTO) =>
   switch (key) {
     case '力道':
       return characterFinalData.力道 || 0
-    case '攻击力':
+    case '攻击':
       return characterFinalData.面板攻击 || 0
     case '会心':
       return ((characterFinalData.会心值 / 属性系数.会心) * 100).toFixed(2) + `%`
-    case '会心效果':
+    case '会效':
       return ((characterFinalData.会心效果值 / 属性系数.会效) * 100 + 175).toFixed(2) + `%`
     case '破防':
       return ((characterFinalData.破防值 / 属性系数.破防) * 100).toFixed(2) + `%`
@@ -164,11 +167,11 @@ const getCharacterDataNumber = (key: string, characterFinalData: CharacterFinalD
   switch (key) {
     case '力道':
       return characterFinalData.力道 || 0
-    case '攻击力':
+    case '攻击':
       return characterFinalData.面板攻击 || 0
     case '会心':
       return characterFinalData.会心值
-    case '会心效果':
+    case '会效':
       return characterFinalData.会心效果值
     case '破防':
       return characterFinalData.破防值

@@ -68,7 +68,7 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
         </Button>
       </h1>
       <div className="common-item">
-        <h1 className="common-label">当前目标</h1>
+        <h1 className="common-label">目标</h1>
         <div className="common-content">
           <Select
             className="current-boss"
@@ -88,7 +88,7 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
         </div>
       </div>
       <div className="common-item">
-        <h1 className="common-label">当前循环</h1>
+        <h1 className="common-label">循环</h1>
         <div className="common-content">
           <Select
             value={currentCycleName}
@@ -110,7 +110,7 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
         </div>
       </div>
       <div className="common-item">
-        <h1 className="common-label">网络延迟</h1>
+        <h1 className="common-label">延迟</h1>
         <div className="common-content">
           <Select value={network} onChange={handleChangeNetwork}>
             {延迟设定.map((item) => {

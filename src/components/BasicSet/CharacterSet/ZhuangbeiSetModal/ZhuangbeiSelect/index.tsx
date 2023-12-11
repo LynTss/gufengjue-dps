@@ -22,10 +22,12 @@ interface ZhuangbeiSelectProps {
   type: EquipmentPositionEnum
   indexKey: string
   默认镶嵌宝石等级: number
+  form: any
+  openEquipmentDiff: boolean
 }
 
 function ZhuangbeiSelect(props: ZhuangbeiSelectProps, ref) {
-  const { value, onChange, type, 默认镶嵌宝石等级, indexKey } = props
+  const { value, onChange, type, 默认镶嵌宝石等级, indexKey, form, openEquipmentDiff } = props
 
   const list: EquipmentDTO[] = useMemo(() => {
     return ZUANGBEI_DATA[type] || []
@@ -94,10 +96,14 @@ function ZhuangbeiSelect(props: ZhuangbeiSelectProps, ref) {
       <div className="zhuangbei-form-item-left-1">
         <ZhuangbeiXuanze
           value={value?.id}
+          allValue={value}
           onChange={onZhuangbeiSelect}
           list={list}
           type={type}
           indexKey={indexKey}
+          默认镶嵌宝石等级={默认镶嵌宝石等级}
+          form={form}
+          openEquipmentDiff={openEquipmentDiff}
         />
       </div>
       <div className="zhuangbei-form-item-left-2">

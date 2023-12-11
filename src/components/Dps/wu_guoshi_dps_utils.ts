@@ -1,5 +1,5 @@
 // !收益采用非郭式算法
-import { 每等级减伤, 非侠系数 } from '@/data/constant'
+import { 每等级减伤 } from '@/data/constant'
 import { TargetDTO } from '@/@types/character'
 import { CharacterFinalDTO } from '@/@types/character'
 import { CycleDTO } from '@/@types/cycle'
@@ -460,7 +460,7 @@ export const skillFinalDpsFunction = (
   // 无双增伤
   const r_wushuang = skillWushuangDps(r_dengjijianshang, characterConfig)
   // 非侠增伤
-  const r_feixia = r_wushuang * 非侠系数
+  const r_feixia = r_wushuang
 
   return r_feixia
 }
