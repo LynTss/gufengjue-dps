@@ -1,10 +1,14 @@
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { setZengyixuanxiangData, setZengyiQiyong } from '@/store/zengyiReducer'
-import { Checkbox } from 'antd'
+import { Button, Checkbox, Dropdown, Menu } from 'antd'
 import React from 'react'
 import TuanduiZengyiXuanze from './TuanduiZengyiXuanze'
 import XiaochiXuanze from './XiaochiXuanze'
 import ZhenyanXuanze from './ZhenyanXuanze'
+import 清空增益 from './增益快捷设置数据/清空增益.json'
+import 副本不吃药 from './增益快捷设置数据/副本不吃药.json'
+import 副本常用 from './增益快捷设置数据/副本常用.json'
+import 开荒拉满 from './增益快捷设置数据/开荒拉满.json'
 import './index.css'
 
 function Zengyi({ getDpsFunction }) {
@@ -36,7 +40,23 @@ function Zengyi({ getDpsFunction }) {
       <h1 className="zengyi-title">
         <div className="zengyi-title-text">
           增益设置
-          <span className={'zengyi-title-tip'}>增益暂未体现在面板，不影响计算</span>
+          <Dropdown
+            overlay={
+              <Menu>
+                <Menu.Item onClick={() => saveDataAndGetDps({ ...清空增益 })}>清空增益</Menu.Item>
+                <Menu.Item onClick={() => saveDataAndGetDps({ ...副本不吃药 })}>
+                  副本不吃药
+                </Menu.Item>
+                <Menu.Item onClick={() => saveDataAndGetDps({ ...副本常用 })}>副本常用</Menu.Item>
+                <Menu.Item onClick={() => saveDataAndGetDps({ ...开荒拉满 })}>开荒拉满</Menu.Item>
+              </Menu>
+            }
+            placement="topLeft"
+          >
+            <Button size="small" style={{ marginLeft: 12 }}>
+              增益快捷设置
+            </Button>
+          </Dropdown>
         </div>
         <Checkbox checked={!!zengyiQiyong} onChange={(e) => changeZengyiQiyong(e?.target?.checked)}>
           是否启用

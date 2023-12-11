@@ -322,10 +322,10 @@ export const geSkillTotalDps = (
   // 对增益集合进行排序，先计算数值。后计算百分比
   const 当前技能计算增益集合: SKillGainData[] = getSortZengyiList(总增益集合)
 
-  // 第一轮计算，计算身法对面板的基础加成
-  // 单独先计算身法增益的收益
+  // 第一轮计算，计算力道对面板的基础加成
+  // 单独先计算力道增益的收益
   当前技能计算增益集合
-    .filter((item) => [GainTypeEnum.身法, GainTypeEnum.郭氏身法].includes(item.增益类型))
+    .filter((item) => [GainTypeEnum.力道, GainTypeEnum.郭氏力道].includes(item.增益类型))
     .forEach((增益数值信息) => {
       const 计算后对象 = 通用增益计算(增益数值信息, 增益计算基础)
       增益计算基础 = {
@@ -351,8 +351,6 @@ export const geSkillTotalDps = (
 
   const 总力道提升值 = 郭式力道对人物属性力道的提升值 + 力道提升值
 
-  // console.log('初始人物属性', 最终人物属性)
-
   增益计算基础 = {
     ...增益计算基础,
     最终人物属性: {
@@ -368,9 +366,9 @@ export const geSkillTotalDps = (
     },
   }
 
-  // 除去身法基础计算的剩余计算
+  // 除去力道基础计算的剩余计算
   当前技能计算增益集合
-    .filter((item) => ![GainTypeEnum.身法, GainTypeEnum.郭氏身法].includes(item.增益类型))
+    .filter((item) => ![GainTypeEnum.力道, GainTypeEnum.郭氏力道].includes(item.增益类型))
     .forEach((增益数值信息) => {
       const 计算后对象 = 通用增益计算(增益数值信息, 增益计算基础)
       增益计算基础 = {
