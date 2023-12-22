@@ -48,6 +48,21 @@ const ZHUANGBEI_YAODAI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
   },
   {
+    id: 98126,
+    uid: '214319',
+    装备名称: '岚峰御厨腰带·刀功',
+    装备品级: 12300,
+    装备类型: EquipmentTypeEnum.普通,
+    装备增益: [
+      { 增益数值: 3100, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 601, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 975, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 3017, 增益类型: GainTypeEnum.外攻会心等级 },
+      { 增益数值: 2681, 增益类型: GainTypeEnum.破招 },
+    ],
+    镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会效 }, { 镶嵌类型: EquipmentInlayEnum.会心 }],
+  },
+  {
     id: 94373,
     uid: '207889',
     装备名称: '安衿腰带',

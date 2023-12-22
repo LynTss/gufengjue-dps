@@ -26,8 +26,8 @@
   justify-content: space-between;
 }
 
-.common-item>.ant-btn{
-  width:calc(50% - 4px);
+.common-item>.ant-btn {
+  width: calc(33% - 4px);
 }
 
 .common-label {

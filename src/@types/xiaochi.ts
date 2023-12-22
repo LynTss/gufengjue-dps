@@ -6,6 +6,7 @@ import { SKillGainData } from './skill'
  */
 export interface XiaochiDataDTO {
   小吃名称: string
+  小吃品级: '蓝' | '紫'
   小吃部位: XiaochiTypeEnum
   增益集合: SKillGainData[]
 }

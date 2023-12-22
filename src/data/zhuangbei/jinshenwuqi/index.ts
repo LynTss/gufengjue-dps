@@ -133,6 +133,27 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
     ],
   },
   {
+    id: 36858,
+    uid: '214289',
+    装备名称: '岚峰海坚鱼·刀功',
+    装备品级: 12300,
+    武器伤害_最小值: 2861,
+    武器伤害_最大值: 4768,
+    装备类型: EquipmentTypeEnum.普通,
+    装备增益: [
+      { 增益数值: 5315, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 1031, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 3991, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 5171, 增益类型: GainTypeEnum.外攻破防等级 },
+      { 增益数值: 5516, 增益类型: GainTypeEnum.无双等级 },
+    ],
+    镶嵌孔数组: [
+      { 镶嵌类型: EquipmentInlayEnum.攻击 },
+      { 镶嵌类型: EquipmentInlayEnum.力道 },
+      { 镶嵌类型: EquipmentInlayEnum.破防 },
+    ],
+  },
+  {
     id: 34735,
     uid: '208030',
     装备名称: '碧玉锋',

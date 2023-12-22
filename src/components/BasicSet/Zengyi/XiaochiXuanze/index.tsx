@@ -1,16 +1,16 @@
 import { XiaochiDataDTO } from '@/@types/xiaochi'
 import XIAOCHI_DATA from '@/data/xiaochi'
 import { useAppSelector } from '@/hooks'
-import { Select } from 'antd'
 import React, { useMemo } from 'react'
 import './index.css'
+import XiaochiSelect from './xiaochiSelect'
 
 interface XiaoChiData {
   type: string
   data: XiaochiDataDTO[]
 }
 
-function XiaochiXuanze({ saveDataAndGetDps }) {
+function XiaochiXuanze({ saveDataAndGetDps, 开启智能对比 }) {
   const zengyixuanxiangData = useAppSelector((state) => state.zengyi.zengyixuanxiangData)
 
   const list: XiaoChiData[] = useMemo(() => {
@@ -47,7 +47,7 @@ function XiaochiXuanze({ saveDataAndGetDps }) {
       newXiaochi.push(e)
     }
 
-    const newZengyi = { ...zengyixuanxiangData, 小吃: newXiaochi }
+    const newZengyi = { ...zengyixuanxiangData, 小吃: newXiaochi.filter((item) => item) }
 
     saveDataAndGetDps(newZengyi)
   }
@@ -62,21 +62,12 @@ function XiaochiXuanze({ saveDataAndGetDps }) {
         return (
           <div className="zengyi-xiaochi-item" key={item.type}>
             <h1 className="zengyi-xiaochi-title">{item.type}</h1>
-            <Select
-              allowClear
-              placeholder="请选择"
-              className="zengyi-xiaochi-select"
+            <XiaochiSelect
+              data={item?.data}
               value={selectedValue}
               onChange={(e) => changeSelectedXiaochi(e, item?.type)}
-            >
-              {(item?.data || []).map((a) => {
-                return (
-                  <Select.Option key={a?.小吃名称} value={a?.小吃名称}>
-                    {a?.小吃名称}
-                  </Select.Option>
-                )
-              })}
-            </Select>
+              开启智能对比={开启智能对比}
+            />
           </div>
         )
       })}

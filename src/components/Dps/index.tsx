@@ -24,7 +24,7 @@ function Dps(props, ref) {
   }))
 
   const startDps = () => {
-    getDps()
+    getDps(true)
   }
 
   const getDps = (showTime?) => {

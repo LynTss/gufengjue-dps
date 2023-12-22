@@ -1,19 +1,22 @@
 import React from 'react'
 import { Button, Select } from 'antd'
 import { 延迟设定, 目标集合 } from '@/data/constant'
-import skillCycle from '@/data/skillCycle'
+import { 获取全部循环 } from '@/data/skillCycle'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 
 import { setCurrentTarget, setCurrentCycle, setNetwork, setQixueData } from '@/store/basicReducer'
 import MijiSet from './MijiSet'
 import QixueSet from './QixueSet'
 import './index.css'
+import CycleSimulator from './CycleSimulator'
 
 function CommonSet({ getDpsFunction, setZengyiVisible }) {
   const dispatch = useAppDispatch()
   const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
   const currentTargetName = useAppSelector((state) => state?.basic?.currentTargetName)
   const network = useAppSelector((state) => state?.basic?.network)
+
+  const All_Cycle_Data = 获取全部循环()
 
   const setCurrentTargetVal = (val) => {
     const target = 目标集合?.find((item) => item.名称 === val)
@@ -36,7 +39,7 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
   }
 
   const setCurrentCycleVal = (val) => {
-    const cycleData = skillCycle?.find((item) => item.name === val)
+    const cycleData = All_Cycle_Data?.find((item) => item.name === val)
     const cycle = cycleData?.cycle || []
     if (cycle) {
       localStorage?.setItem('当前循环_1', val)
@@ -97,15 +100,13 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
               setCurrentCycleVal(v)
             }}
           >
-            {skillCycle
-              .filter((item) => !item.hide)
-              .map((item) => {
-                return (
-                  <Select.Option value={item?.name} key={item.name}>
-                    {item.name}
-                  </Select.Option>
-                )
-              })}
+            {All_Cycle_Data.filter((item) => !item.hide).map((item) => {
+              return (
+                <Select.Option value={item?.name} key={item.name}>
+                  {item.name}
+                </Select.Option>
+              )
+            })}
           </Select>
         </div>
       </div>
@@ -126,6 +127,7 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
       <div className="common-item">
         <MijiSet getDpsFunction={getDpsFunction} />
         <QixueSet getDpsFunction={getDpsFunction} />
+        <CycleSimulator />
       </div>
     </div>
   )

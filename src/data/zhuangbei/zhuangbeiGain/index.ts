@@ -49,12 +49,12 @@ const ZhuangbeiGainList = {
     {
       增益计算类型: GainDpsTypeEnum.A,
       增益类型: GainTypeEnum.力道,
-      增益数值: 248,
+      增益数值: 305,
     },
     {
       增益计算类型: GainDpsTypeEnum.A,
       增益类型: GainTypeEnum.外攻会心等级,
-      增益数值: 157,
+      增益数值: 195,
     },
   ],
   水特效武器: [

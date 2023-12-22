@@ -97,3 +97,17 @@ export const getlocalStorage = (key) => {
 export const jinglianJieguo = (jichu, dengji) => {
   return jichu + Math.round(jichu * 精炼加成系数[dengji])
 }
+
+export const 获取加速等级 = (number) => {
+  return (number || 0) < 95
+    ? 0
+    : number < 4241
+    ? 1
+    : number < 8857
+    ? 2
+    : number < 13851
+    ? 3
+    : number < 19316
+    ? 4
+    : 5
+}

@@ -1,5 +1,5 @@
 import { 目标集合 } from '@/data/constant'
-import skillCycle from '@/data/skillCycle'
+import { 获取全部循环 } from '@/data/skillCycle'
 import {
   DEFAULT_CHARACTER,
   DEFAULT_EQUIPMENT,
@@ -79,6 +79,7 @@ export const getDefaultEquipment = () => {
 }
 
 export const getDefaultCycle = () => {
+  const skillCycle = 获取全部循环()
   const currentCycleName = localStorage.getItem('当前循环_1') || skillCycle[0]?.name
   return {
     name: currentCycleName,

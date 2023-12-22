@@ -90,6 +90,8 @@ export const currentDpsFunction =
       开启流岚: 开启无视防御奇穴,
     })
 
+    console.log('dpsTime', dpsTime)
+
     // 每秒dps
     const dpsPerSecond = Math.floor(totalDps / dpsTime)
 

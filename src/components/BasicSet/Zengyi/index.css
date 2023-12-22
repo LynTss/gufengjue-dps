@@ -34,3 +34,9 @@
 .xuanze-zhenyan .ant-select {
   width: 100%;
 }
+
+.zengyi-operator {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

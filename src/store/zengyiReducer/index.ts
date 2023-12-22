@@ -42,6 +42,7 @@ export const counterSlice = createSlice({
       state.mijiSelectedData = [...action.payload]
     },
     setSkillBasicData: (state, action: PayloadAction<SkillBasicDTO[]>) => {
+      console.log('[...action.payload]', [...action.payload])
       state.skillBasicData = [...action.payload]
     },
   },

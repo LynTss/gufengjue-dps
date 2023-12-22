@@ -8,7 +8,7 @@ import { CharacterFinalDTO, TargetDTO } from '@/@types/character'
 import { SkillBasicDTO } from '@/@types/skill'
 import { 属性系数, 每等级减伤 } from '@/data/constant'
 import { guoshiFangyu, guoshiPofang } from './help'
-import All_Cycle_Data from '@/data/skillCycle'
+import { 获取全部循环 } from '@/data/skillCycle'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import XIAOCHI_DATA from '@/data/xiaochi'
 import { GainTypeEnum } from '@/@types/enum'
@@ -145,10 +145,13 @@ export const getDpsTime = (
 ): number => {
   let time = 300
   // 根据是否选择CW选择对应循环
+  const All_Cycle_Data = 获取全部循环()
   const trueCurrentCycleName = getTrueCycleName(currentCycleName, characterFinalData)
   const currentCycleConfig = All_Cycle_Data.find((item) => item.name === trueCurrentCycleName)
   const 增益加速等级 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
   const 加速等级 = 获取加速等级(characterFinalData.加速值 + 增益加速等级)
+
+  console.log('currentCycleConfig', currentCycleConfig)
 
   if (currentCycleConfig) {
     let 总帧数 = 0
@@ -212,6 +215,7 @@ export const 获取实际循环 = (
   qixueData: string[]
 ) => {
   let trueCycle = [...currentCycle]
+  const All_Cycle_Data = 获取全部循环()
   // 旧版大CW周流区别
   if (characterFinalData?.装备增益?.大橙武特效 && currentCycleName?.includes('周流')) {
     const trueName = `${currentCycleName}_cw`

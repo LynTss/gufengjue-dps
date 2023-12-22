@@ -18,3 +18,25 @@
 .zengyi-xiaochi-select {
   flex: 1;
 }
+
+.dps-down {
+  color: #F34242;
+}
+
+.dps-up {
+  color: #2AC88F;
+}
+
+.xiaochi-diff-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.xiaochi-zi {
+  color: #ff2dff
+}
+
+.xiaochi-lan {
+  color: rgb(0, 126, 255)
+}

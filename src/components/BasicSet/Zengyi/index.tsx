@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { setZengyixuanxiangData, setZengyiQiyong } from '@/store/zengyiReducer'
-import { Button, Checkbox, Dropdown, Menu } from 'antd'
-import React from 'react'
+import { Button, Checkbox, Dropdown, Menu, Tooltip } from 'antd'
+import React, { useState } from 'react'
 import TuanduiZengyiXuanze from './TuanduiZengyiXuanze'
 import XiaochiXuanze from './XiaochiXuanze'
 import ZhenyanXuanze from './ZhenyanXuanze'
@@ -15,6 +15,7 @@ function Zengyi({ getDpsFunction }) {
   const dispatch = useAppDispatch()
   const zengyixuanxiangData = useAppSelector((state) => state.zengyi.zengyixuanxiangData)
   const zengyiQiyong = useAppSelector((state) => state.zengyi.zengyiQiyong)
+  const [开启智能对比, 设置开启智能对比] = useState<boolean>(false)
 
   const zhenyanOnChange = (e) => {
     const newData = { ...zengyixuanxiangData, 阵眼: e }
@@ -58,15 +59,29 @@ function Zengyi({ getDpsFunction }) {
             </Button>
           </Dropdown>
         </div>
-        <Checkbox checked={!!zengyiQiyong} onChange={(e) => changeZengyiQiyong(e?.target?.checked)}>
-          是否启用
-        </Checkbox>
+        <div className={'zengyi-operator'}>
+          <Checkbox checked={!!开启智能对比} onChange={(e) => 设置开启智能对比(e?.target?.checked)}>
+            <Tooltip title="对阵眼、小药做智能dps对比，仅在增益效果启用情况下生效，开启将增加性能损耗">
+              智能对比
+            </Tooltip>
+          </Checkbox>
+          <Checkbox
+            checked={!!zengyiQiyong}
+            onChange={(e) => changeZengyiQiyong(e?.target?.checked)}
+          >
+            是否启用
+          </Checkbox>
+        </div>
       </h1>
       <div className="xuanze-zhenyan">
-        <ZhenyanXuanze value={zengyixuanxiangData?.阵眼 || undefined} onChange={zhenyanOnChange} />
+        <ZhenyanXuanze
+          value={zengyixuanxiangData?.阵眼 || undefined}
+          onChange={zhenyanOnChange}
+          开启智能对比={开启智能对比}
+        />
       </div>
       <div className="xuanze-xiaochi">
-        <XiaochiXuanze saveDataAndGetDps={saveDataAndGetDps} />
+        <XiaochiXuanze saveDataAndGetDps={saveDataAndGetDps} 开启智能对比={开启智能对比} />
       </div>
       <div className="xuanze-xiaochi">
         <TuanduiZengyiXuanze saveDataAndGetDps={saveDataAndGetDps} />

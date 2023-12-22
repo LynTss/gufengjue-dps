@@ -33,6 +33,21 @@ const ZHUANGBEI_JIEZHI: EquipmentDTO[] = [
     镶嵌孔数组: [],
   },
   {
+    id: 39790,
+    uid: '214379',
+    装备名称: '岚峰御厨戒指·刀功',
+    装备品级: 12300,
+    装备类型: EquipmentTypeEnum.普通,
+    装备增益: [
+      { 增益数值: 2215, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 429, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 697, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 2155, 增益类型: GainTypeEnum.外攻会心等级 },
+      { 增益数值: 1915, 增益类型: GainTypeEnum.无双等级 },
+    ],
+    镶嵌孔数组: [],
+  },
+  {
     id: 37713,
     uid: '207991',
     装备名称: '温刃戒',

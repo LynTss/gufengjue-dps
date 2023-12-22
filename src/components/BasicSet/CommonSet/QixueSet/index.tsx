@@ -6,7 +6,14 @@ import { useAppDispatch, useAppSelector } from '@/hooks'
 import { setQixueData } from '@/store/basicReducer'
 import './index.css'
 
-function QixueSet({ getDpsFunction }) {
+interface QixueSetProps {
+  getDpsFunction?: () => void
+  className?: string
+}
+
+const QixueSet: React.FC<QixueSetProps> = (props) => {
+  const { getDpsFunction, ...rest } = props
+
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false)
   const [form] = Form.useForm()
 
@@ -22,7 +29,7 @@ function QixueSet({ getDpsFunction }) {
         localStorage.setItem('daozong_qixue_data', JSON.stringify(newArray))
         dispatch(setQixueData(newArray))
       })
-      getDpsFunction()
+      getDpsFunction && getDpsFunction()
     }, 0)
   }
 
@@ -39,7 +46,7 @@ function QixueSet({ getDpsFunction }) {
 
   return (
     <>
-      <Button className="qixue-set-button" onClick={() => setDrawerOpen(true)}>
+      <Button className="qixue-set-button" onClick={() => setDrawerOpen(true)} {...rest}>
         奇穴设置
       </Button>
       <Drawer

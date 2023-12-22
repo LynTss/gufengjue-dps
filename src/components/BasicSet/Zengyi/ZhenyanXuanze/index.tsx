@@ -7,7 +7,13 @@ import { ZhenyanGainDTO } from '@/@types/zhenyan'
 import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
 import './index.css'
 
-function ZhenyanXuanze(props: SelectProps) {
+interface ZhenyanXuanzeProps extends SelectProps {
+  开启智能对比?: boolean
+}
+
+function ZhenyanXuanze(props: ZhenyanXuanzeProps) {
+  const { 开启智能对比, ...rest } = props
+
   const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
   const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
   const currentDps = useAppSelector((state) => state?.basic?.currentDps)
@@ -16,7 +22,7 @@ function ZhenyanXuanze(props: SelectProps) {
   const 展示的阵眼数组 = () => {
     let list: ZhenyanGainDTO[] = [...Zhenyan_DATA]
 
-    if (zengyiQiyong && currentDps) {
+    if (zengyiQiyong && 开启智能对比 && currentDps) {
       list = list.map((item) => {
         const dps = getAfterChangeZhenyanDps(item?.阵眼名称)
 
@@ -53,7 +59,7 @@ function ZhenyanXuanze(props: SelectProps) {
   }
 
   return (
-    <Select allowClear placeholder="请选择阵眼" optionFilterProp="label" {...props}>
+    <Select allowClear placeholder="请选择阵眼" optionFilterProp="label" {...rest}>
       {(展示的阵眼数组() || [])?.map((item) => {
         return (
           <Select.Option

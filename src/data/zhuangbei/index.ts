@@ -26,7 +26,7 @@ export const 大CW特效Ids: number[] = [33107, 33137, 34373, 34403, 34433, 3559
 export const 小CW特效Ids: number[] = [34313]
 
 // 2022冬至套装
-export const 冬至套装_1Ids: number[] = []
+export const 冬至套装_1Ids: number[] = [36858, 39790, 98126, 98156]
 
 // 2件套会心 4件套孤锋10%
 export const 套装_1Ids: number[] = [96134, 96224, 96194, 96164, 96254]
