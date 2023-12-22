@@ -423,6 +423,18 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
     ],
   },
   {
+    小吃名称: '断浪·炖豆腐（无双）',
+    小吃部位: XiaochiTypeEnum.家园菜品,
+    小吃品级: '紫',
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.无双等级,
+        增益数值: 1074,
+      },
+    ],
+  },
+  {
     小吃名称: '煎豆腐（破招）',
     小吃部位: XiaochiTypeEnum.家园菜品,
     小吃品级: '蓝',
@@ -431,6 +443,18 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.破招,
         增益数值: 716,
+      },
+    ],
+  },
+  {
+    小吃名称: '断浪·煎豆腐（破招）',
+    小吃部位: XiaochiTypeEnum.家园菜品,
+    小吃品级: '紫',
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.破招,
+        增益数值: 1074,
       },
     ],
   },
@@ -447,6 +471,18 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
     ],
   },
   {
+    小吃名称: '断浪·葫芦叫花鸡（外攻）',
+    小吃部位: XiaochiTypeEnum.家园菜品,
+    小吃品级: '紫',
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.基础攻击,
+        增益数值: 480,
+      },
+    ],
+  },
+  {
     小吃名称: '清蒸鲈鱼（外破）',
     小吃部位: XiaochiTypeEnum.家园菜品,
     小吃品级: '蓝',
@@ -459,6 +495,18 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
     ],
   },
   {
+    小吃名称: '断浪·清蒸鲈鱼（外破）',
+    小吃部位: XiaochiTypeEnum.家园菜品,
+    小吃品级: '紫',
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.外攻破防等级,
+        增益数值: 1074,
+      },
+    ],
+  },
+  {
     小吃名称: '炸鱼干（会心）',
     小吃部位: XiaochiTypeEnum.家园菜品,
     小吃品级: '蓝',
@@ -467,6 +515,18 @@ const XIAOCHI_DATA: XiaochiDataDTO[] = [
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.外攻会心等级,
         增益数值: 716,
+      },
+    ],
+  },
+  {
+    小吃名称: '断浪·炸鱼干（会心）',
+    小吃部位: XiaochiTypeEnum.家园菜品,
+    小吃品级: '紫',
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.外攻会心等级,
+        增益数值: 1074,
       },
     ],
   },
