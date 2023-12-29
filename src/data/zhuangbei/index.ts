@@ -10,7 +10,7 @@ import ZHUANGBEI_JIEZHI from './jiezhi'
 import ZHUANGBEI_YUANCHENGWUQI from './yuanchengwuqi'
 import ZHUANGBEI_JINSHENWUQI from './jinshenwuqi'
 
-export const 龙门_武器Ids: number[] = []
+export const 龙门_武器Ids: number[] = [36910]
 // 特效武器
 export const 特效_武器Ids: number[] = [34765]
 export const 特效_武器_2Ids: number[] = [35780]

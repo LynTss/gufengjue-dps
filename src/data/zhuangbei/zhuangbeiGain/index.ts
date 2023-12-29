@@ -77,12 +77,12 @@ const ZhuangbeiGainList = {
     {
       增益计算类型: GainDpsTypeEnum.A,
       增益类型: GainTypeEnum.外攻会心等级,
-      增益数值: (3400 * 6) / 30,
+      增益数值: (4420 * 6) / 30,
     },
     {
       增益计算类型: GainDpsTypeEnum.A,
       增益类型: GainTypeEnum.外攻会心效果等级,
-      增益数值: (1620 * 6) / 30,
+      增益数值: (2110 * 6) / 30,
     },
   ],
   风特效腰坠: [
