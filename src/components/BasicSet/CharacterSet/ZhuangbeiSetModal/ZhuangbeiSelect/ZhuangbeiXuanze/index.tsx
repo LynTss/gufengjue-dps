@@ -49,17 +49,17 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
   // 获取dps提升装备列表
   const getDpsUpList = () => {
     if (openEquipmentDiff) {
-      const backList = list.filter((item) => {
-        return (
-          item?.装备品级 >= 12800 ||
-          [
-            EquipmentTypeEnum.大CW,
-            EquipmentTypeEnum.特效武器,
-            EquipmentTypeEnum.副本精简,
-            EquipmentTypeEnum.试炼精简,
-          ]?.includes(item?.装备类型)
-        )
-      })
+      // const backList = list.filter((item) => {
+      //   return (
+      //     item?.装备品级 >= 12800 ||
+      //     [
+      //       EquipmentTypeEnum.大CW,
+      //       EquipmentTypeEnum.特效武器,
+      //       EquipmentTypeEnum.副本精简,
+      //       EquipmentTypeEnum.试炼精简,
+      //     ]?.includes(item?.装备类型)
+      //   )
+      // })
       // 获取旧装备列表
       const oldEquipment = form?.getFieldsValue()
 
@@ -70,7 +70,7 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
       const oldDps = getEquipmentDps(oldEquipmentData)
 
       // 传入新的装备
-      const newDpsUpList = backList.map((item) => {
+      const newDpsUpList = list.map((item) => {
         const newZhuangbeiData = {
           ...allValue,
           镶嵌孔数组: item?.镶嵌孔数组?.map((a) => {
