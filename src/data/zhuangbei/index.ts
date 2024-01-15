@@ -23,7 +23,7 @@ export const 切糕套装_1Ids: number[] = [94463, 94487, 94481, 94475, 94469, 9
 export const 切糕套装_2Ids: number[] = [96366, 96390, 96384, 96378, 96372, 96396]
 // 大CW特效Ids
 export const 大CW特效Ids: number[] = [33107, 33137, 34373, 34403, 34433, 35597, 35627, 36568, 36598]
-export const 小CW特效Ids: number[] = [34313]
+export const 小CW特效Ids: number[] = [34313, 37072]
 
 // 2022冬至套装
 export const 冬至套装_1Ids: number[] = [36858, 39790, 98126, 98156]
