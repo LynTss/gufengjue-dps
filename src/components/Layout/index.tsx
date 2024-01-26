@@ -3,6 +3,7 @@ import React from 'react'
 import ImgBg_1 from '../../assets/bg/1.jpg'
 import ImgBg_2 from '../../assets/bg/2.jpg'
 import ImgBg_3 from '../../assets/bg/3.jpg'
+import ImgBg_4 from '../../assets/bg/4.jpeg'
 import './index.css'
 import { useAppSelector } from '@/hooks'
 
@@ -15,12 +16,12 @@ const Layout: React.FC<LayoutProps> = (props) => {
   const random = Math.random()
   const closeBackgroundImg = useAppSelector((state) => state?.basic?.closeBackgroundImg)
 
-  const mapKey = random < 0.00001 ? 4 : random < 0.34 ? 1 : random < 0.67 ? 2 : 3
+  const mapKey = random < 0.001 ? 4 : random < 0.34 ? 1 : random < 0.67 ? 2 : 3
   const imgMap = {
     1: ImgBg_1,
     2: ImgBg_2,
     3: ImgBg_3,
-    // 4: ImgBg_18,
+    4: ImgBg_4,
   }
 
   return (
