@@ -5,7 +5,7 @@ function TitleTip() {
   return (
     <h1 className={'title-tip'}>
       <span>刀宗-孤锋诀计算器</span>
-      <span>QQ: 372103645 @唐宋 </span>
+      <span>PVE群: 328199016</span>
     </h1>
   )
 }
