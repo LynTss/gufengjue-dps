@@ -16,7 +16,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
   const random = Math.random()
   const closeBackgroundImg = useAppSelector((state) => state?.basic?.closeBackgroundImg)
 
-  const mapKey = random < 0.001 ? 4 : random < 0.34 ? 1 : random < 0.67 ? 2 : 3
+  const mapKey = random < 0.05 ? 4 : random < 0.34 ? 1 : random < 0.67 ? 2 : 3
   const imgMap = {
     1: ImgBg_1,
     2: ImgBg_2,
