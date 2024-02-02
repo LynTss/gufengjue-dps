@@ -82,7 +82,7 @@ const DpsResModal: React.FC<DpsResModalProps> = (props) => {
     if (logData?.length) {
       const firstTime: any = logData?.find((item) => item?.日志类型 === '造成伤害')?.日志时间
 
-      // 先顾虑重复的数据
+      // 先过滤重复的数据
       const dpsResObj = {}
       logData.forEach((item) => {
         if (item?.日志类型 === '造成伤害') {
@@ -93,6 +93,7 @@ const DpsResModal: React.FC<DpsResModalProps> = (props) => {
       const lastTime: any = Object.keys(dpsResObj)?.[Object.keys(dpsResObj).length - 1]
 
       const dpsResLit: any[] = []
+
       // 每1秒结算一次
       for (let i = 0; i < lastTime; i = i + 每秒郭氏帧) {
         let currentDps = 0

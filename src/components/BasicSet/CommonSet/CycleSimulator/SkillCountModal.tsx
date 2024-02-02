@@ -16,9 +16,7 @@ const SkillCountModal: React.FC<SkillCountModalProps> = (props) => {
     const newLog = logData
       ?.filter((item) => item?.日志类型 === '造成伤害')
       .map((item) => {
-        if (item?.日志?.includes('朝仪万汇')) {
-          return '朝仪万汇'
-        } else if (Skill_Cycle_Map[item?.日志]) {
+        if (Skill_Cycle_Map[item?.日志]) {
           return Skill_Cycle_Map[item?.日志]
         } else {
           return item?.日志
@@ -33,7 +31,7 @@ const SkillCountModal: React.FC<SkillCountModalProps> = (props) => {
     })
     newLog.forEach((item) => {
       for (let i = 0; i <= res?.length; i++) {
-        if (res[i]?.技能名称?.includes(item)) {
+        if (res[i]?.技能名称 === item) {
           res[i].技能数量 = res[i].技能数量 + 1
         }
       }
