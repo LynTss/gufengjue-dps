@@ -28,7 +28,6 @@ interface GetDpsTotalParams {
   dpsTime: number
   默认增益集合?: SKillGainData[]
   开启强膂: boolean
-  开启流岚: boolean
 }
 
 export interface DpsListData {
@@ -49,7 +48,6 @@ export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
     dpsTime,
     默认增益集合,
     开启强膂,
-    开启流岚,
   } = props
   // 总dps
   let total = 0
@@ -60,7 +58,7 @@ export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
   const 最终人物属性 = 获取力道奇穴加成后面板(characterFinalData, 开启强膂)
 
   // 获取装备增益等带来的最终增益集合
-  let 总增益集合: SKillGainData[] = getAllGainData(characterFinalData, 默认增益集合, 开启流岚)
+  let 总增益集合: SKillGainData[] = getAllGainData(characterFinalData, 默认增益集合)
 
   // 判断是不是单技能统计循环。如果是则不计入
   const isSingeSkillCycle = currentCycle?.find((item) => item?.技能名称 === '云刀')?.技能数量 === 1
@@ -81,7 +79,7 @@ export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
       最终循环.push({
         技能名称: '逐云寒蕊',
         技能数量: Math.floor(dpsTime * 0.13),
-        技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor(dpsTime * 0.13 * 0.4) }],
+        技能增益列表: [{ 增益名称: '灭影追风', 增益技能数: Math.floor(dpsTime * 0.13 * 0.4) }],
       })
     }
   }
@@ -440,7 +438,6 @@ export const skillStandardDps = (
 
   const 破防百分比 = 破防值 / 属性系数.破防
 
-  // 流岚暴力临时解法
   const 防御减伤 = 防御点数 / (防御点数 + 防御系数)
 
   return damage * (1 + 破防百分比) * (1 - 防御减伤)

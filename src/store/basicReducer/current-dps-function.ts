@@ -1,5 +1,5 @@
 // 根据当前增益装备，计算实时循环总dps
-import { 判断是否开启无视防御奇穴, 判断是否开启力道加成奇穴 } from '@/data/qixue'
+import { 判断是否开启力道加成奇穴 } from '@/data/qixue'
 import { RootState } from '../index'
 import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
 import { getDpsTime, 获取实际循环, 根据奇穴处理技能的基础增益信息 } from '@/utils/skill-dps'
@@ -57,7 +57,6 @@ export const currentDpsFunction =
     const 奇穴数据 = currentState.basic.qixueData
 
     const 开启力道加成奇穴 = 判断是否开启力道加成奇穴(奇穴数据)
-    const 开启无视防御奇穴 = 判断是否开启无视防御奇穴(奇穴数据)
 
     if (!当前循环技能列表?.length || !当前角色面板) {
       message.error('请先设置个人属性和目标')
@@ -87,7 +86,6 @@ export const currentDpsFunction =
       默认增益集合: 更新默认增益集合 || [],
       dpsTime,
       开启强膂: 开启力道加成奇穴,
-      开启流岚: 开启无视防御奇穴,
     })
 
     console.log('dpsTime', dpsTime)

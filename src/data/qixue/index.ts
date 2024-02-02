@@ -11,14 +11,9 @@ import {
 import { 加成系数 } from '../constant'
 
 export const 力道加成奇穴 = '强膂'
-export const 无视防御奇穴 = '流岚'
 
 export const 判断是否开启力道加成奇穴 = (data) => {
   return data?.some((item) => item === 力道加成奇穴)
-}
-
-export const 判断是否开启无视防御奇穴 = (data) => {
-  return data?.some((item) => item === 无视防御奇穴)
 }
 
 export const 奇穴数据: QixueListDTO[] = [
@@ -319,6 +314,7 @@ export const 奇穴数据: QixueListDTO[] = [
       },
       {
         奇穴名称: '流岚',
+        奇穴加成技能: '通用',
         奇穴加成类型: '常驻',
         奇穴图片: 'https://icon.jx3box.com/icon/17742.png',
       },

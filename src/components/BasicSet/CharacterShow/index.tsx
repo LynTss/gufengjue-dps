@@ -4,11 +4,7 @@ import { useAppSelector } from '@/hooks'
 import { CharacterFinalDTO } from '@/@types/character'
 
 import { Checkbox, Tooltip } from 'antd'
-import {
-  判断是否开启力道加成奇穴,
-  判断是否开启无视防御奇穴,
-  获取力道奇穴加成后面板,
-} from '@/data/qixue'
+import { 判断是否开启力道加成奇穴, 获取力道奇穴加成后面板 } from '@/data/qixue'
 import { 根据奇穴处理技能的基础增益信息, 获取实际循环 } from '@/utils/skill-dps'
 import DpsKernelOptimizer from '@/utils/dps-kernel-optimizer'
 import { QuestionCircleOutlined } from '@ant-design/icons'
@@ -27,7 +23,6 @@ function CharacterShow() {
   const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
 
   const isOpenQiangLv = 判断是否开启力道加成奇穴(qixueData)
-  const 开启流岚 = 判断是否开启无视防御奇穴(qixueData)
 
   const [openBFGS, setOpenBFGS] = useState<boolean>(false)
 
@@ -57,7 +52,6 @@ function CharacterShow() {
         zengyiQiyong,
         zengyixuanxiangData,
         isOpenQiangLv,
-        开启流岚,
       })
       return res
     } else {
@@ -73,7 +67,6 @@ function CharacterShow() {
     zengyiQiyong,
     zengyixuanxiangData,
     isOpenQiangLv,
-    开启流岚,
     openBFGS,
   ])
 

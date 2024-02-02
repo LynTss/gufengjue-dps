@@ -22,7 +22,7 @@ export interface CycleSimulatorSkillDTO {
   /**
    * 技能GCD组
    */
-  技能GCD组: string
+  技能GCD组?: '单刀' | '双刀' | '自身'
   /**
    * 回复锐意
    */
@@ -44,17 +44,13 @@ export interface CycleSimulatorSkillDTO {
    */
   是否为读条技能?: boolean
   /**
+   * 最大充能层数
+   */
+  最大充能层数?: number
+  /**
    * 技能CD(帧)
    */
   技能CD?: number
-  /**
-   * 是否上贯穿
-   */
-  触发避实击虚?: boolean
-  /**
-   * 是否上破招
-   */
-  是否上破招?: boolean
   /**
    * 创建循环不可选
    */
@@ -63,6 +59,11 @@ export interface CycleSimulatorSkillDTO {
    * 实际技能 - 用于显示不同名字时判断为相同技能
    */
   实际技能?: string
+}
+
+export interface 角色状态信息类型 {
+  锐意?: number
+  体态?: '单刀' | '双刀'
 }
 
 export interface Buff枚举 {
@@ -82,12 +83,18 @@ export interface BuffDTO {
   /**
    * 最大持续时间
    * buff添加后的持续时间
+   * 如果没有传入就是永久buff
    */
-  最大持续时间: number
+  最大持续时间?: number
   /**
    * 当前层数
    */
   当前层数?: number
+  /**
+   * 自然消失失去层数
+   * 默认为最大层数
+   */
+  自然消失失去层数?: number
   /**
    * 刷新时间
    * 第一次添加或刷新持续时间的时间点
@@ -156,18 +163,21 @@ export interface CycleSimulatorLog {
   /**
    * 日志类型
    */
-  日志类型: 日志类型
+  日志类型?: 日志类型
   /**
    * 日志时间
    */
-  日志时间: number
+  日志时间?: number
   /**
    * buff携带
    */
   buff列表?: string[]
   /**
-   * buff携带
+   * 其他数据
    */
+  其他数据?: {
+    伤害次数?: number
+  }
 }
 
 export type 日志类型 =
@@ -177,3 +187,6 @@ export type 日志类型 =
   | '造成伤害'
   | '技能释放结果'
   | '等CD'
+  | '回复锐意'
+  | '消耗锐意'
+  | '循环异常'

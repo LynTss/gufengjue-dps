@@ -3,6 +3,7 @@ import { CycleSimulatorLog } from '@/@types/cycleSimulator'
 import { Modal, ModalProps, Table } from 'antd'
 import 循环模拟技能基础数据, { 日志类型数组 } from './constant/skill'
 import './index.css'
+import { 每秒郭氏帧 } from './constant'
 
 interface BattleLogModalProps extends ModalProps {
   logData: CycleSimulatorLog[]
@@ -54,7 +55,7 @@ const BattleLogModal: React.FC<BattleLogModalProps> = (props) => {
       title: '日志秒',
       dataIndex: '日志秒',
       render: (_, row) => {
-        return row?.日志时间 / 16
+        return row?.日志时间 / 每秒郭氏帧
       },
     },
     {

@@ -25,7 +25,6 @@ interface GetDpsTotalParams {
   zengyixuanxiangData: ZengyixuanxiangDataDTO
   dpsTime: number
   开启强膂: boolean
-  开启流岚: boolean
 }
 
 export interface DpsListData {
@@ -46,7 +45,6 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
     zengyixuanxiangData,
     dpsTime,
     开启强膂,
-    开启流岚,
   } = props
   // 总dps
   let total = 0
@@ -57,7 +55,7 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
   const 最终人物属性 = 获取力道奇穴加成后面板(characterFinalData, 开启强膂)
 
   // 获取装备增益等带来的最终增益集合
-  let 总增益集合: SKillGainData[] = getAllGainData(characterFinalData, [], 开启流岚)
+  let 总增益集合: SKillGainData[] = getAllGainData(characterFinalData, [])
 
   // 判断是不是单技能统计循环。如果是则不计入
   const isSingeSkillCycle = currentCycle?.find((item) => item?.技能名称 === '云刀')?.技能数量 === 1
@@ -81,7 +79,7 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
       最终循环.push({
         技能名称: '逐云寒蕊',
         技能数量: Math.floor(dpsTime * 0.13),
-        技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor(dpsTime * 0.13 * 0.4) }],
+        技能增益列表: [{ 增益名称: '灭影追风', 增益技能数: Math.floor(dpsTime * 0.13 * 0.4) }],
       })
     }
   }
@@ -123,14 +121,14 @@ export const getFinalCycleData = (
       最终循环.push({
         技能名称: '昆吾·弦刃',
         技能数量: Math.floor(dpsTime / 10),
-        技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor((dpsTime / 10) * 0.4) }],
+        技能增益列表: [{ 增益名称: '灭影追风', 增益技能数: Math.floor((dpsTime / 10) * 0.4) }],
       })
     }
     if (characterFinalData?.装备增益?.大附魔_伤鞋) {
       最终循环.push({
         技能名称: '刃凌',
         技能数量: Math.floor(dpsTime / 10),
-        技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor((dpsTime / 10) * 0.4) }],
+        技能增益列表: [{ 增益名称: '灭影追风', 增益技能数: Math.floor((dpsTime / 10) * 0.4) }],
       })
     }
     if (characterFinalData?.装备增益?.大橙武特效) {
@@ -149,7 +147,7 @@ export const getFinalCycleData = (
       最终循环.push({
         技能名称: '行云势·神兵',
         技能数量: Math.floor(行总数 * 触发率),
-        技能增益列表: [{ 增益名称: '灭影随风', 增益技能数: Math.floor(灭影行总数 * 触发率) }],
+        技能增益列表: [{ 增益名称: '灭影追风', 增益技能数: Math.floor(灭影行总数 * 触发率) }],
       })
     }
     if (characterFinalData?.装备增益?.龙门武器) {
@@ -157,7 +155,7 @@ export const getFinalCycleData = (
         技能名称: '剑风',
         技能数量: Math.floor((dpsTime * 6) / 30),
         技能增益列表: [
-          { 增益名称: '灭影随风', 增益技能数: Math.floor(((dpsTime * 6) / 30) * 0.4) },
+          { 增益名称: '灭影追风', 增益技能数: Math.floor(((dpsTime * 6) / 30) * 0.4) },
         ],
       })
     }
@@ -168,21 +166,10 @@ export const getFinalCycleData = (
 // 统计增益，获取增益的集合
 export const getAllGainData = (
   characterFinalData: CharacterFinalDTO,
-  defaultGainData?,
-  开启流岚?
+  defaultGainData?
 ): SKillGainData[] => {
   let 总增益集合: SKillGainData[] = [...(defaultGainData || [])]
 
-  // 流岚奇穴更改后删除
-  if (开启流岚 == true) {
-    总增益集合 = 总增益集合.concat([
-      {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.郭氏无视防御,
-        增益数值: 410,
-      },
-    ])
-  }
   if (characterFinalData?.装备增益?.套装会心会效) {
     // 偷懒覆盖率测试80%左右
     总增益集合 = 总增益集合.concat(ZhuangbeiGainList.套装会心会效)

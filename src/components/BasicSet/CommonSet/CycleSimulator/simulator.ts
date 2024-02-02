@@ -1,17 +1,35 @@
-import { Buff枚举, CycleSimulatorLog } from '@/@types/cycleSimulator'
+import { Buff枚举, CycleSimulatorLog, 角色状态信息类型 } from '@/@types/cycleSimulator'
 import { 获取加速等级 } from '@/utils/help'
-import 循环模拟技能基础数据, { Buff数据 } from './constant/skill'
+import 循环模拟技能基础数据, { 原始Buff数据 } from './constant/skill'
 
 interface SimulatorCycleProps {
   测试循环: string[]
   加速值: number
   网络按键延迟: number
   奇穴: string[]
+  角色状态信息?: 角色状态信息类型
+  当前自身buff列表?: Buff枚举
+  当前目标buff列表?: Buff枚举
 }
 
 // 开始模拟
-export const SimulatorCycle = (props: SimulatorCycleProps): CycleSimulatorLog[] => {
-  const { 测试循环, 加速值, 网络按键延迟, 奇穴 } = props
+export const SimulatorCycle = (
+  props: SimulatorCycleProps
+): {
+  最终日志: CycleSimulatorLog[]
+  当前自身buff列表: Buff枚举
+  当前目标buff列表: Buff枚举
+  角色状态信息: 角色状态信息类型
+} => {
+  const {
+    测试循环,
+    加速值,
+    网络按键延迟,
+    奇穴,
+    角色状态信息: 默认角色状态信息,
+    当前自身buff列表: 默认当前自身buff列表,
+    当前目标buff列表: 默认当前目标buff列表,
+  } = props
   const 初始时间 = 0
 
   // 正读条技能，无读条技能，GCD加速值
@@ -19,8 +37,10 @@ export const SimulatorCycle = (props: SimulatorCycleProps): CycleSimulatorLog[] 
   const 加速等级 = 获取加速等级(加速值)
 
   // const 当前锐意 = 0
-  const 当前自身buff列表: Buff枚举 = {}
-  const 当前目标buff列表: Buff枚举 = {}
+  // 双刀起手
+  const 角色状态信息: 角色状态信息类型 = { ...默认角色状态信息 }
+  const 当前自身buff列表: Buff枚举 = { ...默认当前自身buff列表 }
+  const 当前目标buff列表: Buff枚举 = { ...默认当前目标buff列表 }
   let 开始释放上一个技能的时间 = 初始时间
   let 当前时间 = 初始时间 // 从0开始计算时间，按帧计算
 
@@ -28,10 +48,11 @@ export const SimulatorCycle = (props: SimulatorCycleProps): CycleSimulatorLog[] 
 
   let 战斗日志: CycleSimulatorLog[] = []
 
+  // 用到的方法集合 --- start
   const 添加buff = (buff, 目标, 事件时间?) => {
     const 新buff对象 = {
-      ...Buff数据[buff],
-      当前层数: Math.max((当前自身buff列表[buff]?.当前层数 || 0) + 1, Buff数据[buff].最大层数),
+      ...原始Buff数据[buff],
+      当前层数: Math.max((当前自身buff列表[buff]?.当前层数 || 0) + 1, 原始Buff数据[buff].最大层数),
       刷新时间: 事件时间 || 当前时间,
     }
     if (新buff对象.当前层数 !== 当前自身buff列表[buff]?.当前层数 && 新buff对象.当前层数 !== 1) {
@@ -109,16 +130,18 @@ export const SimulatorCycle = (props: SimulatorCycleProps): CycleSimulatorLog[] 
     }
   }
 
-  // 第一次循环，不包含引爆贯穿
+  // 用到的方法集合 --- end
+
+  // 遍历传入的技能序列，产生对应效果
   for (let i = 0; i < 测试循环?.length; i++) {
     const 当前技能 = 循环模拟技能基础数据?.find((item) => item?.技能名称 === 测试循环[i])
     // 判断是否为当前箭袋第一个技能
     const 上一个技能 = 循环模拟技能基础数据?.find((item) => item?.技能名称 === 测试循环[i - 1])
+    // --- 释放前阶段 ---
     // 判断是否需要等待GCD
     if (i > 0) {
       判断是否需要等待GCD和技能CD(当前技能, 上一个技能, i)
     }
-
     增加时间(网络按键延迟)
     // 开始释放技能
     添加战斗日志({
@@ -155,10 +178,10 @@ export const SimulatorCycle = (props: SimulatorCycleProps): CycleSimulatorLog[] 
   const 最终日志 = [...添加普通攻击后日志]
 
   最终日志.sort((a, b) => {
-    return a?.日志时间 - b?.日志时间
+    return (a?.日志时间 || 0) - (b?.日志时间 || 0)
   })
 
-  return 最终日志
+  return { 最终日志, 当前自身buff列表, 当前目标buff列表, 角色状态信息 }
 }
 
 // 普通攻击日志
@@ -182,7 +205,7 @@ const 普通攻击日志 = (战斗日志: CycleSimulatorLog[]) => {
       .filter((item: any) => {
         return item?.是否读条
       })
-  const 战斗最大时间 = 战斗日志[战斗日志?.length - 1]?.日志时间
+  const 战斗最大时间 = 战斗日志[战斗日志?.length - 1]?.日志时间 || 0
 
   const 战斗日志副本 = [...战斗日志]
 
@@ -210,7 +233,7 @@ const 普通攻击日志 = (战斗日志: CycleSimulatorLog[]) => {
   })
 
   战斗日志副本.sort((a, b) => {
-    return a?.日志时间 - b?.日志时间
+    return (a?.日志时间 || 0) - (b?.日志时间 || 0)
   })
 
   return 战斗日志副本

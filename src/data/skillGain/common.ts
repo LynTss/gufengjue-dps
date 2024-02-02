@@ -15,7 +15,7 @@ const commonGainDTO: SkillGainDTO[] = [
     ],
   },
   {
-    增益名称: '灭影随风',
+    增益名称: '灭影追风',
     增益所在位置: '技能',
     增益启用开关: true,
     增益集合: [
@@ -33,6 +33,19 @@ const commonGainDTO: SkillGainDTO[] = [
         增益类型: GainTypeEnum.郭氏外攻会心效果等级,
         增益计算类型: GainDpsTypeEnum.A,
         增益数值: 102,
+      },
+    ],
+  },
+  {
+    增益名称: '流岚',
+    增益所在位置: '奇穴',
+    // 模拟器上线后要修改这里为启用类型增益
+    常驻增益: false,
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: GainTypeEnum.郭氏无视防御,
+        增益数值: 410,
       },
     ],
   },

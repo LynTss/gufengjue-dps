@@ -1,23 +1,13 @@
 // 循环模拟器
 import React, { useEffect, useMemo, useState } from 'react'
-import {
-  Badge,
-  Button,
-  Checkbox,
-  Dropdown,
-  Input,
-  Menu,
-  Modal,
-  Popover,
-  Space,
-  Tag,
-  Tooltip,
-} from 'antd'
+import { Badge, Button, Checkbox, Dropdown, Input, Menu, Modal, Space, Tag, Tooltip } from 'antd'
 import { ReactSortable } from 'react-sortablejs'
 import {
+  Buff枚举,
   CycleSimulatorLog,
   CycleSimulatorSkillDTO,
   ShowCycleSingleSkill,
+  角色状态信息类型,
 } from '@/@types/cycleSimulator'
 import { 获取全部循环 } from '@/data/skillCycle'
 import { setCurrentCycle, setQixueData } from '@/store/basicReducer'
@@ -25,7 +15,7 @@ import { CopyOutlined, DeleteOutlined } from '@ant-design/icons'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import 循环模拟技能基础数据 from './constant/skill'
 // import { 测试循环新桑柘, 测试循环_朱厌, 测试循环_397 } from './constant/index'
-import { SimulatorCycle } from './simulator'
+// import { SimulatorCycle } from './simulator'
 import BattleLogModal from './BattleLogModal'
 import {
   getDpsCycle,
@@ -41,9 +31,27 @@ import DpsResModal from './DpsResModal'
 import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
 import './index.css'
 import SkillCountModal from './SkillCountModal'
+import StatusBar from './StatusBar'
+import CycleModalHeader from './CycleModalHeader'
+import 模拟循环 from './simulator/index'
+import { 每秒郭氏帧 } from './constant'
 
 function CycleSimulator() {
   const [logData, setLogData] = useState<CycleSimulatorLog[]>([])
+
+  const [Buff列表, 更新Buff列表] = useState<{
+    当前自身buff列表: Buff枚举
+    当前目标buff列表: Buff枚举
+  }>({
+    当前自身buff列表: {},
+    当前目标buff列表: {},
+  })
+
+  const [角色状态信息, 更新角色状态信息] = useState<角色状态信息类型>({
+    锐意: 0,
+    体态: '双刀',
+  })
+
   // 基础弹窗
   const [basicModalOpen, setBasicModalOpen] = useState<boolean>(false)
   // 日志log
@@ -60,7 +68,7 @@ function CycleSimulator() {
   // 当前面板加速值
   const 加速值 = useAppSelector((state) => state?.basic?.characterFinalData)?.加速值
   // 当前网络延迟
-  const 网络按键延迟 = useAppSelector((state) => state?.basic?.network) - 1
+  const 网络按键延迟 = 0
 
   // 是否实时计算
   const [是否实时计算, 设置是否实时计算] = useState<boolean>(false)
@@ -109,17 +117,37 @@ function CycleSimulator() {
   }, [cycle, 是否实时计算, 起手驰风, 网络按键延迟, 加速值, qixuedata])
 
   const simulator = (props?) => {
-    const { 传入延迟 = 网络按键延迟, 传入加速 = 加速值, 更新日志 = true } = props
-    const data = SimulatorCycle({
+    const { 传入延迟 = 网络按键延迟, 传入加速 = 加速值, 更新展示 = true } = props
+
+    const res = 模拟循环({
       测试循环: cycle.map((item) => item?.技能名称) || [],
       加速值: 传入加速 !== undefined ? 传入加速 : 加速值,
       网络按键延迟: 传入延迟 !== undefined ? 传入延迟 : 网络按键延迟,
       奇穴: qixuedata,
     })
-    if (更新日志) {
-      计算dps日志(data)
+
+    // SimulatorCycle({
+    //   测试循环: cycle.map((item) => item?.技能名称) || [],
+    //   加速值: 传入加速 !== undefined ? 传入加速 : 加速值,
+    //   网络按键延迟: 传入延迟 !== undefined ? 传入延迟 : 网络按键延迟,
+    //   奇穴: qixuedata,
+    //   角色状态信息,
+    //   当前自身buff列表: Buff列表?.当前自身buff列表,
+    //   当前目标buff列表: Buff列表?.当前目标buff列表,
+    // })
+
+    const {
+      最终日志,
+      当前自身buff列表: 处理后自身buff,
+      当前目标buff列表: 处理后目标buff,
+      角色状态信息: 处理后角色状态信息,
+    } = res
+    if (更新展示) {
+      计算dps日志(最终日志)
+      更新Buff列表({ 当前自身buff列表: 处理后自身buff, 当前目标buff列表: 处理后目标buff })
+      更新角色状态信息(处理后角色状态信息)
     }
-    return data
+    return { 最终日志, 当前自身buff列表: 处理后自身buff, 当前目标buff列表: 处理后目标buff }
   }
 
   // 计算DPS日志
@@ -130,7 +158,7 @@ function CycleSimulator() {
         data?.find((item) => item?.日志类型 === '造成伤害')?.日志时间 || 0
       const 时间差 = 日志时间 - 第一次造成伤害的时间
       if (时间差) {
-        return Math.round(造成总伤害 / (时间差 / 16))
+        return Math.round(造成总伤害 / (时间差 / 每秒郭氏帧))
       } else {
         return 0
       }
@@ -145,13 +173,13 @@ function CycleSimulator() {
           ...item,
           造成总伤害: totalDps,
           造成伤害: dps,
-          秒伤: item?.日志时间 > 16 ? 获取的秒伤(totalDps, item?.日志时间) : 0,
+          秒伤: (item?.日志时间 || 0) > 每秒郭氏帧 ? 获取的秒伤(totalDps, item?.日志时间) : 0,
         }
       } else {
         return {
           ...item,
           造成总伤害: totalDps,
-          秒伤: item?.日志时间 > 16 ? 获取的秒伤(totalDps, item?.日志时间) : 0,
+          秒伤: (item?.日志时间 || 0) > 每秒郭氏帧 ? 获取的秒伤(totalDps, item?.日志时间) : 0,
         }
       }
     })
@@ -315,7 +343,7 @@ function CycleSimulator() {
 
     // 保存用于计算的循环，这里只保存当前加速和延迟下生成的循环，减少计算损耗。实际使用时很少在多个加速和延迟之前频繁切换，
     // 等待后续优化
-    const 日志 = simulator({ 更新日志: false })
+    const 日志 = simulator({ 更新展示: false })?.最终日志
     const 用于计算循环 = getDpsCycle(日志)
 
     Object.keys(dpsTime).forEach((加速) => {
@@ -324,10 +352,10 @@ function CycleSimulator() {
         const 本次日志 = simulator({
           传入延迟: Math.max(Number(延迟) - 1, 0),
           传入加速: Number(实际加速值),
-          更新日志: false,
-        })
-        const 战斗时间 = 本次日志[本次日志.length - 1].日志时间
-        const 战斗秒 = Math.round((战斗时间 / 16) * 100) / 100
+          更新展示: false,
+        })?.最终日志
+        const 战斗时间 = 本次日志[本次日志.length - 1].日志时间 || 0
+        const 战斗秒 = Math.round((战斗时间 / 每秒郭氏帧) * 100) / 100
 
         dpsTime[加速][延迟] = 战斗秒
       })
@@ -384,58 +412,14 @@ function CycleSimulator() {
 
   return (
     <>
-      <Button danger disabled onClick={() => setBasicModalOpen(true)}>
+      <Button danger onClick={() => setBasicModalOpen(true)}>
         循环模拟
       </Button>
       <Modal
         className="cycle-simulator-modal"
         maskClosable={false}
         width={'100%'}
-        title={
-          <div className={'cycle-simulator-modal-header space-between'}>
-            <div className={'cycle-simulator-modal-title-wrapper'}>
-              <h1 className={'cycle-simulator-modal-title'}>循环模拟（beta）</h1>
-              <Popover
-                content={
-                  <div>
-                    <p>1、点击下方技能按钮添加至循环内</p>
-                    <p>2、可以整行删除、复制本行到最后一行</p>
-                    <p>3、可以整行拖动技能、在单行内拖动改变技能顺序</p>
-                    <p>4、宠物可以通过拖动改变宠物顺序</p>
-                    <p>5、按钮上红色标识为技能剩余CD</p>
-                  </div>
-                }
-              >
-                <span className={'cycle-simulator-help'}>如何使用?</span>
-              </Popover>
-              <Popover
-                content={
-                  <div>
-                    <p>标鹄显示</p>
-                    <p>验证循环合理性，金乌判断</p>
-                    <p>日志分析buff覆盖</p>
-                    <p>宏命令生成循环等等</p>
-                    <p>后续会逐步按计划实现。</p>
-                  </div>
-                }
-              >
-                <span className={'cycle-not-support'}>目前未支持功能</span>
-              </Popover>
-            </div>
-            {cycle?.length ? (
-              <Tooltip title="自定义循环和原计算器其他循环的dps会心期望计算方式不同。会导致最终数值偏差。请勿进行跨循环比较。">
-                <Button
-                  size="small"
-                  type="primary"
-                  onClick={() => 设置自定义循环保存弹窗(true)}
-                  disabled={cycle?.length <= 1}
-                >
-                  保存为自定义循环
-                </Button>
-              </Tooltip>
-            ) : null}
-          </div>
-        }
+        title={<CycleModalHeader cycle={cycle} 设置自定义循环保存弹窗={设置自定义循环保存弹窗} />}
         centered
         footer={null}
         open={basicModalOpen}
@@ -443,13 +427,13 @@ function CycleSimulator() {
         destroyOnClose
       >
         <div className={'cycle-simulator-setting'}>
-          {/* <div className={'cycle-simulator-setting-header'}>
-            <div className="cycle-simulator-setting-header-left">
-              <h1>配置你的循环</h1>
-            </div>
-            <div />
-          </div> */}
-          <div className={'cycle-status-bar'}>123</div>
+          {/* 角色状态栏 */}
+          <StatusBar
+            角色状态信息={角色状态信息}
+            Buff列表={Buff列表}
+            完整循环={处理循环结果对象?.完整循环}
+          />
+          {/* 循环展示模块 */}
           <div className={'cycle-simulator-setting-res'}>
             <ReactSortable
               list={(处理循环结果对象?.显示循环 || []).map((i, index) =>
@@ -479,7 +463,7 @@ function CycleSimulator() {
                         const 间隔CD =
                           (item.本技能实际释放时间 || 0) - (item.本技能计划释放时间 || 0)
                         // 把帧转成秒，保留两位小数
-                        const 剩余秒 = Math.round((间隔CD / 16) * 100) / 100
+                        const 剩余秒 = Math.round((间隔CD / 每秒郭氏帧) * 100) / 100
                         return (
                           <Badge
                             count={剩余秒}
@@ -498,7 +482,6 @@ function CycleSimulator() {
                           </Badge>
                         )
                       })}
-
                       <div className={'cycle-turn-operate'}>
                         <Tooltip title="复制并添加到最后">
                           <CopyOutlined
@@ -513,10 +496,6 @@ function CycleSimulator() {
                           />
                         </Tooltip>
                       </div>
-                      {/* <div className="cycle-turn-time">
-                        该轮用时：
-                        {获取该轮箭用时(轮次)}
-                      </div> */}
                     </ReactSortable>
                   </div>
                 )
@@ -706,7 +685,7 @@ const SkillColorMap = {
 const AddCycleBtn = ({ 技能, 完整循环, 朱厌, ...rest }) => {
   const { 剩余CD } = 判断上一个同名技能(技能, 完整循环, 朱厌)
   // 把帧转成秒，保留两位小数
-  const 剩余秒 = Math.round((剩余CD / 16) * 100) / 100
+  const 剩余秒 = Math.round((剩余CD / 每秒郭氏帧) * 100) / 100
   return 剩余秒 > 0 ? (
     <Badge count={剩余秒} offset={[-20, 0]}>
       <Tooltip title={`当前技能处于冷却中，剩余${剩余秒}秒`}>

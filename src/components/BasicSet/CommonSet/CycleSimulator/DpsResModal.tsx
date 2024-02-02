@@ -5,6 +5,7 @@ import { Modal, ModalProps } from 'antd'
 import * as G2 from '@antv/g2'
 import { DOMAIN_COLOR } from '@/utils/system_constant'
 import './index.css'
+import { 每秒郭氏帧 } from './constant'
 
 interface DpsResModalProps extends ModalProps {
   logData: CycleSimulatorLog[]
@@ -85,7 +86,7 @@ const DpsResModal: React.FC<DpsResModalProps> = (props) => {
       const dpsResObj = {}
       logData.forEach((item) => {
         if (item?.日志类型 === '造成伤害') {
-          dpsResObj[item.日志时间 - firstTime] = item.造成总伤害
+          dpsResObj[(item.日志时间 || 0) - firstTime] = item.造成总伤害
         }
       })
 
@@ -93,11 +94,11 @@ const DpsResModal: React.FC<DpsResModalProps> = (props) => {
 
       const dpsResLit: any[] = []
       // 每1秒结算一次
-      for (let i = 0; i < lastTime; i = i + 16) {
+      for (let i = 0; i < lastTime; i = i + 每秒郭氏帧) {
         let currentDps = 0
         if (dpsResObj[i]) {
           if (i) {
-            currentDps = Math.round(dpsResObj[i] / (Number(i) / 16))
+            currentDps = Math.round(dpsResObj[i] / (Number(i) / 每秒郭氏帧))
           } else {
             currentDps = Math.round(dpsResObj[i])
           }
@@ -108,7 +109,9 @@ const DpsResModal: React.FC<DpsResModalProps> = (props) => {
               const currentTime = i - j
               if (i - j >= 0) {
                 if (currentTime) {
-                  currentDps = Math.round(dpsResObj[currentTime] / (Number(currentTime) / 16))
+                  currentDps = Math.round(
+                    dpsResObj[currentTime] / (Number(currentTime) / 每秒郭氏帧)
+                  )
                 } else {
                   currentDps = Math.round(dpsResObj[currentTime])
                 }
@@ -118,7 +121,7 @@ const DpsResModal: React.FC<DpsResModalProps> = (props) => {
           }
         }
         dpsResLit.push({
-          time: Number(i) / 16,
+          time: Number(i) / 每秒郭氏帧,
           dps: currentDps,
         })
       }

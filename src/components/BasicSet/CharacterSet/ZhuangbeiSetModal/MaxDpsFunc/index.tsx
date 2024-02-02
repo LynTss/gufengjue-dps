@@ -184,7 +184,6 @@
 //     zengyixuanxiangData,
 //     dpsTime,
 //     开启强膂: true,
-//     开启流岚: true,
 //   })
 
 //   // console.log('dps', totalDps)

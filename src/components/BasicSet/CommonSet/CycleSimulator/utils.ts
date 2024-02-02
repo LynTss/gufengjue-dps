@@ -5,6 +5,7 @@ import {
   ShowCycleSingleSkill,
 } from '@/@types/cycleSimulator'
 import { 获取加速等级 } from '@/utils/help'
+import { 每秒郭氏帧 } from './constant'
 
 export const getDpsCycle = (data: CycleSimulatorLog[]): CycleDTO[] => {
   const res: { [key: string]: CycleDTO } = {}
@@ -147,7 +148,9 @@ export const 判断每个技能的循环时间 = (
 
     if (上一个同名技能) {
       const 实际CD =
-        朱厌 && 当前技能.技能名称 === '弛律召野' ? 当前技能?.技能CD + 20 * 16 : 当前技能?.技能CD
+        朱厌 && 当前技能.技能名称 === '弛律召野'
+          ? 当前技能?.技能CD + 20 * 每秒郭氏帧
+          : 当前技能?.技能CD
 
       const 上一个同名技能释放CD = (上一个同名技能?.本技能实际释放时间 || 0) + (实际CD || 0)
       本技能实际释放时间 =
@@ -165,7 +168,7 @@ export const 判断每个技能的循环时间 = (
   const 下一个技能可以释放时间 =
     本技能实际释放时间 +
     Math.max(当前技能释放所需时间, 计算加速后的GCD) +
-    (释放完本技能要换箭 ? 16 : 0)
+    (释放完本技能要换箭 ? 每秒郭氏帧 : 0)
 
   return {
     本技能计划释放时间,
@@ -195,7 +198,9 @@ export const 判断上一个同名技能 = (当前技能, 循环, 朱厌) => {
 
   if (上一个同名技能) {
     const 实际CD =
-      朱厌 && 当前技能.技能名称 === '弛律召野' ? 当前技能?.技能CD + 20 * 16 : 当前技能?.技能CD
+      朱厌 && 当前技能.技能名称 === '弛律召野'
+        ? 当前技能?.技能CD + 20 * 每秒郭氏帧
+        : 当前技能?.技能CD
 
     const 上一个同名技能释放时间 = (上一个同名技能?.本技能实际释放时间 || 0) + (实际CD || 0)
     const 下一个技能可以释放时间 = 循环[循环.length - 1]?.下一个技能可以释放时间
@@ -213,23 +218,23 @@ export const 获取该轮箭用时 = (轮次: ShowCycleSingleSkill[]) => {
   const 用时帧 =
     (轮次[轮次.length - 1]?.下一个技能可以释放时间 || 0) - (轮次[0].本技能实际释放时间 || 0)
 
-  const 用时秒 = Math.round((用时帧 / 16) * 100) / 100
+  const 用时秒 = Math.round((用时帧 / 每秒郭氏帧) * 100) / 100
   return 用时秒
 }
 
 export const 获取总用时 = (时间) => {
-  const 用时秒 = Math.round((时间 / 16) * 100) / 100
+  const 用时秒 = Math.round((时间 / 每秒郭氏帧) * 100) / 100
   return 用时秒
 }
 
 export const 获取显示秒伤 = (最后一条伤害数据) => {
-  return Math.round((最后一条伤害数据?.造成总伤害 || 0) / (最后一条伤害数据?.日志时间 / 16))
+  return Math.round((最后一条伤害数据?.造成总伤害 || 0) / (最后一条伤害数据?.日志时间 / 每秒郭氏帧))
 }
 
 export const 获取添加技能CD循环 = ({ cycle, 网络按键延迟, 加速值, qixuedata }) => {
   const 添加技能CD循环: ShowCycleSingleSkill[] = []
   let 当前剩余箭数量 = 8
-  cycle.forEach((item) => {
+  cycle.map((item) => {
     const { 本技能计划释放时间, 本技能实际释放时间, 下一个技能可以释放时间 } =
       判断每个技能的循环时间(
         item,

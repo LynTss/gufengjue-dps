@@ -17,7 +17,6 @@ interface DpsKernelOptimizerParams {
   zengyixuanxiangData: ZengyixuanxiangDataDTO
   zengyiQiyong: boolean
   isOpenQiangLv: boolean
-  开启流岚: boolean
 }
 
 // 计算dps最大期望值的算法
@@ -29,7 +28,6 @@ const DpsKernelOptimizer = ({
   zengyiQiyong,
   zengyixuanxiangData,
   isOpenQiangLv,
-  开启流岚,
 }: DpsKernelOptimizerParams) => {
   // 当前计算环境下的原属性总量
   const basicDTO = { ...characterFinalData }
@@ -55,7 +53,6 @@ const DpsKernelOptimizer = ({
       zengyixuanxiangData,
       dpsTime: 300, // 这里只需要算总dps，算固定300秒的dps
       开启强膂: isOpenQiangLv,
-      开启流岚,
     })
 
     // 由于dps太大，导致用1除灰远小于计算容差，所以这里取一个较大的值去除以最终结果。以达到dps越大最终结果越小的目的，用于算法计算

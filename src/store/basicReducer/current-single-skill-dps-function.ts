@@ -1,9 +1,5 @@
 // 根据当前增益装备，只计算传入的单条技能记录的dps
-import {
-  判断是否开启无视防御奇穴,
-  判断是否开启力道加成奇穴,
-  获取力道奇穴加成后面板,
-} from '@/data/qixue'
+import { 判断是否开启力道加成奇穴, 获取力道奇穴加成后面板 } from '@/data/qixue'
 import { RootState } from '../index'
 import {
   getAllGainData,
@@ -32,7 +28,6 @@ export const currentSingleSkillDpsFunction =
     const 奇穴数据 = currentState.basic.qixueData
 
     const 开启力道加成奇穴 = 判断是否开启力道加成奇穴(奇穴数据)
-    const 开启无视防御奇穴 = 判断是否开启无视防御奇穴(奇穴数据)
 
     // 获取实际循环
 
@@ -42,7 +37,7 @@ export const currentSingleSkillDpsFunction =
     const 最终人物属性 = 获取力道奇穴加成后面板(当前角色面板, 开启力道加成奇穴)
 
     // 获取装备增益等带来的最终增益集合
-    let 总增益集合: SKillGainData[] = getAllGainData(当前角色面板, [], 开启无视防御奇穴)
+    let 总增益集合: SKillGainData[] = getAllGainData(当前角色面板, [])
 
     if (团队增益数据 && 团队增益是否启用) {
       const 团队增益增益集合 = getZengyi(团队增益数据)
