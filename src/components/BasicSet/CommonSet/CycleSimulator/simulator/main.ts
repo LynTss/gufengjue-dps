@@ -2,16 +2,19 @@
  * 定义模拟循环类
  */
 
+import { 获取加速等级 } from '@/utils/help'
+import 循环模拟技能基础数据 from '../constant/skill'
+import { ERROR_ACTION, 根据奇穴修改buff数据 } from './utils'
 import {
+  技能GCD组,
+  技能类实例集合,
+  检查运行数据实例类型,
   Buff枚举,
   CycleSimulatorLog,
   CycleSimulatorSkillDTO,
   角色状态信息类型,
-} from '@/@types/cycleSimulator'
-import { 获取加速等级 } from '@/utils/help'
-import 循环模拟技能基础数据 from '../constant/skill'
-import { ERROR_ACTION, 根据奇穴修改buff数据 } from './utils'
-import { 技能GCD组, 技能类实例集合, 检查运行数据实例类型 } from './type'
+  技能释放记录数据,
+} from './type'
 
 import 决云势 from './技能类/决云势'
 import 行云势 from './技能类/行云势'
@@ -24,6 +27,7 @@ import 孤锋破浪 from './技能类/孤锋破浪'
 import 灭影追风 from './技能类/灭影追风'
 import 游风飘踪 from './技能类/游风飘踪'
 import 吃影子 from './技能类/吃影子'
+import 流血 from './DOT类/流血'
 
 interface SimulatorCycleProps {
   测试循环: string[]
@@ -48,7 +52,8 @@ class 循环主类 {
   当前时间 = 0
   开始释放上一个技能的时间 = 0
   战斗日志: CycleSimulatorLog[] = []
-  Buff数据: Buff枚举 = {}
+  技能释放记录: 技能释放记录数据[] = []
+  Buff和Dot数据: Buff枚举 = {}
   GCD组: 技能GCD组 = {
     单刀: 0,
     双刀: 0,
@@ -62,7 +67,7 @@ class 循环主类 {
     this.加速等级 = 获取加速等级(props.加速值)
     this.网络按键延迟 = props.网络按键延迟
     // 根据奇穴和装备情况修改buff的数据
-    this.Buff数据 = 根据奇穴修改buff数据(this.奇穴)
+    this.Buff和Dot数据 = 根据奇穴修改buff数据(this.奇穴)
     this.初始化技能实例类()
     this.当前自身buff列表 = {}
     this.当前目标buff列表 = {}
@@ -91,6 +96,7 @@ class 循环主类 {
       灭: new 灭影追风(this),
       游: new 游风飘踪(this),
       吃影子: new 吃影子(this),
+      流血: new 流血(this),
     }
   }
 
@@ -101,8 +107,8 @@ class 循环主类 {
         : this.当前目标buff列表[名称]?.当前层数
 
     const 新buff对象 = {
-      ...this.Buff数据[名称],
-      当前层数: Math.min((当前层数 || 0) + 新增层数, this.Buff数据[名称].最大层数 || 1),
+      ...this.Buff和Dot数据[名称],
+      当前层数: Math.min((当前层数 || 0) + 新增层数, this.Buff和Dot数据[名称].最大层数 || 1),
       刷新时间: 事件时间,
     }
     if (新buff对象.当前层数 !== 当前层数 && 新buff对象.当前层数 !== 1) {
@@ -140,7 +146,7 @@ class 循环主类 {
           日志时间: 事件时间,
         })
         const 新buff对象 = {
-          ...this.Buff数据[名称],
+          ...this.Buff和Dot数据[名称],
           当前层数: 当前层数 - 卸除层数,
           刷新时间: 事件时间,
         }
@@ -226,8 +232,11 @@ class 循环主类 {
       const 最大充能层数 = 当前技能?.最大充能层数 || 1
       const 当前层数 = 技能实例?.技能运行数据?.当前层数
       const 计划下次充能时间点 = 技能实例?.技能运行数据?.计划下次充能时间点 || 0
+
+      console.log('当前层数', 当前层数)
+      console.log('计划下次充能时间点', 计划下次充能时间点)
       // 当前没有层数可用，需要等待充能
-      if (!当前层数) {
+      if (当前层数 <= 0) {
         // 增加GCD
         if (计划下次充能时间点 > this.当前时间) {
           this.添加战斗日志({
@@ -296,11 +305,6 @@ class 循环主类 {
         ...rest,
       },
     ]
-  }
-
-  // 记录上一个技能释放时间
-  记录上一个技能释放时间() {
-    this.开始释放上一个技能的时间 = this.当前时间
   }
 
   // 造成伤害
@@ -377,8 +381,9 @@ class 循环主类 {
 
   // 判断GCD，技能CD等
   技能释放前(当前技能: CycleSimulatorSkillDTO, 技能实例, i) {
+    let 技能计划释放时间 = this.当前时间
     // 判断是否为当前箭袋第一个技能
-    if (i > 0) {
+    if (i >= 0) {
       // 判断上一个技能对于本技能是否有GCD限制
       if (当前技能?.技能GCD组) {
         if (技能实例?.检查GCD) {
@@ -387,15 +392,17 @@ class 循环主类 {
           this.技能释放前检查GCD统一方法(当前技能)
         }
       }
-      // 判断技能CD
+      技能计划释放时间 = this.当前时间
+      // 判断技能CD，如果存在CD。增加等待时间
       if (当前技能?.技能CD) {
         this.技能释放前检查运行数据(当前技能, 技能实例)
       }
     }
+    return 技能计划释放时间
   }
 
   // 判断添加GCD等
-  技能释放后(当前技能: CycleSimulatorSkillDTO, 技能实例) {
+  技能释放后(当前技能: CycleSimulatorSkillDTO, 技能实例, 计划释放时间: number) {
     // GCD处理
     if (当前技能?.技能GCD组) {
       let 待更新GCD组: string = 当前技能.技能GCD组 as string
@@ -407,83 +414,134 @@ class 循环主类 {
           (this.GCD组[待更新GCD组] || 0) + 当前技能?.技能释放后添加GCD - this.加速等级
       }
     }
-
     // 技能CD处理
     if (当前技能?.技能CD) {
       this.技能释放后更新运行数据(当前技能, 技能实例)
     }
+    // 技能释放记录
+    this.技能释放记录.push({
+      技能名称: 当前技能?.技能名称,
+      计划释放时间,
+      实际释放时间: this.当前时间,
+    })
+  }
+
+  清空buff调用函数(对象: '自身' | '目标') {
+    const buff列表 = 对象 === '自身' ? this.当前自身buff列表 : this.当前目标buff列表
+
+    // 更新目标buff
+    Object.keys(buff列表).forEach((key) => {
+      const buff对象 = buff列表[key]
+      const buff应该消失时间 = (buff对象?.刷新时间 || 0) + (buff对象?.最大持续时间 || 0)
+      const 消失层数 = buff对象?.自然消失失去层数 || buff对象?.最大层数
+      if (buff应该消失时间 <= this.当前时间) {
+        this.卸除buff({ 名称: key, 对象, 事件时间: buff应该消失时间, 卸除层数: 消失层数 })
+      }
+    })
   }
 
   清空已经消失的buff() {
     // 更新目标buff
-    Object.keys(this.当前目标buff列表).forEach((key) => {
-      const buff对象 = this.当前目标buff列表[key]
-      const buff应该消失时间 = (buff对象?.刷新时间 || 0) + (buff对象?.最大持续时间 || 0)
-      const 消失层数 = buff对象?.自然消失失去层数 || buff对象?.最大层数
-      if (buff应该消失时间 <= this.当前时间) {
-        this.卸除buff({ 名称: key, 对象: '目标', 事件时间: buff应该消失时间, 卸除层数: 消失层数 })
-      }
-    })
+    this.清空buff调用函数('目标')
     // 更新自身buff
-    Object.keys(this.当前自身buff列表).forEach((key) => {
-      const buff对象 = this.当前自身buff列表[key]
-      const buff应该消失时间 = (buff对象?.刷新时间 || 0) + (buff对象?.最大持续时间 || 0)
-      const 消失层数 = buff对象?.自然消失失去层数 || buff对象?.最大层数
-
-      if (buff应该消失时间 <= this.当前时间) {
-        this.卸除buff({ 名称: key, 对象: '自身', 事件时间: buff应该消失时间, 卸除层数: 消失层数 })
-      }
-    })
+    this.清空buff调用函数('自身')
   }
 
+  // 对当前的DOT进行已过期的结算和剩余时间更新
+  DOT结算与更新() {
+    this.技能类实例集合?.流血?.结算流血伤害()
+  }
+
+  // 模拟轮次开始
+  本轮模拟开始前() {
+    this.重置循环执行结果()
+    this.DOT结算与更新()
+  }
+
+  // 模拟轮次释放结束
+  本轮模拟结束后() {
+    // 判断buff列表，清空已经消失的buff
+    this.清空已经消失的buff()
+  }
+
+  // 技能释放校验
+  技能释放校验(技能实例, 当前技能) {
+    const 体态校验结果 = this.单双刀体态校验(当前技能)
+    const 释放判断结果 = 技能实例.释放
+      ? 技能实例.释放?.() || { 可以释放: true }
+      : { 可以释放: true }
+    const 校验结果 = {
+      可以释放: 体态校验结果.可以释放 && 释放判断结果.可以释放,
+      异常信息: 体态校验结果.异常信息 || 释放判断结果.异常信息,
+    }
+    if (校验结果.可以释放) {
+      this.添加战斗日志?.({
+        日志: 当前技能?.技能名称,
+        日志类型: '释放技能',
+      })
+    }
+    return 校验结果
+  }
+
+  // 技能释放异常
+  技能释放异常(校验结果, 当前技能, i) {
+    this.添加战斗日志({
+      日志: `循环在第${i + 1}个技能${当前技能?.技能名称}异常终止`,
+      日志类型: '循环异常',
+    })
+    this.循环执行结果 = '异常'
+    if (校验结果?.异常信息) {
+      this.循环异常信息 = {
+        异常索引: i + 1,
+        异常信息: 校验结果?.异常信息,
+      }
+    }
+  }
+
+  // 模拟函数，一个技能的释放生命周期
   模拟() {
     for (let i = 0; i < this.测试循环.length; i++) {
-      this.重置循环执行结果()
+      this.本轮模拟开始前()
       const 当前技能 = 循环模拟技能基础数据?.find((item) => item?.技能名称 === this.测试循环[i])
       if (当前技能) {
         const 技能实例 = this.技能类实例集合[当前技能?.技能名称]
         if (技能实例) {
-          this.技能释放前(当前技能, 技能实例, i)
-          const 体态校验结果 = this.单双刀体态校验(当前技能)
-          const 释放判断结果 = 技能实例.释放
-            ? 技能实例.释放?.() || { 可以释放: true }
-            : { 可以释放: true }
-          const 校验结果 = {
-            可以释放: 体态校验结果.可以释放 && 释放判断结果.可以释放,
-            异常信息: 体态校验结果.异常信息 || 释放判断结果.异常信息,
-          }
-
-          if (校验结果?.可以释放) {
-            this.添加战斗日志?.({
-              日志: 当前技能?.技能名称,
-              日志类型: '释放技能',
-            })
-
+          const 技能计划释放时间 = this.技能释放前(当前技能, 技能实例, i)
+          const 释放校验结果 = this.技能释放校验(技能实例, 当前技能)
+          if (释放校验结果?.可以释放) {
             技能实例.命中?.()
-
             技能实例.造成伤害?.()
-
             技能实例.释放后?.()
           } else {
-            this.添加战斗日志({
-              日志: `循环在第${i + 1}个技能${当前技能?.技能名称}异常终止`,
-              日志类型: '循环异常',
-            })
-            this.循环执行结果 = '异常'
-            if (校验结果?.异常信息) {
-              this.循环异常信息 = {
-                异常索引: i + 1,
-                异常信息: 校验结果?.异常信息,
-              }
-            }
+            this.技能释放异常(释放校验结果, 当前技能, i)
             break
           }
+          this.技能释放后(当前技能, 技能实例, 技能计划释放时间)
         }
-        this.技能释放后(当前技能, 技能实例)
       }
-      // 判断buff列表，清空已经消失的buff
-      this.清空已经消失的buff()
+      this.本轮模拟结束后()
     }
+  }
+
+  // 将日志按时间排序
+  日志排序() {
+    const 新日志 = [...(this.战斗日志 || [])]
+
+    新日志.sort((a, b) => {
+      return (a?.日志时间 || 0) - (b?.日志时间 || 0)
+    })
+
+    this.战斗日志 = [...(新日志 || [])]
+  }
+
+  获取当前各技能的运行状态() {
+    const 各技能当前运行状态 = {}
+
+    ;(Object.keys(this.技能类实例集合) || []).forEach((key) => {
+      各技能当前运行状态[key] = this.技能类实例集合[key]?.技能运行数据 || {}
+    })
+
+    return 各技能当前运行状态
   }
 }
 

@@ -29,14 +29,18 @@ const 外攻基础系数 = 16 * 10
 const 获取实际系数 = (系数, dot跳数?, dot间隔?) => {
   if (dot跳数 && dot间隔) {
     return Math.max(
-      (系数 * Math.max((dot跳数 * dot间隔) / 12, 16)) / dot跳数 / 16 / 外攻基础系数,
+      (Math.floor(系数) * Math.max(Math.floor((dot跳数 * dot间隔) / 12), 16)) /
+        dot跳数 /
+        16 /
+        外攻基础系数,
       0.0625
     )
   }
+
   return Math.floor(系数) / 外攻基础系数
 }
 
-const 流血基础系数 = 获取实际系数(100, 3, 48)
+const 流血基础系数 = 获取实际系数(100, 3, 32)
 
 const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
   {

@@ -1,65 +1,53 @@
 // 循环模拟器
 import React, { useEffect, useMemo, useState } from 'react'
-import { Badge, Button, Checkbox, Dropdown, Input, Menu, Modal, Space, Tag, Tooltip } from 'antd'
+import { Badge, Button, Checkbox, Dropdown, Input, Menu, Modal, Space, Tooltip } from 'antd'
 import { ReactSortable } from 'react-sortablejs'
-import {
-  Buff枚举,
-  CycleSimulatorLog,
-  CycleSimulatorSkillDTO,
-  ShowCycleSingleSkill,
-  角色状态信息类型,
-} from '@/@types/cycleSimulator'
+
 import { 获取全部循环 } from '@/data/skillCycle'
 import { setCurrentCycle, setQixueData } from '@/store/basicReducer'
 import { CopyOutlined, DeleteOutlined } from '@ant-design/icons'
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import 循环模拟技能基础数据 from './constant/skill'
-// import { 测试循环新桑柘, 测试循环_朱厌, 测试循环_397 } from './constant/index'
-// import { SimulatorCycle } from './simulator'
-import BattleLogModal from './BattleLogModal'
-import {
-  getDpsCycle,
-  getSingleSkillDpsCycle,
-  判断上一个同名技能,
-  获取总用时,
-  获取显示秒伤,
-  获取添加技能CD循环,
-} from './utils'
 import { currentSingleSkillDpsFunction } from '@/store/basicReducer/current-single-skill-dps-function'
-import QixueSet from '../QixueSet'
-import DpsResModal from './DpsResModal'
 import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
-import './index.css'
-import SkillCountModal from './SkillCountModal'
-import StatusBar from './StatusBar'
-import CycleModalHeader from './CycleModalHeader'
+
+import 循环模拟技能基础数据 from './constant/skill'
+
+import QixueSet from '../QixueSet'
+import { getDpsCycle, getSingleSkillDpsCycle, 判断上一个同名技能 } from './utils'
+import {
+  CycleSimulatorLog,
+  CycleSimulatorSkillDTO,
+  ShowCycleSingleSkill,
+  模拟信息类型,
+} from './simulator/type'
+
 import 模拟循环 from './simulator/index'
 import { 每秒郭氏帧 } from './constant'
+
+import CycleModalHeader from './components/CycleModalHeader'
+import StatusBar from './components/StatusBar'
+import './index.css'
+import CycleSkillItem from './components/CycleSkillItem'
 
 function CycleSimulator() {
   const [logData, setLogData] = useState<CycleSimulatorLog[]>([])
 
-  const [Buff列表, 更新Buff列表] = useState<{
-    当前自身buff列表: Buff枚举
-    当前目标buff列表: Buff枚举
-  }>({
+  const [模拟信息, 更新模拟信息] = useState<模拟信息类型>({
+    角色状态信息: {
+      锐意: 0,
+      体态: '双刀',
+    },
+    当前时间: 0,
     当前自身buff列表: {},
     当前目标buff列表: {},
-  })
-
-  const [角色状态信息, 更新角色状态信息] = useState<角色状态信息类型>({
-    锐意: 0,
-    体态: '双刀',
+    循环执行结果: '成功',
+    循环异常信息: {},
+    技能释放记录: [],
+    当前各技能运行状态: {},
   })
 
   // 基础弹窗
   const [basicModalOpen, setBasicModalOpen] = useState<boolean>(false)
-  // 日志log
-  const [logModalOpen, setLogModalOpen] = useState<boolean>(false)
-  // 技能统计
-  const [countModal, setCountModal] = useState<boolean>(false)
-  // dps曲线
-  const [dpsModal, setDpsModal] = useState<boolean>(false)
   // 循环
   const [cycle, setCycle] = useState<CycleSimulatorSkillDTO[]>([])
   const [自定义循环保存弹窗, 设置自定义循环保存弹窗] = useState<boolean>(false)
@@ -71,7 +59,8 @@ function CycleSimulator() {
   const 网络按键延迟 = 0
 
   // 是否实时计算
-  const [是否实时计算, 设置是否实时计算] = useState<boolean>(false)
+  const 是否实时计算 = true
+  // const [是否实时计算, 设置是否实时计算] = useState<boolean>(false)
 
   const [起手驰风, 设置起手驰风] = useState<boolean>(false)
 
@@ -103,9 +92,6 @@ function CycleSimulator() {
     if (!basicModalOpen) {
       setLogData([])
       setBasicModalOpen(false)
-      setLogModalOpen(false)
-      setCountModal(false)
-      setDpsModal(false)
       setCycle([])
     }
   }, [basicModalOpen])
@@ -126,26 +112,21 @@ function CycleSimulator() {
       奇穴: qixuedata,
     })
 
-    // SimulatorCycle({
-    //   测试循环: cycle.map((item) => item?.技能名称) || [],
-    //   加速值: 传入加速 !== undefined ? 传入加速 : 加速值,
-    //   网络按键延迟: 传入延迟 !== undefined ? 传入延迟 : 网络按键延迟,
-    //   奇穴: qixuedata,
-    //   角色状态信息,
-    //   当前自身buff列表: Buff列表?.当前自身buff列表,
-    //   当前目标buff列表: Buff列表?.当前目标buff列表,
-    // })
-
     const {
       最终日志,
       当前自身buff列表: 处理后自身buff,
       当前目标buff列表: 处理后目标buff,
       角色状态信息: 处理后角色状态信息,
+      ...rest
     } = res
     if (更新展示) {
       计算dps日志(最终日志)
-      更新Buff列表({ 当前自身buff列表: 处理后自身buff, 当前目标buff列表: 处理后目标buff })
-      更新角色状态信息(处理后角色状态信息)
+      更新模拟信息({
+        当前自身buff列表: 处理后自身buff,
+        当前目标buff列表: 处理后目标buff,
+        角色状态信息: 处理后角色状态信息,
+        ...rest,
+      })
     }
     return { 最终日志, 当前自身buff列表: 处理后自身buff, 当前目标buff列表: 处理后目标buff }
   }
@@ -188,13 +169,13 @@ function CycleSimulator() {
   }
 
   // 向循环内新增技能
-  const addCycle = (item: CycleSimulatorSkillDTO) => {
+  const 新增循环技能 = (item: CycleSimulatorSkillDTO) => {
     const newCycle = [...(cycle || []), item]
     setCycle(newCycle)
   }
 
   // 从循环内删除技能
-  const removeSkill = (index) => {
+  const 删除循环技能 = (index) => {
     const newCycle = [...(cycle || [])]
     newCycle.splice(index, 1)
     setCycle(newCycle)
@@ -202,29 +183,30 @@ function CycleSimulator() {
 
   // 根据循环计算更适合展示的多层数组，用于显示
   const 处理循环结果对象 = useMemo(() => {
-    // 添加所有技能的CD显示
-    // let 当前时间 = 0
-    const 添加技能CD循环: ShowCycleSingleSkill[] = 获取添加技能CD循环({
-      cycle,
-      网络按键延迟,
-      加速值,
-      qixuedata,
-    })
-
     const res: ShowCycleSingleSkill[][] = []
-    添加技能CD循环.forEach((item, index) => {
+    cycle.map((item, index) => {
+      const 找到当前技能释放记录 = 模拟信息?.技能释放记录?.[index]
+      const data = {
+        ...item,
+        ...找到当前技能释放记录,
+      }
       if (index === 0) {
-        res[res?.length] = [{ ...item, index: index || 0 }]
+        res[res?.length] = [{ ...data, index: index || 0 }]
       } else {
-        res[res?.length - 1] = [...(res[res?.length - 1] || []), { ...item, index: index || 0 }]
-        if (item.本技能打完换箭) {
+        res[res?.length - 1] = [...(res[res?.length - 1] || []), { ...data, index: index || 0 }]
+
+        const 打完本技能进入双刀 =
+          (qixuedata?.includes('威升') && data?.技能名称 === '灭') || data?.技能名称 === '断'
+
+        if (打完本技能进入双刀) {
           res[res?.length] = []
         }
       }
+      return data
     })
 
-    return { 显示循环: res, 完整循环: 添加技能CD循环 }
-  }, [cycle])
+    return { 显示循环: res, 完整循环: cycle }
+  }, [cycle, 模拟信息])
 
   // 拖拽更新循环
   const 拖拽更新循环 = (newList, type) => {
@@ -428,25 +410,12 @@ function CycleSimulator() {
       >
         <div className={'cycle-simulator-setting'}>
           {/* 角色状态栏 */}
-          <StatusBar
-            角色状态信息={角色状态信息}
-            Buff列表={Buff列表}
-            完整循环={处理循环结果对象?.完整循环}
-          />
-          {/* 循环展示模块 */}
-          <div className={'cycle-simulator-setting-res'}>
-            <ReactSortable
-              list={(处理循环结果对象?.显示循环 || []).map((i, index) =>
-                Object.assign(i, { id: index })
-              )}
-              setList={(e) => {
-                拖拽更新循环(e, '整个轮次拖拽')
-              }}
-              animation={150}
-              draggable={'.cycle-turn-drag'}
-            >
+          <StatusBar 模拟信息={模拟信息} 完整循环={处理循环结果对象?.完整循环} 日志信息={logData} />
+          {处理循环结果对象?.显示循环?.length ? (
+            // 循环展示模块
+            <div className={'cycle-simulator-setting-res'}>
               {(处理循环结果对象?.显示循环 || []).map((轮次, index) => {
-                return (
+                return 轮次?.length ? (
                   <div className={`cycle-simulator-setting-turn cycle-turn-drag`} key={`${index}`}>
                     <ReactSortable
                       list={轮次.map((i) =>
@@ -460,26 +429,13 @@ function CycleSimulator() {
                       draggable={'.cycle-simulator-setting-skill-drag'}
                     >
                       {(轮次 || []).map((item) => {
-                        const 间隔CD =
-                          (item.本技能实际释放时间 || 0) - (item.本技能计划释放时间 || 0)
-                        // 把帧转成秒，保留两位小数
-                        const 剩余秒 = Math.round((间隔CD / 每秒郭氏帧) * 100) / 100
                         return (
-                          <Badge
-                            count={剩余秒}
+                          <CycleSkillItem
+                            技能={item}
+                            删除循环技能={删除循环技能}
                             key={`${item?.技能名称}_${index}_${item?.index}`}
-                            offset={[-30, 5]}
-                            className={'cycle-simulator-setting-skill-drag'}
-                          >
-                            <Tag
-                              closable
-                              color={SkillColorMap[item?.技能名称] || undefined}
-                              className={'cycle-simulator-setting-skill'}
-                              onClose={() => removeSkill(item?.index)}
-                            >
-                              {item?.技能名称}
-                            </Tag>
-                          </Badge>
+                            模拟信息={模拟信息}
+                          />
                         )
                       })}
                       <div className={'cycle-turn-operate'}>
@@ -498,78 +454,78 @@ function CycleSimulator() {
                       </div>
                     </ReactSortable>
                   </div>
+                ) : (
+                  <div />
                 )
               })}
-            </ReactSortable>
-          </div>
+            </div>
+          ) : null}
         </div>
-
         <div className={'cycle-simulator-setting-btns'}>
-          <div>
-            <span>单刀</span>
+          <div className={'cycle-simulator-setting-item'}>
+            <span className={'cycle-btn-type'}>流云势法</span>
             <Space className={'cycle-simulator-setting-skills'} size={[8, 16]} wrap>
               {循环模拟技能基础数据
                 .filter((item) => !item?.创建循环不可选 && item?.技能类型 === '单刀')
                 .map((item) => {
                   return (
                     <AddCycleBtn
-                      onClick={() => addCycle(item)}
+                      onClick={() => 新增循环技能(item)}
                       key={item?.技能名称}
                       className={'cycle-simulator-setting-btn'}
                       完整循环={处理循环结果对象?.完整循环 || []}
                       技能={item}
-                      color="green"
-                      朱厌={qixuedata?.includes('朱厌')}
                     />
                   )
                 })}
             </Space>
-            <span>双刀</span>
+          </div>
+          <div className={'cycle-simulator-setting-item'}>
+            <span className={'cycle-btn-type'}>破浪三式</span>
             <Space className={'cycle-simulator-setting-skills'} size={[8, 16]} wrap>
               {循环模拟技能基础数据
                 .filter((item) => !item?.创建循环不可选 && item?.技能类型 === '双刀')
                 .map((item) => {
                   return (
                     <AddCycleBtn
-                      onClick={() => addCycle(item)}
+                      onClick={() => 新增循环技能(item)}
                       key={item?.技能名称}
                       className={'cycle-simulator-setting-btn'}
                       完整循环={处理循环结果对象?.完整循环 || []}
                       技能={item}
-                      color="blue"
-                      朱厌={qixuedata?.includes('朱厌')}
                     />
                   )
                 })}
             </Space>
-            <span>其他</span>
+          </div>
+          <div className={'cycle-simulator-setting-item'}>
+            <span className={'cycle-btn-type'}>其他</span>
             <Space className={'cycle-simulator-setting-skills'} size={[8, 16]} wrap>
               {循环模拟技能基础数据
                 .filter((item) => !item?.创建循环不可选 && item?.技能类型 === '其他')
                 .map((item) => {
                   return (
                     <AddCycleBtn
-                      onClick={() => addCycle(item)}
+                      onClick={() => 新增循环技能(item)}
                       key={item?.技能名称}
                       className={'cycle-simulator-setting-btn'}
                       完整循环={处理循环结果对象?.完整循环 || []}
                       技能={item}
-                      color="error"
-                      朱厌={qixuedata?.includes('朱厌')}
                     />
                   )
                 })}
             </Space>
           </div>
-          <div>
-            <Checkbox value={起手驰风} onChange={(e) => 设置起手驰风(e.target.checked)}>
-              起手驰风
-            </Checkbox>
-            <Space>
-              <Dropdown
-                overlay={
-                  <Menu>
-                    {/* <Menu.Item onClick={() => 快捷添加循环('朱厌')}>朱厌</Menu.Item>
+        </div>
+        <div>
+          <Checkbox value={起手驰风} onChange={(e) => 设置起手驰风(e.target.checked)}>
+            起手驰风
+          </Checkbox>
+          <Space>
+            <Dropdown
+              overlay={
+                <Menu>
+                  {/* <Menu.Item onClick={() => 快捷添加循环('朱厌')}>朱厌</Menu.Item>
                     <Menu.Item onClick={() => 快捷添加循环('大招桑柘')}>大招桑柘</Menu.Item>
                     <Menu.Item onClick={() => 快捷添加循环('大招桑柘_原')}>大招桑柘_原</Menu.Item>
                     {自定义循环 ? (
@@ -577,72 +533,15 @@ function CycleSimulator() {
                         {自定义循环?.名称}
                       </Menu.Item>
                     ) : null} */}
-                  </Menu>
-                }
-              >
-                <Button>循环快捷设置</Button>
-              </Dropdown>
-              <Button onClick={() => setCycle([])}>清空循环</Button>
-              <QixueSet className="cycle-qixue-set-button" />
-            </Space>
-          </div>
+                </Menu>
+              }
+            >
+              <Button>循环快捷设置</Button>
+            </Dropdown>
+            <Button onClick={() => setCycle([])}>清空循环</Button>
+            <QixueSet className="cycle-qixue-set-button" />
+          </Space>
         </div>
-        <div className={'cycle-simulator-modal-footer'}>
-          <div className={'cycle-simulator-operate'}>
-            {是否实时计算 ? null : (
-              <Tooltip title="实际模拟计算较为复杂，随着延迟、加速不同。可能存在部分技能数量误差。仅供参考">
-                <Button
-                  className={'cycle-simulator-operate-btn'}
-                  type="primary"
-                  onClick={simulator}
-                >
-                  {logData?.length ? '重新模拟' : '开始模拟'}
-                </Button>
-              </Tooltip>
-            )}
-            <Tooltip title="开启实时计算会影响性能，编辑循环可能出现卡顿。">
-              <Checkbox
-                checked={是否实时计算}
-                onChange={(e) => 设置是否实时计算(e?.target?.checked)}
-              >
-                是否实时计算
-              </Checkbox>
-            </Tooltip>
-            {logData?.[logData.length - 1]?.秒伤 ? (
-              <span className="cycle-simulator-dps-res-text">
-                模拟DPS：
-                <span className={'cycle-simulator-dps-res'}>
-                  {获取显示秒伤(logData?.[logData.length - 1])}
-                </span>
-                用时：
-                <span className={'cycle-simulator-dps-res'}>
-                  {获取总用时(logData?.[logData.length - 1]?.日志时间)}秒
-                </span>
-              </span>
-            ) : null}
-            {logData?.length ? (
-              <>
-                <Button onClick={() => setDpsModal(true)}>Dps曲线</Button>
-                <Button onClick={() => setLogModalOpen(true)}>战斗日志</Button>
-                <Button onClick={() => setCountModal(true)}>技能统计</Button>
-              </>
-            ) : null}
-          </div>
-        </div>
-        {/* dps结果 */}
-        <DpsResModal open={dpsModal} onCancel={() => setDpsModal(false)} logData={logData} />
-        {/* 战斗日志 */}
-        <BattleLogModal
-          open={logModalOpen}
-          onCancel={() => setLogModalOpen(false)}
-          logData={logData}
-        />
-        {/* 技能统计 */}
-        <SkillCountModal
-          open={countModal}
-          onCancel={() => setCountModal(false)}
-          logData={logData}
-        />
         <Modal
           centered
           title="保存自定义循环"
@@ -666,33 +565,23 @@ function CycleSimulator() {
 
 export default CycleSimulator
 
-const SkillColorMap = {
-  行: 'blue',
-  停: 'magenta',
-  断: 'green',
-  沧: 'cyan',
-  横: 'volcano',
-  孤: 'geekblue',
-  决: 'red',
-  '决-识破': 'red',
-  留: 'orange',
-  灭: 'purple',
-  游: 'gold',
-  吃: 'lime',
-}
-
 // 添加循环技能按钮组件
-const AddCycleBtn = ({ 技能, 完整循环, 朱厌, ...rest }) => {
-  const { 剩余CD } = 判断上一个同名技能(技能, 完整循环, 朱厌)
+const AddCycleBtn = ({ 技能, 完整循环, ...rest }) => {
+  const { 剩余CD } = 判断上一个同名技能(技能, 完整循环)
   // 把帧转成秒，保留两位小数
   const 剩余秒 = Math.round((剩余CD / 每秒郭氏帧) * 100) / 100
-  return 剩余秒 > 0 ? (
-    <Badge count={剩余秒} offset={[-20, 0]}>
-      <Tooltip title={`当前技能处于冷却中，剩余${剩余秒}秒`}>
-        <Tag {...rest}>{技能?.技能名称}</Tag>
-      </Tooltip>
-    </Badge>
-  ) : (
-    <Tag {...rest}>{技能?.技能名称}</Tag>
+  return (
+    <div {...rest}>
+      {剩余秒 > 0 ? (
+        <Badge count={剩余秒} offset={[-20, 0]}>
+          <Tooltip title={`当前技能处于冷却中，剩余${剩余秒}秒`}>
+            <img src={技能?.图标} />
+          </Tooltip>
+        </Badge>
+      ) : (
+        <img src={技能?.图标} />
+      )}
+      <p className={'cycle-add-btn-text'}>{技能?.技能原始名称 || 技能?.技能名称}</p>
+    </div>
   )
 }

@@ -1,4 +1,4 @@
-import { Buff枚举, CycleSimulatorLog, 角色状态信息类型 } from '@/@types/cycleSimulator'
+import { Buff枚举, CycleSimulatorLog, 角色状态信息类型 } from './simulator/type'
 import { 获取加速等级 } from '@/utils/help'
 import 循环模拟技能基础数据, { 原始Buff数据 } from './constant/skill'
 

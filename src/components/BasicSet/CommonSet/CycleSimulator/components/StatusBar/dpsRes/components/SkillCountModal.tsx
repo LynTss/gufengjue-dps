@@ -1,8 +1,8 @@
-import { CycleSimulatorLog } from '@/@types/cycleSimulator'
 import { Modal } from 'antd'
 import React, { useMemo } from 'react'
-import { Skill_Cycle_Map, 获取贯穿对应实际倍率 } from './utils'
-import './index.css'
+import { Skill_Cycle_Map, 获取贯穿对应实际倍率 } from '../../../../utils'
+import { CycleSimulatorLog } from '../../../../simulator/type'
+import '../../../../index.css'
 
 interface SkillCountModalProps {
   open: boolean

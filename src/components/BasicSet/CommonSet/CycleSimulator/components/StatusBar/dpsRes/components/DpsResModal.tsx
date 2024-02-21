@@ -1,11 +1,11 @@
 // DPS结果显示
 import React, { useEffect, useRef, useState } from 'react'
-import { CycleSimulatorLog } from '@/@types/cycleSimulator'
 import { Modal, ModalProps } from 'antd'
 import * as G2 from '@antv/g2'
 import { DOMAIN_COLOR } from '@/utils/system_constant'
-import './index.css'
-import { 每秒郭氏帧 } from './constant'
+import { 每秒郭氏帧 } from '../../../../constant'
+import { CycleSimulatorLog } from '../../../../simulator/type'
+import '../../../../index.css'
 
 interface DpsResModalProps extends ModalProps {
   logData: CycleSimulatorLog[]

@@ -1,9 +1,9 @@
 import React from 'react'
-import { CycleSimulatorLog } from '@/@types/cycleSimulator'
 import { Modal, ModalProps, Table } from 'antd'
-import 循环模拟技能基础数据, { 日志类型数组 } from './constant/skill'
-import './index.css'
-import { 每秒郭氏帧 } from './constant'
+import 循环模拟技能基础数据, { 日志类型数组 } from '../../../../constant/skill'
+import { 每秒郭氏帧 } from '../../../../constant'
+import { CycleSimulatorLog } from '../../../../simulator/type'
+import '../../../../index.css'
 
 interface BattleLogModalProps extends ModalProps {
   logData: CycleSimulatorLog[]

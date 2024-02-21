@@ -3,8 +3,8 @@
 }
 
 .cycle-simulator-modal .ant-modal-body {
-  max-height: calc(100vh);
-  min-height: calc(100vh);
+  max-height: calc(100vh - 58px);
+  min-height: calc(100vh - 58px);
   overflow-y: auto;
   padding: 16px;
 }
@@ -80,16 +80,27 @@
 }
 
 .cycle-simulator-setting-btns {
-  margin-bottom: 16px ;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.cycle-simulator-setting-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+.cycle-simulator-setting-item + .cycle-simulator-setting-item {
+  margin-left: 24px;
+}
+
 .cycle-simulator-setting-btn {
-  padding: 4px 12px;
+  padding: 0px 8px;
   font-size: 14px;
   cursor: pointer;
+  text-align: center;
 }
 
 .cycle-qixue-set-button {
@@ -102,7 +113,7 @@
   overflow-y: auto;
   margin-bottom: 12px;
   border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, .06);
+  border: 1px solid var(--ant-primary-color);
   padding: 16px;
 }
 
@@ -120,8 +131,8 @@
 }
 
 .cycle-simulator-setting-turn:hover {
-  border: 1px solid var(--ant-success-color-deprecated-border);
-  background-color: var(--ant-success-color-deprecated-bg);
+  border: 1px solid var(--ant-primary-color-deprecated-border);
+  /* background-color: var(--ant-success-color-deprecated-bg); */
 }
 
 .cycle-turn-time {
@@ -172,7 +183,44 @@
   width: 100%;
 }
 
-.cycle-simulator-setting-skill,.cycle-simulator-setting-change {
+.cycle-simulator-setting-skill {
+  margin: 8px;
+  position: relative;
+}
+
+.cycle-simulator-setting-skill.cycle-simulator-setting-skill-error .cycle-simulator-setting-skill-img {
+  -webkit-filter: grayscale(1) saturate(10%) contrast(50%);
+}
+
+.cycle-simulator-setting-skill:hover .cycle-simulator-setting-skill-close {
+  opacity: 1;
+  pointer-events: unset;
+}
+
+.cycle-simulator-setting-skill-img {
+  width: 48px;
+}
+
+.cycle-simulator-setting-skill-close {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  color: var(--ant-error-color);
+  border: 1px solid #fff;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  transition: .2s;
+  pointer-events: none;
+} 
+
+.cycle-simulator-setting-skill-close:hover {
+  color: var(--ant-error-color-hover);
+}
+
+.cycle-simulator-setting-change {
   font-size: 14px;
   padding: 3px 12px;
   display: inline-flex;
@@ -235,4 +283,30 @@
 
 .cycle-simulator-setting-skills {
   margin: 0 12px;
+}
+
+.cycle-btn-type {
+  display: block;
+  width: 24px;
+  height: 70px;
+  line-height: 70px;
+  background: url('./assets/fenlei.png');
+  background-size: cover;
+  writing-mode: vertical-lr;
+  text-align: center;
+  line-height: 24px;
+  color: #fff;
+  font-weight: 500;
+  -webkit-filter: hue-rotate(30deg);
+}
+
+.cycle-simulator-setting-btn:hover .cycle-add-btn-text{
+  color: var(--ant-primary-color);
+}
+
+.cycle-add-btn-text {
+  text-align: center;
+  transition: .2s;
+  font-weight: 500;
+  color: rgba(3, 10, 26, 0.85);
 }

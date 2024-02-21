@@ -1,5 +1,6 @@
 // import 循环主类 from '../main'
 import 循环模拟技能基础数据 from '../../../constant/skill'
+import { ERROR_ACTION } from '../../utils'
 import 有CD技能通用类 from '../../通用类/有CD技能通用类'
 
 class 吃影子 extends 有CD技能通用类 {
@@ -7,6 +8,17 @@ class 吃影子 extends 有CD技能通用类 {
 
   constructor(模拟循环) {
     super(模拟循环)
+  }
+
+  释放() {
+    if (!this.模拟循环.当前自身buff列表?.['身形']?.当前层数) {
+      return {
+        可以释放: false,
+        异常信息: ERROR_ACTION.身形不足,
+      }
+    } else {
+      return { 可以释放: true }
+    }
   }
 
   命中() {

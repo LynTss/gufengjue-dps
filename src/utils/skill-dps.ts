@@ -151,8 +151,6 @@ export const getDpsTime = (
   const 增益加速等级 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
   const 加速等级 = 获取加速等级(characterFinalData.加速值 + 增益加速等级)
 
-  console.log('currentCycleConfig', currentCycleConfig)
-
   if (currentCycleConfig) {
     let 总帧数 = 0
     currentCycleConfig.cycleList.forEach((item) => {

@@ -1,14 +1,15 @@
 import { 每秒郭氏帧 } from '../constant'
 import { 原始Buff数据 } from '../constant/skill'
+import { DotDTO } from './type'
 
 export const 根据奇穴修改buff数据 = (奇穴: string[]) => {
   const res = {}
   const 判断奇穴 = (val) => {
     return 奇穴?.includes(val)
   }
+
   Object.keys(原始Buff数据).forEach((key) => {
     const obj = 原始Buff数据[key]
-
     switch (key) {
       case '身形':
         if (判断奇穴('溃延')) {
@@ -26,6 +27,8 @@ export const 根据奇穴修改buff数据 = (奇穴: string[]) => {
         }
         if (判断奇穴('涣衍')) {
           obj.最大持续时间 = 每秒郭氏帧 * (6 + 12)
+          // eslint-disable-next-line @typescript-eslint/no-extra-semi
+          ;(obj as DotDTO).最大作用次数 = 9
         }
         break
       case '破绽':
@@ -48,6 +51,9 @@ export const 根据奇穴修改buff数据 = (奇穴: string[]) => {
 export const ERROR_ACTION = {
   锐意不足: {
     信息: '当前锐意不足，无法释放该技能',
+  },
+  身形不足: {
+    信息: '当前身形不足，无法释放该技能',
   },
   体态错误: {
     信息: '当前体态无法释放该技能',
