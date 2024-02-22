@@ -21,6 +21,7 @@ interface CurrentDpsFunctionProps {
   是否郭氏计算?: boolean // 是否郭式计算
   更新计算时间?: number // 更新计算时间
   更新循环技能列表?: CycleDTO[] // 更新循环技能列表
+  更新奇穴数据?: string[] // 更新奇穴数据
 }
 
 export interface CurrentDpsFunctionRes {
@@ -42,19 +43,22 @@ export const currentDpsFunction =
       是否郭氏计算 = true,
       更新计算时间,
       更新循环技能列表,
+      更新奇穴数据,
     } = props || {}
 
     const currentState: RootState = getState() || {}
 
     const 延迟 = currentState?.basic?.network
     const 当前角色面板 = { ...currentState?.basic?.characterFinalData, ...更新角色面板 }
-    const 当前循环技能列表 = currentState?.basic?.currentCycle
+    const 当前循环技能列表 = 更新循环技能列表?.length
+      ? 更新循环技能列表
+      : currentState?.basic?.currentCycle
     const 当前循环名称 = currentState?.basic?.currentCycleName
     const 当前目标 = currentState?.basic?.currentTarget
     const 团队增益数据 = { ...currentState?.zengyi?.zengyixuanxiangData, ...更新团队增益数据 }
     const 团队增益是否启用 = currentState?.zengyi?.zengyiQiyong
     const 技能基础数据 = 更新技能基础数据 || currentState?.zengyi?.skillBasicData
-    const 奇穴数据 = currentState.basic.qixueData
+    const 奇穴数据 = 更新奇穴数据 || currentState.basic.qixueData
 
     const 开启力道加成奇穴 = 判断是否开启力道加成奇穴(奇穴数据)
 
@@ -77,7 +81,7 @@ export const currentDpsFunction =
 
     // dps结果计算
     const { totalDps, dpsList } = dpsFunction({
-      currentCycle: 更新循环技能列表 || trueCycle,
+      currentCycle: trueCycle,
       characterFinalData: 当前角色面板,
       当前目标: 当前目标,
       skillBasicData: trueSkillBasicData,

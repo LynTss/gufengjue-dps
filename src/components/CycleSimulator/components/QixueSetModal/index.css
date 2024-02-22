@@ -1,0 +1,151 @@
+.qixue-simulator-set-button {
+  width: calc(50% - 4px);
+}
+
+.qixue-simulator-set-drawer .ant-drawer-content {
+  background-color: unset;
+}
+
+.qixue-simulator-set-drawer .ant-drawer-header {
+  padding: 8px 16px;
+  background: rgba(10, 18, 41, 0.95);
+}
+
+.qixue-simulator-set-drawer .ant-drawer-header .ant-drawer-title {
+  font-size: 14px;
+  line-height: 14px;
+  color: #fff;
+}
+
+.qixue-simulator-set-drawer .ant-drawer-header .ant-drawer-close .anticon {
+  color: #fff;
+}
+
+.qixue-simulator-set-drawer .ant-drawer-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: rgba(10,18,41, 0.95);
+  color: #fff;
+}
+
+.qixue-simulator-set-drawer-wrap {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1366px;
+}
+
+.qixue-simulator-set-item {
+  width: calc(100% / 12 - 24px);
+  margin: 0;
+}
+
+.qixue-simulator-set-item-title {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.qixue-simulator-set-item-select-option {
+  display: flex;
+  align-items: center;
+  padding-right: 24px;
+}
+
+.qixue-simulator-set-item-select-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 8px;
+  margin-left: 2px;
+}
+
+.qixue-simulator-set-item-select-text {
+  font-size: 18px;
+  line-height: 32px;
+}
+
+.qixue-simulator-set-item-select.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  height: calc(100vw / 12 - 24px);
+  max-height: calc(1366px / 12 - 24px);
+  padding: 0;
+  border-radius: 25%;
+}
+
+.qixue-simulator-set-item-select.ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+.qixue-simulator-set-item-select.ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
+  padding-right: 0;
+}
+
+.qixue-simulator-set-item-select.ant-select-single .ant-select-selector .ant-select-selection-item {
+  width: calc(100vw / 12 - 24px);
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+
+.qixue-simulator-set-item-select .ant-select-selection-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.qixue-simulator-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.qixue-simulator-label:hover .qixue-simulator-label-text {
+  color: #fff;
+}
+
+.qixue-simulator-label-img {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  border-radius: 50%;
+}
+
+.qixue-simulator-label-text {
+  display: block;
+  width: 100%;
+  line-height: 22px;
+  font-size: 14px;
+  margin-top: -12px;
+  transition: color .2s;
+  color: #fff;
+}
+
+.qixue-simulator-set-item-select.ant-select .ant-select-selector {
+  background-color: unset;
+  outline: none;
+  /* border: unset; */
+}
+
+.qixue-simulator-set-item-select.ant-select {
+  outline: none;
+}
+
+.qixue-simulator-set-item-select.ant-select .ant-select-selector:hover,
+.qixue-simulator-set-item-select.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector,
+.qixue-simulator-set-item-select.ant-select .ant-select-selector:focus {
+  border-color: #fff !important;
+  box-shadow: none;
+  outline: none;
+}
+.qixue-simulator-set-item-select-popup .ant-select-item-option-content {
+  display: flex;
+  align-items: center;
+}

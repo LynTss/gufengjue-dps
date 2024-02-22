@@ -7,7 +7,7 @@
 // } from './lianfeng_huanyan_dandao'
 import single_skill_cycle, { 循环默认奇穴 as single_skill_cycle_qixue } from './single_skill_cycle'
 import 潋风4破, { 循环默认奇穴 as 潋风_4破奇穴 } from './潋风_4破'
-// import 潋风4破压缩 from './潋风_4破_压缩'
+import 潋风4破压缩 from './潋风_4破_压缩'
 import 潋风6破, { 循环默认奇穴 as 潋风_6破奇穴 } from './潋风_6破'
 
 // import CW特效期间总伤害 from './三沧孤伤害'
@@ -26,18 +26,18 @@ const Cycle_Data = [
     type: '潋风',
     qixue: 潋风_4破奇穴,
   },
-  // {
-  //   name: '潋风-4破-压缩',
-  //   title: '潋风-4破-压缩',
-  //   cycle: 潋风4破压缩,
-  //   cycleList: [
-  //     { 计算技能数: 10, 循环完整帧数: 240, 循环次数: 1 },
-  //     { 计算技能数: 15, 循环完整帧数: 318, 循环次数: 14 },
-  //   ],
-  //   hide: false,
-  //   type: '潋风',
-  //   qixue: 潋风_4破奇穴,
-  // },
+  {
+    name: '潋风-4破-压缩',
+    title: '潋风-4破-压缩',
+    cycle: 潋风4破压缩,
+    cycleList: [
+      { 计算技能数: 10, 循环完整帧数: 240, 循环次数: 1 },
+      { 计算技能数: 15, 循环完整帧数: 318, 循环次数: 14 },
+    ],
+    hide: false,
+    type: '潋风',
+    qixue: 潋风_4破奇穴,
+  },
   {
     name: '潋风-6破',
     title: '潋风-6破',
@@ -92,6 +92,7 @@ export default Cycle_Data
 
 // 获取包含网页内存自定义循环在内的全部循环
 export const 获取全部循环 = () => {
-  const 自定义循环 = localStorage.getItem('dz_custom_cycle') || '[]'
-  return [...Cycle_Data, ...JSON.parse(自定义循环)]
+  const 自定义循环 = JSON.parse(localStorage.getItem('dz_custom_cycle') || '{}') || {}
+  const 循环数组 = Object.keys(自定义循环).map((item) => 自定义循环[item]) || []
+  return [...Cycle_Data, ...循环数组]
 }

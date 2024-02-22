@@ -1,0 +1,12 @@
+.cycle-simulator-header-btns .ant-btn {
+  margin-left: 8px;
+}
+
+.cycle-simulator-header-checkbox .ant-checkbox + span {
+  padding-right: 0;
+}
+
+.cycle-simulator-header-select {
+  margin-left: 8px;
+  height: 22px;
+}

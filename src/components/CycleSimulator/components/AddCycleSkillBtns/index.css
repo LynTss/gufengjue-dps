@@ -1,0 +1,19 @@
+.cycle-simulator-setting-quick {
+  width: 280px;
+  padding-left: 24px;
+}
+
+.cycle-simulator-setting-quick-item {
+  display: block;
+  width: 100%;
+  padding: 4px 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.cycle-simulator-setting-quick-item:hover {
+  font-weight: 500;
+}

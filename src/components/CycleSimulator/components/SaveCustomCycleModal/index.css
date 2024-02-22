@@ -1,0 +1,11 @@
+.cycle-custom-save-modal .ant-modal-body{
+  padding: 16px 24px;
+}
+
+.cycle-custom-save-modal-content .ant-tabs-content-holder {
+  min-height: 56px;
+}
+
+.cycle-custom-save-modal-content .ant-select{
+  width: 100%;
+}

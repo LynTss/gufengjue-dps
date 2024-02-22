@@ -5,10 +5,10 @@ import { 获取全部循环 } from '@/data/skillCycle'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 
 import { setCurrentTarget, setCurrentCycle, setNetwork, setQixueData } from '@/store/basicReducer'
+import CycleSimulator from '../../CycleSimulator'
 import MijiSet from './MijiSet'
 import QixueSet from './QixueSet'
 import './index.css'
-import CycleSimulator from './CycleSimulator'
 
 function CommonSet({ getDpsFunction, setZengyiVisible }) {
   const dispatch = useAppDispatch()

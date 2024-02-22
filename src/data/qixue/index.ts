@@ -129,6 +129,12 @@ export const 奇穴数据: QixueListDTO[] = [
     是否不可编辑: true,
     奇穴列表: [
       {
+        奇穴名称: '颂阵',
+        奇穴加成类型: '无增益',
+        是否不可编辑: true,
+        奇穴图片: 'https://icon.jx3box.com/icon/17766.png',
+      },
+      {
         奇穴名称: '电逝',
         奇穴加成类型: '无增益',
         奇穴图片: 'https://icon.jx3box.com/icon/18243.png',
@@ -352,12 +358,6 @@ export const 奇穴数据: QixueListDTO[] = [
         奇穴加成类型: '无增益',
         是否不可编辑: true,
         奇穴图片: 'https://icon.jx3box.com/icon/17738.png',
-      },
-      {
-        奇穴名称: '颂阵',
-        奇穴加成类型: '无增益',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/17766.png',
       },
       {
         奇穴名称: '潋风',

@@ -213,12 +213,6 @@ export const 获取实际循环 = (
   qixueData: string[]
 ) => {
   let trueCycle = [...currentCycle]
-  const All_Cycle_Data = 获取全部循环()
-  // 旧版大CW周流区别
-  if (characterFinalData?.装备增益?.大橙武特效 && currentCycleName?.includes('周流')) {
-    const trueName = `${currentCycleName}_cw`
-    trueCycle = All_Cycle_Data?.find((item) => item.name === trueName)?.cycle || currentCycle
-  }
 
   const 总孤峰次数 = trueCycle?.find((item) => item?.技能名称 === '孤锋破浪')?.技能数量 || 0
 
@@ -241,8 +235,11 @@ export const 获取实际循环 = (
         }
       })
       trueCycle = [...trueCycle, { 技能名称: '界破', 技能数量: 释放孤峰次数 }]
+      console.log('1', 释放孤峰次数)
     }
   }
+
+  console.log('trueCycle', trueCycle)
 
   // 特殊处理鸣锋
   if (qixueData?.includes('鸣锋')) {
