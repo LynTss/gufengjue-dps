@@ -84,8 +84,6 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
     }
   }
 
-  console.log('最终循环', 最终循环)
-
   // 遍历循环，获取每一个技能的总输出
   最终循环.forEach((item) => {
     // 获取循环内某个技能的总dps
