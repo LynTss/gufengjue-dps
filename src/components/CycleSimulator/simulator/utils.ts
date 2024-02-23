@@ -62,6 +62,9 @@ export const ERROR_ACTION = {
   体态错误: {
     信息: '当前体态无法释放该技能',
   },
+  BUFF错误: {
+    信息: '当前没有对应的BUFF',
+  },
 }
 
 export const 起手识破BUFF = (Buff和Dot数据) => {

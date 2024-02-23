@@ -42,6 +42,11 @@ const AddCycleSkillBtn: React.FC<AddCycleSkillBtnProps> = (props) => {
         是否禁用: true,
         异常描述: ERROR_ACTION?.身形不足?.信息,
       }
+    } else if (技能?.技能名称 === '点掉橙武' && !模拟信息?.当前自身buff列表?.['橙武']?.当前层数) {
+      return {
+        是否禁用: true,
+        异常描述: ERROR_ACTION?.BUFF错误?.信息,
+      }
     } else if (释放等待CD > 0) {
       return {
         角标数字: 释放等待CD,
