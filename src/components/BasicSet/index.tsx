@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import CharacterShow from './CharacterShow'
 
 import CommonSet from './CommonSet'
@@ -26,6 +26,8 @@ function BasicSet(props: CharacterSetProps) {
   const equipmentBasicData = useAppSelector((state) => state.basic.equipmentBasicData)
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
   const mijiSelectedData = useAppSelector((state) => state?.zengyi?.mijiSelectedData)
+
+  const showRef = useRef<any>()
 
   const getDpsFunction = () => {
     setTimeout(() => {
@@ -117,6 +119,11 @@ function BasicSet(props: CharacterSetProps) {
     }
   }, [])
 
+  // 关闭优化算法，避免卡顿
+  const 关闭优化算法 = () => {
+    showRef?.current?.关闭优化算法?.()
+  }
+
   return (
     <div className={'basic-set'}>
       <div className={'basic-set-info'}>
@@ -124,10 +131,11 @@ function BasicSet(props: CharacterSetProps) {
         <CommonSet
           getDpsFunction={getDpsFunction}
           setZengyiVisible={() => setZengyiVisible(zengyiVisible ? false : true)}
+          打开循环模拟器={关闭优化算法}
         />
         <Divider />
         {/* 属性展示 */}
-        <CharacterShow />
+        <CharacterShow ref={showRef} />
         {/* 属性录入 */}
         <CharacterSet getDpsFunction={getDpsFunction} />
       </div>

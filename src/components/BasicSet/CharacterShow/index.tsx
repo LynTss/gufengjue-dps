@@ -1,21 +1,22 @@
-import React, { useMemo, useState } from 'react'
+import React, { forwardRef, useImperativeHandle, useMemo, useState } from 'react'
 import { 属性系数 } from '@/data/constant'
 import { useAppSelector } from '@/hooks'
 import { CharacterFinalDTO } from '@/@types/character'
 
 import { Checkbox, Tooltip } from 'antd'
 import { 判断是否开启力道加成奇穴, 获取力道奇穴加成后面板 } from '@/data/qixue'
-import { 根据奇穴处理技能的基础增益信息, 获取实际循环 } from '@/utils/skill-dps'
+import { getZengyiJiasu, 根据奇穴处理技能的基础增益信息, 获取实际循环 } from '@/utils/skill-dps'
 import DpsKernelOptimizer from '@/utils/dps-kernel-optimizer'
 import { QuestionCircleOutlined } from '@ant-design/icons'
 
 import './index.css'
+import { 获取加速等级 } from '@/utils/help'
 
-function CharacterShow() {
+function CharacterShow(_, ref) {
   const characterFinalData = useAppSelector((state) => state?.basic?.characterFinalData)
   const qixueData = useAppSelector((state) => state?.basic?.qixueData)
 
-  const currentCycle = useAppSelector((state) => state?.basic?.currentCycle)
+  const 当前循环各加速枚举 = useAppSelector((state) => state?.basic?.当前循环各加速枚举)
   const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
   const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
@@ -23,6 +24,10 @@ function CharacterShow() {
   const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
 
   const isOpenQiangLv = 判断是否开启力道加成奇穴(qixueData)
+
+  useImperativeHandle(ref, () => ({
+    关闭优化算法: () => setOpenBFGS(false),
+  }))
 
   const [openBFGS, setOpenBFGS] = useState<boolean>(false)
 
@@ -32,14 +37,16 @@ function CharacterShow() {
     ? 获取力道奇穴加成后面板(characterFinalData, isOpenQiangLv)
     : characterFinalData
 
+  const 增益加速值 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
+  const 加速等级 = 获取加速等级(characterFinalData?.加速值 + 增益加速值)
+
+  // 获取实际循环
+  const trueCycle = 获取实际循环(当前循环各加速枚举?.[加速等级]?.cycle, qixueData)
+
   const maxDpsData: any = useMemo(() => {
     if (!openBFGS) {
       return {}
     }
-
-    // 获取实际循环
-    const trueCycle = 获取实际循环(currentCycleName, currentCycle, characterFinalData, qixueData)
-
     // 获取实际循环
     const trueSkillBasicData = 根据奇穴处理技能的基础增益信息(skillBasicData, qixueData)
 
@@ -59,7 +66,7 @@ function CharacterShow() {
     }
   }, [
     currentCycleName,
-    currentCycle,
+    trueCycle,
     characterFinalData,
     qixueData,
     skillBasicData,
@@ -114,7 +121,7 @@ function CharacterShow() {
   )
 }
 
-export default CharacterShow
+export default forwardRef(CharacterShow)
 
 // 获取属性展示
 const getCharacterData = (key: string, characterFinalData: CharacterFinalDTO) => {

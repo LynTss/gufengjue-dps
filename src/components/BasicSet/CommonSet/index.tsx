@@ -1,20 +1,20 @@
 import React from 'react'
 import { Button, Select } from 'antd'
-import { 延迟设定, 目标集合 } from '@/data/constant'
+import { 目标集合 } from '@/data/constant'
 import { 获取全部循环 } from '@/data/skillCycle'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 
-import { setCurrentTarget, setCurrentCycle, setNetwork, setQixueData } from '@/store/basicReducer'
+import { setCurrentTarget, setCurrentCycle, setQixueData } from '@/store/basicReducer'
 import CycleSimulator from '../../CycleSimulator'
 import MijiSet from './MijiSet'
 import QixueSet from './QixueSet'
 import './index.css'
 
-function CommonSet({ getDpsFunction, setZengyiVisible }) {
+function CommonSet({ getDpsFunction, setZengyiVisible, 打开循环模拟器 }) {
   const dispatch = useAppDispatch()
   const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
   const currentTargetName = useAppSelector((state) => state?.basic?.currentTargetName)
-  const network = useAppSelector((state) => state?.basic?.network)
+  // const network = useAppSelector((state) => state?.basic?.network)
 
   const All_Cycle_Data = 获取全部循环()
 
@@ -32,11 +32,11 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
     }
   }
 
-  const handleChangeNetwork = (val) => {
-    localStorage?.setItem('network_data', val)
-    dispatch(setNetwork(val))
-    getDpsFunction()
-  }
+  // const handleChangeNetwork = (val) => {
+  //   localStorage?.setItem('network_data', val)
+  //   dispatch(setNetwork(val))
+  //   getDpsFunction()
+  // }
 
   const setCurrentCycleVal = (val) => {
     const cycleData = All_Cycle_Data?.find((item) => item.name === val)
@@ -46,7 +46,7 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
       dispatch(
         setCurrentCycle({
           name: val,
-          cycle,
+          各加速枚举: cycleData?.各加速枚举,
         })
       )
       if (cycleData?.qixue) {
@@ -110,7 +110,7 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
           </Select>
         </div>
       </div>
-      <div className="common-item">
+      {/* <div className="common-item">
         <h1 className="common-label">延迟</h1>
         <div className="common-content">
           <Select value={network} onChange={handleChangeNetwork}>
@@ -123,11 +123,11 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
             })}
           </Select>
         </div>
-      </div>
+      </div> */}
       <div className="common-item">
         <MijiSet getDpsFunction={getDpsFunction} />
         <QixueSet getDpsFunction={getDpsFunction} />
-        <CycleSimulator />
+        <CycleSimulator 打开循环模拟器={打开循环模拟器} />
       </div>
     </div>
   )

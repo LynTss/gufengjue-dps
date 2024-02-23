@@ -26,3 +26,17 @@ export interface CycleGain {
   增益名称: string
   增益技能数: number
 }
+
+export interface CustomCycle {
+  名称: string
+  奇穴信息: string[]
+  技能序列: string[]
+  各加速枚举: 各加速枚举
+}
+
+export interface 各加速枚举 {
+  [key: number]: {
+    dpsTime: number //战斗时间
+    cycle: CycleDTO[] // 用于计算循环
+  }
+}

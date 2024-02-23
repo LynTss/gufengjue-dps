@@ -138,7 +138,7 @@ export const skillWushuangDps = (damage: number, characterConfig: CharacterFinal
 export const getDpsTime = (
   currentCycleName: string,
   characterFinalData: CharacterFinalDTO,
-  network: number,
+  network = 0,
   zengyiQiyong: boolean,
   zengyixuanxiangData: ZengyixuanxiangDataDTO,
   cons = true
@@ -206,12 +206,7 @@ export const getTrueCycleName = (
   return currentCycleName
 }
 
-export const 获取实际循环 = (
-  currentCycleName: string,
-  currentCycle: CycleDTO[],
-  characterFinalData: CharacterFinalDTO,
-  qixueData: string[]
-) => {
+export const 获取实际循环 = (currentCycle: CycleDTO[], qixueData: string[]) => {
   let trueCycle = [...currentCycle]
 
   const 总孤峰次数 = trueCycle?.find((item) => item?.技能名称 === '孤锋破浪')?.技能数量 || 0
@@ -235,11 +230,8 @@ export const 获取实际循环 = (
         }
       })
       trueCycle = [...trueCycle, { 技能名称: '界破', 技能数量: 释放孤峰次数 }]
-      console.log('1', 释放孤峰次数)
     }
   }
-
-  console.log('trueCycle', trueCycle)
 
   // 特殊处理鸣锋
   if (qixueData?.includes('鸣锋')) {

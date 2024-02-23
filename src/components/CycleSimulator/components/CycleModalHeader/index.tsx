@@ -4,6 +4,7 @@ import { CycleSimulatorSkillDTO } from '../../simulator/type'
 import 循环模拟技能基础数据 from '../../constant/skill'
 import 快速导入默认循环 from '../../constant/快速导入默认循环'
 import './index.css'
+import { useAppSelector } from '@/hooks'
 interface CycleModalHeaderProps {
   cycle: CycleSimulatorSkillDTO[]
   设置自定义循环保存弹窗: (e: boolean) => void
@@ -11,7 +12,6 @@ interface CycleModalHeaderProps {
   起手驰风: boolean
   设置起手驰风: (e: boolean) => void
   快速导入循环: (e: CycleSimulatorSkillDTO[]) => void
-  自定义循环: Array<{ 名称: string; 技能序列: string[]; 奇穴信息: string[] }>
   更新奇穴弹窗展示: (e: boolean) => void
   更新奇穴信息: (e: string[]) => void
   加速等级: number
@@ -26,12 +26,13 @@ function CycleModalHeader(props: CycleModalHeaderProps) {
     起手驰风,
     设置起手驰风,
     快速导入循环,
-    自定义循环,
     更新奇穴弹窗展示,
     更新奇穴信息,
     加速等级,
     更新加速等级,
   } = props
+
+  const 自定义循环 = useAppSelector((state) => state?.basic?.customCycleList)
 
   const 快捷添加循环 = (名称, 类型 = '默认') => {
     const 数据源 = 类型 === '默认' ? 快速导入默认循环 : 自定义循环

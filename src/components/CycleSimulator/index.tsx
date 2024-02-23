@@ -29,6 +29,7 @@ import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
 import QixueSetModal from './components/QixueSetModal'
 import { 获取加速等级 } from '@/utils/help'
 import './index.css'
+import { setCustomCycleList } from '@/store/basicReducer'
 
 const 加速等级枚举 = {
   0: 0,
@@ -39,7 +40,12 @@ const 加速等级枚举 = {
   5: 19316,
 }
 
-function CycleSimulator() {
+interface CycleSimulatorProps {
+  打开循环模拟器?: () => void
+}
+
+function CycleSimulator(props: CycleSimulatorProps) {
+  const { 打开循环模拟器 } = props
   const [logData, setLogData] = useState<CycleSimulatorLog[]>([])
 
   const [模拟DPS结果, 更新模拟DPS结果] = useState<模拟DPS结果>({
@@ -75,6 +81,9 @@ function CycleSimulator() {
   const 网络按键延迟 = 0
   const [加速等级, 更新加速等级] = useState<number>(0)
 
+  // 自定义循环
+  const customCycleList = useAppSelector((state) => state?.basic?.customCycleList)
+
   const 加速值 = useMemo(() => {
     return 加速等级枚举[加速等级] || 0
   }, [加速等级])
@@ -89,22 +98,6 @@ function CycleSimulator() {
   const [奇穴信息, 更新奇穴信息] = useState<string[]>([])
   const [奇穴弹窗展示, 更新奇穴弹窗展示] = useState<boolean>(false)
   const dispatch = useAppDispatch()
-
-  // 获取自定义循环
-  const 自定义循环 = useMemo(() => {
-    const 循环枚举 = JSON.parse(localStorage.getItem('dz_custom_cycle') || '{}') || {}
-    if (Object.keys(循环枚举)?.length) {
-      return Object.keys(循环枚举).map((key) => {
-        return {
-          名称: 循环枚举[key]?.name,
-          技能序列: 循环枚举[key]?.skillList || [],
-          奇穴信息: 循环枚举[key]?.qixue || [],
-        }
-      })
-    } else {
-      return []
-    }
-  }, [localStorage.getItem('dz_custom_cycle')])
 
   useEffect(() => {
     if (basicModalOpen) {
@@ -317,29 +310,50 @@ function CycleSimulator() {
       message.error(`${异常加速等级}段加速异常，将不会保存该加速的循环`)
     }
 
-    const 用于保存的自定义循环 = {
-      name: 名称,
-      title: 名称,
-      hide: false,
-      各加速枚举,
-      type: '自定义',
-      qixue: 奇穴信息,
-      skillList: cycle.map((item) => item.技能名称),
-    }
+    const 技能序列 = cycle.map((item) => item.技能名称)
 
-    const 循环枚举 = {
-      ...(JSON.parse(localStorage.getItem('dz_custom_cycle') || '{}') || {}),
-      [名称]: 用于保存的自定义循环,
-    }
+    const 新自定义循环 = customCycleList?.some((item) => item?.名称 === 名称)
+      ? customCycleList.map((item) => {
+          return item.名称 === 名称
+            ? { 名称, 各加速枚举: 各加速枚举 as any, 奇穴信息, 技能序列 }
+            : item
+        })
+      : (customCycleList || []).concat([
+          { 名称, 各加速枚举: 各加速枚举 as any, 奇穴信息, 技能序列 },
+        ])
 
-    localStorage?.setItem('dz_custom_cycle', JSON.stringify(循环枚举))
+    dispatch(setCustomCycleList(新自定义循环))
+
     设置自定义循环保存弹窗(false)
     message.success('保存成功')
   }
 
+  useEffect(() => {
+    // redux变动，更新storage信息
+    const 保存信息 = {}
+    ;(customCycleList || []).forEach((item) => {
+      保存信息[item.名称] = {
+        name: item?.名称,
+        title: item?.名称,
+        hide: false,
+        type: '自定义',
+        qixue: 奇穴信息,
+        各加速枚举: item?.各加速枚举,
+        skillList: item?.技能序列,
+      }
+    })
+    localStorage?.setItem('dz_custom_cycle', JSON.stringify(保存信息))
+  }, [customCycleList, 奇穴信息])
+
   return (
     <>
-      <Button danger onClick={() => setBasicModalOpen(true)}>
+      <Button
+        danger
+        onClick={() => {
+          setBasicModalOpen(true)
+          打开循环模拟器 && 打开循环模拟器()
+        }}
+      >
         循环模拟
       </Button>
       <Modal
@@ -355,7 +369,6 @@ function CycleSimulator() {
             设置起手驰风={设置起手驰风}
             快速导入循环={(循环) => setCycle(循环)}
             更新奇穴信息={更新奇穴信息}
-            自定义循环={自定义循环}
             更新奇穴弹窗展示={更新奇穴弹窗展示}
             加速等级={加速等级}
             更新加速等级={更新加速等级}
@@ -439,7 +452,6 @@ function CycleSimulator() {
           自定义循环保存弹窗={自定义循环保存弹窗}
           设置自定义循环保存弹窗={设置自定义循环保存弹窗}
           保存自定义循环={确认保存循环}
-          自定义循环={自定义循环}
         />
         {/* 循环自定义奇穴弹窗 */}
         <QixueSetModal

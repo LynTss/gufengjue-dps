@@ -9,3 +9,20 @@
 .cycle-custom-save-modal-content .ant-select{
   width: 100%;
 }
+
+.cycle-custom-save-label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cycle-custom-save-delete {
+  color: var(--ant-primary-color);
+  cursor: pointer;
+}
+
+.cycle-custom-save-delete:hover {
+  color: var(--ant-primary-color-hover);
+  text-decoration: underline;
+}
