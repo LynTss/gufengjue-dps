@@ -202,7 +202,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
         res[res?.length - 1] = [...(res[res?.length - 1] || []), { ...data, index: index || 0 }]
 
         const 打完本技能进入双刀 =
-          (奇穴信息?.includes('威升') && data?.技能名称 === '灭') || data?.技能名称 === '断'
+          (奇穴信息?.includes('威声') && data?.技能名称 === '灭') || data?.技能名称 === '断'
 
         if (打完本技能进入双刀) {
           res[res?.length] = []
