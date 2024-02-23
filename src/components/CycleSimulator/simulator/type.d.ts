@@ -77,7 +77,7 @@ export interface 技能GCD组 {
 }
 
 export interface 技能运行数据类型 {
-  最后一次释放时间点?: number
+  充能满第一次释放时间点?: number
   // 这里注意，如果为多层充能技能，这里的时间代表充能到下一层所需要的时间
   计划下次充能时间点?: number
   当前层数: number
