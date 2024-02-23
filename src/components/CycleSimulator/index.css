@@ -87,11 +87,11 @@
 }
 
 .cycle-simulator-setting-item + .cycle-simulator-setting-item {
-  margin-left: 24px;
+  margin-left: 16px;
 }
 
 .cycle-simulator-setting-btn {
-  padding: 0px 8px;
+  padding: 0px 6px;
   font-size: 14px;
   cursor: pointer;
   text-align: center;

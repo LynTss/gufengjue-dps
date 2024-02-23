@@ -11,6 +11,7 @@ interface AddCycleSkillBtnProps {
   onClick?: any
   className?: string
   模拟信息: 模拟信息类型
+  style?: any
 }
 
 interface 异常信息数据 {

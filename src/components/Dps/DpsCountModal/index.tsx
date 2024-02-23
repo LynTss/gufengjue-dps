@@ -9,6 +9,7 @@ function DpsCountModal({ visible, onClose, dpsList, total }) {
     const resList: DpsListData[] = []
     const qiluoshiList: DpsListData[] = []
     const liuxueList: DpsListData[] = []
+    const zhanlangpofengList: DpsListData[] = []
     const gufeng_pozhao_jiepo: DpsListData[] = []
 
     const isSingleSkillCycle = list.some((item) => item.countName === '孤锋破浪（灭影）')
@@ -20,6 +21,8 @@ function DpsCountModal({ visible, onClose, dpsList, total }) {
         qiluoshiList.push(item)
       } else if (item.name.includes('流血')) {
         liuxueList.push(item)
+      } else if (item.name.includes('斩浪破锋')) {
+        zhanlangpofengList.push(item)
       } else if (item.name === '驰风八步·一') {
         resList.push({
           ...item,
@@ -81,6 +84,22 @@ function DpsCountModal({ visible, onClose, dpsList, total }) {
 
       resList.push({
         name: '流血（DOT）',
+        number: number,
+        dps: dps,
+      })
+    }
+
+    if (zhanlangpofengList?.length) {
+      let number = 0
+      let dps = 0
+
+      zhanlangpofengList.forEach((item) => {
+        number = number + item?.number
+        dps = dps + item?.dps
+      })
+
+      resList.push({
+        name: '斩浪破锋（DOT）',
         number: number,
         dps: dps,
       })

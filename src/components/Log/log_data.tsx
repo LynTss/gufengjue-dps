@@ -1,5 +1,30 @@
 export default [
   {
+    version: '3.0.0',
+    date: '2024-02-23 16:36:00',
+    content: [
+      '重点更新事项',
+      <p key="3.0.0_模拟器" style={{ paddingLeft: 12 }}>
+        - 拖更很久的模拟器终于开发完了：
+        <a href="https://www.jx3box.com/tool/75292" target="_blank" rel="noreferrer">
+          使用手册
+        </a>
+      </p>,
+      <p key="3.0.0_移除延迟" style={{ paddingLeft: 12 }}>
+        - 移除了延迟这个计算条件
+      </p>,
+      <p key="3.0.0_重新选择循环" style={{ paddingLeft: 12 }}>
+        - 修改了内置的循环为【快速四破】和【快速六破】
+        <p style={{ color: 'orange' }}>- 使用前请重新选择循环</p>
+      </p>,
+      'CW玩家请注意:',
+      <p key="3.0.0_CW提醒" style={{ paddingLeft: 12 }}>
+        <p>- 现在在紫武和CW间切换不会自动变更循环，需要到外面手动修改选择你保存的自定义CW循环。</p>
+        <p>- 默认的四破和六破CW循环数据后续更新，到时候默认循环就可以自动切换了</p>
+      </p>,
+    ],
+  },
+  {
     version: '2.2.4',
     date: '2024-01-26 09:15:00',
     content: ['现在你有小概率看到背景图是咸鱼'],

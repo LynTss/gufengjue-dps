@@ -77,6 +77,8 @@ function CycleSimulator(props: CycleSimulatorProps) {
   const [自定义循环保存弹窗, 设置自定义循环保存弹窗] = useState<boolean>(false)
   // 当前面板加速值
   const 外部加速值 = useAppSelector((state) => state?.basic?.characterFinalData)?.加速值
+  const 大橙武模拟 = useAppSelector((state) => state?.basic?.equipmentBasicData)?.大橙武特效
+
   // 当前网络延迟
   const 网络按键延迟 = 0
   const [加速等级, 更新加速等级] = useState<number>(0)
@@ -125,6 +127,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
       加速值: 传入加速 !== undefined ? 传入加速 : 加速值,
       奇穴: 奇穴信息,
       起手驰风,
+      大橙武模拟,
     })
 
     const {
@@ -372,6 +375,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
             更新奇穴弹窗展示={更新奇穴弹窗展示}
             加速等级={加速等级}
             更新加速等级={更新加速等级}
+            模拟信息={模拟信息}
           />
         }
         centered
@@ -446,6 +450,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
           批量新增循环={批量新增循环}
           处理循环结果对象={处理循环结果对象}
           模拟信息={模拟信息}
+          大橙武模拟={大橙武模拟}
         />
         {/* 保存自定义循环弹窗 */}
         <SaveCustomCycleModal

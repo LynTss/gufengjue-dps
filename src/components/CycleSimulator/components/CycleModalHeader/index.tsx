@@ -1,6 +1,6 @@
 import { Button, Checkbox, Dropdown, Menu, Popover, Select, Tooltip } from 'antd'
 import React from 'react'
-import { CycleSimulatorSkillDTO } from '../../simulator/type'
+import { CycleSimulatorSkillDTO, 模拟信息类型 } from '../../simulator/type'
 import 循环模拟技能基础数据 from '../../constant/skill'
 import 快速导入默认循环 from '../../constant/快速导入默认循环'
 import './index.css'
@@ -16,6 +16,7 @@ interface CycleModalHeaderProps {
   更新奇穴信息: (e: string[]) => void
   加速等级: number
   更新加速等级: (e: number) => void
+  模拟信息: 模拟信息类型
 }
 
 function CycleModalHeader(props: CycleModalHeaderProps) {
@@ -30,6 +31,7 @@ function CycleModalHeader(props: CycleModalHeaderProps) {
     更新奇穴信息,
     加速等级,
     更新加速等级,
+    模拟信息,
   } = props
 
   const 自定义循环 = useAppSelector((state) => state?.basic?.customCycleList)
@@ -112,20 +114,20 @@ function CycleModalHeader(props: CycleModalHeaderProps) {
         >
           <Button size="small">导入循环</Button>
         </Dropdown>
-        <Button size="small" onClick={() => 清空循环()}>
-          清空循环
-        </Button>
         <Tooltip title={'本奇穴设置只会在循环模拟器内生效，不影响外部'}>
           <Button size="small" onClick={() => 更新奇穴弹窗展示(true)}>
             奇穴设置
           </Button>
         </Tooltip>
+        <Button size="small" onClick={() => 清空循环()} danger>
+          清空循环
+        </Button>
         <Tooltip title="自定义循环和原计算器其他循环的dps会心期望计算方式不同。会导致最终数值偏差。请勿进行跨循环比较。">
           <Button
             size="small"
             type="primary"
             onClick={() => 设置自定义循环保存弹窗(true)}
-            disabled={cycle?.length < 1}
+            disabled={cycle?.length < 1 || 模拟信息?.循环执行结果 === '异常'}
           >
             保存为自定义循环
           </Button>

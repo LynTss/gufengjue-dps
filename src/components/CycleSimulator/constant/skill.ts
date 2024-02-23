@@ -13,6 +13,8 @@ import mie from '../assets/Skill/mie.png'
 import ting from '../assets/Skill/ting.png'
 import xing from '../assets/Skill/xing.png'
 import you from '../assets/Skill/you.png'
+import cw from '../assets/Skill/cw.png'
+import cw_quxiao from '../assets/Skill/cw_quxiao.png'
 
 // Buff图标引入
 
@@ -139,6 +141,28 @@ const 循环模拟技能基础数据: CycleSimulatorSkillDTO[] = [
     图标: you,
     技能原始名称: '游风飘踪',
   },
+  {
+    技能名称: '触发橙武',
+    技能释放后添加GCD: 0,
+    造成伤害次数: 0,
+    技能CD: 每秒郭氏帧 * 30,
+    最大充能层数: 1,
+    技能GCD组: '自身',
+    技能类型: '其他',
+    显示类型: '大橙武模拟',
+    图标: cw,
+  },
+  {
+    技能名称: '点掉橙武',
+    技能释放后添加GCD: 0,
+    造成伤害次数: 0,
+    技能CD: 0,
+    最大充能层数: 1,
+    技能GCD组: '自身',
+    技能类型: '其他',
+    显示类型: '大橙武模拟',
+    图标: cw_quxiao,
+  },
   // {
   //   技能名称: '呆',
   //   技能释放后添加GCD: 0,
@@ -178,6 +202,7 @@ export const 原始Buff数据: Buff枚举 = {
   沧链: { 名称: '沧链', 最大层数: 2, 最大持续时间: 每秒郭氏帧 * 3, 图标: canglian },
   身形: { 名称: '身形', 最大层数: 3, 最大持续时间: 每秒郭氏帧 * 10, 图标: shenxing },
   流岚: { 名称: '流岚', 最大层数: 1, 最大持续时间: 每秒郭氏帧 * 60, 图标: liulan },
+  橙武: { 名称: '橙武', 最大层数: 1, 最大持续时间: 每秒郭氏帧 * 6, 图标: cw },
   // DOT
   流血: {
     名称: '流血',
@@ -186,5 +211,13 @@ export const 原始Buff数据: Buff枚举 = {
     最大持续时间: 每秒郭氏帧 * 6,
     伤害频率: 32,
     图标: liuxue,
+  },
+  斩浪破锋: {
+    名称: '斩浪破锋',
+    最大层数: 3,
+    最大作用次数: 6,
+    最大持续时间: 每秒郭氏帧 * 18,
+    伤害频率: 48,
+    图标: gu,
   },
 }

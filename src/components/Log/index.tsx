@@ -45,8 +45,8 @@ function Log() {
           <Timeline.Item style={{ padding: 0 }}>
             <div className="log-content-text">
               {Array.isArray(log_data?.[0].content)
-                ? log_data?.[0].content.map((a) => {
-                    return <p key={a}>{a}</p>
+                ? log_data?.[0].content.map((a, index) => {
+                    return <p key={index}>{a}</p>
                   })
                 : log_data?.[0].content}
             </div>

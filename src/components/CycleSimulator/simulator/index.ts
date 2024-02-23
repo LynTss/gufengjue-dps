@@ -14,6 +14,7 @@ interface SimulatorCycleProps {
   // 当前自身buff列表?: Buff枚举
   // 当前目标buff列表?: Buff枚举
   起手驰风: boolean
+  大橙武模拟: boolean
 }
 
 const 模拟循环 = (props: SimulatorCycleProps) => {

@@ -9,7 +9,10 @@ import { 孤锋破浪类型 } from './技能类/孤锋破浪/index'
 import { 灭影追风类型 } from './技能类/灭影追风/index'
 import { 游风飘踪类型 } from './技能类/游风飘踪/index'
 import { 吃影子类型 } from './技能类/吃影子/index'
+import { 触发橙武类型 } from './技能类/触发橙武/index'
+import { 点掉橙武类型 } from './技能类/点掉橙武/index'
 import { 流血DOT类型 } from './DOT类/流血/index'
+import { 斩浪破锋DOT类型 } from './DOT类/斩浪破锋/index'
 import { DpsListData } from '@/components/Dps/guoshi_dps_utils'
 
 // 将一个技能从释放到释放结束的各阶段定义类型
@@ -59,6 +62,9 @@ export interface 技能类实例集合 {
   游?: 游风飘踪类型
   吃影子?: 吃影子类型
   流血?: 流血DOT类型
+  斩浪破锋?: 斩浪破锋DOT类型
+  触发橙武?: 触发橙武类型
+  点掉橙武?: 点掉橙武类型
 }
 
 export interface 技能GCD组 {
@@ -116,6 +122,10 @@ export interface CycleSimulatorSkillDTO {
    * 技能GCD组
    */
   技能GCD组?: '单刀' | '双刀' | '自身'
+  /**
+   * 显示类型
+   */
+  显示类型?: '大橙武模拟'
   /**
    * 回复锐意
    */

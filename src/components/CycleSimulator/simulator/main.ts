@@ -28,7 +28,10 @@ import 孤锋破浪 from './技能类/孤锋破浪'
 import 灭影追风 from './技能类/灭影追风'
 import 游风飘踪 from './技能类/游风飘踪'
 import 吃影子 from './技能类/吃影子'
+import 触发橙武 from './技能类/触发橙武'
+import 点掉橙武 from './技能类/点掉橙武'
 import 流血 from './DOT类/流血'
+import 斩浪破锋 from './DOT类/斩浪破锋'
 
 interface SimulatorCycleProps {
   测试循环: string[]
@@ -36,6 +39,7 @@ interface SimulatorCycleProps {
   // 网络按键延迟: number
   奇穴: string[]
   起手驰风: boolean
+  大橙武模拟: boolean
 }
 
 class 循环主类 {
@@ -62,10 +66,12 @@ class 循环主类 {
   }
   技能类实例集合: 技能类实例集合 = {}
   云刀上次造成伤害时间: number | undefined = undefined
+  大橙武模拟 = false
 
   // 初始化创建
   constructor(props: SimulatorCycleProps) {
     this.测试循环 = props.测试循环
+    this.大橙武模拟 = props.大橙武模拟
     this.奇穴 = props.奇穴
     this.加速等级 = 获取加速等级(props.加速值)
     // this.网络按键延迟 = props.网络按键延迟
@@ -101,6 +107,9 @@ class 循环主类 {
       游: new 游风飘踪(this),
       吃影子: new 吃影子(this),
       流血: new 流血(this),
+      斩浪破锋: new 斩浪破锋(this),
+      触发橙武: new 触发橙武(this),
+      点掉橙武: new 点掉橙武(this),
     }
   }
 
@@ -476,6 +485,7 @@ class 循环主类 {
   // 对当前的DOT进行已过期的结算和剩余时间更新
   DOT结算与更新() {
     this.技能类实例集合?.流血?.结算流血伤害()
+    this.技能类实例集合?.斩浪破锋?.结算斩浪破锋伤害()
   }
 
   普通攻击结算() {
