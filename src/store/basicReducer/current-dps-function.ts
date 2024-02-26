@@ -72,8 +72,13 @@ export const currentDpsFunction =
 
     const 开启力道加成奇穴 = 判断是否开启力道加成奇穴(奇穴数据)
 
-    if (!当前循环技能列表?.length || !当前角色面板) {
+    if (!当前角色面板) {
       message.error('请先设置个人属性和目标')
+      return { totalDps: 0, dpsList: [], dpsPerSecond: 0 }
+    }
+
+    if (!当前循环技能列表?.length) {
+      message.error('当前无适配循环，请在自定义循环内添加')
       return { totalDps: 0, dpsList: [], dpsPerSecond: 0 }
     }
 

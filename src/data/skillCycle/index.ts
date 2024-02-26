@@ -1,8 +1,16 @@
+import 常规四破 from './常规四破.json'
+import 常规六破 from './常规六破.json'
 import 快速四破 from './快速四破.json'
 import 快速六破 from './快速六破.json'
 import 无影刀 from './无影刀.json'
 
-const Cycle_Data = [{ ...快速四破 }, { ...快速六破 }, { ...无影刀 }]
+const Cycle_Data = [
+  { ...常规四破 },
+  { ...常规六破 },
+  { ...快速四破 },
+  { ...快速六破 },
+  { ...无影刀 },
+]
 
 export default Cycle_Data
 

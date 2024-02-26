@@ -115,10 +115,10 @@ function CycleSimulator(props: CycleSimulatorProps) {
   }, [basicModalOpen, reduxQixuedata, 外部加速值])
 
   useEffect(() => {
-    if (是否实时计算) {
+    if (是否实时计算 && basicModalOpen) {
       simulator({})
     }
-  }, [cycle, 是否实时计算, 起手驰风, 网络按键延迟, 加速值, 奇穴信息])
+  }, [basicModalOpen, cycle, 是否实时计算, 起手驰风, 网络按键延迟, 加速值, 奇穴信息])
 
   const simulator = (props?) => {
     const { 传入加速 = 加速值, 更新展示 = true } = props
@@ -153,7 +153,6 @@ function CycleSimulator(props: CycleSimulatorProps) {
   // 计算DPS日志
   const 计算dps = (data: CycleSimulatorLog[], 当前时间) => {
     const 获取用于计算的技能组 = getDpsCycle(data)
-
     const { dpsPerSecond, dpsList, totalDps } = dispatch(
       currentDpsFunction({
         更新循环技能列表: 获取用于计算的技能组,
@@ -340,7 +339,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
         title: item?.名称,
         hide: false,
         type: '自定义',
-        qixue: 奇穴信息,
+        qixue: item?.奇穴信息,
         各加速枚举: item?.各加速枚举,
         skillList: item?.技能序列,
       }

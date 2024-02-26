@@ -1,9 +1,10 @@
 import { Form, Input, Modal, Select, Tabs } from 'antd'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { setCustomCycleList } from '@/store/basicReducer'
 import './index.css'
-import { 获取全部循环 } from '@/data/skillCycle'
+import 默认循环 from '@/data/skillCycle'
+import { 各加速枚举 } from '@/@types/cycle'
 
 interface SaveCustomCycleModalProps {
   自定义循环保存弹窗: boolean
@@ -24,7 +25,18 @@ function SaveCustomCycleModal(props: SaveCustomCycleModalProps) {
 
   const dispatch = useAppDispatch()
 
-  const 全部循环 = 获取全部循环()
+  const 全部循环 = useMemo(() => {
+    return (默认循环 || [])
+      .map((item) => {
+        return {
+          名称: item?.name,
+          奇穴信息: item?.qixue,
+          技能序列: [] as any,
+          各加速枚举: item?.各加速枚举 as 各加速枚举,
+        }
+      })
+      .concat(自定义循环)
+  }, [自定义循环])
 
   useEffect(() => {
     if (自定义循环保存弹窗) {
@@ -114,7 +126,7 @@ function SaveCustomCycleModal(props: SaveCustomCycleModalProps) {
                 {
                   validator: (_, value, callback) => {
                     if (value) {
-                      if (全部循环?.some((item) => item?.name === value || item?.title === value)) {
+                      if (全部循环?.some((item) => item?.名称 === value)) {
                         callback('已存在相同的循环名，请更换')
                       }
                     }

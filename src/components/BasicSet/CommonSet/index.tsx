@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Button, Select } from 'antd'
 import { 目标集合 } from '@/data/constant'
-import { 获取全部循环 } from '@/data/skillCycle'
+import 默认循环 from '@/data/skillCycle'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 
 import { setCurrentTarget, setCurrentCycle, setQixueData } from '@/store/basicReducer'
@@ -9,14 +9,27 @@ import CycleSimulator from '../../CycleSimulator'
 import MijiSet from './MijiSet'
 import QixueSet from './QixueSet'
 import './index.css'
+import { 各加速枚举 } from '@/@types/cycle'
 
 function CommonSet({ getDpsFunction, setZengyiVisible, 打开循环模拟器 }) {
   const dispatch = useAppDispatch()
   const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
   const currentTargetName = useAppSelector((state) => state?.basic?.currentTargetName)
   // const network = useAppSelector((state) => state?.basic?.network)
+  const 自定义循环 = useAppSelector((state) => state?.basic?.customCycleList)
 
-  const All_Cycle_Data = 获取全部循环()
+  const 全部循环 = useMemo(() => {
+    return (默认循环 || [])
+      .map((item) => {
+        return {
+          名称: item?.name,
+          奇穴信息: item?.qixue,
+          技能序列: [] as any,
+          各加速枚举: item?.各加速枚举 as 各加速枚举,
+        }
+      })
+      .concat(自定义循环)
+  }, [默认循环, 自定义循环])
 
   const setCurrentTargetVal = (val) => {
     const target = 目标集合?.find((item) => item.名称 === val)
@@ -39,19 +52,19 @@ function CommonSet({ getDpsFunction, setZengyiVisible, 打开循环模拟器 }) 
   // }
 
   const setCurrentCycleVal = (val) => {
-    const cycleData = All_Cycle_Data?.find((item) => item.name === val)
-    const cycle = cycleData?.cycle || []
+    const cycleData = 全部循环?.find((item) => item.名称 === val)
+    const cycle = cycleData?.各加速枚举
     if (cycle) {
-      localStorage?.setItem('当前循环_1', val)
+      localStorage?.setItem('当前循环_dz', val)
       dispatch(
         setCurrentCycle({
           name: val,
           各加速枚举: cycleData?.各加速枚举,
         })
       )
-      if (cycleData?.qixue) {
-        localStorage.setItem('daozong_qixue_data', JSON.stringify(cycleData?.qixue))
-        dispatch(setQixueData(cycleData?.qixue))
+      if (cycleData?.奇穴信息) {
+        localStorage.setItem('daozong_qixue_data', JSON.stringify(cycleData?.奇穴信息))
+        dispatch(setQixueData(cycleData?.奇穴信息))
       }
       getDpsFunction()
     }
@@ -100,13 +113,15 @@ function CommonSet({ getDpsFunction, setZengyiVisible, 打开循环模拟器 }) 
               setCurrentCycleVal(v)
             }}
           >
-            {All_Cycle_Data.filter((item) => !item.hide).map((item) => {
-              return (
-                <Select.Option value={item?.name} key={item.name}>
-                  {item.name}
-                </Select.Option>
-              )
-            })}
+            {全部循环
+              // .filter((item) => !item.hide)
+              .map((item) => {
+                return (
+                  <Select.Option value={item?.名称} key={item.名称}>
+                    {item.名称}
+                  </Select.Option>
+                )
+              })}
           </Select>
         </div>
       </div>

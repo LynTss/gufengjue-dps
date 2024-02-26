@@ -3,7 +3,6 @@ export const JCL技能序列导入 = (原序列: string) => {
   Object.keys(替换枚举).forEach((key) => {
     newStr = newStr.replaceAll(key, `${替换枚举[key]},`)
   })
-  console.log('newStr', newStr)
   const arr = newStr.split(',')
   return arr.filter((item) => item)
 }
@@ -12,6 +11,7 @@ const 替换枚举 = {
   留客雨: `留`,
   识破: `吃影子`,
   灭影追风: `灭`,
+  游风飘踪: `游`,
   横云断浪: `横`,
   '沧浪三叠·一': `沧`,
   '沧浪三叠·二': `沧`,

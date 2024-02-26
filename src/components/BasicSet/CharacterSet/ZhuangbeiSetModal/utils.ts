@@ -176,7 +176,7 @@ export const getSkillCycleGainData = (
                 return { ...a }
               }
             })
-          : item?.技能名称.includes('沧浪三叠')
+          : item?.技能名称?.includes('沧浪三叠')
           ? item.技能增益列表.map((a) => {
               if (a.增益名称 === 'CW5%') {
                 return {
