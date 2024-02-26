@@ -1,9 +1,11 @@
 import { GainDpsTypeEnum, GainTypeEnum } from '../../@types/enum'
 import { SkillGainDTO } from '../../@types/skill'
+import 通用增益 from './通用增益'
 
 const 鸣锋每层基础伤害 = 0.13
 
 const 鸣锋增益: SkillGainDTO[] = [
+  ...通用增益,
   {
     增益名称: '鸣锋_流血_1',
     增益所在位置: '技能',
