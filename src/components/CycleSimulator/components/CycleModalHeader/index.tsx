@@ -63,6 +63,12 @@ function CycleModalHeader(props: CycleModalHeaderProps) {
               <p>1、点击下方技能按钮添加至循环内</p>
               <p>2、可以整行删除、复制本行到最后一行</p>
               <p>3、可以在单行内拖动改变技能顺序</p>
+              <p>
+                更多使用说明详见：
+                <a href="https://www.jx3box.com/tool/75292" target="_blank" rel="noreferrer">
+                  使用手册
+                </a>
+              </p>
             </div>
           }
         >
