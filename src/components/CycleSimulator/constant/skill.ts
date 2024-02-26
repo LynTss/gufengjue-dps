@@ -30,6 +30,7 @@ import canglian from '../assets/Buff/canglian.png'
 import shenxing from '../assets/Buff/shenxing.png'
 import liulan from '../assets/Buff/liulan.png'
 import liuxue from '../assets/Buff/liuxue.png'
+import liangen from '../assets/Buff/liangen.png'
 
 const 循环模拟技能基础数据: CycleSimulatorSkillDTO[] = [
   {
@@ -200,6 +201,7 @@ export const 原始Buff数据: Buff枚举 = {
   长溯: { 名称: '长溯', 最大层数: 3, 最大持续时间: 每秒郭氏帧 * 30, 图标: changsuo },
   行链: { 名称: '行链', 最大层数: 2, 最大持续时间: 每秒郭氏帧 * 10, 图标: xinglian },
   沧链: { 名称: '沧链', 最大层数: 2, 最大持续时间: 每秒郭氏帧 * 3, 图标: canglian },
+  连亘: { 名称: '连亘', 最大层数: 2, 最大持续时间: 每秒郭氏帧 * 10, 图标: liangen },
   身形: { 名称: '身形', 最大层数: 3, 最大持续时间: 每秒郭氏帧 * 10, 图标: shenxing },
   流岚: { 名称: '流岚', 最大层数: 1, 最大持续时间: 每秒郭氏帧 * 60, 图标: liulan },
   橙武: { 名称: '橙武', 最大层数: 1, 最大持续时间: 每秒郭氏帧 * 6, 图标: cw },

@@ -72,7 +72,7 @@ function CycleModalHeader(props: CycleModalHeaderProps) {
           content={
             <div>
               目前未支持的功能
-              <p>奇穴：聚疏、连亘、截辕</p>
+              <p>奇穴：截辕</p>
             </div>
           }
         >

@@ -286,7 +286,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
       5: { dpsTime: 0, cycle: [] },
     }
 
-    let 异常加速等级 = -1
+    const 异常加速等级: number[] = []
 
     Object.keys(各加速枚举).forEach((加速) => {
       const 实际加速值 = 加速等级枚举[加速]
@@ -305,12 +305,12 @@ function CycleSimulator(props: CycleSimulatorProps) {
           cycle: 用于计算循环,
         }
       } else {
-        异常加速等级 = Number(加速)
+        异常加速等级.push(Number(加速))
       }
     })
 
-    if (异常加速等级 !== -1) {
-      message.error(`${异常加速等级}段加速异常，将不会保存该加速的循环`)
+    if (异常加速等级?.length > 0) {
+      message.error(`${异常加速等级?.join(',')}段加速异常，将不会保存该加速的循环`)
     }
 
     const 技能序列 = cycle.map((item) => item.技能名称)

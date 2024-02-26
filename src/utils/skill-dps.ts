@@ -232,18 +232,6 @@ export const 获取实际循环 = (currentCycle: CycleDTO[], qixueData: string[]
       trueCycle = [...trueCycle, { 技能名称: '界破', 技能数量: 释放孤峰次数 }]
     }
   }
-
-  // 特殊处理鸣锋
-  if (qixueData?.includes('鸣锋')) {
-    const 总横云次数 = trueCycle?.find((item) => item?.技能名称 === '横云断浪')?.技能数量 || 0
-
-    // 说明已经计算过界破了
-    if (trueCycle?.some((item) => item.技能名称 === '鸣锋')) {
-      trueCycle = [...trueCycle]
-    } else {
-      trueCycle = [...trueCycle, { 技能名称: '鸣锋', 技能数量: 释放孤峰次数 + 总横云次数 }]
-    }
-  }
   return trueCycle
 }
 
@@ -289,7 +277,10 @@ export const 根据奇穴处理技能的基础增益信息 = (
           ...res,
           技能增益列表: res?.技能增益列表.map((增益) => {
             // console.log('a.增益名称', a.增益名称)
-            if (增益.增益名称 === 当前奇穴.奇穴名称) {
+            if (
+              增益.增益名称 === 当前奇穴.奇穴名称 ||
+              (当前奇穴.奇穴名称 === '镇机' && 增益.增益名称?.includes('镇机'))
+            ) {
               return {
                 ...增益,
                 常驻增益: 当前奇穴?.奇穴加成类型 === '常驻',
@@ -302,31 +293,6 @@ export const 根据奇穴处理技能的基础增益信息 = (
         }
       }
     })
-
-    // 特殊处理镇机和承磊的连锁反应
-    if (res?.技能名称?.includes('断云势')) {
-      if (
-        全部奇穴信息?.some((item) => item.奇穴名称 === '承磊') &&
-        全部奇穴信息?.some((item) => item.奇穴名称 === '镇机')
-      ) {
-        res = {
-          ...res,
-          技能增益列表: res?.技能增益列表.map((a) => {
-            return a?.增益名称 === '镇机'
-              ? {
-                  ...a,
-                  增益集合: a?.增益集合?.map((b) => {
-                    return {
-                      ...b,
-                      增益数值: 0.9, // 6层承磊，每层15%
-                    }
-                  }),
-                }
-              : { ...a }
-          }),
-        }
-      }
-    }
 
     return res
   })
