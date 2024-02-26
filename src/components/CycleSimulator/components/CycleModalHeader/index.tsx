@@ -66,7 +66,7 @@ function CycleModalHeader(props: CycleModalHeaderProps) {
               <p>
                 更多使用说明详见：
                 <a href="https://www.jx3box.com/tool/75292" target="_blank" rel="noreferrer">
-                  使用手册
+                  使用手册及FAQ
                 </a>
               </p>
             </div>
