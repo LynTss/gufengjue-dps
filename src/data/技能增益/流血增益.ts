@@ -1,9 +1,9 @@
 import { GainDpsTypeEnum, GainTypeEnum } from '../../@types/enum'
 import { SkillGainDTO } from '../../@types/skill'
-import commonGainDTO from './common'
+import 通用增益 from './通用增益'
 
-const liuxue1GainDTO: SkillGainDTO[] = [
-  ...commonGainDTO,
+const 流血1层增益: SkillGainDTO[] = [
+  ...通用增益,
   {
     增益名称: '涤瑕',
     增益所在位置: '奇穴',
@@ -18,8 +18,8 @@ const liuxue1GainDTO: SkillGainDTO[] = [
   },
 ]
 
-const liuxue2GainDTO: SkillGainDTO[] = [
-  ...commonGainDTO,
+const 流血2层增益: SkillGainDTO[] = [
+  ...通用增益,
   {
     增益名称: '涤瑕',
     增益所在位置: '奇穴',
@@ -34,8 +34,8 @@ const liuxue2GainDTO: SkillGainDTO[] = [
   },
 ]
 
-const liuxue3GainDTO: SkillGainDTO[] = [
-  ...commonGainDTO,
+const 流血3层增益: SkillGainDTO[] = [
+  ...通用增益,
   {
     增益名称: '涤瑕',
     增益所在位置: '奇穴',
@@ -50,8 +50,8 @@ const liuxue3GainDTO: SkillGainDTO[] = [
   },
 ]
 
-const liuxue4GainDTO: SkillGainDTO[] = [
-  ...commonGainDTO,
+const 流血4层增益: SkillGainDTO[] = [
+  ...通用增益,
   {
     增益名称: '涤瑕',
     增益所在位置: '奇穴',
@@ -66,8 +66,8 @@ const liuxue4GainDTO: SkillGainDTO[] = [
   },
 ]
 
-const liuxue5GainDTO: SkillGainDTO[] = [
-  ...commonGainDTO,
+const 流血5层增益: SkillGainDTO[] = [
+  ...通用增益,
   {
     增益名称: '涤瑕',
     增益所在位置: '奇穴',
@@ -82,8 +82,8 @@ const liuxue5GainDTO: SkillGainDTO[] = [
   },
 ]
 
-const liuxue6GainDTO: SkillGainDTO[] = [
-  ...commonGainDTO,
+const 流血6层增益: SkillGainDTO[] = [
+  ...通用增益,
   {
     增益名称: '涤瑕',
     增益所在位置: '奇穴',
@@ -98,11 +98,4 @@ const liuxue6GainDTO: SkillGainDTO[] = [
   },
 ]
 
-export {
-  liuxue1GainDTO,
-  liuxue2GainDTO,
-  liuxue3GainDTO,
-  liuxue4GainDTO,
-  liuxue5GainDTO,
-  liuxue6GainDTO,
-}
+export { 流血1层增益, 流血2层增益, 流血3层增益, 流血4层增益, 流血5层增益, 流血6层增益 }

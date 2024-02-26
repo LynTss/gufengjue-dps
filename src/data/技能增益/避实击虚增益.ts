@@ -1,9 +1,9 @@
 import { GainDpsTypeEnum, GainTypeEnum } from '../../@types/enum'
 import { SkillGainDTO } from '../../@types/skill'
-import commonGainDTO from './common'
+import 通用增益 from './通用增益'
 
-const bishijixuGainDTO: SkillGainDTO[] = [
-  ...commonGainDTO,
+const 避实击虚增益: SkillGainDTO[] = [
+  ...通用增益,
   {
     增益名称: '斩颓·破绽二',
     增益所在位置: '奇穴',
@@ -39,4 +39,4 @@ const bishijixuGainDTO: SkillGainDTO[] = [
   },
 ]
 
-export default bishijixuGainDTO
+export default 避实击虚增益

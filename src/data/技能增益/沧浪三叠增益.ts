@@ -1,9 +1,9 @@
 import { GainTypeEnum, GainDpsTypeEnum } from '@/@types/enum'
 import { SkillGainDTO } from '../../@types/skill'
-import commonGainDTO from './common'
+import 通用增益 from './通用增益'
 
-const canglangsandieGainDTO: SkillGainDTO[] = [
-  ...commonGainDTO,
+const 沧浪三叠增益: SkillGainDTO[] = [
+  ...通用增益,
   {
     增益名称: 'CW5%',
     增益所在位置: '武器',
@@ -41,4 +41,4 @@ const canglangsandieGainDTO: SkillGainDTO[] = [
   },
 ]
 
-export default canglangsandieGainDTO
+export default 沧浪三叠增益

@@ -1,26 +1,26 @@
-import commonGainDTO from '@/data/skillGain/common'
+import 通用增益 from '@/data/技能增益/通用增益'
 import { SkillBasicDTO } from '@/@types/skill'
-import guyingshiGainDTO from './skillGain/guyingshi'
-import fenjiaoGainDTO from './skillGain/fenjiaoshi'
-import liukeyuGainDTO from './skillGain/liukeyu'
-import jidianshiGainDTO from './skillGain/jidianshi'
-import qiluoshiGainDTO from './skillGain/qiluoshi'
-import canglangsandie1GainDTO from './skillGain/canglangsandie1'
-import canglangsandie2GainDTO from './skillGain/canglangsandie2'
-import canglangsandie3GainDTO from './skillGain/canglangsandie3'
-import hengyunduanlangGainDTO from './skillGain/hengyunduanlang'
-import gufengduanlangGainDTO from './skillGain/gufengduanlang'
-import chushiyuGainDTO from './skillGain/chushiyu'
-import bishijixuGainDTO from './skillGain/bishijixu'
+import 停云势增益 from './技能增益/停云势增益'
+import 行云势增益 from './技能增益/行云势增益'
+import 留客雨增益 from './技能增益/留客雨增益'
+import 决云势增益 from './技能增益/决云势增益'
+import 断云势增益 from './技能增益/断云势增益'
+import 沧浪三叠一增益 from './技能增益/沧浪三叠一增益'
+import 沧浪三叠二增益 from './技能增益/沧浪三叠二增益'
+import 沧浪三叠三增益 from './技能增益/沧浪三叠三增益'
+import 横云断浪增益 from './技能增益/横云断浪增益'
+import 孤锋破浪增益 from './技能增益/孤锋破浪增益'
+import 避实击虚增益 from './技能增益/避实击虚增益'
+import 鸣锋增益 from './技能增益/鸣锋增益'
 import { GainDpsTypeEnum, GainTypeEnum } from '@/@types/enum'
 import {
-  liuxue1GainDTO,
-  liuxue2GainDTO,
-  liuxue3GainDTO,
-  liuxue4GainDTO,
-  liuxue5GainDTO,
-  liuxue6GainDTO,
-} from './skillGain/liuxue'
+  流血1层增益,
+  流血2层增益,
+  流血3层增益,
+  流血4层增益,
+  流血5层增益,
+  流血6层增益,
+} from './技能增益/流血增益'
 import { 属性系数 } from './constant'
 
 const 外攻基础系数 = 16 * 10
@@ -52,7 +52,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 22,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '行云势·一',
@@ -62,7 +62,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 195,
     武器伤害系数: 1,
     伤害计算次数: 1,
-    技能增益列表: fenjiaoGainDTO,
+    技能增益列表: 行云势增益,
   },
   {
     技能名称: '行云势·二',
@@ -72,7 +72,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 234,
     武器伤害系数: 1.5,
     伤害计算次数: 1,
-    技能增益列表: fenjiaoGainDTO,
+    技能增益列表: 行云势增益,
   },
   {
     技能名称: '行云势·三',
@@ -82,37 +82,34 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 292,
     武器伤害系数: 2,
     伤害计算次数: 1,
-    技能增益列表: fenjiaoGainDTO,
+    技能增益列表: 行云势增益,
   },
   {
     技能名称: '停云势',
-    // 技能伤害系数: 2.25 * 0.9,
     技能伤害系数: 获取实际系数(240 * 1.5 * 0.9),
     技能基础伤害_最小值: 405,
     技能基础伤害_最大值: 420,
     武器伤害系数: 2.5,
     伤害计算次数: 1,
-    技能增益列表: guyingshiGainDTO,
+    技能增益列表: 停云势增益,
   },
   {
     技能名称: '留客雨',
-    // 技能伤害系数: 1.25,
     技能伤害系数: 获取实际系数(200),
     技能基础伤害_最小值: 160,
     技能基础伤害_最大值: 175,
     武器伤害系数: 1,
     伤害计算次数: 1,
-    技能增益列表: liukeyuGainDTO,
+    技能增益列表: 留客雨增益,
   },
   {
     技能名称: '避实击虚',
-    // 技能伤害系数: 0.5,
     技能伤害系数: 获取实际系数(80),
     技能基础伤害_最小值: 35,
     技能基础伤害_最大值: 40,
-    武器伤害系数: 1, // !描述0 实测1
+    武器伤害系数: 1,
     伤害计算次数: 1,
-    技能增益列表: bishijixuGainDTO,
+    技能增益列表: 避实击虚增益,
   },
   {
     技能名称: '决云势',
@@ -122,7 +119,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 202,
     武器伤害系数: 1,
     伤害计算次数: 1,
-    技能增益列表: jidianshiGainDTO,
+    技能增益列表: 决云势增益,
   },
   {
     技能名称: '驰风八步·一',
@@ -132,7 +129,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 15,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '驰风八步·二',
@@ -142,7 +139,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 15,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '断云势',
@@ -152,7 +149,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 194,
     武器伤害系数: 2.5,
     伤害计算次数: 1,
-    技能增益列表: qiluoshiGainDTO,
+    技能增益列表: 断云势增益,
   },
   {
     技能名称: '断云势·额外伤害',
@@ -162,7 +159,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 78,
     武器伤害系数: 2,
     伤害计算次数: 1,
-    技能增益列表: qiluoshiGainDTO,
+    技能增益列表: 断云势增益,
   },
   {
     技能名称: '沧浪三叠·一',
@@ -172,7 +169,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 220,
     武器伤害系数: 2,
     伤害计算次数: 1,
-    技能增益列表: canglangsandie1GainDTO,
+    技能增益列表: 沧浪三叠一增益,
   },
   {
     技能名称: '沧浪三叠·二',
@@ -182,7 +179,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 288,
     武器伤害系数: 2.5,
     伤害计算次数: 1,
-    技能增益列表: canglangsandie2GainDTO,
+    技能增益列表: 沧浪三叠二增益,
   },
   {
     技能名称: '沧浪三叠·三',
@@ -192,7 +189,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 316,
     武器伤害系数: 3,
     伤害计算次数: 1,
-    技能增益列表: canglangsandie3GainDTO,
+    技能增益列表: 沧浪三叠三增益,
   },
   {
     技能名称: '横云断浪',
@@ -202,7 +199,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 809,
     武器伤害系数: 3,
     伤害计算次数: 1,
-    技能增益列表: hengyunduanlangGainDTO,
+    技能增益列表: 横云断浪增益,
   },
   {
     技能名称: '孤锋破浪',
@@ -213,7 +210,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 1525,
     武器伤害系数: 3,
     伤害计算次数: 1,
-    技能增益列表: gufengduanlangGainDTO,
+    技能增益列表: 孤锋破浪增益,
   },
   {
     技能名称: '界破',
@@ -223,7 +220,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 477,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '触石雨',
@@ -233,7 +230,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 195,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: chushiyuGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '截辕',
@@ -243,7 +240,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 102,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '截辕（DOT）',
@@ -253,7 +250,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '截辕·爆炸',
@@ -263,7 +260,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 147,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '云刀',
@@ -273,7 +270,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 1,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '流血·一',
@@ -282,7 +279,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: liuxue1GainDTO,
+    技能增益列表: 流血1层增益,
   },
   {
     技能名称: '流血·二',
@@ -291,7 +288,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 2,
-    技能增益列表: liuxue2GainDTO,
+    技能增益列表: 流血2层增益,
   },
   {
     技能名称: '流血·三',
@@ -300,7 +297,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 3,
-    技能增益列表: liuxue3GainDTO,
+    技能增益列表: 流血3层增益,
   },
   {
     技能名称: '流血·四',
@@ -309,7 +306,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 4,
-    技能增益列表: liuxue4GainDTO,
+    技能增益列表: 流血4层增益,
   },
   {
     技能名称: '流血·五',
@@ -318,7 +315,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 5,
-    技能增益列表: liuxue5GainDTO,
+    技能增益列表: 流血5层增益,
   },
   {
     技能名称: '流血·六',
@@ -327,7 +324,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 6,
-    技能增益列表: liuxue6GainDTO,
+    技能增益列表: 流血6层增益,
   },
   {
     技能名称: '凝神势·破锋',
@@ -336,7 +333,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 2,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '鸣锋',
@@ -346,7 +343,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 81,
     武器伤害系数: 1,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 鸣锋增益,
   },
   {
     技能名称: '破',
@@ -356,7 +353,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '逐云寒蕊',
@@ -366,7 +363,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     武器伤害系数: 0,
     伤害计算次数: 1,
     技能增益列表: [
-      ...commonGainDTO,
+      ...通用增益,
       {
         增益名称: '飘黄',
         增益所在位置: '套装',
@@ -389,7 +386,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     // 伤鞋
@@ -399,7 +396,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     // 龙门武器
@@ -409,7 +406,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 3950,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '潋风·携刃',
@@ -419,7 +416,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 88,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '潋风·拓锋',
@@ -429,7 +426,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 88,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '斩浪破锋·一',
@@ -438,7 +435,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 1,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '斩浪破锋·二',
@@ -447,7 +444,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 2,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
   {
     技能名称: '斩浪破锋·三',
@@ -456,7 +453,7 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
     技能基础伤害_最大值: 0,
     武器伤害系数: 0,
     伤害计算次数: 3,
-    技能增益列表: commonGainDTO,
+    技能增益列表: 通用增益,
   },
 ]
 export default GuFengJueSkillDataDTO
