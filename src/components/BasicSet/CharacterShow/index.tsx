@@ -39,9 +39,10 @@ function CharacterShow(_, ref) {
 
   const 增益加速值 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
   const 加速等级 = 获取加速等级(characterFinalData?.加速值 + 增益加速值)
+  const 循环信息 = 当前循环各加速枚举?.[加速等级]?.cycle
 
   // 获取实际循环
-  const trueCycle = 获取实际循环(当前循环各加速枚举?.[加速等级]?.cycle, qixueData)
+  const trueCycle = 获取实际循环(循环信息, qixueData)
 
   const maxDpsData: any = useMemo(() => {
     if (!openBFGS) {

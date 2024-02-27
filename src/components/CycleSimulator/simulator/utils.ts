@@ -13,9 +13,9 @@ export const 根据奇穴修改buff数据 = (奇穴: string[]) => {
     switch (key) {
       case '身形':
         if (判断奇穴('溃延')) {
-          obj.最大持续时间 = 每秒郭氏帧 * (10 + 5)
+          obj.最大持续时间 = 每秒郭氏帧 * (15 + 5)
         } else {
-          obj.最大持续时间 = 每秒郭氏帧 * 10
+          obj.最大持续时间 = 每秒郭氏帧 * 15
         }
         break
       case '流血':

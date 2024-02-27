@@ -73,16 +73,15 @@ function CycleModalHeader(props: CycleModalHeaderProps) {
         >
           <span className={'cycle-simulator-help'}>如何使用</span>
         </Popover>
-        <Popover
+        {/* <Popover
           content={
             <div>
               目前未支持的功能
-              <p>奇穴：截辕</p>
             </div>
           }
         >
           <span className={'cycle-not-support'}>未支持功能</span>
-        </Popover>
+        </Popover> */}
       </div>
       <div className={'cycle-simulator-header-btns'}>
         <Checkbox

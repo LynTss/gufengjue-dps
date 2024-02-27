@@ -1,5 +1,10 @@
 export default [
   {
+    version: '3.0.3',
+    date: '2024-02-27 18:40:00',
+    content: ['其他更新：', '更新了默认的CW循环'],
+  },
+  {
     version: '3.0.2',
     date: '2024-02-27 16:00:00',
     content: [

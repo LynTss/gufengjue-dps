@@ -3,14 +3,18 @@ import 常规六破 from './常规六破.json'
 import 快速四破 from './快速四破.json'
 import 快速六破 from './快速六破.json'
 import 无影刀 from './无影刀.json'
+import CW循环 from './CW循环.json'
 
 const Cycle_Data = [
   { ...常规四破 },
   { ...常规六破 },
   { ...快速四破 },
   { ...快速六破 },
+  { ...CW循环 },
   { ...无影刀 },
 ]
+
+export { CW循环 }
 
 export default Cycle_Data
 

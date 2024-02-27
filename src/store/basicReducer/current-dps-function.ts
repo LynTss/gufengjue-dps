@@ -78,7 +78,9 @@ export const currentDpsFunction =
     }
 
     if (!当前循环技能列表?.length) {
-      message.error('当前加速无适配循环，请在自定义循环内添加或检查加速情况')
+      if (updateCurrentDps) {
+        message.error('当前加速无适配循环，请在自定义循环内添加或检查加速情况')
+      }
       return { totalDps: 0, dpsList: [], dpsPerSecond: 0 }
     }
 

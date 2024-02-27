@@ -209,27 +209,21 @@ export const getTrueCycleName = (
 export const 获取实际循环 = (currentCycle: CycleDTO[], qixueData: string[]) => {
   let trueCycle = [...currentCycle]
 
-  const 总孤峰次数 = trueCycle?.find((item) => item?.技能名称 === '孤锋破浪')?.技能数量 || 0
-
-  // 长溯 * 4
-  const 孤峰计算额外次数 = qixueData?.includes('长溯') ? 4 : 1
-
-  const 释放孤峰次数 = Math.floor((总孤峰次数 - 1) / 孤峰计算额外次数)
-
   // 特殊处理界破
-  if (qixueData?.includes('界破')) {
+  // 如果循环里有界破但是奇穴里没有，删除界破数据
+  if (!qixueData?.includes('界破')) {
     // 说明已经计算过界破了
-    if (trueCycle?.some((item) => item.技能名称 === '界破')) {
-      trueCycle = [...trueCycle]
-    } else {
-      trueCycle = trueCycle.map((item) => {
-        if (item.技能名称 === '避实击虚') {
-          return { ...item, 技能数量: item.技能数量 + 释放孤峰次数 }
-        } else {
-          return { ...item }
-        }
-      })
-      trueCycle = [...trueCycle, { 技能名称: '界破', 技能数量: 释放孤峰次数 }]
+    const 界破数据 = trueCycle?.find((item) => item?.技能名称 === '界破')
+    if (界破数据) {
+      trueCycle = trueCycle
+        .map((item) => {
+          if (item.技能名称 === '避实击虚') {
+            return { ...item, 技能数量: item.技能数量 - 界破数据?.技能数量 }
+          } else {
+            return { ...item }
+          }
+        })
+        .filter((item) => item.技能名称 !== '界破')
     }
   }
   return trueCycle
