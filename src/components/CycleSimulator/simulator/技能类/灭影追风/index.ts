@@ -7,6 +7,8 @@ class 灭影追风 extends 有CD技能通用类 {
 
   constructor(模拟循环) {
     super(模拟循环)
+
+    this.初始化技能运行数据(灭影追风.技能数据)
   }
 
   命中() {

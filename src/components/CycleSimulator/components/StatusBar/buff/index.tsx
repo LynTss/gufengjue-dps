@@ -29,7 +29,18 @@ function Buff(props: BuffProps) {
             return (
               <div className={'cycle-status-bar-buff'} key={item.名称}>
                 <div className={'cycle-status-bar-buff-item'}>
-                  <Tooltip title={`${item.名称}${层数 > 1 ? `${层数}层` : ''}`}>
+                  <Tooltip
+                    title={
+                      item.名称 === '流岚' ? (
+                        <>
+                          {item.名称}
+                          {((层数 - 1) * 20 + 剩余时间 / 每秒郭氏帧).toFixed(1)}秒
+                        </>
+                      ) : (
+                        <>{`${item.名称}${层数 > 1 ? `${层数}层` : ''}`}</>
+                      )
+                    }
+                  >
                     <img className={'cycle-status-bar-buff-img'} src={item.图标} />
                   </Tooltip>
                   {层数 > 1 ? (

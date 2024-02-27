@@ -17,3 +17,25 @@
 .cycle-simulator-setting-quick-item:hover {
   font-weight: 500;
 }
+
+.cycle-add-btn-wrap {
+  position: relative;
+}
+
+.cycle-add-btn-count {
+  position: absolute;
+  right: -7px;
+  bottom: -5px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ant-primary-color);
+  opacity: 0.9;
+  color: #fff;
+  text-align: center;
+  line-height: 20px;
+  font-weight: 500;
+  font-size: 12px;
+  border: 1px solid #fff;
+}

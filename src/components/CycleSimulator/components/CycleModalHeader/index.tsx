@@ -1,10 +1,9 @@
 import { Button, Checkbox, Dropdown, Menu, Popover, Select, Tooltip } from 'antd'
 import React from 'react'
 import { CycleSimulatorSkillDTO, 模拟信息类型 } from '../../simulator/type'
-import 循环模拟技能基础数据 from '../../constant/skill'
 import 快速导入默认循环 from '../../constant/快速导入默认循环'
-import './index.css'
 import { useAppSelector } from '@/hooks'
+import './index.css'
 interface CycleModalHeaderProps {
   cycle: CycleSimulatorSkillDTO[]
   设置自定义循环保存弹窗: (e: boolean) => void
@@ -43,7 +42,7 @@ function CycleModalHeader(props: CycleModalHeaderProps) {
 
     const 技能序列信息 = (当前循环数据?.技能序列 || [])
       .map((item) => {
-        return 循环模拟技能基础数据?.find((a) => a?.技能名称 === item) as CycleSimulatorSkillDTO
+        return 模拟信息?.技能基础数据?.find((a) => a?.技能名称 === item) as CycleSimulatorSkillDTO
       })
       .filter((item) => item)
 

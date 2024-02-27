@@ -13,6 +13,7 @@ import { 触发橙武类型 } from './技能类/触发橙武/index'
 import { 点掉橙武类型 } from './技能类/点掉橙武/index'
 import { 流血DOT类型 } from './DOT类/流血/index'
 import { 斩浪破锋DOT类型 } from './DOT类/斩浪破锋/index'
+import { 截辕DOT类型 } from './DOT类/截辕/index'
 import { DpsListData } from '@/components/Dps/guoshi_dps_utils'
 
 // 将一个技能从释放到释放结束的各阶段定义类型
@@ -63,6 +64,7 @@ export interface 技能类实例集合 {
   吃影子?: 吃影子类型
   流血?: 流血DOT类型
   斩浪破锋?: 斩浪破锋DOT类型
+  截辕?: 截辕DOT类型
   触发橙武?: 触发橙武类型
   点掉橙武?: 点掉橙武类型
 }
@@ -339,6 +341,7 @@ export interface 模拟信息类型 {
   技能释放记录: 技能释放记录数据[] = []
   当前各技能运行状态: { [key: string]: 技能运行数据类型 }
   当前GCD组: 技能GCD组
+  技能基础数据: CycleSimulatorSkillDTO[]
 }
 
 export interface 技能释放记录数据 {

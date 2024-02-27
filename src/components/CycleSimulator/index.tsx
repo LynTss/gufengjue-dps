@@ -65,6 +65,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
     当前目标buff列表: {},
     循环执行结果: '成功',
     循环异常信息: {},
+    技能基础数据: [...循环模拟技能基础数据],
     技能释放记录: [],
     当前各技能运行状态: {},
     当前GCD组: {},
@@ -239,7 +240,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
       newList.forEach((item) => {
         item.forEach((a) => {
           if (a.技能名称) {
-            const 当前技能数据 = 循环模拟技能基础数据?.find((b) => b?.技能名称 === a.技能名称)
+            const 当前技能数据 = 模拟信息?.技能基础数据?.find((b) => b?.技能名称 === a.技能名称)
             if (当前技能数据) {
               res.push(当前技能数据)
             }

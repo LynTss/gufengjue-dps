@@ -39,8 +39,7 @@ const commonGainDTO: SkillGainDTO[] = [
   {
     增益名称: '流岚',
     增益所在位置: '奇穴',
-    // 模拟器上线后要修改这里为启用类型增益
-    常驻增益: false,
+    增益启用开关: false,
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,

@@ -1,8 +1,8 @@
 // import 循环主类 from '../main'
 import 循环模拟技能基础数据 from '../../../constant/skill'
-import 有CD技能通用类 from '../../通用类/有CD技能通用类'
+import 技能统一类 from '../../通用类/技能统一类'
 
-class 点掉橙武 extends 有CD技能通用类 {
+class 点掉橙武 extends 技能统一类 {
   static 技能数据 = 循环模拟技能基础数据?.find((item) => item.技能名称 === '点掉橙武')
 
   constructor(模拟循环) {

@@ -31,6 +31,7 @@ import shenxing from '../assets/Buff/shenxing.png'
 import liulan from '../assets/Buff/liulan.png'
 import liuxue from '../assets/Buff/liuxue.png'
 import liangen from '../assets/Buff/liangen.png'
+import jieyuan from '../assets/Buff/jieyuan.png'
 
 const 循环模拟技能基础数据: CycleSimulatorSkillDTO[] = [
   {
@@ -133,9 +134,10 @@ const 循环模拟技能基础数据: CycleSimulatorSkillDTO[] = [
   },
   {
     技能名称: '游',
-    技能释放后添加GCD: 0,
+    技能释放后添加GCD: 基础GCD帧,
     造成伤害次数: 0,
-    技能CD: 每秒郭氏帧 * 50,
+    // 秘籍减15秒
+    技能CD: 每秒郭氏帧 * (50 - 15),
     最大充能层数: 2,
     技能GCD组: '自身',
     技能类型: '其他',
@@ -147,7 +149,6 @@ const 循环模拟技能基础数据: CycleSimulatorSkillDTO[] = [
     技能释放后添加GCD: 0,
     造成伤害次数: 0,
     技能CD: 每秒郭氏帧 * 30,
-    最大充能层数: 1,
     技能GCD组: '自身',
     技能类型: '其他',
     显示类型: '大橙武模拟',
@@ -158,7 +159,6 @@ const 循环模拟技能基础数据: CycleSimulatorSkillDTO[] = [
     技能释放后添加GCD: 0,
     造成伤害次数: 0,
     技能CD: 0,
-    最大充能层数: 1,
     技能GCD组: '自身',
     技能类型: '其他',
     显示类型: '大橙武模拟',
@@ -203,7 +203,13 @@ export const 原始Buff数据: Buff枚举 = {
   沧链: { 名称: '沧链', 最大层数: 2, 最大持续时间: 每秒郭氏帧 * 3, 图标: canglian },
   连亘: { 名称: '连亘', 最大层数: 2, 最大持续时间: 每秒郭氏帧 * 10, 图标: liangen },
   身形: { 名称: '身形', 最大层数: 3, 最大持续时间: 每秒郭氏帧 * 10, 图标: shenxing },
-  流岚: { 名称: '流岚', 最大层数: 1, 最大持续时间: 每秒郭氏帧 * 60, 图标: liulan },
+  流岚: {
+    名称: '流岚',
+    最大层数: 3,
+    最大持续时间: 每秒郭氏帧 * 20,
+    图标: liulan,
+    自然消失失去层数: 1,
+  },
   橙武: { 名称: '橙武', 最大层数: 1, 最大持续时间: 每秒郭氏帧 * 6, 图标: cw },
   // DOT
   流血: {
@@ -221,5 +227,13 @@ export const 原始Buff数据: Buff枚举 = {
     最大持续时间: 每秒郭氏帧 * 18,
     伤害频率: 48,
     图标: gu,
+  },
+  截辕: {
+    名称: '截辕',
+    最大层数: 1,
+    最大作用次数: 6,
+    最大持续时间: 每秒郭氏帧 * 12,
+    伤害频率: 32,
+    图标: jieyuan,
   },
 }

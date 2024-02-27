@@ -7,6 +7,8 @@ class 触发橙武 extends 有CD技能通用类 {
 
   constructor(模拟循环) {
     super(模拟循环)
+
+    this.初始化技能运行数据(触发橙武.技能数据)
   }
 
   命中() {

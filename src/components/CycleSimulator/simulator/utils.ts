@@ -1,6 +1,6 @@
 import { 每秒郭氏帧 } from '../constant'
-import { 原始Buff数据 } from '../constant/skill'
-import { DotDTO } from './type'
+import 循环模拟技能基础数据, { 原始Buff数据 } from '../constant/skill'
+import { CycleSimulatorSkillDTO, DotDTO } from './type'
 
 export const 根据奇穴修改buff数据 = (奇穴: string[]) => {
   const res = {}
@@ -14,13 +14,10 @@ export const 根据奇穴修改buff数据 = (奇穴: string[]) => {
       case '身形':
         if (判断奇穴('溃延')) {
           obj.最大持续时间 = 每秒郭氏帧 * (10 + 5)
+        } else {
+          obj.最大持续时间 = 每秒郭氏帧 * 10
         }
         break
-      // case '灭影追风':
-      //   if (判断奇穴('电逝')) {
-      //     obj.最大持续时间 = 每秒郭氏帧 * (11 + 5)
-      //   }
-      //   break
       case '流血':
         if (判断奇穴('承磊')) {
           obj.最大层数 = 6
@@ -31,6 +28,9 @@ export const 根据奇穴修改buff数据 = (奇穴: string[]) => {
           obj.最大持续时间 = 每秒郭氏帧 * (6 + 12)
           // eslint-disable-next-line @typescript-eslint/no-extra-semi
           ;(obj as DotDTO).最大作用次数 = 9
+        } else {
+          obj.最大持续时间 = 每秒郭氏帧 * 6
+          ;(obj as DotDTO).最大作用次数 = 3
         }
         break
       case '破绽':
@@ -41,12 +41,42 @@ export const 根据奇穴修改buff数据 = (奇穴: string[]) => {
         }
         if (判断奇穴('观衅')) {
           obj.自然消失失去层数 = 1
+        } else {
+          obj.自然消失失去层数 = 0
         }
         break
       default:
         break
     }
     res[key] = obj
+  })
+
+  return res
+}
+
+export const 根据奇穴修改技能数据 = (奇穴: string[]): CycleSimulatorSkillDTO[] => {
+  const 判断奇穴 = (val) => {
+    return 奇穴?.includes(val)
+  }
+
+  const res: CycleSimulatorSkillDTO[] = 循环模拟技能基础数据.map((技能) => {
+    if (技能?.技能名称 === '横') {
+      return 判断奇穴('敛摄')
+        ? {
+            ...技能,
+            最大充能层数: 2,
+          }
+        : 技能
+    } else if (技能?.技能名称 === '游') {
+      return 判断奇穴('流岚')
+        ? {
+            ...技能,
+            技能CD: 每秒郭氏帧 * (50 - 15 + 12),
+          }
+        : 技能
+    } else {
+      return 技能
+    }
   })
 
   return res
