@@ -1,5 +1,33 @@
 export default [
   {
+    version: '3.0.4',
+    date: '2024-03-04 20:40:00',
+    content: [
+      <p key="3.0.4_1">
+        体肤更新一改
+        <a
+          href="https://jx3.xoyo.com/index/#/article-details?catid=2458&id=6120"
+          target="_blank"
+          rel="noreferrer"
+        >
+          技改链接
+        </a>
+      </p>,
+      <p key="3.0.4_2" style={{ paddingLeft: 12 }}>
+        {`- 潋风时间 【6】=> 【4】，删除拓锋，潋风携刃伤害增强25%`}
+      </p>,
+      <p key="3.0.4_3" style={{ paddingLeft: 12 }}>
+        {`- 界破伤害增强10%`}
+      </p>,
+      <p key="3.0.4_4" style={{ paddingLeft: 12 }}>
+        {'- 以上改动模拟器已更新，可以使用模拟器模拟新循环'}
+      </p>,
+      <p key="3.0.4_4" style={{ paddingLeft: 12, color: 'red' }}>
+        {'体服版本只会在国外源计算器更新'}
+      </p>,
+    ],
+  },
+  {
     version: '3.0.3',
     date: '2024-02-27 18:40:00',
     content: ['其他更新：', '更新了默认的CW循环'],
