@@ -1,0 +1,36 @@
+.shine::before {
+  pointer-events: none;
+  opacity: 0;
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  width: 700px;
+  height: 700px;
+  filter: blur(180px);
+  border-radius: 350px;
+  background-color: var(--panel-color);
+  transform: translate(calc(var(--mouse-x) - 50%), calc(var(--mouse-y) - 50%));
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  mix-blend-mode: normal;
+  will-change: transform, opacity;
+}
+
+.shine_m::before {
+  width: 560px;
+  height: 560px;
+  filter: blur(180px);
+  border-radius: 280px;
+}
+
+.shine_s::before {
+  width: 400px;
+  height: 400px;
+  filter: blur(180px);
+  border-radius: 200px;
+}
+
+.shine:hover::before {
+  opacity: var(--opacity);
+}
