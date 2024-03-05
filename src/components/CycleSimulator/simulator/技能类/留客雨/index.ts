@@ -4,7 +4,6 @@ import 有CD技能通用类 from '../../通用类/有CD技能通用类'
 
 class 留客雨 extends 有CD技能通用类 {
   static 技能数据 = 循环模拟技能基础数据?.find((item) => item.技能名称 === '留')
-  static 回复锐意 = 0
 
   constructor(模拟循环) {
     super(模拟循环)
