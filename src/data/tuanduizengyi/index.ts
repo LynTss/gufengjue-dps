@@ -405,7 +405,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       {
         增益计算类型: GainDpsTypeEnum.A,
         增益类型: GainTypeEnum.无双等级,
-        增益数值: 60,
+        增益数值: 50,
       },
     ],
   },

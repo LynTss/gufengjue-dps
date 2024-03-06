@@ -4,6 +4,9 @@ import 快速四破 from './快速四破.json'
 import 快速六破 from './快速六破.json'
 import 无影刀 from './无影刀.json'
 import CW循环 from './CW循环.json'
+import 体服_一段加速四沧 from './体服_一段加速四沧.json'
+import 体服_二段加速溢出 from './体服_二段加速溢出.json'
+import 体服_踩油门 from './体服_踩油门.json'
 
 const Cycle_Data = [
   { ...常规四破 },
@@ -12,6 +15,9 @@ const Cycle_Data = [
   { ...快速六破 },
   { ...CW循环 },
   { ...无影刀 },
+  { ...体服_一段加速四沧 },
+  { ...体服_二段加速溢出 },
+  { ...体服_踩油门 },
 ]
 
 export { CW循环 }

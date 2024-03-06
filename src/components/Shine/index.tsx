@@ -19,14 +19,18 @@ export enum ShineSize {
 }
 
 function ShineBox(props) {
-  const { children, className, ...rest } = props
+  const { children, className, shine = true, skew = true, ...rest } = props
   const divRef = useRef<any>()
 
-  useSkew(divRef)
+  if (skew) {
+    useSkew(divRef)
+  }
 
-  useShine(divRef)
+  if (shine) {
+    useShine(divRef)
+  }
 
-  const cls = classnames('shine', className)
+  const cls = classnames(shine ? 'shine' : '', className)
 
   const newStyle = { '--panel-color': 'rgb(54, 94, 159)', '--opacity': 0.08 } as any
 

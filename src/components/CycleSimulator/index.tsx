@@ -122,11 +122,11 @@ function CycleSimulator(props: CycleSimulatorProps) {
   }, [basicModalOpen, cycle, 是否实时计算, 起手驰风, 网络按键延迟, 加速值, 奇穴信息])
 
   const simulator = (props?) => {
-    const { 传入加速 = 加速值, 更新展示 = true } = props
+    const { 传入加速 = 加速值, 更新展示 = true, 奇穴 } = props
     const res = 模拟循环({
       测试循环: cycle.map((item) => item?.技能名称) || [],
       加速值: 传入加速 !== undefined ? 传入加速 : 加速值,
-      奇穴: 奇穴信息,
+      奇穴: 奇穴 || 奇穴信息,
       起手驰风,
       大橙武模拟,
     })
@@ -290,9 +290,11 @@ function CycleSimulator(props: CycleSimulatorProps) {
 
     Object.keys(各加速枚举).forEach((加速) => {
       const 实际加速值 = 加速等级枚举[加速]
+      // 保存循环数据的时候，把镇机和界破的数据一起保存，生成两套并存的数据，方便后续切换比较
       const 模拟结果 = simulator({
         传入加速: Number(实际加速值),
         更新展示: false,
+        奇穴: [...奇穴信息, '镇机', '界破'],
       })
       const 本次日志 = 模拟结果?.最终日志
       const 循环执行结果 = 模拟结果?.循环执行结果

@@ -1,5 +1,10 @@
 export default [
   {
+    version: '3.0.6',
+    date: '2024-03-06 09:30:00',
+    content: ['更新体服循环'],
+  },
+  {
     version: '3.0.5',
     date: '2024-03-04 20:40:00',
     content: [

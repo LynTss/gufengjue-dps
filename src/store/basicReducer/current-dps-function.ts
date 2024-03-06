@@ -114,12 +114,19 @@ export const currentDpsFunction =
       console.log('dpsTime', dpsTime)
     }
 
+    // TODO正式服删除
+    const total = Math.floor(totalDps * 0.9)
+
     // 每秒dps
-    const dpsPerSecond = Math.floor(totalDps / dpsTime)
+    const dpsPerSecond = Math.floor(total / dpsTime)
 
     if (updateCurrentDps) {
       dispatch(setCurrentDps(dpsPerSecond))
     }
 
-    return { totalDps, dpsList, dpsPerSecond }
+    return {
+      totalDps: total,
+      dpsPerSecond,
+      dpsList,
+    }
   }
