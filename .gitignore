@@ -4,6 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
+/demo
+test.js
+shuadps.js
 
 # testing
 /coverage

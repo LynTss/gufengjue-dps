@@ -147,13 +147,15 @@ export const getDpsTime = (
   // 根据是否选择CW选择对应循环
   const All_Cycle_Data = 获取全部循环()
   const trueCurrentCycleName = getTrueCycleName(currentCycleName, characterFinalData)
+  console.log('All_Cycle_Data', All_Cycle_Data)
+  console.log('trueCurrentCycleName', trueCurrentCycleName)
   const currentCycleConfig = All_Cycle_Data.find((item) => item.name === trueCurrentCycleName)
   const 增益加速等级 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
   const 加速等级 = 获取加速等级(characterFinalData.加速值 + 增益加速等级)
 
   if (currentCycleConfig) {
     let 总帧数 = 0
-    currentCycleConfig.cycleList.forEach((item) => {
+    currentCycleConfig?.cycleList?.forEach((item) => {
       const 循环帧 = (item.循环完整帧数 - item.计算技能数 * (1 - network * 0.5)) * item.循环次数
       总帧数 = 总帧数 + 循环帧
     })
