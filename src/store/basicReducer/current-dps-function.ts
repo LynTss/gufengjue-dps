@@ -97,18 +97,6 @@ export const currentDpsFunction =
 
     const dpsFunction = 是否郭氏计算 ? getDpsTotal : getNotGuoDpsTotal
 
-    console.log('2222222', {
-      currentCycle: trueCycle,
-      characterFinalData: 当前角色面板,
-      当前目标: 当前目标,
-      skillBasicData: trueSkillBasicData,
-      zengyiQiyong: 团队增益是否启用,
-      zengyixuanxiangData: 团队增益数据,
-      默认增益集合: 更新默认增益集合 || [],
-      dpsTime,
-      开启强膂: 开启力道加成奇穴,
-    })
-
     // dps结果计算
     const { totalDps, dpsList } = dpsFunction({
       currentCycle: trueCycle,
@@ -121,8 +109,6 @@ export const currentDpsFunction =
       dpsTime,
       开启强膂: 开启力道加成奇穴,
     })
-
-    console.log('totalDps', totalDps)
 
     if (showTime) {
       console.log('dpsTime', dpsTime)

@@ -147,8 +147,6 @@ export const getDpsTime = (
   // 根据是否选择CW选择对应循环
   const All_Cycle_Data = 获取全部循环()
   const trueCurrentCycleName = getTrueCycleName(currentCycleName, characterFinalData)
-  console.log('All_Cycle_Data', All_Cycle_Data)
-  console.log('trueCurrentCycleName', trueCurrentCycleName)
   const currentCycleConfig = All_Cycle_Data.find((item) => item.name === trueCurrentCycleName)
   const 增益加速等级 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
   const 加速等级 = 获取加速等级(characterFinalData.加速值 + 增益加速等级)
@@ -165,7 +163,6 @@ export const getDpsTime = (
   if (cons) {
     console.log('战斗时间', time)
   }
-  // console.log('战斗时间', time)
   return time
 }
 
@@ -272,7 +269,6 @@ export const 根据奇穴处理技能的基础增益信息 = (
         res = {
           ...res,
           技能增益列表: res?.技能增益列表.map((增益) => {
-            // console.log('a.增益名称', a.增益名称)
             if (
               增益.增益名称 === 当前奇穴.奇穴名称 ||
               (当前奇穴.奇穴名称 === '镇机' && 增益.增益名称?.includes('镇机'))

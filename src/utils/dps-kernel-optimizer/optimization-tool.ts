@@ -120,9 +120,7 @@ const uncmin = (f, x0, tol, gradient, maxit, callback, options) => {
         break
       }
       s = mul(step, t)
-      // console.log('s========', s)
       x1 = add(x0, s)
-      // console.log('x1======', x1)
       f1 = f(x1)
       if (f1 - f0 >= 0.1 * t * df0 || isNaN(f1)) {
         t *= 0.5
