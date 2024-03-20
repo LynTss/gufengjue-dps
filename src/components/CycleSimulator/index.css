@@ -183,43 +183,6 @@
   width: 100%;
 }
 
-.cycle-simulator-setting-skill {
-  margin: 8px;
-  position: relative;
-}
-
-.cycle-simulator-setting-skill.cycle-simulator-setting-skill-error .cycle-simulator-setting-skill-img {
-  -webkit-filter: grayscale(1) saturate(10%) contrast(50%);
-}
-
-.cycle-simulator-setting-skill:hover .cycle-simulator-setting-skill-close {
-  opacity: 1;
-  pointer-events: unset;
-}
-
-.cycle-simulator-setting-skill-img {
-  width: 48px;
-}
-
-.cycle-simulator-setting-skill-close {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  color: var(--ant-error-color);
-  border: 1px solid #fff;
-  cursor: pointer;
-  font-size: 20px;
-  border-radius: 50%;
-  background: #fff;
-  opacity: 0;
-  transition: .2s;
-  pointer-events: none;
-} 
-
-.cycle-simulator-setting-skill-close:hover {
-  color: var(--ant-error-color-hover);
-}
-
 .cycle-simulator-setting-change {
   font-size: 14px;
   padding: 3px 12px;

@@ -1,0 +1,87 @@
+.cycle-simulator-setting-skill {
+  margin: 8px;
+  position: relative;
+}
+
+.cycle-simulator-setting-skill.cycle-simulator-setting-skill-error .cycle-simulator-setting-skill-img {
+  -webkit-filter: grayscale(1) saturate(10%) contrast(50%);
+}
+
+.cycle-simulator-setting-skill.cycle-simulator-setting-skill-highlight .cycle-simulator-setting-skill-img {
+  -webkit-filter: hue-rotate(60deg) saturate(90%) contrast(90%);
+  transition: .2s;
+}
+
+.cycle-simulator-setting-skill:hover .cycle-simulator-setting-skill-close {
+  opacity: 1;
+  pointer-events: unset;
+}
+
+.cycle-simulator-setting-skill-img {
+  width: 48px;
+  /* transition: .2s; */
+}
+
+.cycle-simulator-setting-skill-close {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  color: var(--ant-error-color);
+  border: 1px solid #fff;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  transition: .2s;
+  pointer-events: none;
+}
+
+.cycle-simulator-setting-skill-close:hover {
+  color: var(--ant-error-color-hover);
+}
+
+.cycle-simulator-setting-skill-count {
+  position: absolute;
+  right: -7px;
+  bottom: -5px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  line-height: 18px;;
+  /* background: var(--ant-primary-color); */
+  /* background: #fff; */
+  opacity: 0.9;
+  /* color: var(--ant-primary-color); */
+  /* color: #f4b940; */
+  /* background: #b98318; */
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  border: 1px solid #fff;
+}
+
+.cycle-simulator-setting-skill-count.count1 {
+  background: #389e0d;
+}
+
+.cycle-simulator-setting-skill-count.count2 {
+  background: #096dd9;
+}
+
+.cycle-simulator-setting-skill-count.count3 {
+  background: #d4380d;
+}
+
+.cycle-simulator-setting-buff {
+  /* display: flex; */
+  /* align-items: center; */
+  /* height: 32px; */
+  margin: 4px 0;
+}
+
+.cycle-simulator-setting-buff-item {
+  width: 20px;
+}

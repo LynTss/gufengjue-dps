@@ -100,6 +100,8 @@ function CycleSimulator(props: CycleSimulatorProps) {
   const reduxQixuedata = useAppSelector((state) => state?.basic?.qixueData)
   const [奇穴信息, 更新奇穴信息] = useState<string[]>([])
   const [奇穴弹窗展示, 更新奇穴弹窗展示] = useState<boolean>(false)
+
+  const [buff覆盖数据, 更新buff覆盖数据] = useState<number[]>([])
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -390,7 +392,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
           {/* 角色状态栏 */}
           <StatusBar
             模拟信息={模拟信息}
-            完整循环={处理循环结果对象?.完整循环}
+            完整循环={处理循环结果对象?.完整循环 as any}
             日志信息={logData}
             模拟DPS结果={模拟DPS结果}
           />
@@ -418,6 +420,8 @@ function CycleSimulator(props: CycleSimulatorProps) {
                             删除循环技能={删除循环技能}
                             key={`${item?.技能名称}_${index}_${item?.index}`}
                             模拟信息={模拟信息}
+                            buff覆盖数据={buff覆盖数据}
+                            更新buff覆盖数据={更新buff覆盖数据}
                           />
                         )
                       })}

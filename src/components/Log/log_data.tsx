@@ -1,5 +1,37 @@
 export default [
   {
+    version: '3.0.7',
+    date: '2024-03-019 18:00:00',
+    content: [
+      <p key="3.0.7_1">
+        体肤更新二改
+        <a
+          href="https://jx3.xoyo.com/index/#/article-details?catid=2466&id=6158"
+          target="_blank"
+          rel="noreferrer"
+        >
+          技改链接
+        </a>
+      </p>,
+      <p key="3.0.7_3" style={{ paddingLeft: 12 }}>
+        {`-【涣衍】新增横云断浪调息时间降低【2】秒`}
+      </p>,
+      <p key="3.0.7_4" style={{ paddingLeft: 12 }}>
+        {`-【流岚】调息时间提高【12秒】=>【10】秒`}
+      </p>,
+      <p key="3.0.7_5" style={{ paddingLeft: 12 }}>
+        {`-【潋风】持续时间【4秒】=>【4.5秒】`}
+      </p>,
+      <p key="3.0.7_6" style={{ paddingLeft: 12 }}>
+        {`-【溃延】身形持续时间延长【5 秒】=>【6 秒】、触碰降低【决云势】调息时间【13 秒】=>【10 秒】`}
+      </p>,
+      <p key="3.0.7_7">{'以上改动模拟器已更新，可以使用模拟器模拟新循环'}</p>,
+      <p key="3.0.7_8" style={{ color: 'red' }}>
+        {'体服版本只会在国外源计算器更新'}
+      </p>,
+    ],
+  },
+  {
     version: '3.0.6',
     date: '2024-03-06 09:30:00',
     content: ['更新体服循环'],

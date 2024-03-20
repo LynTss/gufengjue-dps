@@ -1,9 +1,11 @@
-import 溢出 from './快速导入默认循环/启用循环/溢出'
+// import 溢出 from './快速导入默认循环/启用循环/溢出'
 import 油门 from './快速导入默认循环/启用循环/油门'
+import DMI from './快速导入默认循环/启用循环/DMI'
 import 无影刀 from './快速导入默认循环/启用循环/无影刀'
 
 export default [
-  溢出,
+  // 溢出,
+  DMI,
   油门,
   无影刀,
   // 常规四破,

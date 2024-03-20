@@ -33,7 +33,7 @@ export const Zhenyan_DATA: ZhenyanGainDTO[] = [
     ],
   },
   {
-    阵眼名称: '万灵阵',
+    阵眼名称: '万灵阵(朱厌)',
     增益集合: [
       {
         增益计算类型: GainDpsTypeEnum.A,
@@ -57,8 +57,37 @@ export const Zhenyan_DATA: ZhenyanGainDTO[] = [
         增益计算类型: GainDpsTypeEnum.A,
         计算位置: ZengyanZengyiPositionEnum.角色属性,
         增益类型: GainTypeEnum.郭氏外攻会心效果等级,
-        增益数值: 154 * 0.7,
-      }, // 第五层阵眼-会心效果15%，覆盖率70%
+        增益数值: 154 * 0.872,
+      }, // 第五层阵眼-会心效果15%，覆盖率87.2%
+    ],
+  },
+  {
+    阵眼名称: '万灵阵(大招)',
+    增益集合: [
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        计算位置: ZengyanZengyiPositionEnum.角色属性,
+        增益类型: GainTypeEnum.外攻会心百分比,
+        增益数值: 0.03,
+      },
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        计算位置: ZengyanZengyiPositionEnum.角色属性,
+        增益类型: GainTypeEnum.郭氏无双等级,
+        增益数值: 20,
+      },
+      {
+        增益计算类型: GainDpsTypeEnum.A, // 和上马、秘籍、承契共同为加法
+        计算位置: ZengyanZengyiPositionEnum.伤害计算,
+        增益类型: GainTypeEnum.伤害百分比,
+        增益数值: 61 / 1024,
+      },
+      {
+        增益计算类型: GainDpsTypeEnum.A,
+        计算位置: ZengyanZengyiPositionEnum.角色属性,
+        增益类型: GainTypeEnum.郭氏外攻会心效果等级,
+        增益数值: 154 * 0.666,
+      }, // 第五层阵眼-会心效果15%，覆盖率66.6%
     ],
   },
   {

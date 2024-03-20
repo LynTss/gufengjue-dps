@@ -248,7 +248,7 @@ export interface BuffDTO {
 }
 
 // 用来显示的循环技能类型类型
-export interface ShowCycleSingleSkill extends CycleSimulatorSkillDTO {
+export interface ShowCycleSingleSkill extends CycleSimulatorSkillDTO, 技能释放记录数据 {
   /**
    * 计划释放时间
    */
@@ -348,6 +348,19 @@ export interface 技能释放记录数据 {
   技能名称: string
   计划释放时间: number
   实际释放时间: number
+  技能释放记录结果: 技能释放记录结果
+}
+
+export interface 技能释放记录结果 {
+  实际伤害技能?: string // 针对造成伤害的实际名称
+  伤害段数?: number // 针对行、沧的实际伤害段数
+  重要buff列表?: string[] // 影响技能结果的重要buff列表
+  造成buff数据?: {
+    // 针对吃影子、灭这种会添加有益buff的情况
+    buff名称: string
+    buff开始时间: number
+    buff结束时间: number
+  }
 }
 
 export interface 模拟DPS结果 {
