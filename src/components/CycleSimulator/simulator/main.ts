@@ -506,7 +506,7 @@ class 循环主类 {
       const buff对象 = buff列表[key]
       const buff应该消失时间 = (buff对象?.刷新时间 || 0) + (buff对象?.最大持续时间 || 0)
       const 消失层数 = buff对象?.自然消失失去层数 || buff对象?.最大层数
-      if (buff应该消失时间 <= this.当前时间) {
+      if (buff应该消失时间 < this.当前时间) {
         this.卸除buff({ 名称: key, 对象, 事件时间: buff应该消失时间, 卸除层数: 消失层数 })
       }
     })
@@ -611,6 +611,7 @@ class 循环主类 {
         if (技能实例) {
           const 技能计划释放时间 = this.技能释放前(当前技能, 技能实例, i)
           const 释放校验结果 = this.技能释放校验(技能实例, 当前技能)
+          this.清空已经消失的buff()
           const 是否为最后一个技能 = i === this.测试循环.length - 1
           if (释放校验结果?.可以释放) {
             技能实例?.释放前初始化?.()

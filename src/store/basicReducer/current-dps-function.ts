@@ -6,7 +6,7 @@ import {
   getDpsTime,
   获取实际循环,
   根据奇穴处理技能的基础增益信息,
-  getZengyiJiasu,
+  // getZengyiJiasu,
 } from '@/utils/skill-dps'
 import { setCurrentDps } from './index'
 import { CharacterFinalDTO } from '@/@types/character'
@@ -15,7 +15,8 @@ import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { message } from 'antd'
 import { getNotGuoDpsTotal } from '@/components/Dps/wu_guoshi_dps_utils'
 import { CycleDTO } from '@/@types/cycle'
-import { 获取加速等级 } from '@/utils/help'
+// import { 获取加速等级 } from '@/utils/help'
+import useCycle from '@/hooks/use-cycle'
 
 interface CurrentDpsFunctionProps {
   showTime?: boolean // 是否展示计算时间
@@ -64,10 +65,17 @@ export const currentDpsFunction =
     const 团队增益是否启用 = currentState?.zengyi?.zengyiQiyong
     const 技能基础数据 = 更新技能基础数据 || currentState?.zengyi?.skillBasicData
     const 奇穴数据 = 更新奇穴数据 || currentState.basic.qixueData
-    const 增益加速值 = 团队增益是否启用 ? getZengyiJiasu(团队增益数据) : 0
-    const 加速等级 = 获取加速等级(当前角色面板?.加速值 + 增益加速值)
-    const 当前内存循环信息 = currentState?.basic?.当前循环各加速枚举?.[加速等级 || 0]
-    const 当前内存技能列表 = 当前内存循环信息?.cycle || []
+    // const 增益加速值 = 团队增益是否启用 ? getZengyiJiasu(团队增益数据) : 0
+    // const 加速等级 = 获取加速等级(当前角色面板?.加速值 + 增益加速值)
+    const 当前循环信息 = useCycle({
+      characterFinalData: 当前角色面板,
+      zengyixuanxiangData: 团队增益数据,
+      zengyiQiyong: 团队增益是否启用,
+      qixueData: 奇穴数据,
+      当前循环各加速枚举: currentState?.basic?.当前循环各加速枚举,
+    })
+    const 当前内存技能列表 = 当前循环信息?.cycle || []
+
     const 当前循环技能列表 = 更新循环技能列表?.length ? 更新循环技能列表 : 当前内存技能列表
 
     const 开启力道加成奇穴 = 判断是否开启力道加成奇穴(奇穴数据)
@@ -86,7 +94,7 @@ export const currentDpsFunction =
 
     const dpsTime =
       更新计算时间 ||
-      当前内存循环信息?.dpsTime ||
+      当前循环信息?.dpsTime ||
       getDpsTime(当前循环名称, 当前角色面板, 延迟, 团队增益是否启用, 团队增益数据, showTime)
 
     // 获取实际循环

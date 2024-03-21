@@ -154,19 +154,19 @@ function CycleSimulator(props: CycleSimulatorProps) {
   }
 
   // 计算DPS日志
-  const 计算dps = (data: CycleSimulatorLog[], 当前时间) => {
-    const 获取用于计算的技能组 = getDpsCycle(data)
+  const 计算dps = (data: CycleSimulatorLog[], 战斗时间) => {
+    const 获取用于计算的技能组 = getDpsCycle(data, 战斗时间)
     const { dpsPerSecond, dpsList, totalDps } = dispatch(
       currentDpsFunction({
         更新循环技能列表: 获取用于计算的技能组,
-        更新计算时间: 当前时间 / 每秒郭氏帧,
+        更新计算时间: 战斗时间 / 每秒郭氏帧,
         更新奇穴数据: 奇穴信息,
       })
     )
     更新模拟DPS结果({
-      dps: 当前时间 > 0 ? dpsPerSecond : 0,
-      total: 当前时间 > 0 ? totalDps : 0,
-      战斗时间: 获取总用时(当前时间),
+      dps: 战斗时间 > 0 ? dpsPerSecond : 0,
+      total: 战斗时间 > 0 ? totalDps : 0,
+      战斗时间: 获取总用时(战斗时间),
       技能列表: dpsList,
     })
   }
@@ -302,7 +302,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
       const 循环执行结果 = 模拟结果?.循环执行结果
       const 战斗时间 = 本次日志[本次日志.length - 1].日志时间 || 0
       const 战斗秒 = Math.round((战斗时间 / 每秒郭氏帧) * 100) / 100
-      const 用于计算循环 = getDpsCycle(本次日志)
+      const 用于计算循环 = getDpsCycle(本次日志, 战斗时间)
       if (循环执行结果 === '成功') {
         各加速枚举[加速] = {
           dpsTime: 战斗秒,

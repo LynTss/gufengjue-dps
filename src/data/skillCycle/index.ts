@@ -3,6 +3,7 @@ import 体服_油门_六破 from './体服_油门_六破.json'
 import 体服_DMI_四破 from './体服_DMI_四破.json'
 import 体服_油门_四破 from './体服_油门_四破.json'
 import 体服_无影刀 from './体服_无影刀.json'
+import 体服_橙武 from './体服_橙武.json'
 
 const Cycle_Data = [
   { ...体服_DMI_六破 },
@@ -10,6 +11,7 @@ const Cycle_Data = [
   { ...体服_DMI_四破 },
   { ...体服_油门_四破 },
   { ...体服_无影刀 },
+  { ...体服_橙武 },
 ]
 
 // export { CW循环 }

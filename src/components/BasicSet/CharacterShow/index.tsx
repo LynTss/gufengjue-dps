@@ -5,18 +5,17 @@ import { CharacterFinalDTO } from '@/@types/character'
 
 import { Checkbox, Tooltip } from 'antd'
 import { 判断是否开启力道加成奇穴, 获取力道奇穴加成后面板 } from '@/data/qixue'
-import { getZengyiJiasu, 根据奇穴处理技能的基础增益信息, 获取实际循环 } from '@/utils/skill-dps'
+import { 根据奇穴处理技能的基础增益信息 } from '@/utils/skill-dps'
 import DpsKernelOptimizer from '@/utils/dps-kernel-optimizer'
 import { QuestionCircleOutlined } from '@ant-design/icons'
 
+import useCycle from '@/hooks/use-cycle'
 import './index.css'
-import { 获取加速等级 } from '@/utils/help'
 
 function CharacterShow(_, ref) {
   const characterFinalData = useAppSelector((state) => state?.basic?.characterFinalData)
   const qixueData = useAppSelector((state) => state?.basic?.qixueData)
 
-  const 当前循环各加速枚举 = useAppSelector((state) => state?.basic?.当前循环各加速枚举)
   const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
   const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
   const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
@@ -37,12 +36,10 @@ function CharacterShow(_, ref) {
     ? 获取力道奇穴加成后面板(characterFinalData, isOpenQiangLv)
     : characterFinalData
 
-  const 增益加速值 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
-  const 加速等级 = 获取加速等级(characterFinalData?.加速值 + 增益加速值)
-  const 循环信息 = 当前循环各加速枚举?.[加速等级]?.cycle
-
-  // 获取实际循环
-  const trueCycle = 获取实际循环(循环信息, qixueData)
+  // const 增益加速值 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
+  // const 加速等级 = 获取加速等级(characterFinalData?.加速值 + 增益加速值)
+  // const 循环信息 = 当前循环各加速枚举?.[加速等级]?.cycle
+  const 循环信息 = useCycle()?.cycle
 
   const maxDpsData: any = useMemo(() => {
     if (!openBFGS) {
@@ -53,7 +50,7 @@ function CharacterShow(_, ref) {
 
     if (characterFinalData?.力道) {
       const res = DpsKernelOptimizer({
-        trueCycle,
+        trueCycle: 循环信息,
         characterFinalData,
         currentTarget,
         trueSkillBasicData,
@@ -67,7 +64,7 @@ function CharacterShow(_, ref) {
     }
   }, [
     currentCycleName,
-    trueCycle,
+    循环信息,
     characterFinalData,
     qixueData,
     skillBasicData,

@@ -2,7 +2,7 @@ import { CycleDTO, CycleGain } from '@/@types/cycle'
 import { CycleSimulatorLog } from './simulator/type'
 import { 每秒郭氏帧 } from './constant'
 
-export const getDpsCycle = (data: CycleSimulatorLog[]): CycleDTO[] => {
+export const getDpsCycle = (data: CycleSimulatorLog[], 战斗时间): CycleDTO[] => {
   const res: { [key: string]: CycleDTO } = {}
   for (let i = 0; i < data.length; i++) {
     const 当前数据 = data[i]
@@ -57,7 +57,7 @@ export const getDpsCycle = (data: CycleSimulatorLog[]): CycleDTO[] => {
     }
   }
 
-  const 结果循环 = Object.keys(res).map((item) => {
+  let 结果循环 = Object.keys(res).map((item) => {
     const v = res[item]
     return {
       ...v,
@@ -70,6 +70,36 @@ export const getDpsCycle = (data: CycleSimulatorLog[]): CycleDTO[] => {
       }),
     }
   })
+
+  // 根据战斗时间加入触石雨和对应的避石击虚数量
+  if (战斗时间) {
+    const 触石雨CD = 每秒郭氏帧 * (25 + 5) // 30秒CD，按只有单刀期间打计算
+    const 触石雨数量 = Math.round(战斗时间 / 触石雨CD)
+    结果循环.push({
+      技能名称: '触石雨',
+      技能数量: 触石雨数量,
+      技能增益列表: [{ 增益名称: '灭影追风,流岚', 增益技能数: 触石雨数量 }],
+    })
+
+    结果循环 = 结果循环.map((item) => {
+      if (item.技能名称 === '避实击虚') {
+        return {
+          ...item,
+          技能数量: item.技能数量 + 触石雨数量,
+          技能增益列表: (item.技能增益列表 || []).map((a) => {
+            return a?.增益名称 === '流岚'
+              ? {
+                  ...a,
+                  增益技能数: a.增益技能数 + 触石雨数量,
+                }
+              : a
+          }),
+        }
+      } else {
+        return item
+      }
+    })
+  }
 
   return 结果循环
 }
