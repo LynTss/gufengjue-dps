@@ -1,76 +1,8 @@
 export default [
   {
-    version: '3.0.7',
-    date: '2024-03-019 18:00:00',
-    content: [
-      <p key="3.0.7_1">
-        体肤更新二改
-        <a
-          href="https://jx3.xoyo.com/index/#/article-details?catid=2466&id=6158"
-          target="_blank"
-          rel="noreferrer"
-        >
-          技改链接
-        </a>
-      </p>,
-      <p key="3.0.7_3" style={{ paddingLeft: 12 }}>
-        {`-【涣衍】新增横云断浪调息时间降低【2】秒`}
-      </p>,
-      <p key="3.0.7_4" style={{ paddingLeft: 12 }}>
-        {`-【流岚】调息时间提高【12秒】=>【10】秒`}
-      </p>,
-      <p key="3.0.7_5" style={{ paddingLeft: 12 }}>
-        {`-【潋风】持续时间【4秒】=>【4.5秒】`}
-      </p>,
-      <p key="3.0.7_6" style={{ paddingLeft: 12 }}>
-        {`-【溃延】身形持续时间延长【5 秒】=>【6 秒】、触碰降低【决云势】调息时间【13 秒】=>【10 秒】`}
-      </p>,
-      <p key="3.0.7_7">{'以上改动模拟器已更新，可以使用模拟器模拟新循环'}</p>,
-      <p key="3.0.7_8" style={{ color: 'red' }}>
-        {'体服版本只会在国外源计算器更新'}
-      </p>,
-    ],
-  },
-  {
-    version: '3.0.6',
-    date: '2024-03-06 09:30:00',
-    content: ['更新体服循环'],
-  },
-  {
-    version: '3.0.5',
-    date: '2024-03-04 20:40:00',
-    content: [
-      '更新改动潋风断进双刀回返还10锐，不知道是bug还是机制',
-      '但是类似的连亘一个赛季也没修复',
-    ],
-  },
-  {
     version: '3.0.4',
-    date: '2024-03-04 20:40:00',
-    content: [
-      <p key="3.0.4_1">
-        体肤更新一改
-        <a
-          href="https://jx3.xoyo.com/index/#/article-details?catid=2458&id=6120"
-          target="_blank"
-          rel="noreferrer"
-        >
-          技改链接
-        </a>
-      </p>,
-      <p key="3.0.4_2" style={{ paddingLeft: 12 }}>
-        {`- 潋风时间 【6】=> 【4】，删除拓锋，潋风携刃伤害增强25%`}
-      </p>,
-      <p key="3.0.4_3" style={{ paddingLeft: 12 }}>
-        {`- 界破伤害增强10%`}
-      </p>,
-      <p key="3.0.4_4" style={{ paddingLeft: 12 }}>
-        {'- 以上改动模拟器已更新，可以使用模拟器模拟新循环'}
-      </p>,
-      <p key="3.0.4_4" style={{ paddingLeft: 12, color: 'red' }}>
-        {'体服版本只会在国外源计算器更新'}
-      </p>,
-    ],
+    date: '2024-03-25 10:00:00',
+    content: ['更新13400破无暗器'],
   },
   {
     version: '3.0.3',
@@ -108,21 +40,21 @@ export default [
     date: '2024-02-23 16:36:00',
     content: [
       '重点更新事项',
-      <p key="3.0.0_模拟器" style={{ paddingLeft: 12 }}>
+      <p key='3.0.0_模拟器' style={{ paddingLeft: 12 }}>
         - 拖更很久的模拟器终于开发完了：
-        <a href="https://www.jx3box.com/tool/75292" target="_blank" rel="noreferrer">
+        <a href='https://www.jx3box.com/tool/75292' target='_blank' rel='noreferrer'>
           使用手册
         </a>
       </p>,
-      <p key="3.0.0_移除延迟" style={{ paddingLeft: 12 }}>
+      <p key='3.0.0_移除延迟' style={{ paddingLeft: 12 }}>
         - 移除了延迟这个计算条件
       </p>,
-      <p key="3.0.0_重新选择循环" style={{ paddingLeft: 12 }}>
+      <p key='3.0.0_重新选择循环' style={{ paddingLeft: 12 }}>
         - 修改了内置的循环为【快速四破】和【快速六破】
         <p style={{ color: 'orange' }}>- 使用前请重新选择循环</p>
       </p>,
       'CW玩家请注意:',
-      <p key="3.0.0_CW提醒" style={{ paddingLeft: 12 }}>
+      <p key='3.0.0_CW提醒' style={{ paddingLeft: 12 }}>
         <p>- 现在在紫武和CW间切换不会自动变更循环，需要到外面手动修改选择你保存的自定义CW循环。</p>
         <p>- 默认的四破和六破CW循环数据后续更新，到时候默认循环就可以自动切换了</p>
       </p>,
