@@ -4,6 +4,7 @@ import { CycleSimulatorSkillDTO, 模拟信息类型 } from '../../simulator/type
 import 快速导入默认循环 from '../../constant/快速导入默认循环'
 import { useAppSelector } from '@/hooks'
 import './index.css'
+import { 延迟设定 } from '@/data/constant'
 interface CycleModalHeaderProps {
   cycle: CycleSimulatorSkillDTO[]
   设置自定义循环保存弹窗: (e: boolean) => void
@@ -15,6 +16,8 @@ interface CycleModalHeaderProps {
   更新奇穴信息: (e: string[]) => void
   加速等级: number
   更新加速等级: (e: number) => void
+  网络延迟: number
+  更新网络延迟: (e: number) => void
   模拟信息: 模拟信息类型
 }
 
@@ -31,6 +34,8 @@ function CycleModalHeader(props: CycleModalHeaderProps) {
     加速等级,
     更新加速等级,
     模拟信息,
+    网络延迟,
+    更新网络延迟,
   } = props
 
   const 自定义循环 = useAppSelector((state) => state?.basic?.customCycleList)
@@ -64,7 +69,7 @@ function CycleModalHeader(props: CycleModalHeaderProps) {
               <p>3、可以在单行内拖动改变技能顺序</p>
               <p>
                 更多使用说明详见：
-                <a href="https://www.jx3box.com/tool/75292" target="_blank" rel="noreferrer">
+                <a href='https://www.jx3box.com/tool/75292' target='_blank' rel='noreferrer'>
                   使用手册及FAQ
                 </a>
               </p>
@@ -93,7 +98,7 @@ function CycleModalHeader(props: CycleModalHeaderProps) {
           起手驰风
         </Checkbox>
         <Select
-          size="small"
+          size='small'
           className={'cycle-simulator-header-select'}
           value={加速等级}
           onChange={更新加速等级}
@@ -103,6 +108,13 @@ function CycleModalHeader(props: CycleModalHeaderProps) {
               label: `${a}段加速`,
             }
           })}
+        />
+        <Select
+          size='small'
+          className={'cycle-simulator-header-select'}
+          value={网络延迟}
+          onChange={更新网络延迟}
+          options={延迟设定}
         />
         <Dropdown
           overlay={
@@ -126,20 +138,20 @@ function CycleModalHeader(props: CycleModalHeaderProps) {
             </Menu>
           }
         >
-          <Button size="small">导入循环</Button>
+          <Button size='small'>导入循环</Button>
         </Dropdown>
         <Tooltip title={'本奇穴设置只会在循环模拟器内生效，不影响外部'}>
-          <Button size="small" onClick={() => 更新奇穴弹窗展示(true)}>
+          <Button size='small' onClick={() => 更新奇穴弹窗展示(true)}>
             奇穴设置
           </Button>
         </Tooltip>
-        <Button size="small" onClick={() => 清空循环()} danger>
+        <Button size='small' onClick={() => 清空循环()} danger>
           清空循环
         </Button>
-        <Tooltip title="自定义循环和原计算器其他循环的dps会心期望计算方式不同。会导致最终数值偏差。请勿进行跨循环比较。">
+        <Tooltip title='自定义循环和原计算器其他循环的dps会心期望计算方式不同。会导致最终数值偏差。请勿进行跨循环比较。'>
           <Button
-            size="small"
-            type="primary"
+            size='small'
+            type='primary'
             onClick={() => 设置自定义循环保存弹窗(true)}
             disabled={cycle?.length < 1 || 模拟信息?.循环执行结果 === '异常'}
           >

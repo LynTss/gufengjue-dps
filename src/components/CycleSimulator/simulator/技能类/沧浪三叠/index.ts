@@ -13,10 +13,10 @@ class 沧浪三叠 extends 技能统一类 {
     const 单刀GCD = this.模拟循环.GCD组?.单刀 || 0
     const 双刀GCD = this.模拟循环.GCD组?.双刀 || 0
     const 最大GCD = Math.max(单刀GCD, 双刀GCD)
-    if (最大GCD) {
-      this.模拟循环.增加时间?.(最大GCD)
-    }
-    return 最大GCD
+    // if (最大GCD) {
+    //   this.模拟循环.增加时间?.(最大GCD)
+    // }
+    return 最大GCD || 0
   }
 
   判断沧链触发伤害() {

@@ -15,6 +15,7 @@ function Dps(props, ref) {
 
   const [total, setTotal] = useState<number>(0)
   const [dpsList, setDpsList] = useState<DpsListData[]>([])
+  const [time, setDpsTime] = useState<number>(0)
   const [dpsCountModalVisible, setDpsCountModalVisible] = useState<boolean>(false)
 
   const incomeRef = useRef<any>()
@@ -28,7 +29,7 @@ function Dps(props, ref) {
   }
 
   const getDps = (showTime?) => {
-    const { totalDps, dpsList } = dispatch(
+    const { totalDps, dpsList, dpsTime } = dispatch(
       currentDpsFunction({
         showTime,
         updateCurrentDps: true,
@@ -36,6 +37,7 @@ function Dps(props, ref) {
     )
     setTotal(totalDps)
     setDpsList(dpsList)
+    setDpsTime(dpsTime)
     setTimeout(() => {
       incomeRef?.current?.initChart()
     })
@@ -45,12 +47,19 @@ function Dps(props, ref) {
     <div className={`dps ${zengyiVisible ? `dps-zengyi-visible` : ''}`}>
       <h1 className={'dps-title'}>伤害计算</h1>
       <Divider />
-      <div className={'dps-number-count'}>
-        <div className={'dps-number-count-text'}>{currentDps}</div>
-        <div className={'dps-number-count-skill'} onClick={() => setDpsCountModalVisible(true)}>
-          技能统计
+      <div className='dps-number-count-wrap'>
+        <div className={'dps-number-count'}>
+          <div className={'dps-number-count-text'}>{currentDps}</div>
+          <div className={'dps-number-count-skill'} onClick={() => setDpsCountModalVisible(true)}>
+            技能统计
+          </div>
+        </div>
+        <div className='dps-number-count-time'>
+          <span className={'dps-number-count-time-label'}>战斗时间：</span>
+          {time}秒
         </div>
       </div>
+
       <p className={'dps-number-tip'}>数值仅供参考，请以实际游戏内实装系数为准</p>
       <Income zengyiVisible={zengyiVisible} ref={incomeRef} />
       <DpsCountModal

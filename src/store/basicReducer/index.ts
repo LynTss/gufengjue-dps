@@ -9,7 +9,7 @@ import {
   getDefaultCycle,
   getDefaultTarget,
   getDefaultTime,
-  // getDefaultNetwork,
+  getDefaultNetwork,
   getCloseBackgroundImg,
   getDefaultQixue,
   getDefaultCustomCycleList,
@@ -36,7 +36,7 @@ interface BasicState {
   // dps计算时间
   dpsTime: number
   // 网络延迟
-  // network: number
+  network: number
   // 关闭背景
   closeBackgroundImg: boolean
   // 奇穴信息
@@ -48,7 +48,7 @@ interface BasicState {
 const initialState: BasicState = {
   characterBasicData: getDefaultCharacter(),
   equipmentBasicData: getDefaultEquipment(),
-  // network: getDefaultNetwork(),
+  network: getDefaultNetwork(),
   characterFinalData: {
     面板攻击: 0,
     等级: 120,
@@ -100,9 +100,9 @@ export const counterSlice = createSlice({
     setDpsTime: (state, action: PayloadAction<number>) => {
       state.dpsTime = action.payload
     },
-    // setNetwork: (state, action: PayloadAction<number>) => {
-    // state.network = action.payload
-    // },
+    setNetwork: (state, action: PayloadAction<number>) => {
+      state.network = action.payload
+    },
     setCurrentDps: (state, action: PayloadAction<number>) => {
       state.currentDps = action.payload
     },
@@ -125,7 +125,7 @@ export const {
   setCurrentCycle,
   setCurrentTarget,
   setDpsTime,
-  // setNetwork,
+  setNetwork,
   setCurrentDps,
   setCloseBackgroundImg,
   setQixueData,

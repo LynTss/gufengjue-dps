@@ -35,6 +35,7 @@ export interface CurrentDpsFunctionRes {
   totalDps: number
   dpsList: any[]
   dpsPerSecond: number
+  dpsTime: number
 }
 
 export const currentDpsFunction =
@@ -55,8 +56,8 @@ export const currentDpsFunction =
 
     const currentState: RootState = getState() || {}
 
-    const 延迟 = 0
-    // const 延迟 = currentState?.basic?.network
+    // const 延迟 = 0
+    const 延迟 = currentState?.basic?.network
     const 当前角色面板 = { ...currentState?.basic?.characterFinalData, ...更新角色面板 }
 
     const 当前循环名称 = currentState?.basic?.currentCycleName
@@ -71,6 +72,7 @@ export const currentDpsFunction =
       characterFinalData: 当前角色面板,
       zengyixuanxiangData: 团队增益数据,
       zengyiQiyong: 团队增益是否启用,
+      network: 延迟,
       qixueData: 奇穴数据,
       当前循环各加速枚举: currentState?.basic?.当前循环各加速枚举,
     })
@@ -82,14 +84,14 @@ export const currentDpsFunction =
 
     if (!当前角色面板) {
       message.error('请先设置个人属性和目标')
-      return { totalDps: 0, dpsList: [], dpsPerSecond: 0 }
+      return { totalDps: 0, dpsList: [], dpsPerSecond: 0, dpsTime: 0 }
     }
 
     if (!当前循环技能列表?.length) {
       if (updateCurrentDps) {
         message.error('当前加速无适配循环，请在自定义循环内添加或检查加速情况')
       }
-      return { totalDps: 0, dpsList: [], dpsPerSecond: 0 }
+      return { totalDps: 0, dpsList: [], dpsPerSecond: 0, dpsTime: 0 }
     }
 
     const dpsTime =
@@ -136,5 +138,6 @@ export const currentDpsFunction =
       totalDps,
       dpsPerSecond,
       dpsList,
+      dpsTime,
     }
   }

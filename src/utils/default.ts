@@ -54,7 +54,7 @@ export const getDefaultZengyiQiyong = () => {
 }
 
 export const getDefaultNetwork = () => {
-  const localNetwork = localStorage.getItem('network_data')
+  const localNetwork = localStorage.getItem('dz_network_data')
   if (localNetwork) {
     return +localNetwork
   } else {

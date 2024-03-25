@@ -8,7 +8,7 @@ import 循环主类 from './main'
 interface SimulatorCycleProps {
   测试循环: string[]
   加速值: number
-  // 网络按键延迟: number
+  网络延迟: number
   奇穴: string[]
   角色状态信息?: 角色状态信息类型
   // 当前自身buff列表?: Buff枚举

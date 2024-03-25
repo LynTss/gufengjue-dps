@@ -23,12 +23,29 @@
   margin: 0;
 }
 
+.dps-number-count-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
 .dps-number-count {
   padding: 16px 0 8px;
-  width: 100%;
   display: flex;
   text-align: left;
   align-items: flex-end;
+}
+
+.dps-number-count-time {
+  padding: 16px 0 8px;
+  font-size: 24px;
+}
+
+.dps-number-count-time-label {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .dps-number-tip {

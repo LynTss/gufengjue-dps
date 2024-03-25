@@ -78,12 +78,13 @@ function CycleSimulator(props: CycleSimulatorProps) {
   const [自定义循环保存弹窗, 设置自定义循环保存弹窗] = useState<boolean>(false)
   // 当前面板加速值
   const 外部加速值 = useAppSelector((state) => state?.basic?.characterFinalData)?.加速值
+  const 外部延迟 = useAppSelector((state) => state?.basic?.network)
   const 大橙武模拟 = useAppSelector((state) => state?.basic?.equipmentBasicData)?.大橙武特效
 
   // 当前网络延迟
   const 网络按键延迟 = 0
   const [加速等级, 更新加速等级] = useState<number>(0)
-
+  const [网络延迟, 更新网络延迟] = useState<number>(0)
   // 自定义循环
   const customCycleList = useAppSelector((state) => state?.basic?.customCycleList)
 
@@ -109,6 +110,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
       // 设置外面选择的默认奇穴信息
       更新奇穴信息(reduxQixuedata)
       更新加速等级(获取加速等级(外部加速值))
+      更新网络延迟(外部延迟)
     } else {
       setLogData([])
       setBasicModalOpen(false)
@@ -121,13 +123,14 @@ function CycleSimulator(props: CycleSimulatorProps) {
     if (是否实时计算 && basicModalOpen) {
       simulator({})
     }
-  }, [basicModalOpen, cycle, 是否实时计算, 起手驰风, 网络按键延迟, 加速值, 奇穴信息])
+  }, [basicModalOpen, cycle, 是否实时计算, 起手驰风, 网络按键延迟, 加速值, 网络延迟, 奇穴信息])
 
   const simulator = (props?) => {
-    const { 传入加速 = 加速值, 更新展示 = true, 奇穴 } = props
+    const { 传入加速 = 加速值, 传入延迟 = 网络延迟, 更新展示 = true, 奇穴 } = props
     const res = 模拟循环({
       测试循环: cycle.map((item) => item?.技能名称) || [],
       加速值: 传入加速 !== undefined ? 传入加速 : 加速值,
+      网络延迟: 传入延迟 !== undefined ? 传入延迟 : 网络延迟,
       奇穴: 奇穴 || 奇穴信息,
       起手驰风,
       大橙武模拟,
@@ -278,43 +281,63 @@ function CycleSimulator(props: CycleSimulatorProps) {
 
   // 确认保存自定义循环
   const 确认保存循环 = (名称) => {
-    // 获取0 1 2 加速下 网络延迟为 1 2 3 的共9种循环
-    const 各加速枚举 = {
+    // 获取各加速下 各网络延迟的循环
+    const 各延迟枚举 = {
       0: { dpsTime: 0, cycle: [] },
       1: { dpsTime: 0, cycle: [] },
       2: { dpsTime: 0, cycle: [] },
       3: { dpsTime: 0, cycle: [] },
-      4: { dpsTime: 0, cycle: [] },
-      5: { dpsTime: 0, cycle: [] },
+    }
+    const 各加速枚举 = {
+      0: { ...各延迟枚举 },
+      1: { ...各延迟枚举 },
+      2: { ...各延迟枚举 },
+      3: { ...各延迟枚举 },
+      4: { ...各延迟枚举 },
+      5: { ...各延迟枚举 },
     }
 
-    const 异常加速等级: number[] = []
+    const 异常结果: any[] = []
 
     Object.keys(各加速枚举).forEach((加速) => {
       const 实际加速值 = 加速等级枚举[加速]
-      // 保存循环数据的时候，把镇机和界破的数据一起保存，生成两套并存的数据，方便后续切换比较
-      const 模拟结果 = simulator({
-        传入加速: Number(实际加速值),
-        更新展示: false,
-        奇穴: [...奇穴信息, '镇机', '界破'],
-      })
-      const 本次日志 = 模拟结果?.最终日志
-      const 循环执行结果 = 模拟结果?.循环执行结果
-      const 战斗时间 = 本次日志[本次日志.length - 1].日志时间 || 0
-      const 战斗秒 = Math.round((战斗时间 / 每秒郭氏帧) * 100) / 100
-      const 用于计算循环 = getDpsCycle(本次日志, 战斗时间)
-      if (循环执行结果 === '成功') {
-        各加速枚举[加速] = {
-          dpsTime: 战斗秒,
-          cycle: 用于计算循环,
+      Object.keys(各加速枚举[加速]).forEach((延迟) => {
+        // 保存循环数据的时候，把镇机和界破的数据一起保存，生成两套并存的数据，方便后续切换比较
+        const 模拟结果 = simulator({
+          传入加速: Number(实际加速值),
+          传入延迟: Number(延迟),
+          更新展示: false,
+          奇穴: [...奇穴信息],
+        })
+        const 本次日志 = 模拟结果?.最终日志
+        const 循环执行结果 = 模拟结果?.循环执行结果
+        const 战斗时间 = 本次日志[本次日志.length - 1].日志时间 || 0
+        const 战斗秒 = Math.round((战斗时间 / 每秒郭氏帧) * 100) / 100
+        const 用于计算循环 = getDpsCycle(本次日志, 战斗时间)
+        if (循环执行结果 === '成功') {
+          if (各加速枚举[加速][延迟]) {
+            各加速枚举[加速][延迟] = {
+              dpsTime: 战斗秒,
+              cycle: 用于计算循环,
+            }
+          }
+        } else {
+          异常结果.push({
+            加速,
+            延迟,
+          })
         }
-      } else {
-        异常加速等级.push(Number(加速))
-      }
+      })
     })
 
-    if (异常加速等级?.length > 0) {
-      message.error(`${异常加速等级?.join(',')}段加速异常，将不会保存该加速的循环`)
+    if (异常结果?.length) {
+      message.error(
+        `以下条件循环异常，将不会保存该加速的循环。异常循环：${异常结果
+          .map((item) => {
+            return `[加速：${item.加速}，延迟：${item.延迟}]`
+          })
+          .join('、')}`
+      )
     }
 
     const 技能序列 = cycle.map((item) => item.技能名称)
@@ -364,7 +387,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
         循环模拟
       </Button>
       <Modal
-        className="cycle-simulator-modal"
+        className='cycle-simulator-modal'
         maskClosable={false}
         width={'100%'}
         title={
@@ -379,6 +402,8 @@ function CycleSimulator(props: CycleSimulatorProps) {
             更新奇穴弹窗展示={更新奇穴弹窗展示}
             加速等级={加速等级}
             更新加速等级={更新加速等级}
+            网络延迟={网络延迟}
+            更新网络延迟={更新网络延迟}
             模拟信息={模拟信息}
           />
         }
@@ -409,7 +434,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
                       setList={(e) => {
                         拖拽更新循环(e, '轮次内')
                       }}
-                      className="cycle-simulator-setting-turn-drop"
+                      className='cycle-simulator-setting-turn-drop'
                       animation={150}
                       draggable={'.cycle-simulator-setting-skill-drag'}
                     >
@@ -426,13 +451,13 @@ function CycleSimulator(props: CycleSimulatorProps) {
                         )
                       })}
                       <div className={'cycle-turn-operate'}>
-                        <Tooltip title="复制并添加到最后">
+                        <Tooltip title='复制并添加到最后'>
                           <CopyOutlined
                             className={'cycle-turn-operate-btn'}
                             onClick={() => 复制本轮至最后(轮次)}
                           />
                         </Tooltip>
-                        <Tooltip title="删除此轮">
+                        <Tooltip title='删除此轮'>
                           <DeleteOutlined
                             className={'cycle-turn-operate-btn'}
                             onClick={() => 删除本轮次(轮次)}

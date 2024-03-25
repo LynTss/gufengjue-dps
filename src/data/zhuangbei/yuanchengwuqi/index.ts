@@ -255,6 +255,21 @@ const ZHUANGBEI_YUANCHENGWUQI: EquipmentDTO[] = [
     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
   },
   {
+    id: 991992993,
+    uid: '991992993',
+    装备名称: '西风漫·聆',
+    装备品级: 13400,
+    装备类型: EquipmentTypeEnum.普通,
+    装备增益: [
+      { 增益数值: 2895, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 561, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 911, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 2817, 增益类型: GainTypeEnum.外攻破防等级 },
+      { 增益数值: 2504, 增益类型: GainTypeEnum.无双等级 },
+    ],
+    镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }],
+  },
+  {
     id: 35832,
     uid: '212275',
     装备名称: '无封囊',

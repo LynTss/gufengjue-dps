@@ -10,18 +10,21 @@ function useCycle(state?) {
   let zengyixuanxiangData: any
   let qixueData: any
   let zengyiQiyong: any
+  let network: any
   let 当前循环各加速枚举: any
   if (state) {
     characterFinalData = state?.characterFinalData
     qixueData = state?.qixueData
     zengyixuanxiangData = state?.zengyixuanxiangData
     zengyiQiyong = state?.zengyiQiyong
+    network = state?.network
     当前循环各加速枚举 = state?.当前循环各加速枚举
   } else {
     characterFinalData = useAppSelector((state) => state?.basic?.characterFinalData)
     qixueData = useAppSelector((state) => state?.basic?.qixueData)
     zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
     zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
+    network = useAppSelector((state) => state?.basic?.network)
     当前循环各加速枚举 = useAppSelector((state) => state?.basic?.当前循环各加速枚举)
   }
   const 增益加速值 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
@@ -33,10 +36,11 @@ function useCycle(state?) {
   if (是否为大CW) {
     当前循环各加速枚举 = 是否存在大CW循环?.各加速枚举
   }
-  const 循环信息 = 当前循环各加速枚举?.[加速等级]?.cycle
+  const 循环信息 = 当前循环各加速枚举?.[加速等级]?.[network]
+  const 循环 = 循环信息?.cycle || []
   return {
-    cycle: 获取实际循环(循环信息, qixueData),
-    dpsTime: 当前循环各加速枚举?.[加速等级]?.dpsTime,
+    cycle: 获取实际循环(循环, qixueData),
+    dpsTime: 循环信息?.dpsTime,
   }
 }
 

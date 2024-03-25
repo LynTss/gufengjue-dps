@@ -36,7 +36,9 @@ export interface CustomCycle {
 
 export interface 各加速枚举 {
   [key: number]: {
-    dpsTime: number //战斗时间
-    cycle: CycleDTO[] // 用于计算循环
+    [key: number]: {
+      dpsTime: number //战斗时间
+      cycle: CycleDTO[] // 用于计算循环
+    }
   }
 }
