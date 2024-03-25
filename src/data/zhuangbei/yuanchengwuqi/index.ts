@@ -258,7 +258,7 @@ const ZHUANGBEI_YUANCHENGWUQI: EquipmentDTO[] = [
     id: 991992993,
     uid: '991992993',
     装备名称: '西风漫·聆',
-    装备品级: 12600,
+    装备品级: 13400,
     装备类型: EquipmentTypeEnum.普通,
     装备增益: [
       { 增益数值: 2895, 增益类型: GainTypeEnum.体质 },
