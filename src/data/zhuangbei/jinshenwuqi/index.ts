@@ -474,6 +474,28 @@ const ZHUANGBEI_JINSHENWUQI: EquipmentDTO[] = [
     ],
   },
   {
+    id: 37103,
+    uid: '214601',
+    装备名称: '渊鸣',
+    装备品级: 11650,
+    武器伤害_最小值: 3763,
+    武器伤害_最大值: 6272,
+    装备类型: EquipmentTypeEnum.大CW,
+    装备增益: [
+      { 增益数值: 6992, 增益类型: GainTypeEnum.体质 },
+      { 增益数值: 1356, 增益类型: GainTypeEnum.力道 },
+      { 增益数值: 5166, 增益类型: GainTypeEnum.基础攻击 },
+      { 增益数值: 5480, 增益类型: GainTypeEnum.外攻会心等级 },
+      { 增益数值: 5669, 增益类型: GainTypeEnum.外攻破防等级 },
+      { 增益数值: 1890, 增益类型: GainTypeEnum.加速 },
+    ],
+    镶嵌孔数组: [
+      { 镶嵌类型: EquipmentInlayEnum.攻击 },
+      { 镶嵌类型: EquipmentInlayEnum.力道 },
+      { 镶嵌类型: EquipmentInlayEnum.破防 },
+    ],
+  },
+  {
     id: 33107,
     uid: '200994',
     装备名称: '绝地天通刀',
