@@ -1,15 +1,16 @@
-import { Form, Input, Modal, Select, Tabs } from 'antd'
+import { Alert, Checkbox, Form, Input, Modal, Select, Tabs } from 'antd'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { setCustomCycleList } from '@/store/basicReducer'
 import './index.css'
 import 默认循环 from '@/data/skillCycle'
 import { 各加速枚举 } from '@/@types/cycle'
+import { 延迟设定 } from '@/data/constant'
 
 interface SaveCustomCycleModalProps {
   自定义循环保存弹窗: boolean
   设置自定义循环保存弹窗: (e: boolean) => void
-  保存自定义循环: (名称) => void
+  保存自定义循环: (名称, 加速选项, 延迟选项) => void
 }
 
 function SaveCustomCycleModal(props: SaveCustomCycleModalProps) {
@@ -20,6 +21,9 @@ function SaveCustomCycleModal(props: SaveCustomCycleModalProps) {
   const [自定义循环名称输入, 设置自定义循环名称输入] = useState<string>()
   // 保存类型，覆盖｜新增
   const [覆盖循环名, 设置覆盖循环名] = useState<string>()
+  // 保存加速序列
+  const [加速选项, 设置加速选项] = useState<number[]>([0, 1, 2])
+  const [延迟选项, 设置延迟选项] = useState<number[]>([0, 1, 2])
 
   const 自定义循环 = useAppSelector((state) => state?.basic?.customCycleList)
 
@@ -54,7 +58,7 @@ function SaveCustomCycleModal(props: SaveCustomCycleModalProps) {
 
   const 保存自定义循环前 = () => {
     const 名称 = 自定义循环类型 === '覆盖' ? 覆盖循环名 : 自定义循环名称输入
-    保存自定义循环(名称)
+    保存自定义循环(名称, 加速选项, 延迟选项)
   }
 
   // 删除自定义循环
@@ -79,27 +83,28 @@ function SaveCustomCycleModal(props: SaveCustomCycleModalProps) {
   return (
     <Modal
       centered
-      title="保存自定义循环"
+      title='保存自定义循环'
       okButtonProps={{
         disabled: !(自定义循环类型 === '覆盖' ? 覆盖循环名 : 自定义循环名称输入),
       }}
       open={自定义循环保存弹窗}
       onCancel={() => 设置自定义循环保存弹窗(false)}
       onOk={保存自定义循环前}
+      width={620}
       destroyOnClose
       className={'cycle-custom-save-modal'}
     >
       <Tabs
         className={'cycle-custom-save-modal-content'}
-        type="card"
+        type='card'
         activeKey={自定义循环类型}
         onChange={设置自定义循环类型}
       >
-        <Tabs.TabPane tab={'覆盖'} key="覆盖">
+        <Tabs.TabPane tab={'覆盖'} key='覆盖'>
           <Select
             value={覆盖循环名}
             onChange={设置覆盖循环名}
-            optionLabelProp="label"
+            optionLabelProp='label'
             placeholder={'请选择你要覆盖的循环'}
           >
             {自定义循环.map((item) => {
@@ -119,7 +124,7 @@ function SaveCustomCycleModal(props: SaveCustomCycleModalProps) {
             })}
           </Select>
         </Tabs.TabPane>
-        <Tabs.TabPane tab={'新增'} key="新增">
+        <Tabs.TabPane tab={'新增'} key='新增'>
           <Form>
             <Form.Item
               rules={[
@@ -137,13 +142,36 @@ function SaveCustomCycleModal(props: SaveCustomCycleModalProps) {
             >
               <Input
                 value={自定义循环名称输入}
-                placeholder="请输入自定义循环名称"
+                placeholder='请输入自定义循环名称'
                 onChange={(e) => 设置自定义循环名称输入(e?.target?.value)}
               />
             </Form.Item>
           </Form>
         </Tabs.TabPane>
       </Tabs>
+      <div className='cycle-custom-save-checkbox'>
+        <p>加速</p>
+        <Checkbox.Group value={加速选项} onChange={(e) => 设置加速选项(e as number[])}>
+          {Array.from({ length: 6 }, (v, i) => i).map((a) => {
+            return (
+              <Checkbox value={a} key={a}>
+                {a}段
+              </Checkbox>
+            )
+          })}
+        </Checkbox.Group>
+        <p>延迟</p>
+        <Checkbox.Group value={延迟选项} onChange={(e) => 设置延迟选项(e as number[])}>
+          {延迟设定.map((item) => {
+            return (
+              <Checkbox value={item.value} key={item.value}>
+                {item.label}
+              </Checkbox>
+            )
+          })}
+        </Checkbox.Group>
+      </div>
+      <Alert message={'选项越少保存越快。没选择的选项在外部计算dps时不会进行计算。'} />
     </Modal>
   )
 }

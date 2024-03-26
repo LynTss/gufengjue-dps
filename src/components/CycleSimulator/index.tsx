@@ -280,7 +280,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
   }
 
   // 确认保存自定义循环
-  const 确认保存循环 = (名称) => {
+  const 确认保存循环 = (名称, 加速选项, 延迟选项) => {
     // 获取各加速下 各网络延迟的循环
     const 各延迟枚举 = {
       0: { dpsTime: 0, cycle: [] },
@@ -299,36 +299,40 @@ function CycleSimulator(props: CycleSimulatorProps) {
 
     const 异常结果: any[] = []
 
-    Object.keys(各加速枚举).forEach((加速) => {
-      const 实际加速值 = 加速等级枚举[加速]
-      Object.keys(各加速枚举[加速]).forEach((延迟) => {
-        // 保存循环数据的时候，把镇机和界破的数据一起保存，生成两套并存的数据，方便后续切换比较
-        const 模拟结果 = simulator({
-          传入加速: Number(实际加速值),
-          传入延迟: Number(延迟),
-          更新展示: false,
-          奇穴: [...奇穴信息],
-        })
-        const 本次日志 = 模拟结果?.最终日志
-        const 循环执行结果 = 模拟结果?.循环执行结果
-        const 战斗时间 = 本次日志[本次日志.length - 1].日志时间 || 0
-        const 战斗秒 = Math.round((战斗时间 / 每秒郭氏帧) * 100) / 100
-        const 用于计算循环 = getDpsCycle(本次日志, 战斗时间)
-        if (循环执行结果 === '成功') {
-          if (各加速枚举[加速][延迟]) {
-            各加速枚举[加速][延迟] = {
-              dpsTime: 战斗秒,
-              cycle: 用于计算循环,
+    Object.keys(各加速枚举)
+      .filter((加速) => 加速选项?.includes(Number(加速)))
+      .forEach((加速) => {
+        const 实际加速值 = 加速等级枚举[加速]
+        Object.keys(各加速枚举[加速])
+          .filter((延迟) => 延迟选项?.includes(Number(延迟)))
+          .forEach((延迟) => {
+            // 保存循环数据的时候，把镇机和界破的数据一起保存，生成两套并存的数据，方便后续切换比较
+            const 模拟结果 = simulator({
+              传入加速: Number(实际加速值),
+              传入延迟: Number(延迟),
+              更新展示: false,
+              奇穴: [...奇穴信息],
+            })
+            const 本次日志 = 模拟结果?.最终日志
+            const 循环执行结果 = 模拟结果?.循环执行结果
+            const 战斗时间 = 本次日志[本次日志.length - 1].日志时间 || 0
+            const 战斗秒 = Math.round((战斗时间 / 每秒郭氏帧) * 100) / 100
+            const 用于计算循环 = getDpsCycle(本次日志, 战斗时间)
+            if (循环执行结果 === '成功') {
+              if (各加速枚举[加速][延迟]) {
+                各加速枚举[加速][延迟] = {
+                  dpsTime: 战斗秒,
+                  cycle: 用于计算循环,
+                }
+              }
+            } else {
+              异常结果.push({
+                加速,
+                延迟,
+              })
             }
-          }
-        } else {
-          异常结果.push({
-            加速,
-            延迟,
           })
-        }
       })
-    })
 
     if (异常结果?.length) {
       message.error(

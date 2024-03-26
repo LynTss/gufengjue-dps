@@ -26,3 +26,20 @@
   color: var(--ant-primary-color-hover);
   text-decoration: underline;
 }
+
+.cycle-custom-save-checkbox p {
+  font-size: 16px;
+  color: var(--ant-primary-color-hover);
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 12px;
+  /* padding-top: 16px; */
+}
+
+.cycle-custom-save-checkbox .ant-checkbox-group {
+  margin-bottom: 12px;
+}
+
+.cycle-custom-save-checkbox {
+  margin-bottom: 4px;
+}
