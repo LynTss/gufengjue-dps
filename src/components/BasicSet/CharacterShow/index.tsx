@@ -4,7 +4,7 @@ import { useAppSelector } from '@/hooks'
 import { CharacterFinalDTO } from '@/@types/character'
 
 import { Checkbox, Tooltip } from 'antd'
-import { 判断是否开启力道加成奇穴, 获取力道奇穴加成后面板 } from '@/data/qixue'
+import { 判断是否开启力道加成奇穴, 获取力道奇穴加成后面板, 获取装备加成后面板 } from '@/data/qixue'
 import { 根据奇穴处理技能的基础增益信息 } from '@/utils/skill-dps'
 import DpsKernelOptimizer from '@/utils/dps-kernel-optimizer'
 import { QuestionCircleOutlined } from '@ant-design/icons'
@@ -15,6 +15,7 @@ import './index.css'
 function CharacterShow(_, ref) {
   const 角色最终属性 = useAppSelector((state) => state?.basic?.角色最终属性)
   const 当前奇穴信息 = useAppSelector((state) => state?.basic?.当前奇穴信息)
+  const 装备信息 = useAppSelector((state) => state?.basic?.装备信息)
   const 当前循环名称 = useAppSelector((state) => state?.basic?.当前循环名称)
   const 当前输出计算目标 = useAppSelector((state) => state?.basic?.当前输出计算目标)
   const 技能基础数据 = useAppSelector((state) => state?.basic?.技能基础数据)
@@ -31,11 +32,17 @@ function CharacterShow(_, ref) {
 
   const mapKeyList = ['力道', '攻击', '会心', '会效', '破防', '无双', '破招', '加速']
 
-  const showData = 开启强膂 ? 获取力道奇穴加成后面板(角色最终属性, 开启强膂) : 角色最终属性
+  const 显示数据 = useMemo(() => {
+    let 结果 = 角色最终属性
+    if (装备信息) {
+      结果 = 获取装备加成后面板(角色最终属性, 装备信息)
+    }
+    if (开启强膂) {
+      结果 = 获取力道奇穴加成后面板(角色最终属性, 开启强膂)
+    }
+    return 结果
+  }, [角色最终属性, 开启强膂, 装备信息])
 
-  // const 增益加速值 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
-  // const 加速等级 = 获取加速等级(角色最终属性?.加速值 + 增益加速值)
-  // const 循环信息 = 当前循环各加速枚举?.[加速等级]?.cycle
   const 循环信息 = useCycle()?.cycle
 
   const maxDpsData: any = useMemo(() => {
@@ -77,7 +84,7 @@ function CharacterShow(_, ref) {
       <div className={'character-title-wrapper'}>
         <h1 className={'character-title'}>
           角色属性
-          <Tooltip title='增益、切糕、大附魔的数值加成暂未体现在面板显示，不影响计算'>
+          <Tooltip title='增益、大附魔的数值加成暂未体现在面板显示，不影响计算'>
             <QuestionCircleOutlined className={'character-max-title-tip'} />
           </Tooltip>
         </h1>
@@ -90,14 +97,14 @@ function CharacterShow(_, ref) {
       </div>
       {mapKeyList.map((item) => {
         const maxObj: any = openBFGS
-          ? getCharacterMaxData(item, maxDpsData?.maxCharacterData, 开启强膂, showData)
+          ? getCharacterMaxData(item, maxDpsData?.maxCharacterData, 开启强膂, 显示数据)
           : {}
         return (
           <div className='character-item' key={item}>
             <h1 className='character-label'>{item}</h1>
-            <Tooltip placement='topLeft' title={getCharacterDataNumber(item, showData)}>
+            <Tooltip placement='topLeft' title={getCharacterDataNumber(item, 显示数据)}>
               <div className='character-content'>
-                <span className='character-content-normal'>{getCharacterData(item, showData)}</span>
+                <span className='character-content-normal'>{getCharacterData(item, 显示数据)}</span>
                 {openBFGS && maxObj && maxObj?.value !== '-1' ? (
                   <span
                     className={`character-content-max ${
@@ -119,7 +126,7 @@ function CharacterShow(_, ref) {
 export default forwardRef(CharacterShow)
 
 // 获取属性展示
-const getCharacterData = (key: string, 角色最终属性: CharacterFinalDTO) => {
+export const getCharacterData = (key: string, 角色最终属性: CharacterFinalDTO) => {
   switch (key) {
     case '力道':
       return 角色最终属性.力道 || 0
@@ -158,7 +165,7 @@ const getCharacterData = (key: string, 角色最终属性: CharacterFinalDTO) =>
   return ''
 }
 
-const getCharacterDataNumber = (key: string, 角色最终属性: CharacterFinalDTO) => {
+export const getCharacterDataNumber = (key: string, 角色最终属性: CharacterFinalDTO) => {
   switch (key) {
     case '力道':
       return 角色最终属性.力道 || 0
@@ -181,7 +188,7 @@ const getCharacterDataNumber = (key: string, 角色最终属性: CharacterFinalD
 }
 
 // 获取最优属性展示
-const getCharacterMaxData = (
+export const getCharacterMaxData = (
   key: string,
   角色最终属性: CharacterFinalDTO,
   openLidao: boolean,
@@ -212,4 +219,15 @@ const getCharacterMaxData = (
   }
 
   return { value, upperStatus }
+}
+
+export const 显示文案和实际属性枚举 = {
+  力道: '力道',
+  攻击: '面板攻击',
+  会心: '会心值',
+  会效: '会心效果值',
+  破防: '破防值',
+  无双: '无双值',
+  破招: '破招值',
+  加速: '加速值',
 }

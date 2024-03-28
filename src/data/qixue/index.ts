@@ -9,6 +9,8 @@ import {
   getJiChuGongJI,
 } from '@/components/BasicSet/CharacterSet/util'
 import { 加成系数 } from '../constant'
+import { 装备信息数据类型 } from '@/@types/equipment'
+import 装备增益数据 from '../zhuangbei/zhuangbeiGain'
 
 export const 力道加成奇穴 = '强膂'
 
@@ -400,6 +402,27 @@ export const QixueNameMap = [
   '十一',
   '十二',
 ]
+
+// 获取装备加成后面板
+export const 获取装备加成后面板 = (
+  data: CharacterFinalDTO,
+  装备信息: 装备信息数据类型
+): CharacterFinalDTO => {
+  const 面板 = { ...data }
+  if (装备信息?.切糕会心) {
+    面板.会心值 = 面板.会心值 + 装备增益数据?.切糕会心?.[0]?.增益数值
+  }
+  if (装备信息?.切糕会心_英雄) {
+    面板.会心值 = 面板.会心值 + 装备增益数据?.切糕会心_英雄?.[0]?.增益数值
+  }
+  if (装备信息?.切糕无双) {
+    面板.无双值 = 面板.无双值 + 装备增益数据?.切糕无双?.[0]?.增益数值
+  }
+  if (装备信息?.切糕无双_英雄) {
+    面板.会心值 = 面板.会心值 + 装备增益数据?.切糕无双_英雄?.[0]?.增益数值
+  }
+  return 面板
+}
 
 // 判断力道奇穴加成后面板
 export const 获取力道奇穴加成后面板 = (data: CharacterFinalDTO, openQiangLv): CharacterFinalDTO => {

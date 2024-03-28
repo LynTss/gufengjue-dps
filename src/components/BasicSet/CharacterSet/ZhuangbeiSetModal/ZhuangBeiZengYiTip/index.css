@@ -1,5 +1,5 @@
 .zhuangbei-zengyi-item {
-  width: calc(50% - 8px);
+  width: calc(50% - 12px);
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -117,9 +117,9 @@
   margin: 0;
 }
 
-.dps-diff {
+/* .dps-diff {
   padding-top: 16px;
-}
+} */
 
 .dps-diff-title,
 .time-label-title,
@@ -159,6 +159,7 @@
 
 .zhuangbei-zengyi-wrapper {
   margin-bottom: 12px;
+  /* padding: 0px 16px; */
 }
 
 .zhuangbei-zengyi-content {

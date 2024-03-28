@@ -2,8 +2,16 @@
   width: 100%;
 }
 
-.wucaishi-xuanze {
-  margin-bottom: 12px;
+.wucaishi-xuanze-wrap .wucaishi-xuanze {
+  width: calc(100% - 70px);
+}
+
+.wucaishi-xuanze-wrap .wucaishi-xuanze-dengji {
+  width: 70px;
+}
+
+.wucaishi-xuanze-wrap {
+  display: flex;
 }
 
 .wucaishi-value {

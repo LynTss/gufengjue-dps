@@ -1,10 +1,10 @@
 import { 增益计算类型枚举, 增益类型枚举 } from '@/@types/enum'
 import { SKillGainData } from './../../../@types/skill.d'
 
-interface ZhuangbeiGainList {
+interface 装备增益数据 {
   [key: string]: SKillGainData[]
 }
-const ZhuangbeiGainList = {
+const 装备增益数据 = {
   套装会心会效: [
     {
       增益计算类型: 增益计算类型枚举.A,
@@ -123,4 +123,4 @@ const ZhuangbeiGainList = {
   大附魔_伤腕: [],
   大附魔_伤鞋: [],
 }
-export default ZhuangbeiGainList
+export default 装备增益数据

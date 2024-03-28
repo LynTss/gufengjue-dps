@@ -13,7 +13,7 @@ import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { Zhenyan_DATA } from '@/data/zhenyan'
 import { 加成系数, 属性系数 } from '@/data/constant'
 import XIAOCHI_DATA from '@/data/xiaochi'
-import ZhuangbeiGainList from '@/data/zhuangbei/zhuangbeiGain'
+import 装备增益数据 from '@/data/zhuangbei/zhuangbeiGain'
 import { 获取力道奇穴加成后面板 } from '@/data/qixue'
 
 interface GetDpsTotalParams {
@@ -164,47 +164,47 @@ export const getAllGainData = (
 
   if (角色最终属性?.装备增益?.套装会心会效) {
     // 偷懒覆盖率测试80%左右
-    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.套装会心会效)
+    总增益集合 = 总增益集合.concat(装备增益数据.套装会心会效)
   }
   if (角色最终属性?.装备增益?.切糕会心 && 角色最终属性?.装备增益?.切糕会心 > 0) {
-    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.切糕会心)
+    总增益集合 = 总增益集合.concat(装备增益数据.切糕会心)
   }
   if (角色最终属性?.装备增益?.切糕无双 && 角色最终属性?.装备增益?.切糕无双 > 0) {
-    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.切糕无双)
+    总增益集合 = 总增益集合.concat(装备增益数据.切糕无双)
   }
   if (角色最终属性?.装备增益?.切糕会心_英雄 && 角色最终属性?.装备增益?.切糕会心_英雄 > 0) {
-    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.切糕会心_英雄)
+    总增益集合 = 总增益集合.concat(装备增益数据.切糕会心_英雄)
   }
   if (角色最终属性?.装备增益?.切糕无双_英雄 && 角色最终属性?.装备增益?.切糕无双_英雄 > 0) {
-    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.切糕无双_英雄)
+    总增益集合 = 总增益集合.concat(装备增益数据.切糕无双_英雄)
   }
   if (角色最终属性?.装备增益?.冬至套装) {
-    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.冬至套装)
+    总增益集合 = 总增益集合.concat(装备增益数据.冬至套装)
   }
   if (角色最终属性?.装备增益?.水特效武器) {
-    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.水特效武器)
+    总增益集合 = 总增益集合.concat(装备增益数据.水特效武器)
   }
   if (角色最终属性?.装备增益?.水特效武器_英雄) {
-    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.水特效武器_英雄)
+    总增益集合 = 总增益集合.concat(装备增益数据.水特效武器_英雄)
   }
   if (角色最终属性?.装备增益?.风特效腰坠) {
-    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.风特效腰坠)
+    总增益集合 = 总增益集合.concat(装备增益数据.风特效腰坠)
   }
   if (角色最终属性?.装备增益?.风特效腰坠_英雄) {
-    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.风特效腰坠_英雄)
+    总增益集合 = 总增益集合.concat(装备增益数据.风特效腰坠_英雄)
   }
   // 大附魔增益
   if (角色最终属性?.装备增益?.大附魔_伤帽) {
-    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.大附魔_伤帽)
+    总增益集合 = 总增益集合.concat(装备增益数据.大附魔_伤帽)
   }
   if (角色最终属性?.装备增益?.大附魔_伤衣) {
-    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.大附魔_伤衣)
+    总增益集合 = 总增益集合.concat(装备增益数据.大附魔_伤衣)
   }
   if (角色最终属性?.装备增益?.大附魔_伤腰) {
-    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.大附魔_伤腰)
+    总增益集合 = 总增益集合.concat(装备增益数据.大附魔_伤腰)
   }
   if (角色最终属性?.装备增益?.龙门武器) {
-    总增益集合 = 总增益集合.concat(ZhuangbeiGainList.龙门武器)
+    总增益集合 = 总增益集合.concat(装备增益数据.龙门武器)
   }
   return 总增益集合
 }

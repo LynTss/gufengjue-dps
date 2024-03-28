@@ -4,49 +4,53 @@ import { Button, Checkbox, Form, Modal, Tooltip } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 更新角色最终属性, 更新方案数据 } from '@/store/basicReducer'
 import { 装备栏部位枚举 } from '@/@types/enum'
-import { 属性系数 } from '@/data/constant'
-import { getZengyiJiasu } from '@/utils/skill-dps'
 import { 更新技能基础数据 } from '@/store/basicReducer'
 import ValueCheckBox from '@/components/common/ValueCheckBox'
 import { CharacterFinalDTO } from '@/@types/character'
 import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
 import { QuestionCircleOutlined } from '@ant-design/icons'
+import { 装备信息数据类型 } from '@/@types/equipment'
 
 import { getFinalCharacterBasicDataByEquipment } from '../util'
 import { getNewEquipmentData, 根据装备格式化技能基础数据 } from './utils'
-import ZhuangBeiZengYiTip from './ZhuangBeiZengYiTip'
 import ZhuangbeiSelect from './ZhuangbeiSelect'
 import WuCaiShiXuanZe from './WuCaiShiXuanZe'
 import MohedaoruModal from './MohedaoruModal'
+import CharacterActive from './CharacterActive'
+import Zhuangbeizengyi from './Zhuangbeizengyi'
 import './index.css'
 
 function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
   const [form] = Form.useForm()
 
   const dispatch = useAppDispatch()
+  const 角色最终属性 = useAppSelector((state) => state?.basic?.角色最终属性)
   const 装备信息 = useAppSelector((state) => state?.basic?.装备信息)
   const 当前计算结果DPS = useAppSelector((state) => state?.basic?.当前计算结果DPS)
   const 技能基础数据 = useAppSelector((state) => state?.basic?.技能基础数据)
-  const 增益数据 = useAppSelector((state) => state?.basic?.增益数据)
-  const 增益启用 = useAppSelector((state) => state?.basic?.增益启用)
 
   const [zhuangbeizengyi, setZhuangbeizengyi] = useState<any>()
   const [默认镶嵌宝石等级, 设置默认镶嵌宝石等级] = useState<number>(8)
   const [afterDps, setAfterDps] = useState<number>(0)
-  const [加速, 设置加速] = useState<number | null>(null)
+  const [当前装备下配置, 更新当前装备下配置] = useState<
+    | {
+        当前角色最终属性: CharacterFinalDTO
+        当前角色装备信息: 装备信息数据类型
+      }
+    | undefined
+  >()
   const [moHeDaoRuVisible, setMoHeDaoRuVisible] = useState(false)
 
   // 开启智能装备对比
   const [openEquipmentDiff, setOpenEquipmentDiff] = useState<boolean>(false)
 
   useEffect(() => {
-    console.log('装备信息', 装备信息)
     if (装备信息 && visible) {
       initEquipment(装备信息)
     }
     if (!visible) {
       setAfterDps(0)
-      设置加速(null)
+      更新当前装备下配置(undefined)
       setZhuangbeizengyi(null)
     }
   }, [visible, 装备信息])
@@ -168,9 +172,11 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         ...finalData,
         装备增益: { ...data },
       }
-      const 增益加速 = 增益启用 ? getZengyiJiasu(增益数据) : 0
 
-      设置加速(final.加速值 + 增益加速)
+      更新当前装备下配置({
+        当前角色最终属性: final,
+        当前角色装备信息: data,
+      })
 
       setZhuangbeizengyi({
         套装双会: data.套装会心会效,
@@ -199,7 +205,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
 
       setAfterDps(dpsPerSecond)
     } catch (_) {
-      设置加速(null)
+      更新当前装备下配置(undefined)
       setAfterDps(0)
     }
   }
@@ -217,9 +223,9 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         <div className='zhuangbei-input-set-modal-title'>
           <span>
             配装器
-            <span style={{ color: '#F34242', fontSize: 14, marginLeft: 16 }}>
+            {/* <span style={{ color: '#F34242', fontSize: 14, marginLeft: 16 }}>
               暂时只推荐1段加速配装，0段、2段伤害计算不准确
-            </span>
+            </span> */}
           </span>
         </div>
       }
@@ -334,66 +340,13 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           <Form.Item name={`五彩石`}>
             <WuCaiShiXuanZe />
           </Form.Item>
-          {zhuangbeizengyi ? (
-            <div className={'zhuangbei-zengyi-wrapper'}>
-              <div className={'zhuangbei-zengyi-title'}>装备增益</div>
-              <div className='zhuangbei-zengyi-content'>
-                {Object.keys(zhuangbeizengyi)
-                  .filter((item) => {
-                    if (item === '特效武器') {
-                      if (
-                        zhuangbeizengyi.大CW ||
-                        zhuangbeizengyi.小CW ||
-                        zhuangbeizengyi.龙门武器
-                      ) {
-                        return false
-                      } else {
-                        return true
-                      }
-                    } else if (
-                      ['大CW', '小CW', '冬至套装', '切糕会心', '切糕无双', '龙门武器'].includes(
-                        item
-                      )
-                    ) {
-                      return !!zhuangbeizengyi[item]
-                    } else {
-                      return true
-                    }
-                  })
-                  .map((item) => {
-                    return (
-                      <ZhuangBeiZengYiTip
-                        key={item}
-                        zengyiType={item}
-                        data={zhuangbeizengyi[item]}
-                      />
-                    )
-                  })}
-              </div>
-            </div>
-          ) : null}
-          {加速 !== null ? (
-            <div className='time-label'>
-              <div>
-                <Tooltip title={加速}>
-                  {(((加速 || 0) / 属性系数.急速) * 100).toFixed(2) + '%'}
-                </Tooltip>
-              </div>
-              <div>
-                {(加速 || 0) < 95
-                  ? '零段加速'
-                  : 加速 < 4241
-                  ? '一段加速'
-                  : 加速 < 8857
-                  ? '二段加速'
-                  : 加速 < 13851
-                  ? '三段加速'
-                  : 加速 < 19316
-                  ? '四段加速'
-                  : '五段加速'}
-              </div>
-            </div>
-          ) : null}
+          {/* 当前面板展示 */}
+          <CharacterActive
+            当前角色最终属性={当前装备下配置?.当前角色最终属性 || 角色最终属性}
+            当前角色装备信息={当前装备下配置?.当前角色装备信息 || 装备信息}
+          />
+          {/* 装备增益展示 */}
+          <Zhuangbeizengyi zhuangbeizengyi={zhuangbeizengyi} />
           {当前计算结果DPS !== afterDps && afterDps ? (
             <div className={'dps-diff'}>
               <div className='dps-diff-item'>

@@ -1,4 +1,4 @@
-import { Cascader, Radio } from 'antd'
+import { Cascader, Select } from 'antd'
 import React, { useMemo } from 'react'
 import WUCAISHI_DATA from '@/data/wucaishi'
 import { 五彩石增益类型枚举 } from '@/@types/enum'
@@ -63,23 +63,26 @@ function WuCaiShiXuanZe(props: WuCaiShiXuanZeProps) {
 
   return (
     <div className='wucaishi-wrap'>
-      <Cascader
-        className={'wucaishi-xuanze'}
-        value={mingzi}
-        showSearch
-        placeholder='选择五彩石'
-        onChange={handleChange}
-        options={wucaishiFilterList}
-      />
-      <Radio.Group
-        disabled={!mingzi}
-        className={'wucaishi-dengji'}
-        value={jibie}
-        onChange={(e) => changeJiBie(e?.target?.value)}
-      >
-        <Radio.Button value={5}>五级</Radio.Button>
-        <Radio.Button value={6}>六级</Radio.Button>
-      </Radio.Group>
+      <div className={'wucaishi-xuanze-wrap'}>
+        <Select
+          className={'wucaishi-xuanze-dengji'}
+          disabled={!mingzi}
+          value={jibie}
+          options={[
+            { label: '六级', value: 6 },
+            { label: '五级', value: 5 },
+          ]}
+          onChange={(e) => changeJiBie(e)}
+        />
+        <Cascader
+          className={'wucaishi-xuanze'}
+          value={mingzi}
+          showSearch
+          placeholder='选择五彩石'
+          onChange={handleChange}
+          options={wucaishiFilterList}
+        />
+      </div>
       {value ? (
         <div className={`wucaishi-value ${jibie === 6 ? 'wucaishi-value-6' : 'wucaishi-value-5'}`}>
           {value}
