@@ -432,10 +432,10 @@ class 循环主类 {
     }
   }
 
-  检查GCD(当前技能: CycleSimulatorSkillDTO, 技能实例) {
+  检查GCD(当前技能: CycleSimulatorSkillDTO, 技能实例, i) {
     let GCD = 0
     if (技能实例?.检查GCD) {
-      GCD = 技能实例?.检查GCD?.()
+      GCD = 技能实例?.检查GCD?.(i)
     } else {
       GCD = this.技能释放前检查GCD统一方法(当前技能)
     }
@@ -451,7 +451,7 @@ class 循环主类 {
     if (i >= 0) {
       // 判断上一个技能对于本技能是否有GCD限制
       if (当前技能?.技能GCD组) {
-        GCD = this.检查GCD(当前技能, 技能实例)
+        GCD = this.检查GCD(当前技能, 技能实例, i)
       }
       // 判断技能CD，如果存在CD。增加等待时间
       if (当前技能?.技能CD) {
@@ -459,7 +459,8 @@ class 循环主类 {
       }
     }
     // const 延迟等待 = this.当前时间 && (GCD || 等待CD) ? this.网络延迟 : 0
-    const 延迟等待 = this.当前时间 && 当前技能?.技能GCD组 !== '自身' && GCD ? this.网络延迟 : 0
+    const 延迟等待 =
+      this.当前时间 && 当前技能?.技能GCD组 !== '自身' && (GCD || 等待CD) ? this.网络延迟 : 0
 
     // const 延迟等待 = this.当前时间 ? this.网络延迟 : 0
     const 技能计划释放时间 = this.当前时间 + GCD + 延迟等待

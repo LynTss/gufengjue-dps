@@ -125,6 +125,11 @@ export interface CycleSimulatorSkillDTO {
    */
   技能GCD组?: '单刀' | '双刀' | '自身'
   /**
+   * 是否卡GCD释放
+   * 例如灭，卡在下一个技能释放前打出
+   */
+  是否卡GCD释放?: boolean
+  /**
    * 显示类型
    */
   显示类型?: '大橙武模拟'

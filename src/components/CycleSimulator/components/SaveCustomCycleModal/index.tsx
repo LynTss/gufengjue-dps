@@ -90,7 +90,7 @@ function SaveCustomCycleModal(props: SaveCustomCycleModalProps) {
       open={自定义循环保存弹窗}
       onCancel={() => 设置自定义循环保存弹窗(false)}
       onOk={保存自定义循环前}
-      width={620}
+      width={630}
       destroyOnClose
       className={'cycle-custom-save-modal'}
     >

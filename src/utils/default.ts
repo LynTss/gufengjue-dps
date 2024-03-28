@@ -58,7 +58,7 @@ export const getDefaultNetwork = () => {
   if (localNetwork) {
     return +localNetwork
   } else {
-    return 2
+    return 1
   }
 }
 

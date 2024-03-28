@@ -84,19 +84,19 @@ export const 精炼加成系数 = {
 
 export const 延迟设定: NetworkDTO[] = [
   {
-    label: '超低延迟(0-30)',
+    label: '超低延迟(0-40)',
     value: 0,
   },
   {
-    label: '中低延迟(30-60)',
+    label: '一般延迟(40-80)',
     value: 1,
   },
   {
-    label: '一般延迟(60-90)',
+    label: '中高延迟(80-120)',
     value: 2,
   },
   {
-    label: '高延迟(90以上)',
+    label: '高延迟(120以上)',
     value: 3,
   },
 ]
