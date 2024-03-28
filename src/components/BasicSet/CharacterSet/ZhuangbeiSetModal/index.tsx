@@ -74,7 +74,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
     getDpsFunction()
     setZhuangbeizengyi({
       套装双会: data.套装会心会效,
-      套装饮羽: data.套装技能,
+      套装孤锋: data.套装技能,
       龙门武器: data.龙门武器,
       大CW: data.大橙武特效,
       小CW: data.小橙武特效,
@@ -180,7 +180,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
 
       setZhuangbeizengyi({
         套装双会: data.套装会心会效,
-        套装饮羽: data.套装技能,
+        套装孤锋: data.套装技能,
         龙门武器: data.龙门武器,
         大CW: data.大橙武特效,
         小CW: data.小橙武特效,
