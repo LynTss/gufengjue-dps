@@ -1,7 +1,7 @@
 import { CharacterBasicDTO, CharacterFinalDTO, FinalCharterBasicDataDTO } from '@/@types/character'
 import { WuCaiShiDTO } from '@/@types/enchant'
-import { GainTypeEnum } from '@/@types/enum'
-import { EquipmentBasicDTO, EquipmentListDTO } from '@/@types/equipment'
+import { 增益类型枚举 } from '@/@types/enum'
+import { 装备信息数据类型, EquipmentListDTO } from '@/@types/equipment'
 import { 加成系数 } from '@/data/constant'
 import { AllEnchantDTO } from '@/data/enchantGain'
 import WUCAISHI_DATA from '@/data/wucaishi'
@@ -39,7 +39,7 @@ export const getLidaoJiachengPofang = (破防值, 面板力道) => {
 }
 
 export const getFinalCharacterBasicDataByEquipment = (
-  data: EquipmentBasicDTO
+  data: 装备信息数据类型
 ): FinalCharterBasicDataDTO => {
   let basicDTO: CharacterBasicDTO = {
     等级: 120,
@@ -56,28 +56,28 @@ export const getFinalCharacterBasicDataByEquipment = (
     会心效果值: 0,
   }
   Object.keys(data).map((item) => {
-    if (item === 'wucaishi') {
-      const wucaishi = WUCAISHI_DATA[5]
+    if (item === '五彩石') {
+      const 五彩石 = WUCAISHI_DATA[5]
         .concat(WUCAISHI_DATA[6])
         .find((a) => a.五彩石名称 === data[item])
-      if (wucaishi) {
-        basicDTO = switchWuCaiShi(wucaishi, basicDTO)
+      if (五彩石) {
+        basicDTO = switchWuCaiShi(五彩石, basicDTO)
       }
     } else if (
       [
         '套装会心会效',
         '水特效武器',
-        '水特效武器_2',
+        '水特效武器_英雄',
         '龙门武器',
         '大橙武特效',
         '小橙武特效',
         '风特效腰坠',
-        '风特效腰坠_2',
+        '风特效腰坠_英雄',
         '套装技能',
         '切糕会心',
         '切糕无双',
-        '切糕会心_2',
-        '切糕无双_2',
+        '切糕会心_英雄',
+        '切糕无双_英雄',
         '冬至套装',
         '大附魔_伤帽',
         '大附魔_伤衣',
@@ -145,41 +145,41 @@ export const switchZhuangbei = (
 }
 
 const switchData = (
-  增益类型: GainTypeEnum,
+  增益类型: 增益类型枚举,
   数值: number,
   原始属性: CharacterBasicDTO
 ): CharacterBasicDTO => {
   const newObj: CharacterBasicDTO = { ...原始属性 }
   switch (增益类型) {
-    case GainTypeEnum.力道:
+    case 增益类型枚举.力道:
       newObj.力道 += 数值
       break
-    case GainTypeEnum.体质:
+    case 增益类型枚举.体质:
       newObj.体质 += 数值
       break
-    case GainTypeEnum.加速:
+    case 增益类型枚举.加速:
       newObj.加速值 += 数值
       break
-    case GainTypeEnum.基础攻击:
+    case 增益类型枚举.基础攻击:
       newObj.基础攻击 += 数值
       break
-    case GainTypeEnum.外攻会心等级:
+    case 增益类型枚举.外攻会心等级:
       newObj.会心值 += 数值
       break
-    case GainTypeEnum.外攻会心效果等级:
+    case 增益类型枚举.外攻会心效果等级:
       newObj.会心效果值 += 数值
       break
-    case GainTypeEnum.外攻破防等级:
+    case 增益类型枚举.外攻破防等级:
       newObj.破防值 += 数值
       break
-    case GainTypeEnum.近战武器伤害:
+    case 增益类型枚举.近战武器伤害:
       newObj.武器伤害_最小值 += 数值
       newObj.武器伤害_最大值 += 数值
       break
-    case GainTypeEnum.破招:
+    case 增益类型枚举.破招:
       newObj.破招值 += 数值
       break
-    case GainTypeEnum.无双等级:
+    case 增益类型枚举.无双等级:
       newObj.无双值 += 数值
       break
     default:

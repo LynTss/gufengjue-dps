@@ -87,9 +87,9 @@ export interface CharacterFinalDTO extends CharacterBasicDTO {
      */
     水特效武器?: boolean
     /**
-     * @name 水特效武器_2赛季
+     * @name 水特效武器_英雄
      */
-    水特效武器_2?: boolean
+    水特效武器_英雄?: boolean
     /**
      * @name 龙门武器
      */
@@ -99,9 +99,9 @@ export interface CharacterFinalDTO extends CharacterBasicDTO {
      */
     风特效腰坠?: boolean
     /**
-     * @name 特效腰坠_2赛季
+     * @name 特效腰坠_英雄
      */
-    风特效腰坠_2?: boolean
+    风特效腰坠_英雄?: boolean
     /**
      * @name 大橙武特效
      */
@@ -119,13 +119,13 @@ export interface CharacterFinalDTO extends CharacterBasicDTO {
      */
     切糕无双?: number
     /**
-     * @name 切糕双会加成数量_2赛季
+     * @name 切糕双会加成数量_英雄
      */
-    切糕会心_2?: number
+    切糕会心_英雄?: number
     /**
-     * @name 切糕无双加成数量_2赛季
+     * @name 切糕无双加成数量_英雄
      */
-    切糕无双_2?: number
+    切糕无双_英雄?: number
     /**
      * @NAME 冬至套装全属性加成
      */

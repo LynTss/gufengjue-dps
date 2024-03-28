@@ -28,8 +28,8 @@ import SaveCustomCycleModal from './components/SaveCustomCycleModal'
 import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
 import QixueSetModal from './components/QixueSetModal'
 import { 获取加速等级 } from '@/utils/help'
+import { 更新当前自定义循环列表 } from '@/store/basicReducer'
 import './index.css'
-import { setCustomCycleList } from '@/store/basicReducer'
 
 const 加速等级枚举 = {
   0: 0,
@@ -77,16 +77,16 @@ function CycleSimulator(props: CycleSimulatorProps) {
   const [cycle, setCycle] = useState<CycleSimulatorSkillDTO[]>([])
   const [自定义循环保存弹窗, 设置自定义循环保存弹窗] = useState<boolean>(false)
   // 当前面板加速值
-  const 外部加速值 = useAppSelector((state) => state?.basic?.characterFinalData)?.加速值
-  const 外部延迟 = useAppSelector((state) => state?.basic?.network)
-  const 大橙武模拟 = useAppSelector((state) => state?.basic?.equipmentBasicData)?.大橙武特效
+  const 外部加速值 = useAppSelector((state) => state?.basic?.角色最终属性)?.加速值
+  const 外部延迟 = useAppSelector((state) => state?.basic?.网络延迟)
+  const 大橙武模拟 = useAppSelector((state) => state?.basic?.装备信息)?.大橙武特效
 
   // 当前网络延迟
   const 网络按键延迟 = 0
   const [加速等级, 更新加速等级] = useState<number>(0)
   const [网络延迟, 更新网络延迟] = useState<number>(0)
   // 自定义循环
-  const customCycleList = useAppSelector((state) => state?.basic?.customCycleList)
+  const customCycleList = useAppSelector((state) => state?.basic?.自定义循环列表)
 
   const 加速值 = useMemo(() => {
     return 加速等级枚举[加速等级] || 0
@@ -98,7 +98,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
   const [起手驰风, 设置起手驰风] = useState<boolean>(true)
 
   // 奇穴
-  const reduxQixuedata = useAppSelector((state) => state?.basic?.qixueData)
+  const reduxQixuedata = useAppSelector((state) => state?.basic?.当前奇穴信息)
   const [奇穴信息, 更新奇穴信息] = useState<string[]>([])
   const [奇穴弹窗展示, 更新奇穴弹窗展示] = useState<boolean>(false)
 
@@ -356,7 +356,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
           { 名称, 各加速枚举: 各加速枚举 as any, 奇穴信息, 技能序列 },
         ])
 
-    dispatch(setCustomCycleList(新自定义循环))
+    dispatch(更新当前自定义循环列表(新自定义循环))
 
     设置自定义循环保存弹窗(false)
     message.success('保存成功')

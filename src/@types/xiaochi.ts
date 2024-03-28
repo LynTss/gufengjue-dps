@@ -1,4 +1,4 @@
-import { XiaochiTypeEnum } from './enum'
+import { 小吃类型枚举 } from './enum'
 import { SKillGainData } from './skill'
 
 /**
@@ -7,6 +7,6 @@ import { SKillGainData } from './skill'
 export interface XiaochiDataDTO {
   小吃名称: string
   小吃品级: '蓝' | '紫'
-  小吃部位: XiaochiTypeEnum
+  小吃部位: 小吃类型枚举
   增益集合: SKillGainData[]
 }

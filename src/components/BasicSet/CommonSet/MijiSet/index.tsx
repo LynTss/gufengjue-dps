@@ -2,19 +2,20 @@ import { useAppDispatch, useAppSelector } from '@/hooks'
 import skillMijiBasicData from '@/data/miji'
 import { Button, Checkbox, Col, Drawer, message, Row } from 'antd'
 import React, { useState } from 'react'
-import { setMijiSelectedData, setSkillBasicData } from '@/store/zengyiReducer'
 import { MijiBasicDataDTO, SkillMijiBasicDataDTO } from '@/@types/miji'
-import { getSkillBasicData } from './utils'
+import { 更新当前秘籍信息, 更新技能基础数据 } from '@/store/basicReducer'
+import { 缓存映射 } from '@/utils/system_constant'
+import { 根据秘籍格式化技能基础数据 } from './utils'
 import './index.css'
 
 function MijiSet({ getDpsFunction }) {
   const [visible, setVisible] = useState<boolean>(false)
   const dispatch = useAppDispatch()
-  const mijiSelectedData = useAppSelector((state) => state?.zengyi?.mijiSelectedData)
-  const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
+  const 当前秘籍信息 = useAppSelector((state) => state?.basic?.当前秘籍信息)
+  const 技能基础数据 = useAppSelector((state) => state?.basic?.技能基础数据)
 
   const selectMiji = (e, mijiData: MijiBasicDataDTO, skillData: SkillMijiBasicDataDTO) => {
-    const newData = mijiSelectedData.map((item) => {
+    const newData = 当前秘籍信息.map((item) => {
       if (item.技能名称 === skillData?.描述技能名称) {
         if (e) {
           if (item.技能已选秘籍?.length > 3) {
@@ -38,19 +39,19 @@ function MijiSet({ getDpsFunction }) {
         return { ...item }
       }
     })
-    localStorage.setItem('miji_selected_data_1', JSON.stringify(newData))
-    dispatch(setMijiSelectedData(newData))
+    localStorage.setItem(缓存映射.当前秘籍信息, JSON.stringify(newData))
+    dispatch(更新当前秘籍信息(newData))
 
-    const newSkillBasicData = getSkillBasicData(skillBasicData, newData)
+    const 秘籍格式化后技能基础数据 = 根据秘籍格式化技能基础数据(技能基础数据, newData)
 
-    dispatch(setSkillBasicData(newSkillBasicData))
+    dispatch(更新技能基础数据(秘籍格式化后技能基础数据))
 
     getDpsFunction()
   }
 
   return (
     <>
-      <Button className="miji-set-button" onClick={() => setVisible(true)}>
+      <Button className='miji-set-button' onClick={() => setVisible(true)}>
         秘籍设置
       </Button>
       <Drawer
@@ -58,13 +59,13 @@ function MijiSet({ getDpsFunction }) {
         width={348 + 36}
         open={visible}
         mask={false}
-        placement="left"
+        placement='left'
         onClose={() => {
           setVisible(false)
         }}
       >
         {skillMijiBasicData.map((item) => {
-          const skillData = (mijiSelectedData || [])?.find((a) => a.技能名称 === item.描述技能名称)
+          const skillData = (当前秘籍信息 || [])?.find((a) => a.技能名称 === item.描述技能名称)
 
           return (
             <div className={'miji-selected-item'} key={item.描述技能名称}>

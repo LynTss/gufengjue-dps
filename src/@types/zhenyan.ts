@@ -2,7 +2,7 @@
  * @name 阵眼数据模型
  */
 
-import { ZengyanZengyiPositionEnum } from './enum'
+import { 增益计算位置枚举 } from './enum'
 import { SKillGainData } from './skill'
 
 export interface ZhenyanGainDTO {
@@ -29,5 +29,5 @@ export interface ZhenyanGainDTO {
 }
 
 export interface ZengyanZengyiData extends SKillGainData {
-  计算位置: ZengyanZengyiPositionEnum
+  计算位置: 增益计算位置枚举
 }

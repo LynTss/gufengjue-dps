@@ -1,4 +1,4 @@
-import { EnchantNameEnum } from '@/@types/enum'
+import { 附魔名称枚举 } from '@/@types/enum'
 import { getPzDataById } from '@/api/mohe'
 import { Alert, Button, Image, Input, Modal, Spin } from 'antd'
 import React, { useState } from 'react'
@@ -53,7 +53,7 @@ function MohedaoruModal({ visible, onClose, onOk }) {
 
   return (
     <Modal
-      title="魔盒配装导入"
+      title='魔盒配装导入'
       open={visible}
       centered
       onCancel={() => beforeClose()}
@@ -66,16 +66,16 @@ function MohedaoruModal({ visible, onClose, onOk }) {
             <a onClick={() => setHelpVisible(true)}>如何获取配装ID</a>
           </span>
         }
-        type="info"
+        type='info'
       />
-      <div className="pz-daoru-input-wrap">
-        <Input value={id} onChange={changeId} placeholder="请输入魔盒配装方案ID" />
+      <div className='pz-daoru-input-wrap'>
+        <Input value={id} onChange={changeId} placeholder='请输入魔盒配装方案ID' />
         <Button disabled={loading || !id} onClick={() => handleGetPzData()}>
           获取配装方案
         </Button>
       </div>
       {loading ? (
-        <div className="pz-daoru-text-wrap">
+        <div className='pz-daoru-text-wrap'>
           正在获取配装方案
           <Spin style={{ marginLeft: 12 }} spinning={true} />
         </div>
@@ -83,45 +83,45 @@ function MohedaoruModal({ visible, onClose, onOk }) {
         <>
           {data ? (
             <div className={'pz-daoru-success'}>
-              <p className="pz-daoru-success-tip">成功获取配装方案</p>
-              <div className="pz-daoru-success-content">
-                <div className="pz-daoru-success-info">
-                  <div className="pz-daoru-success-user">
+              <p className='pz-daoru-success-tip'>成功获取配装方案</p>
+              <div className='pz-daoru-success-content'>
+                <div className='pz-daoru-success-info'>
+                  <div className='pz-daoru-success-user'>
                     <img
-                      className="pz-daoru-success-avatar"
+                      className='pz-daoru-success-avatar'
                       src={data?.showData?.user_avatar}
-                      alt=""
+                      alt=''
                     />
                     <div>{data?.showData?.display_name}</div>
                   </div>
-                  <div className="pz-daoru-success-title" title={data?.showData?.title}>
+                  <div className='pz-daoru-success-title' title={data?.showData?.title}>
                     {data?.showData?.title}
                   </div>
                 </div>
-                <Button type="primary" onClick={handleClickImport}>
+                <Button type='primary' onClick={handleClickImport}>
                   导入
                 </Button>
               </div>
             </div>
           ) : null}
           {errorMsg ? (
-            <div className="pz-daoru-text-wrap pz-daoru-text-error">{errorMsg}</div>
+            <div className='pz-daoru-text-wrap pz-daoru-text-error'>{errorMsg}</div>
           ) : null}
         </>
       )}
       <Modal
         footer={null}
-        title="如何获取配装ID"
+        title='如何获取配装ID'
         open={helpVisible}
         onCancel={() => setHelpVisible(false)}
       >
         <p>
           1、打开你的配装方案，点击导出。
-          <Image className="pz-daoru-help-img" src={Img_Help_1} />
+          <Image className='pz-daoru-help-img' src={Img_Help_1} />
         </p>
         <p>
           2、选择数据版,复制配装ID.
-          <Image className="pz-daoru-help-img" src={Img_Help_2} />
+          <Image className='pz-daoru-help-img' src={Img_Help_2} />
         </p>
       </Modal>
     </Modal>
@@ -166,7 +166,7 @@ const getEquipData = (data) => {
           console.warn(`存在计算器未内置附魔${fumoType}${fumoValue}`)
         }
         if (
-          !EnchantNameEnum[`${FumoMap[fumoType]}${fumoValue}`] &&
+          !附魔名称枚举[`${FumoMap[fumoType]}${fumoValue}`] &&
           FumoMap[fumoType] &&
           !['atVitalityBase', 'atDecriticalDamageBase', 'atToughnessBase'].includes(fumoType)
         ) {
@@ -194,7 +194,7 @@ const getEquipData = (data) => {
         }
 
         if (item === 'PRIMARY_WEAPON' && basicData?.stone) {
-          equip.wucaishi = basicData?.stone.Name
+          equip.五彩石 = basicData?.stone.Name
         }
       }
     })

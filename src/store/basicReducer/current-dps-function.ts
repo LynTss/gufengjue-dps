@@ -8,7 +8,7 @@ import {
   根据奇穴处理技能的基础增益信息,
   // getZengyiJiasu,
 } from '@/utils/skill-dps'
-import { setCurrentDps } from './index'
+import { 更新当前计算结果DPS } from './index'
 import { CharacterFinalDTO } from '@/@types/character'
 import { SKillGainData, SkillBasicDTO } from '@/@types/skill'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
@@ -57,23 +57,21 @@ export const currentDpsFunction =
     const currentState: RootState = getState() || {}
 
     // const 延迟 = 0
-    const 延迟 = currentState?.basic?.network
-    const 当前角色面板 = { ...currentState?.basic?.characterFinalData, ...更新角色面板 }
+    const 延迟 = currentState?.basic?.网络延迟
+    const 当前角色面板 = { ...currentState?.basic?.角色最终属性, ...更新角色面板 }
 
-    const 当前循环名称 = currentState?.basic?.currentCycleName
-    const 当前目标 = currentState?.basic?.currentTarget
-    const 团队增益数据 = { ...currentState?.zengyi?.zengyixuanxiangData, ...更新团队增益数据 }
-    const 团队增益是否启用 = currentState?.zengyi?.zengyiQiyong
-    const 技能基础数据 = 更新技能基础数据 || currentState?.zengyi?.skillBasicData
-    const 奇穴数据 = 更新奇穴数据 || currentState.basic.qixueData
-    // const 增益加速值 = 团队增益是否启用 ? getZengyiJiasu(团队增益数据) : 0
-    // const 加速等级 = 获取加速等级(当前角色面板?.加速值 + 增益加速值)
+    const 当前循环名称 = currentState?.basic?.当前循环名称
+    const 当前目标 = currentState?.basic?.当前输出计算目标
+    const 奇穴数据 = 更新奇穴数据?.length ? 更新奇穴数据 : currentState.basic.当前奇穴信息
+    const 团队增益数据 = { ...currentState?.basic?.增益数据, ...更新团队增益数据 }
+    const 团队增益是否启用 = currentState?.basic?.增益启用
+    const 技能基础数据 = 更新技能基础数据 || currentState?.basic?.技能基础数据
     const 当前循环信息 = useCycle({
-      characterFinalData: 当前角色面板,
-      zengyixuanxiangData: 团队增益数据,
-      zengyiQiyong: 团队增益是否启用,
-      network: 延迟,
-      qixueData: 奇穴数据,
+      角色最终属性: 当前角色面板,
+      增益数据: 团队增益数据,
+      增益启用: 团队增益是否启用,
+      网络延迟: 延迟,
+      当前奇穴信息: 奇穴数据,
       当前循环各加速枚举: currentState?.basic?.当前循环各加速枚举,
     })
     const 当前内存技能列表 = 当前循环信息?.cycle || []
@@ -94,50 +92,50 @@ export const currentDpsFunction =
       return { totalDps: 0, dpsList: [], dpsPerSecond: 0, dpsTime: 0 }
     }
 
-    const dpsTime =
+    const 战斗时间 =
       更新计算时间 ||
       当前循环信息?.dpsTime ||
       getDpsTime(当前循环名称, 当前角色面板, 延迟, 团队增益是否启用, 团队增益数据, showTime)
 
     // 获取实际循环
-    const trueCycle = 获取实际循环(当前循环技能列表, 奇穴数据)
+    const 计算后循环 = 获取实际循环(当前循环技能列表, 奇穴数据)
 
     // 获取基础技能信息加成
-    const trueSkillBasicData = 根据奇穴处理技能的基础增益信息(技能基础数据, 奇穴数据)
+    const 计算后技能基础数据 = 根据奇穴处理技能的基础增益信息(技能基础数据, 奇穴数据)
 
     const dpsFunction = 是否郭氏计算 ? getDpsTotal : getNotGuoDpsTotal
 
     // dps结果计算
     const { totalDps, dpsList } = dpsFunction({
-      currentCycle: trueCycle,
-      characterFinalData: 当前角色面板,
+      计算循环: 计算后循环,
+      角色最终属性: 当前角色面板,
       当前目标: 当前目标,
-      skillBasicData: trueSkillBasicData,
-      zengyiQiyong: 团队增益是否启用,
-      zengyixuanxiangData: 团队增益数据,
+      技能基础数据: 计算后技能基础数据,
+      增益启用: 团队增益是否启用,
+      增益数据: 团队增益数据,
       默认增益集合: 更新默认增益集合 || [],
-      dpsTime,
+      战斗时间,
       开启强膂: 开启力道加成奇穴,
     })
 
     if (showTime) {
-      console.log('dpsTime', dpsTime)
+      console.log('dpsTime', 战斗时间)
     }
 
     // TODO正式服删除
     // const total = Math.floor(totalDps * 0.9)
 
     // 每秒dps
-    const dpsPerSecond = Math.floor(totalDps / dpsTime)
+    const dpsPerSecond = Math.floor(totalDps / 战斗时间)
 
     if (updateCurrentDps) {
-      dispatch(setCurrentDps(dpsPerSecond))
+      dispatch(更新当前计算结果DPS(dpsPerSecond))
     }
 
     return {
       totalDps,
       dpsPerSecond,
       dpsList,
-      dpsTime,
+      dpsTime: 战斗时间,
     }
   }

@@ -3,7 +3,7 @@ import { 每等级减伤 } from '@/data/constant'
 import { TargetDTO } from '@/@types/character'
 import { CharacterFinalDTO } from '@/@types/character'
 import { CycleDTO } from '@/@types/cycle'
-import { GainDpsTypeEnum, GainTypeEnum } from '@/@types/enum'
+import { 增益计算类型枚举, 增益类型枚举 } from '@/@types/enum'
 import { SkillBasicDTO, SKillGainData } from '@/@types/skill'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { 加成系数, 属性系数 } from '@/data/constant'
@@ -19,13 +19,13 @@ import {
 import { 获取力道奇穴加成后面板 } from '@/data/qixue'
 
 interface GetDpsTotalParams {
-  currentCycle: CycleDTO[]
-  characterFinalData: CharacterFinalDTO
+  计算循环: CycleDTO[]
+  角色最终属性: CharacterFinalDTO
   当前目标: TargetDTO
-  skillBasicData: SkillBasicDTO[]
-  zengyiQiyong: boolean
-  zengyixuanxiangData: ZengyixuanxiangDataDTO
-  dpsTime: number
+  技能基础数据: SkillBasicDTO[]
+  增益启用: boolean
+  增益数据: ZengyixuanxiangDataDTO
+  战斗时间: number
   默认增益集合?: SKillGainData[]
   开启强膂: boolean
 }
@@ -39,13 +39,13 @@ export interface DpsListData {
 // 计算技能循环总输出
 export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
   const {
-    currentCycle,
-    characterFinalData,
+    计算循环,
+    角色最终属性,
     当前目标,
-    skillBasicData,
-    zengyiQiyong,
-    zengyixuanxiangData,
-    dpsTime,
+    技能基础数据,
+    增益启用,
+    增益数据,
+    战斗时间,
     默认增益集合,
     开启强膂,
   } = props
@@ -55,31 +55,31 @@ export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
   const dpsList: DpsListData[] = []
   const 计算目标 = 当前目标
 
-  const 最终人物属性 = 获取力道奇穴加成后面板(characterFinalData, 开启强膂)
+  const 最终人物属性 = 获取力道奇穴加成后面板(角色最终属性, 开启强膂)
 
   // 获取装备增益等带来的最终增益集合
-  let 总增益集合: SKillGainData[] = getAllGainData(characterFinalData, 默认增益集合)
+  let 总增益集合: SKillGainData[] = getAllGainData(角色最终属性, 默认增益集合)
 
   // 判断是不是单技能统计循环。如果是则不计入
-  const isSingeSkillCycle = currentCycle?.find((item) => item?.技能名称 === '云刀')?.技能数量 === 1
+  const isSingeSkillCycle = 计算循环?.find((item) => item?.技能名称 === '云刀')?.技能数量 === 1
 
   // 根据增益信息修改最终循环内容
   const 最终循环: CycleDTO[] = getFinalCycleData(
-    characterFinalData,
-    [...currentCycle],
-    dpsTime,
+    角色最终属性,
+    [...计算循环],
+    战斗时间,
     isSingeSkillCycle
   )
 
-  if (!isSingeSkillCycle && zengyiQiyong && zengyixuanxiangData) {
-    const 团队增益增益集合 = getZengyi(zengyixuanxiangData)
+  if (!isSingeSkillCycle && 增益启用 && 增益数据) {
+    const 团队增益增益集合 = getZengyi(增益数据)
     总增益集合 = 总增益集合.concat(团队增益增益集合)
 
-    if (zengyixuanxiangData?.团队增益.find((item) => item.增益名称 === '飘黄' && !!item.启用)) {
+    if (增益数据?.团队增益.find((item) => item.增益名称 === '飘黄' && !!item.启用)) {
       最终循环.push({
         技能名称: '逐云寒蕊',
-        技能数量: Math.floor(dpsTime * 0.13),
-        技能增益列表: [{ 增益名称: '灭影追风', 增益技能数: Math.floor(dpsTime * 0.13 * 0.4) }],
+        技能数量: Math.floor(战斗时间 * 0.13),
+        技能增益列表: [{ 增益名称: '灭影追风', 增益技能数: Math.floor(战斗时间 * 0.13 * 0.4) }],
       })
     }
   }
@@ -91,7 +91,7 @@ export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
       item,
       最终人物属性,
       计算目标,
-      skillBasicData,
+      技能基础数据,
       总增益集合,
       开启强膂
       // 是否郭氏计算
@@ -112,13 +112,13 @@ export const getSingleSkillTotalDps = (
   循环: CycleDTO,
   最终人物属性: CharacterFinalDTO,
   计算目标: TargetDTO,
-  skillBasicData: SkillBasicDTO[],
+  技能基础数据: SkillBasicDTO[],
   总增益集合: SKillGainData[],
   开启强膂: boolean
   // 是否郭氏计算?: boolean
 ) => {
   // 在技能数据模型中找到当前执行循环内技能的数据，获取各种系数
-  const 当前技能属性 = skillBasicData.find((item) => item.技能名称 === 循环?.技能名称)
+  const 当前技能属性 = 技能基础数据.find((item) => item.技能名称 === 循环?.技能名称)
   // 总输出
   let totalDps = 0
   let 无增益技能数 = 循环?.技能数量
@@ -196,7 +196,7 @@ export const geSkillTotalDps = (
   const 当前技能计算增益集合: SKillGainData[] = getSortZengyiList(总增益集合)
 
   当前技能计算增益集合
-    .filter((item) => [GainTypeEnum.力道, GainTypeEnum.郭氏力道].includes(item.增益类型))
+    .filter((item) => [增益类型枚举.力道, 增益类型枚举.郭氏力道].includes(item.增益类型))
     .forEach((增益数值信息) => {
       const {
         计算后人物属性,
@@ -265,7 +265,7 @@ export const geSkillTotalDps = (
   }
 
   当前技能计算增益集合
-    .filter((item) => ![GainTypeEnum.力道, GainTypeEnum.郭氏力道].includes(item.增益类型))
+    .filter((item) => ![增益类型枚举.力道, 增益类型枚举.郭氏力道].includes(item.增益类型))
     .forEach((增益数值信息) => {
       const {
         计算后人物属性,
@@ -312,14 +312,14 @@ export const geSkillTotalDps = (
   // 再计算独立增益集合
   当前技能计算增益集合
     .filter((item) =>
-      [GainDpsTypeEnum.B, GainDpsTypeEnum.C, GainDpsTypeEnum.D]?.includes(item.增益计算类型)
+      [增益计算类型枚举.B, 增益计算类型枚举.C, 增益计算类型枚举.D]?.includes(item.增益计算类型)
     )
     .forEach((增益数值信息) => {
-      if (增益数值信息.增益计算类型 === GainDpsTypeEnum.B) {
+      if (增益数值信息.增益计算类型 === 增益计算类型枚举.B) {
         计算技能增伤_B类 = switchGain_独立增伤(增益数值信息, 计算技能增伤_B类)?.计算后技能增伤
-      } else if (增益数值信息.增益计算类型 === GainDpsTypeEnum.C) {
+      } else if (增益数值信息.增益计算类型 === 增益计算类型枚举.C) {
         计算技能增伤_C类 = switchGain_独立增伤(增益数值信息, 计算技能增伤_C类)?.计算后技能增伤
-      } else if (增益数值信息.增益计算类型 === GainDpsTypeEnum.D) {
+      } else if (增益数值信息.增益计算类型 === 增益计算类型枚举.D) {
         计算技能增伤_D类 = switchGain_独立增伤(增益数值信息, 计算技能增伤_D类)?.计算后技能增伤
       }
     })

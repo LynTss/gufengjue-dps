@@ -6,52 +6,52 @@ import { 获取加速等级 } from '@/utils/help'
 import { getZengyiJiasu } from '@/utils/skill-dps'
 
 function useCycle(state?) {
-  let characterFinalData: any
-  let zengyixuanxiangData: any
-  let qixueData: any
-  let zengyiQiyong: any
-  let network: any
+  let 角色最终属性: any
+  let 增益数据: any
+  let 增益启用: any
+  let 当前奇穴信息: any
+  let 网络延迟: any
   let 当前循环各加速枚举: any
   if (state) {
-    characterFinalData = state?.characterFinalData
-    qixueData = state?.qixueData
-    zengyixuanxiangData = state?.zengyixuanxiangData
-    zengyiQiyong = state?.zengyiQiyong
-    network = state?.network
+    角色最终属性 = state?.角色最终属性
+    当前奇穴信息 = state?.当前奇穴信息
+    增益数据 = state?.增益数据
+    增益启用 = state?.增益启用
+    网络延迟 = state?.网络延迟
     当前循环各加速枚举 = state?.当前循环各加速枚举
   } else {
-    characterFinalData = useAppSelector((state) => state?.basic?.characterFinalData)
-    qixueData = useAppSelector((state) => state?.basic?.qixueData)
-    zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
-    zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
-    network = useAppSelector((state) => state?.basic?.network)
+    角色最终属性 = useAppSelector((state) => state?.basic?.角色最终属性)
+    当前奇穴信息 = useAppSelector((state) => state?.basic?.当前奇穴信息)
+    增益数据 = useAppSelector((state) => state?.basic?.增益数据)
+    增益启用 = useAppSelector((state) => state?.basic?.增益启用)
+    网络延迟 = useAppSelector((state) => state?.basic?.网络延迟)
     当前循环各加速枚举 = useAppSelector((state) => state?.basic?.当前循环各加速枚举)
   }
-  const 增益加速值 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
-  const 加速等级 = 获取加速等级(characterFinalData?.加速值 + 增益加速值) || 0
+  const 增益加速值 = 增益启用 ? getZengyiJiasu(增益数据) : 0
+  const 加速等级 = 获取加速等级(角色最终属性?.加速值 + 增益加速值) || 0
 
-  const 是否为大CW = !!characterFinalData?.装备增益?.大橙武特效
+  const 是否为大CW = !!角色最终属性?.装备增益?.大橙武特效
   const All_Cycle_Data = 获取全部循环()
   const 是否存在大CW循环 = All_Cycle_Data?.find((item) => item.name?.includes(`橙武`))
   if (是否为大CW) {
     当前循环各加速枚举 = 是否存在大CW循环?.各加速枚举
   }
-  const 循环信息 = 当前循环各加速枚举?.[加速等级]?.[network]
+  const 循环信息 = 当前循环各加速枚举?.[加速等级]?.[网络延迟]
   const 循环 = 循环信息?.cycle || []
   return {
-    cycle: 获取实际循环(循环, qixueData),
+    cycle: 获取实际循环(循环, 当前奇穴信息),
     dpsTime: 循环信息?.dpsTime,
   }
 }
 
 export default useCycle
 
-export const 获取实际循环 = (currentCycle: CycleDTO[], qixueData: string[]) => {
+export const 获取实际循环 = (currentCycle: CycleDTO[], 当前奇穴信息: string[]) => {
   let trueCycle = [...currentCycle]
 
   // 特殊处理界破
   // 如果循环里有界破但是奇穴里没有，删除界破数据
-  if (!qixueData?.includes('界破')) {
+  if (!当前奇穴信息?.includes('界破')) {
     // 说明已经计算过界破了
     const 界破数据 = trueCycle?.find((item) => item?.技能名称 === '界破')
     if (界破数据) {

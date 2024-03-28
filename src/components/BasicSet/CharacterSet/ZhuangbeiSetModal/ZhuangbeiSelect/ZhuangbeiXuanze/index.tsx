@@ -4,15 +4,10 @@
 import React, { forwardRef, useMemo, useState } from 'react'
 import { Select } from 'antd'
 import { EquipmentDTO } from '@/@types/equipment'
-import {
-  EquipmentCharacterPositionEnum,
-  EquipmentPositionEnum,
-  EquipmentTypeEnum,
-  GainTypeEnum,
-} from '@/@types/enum'
+import { 装备栏部位枚举, 装备部位枚举, 装备类型枚举, 增益类型枚举 } from '@/@types/enum'
 import './index.css'
 import { getZuiDaJingLian } from '..'
-import { getNewEquipmentData, getSkillCycleGainData } from '../../utils'
+import { getNewEquipmentData, 根据装备格式化技能基础数据 } from '../../utils'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { getFinalCharacterBasicDataByEquipment } from '../../../util'
 import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
@@ -23,7 +18,7 @@ interface ZhuangbeiXuanzeProps {
   allValue?: any // 选择装备的全部信息包含附魔等
   onChange?: (e: number) => void
   list: EquipmentDTO[]
-  type: EquipmentPositionEnum
+  type: 装备部位枚举
   indexKey: string
   默认镶嵌宝石等级: number
   form: any
@@ -34,8 +29,8 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
   const { list, type, indexKey, 默认镶嵌宝石等级, allValue, form, openEquipmentDiff, ...options } =
     props
 
-  const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
-  const currentDps = useAppSelector((state) => state?.basic?.currentDps)
+  const 技能基础数据 = useAppSelector((state) => state?.basic?.技能基础数据)
+  const 当前计算结果DPS = useAppSelector((state) => state?.basic?.当前计算结果DPS)
   const [dpsUpList, setDpsUpList] = useState<{ uuid: string; dpsUp: number }[]>()
   const dispatch = useAppDispatch()
 
@@ -53,10 +48,10 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
       //   return (
       //     item?.装备品级 >= 12800 ||
       //     [
-      //       EquipmentTypeEnum.大CW,
-      //       EquipmentTypeEnum.特效武器,
-      //       EquipmentTypeEnum.副本精简,
-      //       EquipmentTypeEnum.试炼精简,
+      //       装备类型枚举.大CW,
+      //       装备类型枚举.特效武器,
+      //       装备类型枚举.副本精简,
+      //       装备类型枚举.试炼精简,
       //     ]?.includes(item?.装备类型)
       //   )
       // })
@@ -81,19 +76,19 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
           }),
           当前精炼等级: getZuiDaJingLian(item),
           id: item?.id,
-          装备部位: EquipmentCharacterPositionEnum[indexKey],
+          装备部位: 装备栏部位枚举[indexKey],
         }
 
         const newEquipmentData = getNewEquipmentData({
           ...oldEquipment,
-          [`${EquipmentCharacterPositionEnum[indexKey]}${indexKey}`]: newZhuangbeiData,
+          [`${装备栏部位枚举[indexKey]}${indexKey}`]: newZhuangbeiData,
         })
 
         const newDps = getEquipmentDps(newEquipmentData)
 
         return {
           uuid: `${item?.uid}${item?.id}` || '',
-          dpsUp: newDps - (oldDps || currentDps),
+          dpsUp: newDps - (oldDps || 当前计算结果DPS),
         }
       })
 
@@ -115,8 +110,8 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
           ...finalData,
           装备增益: { ...equipmentData },
         },
-        更新技能基础数据: getSkillCycleGainData(
-          skillBasicData,
+        更新技能基础数据: 根据装备格式化技能基础数据(
+          技能基础数据,
           equipmentData.套装技能,
           equipmentData.大橙武特效,
           equipmentData.小橙武特效
@@ -132,10 +127,10 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
       <Select
         showSearch
         // optionLabelProp={'label'}
-        className="zhuangbei-select"
+        className='zhuangbei-select'
         placeholder={`请选择${type}`}
         dropdownMatchSelectWidth={400}
-        optionFilterProp="label"
+        optionFilterProp='label'
         onDropdownVisibleChange={(e) => {
           if (e) {
             getDpsUpList()
@@ -172,11 +167,9 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
               <div>
                 <span
                   className={`zhuangbei-select-name ${
-                    [
-                      EquipmentTypeEnum.大CW,
-                      EquipmentTypeEnum.小CW,
-                      EquipmentTypeEnum.橙戒,
-                    ].includes(item.装备类型)
+                    [装备类型枚举.大CW, 装备类型枚举.小CW, 装备类型枚举.橙戒].includes(
+                      item.装备类型
+                    )
                       ? 'zhuangbei-select-name-cw'
                       : ''
                   }`}
@@ -224,35 +217,35 @@ export default forwardRef(ZhuangbeiXuanze)
 export const getZhuangbeiZengyiMiaoshu = (data: EquipmentDTO) => {
   const { 装备增益, 装备类型 } = data
   const strList: string[] = []
-  if ([EquipmentTypeEnum.特效武器].includes(装备类型)) {
+  if ([装备类型枚举.特效武器].includes(装备类型)) {
     strList.push('特效')
   }
-  if ([EquipmentTypeEnum.副本精简, EquipmentTypeEnum.试炼精简].includes(装备类型)) {
+  if ([装备类型枚举.副本精简, 装备类型枚举.试炼精简].includes(装备类型)) {
     strList.push('精简')
   }
   装备增益.forEach((item) => {
     switch (item.增益类型) {
-      case GainTypeEnum.体质:
-        if (装备类型 === EquipmentTypeEnum.副本精简) {
+      case 增益类型枚举.体质:
+        if (装备类型 === 装备类型枚举.副本精简) {
           strList.push('体')
         }
         break
-      case GainTypeEnum.外攻会心等级:
+      case 增益类型枚举.外攻会心等级:
         strList.push('会心')
         break
-      case GainTypeEnum.外攻会心效果等级:
+      case 增益类型枚举.外攻会心效果等级:
         strList.push('会效')
         break
-      case GainTypeEnum.外攻破防等级:
+      case 增益类型枚举.外攻破防等级:
         strList.push('破防')
         break
-      case GainTypeEnum.无双等级:
+      case 增益类型枚举.无双等级:
         strList.push('无双')
         break
-      case GainTypeEnum.破招:
+      case 增益类型枚举.破招:
         strList.push('破招')
         break
-      case GainTypeEnum.加速:
+      case 增益类型枚举.加速:
         strList.push('加速')
         break
     }

@@ -1,12 +1,12 @@
 import { Cascader, Radio } from 'antd'
 import React, { useMemo } from 'react'
 import WUCAISHI_DATA from '@/data/wucaishi'
-import { WuCaiShiGainNameEnum } from '@/@types/enum'
+import { 五彩石增益类型枚举 } from '@/@types/enum'
 import './indes.css'
 
 interface WucaishiFilterList {
-  value: WuCaiShiGainNameEnum
-  label: WuCaiShiGainNameEnum
+  value: 五彩石增益类型枚举
+  label: 五彩石增益类型枚举
   children?: WucaishiFilterList[]
 }
 
@@ -62,12 +62,12 @@ function WuCaiShiXuanZe(props: WuCaiShiXuanZeProps) {
   }
 
   return (
-    <div className="wucaishi-wrap">
+    <div className='wucaishi-wrap'>
       <Cascader
         className={'wucaishi-xuanze'}
         value={mingzi}
         showSearch
-        placeholder="选择五彩石"
+        placeholder='选择五彩石'
         onChange={handleChange}
         options={wucaishiFilterList}
       />

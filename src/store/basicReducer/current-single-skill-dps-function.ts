@@ -20,12 +20,12 @@ export const currentSingleSkillDpsFunction =
     const { 计算技能 } = props || {}
 
     const currentState: RootState = getState() || {}
-    const 当前角色面板 = { ...currentState?.basic?.characterFinalData }
-    const 当前目标 = currentState?.basic?.currentTarget
-    const 团队增益数据 = { ...currentState?.zengyi?.zengyixuanxiangData }
-    const 团队增益是否启用 = currentState?.zengyi?.zengyiQiyong
-    const 技能基础数据 = currentState?.zengyi?.skillBasicData
-    const 奇穴数据 = currentState.basic.qixueData
+    const 当前角色面板 = { ...currentState?.basic?.角色最终属性 }
+    const 当前目标 = currentState?.basic?.当前输出计算目标
+    const 团队增益数据 = { ...currentState?.basic?.增益数据 }
+    const 团队增益是否启用 = currentState?.basic?.增益启用
+    const 技能基础数据 = currentState?.basic?.技能基础数据
+    const 奇穴数据 = currentState.basic.当前奇穴信息
 
     const 开启力道加成奇穴 = 判断是否开启力道加成奇穴(奇穴数据)
 

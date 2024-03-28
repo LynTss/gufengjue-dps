@@ -3,7 +3,7 @@ import { Button, Drawer, Form, Select } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { DEFAULT_QIXUE_VALUE } from '@/pages/constant'
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import { setQixueData } from '@/store/basicReducer'
+import { 更新方案数据 } from '@/store/basicReducer'
 import './index.css'
 
 interface QixueSetProps {
@@ -13,12 +13,11 @@ interface QixueSetProps {
 
 const QixueSet: React.FC<QixueSetProps> = (props) => {
   const { getDpsFunction, ...rest } = props
-
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false)
   const [form] = Form.useForm()
 
   const dispatch = useAppDispatch()
-  const qixueData = useAppSelector((state) => state?.basic?.qixueData)
+  const 当前奇穴信息 = useAppSelector((state) => state?.basic?.当前奇穴信息)
 
   const handleChangeQixue = () => {
     setTimeout(() => {
@@ -26,8 +25,7 @@ const QixueSet: React.FC<QixueSetProps> = (props) => {
         const newArray = Object.keys(values).map((key) => {
           return values[key]
         })
-        localStorage.setItem('daozong_qixue_data', JSON.stringify(newArray))
-        dispatch(setQixueData(newArray))
+        dispatch(更新方案数据({ 数据: newArray, 属性: '当前奇穴信息' }))
       })
       getDpsFunction && getDpsFunction()
     }, 0)
@@ -36,26 +34,25 @@ const QixueSet: React.FC<QixueSetProps> = (props) => {
   // 监听表单变化
   useEffect(() => {
     const obj = {}
-    qixueData.map((item, index) => {
+    当前奇穴信息.map((item, index) => {
       obj[index] = item || DEFAULT_QIXUE_VALUE[index]
     })
     form?.setFieldsValue({
       ...obj,
     })
-  }, [qixueData])
+  }, [当前奇穴信息])
 
   return (
     <>
-      <Button className="qixue-set-button" onClick={() => setDrawerOpen(true)} {...rest}>
+      <Button className='qixue-set-button' onClick={() => setDrawerOpen(true)} {...rest}>
         奇穴设置
       </Button>
       <Drawer
         title={'奇穴设置'}
         onClose={() => setDrawerOpen(false)}
         open={drawerOpen}
-        placement="bottom"
+        placement='bottom'
         height={200}
-        mask={false}
         className={'qixue-set-drawer'}
       >
         <Form form={form} className={'qixue-set-drawer-wrap'}>
@@ -67,7 +64,7 @@ const QixueSet: React.FC<QixueSetProps> = (props) => {
                   disabled={重?.是否不可编辑}
                   onChange={handleChangeQixue}
                   dropdownMatchSelectWidth={false}
-                  optionLabelProp="label"
+                  optionLabelProp='label'
                   showArrow={false}
                   popupClassName={'qixue-set-item-select-popup'}
                   defaultValue={DEFAULT_QIXUE_VALUE[index]}

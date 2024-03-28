@@ -1,4 +1,4 @@
-import { GainTypeEnum, WuCaiShiGainNameEnum } from '@/@types/enum'
+import { 增益类型枚举, 五彩石增益类型枚举 } from '@/@types/enum'
 
 const 切糕名标识 = ['暮祁', '雪舞', '雪漫', '风停', '风烈']
 const 套装名标识 = ['揽江·', '濯心·', '灵源·']
@@ -22,24 +22,24 @@ export const zhuangbeidaoru = (list: MoHeZhuangBeiShuJu[]) => {
       ...wuqishanghaiObj,
       装备类型: isWuqi
         ? +item.MaxStrengthLevel === 4
-          ? `EquipmentTypeEnum.特效武器`
+          ? `装备类型枚举.特效武器`
           : +item.MaxStrengthLevel === 6
-          ? `EquipmentTypeEnum.普通`
+          ? `装备类型枚举.普通`
           : +item.MaxStrengthLevel === 8
-          ? `EquipmentTypeEnum.大CW`
-          : `EquipmentTypeEnum.小CW`
+          ? `装备类型枚举.大CW`
+          : `装备类型枚举.小CW`
         : 切糕名标识?.find((item) => name?.includes(item))
-        ? `EquipmentTypeEnum.切糕`
+        ? `装备类型枚举.切糕`
         : 套装名标识?.find((item) => name?.includes(item))
-        ? `EquipmentTypeEnum.门派套装`
+        ? `装备类型枚举.门派套装`
         : +item.MaxStrengthLevel === 4
-        ? `EquipmentTypeEnum.副本精简`
+        ? `装备类型枚举.副本精简`
         : +item.MaxStrengthLevel === 3
-        ? `EquipmentTypeEnum.试炼精简`
+        ? `装备类型枚举.试炼精简`
         : +item.MaxStrengthLevel === 8
-        ? `EquipmentTypeEnum.橙戒`
+        ? `装备类型枚举.橙戒`
         : +item.MaxStrengthLevel === 6
-        ? `EquipmentTypeEnum.普通`
+        ? `装备类型枚举.普通`
         : `未匹配`,
       装备增益: Object.keys(item)
         .filter((key) => key.includes('_Magic'))
@@ -124,8 +124,8 @@ export const wucaishidaoru = (list: MoHeWuCaiShiShuJu[]) => {
       const name = item.Name || '数据丢失-未知'
       const i: Array<{
         增益数值: number
-        增益名称: WuCaiShiGainNameEnum
-        增益类型: GainTypeEnum | '未知'
+        增益名称: 五彩石增益类型枚举
+        增益类型: 增益类型枚举 | '未知'
       }> = []
       if (item.Attribute1ID) {
         i.push({
@@ -186,36 +186,36 @@ interface MoHeWuCaiShiShuJu {
 
 // 属性类型枚举（转化魔盒的属性类型为本地属性类型
 const ShuxingMeiju = {
-  atVitalityBase: 'GainTypeEnum.体质',
-  atStrengthBase: 'GainTypeEnum.力道',
-  atPhysicsAttackPowerBase: 'GainTypeEnum.基础攻击',
-  atHasteBase: 'GainTypeEnum.加速',
-  atSurplusValueBase: 'GainTypeEnum.破招',
-  atPhysicsCriticalStrike: 'GainTypeEnum.外攻会心等级',
-  atPhysicsCriticalDamagePowerBase: 'GainTypeEnum.外攻会心效果等级',
-  atPhysicsOvercomeBase: 'GainTypeEnum.外攻破防等级',
-  atStrainBase: 'GainTypeEnum.无双等级',
-  atMeleeWeaponDamageBase: 'GainTypeEnum.近战武器伤害',
+  atVitalityBase: '增益类型枚举.体质',
+  atStrengthBase: '增益类型枚举.力道',
+  atPhysicsAttackPowerBase: '增益类型枚举.基础攻击',
+  atHasteBase: '增益类型枚举.加速',
+  atSurplusValueBase: '增益类型枚举.破招',
+  atPhysicsCriticalStrike: '增益类型枚举.外攻会心等级',
+  atPhysicsCriticalDamagePowerBase: '增益类型枚举.外攻会心效果等级',
+  atPhysicsOvercomeBase: '增益类型枚举.外攻破防等级',
+  atStrainBase: '增益类型枚举.无双等级',
+  atMeleeWeaponDamageBase: '增益类型枚举.近战武器伤害',
 }
 
 const XiangQianKOngMeiju = {
-  atStrengthBase: 'EquipmentInlayEnum.力道',
-  atPhysicsAttackPowerBase: 'EquipmentInlayEnum.攻击',
-  atSurplusValueBase: 'EquipmentInlayEnum.破招',
-  atPhysicsCriticalStrike: 'EquipmentInlayEnum.会心',
-  atPhysicsCriticalDamagePowerBase: 'EquipmentInlayEnum.会效',
-  atPhysicsOvercomeBase: 'EquipmentInlayEnum.破防',
-  atStrainBase: 'EquipmentInlayEnum.无双',
+  atStrengthBase: '镶嵌增伤类型枚举.力道',
+  atPhysicsAttackPowerBase: '镶嵌增伤类型枚举.攻击',
+  atSurplusValueBase: '镶嵌增伤类型枚举.破招',
+  atPhysicsCriticalStrike: '镶嵌增伤类型枚举.会心',
+  atPhysicsCriticalDamagePowerBase: '镶嵌增伤类型枚举.会效',
+  atPhysicsOvercomeBase: '镶嵌增伤类型枚举.破防',
+  atStrainBase: '镶嵌增伤类型枚举.无双',
 }
 
 const WuCaiShiGainNameMeiju = {
-  atStrengthBase: 'WuCaiShiGainNameEnum.力道',
-  atPhysicsAttackPowerBase: 'WuCaiShiGainNameEnum.外功攻击',
-  atSurplusValueBase: 'WuCaiShiGainNameEnum.破招值',
-  atPhysicsCriticalStrike: 'WuCaiShiGainNameEnum.外功会心等级',
-  atPhysicsCriticalDamagePowerBase: 'WuCaiShiGainNameEnum.外功会心效果等级',
-  atPhysicsOvercomeBase: 'WuCaiShiGainNameEnum.外功破防等级',
-  atStrainBase: 'WuCaiShiGainNameEnum.无双等级',
-  atMeleeWeaponDamageBase: 'WuCaiShiGainNameEnum.近战武器伤害',
-  atHasteBase: 'WuCaiShiGainNameEnum.加速等级',
+  atStrengthBase: '五彩石增益类型枚举.力道',
+  atPhysicsAttackPowerBase: '五彩石增益类型枚举.外功攻击',
+  atSurplusValueBase: '五彩石增益类型枚举.破招值',
+  atPhysicsCriticalStrike: '五彩石增益类型枚举.外功会心等级',
+  atPhysicsCriticalDamagePowerBase: '五彩石增益类型枚举.外功会心效果等级',
+  atPhysicsOvercomeBase: '五彩石增益类型枚举.外功破防等级',
+  atStrainBase: '五彩石增益类型枚举.无双等级',
+  atMeleeWeaponDamageBase: '五彩石增益类型枚举.近战武器伤害',
+  atHasteBase: '五彩石增益类型枚举.加速等级',
 }

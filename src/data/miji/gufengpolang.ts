@@ -1,4 +1,4 @@
-import { GainDpsTypeEnum, GainTypeEnum } from '@/@types/enum'
+import { 增益计算类型枚举, 增益类型枚举 } from '@/@types/enum'
 import { MijiBasicDataDTO } from '@/@types/miji'
 
 const Miji_Gufengpolang: MijiBasicDataDTO[] = [
@@ -7,8 +7,8 @@ const Miji_Gufengpolang: MijiBasicDataDTO[] = [
     常驻增益: true,
     增益集合: [
       {
-        增益类型: GainTypeEnum.伤害百分比,
-        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: 增益类型枚举.伤害百分比,
+        增益计算类型: 增益计算类型枚举.A,
         增益数值: 0.04,
       },
     ],
@@ -18,8 +18,8 @@ const Miji_Gufengpolang: MijiBasicDataDTO[] = [
     常驻增益: true,
     增益集合: [
       {
-        增益类型: GainTypeEnum.伤害百分比,
-        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: 增益类型枚举.伤害百分比,
+        增益计算类型: 增益计算类型枚举.A,
         增益数值: 0.05,
       },
     ],
@@ -29,8 +29,8 @@ const Miji_Gufengpolang: MijiBasicDataDTO[] = [
     常驻增益: true,
     增益集合: [
       {
-        增益类型: GainTypeEnum.外攻会心百分比,
-        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: 增益类型枚举.外攻会心百分比,
+        增益计算类型: 增益计算类型枚举.A,
         增益数值: 0.04,
       },
     ],
@@ -40,8 +40,8 @@ const Miji_Gufengpolang: MijiBasicDataDTO[] = [
     常驻增益: true,
     增益集合: [
       {
-        增益类型: GainTypeEnum.外攻会心百分比,
-        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: 增益类型枚举.外攻会心百分比,
+        增益计算类型: 增益计算类型枚举.A,
         增益数值: 0.03,
       },
     ],

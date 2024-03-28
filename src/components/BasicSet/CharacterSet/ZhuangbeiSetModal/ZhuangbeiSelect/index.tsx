@@ -4,11 +4,7 @@
 import React, { forwardRef, useMemo } from 'react'
 import ZUANGBEI_DATA from '@/data/zhuangbei'
 import { EquipmentListDTO, EquipmentDTO } from '@/@types/equipment'
-import {
-  EquipmentCharacterPositionEnum,
-  EquipmentPositionEnum,
-  EquipmentTypeEnum,
-} from '@/@types/enum'
+import { 装备栏部位枚举, 装备部位枚举, 装备类型枚举 } from '@/@types/enum'
 import { AllEnchantDTO } from '@/data/enchantGain'
 import ZhuangbeiXuanze from './ZhuangbeiXuanze'
 import JinglianXuanze from './JinglianXuanze'
@@ -19,7 +15,7 @@ import './index.css'
 interface ZhuangbeiSelectProps {
   value?: EquipmentListDTO
   onChange?: (e: EquipmentListDTO) => void
-  type: EquipmentPositionEnum
+  type: 装备部位枚举
   indexKey: string
   默认镶嵌宝石等级: number
   form: any
@@ -47,7 +43,7 @@ function ZhuangbeiSelect(props: ZhuangbeiSelectProps, ref) {
         }),
         当前精炼等级: getZuiDaJingLian(obj),
         id: e,
-        装备部位: EquipmentCharacterPositionEnum[indexKey],
+        装备部位: 装备栏部位枚举[indexKey],
       } as any)
   }
 
@@ -93,7 +89,7 @@ function ZhuangbeiSelect(props: ZhuangbeiSelectProps, ref) {
 
   return (
     <div className={'zhuangbei-form-item'} ref={ref}>
-      <div className="zhuangbei-form-item-left-1">
+      <div className='zhuangbei-form-item-left-1'>
         <ZhuangbeiXuanze
           value={value?.id}
           allValue={value}
@@ -106,7 +102,7 @@ function ZhuangbeiSelect(props: ZhuangbeiSelectProps, ref) {
           openEquipmentDiff={openEquipmentDiff}
         />
       </div>
-      <div className="zhuangbei-form-item-left-2">
+      <div className='zhuangbei-form-item-left-2'>
         <JinglianXuanze
           disabled={!当前选择装备?.id}
           data={当前选择装备 as any}
@@ -116,7 +112,7 @@ function ZhuangbeiSelect(props: ZhuangbeiSelectProps, ref) {
           onChange={onJinglianSelect}
         />
       </div>
-      <div className="zhuangbei-form-item-left-3">
+      <div className='zhuangbei-form-item-left-3'>
         <XiangqianXuanze
           data={当前选择装备 as any}
           value={value?.镶嵌孔数组}
@@ -125,7 +121,7 @@ function ZhuangbeiSelect(props: ZhuangbeiSelectProps, ref) {
         />
       </div>
       {当前装备支持附魔列表?.length && 当前选择装备?.id ? (
-        <div className="zhuangbei-form-item-left-4">
+        <div className='zhuangbei-form-item-left-4'>
           <FumoXuanze list={当前装备支持附魔列表} value={value?.附魔} onChange={onFumoSelect} />
         </div>
       ) : null}
@@ -137,17 +133,17 @@ export default forwardRef(ZhuangbeiSelect)
 
 export const getZuiDaJingLian = (data?: EquipmentDTO) => {
   switch (data?.装备类型) {
-    case EquipmentTypeEnum.大CW:
+    case 装备类型枚举.大CW:
       return 8
-    case EquipmentTypeEnum.小CW:
+    case 装备类型枚举.小CW:
       return 8
-    case EquipmentTypeEnum.副本精简:
+    case 装备类型枚举.副本精简:
       return 4
-    case EquipmentTypeEnum.橙戒:
+    case 装备类型枚举.橙戒:
       return 8
-    case EquipmentTypeEnum.特效武器:
+    case 装备类型枚举.特效武器:
       return 4
-    case EquipmentTypeEnum.试炼精简:
+    case 装备类型枚举.试炼精简:
       return 3
     default:
       return 6

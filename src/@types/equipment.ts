@@ -1,23 +1,23 @@
 import {
-  EnchantNameEnum,
-  EquipmentCharacterPositionEnum,
-  EquipmentInlayEnum,
-  EquipmentTypeEnum,
-  GainTypeEnum,
+  附魔名称枚举,
+  装备栏部位枚举,
+  镶嵌增伤类型枚举,
+  装备类型枚举,
+  增益类型枚举,
 } from '@/@types/enum'
 
 /**
  * @name 配装器装备信息模型
  */
-export interface EquipmentBasicDTO {
+export interface 装备信息数据类型 {
   /**
    * @name 装备列表
    */
-  equipments: EquipmentListDTO[]
+  装备列表: EquipmentListDTO[]
   /**
    * @name 五彩石名称
    */
-  wucaishi: string
+  五彩石: string
   /**
    * @name 套装双会
    */
@@ -27,9 +27,9 @@ export interface EquipmentBasicDTO {
    */
   水特效武器: boolean
   /**
-   * @name 水特效武器_2赛季
+   * @name 水特效武器_英雄
    */
-  水特效武器_2: boolean
+  水特效武器_英雄: boolean
   /**
    * @name 龙门武器
    */
@@ -39,9 +39,9 @@ export interface EquipmentBasicDTO {
    */
   风特效腰坠: boolean
   /**
-   * @name 特效腰坠_2赛季
+   * @name 特效腰坠_英雄
    */
-  风特效腰坠_2: boolean
+  风特效腰坠_英雄: boolean
   /**
    * @name 套装技能加成次数
    */
@@ -51,19 +51,19 @@ export interface EquipmentBasicDTO {
    */
   切糕会心: number
   /**
-   * @name 切糕套装会心_2赛季
+   * @name 切糕套装会心_英雄
    */
-  切糕会心_2: number
+  切糕会心_英雄: number
   /**
    * @name 切糕套装无双
    */
   切糕无双: number
   /**
-   * @name 切糕套装无双_2赛季
+   * @name 切糕套装无双_英雄
    */
-  切糕无双_2: number
+  切糕无双_英雄: number
   /**
-   * @name 冬至套装无双
+   * @name 冬至套装全属性加成
    */
   冬至套装: boolean
   /**
@@ -115,11 +115,11 @@ export interface EquipmentListDTO {
   /**
    * @name 附魔名
    */
-  附魔?: EnchantNameEnum
+  附魔?: 附魔名称枚举
   /**
    * @name 装备部位
    */
-  装备部位: EquipmentCharacterPositionEnum
+  装备部位: 装备栏部位枚举
 }
 
 /**
@@ -153,7 +153,7 @@ export interface EquipmentDTO {
   /**
    * @name 装备类型
    */
-  装备类型: EquipmentTypeEnum
+  装备类型: 装备类型枚举
   /**
    * @name 最大精炼等级
    */
@@ -176,7 +176,7 @@ export interface EquipmentDTO {
 export interface EquipmentInfoDTO {
   精炼加成?: EquipmentStrengthenDTO[]
   增益数值: number
-  增益类型: GainTypeEnum
+  增益类型: 增益类型枚举
 }
 
 // 装备精炼加成
@@ -190,7 +190,7 @@ export interface EquipmentInlayDTO {
   /**
    * @name 镶嵌孔名
    */
-  镶嵌类型?: EquipmentInlayEnum
+  镶嵌类型?: 镶嵌增伤类型枚举
   /**
    * @name 镶嵌宝石等级
    */
@@ -198,8 +198,8 @@ export interface EquipmentInlayDTO {
 }
 
 export interface EquipmentInlayBasicDTO {
-  镶嵌类型: EquipmentInlayEnum
-  镶嵌增益类型: GainTypeEnum
+  镶嵌类型: 镶嵌增伤类型枚举
+  镶嵌增益类型: 增益类型枚举
   各等级增益数据: Array<{
     镶嵌等级: number
     增益数值: number

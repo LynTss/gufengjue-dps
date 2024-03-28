@@ -1,4 +1,4 @@
-import { GainTypeEnum } from './enum'
+import { 增益类型枚举 } from './enum'
 
 /**
  * @name 技能基础数据模型
@@ -80,12 +80,12 @@ export interface SKillGainData {
    * @name 技能增益计算类型
    * @description 相同类型增益按加法计算，不同增益类型按乘法计算
    */
-  增益计算类型: GainDpsTypeEnum
+  增益计算类型: 增益计算类型枚举
   /**
    * @name 技能增益类型
    * @description 增益的具体事项
    */
-  增益类型: GainTypeEnum
+  增益类型: 增益类型枚举
   /**
    * @name 技能增益数值
    * @description 增益的具体数值（数值、百分比等）

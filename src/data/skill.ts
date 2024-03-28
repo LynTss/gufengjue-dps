@@ -12,7 +12,7 @@ import 横云断浪增益 from './技能增益/横云断浪增益'
 import 孤锋破浪增益 from './技能增益/孤锋破浪增益'
 import 避实击虚增益 from './技能增益/避实击虚增益'
 import 鸣锋增益 from './技能增益/鸣锋增益'
-import { GainDpsTypeEnum, GainTypeEnum } from '@/@types/enum'
+import { 增益计算类型枚举, 增益类型枚举 } from '@/@types/enum'
 import {
   流血1层增益,
   流血2层增益,
@@ -369,8 +369,8 @@ const GuFengJueSkillDataDTO: SkillBasicDTO[] = [
         常驻增益: true,
         增益集合: [
           {
-            增益类型: GainTypeEnum.郭氏无视防御,
-            增益计算类型: GainDpsTypeEnum.A,
+            增益类型: 增益类型枚举.郭氏无视防御,
+            增益计算类型: 增益计算类型枚举.A,
             增益数值: 1024,
           },
         ],

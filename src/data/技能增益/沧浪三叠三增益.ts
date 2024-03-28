@@ -1,4 +1,4 @@
-import { GainDpsTypeEnum, GainTypeEnum } from '../../@types/enum'
+import { 增益计算类型枚举, 增益类型枚举 } from '../../@types/enum'
 import { SkillGainDTO } from '../../@types/skill'
 import 沧浪三叠增益 from './沧浪三叠增益'
 
@@ -10,13 +10,13 @@ const 沧浪三叠三增益: SkillGainDTO[] = [
     增益所在位置: '奇穴',
     增益集合: [
       {
-        增益类型: GainTypeEnum.外攻会心百分比,
-        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: 增益类型枚举.外攻会心百分比,
+        增益计算类型: 增益计算类型枚举.A,
         增益数值: 0.3,
       },
       {
-        增益类型: GainTypeEnum.郭氏外攻会心效果等级,
-        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: 增益类型枚举.郭氏外攻会心效果等级,
+        增益计算类型: 增益计算类型枚举.A,
         增益数值: 306,
       },
     ],

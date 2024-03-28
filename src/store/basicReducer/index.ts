@@ -4,132 +4,185 @@ import type { RootState } from '@/store/index'
 import { CharacterBasicDTO, CharacterFinalDTO, TargetDTO } from '@/@types/character'
 import { CustomCycle, 各加速枚举 } from '@/@types/cycle'
 import {
-  getDefaultCharacter,
-  getDefaultEquipment,
-  getDefaultCycle,
   getDefaultTarget,
-  getDefaultTime,
-  getDefaultNetwork,
   getCloseBackgroundImg,
-  getDefaultQixue,
   getDefaultCustomCycleList,
+  getDefaultNetwork,
+  getDefaultMijiSelectedData,
+  getDefaultCharacterFinal,
+  加载缓存全部方案数据,
+  加载缓存当前方案名称,
+  获取方案内信息,
 } from '@/utils/default'
-import { EquipmentBasicDTO } from '@/@types/equipment'
+import { 装备信息数据类型 } from '@/@types/equipment'
+import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
+import { MijiSelectedData } from '@/@types/miji'
+import { SkillBasicDTO } from '@/@types/skill'
+import { 全部方案数据 } from '@/@types/common'
+import { 缓存映射 } from '@/utils/system_constant'
+import { 获取全部循环 } from '@/data/skillCycle'
+
+import GuFengJueSkillDataDTO from '@/data/skill'
 
 interface BasicState {
+  // 当前方案名称
+  当前方案名称: string
+  // 全部方案数据
+  全部方案数据: 全部方案数据
   // 角色面板属性信息（不包含各种数据增益。只为装备带来的基础属性
-  characterBasicData: CharacterBasicDTO
+  角色基础属性: CharacterBasicDTO
   // 角色装备属性信息（不包含各种数据增益。只为装备带来的基础属性
-  equipmentBasicData: EquipmentBasicDTO
-  // 常驻增益计算后的属性，如（奇穴强膂、阵眼常驻增益、秀气、雷等buff）
-  characterFinalData: CharacterFinalDTO
+  装备信息: 装备信息数据类型
+  // 常驻增益计算后的属性，如（奇穴卢令、阵眼常驻增益、秀气、雷等buff）
+  角色最终属性: CharacterFinalDTO
   // 当前输出计算循环
   当前循环各加速枚举: 各加速枚举
   // 当前输出计算循环名
-  currentCycleName: string
+  当前循环名称: string
   // 当前输出计算目标
-  currentTarget: TargetDTO
+  当前输出计算目标: TargetDTO
   // 当前输出计算目标名
-  currentTargetName: string
+  当前输出计算目标名称: string
   // 当前计算过的dps
-  currentDps: number
-  // dps计算时间
-  dpsTime: number
+  当前计算结果DPS: number
   // 网络延迟
-  network: number
+  网络延迟: number
   // 关闭背景
-  closeBackgroundImg: boolean
+  关闭背景图: boolean
   // 奇穴信息
-  qixueData: string[]
+  当前奇穴信息: string[]
   // 自定义循环列表
-  customCycleList: CustomCycle[]
+  自定义循环列表: CustomCycle[]
+  // 增益选项
+  增益数据: ZengyixuanxiangDataDTO
+  // 增益是否启用
+  增益启用: boolean
+  // 秘籍保存数据
+  当前秘籍信息: MijiSelectedData[]
+  // 技能基础增益（技能的计算基础数据，计算秘籍、奇穴等数据都会修改该项目的值)
+  技能基础数据: SkillBasicDTO[]
 }
 
 const initialState: BasicState = {
-  characterBasicData: getDefaultCharacter(),
-  equipmentBasicData: getDefaultEquipment(),
-  network: getDefaultNetwork(),
-  characterFinalData: {
-    面板攻击: 0,
-    等级: 120,
-    基础攻击: 0,
-    破防值: 0,
-    力道: 0,
-    体质: 0,
-    加速值: 0,
-    破招值: 0,
-    无双值: 0,
-    武器伤害_最小值: 0,
-    武器伤害_最大值: 0,
-    会心值: 0,
-    会心效果值: 0,
-  },
-  currentDps: 0,
-  当前循环各加速枚举: getDefaultCycle()?.各加速枚举,
-  currentCycleName: getDefaultCycle()?.name,
-  currentTarget: getDefaultTarget()?.target,
-  currentTargetName: getDefaultTarget()?.name,
-  dpsTime: getDefaultTime(),
-  closeBackgroundImg: getCloseBackgroundImg(),
-  qixueData: getDefaultQixue(),
-  customCycleList: getDefaultCustomCycleList(),
+  当前方案名称: 加载缓存当前方案名称(),
+  全部方案数据: 加载缓存全部方案数据(),
+  // 方案内信息
+  角色基础属性: 获取方案内信息('角色基础属性'),
+  装备信息: 获取方案内信息('装备信息'),
+  增益启用: 获取方案内信息('增益启用'),
+  增益数据: 获取方案内信息('增益数据'),
+  当前奇穴信息: 获取方案内信息('当前奇穴信息'),
+  当前循环名称: 获取方案内信息('当前循环信息')?.当前循环名称,
+  当前循环各加速枚举: 获取方案内信息('当前循环信息')?.当前循环各加速枚举,
+  // 其他信息
+  当前计算结果DPS: 0,
+  网络延迟: getDefaultNetwork(),
+  角色最终属性: getDefaultCharacterFinal(),
+  当前输出计算目标: getDefaultTarget()?.target,
+  当前输出计算目标名称: getDefaultTarget()?.name,
+  关闭背景图: getCloseBackgroundImg(),
+  自定义循环列表: getDefaultCustomCycleList(),
+  当前秘籍信息: getDefaultMijiSelectedData(),
+  技能基础数据: GuFengJueSkillDataDTO,
 }
 
 export const counterSlice = createSlice({
   name: 'basic',
   initialState,
   reducers: {
-    setCharacterBasicData: (state, action: PayloadAction<CharacterBasicDTO>) => {
-      state.characterBasicData = { ...action.payload }
+    更新角色最终属性: (state, action: PayloadAction<CharacterFinalDTO>) => {
+      state.角色最终属性 = { ...action.payload }
     },
-    setEquipmentBasicData: (state, action: PayloadAction<EquipmentBasicDTO>) => {
-      state.equipmentBasicData = { ...action.payload }
+    更新网络延迟: (state, action: PayloadAction<number>) => {
+      state.网络延迟 = action.payload
     },
-    setCharacterFinalData: (state, action: PayloadAction<CharacterFinalDTO>) => {
-      state.characterFinalData = { ...action.payload }
+    更新当前计算结果DPS: (state, action: PayloadAction<number>) => {
+      state.当前计算结果DPS = action.payload
     },
-    setCurrentCycle: (state, action: PayloadAction<{ 各加速枚举: 各加速枚举; name: string }>) => {
-      // state.currentCycle = [...action.payload.cycle]
-      state.当前循环各加速枚举 = { ...action.payload.各加速枚举 }
-      state.currentCycleName = action.payload.name
+    更新当前关闭背景图片: (state, action: PayloadAction<boolean>) => {
+      state.关闭背景图 = action.payload
     },
-    setCurrentTarget: (state, action: PayloadAction<{ target: TargetDTO; name: string }>) => {
-      state.currentTarget = { ...action.payload.target }
-      state.currentTargetName = action.payload.name
+    更新当前自定义循环列表: (state, action: PayloadAction<CustomCycle[]>) => {
+      state.自定义循环列表 = action.payload
     },
-    setDpsTime: (state, action: PayloadAction<number>) => {
-      state.dpsTime = action.payload
+    更新技能基础数据: (state, action: PayloadAction<SkillBasicDTO[]>) => {
+      state.技能基础数据 = [...action.payload]
     },
-    setNetwork: (state, action: PayloadAction<number>) => {
-      state.network = action.payload
+    更新当前输出计算目标: (state, action: PayloadAction<{ target: TargetDTO; name: string }>) => {
+      state.当前输出计算目标 = { ...action.payload.target }
+      state.当前输出计算目标名称 = action.payload.name
     },
-    setCurrentDps: (state, action: PayloadAction<number>) => {
-      state.currentDps = action.payload
+    更新当前秘籍信息: (state, action: PayloadAction<MijiSelectedData[]>) => {
+      state.当前秘籍信息 = [...action.payload]
     },
-    setCloseBackgroundImg: (state, action: PayloadAction<boolean>) => {
-      state.closeBackgroundImg = action.payload
+    更新当前方案名称: (state, action: PayloadAction<string>) => {
+      state.当前方案名称 = action.payload
+      localStorage.setItem(缓存映射.当前方案名称, action.payload)
     },
-    setQixueData: (state, action: PayloadAction<string[]>) => {
-      state.qixueData = action.payload
+    更新全部方案数据: (state, action: PayloadAction<全部方案数据>) => {
+      state.全部方案数据 = action.payload
+      localStorage.setItem(缓存映射.全部方案数据, JSON.stringify(action.payload))
     },
-    setCustomCycleList: (state, action: PayloadAction<CustomCycle[]>) => {
-      state.customCycleList = action.payload
+    更新方案数据: (state, action: PayloadAction<更新方案数据入参>) => {
+      const 目标属性 = action?.payload?.属性
+      if (目标属性) {
+        // 更新当前正在使用的属性
+        state[目标属性] = action?.payload?.数据
+        if (目标属性 === '当前循环名称') {
+          state.当前循环各加速枚举 = { ...action.payload.额外数据 }
+        }
+        const 当前方案名称 = state.当前方案名称
+        // 更新全部方案内对应的属性
+        if (state.全部方案数据?.[当前方案名称]?.[目标属性]) {
+          state.全部方案数据[当前方案名称][目标属性] = action?.payload?.数据
+          // 更新浏览器缓存
+          localStorage.setItem(缓存映射.全部方案数据, JSON.stringify(state.全部方案数据))
+        }
+      }
+    },
+    更新选中的方案数据: (state, action: PayloadAction<string>) => {
+      const 切换的目标方案名称 = action?.payload
+      const 目标方案 = state.全部方案数据?.[切换的目标方案名称]
+
+      if (目标方案) {
+        state.当前方案名称 = 切换的目标方案名称
+        state.角色基础属性 = 目标方案.角色基础属性
+        state.装备信息 = 目标方案.装备信息
+        state.增益启用 = 目标方案.增益启用
+        state.增益数据 = 目标方案.增益数据
+        state.当前奇穴信息 = 目标方案.当前奇穴信息
+        state.当前循环名称 = 目标方案.当前循环名称
+
+        const 全部循环 = 获取全部循环()
+        const 加速枚举 =
+          全部循环.find((item) => item.name === 目标方案.当前循环名称)?.各加速枚举 ||
+          全部循环[0]?.各加速枚举
+
+        state.当前循环各加速枚举 = 加速枚举
+      }
     },
   },
 })
 
 export const {
-  setCharacterBasicData,
-  setEquipmentBasicData,
-  setCharacterFinalData,
-  setCurrentCycle,
-  setCurrentTarget,
-  setDpsTime,
-  setNetwork,
-  setCurrentDps,
-  setCloseBackgroundImg,
-  setQixueData,
-  setCustomCycleList,
+  更新角色最终属性,
+  更新网络延迟,
+  更新当前计算结果DPS,
+  更新当前关闭背景图片,
+  更新当前自定义循环列表,
+  更新技能基础数据,
+  更新当前输出计算目标,
+  更新当前秘籍信息,
+  更新方案数据,
+  更新当前方案名称,
+  更新全部方案数据,
+  更新选中的方案数据,
 } = counterSlice.actions // 导出操作state的喊出
 export const selectCount = (state: RootState) => state
 export default counterSlice.reducer // 导出当前reducer在store/index.ts中记性全局挂
+
+interface 更新方案数据入参 {
+  属性: string // 代表要更新的属性名
+  数据: any // 要更新的数据
+  额外数据?: any // 需要保存的额外数据
+}

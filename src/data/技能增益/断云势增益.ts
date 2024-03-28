@@ -1,4 +1,4 @@
-import { GainDpsTypeEnum, GainTypeEnum } from '../../@types/enum'
+import { 增益计算类型枚举, 增益类型枚举 } from '../../@types/enum'
 import { SkillGainDTO } from '../../@types/skill'
 import 通用增益 from './通用增益'
 
@@ -12,8 +12,8 @@ const 断云势增益: SkillGainDTO[] = [
   //   常驻增益: false,
   //   增益集合: [
   //     {
-  //       增益类型: GainTypeEnum.伤害百分比,
-  //       增益计算类型: GainDpsTypeEnum.A,
+  //       增益类型: 增益类型枚举.伤害百分比,
+  //       增益计算类型: 增益计算类型枚举.A,
   //       增益数值: 0.6,
   //     },
   //   ],
@@ -24,8 +24,8 @@ const 断云势增益: SkillGainDTO[] = [
     增益启用开关: false,
     增益集合: [
       {
-        增益类型: GainTypeEnum.伤害百分比,
-        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: 增益类型枚举.伤害百分比,
+        增益计算类型: 增益计算类型枚举.A,
         增益数值: 镇机每层基础增伤 * 1,
       },
     ],
@@ -36,8 +36,8 @@ const 断云势增益: SkillGainDTO[] = [
     增益启用开关: false,
     增益集合: [
       {
-        增益类型: GainTypeEnum.伤害百分比,
-        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: 增益类型枚举.伤害百分比,
+        增益计算类型: 增益计算类型枚举.A,
         增益数值: 镇机每层基础增伤 * 2,
       },
     ],
@@ -48,8 +48,8 @@ const 断云势增益: SkillGainDTO[] = [
     增益启用开关: false,
     增益集合: [
       {
-        增益类型: GainTypeEnum.伤害百分比,
-        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: 增益类型枚举.伤害百分比,
+        增益计算类型: 增益计算类型枚举.A,
         增益数值: 镇机每层基础增伤 * 3,
       },
     ],
@@ -60,8 +60,8 @@ const 断云势增益: SkillGainDTO[] = [
     增益启用开关: false,
     增益集合: [
       {
-        增益类型: GainTypeEnum.伤害百分比,
-        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: 增益类型枚举.伤害百分比,
+        增益计算类型: 增益计算类型枚举.A,
         增益数值: 镇机每层基础增伤 * 4,
       },
     ],
@@ -72,8 +72,8 @@ const 断云势增益: SkillGainDTO[] = [
     增益启用开关: false,
     增益集合: [
       {
-        增益类型: GainTypeEnum.伤害百分比,
-        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: 增益类型枚举.伤害百分比,
+        增益计算类型: 增益计算类型枚举.A,
         增益数值: 镇机每层基础增伤 * 5,
       },
     ],
@@ -84,8 +84,8 @@ const 断云势增益: SkillGainDTO[] = [
     增益启用开关: false,
     增益集合: [
       {
-        增益类型: GainTypeEnum.伤害百分比,
-        增益计算类型: GainDpsTypeEnum.A,
+        增益类型: 增益类型枚举.伤害百分比,
+        增益计算类型: 增益计算类型枚举.A,
         增益数值: 镇机每层基础增伤 * 6,
       },
     ],

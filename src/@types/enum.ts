@@ -1,5 +1,5 @@
 // 技能增伤类型
-export enum GainDpsTypeEnum {
+export enum 增益计算类型枚举 {
   A = 'a', // 和其他增益相加计算
   B = 'b', // 独立计算
   C = 'c', // 易伤是单独的乘区
@@ -8,7 +8,7 @@ export enum GainDpsTypeEnum {
 
 // 增益类型
 // !按优先级顺序计算，不可随意调整优先级
-export enum GainTypeEnum {
+export enum 增益类型枚举 {
   体质 = '体质',
   // 力道计算
   力道 = '力道',
@@ -46,7 +46,7 @@ export enum GainTypeEnum {
 }
 
 // 镶嵌增伤类型
-export enum EquipmentInlayEnum {
+export enum 镶嵌增伤类型枚举 {
   力道 = '力道',
   身法 = '身法',
   攻击 = '攻击',
@@ -59,7 +59,7 @@ export enum EquipmentInlayEnum {
 }
 
 // 装备类型
-export enum EquipmentTypeEnum {
+export enum 装备类型枚举 {
   普通 = '普通',
   副本精简 = '副本精简',
   切糕 = '切糕',
@@ -72,7 +72,7 @@ export enum EquipmentTypeEnum {
 }
 
 // 五彩石增益类型
-export enum WuCaiShiGainNameEnum {
+export enum 五彩石增益类型枚举 {
   力道 = '力道',
   身法 = '身法',
   外功攻击 = '外功攻击',
@@ -88,7 +88,7 @@ export enum WuCaiShiGainNameEnum {
 /**
  * @name 装备部位
  */
-export enum EquipmentPositionEnum {
+export enum 装备部位枚举 {
   帽子 = '帽子',
   衣服 = '衣服',
   腰带 = '腰带',
@@ -105,7 +105,7 @@ export enum EquipmentPositionEnum {
 /**
  * @name 装备栏部位
  */
-export enum EquipmentCharacterPositionEnum {
+export enum 装备栏部位枚举 {
   '_1' = '帽子',
   '_2' = '衣服',
   '_3' = '腰带',
@@ -130,7 +130,7 @@ export enum CommonEnchantNum {
 }
 
 // 装备附魔名称枚举
-export enum EnchantNameEnum {
+export enum 附魔名称枚举 {
   // 攻击
   攻击221 = '攻击+221',
   攻击326 = '攻击+326',
@@ -192,12 +192,12 @@ export enum EnchantNameEnum {
   加速883 = `加速+883`,
 }
 
-export enum ZengyanZengyiPositionEnum {
+export enum 增益计算位置枚举 {
   角色属性 = '角色属性',
   伤害计算 = '伤害计算',
 }
 
-export enum XiaochiTypeEnum {
+export enum 小吃类型枚举 {
   药品辅助 = '药品辅助',
   药品增强 = '药品增强',
   食品辅助 = '食品辅助',

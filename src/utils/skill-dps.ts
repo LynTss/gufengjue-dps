@@ -11,7 +11,7 @@ import { guoshiFangyu, guoshiPofang } from './help'
 import { 获取全部循环 } from '@/data/skillCycle'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import XIAOCHI_DATA from '@/data/xiaochi'
-import { GainTypeEnum } from '@/@types/enum'
+import { 增益类型枚举 } from '@/@types/enum'
 import 奇穴数据 from '@/data/qixue'
 import { QixueDataDTO } from '@/@types/qixue'
 import { CycleDTO } from '@/@types/cycle'
@@ -186,7 +186,7 @@ export const getZengyiJiasu = (zengyixuanxiangData: ZengyixuanxiangDataDTO) => {
     const currentXiaochi = XIAOCHI_DATA.find((a) => a.小吃名称 === item)
     if (currentXiaochi && currentXiaochi.增益集合?.length) {
       currentXiaochi.增益集合.forEach((a) => {
-        if (a.增益类型 === GainTypeEnum.加速) {
+        if (a.增益类型 === 增益类型枚举.加速) {
           number = number + a.增益数值
         }
       })

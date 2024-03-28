@@ -10,27 +10,27 @@ import { getNotGuoDpsTotal } from '@/components/Dps/wu_guoshi_dps_utils'
 
 interface DpsKernelOptimizerParams {
   // 以下为获取dps结果的的基本必要参数集
-  trueCycle: CycleDTO[]
-  characterFinalData: CharacterFinalDTO
-  currentTarget: TargetDTO
-  trueSkillBasicData: SkillBasicDTO[]
-  zengyixuanxiangData: ZengyixuanxiangDataDTO
-  zengyiQiyong: boolean
-  isOpenQiangLv: boolean
+  计算循环: CycleDTO[]
+  角色最终属性: CharacterFinalDTO
+  当前输出计算目标: TargetDTO
+  技能基础数据: SkillBasicDTO[]
+  增益数据: ZengyixuanxiangDataDTO
+  增益启用: boolean
+  开启强膂: boolean
 }
 
 // 计算dps最大期望值的算法
 const DpsKernelOptimizer = ({
-  trueCycle,
-  characterFinalData,
-  currentTarget,
-  trueSkillBasicData,
-  zengyiQiyong,
-  zengyixuanxiangData,
-  isOpenQiangLv,
+  计算循环,
+  角色最终属性,
+  当前输出计算目标,
+  技能基础数据,
+  增益数据,
+  增益启用,
+  开启强膂,
 }: DpsKernelOptimizerParams) => {
   // 当前计算环境下的原属性总量
-  const basicDTO = { ...characterFinalData }
+  const basicDTO = { ...角色最终属性 }
   /**
    * @name 传入BFGS算法的目标函数
    * !假定当前已经穿上装备的属性总量中，会心+破防的总量不变。无双+破招的总量不变
@@ -45,14 +45,14 @@ const DpsKernelOptimizer = ({
     const newCharacterData = getNewCharacterData(basicDTO, x?.[0], x?.[1])
 
     const { totalDps } = getNotGuoDpsTotal({
-      currentCycle: trueCycle,
-      characterFinalData: newCharacterData,
-      当前目标: currentTarget,
-      skillBasicData: trueSkillBasicData,
-      zengyiQiyong,
-      zengyixuanxiangData,
-      dpsTime: 300, // 这里只需要算总dps，算固定300秒的dps
-      开启强膂: isOpenQiangLv,
+      计算循环,
+      角色最终属性: newCharacterData,
+      当前目标: 当前输出计算目标,
+      技能基础数据,
+      增益启用,
+      增益数据,
+      战斗时间: 300, // 这里只需要算总dps，算固定300秒的dps
+      开启强膂,
     })
 
     // 由于dps太大，导致用1除灰远小于计算容差，所以这里取一个较大的值去除以最终结果。以达到dps越大最终结果越小的目的，用于算法计算

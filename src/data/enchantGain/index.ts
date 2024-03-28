@@ -1,10 +1,10 @@
 import { EnchantDTO } from '@/@types/enchant'
 import {
   CommonEnchantNum,
-  EnchantNameEnum,
-  EquipmentPositionEnum,
-  GainDpsTypeEnum,
-  GainTypeEnum,
+  附魔名称枚举,
+  装备部位枚举,
+  增益计算类型枚举,
+  增益类型枚举,
 } from '@/@types/enum'
 import { GongjiEnchantDTO } from './gongji'
 import { WushangEnchantDTO } from './wushang'
@@ -16,368 +16,320 @@ export const AllEnchantDTO: EnchantDTO[] = [
   ...LidaoEnchantDTO,
   ...WushangEnchantDTO,
   {
-    附魔名称: EnchantNameEnum.无双174,
-    附魔支持部位: [EquipmentPositionEnum.衣服, EquipmentPositionEnum.腰带],
-    增益集合: [{ 增益计算类型: GainDpsTypeEnum.A, 增益类型: GainTypeEnum.无双等级, 增益数值: 174 }],
+    附魔名称: 附魔名称枚举.无双174,
+    附魔支持部位: [装备部位枚举.衣服, 装备部位枚举.腰带],
+    增益集合: [
+      { 增益计算类型: 增益计算类型枚举.A, 增益类型: 增益类型枚举.无双等级, 增益数值: 174 },
+    ],
   },
   {
-    附魔名称: EnchantNameEnum.无双217,
-    附魔支持部位: [EquipmentPositionEnum.衣服, EquipmentPositionEnum.腰带],
-    增益集合: [{ 增益计算类型: GainDpsTypeEnum.A, 增益类型: GainTypeEnum.无双等级, 增益数值: 217 }],
+    附魔名称: 附魔名称枚举.无双217,
+    附魔支持部位: [装备部位枚举.衣服, 装备部位枚举.腰带],
+    增益集合: [
+      { 增益计算类型: 增益计算类型枚举.A, 增益类型: 增益类型枚举.无双等级, 增益数值: 217 },
+    ],
   },
   {
-    附魔名称: EnchantNameEnum.无双240,
-    附魔支持部位: [EquipmentPositionEnum.衣服, EquipmentPositionEnum.腰带],
-    增益集合: [{ 增益计算类型: GainDpsTypeEnum.A, 增益类型: GainTypeEnum.无双等级, 增益数值: 240 }],
+    附魔名称: 附魔名称枚举.无双240,
+    附魔支持部位: [装备部位枚举.衣服, 装备部位枚举.腰带],
+    增益集合: [
+      { 增益计算类型: 增益计算类型枚举.A, 增益类型: 增益类型枚举.无双等级, 增益数值: 240 },
+    ],
   },
   {
-    附魔名称: EnchantNameEnum.无双264,
-    附魔支持部位: [EquipmentPositionEnum.衣服, EquipmentPositionEnum.腰带],
-    增益集合: [{ 增益计算类型: GainDpsTypeEnum.A, 增益类型: GainTypeEnum.无双等级, 增益数值: 264 }],
+    附魔名称: 附魔名称枚举.无双264,
+    附魔支持部位: [装备部位枚举.衣服, 装备部位枚举.腰带],
+    增益集合: [
+      { 增益计算类型: 增益计算类型枚举.A, 增益类型: 增益类型枚举.无双等级, 增益数值: 264 },
+    ],
   },
   {
-    附魔名称: EnchantNameEnum.无双491,
-    附魔支持部位: [EquipmentPositionEnum.护腕, EquipmentPositionEnum.下装],
+    附魔名称: 附魔名称枚举.无双491,
+    附魔支持部位: [装备部位枚举.护腕, 装备部位枚举.下装],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.无双等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.无双等级,
         增益数值: +CommonEnchantNum.赛季491,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.无双723,
-    附魔支持部位: [EquipmentPositionEnum.护腕, EquipmentPositionEnum.下装],
+    附魔名称: 附魔名称枚举.无双723,
+    附魔支持部位: [装备部位枚举.护腕, 装备部位枚举.下装],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.无双等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.无双等级,
         增益数值: +CommonEnchantNum.赛季723,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.无双799,
-    附魔支持部位: [EquipmentPositionEnum.护腕, EquipmentPositionEnum.下装],
+    附魔名称: 附魔名称枚举.无双799,
+    附魔支持部位: [装备部位枚举.护腕, 装备部位枚举.下装],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.无双等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.无双等级,
         增益数值: +CommonEnchantNum.赛季799,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.无双883,
-    附魔支持部位: [EquipmentPositionEnum.护腕, EquipmentPositionEnum.下装],
+    附魔名称: 附魔名称枚举.无双883,
+    附魔支持部位: [装备部位枚举.护腕, 装备部位枚举.下装],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.无双等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.无双等级,
         增益数值: +CommonEnchantNum.赛季883,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.破防491,
-    附魔支持部位: [
-      EquipmentPositionEnum.护腕,
-      EquipmentPositionEnum.下装,
-      EquipmentPositionEnum.暗器,
-    ],
+    附魔名称: 附魔名称枚举.破防491,
+    附魔支持部位: [装备部位枚举.护腕, 装备部位枚举.下装, 装备部位枚举.暗器],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻破防等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻破防等级,
         增益数值: +CommonEnchantNum.赛季491,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.破防24,
-    附魔支持部位: [EquipmentPositionEnum.腰带, EquipmentPositionEnum.衣服],
+    附魔名称: 附魔名称枚举.破防24,
+    附魔支持部位: [装备部位枚举.腰带, 装备部位枚举.衣服],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻破防等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻破防等级,
         增益数值: +CommonEnchantNum.衣服腰带24,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.破防723,
-    附魔支持部位: [
-      EquipmentPositionEnum.护腕,
-      EquipmentPositionEnum.下装,
-      EquipmentPositionEnum.暗器,
-    ],
+    附魔名称: 附魔名称枚举.破防723,
+    附魔支持部位: [装备部位枚举.护腕, 装备部位枚举.下装, 装备部位枚举.暗器],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻破防等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻破防等级,
         增益数值: +CommonEnchantNum.赛季723,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.破防799,
-    附魔支持部位: [
-      EquipmentPositionEnum.护腕,
-      EquipmentPositionEnum.下装,
-      EquipmentPositionEnum.暗器,
-    ],
+    附魔名称: 附魔名称枚举.破防799,
+    附魔支持部位: [装备部位枚举.护腕, 装备部位枚举.下装, 装备部位枚举.暗器],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻破防等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻破防等级,
         增益数值: +CommonEnchantNum.赛季799,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.破防883,
-    附魔支持部位: [
-      EquipmentPositionEnum.护腕,
-      EquipmentPositionEnum.下装,
-      EquipmentPositionEnum.暗器,
-    ],
+    附魔名称: 附魔名称枚举.破防883,
+    附魔支持部位: [装备部位枚举.护腕, 装备部位枚举.下装, 装备部位枚举.暗器],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻破防等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻破防等级,
         增益数值: +CommonEnchantNum.赛季883,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.会心491,
-    附魔支持部位: [EquipmentPositionEnum.护腕, EquipmentPositionEnum.下装],
+    附魔名称: 附魔名称枚举.会心491,
+    附魔支持部位: [装备部位枚举.护腕, 装备部位枚举.下装],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻会心等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻会心等级,
         增益数值: +CommonEnchantNum.赛季491,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.会心723,
-    附魔支持部位: [EquipmentPositionEnum.护腕, EquipmentPositionEnum.下装],
+    附魔名称: 附魔名称枚举.会心723,
+    附魔支持部位: [装备部位枚举.护腕, 装备部位枚举.下装],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻会心等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻会心等级,
         增益数值: +CommonEnchantNum.赛季723,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.会心799,
-    附魔支持部位: [EquipmentPositionEnum.护腕, EquipmentPositionEnum.下装],
+    附魔名称: 附魔名称枚举.会心799,
+    附魔支持部位: [装备部位枚举.护腕, 装备部位枚举.下装],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻会心等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻会心等级,
         增益数值: +CommonEnchantNum.赛季799,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.会心883,
-    附魔支持部位: [EquipmentPositionEnum.护腕, EquipmentPositionEnum.下装],
+    附魔名称: 附魔名称枚举.会心883,
+    附魔支持部位: [装备部位枚举.护腕, 装备部位枚举.下装],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻会心等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻会心等级,
         增益数值: +CommonEnchantNum.赛季883,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.会效491,
+    附魔名称: 附魔名称枚举.会效491,
     附魔支持部位: [],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻会心效果等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻会心效果等级,
         增益数值: +CommonEnchantNum.赛季491,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.会效723,
+    附魔名称: 附魔名称枚举.会效723,
     附魔支持部位: [],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻会心效果等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻会心效果等级,
         增益数值: +CommonEnchantNum.赛季723,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.会效799,
+    附魔名称: 附魔名称枚举.会效799,
     附魔支持部位: [],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻会心效果等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻会心效果等级,
         增益数值: +CommonEnchantNum.赛季799,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.会效883,
+    附魔名称: 附魔名称枚举.会效883,
     附魔支持部位: [],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻会心效果等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻会心效果等级,
         增益数值: +CommonEnchantNum.赛季883,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.破招491,
-    附魔支持部位: [
-      EquipmentPositionEnum.帽子,
-      EquipmentPositionEnum.鞋子,
-      EquipmentPositionEnum.戒指,
-    ],
+    附魔名称: 附魔名称枚举.破招491,
+    附魔支持部位: [装备部位枚举.帽子, 装备部位枚举.鞋子, 装备部位枚举.戒指],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.破招,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.破招,
         增益数值: +CommonEnchantNum.赛季491,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.破招723,
-    附魔支持部位: [
-      EquipmentPositionEnum.帽子,
-      EquipmentPositionEnum.鞋子,
-      EquipmentPositionEnum.戒指,
-    ],
+    附魔名称: 附魔名称枚举.破招723,
+    附魔支持部位: [装备部位枚举.帽子, 装备部位枚举.鞋子, 装备部位枚举.戒指],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.破招,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.破招,
         增益数值: +CommonEnchantNum.赛季723,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.破招799,
-    附魔支持部位: [
-      EquipmentPositionEnum.帽子,
-      EquipmentPositionEnum.鞋子,
-      EquipmentPositionEnum.戒指,
-    ],
+    附魔名称: 附魔名称枚举.破招799,
+    附魔支持部位: [装备部位枚举.帽子, 装备部位枚举.鞋子, 装备部位枚举.戒指],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.破招,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.破招,
         增益数值: +CommonEnchantNum.赛季799,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.破招883,
-    附魔支持部位: [
-      EquipmentPositionEnum.帽子,
-      EquipmentPositionEnum.鞋子,
-      EquipmentPositionEnum.戒指,
-    ],
+    附魔名称: 附魔名称枚举.破招883,
+    附魔支持部位: [装备部位枚举.帽子, 装备部位枚举.鞋子, 装备部位枚举.戒指],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.破招,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.破招,
         增益数值: +CommonEnchantNum.赛季883,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.加速362,
-    附魔支持部位: [
-      EquipmentPositionEnum.帽子,
-      EquipmentPositionEnum.鞋子,
-      EquipmentPositionEnum.暗器,
-    ],
-    增益集合: [{ 增益计算类型: GainDpsTypeEnum.A, 增益类型: GainTypeEnum.加速, 增益数值: 362 }],
+    附魔名称: 附魔名称枚举.加速362,
+    附魔支持部位: [装备部位枚举.帽子, 装备部位枚举.鞋子, 装备部位枚举.暗器],
+    增益集合: [{ 增益计算类型: 增益计算类型枚举.A, 增益类型: 增益类型枚举.加速, 增益数值: 362 }],
   },
   {
-    附魔名称: EnchantNameEnum.加速442,
-    附魔支持部位: [
-      EquipmentPositionEnum.帽子,
-      EquipmentPositionEnum.鞋子,
-      EquipmentPositionEnum.暗器,
-    ],
+    附魔名称: 附魔名称枚举.加速442,
+    附魔支持部位: [装备部位枚举.帽子, 装备部位枚举.鞋子, 装备部位枚举.暗器],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.加速,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.加速,
         增益数值: +CommonEnchantNum.赛季442,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.加速491,
-    附魔支持部位: [
-      EquipmentPositionEnum.帽子,
-      EquipmentPositionEnum.鞋子,
-      EquipmentPositionEnum.暗器,
-    ],
+    附魔名称: 附魔名称枚举.加速491,
+    附魔支持部位: [装备部位枚举.帽子, 装备部位枚举.鞋子, 装备部位枚举.暗器],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.加速,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.加速,
         增益数值: +CommonEnchantNum.赛季491,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.加速723,
-    附魔支持部位: [
-      EquipmentPositionEnum.帽子,
-      EquipmentPositionEnum.鞋子,
-      EquipmentPositionEnum.暗器,
-    ],
+    附魔名称: 附魔名称枚举.加速723,
+    附魔支持部位: [装备部位枚举.帽子, 装备部位枚举.鞋子, 装备部位枚举.暗器],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.加速,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.加速,
         增益数值: +CommonEnchantNum.赛季723,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.加速799,
-    附魔支持部位: [
-      EquipmentPositionEnum.帽子,
-      EquipmentPositionEnum.鞋子,
-      EquipmentPositionEnum.暗器,
-    ],
+    附魔名称: 附魔名称枚举.加速799,
+    附魔支持部位: [装备部位枚举.帽子, 装备部位枚举.鞋子, 装备部位枚举.暗器],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.加速,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.加速,
         增益数值: +CommonEnchantNum.赛季799,
       },
     ],
   },
   {
-    附魔名称: EnchantNameEnum.加速883,
-    附魔支持部位: [
-      EquipmentPositionEnum.帽子,
-      EquipmentPositionEnum.鞋子,
-      EquipmentPositionEnum.暗器,
-    ],
+    附魔名称: 附魔名称枚举.加速883,
+    附魔支持部位: [装备部位枚举.帽子, 装备部位枚举.鞋子, 装备部位枚举.暗器],
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.加速,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.加速,
         增益数值: +CommonEnchantNum.赛季883,
       },
     ],

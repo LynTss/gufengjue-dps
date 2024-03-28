@@ -38,7 +38,7 @@ function CycleModalHeader(props: CycleModalHeaderProps) {
     更新网络延迟,
   } = props
 
-  const 自定义循环 = useAppSelector((state) => state?.basic?.customCycleList)
+  const 自定义循环 = useAppSelector((state) => state?.basic?.自定义循环列表)
 
   const 快捷添加循环 = (名称, 类型 = '默认') => {
     const 数据源 = 类型 === '默认' ? 快速导入默认循环 : 自定义循环

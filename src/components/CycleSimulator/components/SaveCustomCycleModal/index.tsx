@@ -1,7 +1,7 @@
 import { Alert, Checkbox, Form, Input, Modal, Select, Tabs } from 'antd'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import { setCustomCycleList } from '@/store/basicReducer'
+import { 更新当前自定义循环列表 } from '@/store/basicReducer'
 import './index.css'
 import 默认循环 from '@/data/skillCycle'
 import { 各加速枚举 } from '@/@types/cycle'
@@ -25,7 +25,7 @@ function SaveCustomCycleModal(props: SaveCustomCycleModalProps) {
   const [加速选项, 设置加速选项] = useState<number[]>([0, 1, 2])
   const [延迟选项, 设置延迟选项] = useState<number[]>([0, 1, 2])
 
-  const 自定义循环 = useAppSelector((state) => state?.basic?.customCycleList)
+  const 自定义循环 = useAppSelector((state) => state?.basic?.自定义循环列表)
 
   const dispatch = useAppDispatch()
 
@@ -77,7 +77,7 @@ function SaveCustomCycleModal(props: SaveCustomCycleModalProps) {
   }
 
   const 删除循环 = (名称) => {
-    dispatch(setCustomCycleList(自定义循环.filter((item) => item.名称 !== 名称)))
+    dispatch(更新当前自定义循环列表(自定义循环.filter((item) => item.名称 !== 名称)))
   }
 
   return (

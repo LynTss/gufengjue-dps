@@ -1,51 +1,34 @@
 import { EnchantDTO } from '@/@types/enchant'
-import {
-  EnchantNameEnum,
-  EquipmentPositionEnum,
-  GainDpsTypeEnum,
-  GainTypeEnum,
-} from '@/@types/enum'
+import { 附魔名称枚举, 装备部位枚举, 增益计算类型枚举, 增益类型枚举 } from '@/@types/enum'
 
 // 用于装备上的所有附魔
 export const GongjiEnchantDTO: EnchantDTO[] = [
   {
-    附魔名称: EnchantNameEnum.攻击221,
-    附魔支持部位: [
-      EquipmentPositionEnum.帽子,
-      EquipmentPositionEnum.鞋子,
-      EquipmentPositionEnum.戒指,
-      EquipmentPositionEnum.武器,
+    附魔名称: 附魔名称枚举.攻击221,
+    附魔支持部位: [装备部位枚举.帽子, 装备部位枚举.鞋子, 装备部位枚举.戒指, 装备部位枚举.武器],
+    增益集合: [
+      { 增益计算类型: 增益计算类型枚举.A, 增益类型: 增益类型枚举.基础攻击, 增益数值: 221 },
     ],
-    增益集合: [{ 增益计算类型: GainDpsTypeEnum.A, 增益类型: GainTypeEnum.基础攻击, 增益数值: 221 }],
   },
   {
-    附魔名称: EnchantNameEnum.攻击326,
-    附魔支持部位: [
-      EquipmentPositionEnum.帽子,
-      EquipmentPositionEnum.鞋子,
-      EquipmentPositionEnum.戒指,
-      EquipmentPositionEnum.武器,
+    附魔名称: 附魔名称枚举.攻击326,
+    附魔支持部位: [装备部位枚举.帽子, 装备部位枚举.鞋子, 装备部位枚举.戒指, 装备部位枚举.武器],
+    增益集合: [
+      { 增益计算类型: 增益计算类型枚举.A, 增益类型: 增益类型枚举.基础攻击, 增益数值: 326 },
     ],
-    增益集合: [{ 增益计算类型: GainDpsTypeEnum.A, 增益类型: GainTypeEnum.基础攻击, 增益数值: 326 }],
   },
   {
-    附魔名称: EnchantNameEnum.攻击360,
-    附魔支持部位: [
-      EquipmentPositionEnum.帽子,
-      EquipmentPositionEnum.鞋子,
-      EquipmentPositionEnum.戒指,
-      EquipmentPositionEnum.武器,
+    附魔名称: 附魔名称枚举.攻击360,
+    附魔支持部位: [装备部位枚举.帽子, 装备部位枚举.鞋子, 装备部位枚举.戒指, 装备部位枚举.武器],
+    增益集合: [
+      { 增益计算类型: 增益计算类型枚举.A, 增益类型: 增益类型枚举.基础攻击, 增益数值: 360 },
     ],
-    增益集合: [{ 增益计算类型: GainDpsTypeEnum.A, 增益类型: GainTypeEnum.基础攻击, 增益数值: 360 }],
   },
   {
-    附魔名称: EnchantNameEnum.攻击398,
-    附魔支持部位: [
-      EquipmentPositionEnum.帽子,
-      EquipmentPositionEnum.鞋子,
-      EquipmentPositionEnum.戒指,
-      EquipmentPositionEnum.武器,
+    附魔名称: 附魔名称枚举.攻击398,
+    附魔支持部位: [装备部位枚举.帽子, 装备部位枚举.鞋子, 装备部位枚举.戒指, 装备部位枚举.武器],
+    增益集合: [
+      { 增益计算类型: 增益计算类型枚举.A, 增益类型: 增益类型枚举.基础攻击, 增益数值: 398 },
     ],
-    增益集合: [{ 增益计算类型: GainDpsTypeEnum.A, 增益类型: GainTypeEnum.基础攻击, 增益数值: 398 }],
   },
 ]

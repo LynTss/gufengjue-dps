@@ -5,14 +5,14 @@ import skillMijiBasicData from '@/data/miji'
 /**
  * 根据当前已选的秘籍、奇穴等修改技能增益
  */
-export const getSkillBasicData = (
+export const 根据秘籍格式化技能基础数据 = (
   skillBasicData: SkillBasicDTO[],
-  mijiSelectedData: MijiSelectedData[]
+  当前秘籍信息: MijiSelectedData[]
 ): SkillBasicDTO[] => {
   const newSkillData = skillBasicData.map((item) => {
     return {
       ...item,
-      技能增益列表: getSkillMijiZengyi(item, mijiSelectedData),
+      技能增益列表: getSkillMijiZengyi(item, 当前秘籍信息),
     }
   })
   return newSkillData

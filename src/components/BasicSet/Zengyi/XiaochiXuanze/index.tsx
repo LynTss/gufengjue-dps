@@ -11,7 +11,7 @@ interface XiaoChiData {
 }
 
 function XiaochiXuanze({ saveDataAndGetDps, 开启智能对比 }) {
-  const zengyixuanxiangData = useAppSelector((state) => state.zengyi.zengyixuanxiangData)
+  const 增益数据 = useAppSelector((state) => state.basic.增益数据)
 
   const list: XiaoChiData[] = useMemo(() => {
     let res: XiaoChiData[] = []
@@ -34,7 +34,7 @@ function XiaochiXuanze({ saveDataAndGetDps, 开启智能对比 }) {
   }, [])
 
   const changeSelectedXiaochi = (e, type) => {
-    let newXiaochi = [...(zengyixuanxiangData?.小吃 || [])]
+    let newXiaochi = [...(增益数据?.小吃 || [])]
 
     const existTypeXiaochi = (list.find((a) => a?.type === type)?.data || [])?.find((c) =>
       newXiaochi?.includes(c?.小吃名称)
@@ -47,21 +47,20 @@ function XiaochiXuanze({ saveDataAndGetDps, 开启智能对比 }) {
       newXiaochi.push(e)
     }
 
-    const newZengyi = { ...zengyixuanxiangData, 小吃: newXiaochi.filter((item) => item) }
+    const newZengyi = { ...增益数据, 小吃: newXiaochi.filter((item) => item) }
 
     saveDataAndGetDps(newZengyi)
   }
 
   return (
-    <div className="zengyi-xiaochi-xuanze">
+    <div className='zengyi-xiaochi-xuanze'>
       {(list || []).map((item) => {
         const selectedValue =
-          item.data.find((a) => zengyixuanxiangData?.小吃?.includes(a.小吃名称))?.小吃名称 ||
-          undefined
+          item.data.find((a) => 增益数据?.小吃?.includes(a.小吃名称))?.小吃名称 || undefined
 
         return (
-          <div className="zengyi-xiaochi-item" key={item.type}>
-            <h1 className="zengyi-xiaochi-title">{item.type}</h1>
+          <div className='zengyi-xiaochi-item' key={item.type}>
+            <h1 className='zengyi-xiaochi-title'>{item.type}</h1>
             <XiaochiSelect
               data={item?.data}
               value={selectedValue}

@@ -1,9 +1,9 @@
 import {
   CommonEnchantNum,
-  EnchantNameEnum,
-  GainDpsTypeEnum,
-  GainTypeEnum,
-  XiaochiTypeEnum,
+  附魔名称枚举,
+  增益计算类型枚举,
+  增益类型枚举,
+  小吃类型枚举,
 } from '@/@types/enum'
 import { SKillGainData } from '@/@types/skill'
 import XIANGQIAN_DATA from '../xiangqian'
@@ -20,81 +20,81 @@ export interface IncomeDataDTO {
 // 用于收益计算的附魔
 export const IncomeFumo: IncomeDataDTO[] = [
   {
-    收益计算名称: EnchantNameEnum.攻击398,
+    收益计算名称: 附魔名称枚举.攻击398,
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.基础攻击,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.基础攻击,
         增益数值: 398,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.力道198,
+    收益计算名称: 附魔名称枚举.力道198,
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.力道,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.力道,
         增益数值: 198,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.武伤597,
+    收益计算名称: 附魔名称枚举.武伤597,
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.近战武器伤害,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.近战武器伤害,
         增益数值: 597,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.破防883,
+    收益计算名称: 附魔名称枚举.破防883,
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻破防等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻破防等级,
         增益数值: +CommonEnchantNum.赛季883,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.无双883,
+    收益计算名称: 附魔名称枚举.无双883,
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.无双等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.无双等级,
         增益数值: +CommonEnchantNum.赛季883,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.会心883,
+    收益计算名称: 附魔名称枚举.会心883,
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻会心等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻会心等级,
         增益数值: +CommonEnchantNum.赛季883,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.会效883,
+    收益计算名称: 附魔名称枚举.会效883,
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.外攻会心效果等级,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.外攻会心效果等级,
         增益数值: +CommonEnchantNum.赛季883,
       },
     ],
   },
   {
-    收益计算名称: EnchantNameEnum.破招883,
+    收益计算名称: 附魔名称枚举.破招883,
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
-        增益类型: GainTypeEnum.破招,
+        增益计算类型: 增益计算类型枚举.A,
+        增益类型: 增益类型枚举.破招,
         增益数值: +CommonEnchantNum.赛季883,
       },
     ],
@@ -103,7 +103,7 @@ export const IncomeFumo: IncomeDataDTO[] = [
 
 // 用于收益计算的小药
 export const IncomeXiaoyao: IncomeDataDTO[] = XIAOCHI_DATA.filter(
-  (item) => item.小吃部位 === XiaochiTypeEnum.药品增强
+  (item) => item.小吃部位 === 小吃类型枚举.药品增强
 )
   .map((item) => {
     const name = item?.小吃名称?.split('（')?.[1].split('）')?.[0]
@@ -116,7 +116,7 @@ export const IncomeXiaoyao: IncomeDataDTO[] = XIAOCHI_DATA.filter(
 
 // 用于收益计算的小吃
 export const IncomeXiaochi: IncomeDataDTO[] = XIAOCHI_DATA.filter(
-  (item) => item.小吃部位 === XiaochiTypeEnum.食品增强
+  (item) => item.小吃部位 === 小吃类型枚举.食品增强
 )
   .map((item) => {
     const name = item?.小吃名称?.split('（')?.[1]?.split('）')?.[0]
@@ -135,7 +135,7 @@ export const IncomeWuxingshi: IncomeDataDTO[] = XIANGQIAN_DATA.map((item) => {
     收益计算名称: `${name}`,
     增益集合: [
       {
-        增益计算类型: GainDpsTypeEnum.A,
+        增益计算类型: 增益计算类型枚举.A,
         增益类型: item.镶嵌增益类型,
         增益数值: 增益?.增益数值,
       },

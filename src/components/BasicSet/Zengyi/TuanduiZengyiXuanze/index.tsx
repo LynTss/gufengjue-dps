@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 import './index.css'
 
 function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
-  const zengyixuanxiangData = useAppSelector((state) => state.zengyi.zengyixuanxiangData)
+  const 增益数据 = useAppSelector((state) => state.basic.增益数据)
 
   const [visible, setVisible] = useState<boolean>(false)
 
@@ -19,13 +19,13 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
     cengshu?,
     fugailv?
   ) => {
-    const exist = zengyixuanxiangData?.团队增益?.some((item) => item.增益名称 === zengyi?.增益名称)
+    const exist = 增益数据?.团队增益?.some((item) => item.增益名称 === zengyi?.增益名称)
     const newData: ZengyixuanxiangDataDTO = {
-      ...zengyixuanxiangData,
-      团队增益: [...(zengyixuanxiangData?.团队增益 || [])],
+      ...增益数据,
+      团队增益: [...(增益数据?.团队增益 || [])],
     }
     if (exist) {
-      newData.团队增益 = zengyixuanxiangData?.团队增益?.map((item) => {
+      newData.团队增益 = 增益数据?.团队增益?.map((item) => {
         if (item.增益名称 === zengyi?.增益名称) {
           return {
             ...item,
@@ -55,17 +55,17 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
   }
 
   return (
-    <div className="tuandui-zengyi">
+    <div className='tuandui-zengyi'>
       <Row gutter={[8, 12]}>
         {TuanduiZengyi_DATA.map((item) => {
-          const 当前增益选项 = (zengyixuanxiangData?.团队增益 || []).find(
+          const 当前增益选项 = (增益数据?.团队增益 || []).find(
             (a) => item?.增益名称 === a?.增益名称
           )?.启用
           return (
             <Col span={6} key={item.增益名称}>
               <Checkbox
                 checked={当前增益选项}
-                className="tuandui-zengyi-checkbox"
+                className='tuandui-zengyi-checkbox'
                 onChange={(e) => onChangeZengyi(e?.target?.checked, item)}
               >
                 {item.增益名称}
@@ -74,14 +74,14 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
           )
         })}
       </Row>
-      <div className="tuandui-zengyi-btn-wrap">
-        <Button size="small" className="tuandui-zengyi-btn" onClick={() => setVisible(true)}>
+      <div className='tuandui-zengyi-btn-wrap'>
+        <Button size='small' className='tuandui-zengyi-btn' onClick={() => setVisible(true)}>
           {/* 部分增益层数/覆盖率设置 */}
           部分增益层数/覆盖率展示
         </Button>
       </div>
       <Modal
-        className="tuandui-zengyi-detail-modal"
+        className='tuandui-zengyi-detail-modal'
         centered
         open={visible}
         title={
@@ -99,7 +99,7 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
         {TuanduiZengyi_DATA.filter(
           (item) => item.层数选项数组?.length || item?.覆盖率支持手动录入
         ).map((item) => {
-          const 当前增益选项 = (zengyixuanxiangData?.团队增益 || []).find(
+          const 当前增益选项 = (增益数据?.团队增益 || []).find(
             (a) => item?.增益名称 === a?.增益名称
           )
           return (
@@ -111,15 +111,15 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
               }`}
               key={item.增益名称}
             >
-              <h1 className="tuandui-zengyi-detail-title">{item.增益名称}</h1>
-              <div className="tuandui-zengyi-detail-content">
+              <h1 className='tuandui-zengyi-detail-title'>{item.增益名称}</h1>
+              <div className='tuandui-zengyi-detail-content'>
                 {item?.层数选项数组?.length ? (
                   <div className={'tuandui-zengyi-content-item'}>
-                    <span className="tuandui-zengyi-content-item-title">层数</span>
+                    <span className='tuandui-zengyi-content-item-title'>层数</span>
                     <Select
                       value={当前增益选项?.层数}
-                      className="t-z-c-content"
-                      placeholder="请选择"
+                      className='t-z-c-content'
+                      placeholder='请选择'
                       defaultValue={item?.层数}
                       onChange={(e) => onChangeZengyi(null, item, e)}
                     >
@@ -135,11 +135,11 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
                 ) : null}
                 {item?.覆盖率支持手动录入 ? (
                   <div className={'tuandui-zengyi-content-item'}>
-                    <span className="tuandui-zengyi-content-item-title">覆盖率</span>
+                    <span className='tuandui-zengyi-content-item-title'>覆盖率</span>
                     <InputNumber
                       // disabled={openEdit}
-                      className="t-z-c-content"
-                      placeholder="请输入覆盖率"
+                      className='t-z-c-content'
+                      placeholder='请输入覆盖率'
                       min={0}
                       value={当前增益选项?.覆盖率}
                       precision={2}

@@ -12,14 +12,15 @@ interface XiaochiSelectProps extends SelectProps {
 const XiaochiSelect: React.FC<XiaochiSelectProps> = (props) => {
   const { 开启智能对比, data, ...rest } = props
 
-  const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
-  const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
-  const currentDps = useAppSelector((state) => state?.basic?.currentDps)
+  const 增益数据 = useAppSelector((state) => state?.basic?.增益数据)
+  const 增益启用 = useAppSelector((state) => state?.basic?.增益启用)
+  const 当前计算结果DPS = useAppSelector((state) => state?.basic?.当前计算结果DPS)
+
   const [dpsUpList, setDpsUpList] = useState<Array<{ key: string; dpsUp: number }>>([])
   const dispatch = useAppDispatch()
 
   const getDpsUpList = () => {
-    if (开启智能对比 && zengyiQiyong && currentDps) {
+    if (开启智能对比 && 增益启用 && 当前计算结果DPS) {
       const newDpsUpList = data
         // 加速的暂不参与计算
         ?.filter((item) => !item.小吃名称?.includes('加速'))
@@ -27,7 +28,7 @@ const XiaochiSelect: React.FC<XiaochiSelectProps> = (props) => {
           const newDps = getAfterChangeXiaochiDps(item.小吃名称)
           return {
             key: item.小吃名称,
-            dpsUp: newDps - currentDps,
+            dpsUp: newDps - 当前计算结果DPS,
           }
         })
       setDpsUpList(newDpsUpList || [])
@@ -36,12 +37,10 @@ const XiaochiSelect: React.FC<XiaochiSelectProps> = (props) => {
 
   // 计算阵眼收益
   const getAfterChangeXiaochiDps = (小吃名称) => {
-    const 过滤原小吃数组 = zengyixuanxiangData.小吃.filter(
-      (item) => !data?.some((a) => a.小吃名称 === item)
-    )
+    const 过滤原小吃数组 = 增益数据.小吃.filter((item) => !data?.some((a) => a.小吃名称 === item))
     const { dpsPerSecond } = dispatch(
       currentDpsFunction({
-        更新团队增益数据: { ...zengyixuanxiangData, 小吃: [...(过滤原小吃数组 || []), 小吃名称] },
+        更新团队增益数据: { ...增益数据, 小吃: [...(过滤原小吃数组 || []), 小吃名称] },
       })
     )
     return dpsPerSecond || 0
@@ -50,9 +49,9 @@ const XiaochiSelect: React.FC<XiaochiSelectProps> = (props) => {
   return (
     <Select
       allowClear
-      placeholder="请选择"
-      className="zengyi-xiaochi-select"
-      optionFilterProp="label"
+      placeholder='请选择'
+      className='zengyi-xiaochi-select'
+      optionFilterProp='label'
       {...rest}
       onDropdownVisibleChange={(e) => {
         if (e) {

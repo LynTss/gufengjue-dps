@@ -11,7 +11,7 @@ import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
 function Dps(props, ref) {
   const { zengyiVisible } = props
   const dispatch = useAppDispatch()
-  const currentDps = useAppSelector((state) => state?.basic?.currentDps)
+  const 当前计算结果DPS = useAppSelector((state) => state?.basic?.当前计算结果DPS)
 
   const [total, setTotal] = useState<number>(0)
   const [dpsList, setDpsList] = useState<DpsListData[]>([])
@@ -43,13 +43,13 @@ function Dps(props, ref) {
     })
   }
 
-  return currentDps ? (
+  return 当前计算结果DPS ? (
     <div className={`dps ${zengyiVisible ? `dps-zengyi-visible` : ''}`}>
       <h1 className={'dps-title'}>伤害计算</h1>
       <Divider />
       <div className='dps-number-count-wrap'>
         <div className={'dps-number-count'}>
-          <div className={'dps-number-count-text'}>{currentDps}</div>
+          <div className={'dps-number-count-text'}>{当前计算结果DPS}</div>
           <div className={'dps-number-count-skill'} onClick={() => setDpsCountModalVisible(true)}>
             技能统计
           </div>

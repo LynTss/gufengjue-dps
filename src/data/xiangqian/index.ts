@@ -1,11 +1,11 @@
-import { GainTypeEnum } from './../../@types/enum'
-import { EquipmentInlayEnum } from '@/@types/enum'
+import { 增益类型枚举 } from './../../@types/enum'
+import { 镶嵌增伤类型枚举 } from '@/@types/enum'
 import { EquipmentInlayBasicDTO } from '@/@types/equipment'
 
 const XIANGQIAN_DATA: EquipmentInlayBasicDTO[] = [
   {
-    镶嵌类型: EquipmentInlayEnum.攻击,
-    镶嵌增益类型: GainTypeEnum.基础攻击,
+    镶嵌类型: 镶嵌增伤类型枚举.攻击,
+    镶嵌增益类型: 增益类型枚举.基础攻击,
     各等级增益数据: [
       { 镶嵌等级: 0, 增益数值: 0 },
       { 镶嵌等级: 1, 增益数值: 14 },
@@ -19,8 +19,8 @@ const XIANGQIAN_DATA: EquipmentInlayBasicDTO[] = [
     ],
   },
   {
-    镶嵌类型: EquipmentInlayEnum.力道,
-    镶嵌增益类型: GainTypeEnum.力道,
+    镶嵌类型: 镶嵌增伤类型枚举.力道,
+    镶嵌增益类型: 增益类型枚举.力道,
     各等级增益数据: [
       { 镶嵌等级: 0, 增益数值: 0 },
       { 镶嵌等级: 1, 增益数值: 7 },
@@ -34,8 +34,8 @@ const XIANGQIAN_DATA: EquipmentInlayBasicDTO[] = [
     ],
   },
   {
-    镶嵌类型: EquipmentInlayEnum.破防,
-    镶嵌增益类型: GainTypeEnum.外攻破防等级,
+    镶嵌类型: 镶嵌增伤类型枚举.破防,
+    镶嵌增益类型: 增益类型枚举.外攻破防等级,
     各等级增益数据: [
       { 镶嵌等级: 0, 增益数值: 0 },
       { 镶嵌等级: 1, 增益数值: 31 },
@@ -49,8 +49,8 @@ const XIANGQIAN_DATA: EquipmentInlayBasicDTO[] = [
     ],
   },
   {
-    镶嵌类型: EquipmentInlayEnum.无双,
-    镶嵌增益类型: GainTypeEnum.无双等级,
+    镶嵌类型: 镶嵌增伤类型枚举.无双,
+    镶嵌增益类型: 增益类型枚举.无双等级,
     各等级增益数据: [
       { 镶嵌等级: 0, 增益数值: 0 },
       { 镶嵌等级: 1, 增益数值: 31 },
@@ -64,8 +64,8 @@ const XIANGQIAN_DATA: EquipmentInlayBasicDTO[] = [
     ],
   },
   {
-    镶嵌类型: EquipmentInlayEnum.会心,
-    镶嵌增益类型: GainTypeEnum.外攻会心等级,
+    镶嵌类型: 镶嵌增伤类型枚举.会心,
+    镶嵌增益类型: 增益类型枚举.外攻会心等级,
     各等级增益数据: [
       { 镶嵌等级: 0, 增益数值: 0 },
       { 镶嵌等级: 1, 增益数值: 31 },
@@ -79,8 +79,8 @@ const XIANGQIAN_DATA: EquipmentInlayBasicDTO[] = [
     ],
   },
   {
-    镶嵌类型: EquipmentInlayEnum.会效,
-    镶嵌增益类型: GainTypeEnum.外攻会心效果等级,
+    镶嵌类型: 镶嵌增伤类型枚举.会效,
+    镶嵌增益类型: 增益类型枚举.外攻会心效果等级,
     各等级增益数据: [
       { 镶嵌等级: 0, 增益数值: 0 },
       { 镶嵌等级: 1, 增益数值: 31 },
@@ -94,8 +94,8 @@ const XIANGQIAN_DATA: EquipmentInlayBasicDTO[] = [
     ],
   },
   {
-    镶嵌类型: EquipmentInlayEnum.加速,
-    镶嵌增益类型: GainTypeEnum.加速,
+    镶嵌类型: 镶嵌增伤类型枚举.加速,
+    镶嵌增益类型: 增益类型枚举.加速,
     各等级增益数据: [
       { 镶嵌等级: 0, 增益数值: 0 },
       { 镶嵌等级: 1, 增益数值: 31 },
@@ -109,8 +109,8 @@ const XIANGQIAN_DATA: EquipmentInlayBasicDTO[] = [
     ],
   },
   {
-    镶嵌类型: EquipmentInlayEnum.破招,
-    镶嵌增益类型: GainTypeEnum.破招,
+    镶嵌类型: 镶嵌增伤类型枚举.破招,
+    镶嵌增益类型: 增益类型枚举.破招,
     各等级增益数据: [
       { 镶嵌等级: 0, 增益数值: 0 },
       { 镶嵌等级: 1, 增益数值: 31 },

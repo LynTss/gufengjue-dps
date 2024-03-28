@@ -13,16 +13,15 @@ import useCycle from '@/hooks/use-cycle'
 import './index.css'
 
 function CharacterShow(_, ref) {
-  const characterFinalData = useAppSelector((state) => state?.basic?.characterFinalData)
-  const qixueData = useAppSelector((state) => state?.basic?.qixueData)
+  const 角色最终属性 = useAppSelector((state) => state?.basic?.角色最终属性)
+  const 当前奇穴信息 = useAppSelector((state) => state?.basic?.当前奇穴信息)
+  const 当前循环名称 = useAppSelector((state) => state?.basic?.当前循环名称)
+  const 当前输出计算目标 = useAppSelector((state) => state?.basic?.当前输出计算目标)
+  const 技能基础数据 = useAppSelector((state) => state?.basic?.技能基础数据)
+  const 增益数据 = useAppSelector((state) => state?.basic?.增益数据)
+  const 增益启用 = useAppSelector((state) => state?.basic?.增益启用)
 
-  const currentCycleName = useAppSelector((state) => state?.basic?.currentCycleName)
-  const currentTarget = useAppSelector((state) => state?.basic?.currentTarget)
-  const skillBasicData = useAppSelector((state) => state?.zengyi?.skillBasicData)
-  const zengyixuanxiangData = useAppSelector((state) => state?.zengyi?.zengyixuanxiangData)
-  const zengyiQiyong = useAppSelector((state) => state?.zengyi?.zengyiQiyong)
-
-  const isOpenQiangLv = 判断是否开启力道加成奇穴(qixueData)
+  const 开启强膂 = 判断是否开启力道加成奇穴(当前奇穴信息)
 
   useImperativeHandle(ref, () => ({
     关闭优化算法: () => setOpenBFGS(false),
@@ -32,12 +31,10 @@ function CharacterShow(_, ref) {
 
   const mapKeyList = ['力道', '攻击', '会心', '会效', '破防', '无双', '破招', '加速']
 
-  const showData = isOpenQiangLv
-    ? 获取力道奇穴加成后面板(characterFinalData, isOpenQiangLv)
-    : characterFinalData
+  const showData = 开启强膂 ? 获取力道奇穴加成后面板(角色最终属性, 开启强膂) : 角色最终属性
 
   // const 增益加速值 = zengyiQiyong ? getZengyiJiasu(zengyixuanxiangData) : 0
-  // const 加速等级 = 获取加速等级(characterFinalData?.加速值 + 增益加速值)
+  // const 加速等级 = 获取加速等级(角色最终属性?.加速值 + 增益加速值)
   // const 循环信息 = 当前循环各加速枚举?.[加速等级]?.cycle
   const 循环信息 = useCycle()?.cycle
 
@@ -46,32 +43,32 @@ function CharacterShow(_, ref) {
       return {}
     }
     // 获取实际循环
-    const trueSkillBasicData = 根据奇穴处理技能的基础增益信息(skillBasicData, qixueData)
+    const 计算后技能基础数据 = 根据奇穴处理技能的基础增益信息(技能基础数据, 当前奇穴信息)
 
-    if (characterFinalData?.力道) {
+    if (角色最终属性?.力道) {
       const res = DpsKernelOptimizer({
-        trueCycle: 循环信息,
-        characterFinalData,
-        currentTarget,
-        trueSkillBasicData,
-        zengyiQiyong,
-        zengyixuanxiangData,
-        isOpenQiangLv,
+        计算循环: 循环信息,
+        角色最终属性,
+        当前输出计算目标,
+        技能基础数据: 计算后技能基础数据,
+        增益启用,
+        增益数据,
+        开启强膂,
       })
       return res
     } else {
       return {}
     }
   }, [
-    currentCycleName,
+    当前循环名称,
     循环信息,
-    characterFinalData,
-    qixueData,
-    skillBasicData,
-    currentTarget,
-    zengyiQiyong,
-    zengyixuanxiangData,
-    isOpenQiangLv,
+    角色最终属性,
+    当前奇穴信息,
+    技能基础数据,
+    当前输出计算目标,
+    增益启用,
+    增益数据,
+    开启强膂,
     openBFGS,
   ])
 
@@ -80,27 +77,27 @@ function CharacterShow(_, ref) {
       <div className={'character-title-wrapper'}>
         <h1 className={'character-title'}>
           角色属性
-          <Tooltip title="增益、切糕、大附魔的数值加成暂未体现在面板显示，不影响计算">
+          <Tooltip title='增益、切糕、大附魔的数值加成暂未体现在面板显示，不影响计算'>
             <QuestionCircleOutlined className={'character-max-title-tip'} />
           </Tooltip>
         </h1>
         <Checkbox checked={openBFGS} onChange={(e) => setOpenBFGS(e?.target?.checked)}>
           优化算法
-          <Tooltip title="采用拟牛顿法对属性做优化演算，仅能代表在当前已穿装备总属性容量不变的情况下的，各属性近似最优收益方向。仅作参考，开启后会消耗额外性能。">
+          <Tooltip title='采用拟牛顿法对属性做优化演算，仅能代表在当前已穿装备总属性容量不变的情况下的，各属性近似最优收益方向。仅作参考，开启后会消耗额外性能。'>
             <QuestionCircleOutlined className={'character-max-title-tip'} />
           </Tooltip>
         </Checkbox>
       </div>
       {mapKeyList.map((item) => {
         const maxObj: any = openBFGS
-          ? getCharacterMaxData(item, maxDpsData?.maxCharacterData, isOpenQiangLv, showData)
+          ? getCharacterMaxData(item, maxDpsData?.maxCharacterData, 开启强膂, showData)
           : {}
         return (
-          <div className="character-item" key={item}>
-            <h1 className="character-label">{item}</h1>
-            <Tooltip placement="topLeft" title={getCharacterDataNumber(item, showData)}>
-              <div className="character-content">
-                <span className="character-content-normal">{getCharacterData(item, showData)}</span>
+          <div className='character-item' key={item}>
+            <h1 className='character-label'>{item}</h1>
+            <Tooltip placement='topLeft' title={getCharacterDataNumber(item, showData)}>
+              <div className='character-content'>
+                <span className='character-content-normal'>{getCharacterData(item, showData)}</span>
                 {openBFGS && maxObj && maxObj?.value !== '-1' ? (
                   <span
                     className={`character-content-max ${
@@ -122,36 +119,36 @@ function CharacterShow(_, ref) {
 export default forwardRef(CharacterShow)
 
 // 获取属性展示
-const getCharacterData = (key: string, characterFinalData: CharacterFinalDTO) => {
+const getCharacterData = (key: string, 角色最终属性: CharacterFinalDTO) => {
   switch (key) {
     case '力道':
-      return characterFinalData.力道 || 0
+      return 角色最终属性.力道 || 0
     case '攻击':
-      return characterFinalData.面板攻击 || 0
+      return 角色最终属性.面板攻击 || 0
     case '会心':
-      return ((characterFinalData.会心值 / 属性系数.会心) * 100).toFixed(2) + `%`
+      return ((角色最终属性.会心值 / 属性系数.会心) * 100).toFixed(2) + `%`
     case '会效':
-      return ((characterFinalData.会心效果值 / 属性系数.会效) * 100 + 175).toFixed(2) + `%`
+      return ((角色最终属性.会心效果值 / 属性系数.会效) * 100 + 175).toFixed(2) + `%`
     case '破防':
-      return ((characterFinalData.破防值 / 属性系数.破防) * 100).toFixed(2) + `%`
+      return ((角色最终属性.破防值 / 属性系数.破防) * 100).toFixed(2) + `%`
     case '无双':
-      return ((characterFinalData.无双值 / 属性系数.无双) * 100).toFixed(2) + `%`
+      return ((角色最终属性.无双值 / 属性系数.无双) * 100).toFixed(2) + `%`
     case '破招':
-      return characterFinalData.破招值 || 0
+      return 角色最终属性.破招值 || 0
     case '加速':
       return (
         <>
-          <span>{(((characterFinalData.加速值 || 0) / 属性系数.急速) * 100).toFixed(2) + `%`}</span>
+          <span>{(((角色最终属性.加速值 || 0) / 属性系数.急速) * 100).toFixed(2) + `%`}</span>
           <span>
-            {(characterFinalData.加速值 || 0) < 95
+            {(角色最终属性.加速值 || 0) < 95
               ? '零段加速'
-              : characterFinalData.加速值 < 4241
+              : 角色最终属性.加速值 < 4241
               ? '一段加速'
-              : characterFinalData.加速值 < 8857
+              : 角色最终属性.加速值 < 8857
               ? '二段加速'
-              : characterFinalData.加速值 < 13851
+              : 角色最终属性.加速值 < 13851
               ? '三段加速'
-              : characterFinalData.加速值 < 19316
+              : 角色最终属性.加速值 < 19316
               ? '四段加速'
               : '五段加速'}
           </span>
@@ -161,24 +158,24 @@ const getCharacterData = (key: string, characterFinalData: CharacterFinalDTO) =>
   return ''
 }
 
-const getCharacterDataNumber = (key: string, characterFinalData: CharacterFinalDTO) => {
+const getCharacterDataNumber = (key: string, 角色最终属性: CharacterFinalDTO) => {
   switch (key) {
     case '力道':
-      return characterFinalData.力道 || 0
+      return 角色最终属性.力道 || 0
     case '攻击':
-      return characterFinalData.面板攻击 || 0
+      return 角色最终属性.面板攻击 || 0
     case '会心':
-      return characterFinalData.会心值
+      return 角色最终属性.会心值
     case '会效':
-      return characterFinalData.会心效果值
+      return 角色最终属性.会心效果值
     case '破防':
-      return characterFinalData.破防值
+      return 角色最终属性.破防值
     case '无双':
-      return characterFinalData.无双值
+      return 角色最终属性.无双值
     case '破招':
-      return characterFinalData.破招值 || 0
+      return 角色最终属性.破招值 || 0
     case '加速':
-      return characterFinalData.加速值
+      return 角色最终属性.加速值
   }
   return ''
 }
@@ -186,13 +183,11 @@ const getCharacterDataNumber = (key: string, characterFinalData: CharacterFinalD
 // 获取最优属性展示
 const getCharacterMaxData = (
   key: string,
-  characterFinalData: CharacterFinalDTO,
+  角色最终属性: CharacterFinalDTO,
   openLidao: boolean,
   oldData
 ) => {
-  const data = openLidao
-    ? 获取力道奇穴加成后面板(characterFinalData, openLidao)
-    : characterFinalData
+  const data = openLidao ? 获取力道奇穴加成后面板(角色最终属性, openLidao) : 角色最终属性
   let value: number | string | undefined = '-1'
   let upperStatus = false
   switch (key) {

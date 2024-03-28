@@ -10,9 +10,9 @@ import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { getNotGuoDpsTotal } from '@/components/Dps/wu_guoshi_dps_utils'
 import { CycleDTO } from '@/@types/cycle'
 import GuFengJueSkillDataDTO from '@/data/skill'
-import { getSkillCycleGainData } from '@/components/BasicSet/CharacterSet/ZhuangbeiSetModal/utils'
+import { 根据装备格式化技能基础数据 } from '@/components/BasicSet/CharacterSet/ZhuangbeiSetModal/utils'
 import { DEFAULT_MIJI_SELECTED_DATA } from '@/pages/constant'
-import { getSkillBasicData } from '@/components/BasicSet/CommonSet/MijiSet/utils'
+import { 根据秘籍格式化技能基础数据 } from '@/components/BasicSet/CommonSet/MijiSet/utils'
 
 interface CurrentDpsFunctionProps {
   showTime?: boolean // 是否展示计算时间
@@ -54,9 +54,9 @@ export const currentDpsFunction = (props?: CurrentDpsFunctionProps) => {
   const 当前循环名称 = 更新循环名称 || ''
   const 当前循环技能列表 = 更新循环技能列表
   const 当前目标 = 目标集合[0]
-  const 技能基础 = getSkillBasicData(GuFengJueSkillDataDTO, DEFAULT_MIJI_SELECTED_DATA)
+  const 技能基础 = 根据秘籍格式化技能基础数据(GuFengJueSkillDataDTO, DEFAULT_MIJI_SELECTED_DATA)
   const 技能基础数据 =
-    getSkillCycleGainData(
+    根据装备格式化技能基础数据(
       技能基础,
       当前角色面板?.装备增益?.套装技能 || 0,
       当前角色面板?.装备增益?.大橙武特效,
@@ -70,32 +70,32 @@ export const currentDpsFunction = (props?: CurrentDpsFunctionProps) => {
     return { totalDps: 0, dpsList: [], dpsPerSecond: 0 }
   }
 
-  const dpsTime =
+  const 战斗时间 =
     更新计算时间 || getDpsTime(当前循环名称, 当前角色面板, 延迟, false, {} as any, showTime)
 
   // 获取实际循环
   const trueCycle = 获取实际循环(当前循环技能列表, 奇穴数据)
 
   // 获取基础技能信息加成
-  const trueSkillBasicData = 根据奇穴处理技能的基础增益信息(技能基础数据, 奇穴数据)
+  const 计算后技能基础数据 = 根据奇穴处理技能的基础增益信息(技能基础数据, 奇穴数据)
 
   const dpsFunction = 是否郭氏计算 ? getDpsTotal : getNotGuoDpsTotal
 
   // dps结果计算
   const { totalDps, dpsList } = dpsFunction({
-    currentCycle: trueCycle,
-    characterFinalData: 当前角色面板,
+    计算循环: trueCycle,
+    角色最终属性: 当前角色面板,
     当前目标: 当前目标,
-    skillBasicData: trueSkillBasicData,
-    zengyiQiyong: 更新增益启用 || false,
-    zengyixuanxiangData: (更新团队增益数据 as any) || {},
+    技能基础数据: 计算后技能基础数据,
+    增益启用: 更新增益启用 || false,
+    增益数据: (更新团队增益数据 as any) || {},
     默认增益集合: 更新默认增益集合 || [],
-    dpsTime,
+    战斗时间,
     开启强膂: 开启力道加成奇穴,
   })
 
   // 每秒dps
-  const dpsPerSecond = Math.floor(totalDps / dpsTime)
+  const dpsPerSecond = Math.floor(totalDps / 战斗时间)
 
   return { totalDps, dpsList, dpsPerSecond }
 }

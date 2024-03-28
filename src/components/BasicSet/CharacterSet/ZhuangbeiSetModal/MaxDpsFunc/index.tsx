@@ -1,17 +1,17 @@
 // // 走不通了，这条路加起来几亿种组合。浏览器扛不住
 // import {
-//   EquipmentCharacterPositionEnum,
-//   EquipmentInlayEnum,
-//   EquipmentPositionEnum,
-//   EquipmentTypeEnum,
-//   GainTypeEnum,
+//   装备栏部位枚举,
+//   镶嵌增伤类型枚举,
+//   装备部位枚举,
+//   装备类型枚举,
+//   增益类型枚举,
 // } from '@/@types/enum'
 // import { EquipmentDTO } from '@/@types/equipment'
 // import ZUANGBEI_DATA from '@/data/zhuangbei'
 // import { getZuiDaJingLian } from '../ZhuangbeiSelect'
 // import { getDpsTime, 根据奇穴处理技能的基础增益信息 } from '@/utils/skill-dps'
 // import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
-// import { getNewEquipmentData, getSkillCycleGainData } from '../utils'
+// import { getNewEquipmentData, 根据装备格式化技能基础数据 } from '../utils'
 // import { getFinalCharacterBasicDataByEquipment } from '../../util'
 // import { Modal } from 'antd'
 // import './index.css'
@@ -150,7 +150,7 @@
 //   }
 //   let newSkillBasicData = skillBasicData
 
-//   newSkillBasicData = getSkillCycleGainData(
+//   newSkillBasicData = 根据装备格式化技能基础数据(
 //     skillBasicData,
 //     data.套装技能,
 //     data.大橙武特效,
@@ -229,13 +229,13 @@
 // // 获取所有符合的装备列表穷举
 // const getAllList = (withWufeng) => {
 //   let all: any[] = [固定id]
-//   Object.keys(EquipmentCharacterPositionEnum)
+//   Object.keys(装备栏部位枚举)
 //     .filter((item) => {
 //       return !固定部位.includes(item)
 //     })
 //     .forEach((type) => {
 //       const current: any[] = []
-//       ZUANGBEI_DATA[EquipmentCharacterPositionEnum[type]]
+//       ZUANGBEI_DATA[装备栏部位枚举[type]]
 //         ?.filter((item: EquipmentDTO) => {
 //           return guilvguize(item, withWufeng)
 //         })
@@ -244,11 +244,11 @@
 //             all.forEach((a) => {
 //               current.push([
 //                 ...a,
-//                 { ...item, position: `${EquipmentCharacterPositionEnum[type]}${type}` },
+//                 { ...item, position: `${装备栏部位枚举[type]}${type}` },
 //               ])
 //             })
 //           } else {
-//             current.push([{ ...item, position: `${EquipmentCharacterPositionEnum[type]}${type}` }])
+//             current.push([{ ...item, position: `${装备栏部位枚举[type]}${type}` }])
 //           }
 //         })
 //       if (current?.length) {
@@ -261,19 +261,19 @@
 // export default MaxDpsFunc
 
 // const guilvguize = (item: EquipmentDTO, withWufeng) => {
-//   if (withWufeng && item.装备类型 === EquipmentTypeEnum.试炼精简 && item.装备品级 >= 12100) {
+//   if (withWufeng && item.装备类型 === 装备类型枚举.试炼精简 && item.装备品级 >= 12100) {
 //     return true
 //   }
 //   if (item.装备品级 < 12450) {
 //     return false
 //   }
-//   if ([EquipmentTypeEnum.切糕, EquipmentTypeEnum.副本精简].includes(item.装备类型)) {
+//   if ([装备类型枚举.切糕, 装备类型枚举.副本精简].includes(item.装备类型)) {
 //     return true
 //   }
 //   // 普通装备只要会无
-//   if (item.装备类型 === EquipmentTypeEnum.普通) {
+//   if (item.装备类型 === 装备类型枚举.普通) {
 //     return item.装备增益.some((a) =>
-//       [GainTypeEnum.外攻破防等级, GainTypeEnum.破招].includes(a.增益类型)
+//       [增益类型枚举.外攻破防等级, 增益类型枚举.破招].includes(a.增益类型)
 //     )
 //   }
 //   return true
@@ -287,8 +287,8 @@
 //     uid: '207851',
 //     装备名称: '濯心·锋虹冠',
 //     装备品级: 12300,
-//     装备类型: EquipmentTypeEnum.普通,
-//     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
+//     装备类型: 装备类型枚举.普通,
+//     镶嵌孔数组: [{ 镶嵌类型: 镶嵌增伤类型枚举.力道 }, { 镶嵌类型: 镶嵌增伤类型枚举.攻击 }],
 //   },
 //   {
 //     position: '腰带_3',
@@ -296,8 +296,8 @@
 //     uid: '207793',
 //     装备名称: '濯心·锋虹腰带',
 //     装备品级: 12300,
-//     装备类型: EquipmentTypeEnum.门派套装,
-//     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.会心 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
+//     装备类型: 装备类型枚举.门派套装,
+//     镶嵌孔数组: [{ 镶嵌类型: 镶嵌增伤类型枚举.会心 }, { 镶嵌类型: 镶嵌增伤类型枚举.攻击 }],
 //   },
 //   {
 //     position: '护腕_4',
@@ -305,8 +305,8 @@
 //     uid: '207764',
 //     装备名称: '濯心·锋虹护手',
 //     装备品级: 12300,
-//     装备类型: EquipmentTypeEnum.门派套装,
-//     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.力道 }, { 镶嵌类型: EquipmentInlayEnum.攻击 }],
+//     装备类型: 装备类型枚举.门派套装,
+//     镶嵌孔数组: [{ 镶嵌类型: 镶嵌增伤类型枚举.力道 }, { 镶嵌类型: 镶嵌增伤类型枚举.攻击 }],
 //   },
 //   {
 //     position: '鞋子_6',
@@ -314,8 +314,8 @@
 //     uid: '207822',
 //     装备名称: '濯心·锋虹靴',
 //     装备品级: 12300,
-//     装备类型: EquipmentTypeEnum.门派套装,
-//     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.攻击 }, { 镶嵌类型: EquipmentInlayEnum.破防 }],
+//     装备类型: 装备类型枚举.门派套装,
+//     镶嵌孔数组: [{ 镶嵌类型: 镶嵌增伤类型枚举.攻击 }, { 镶嵌类型: 镶嵌增伤类型枚举.破防 }],
 //   },
 //   {
 //     position: '腰坠_8',
@@ -323,8 +323,8 @@
 //     uid: '208033',
 //     装备名称: '恸黄沙',
 //     装备品级: 12450,
-//     装备类型: EquipmentTypeEnum.副本精简,
-//     镶嵌孔数组: [{ 镶嵌类型: EquipmentInlayEnum.破防 }],
+//     装备类型: 装备类型枚举.副本精简,
+//     镶嵌孔数组: [{ 镶嵌类型: 镶嵌增伤类型枚举.破防 }],
 //   },
 //   {
 //     position: '武器_12',
@@ -334,27 +334,27 @@
 //     装备品级: 12450,
 //     武器伤害_最小值: 2896,
 //     武器伤害_最大值: 4827,
-//     装备类型: EquipmentTypeEnum.特效武器,
+//     装备类型: 装备类型枚举.特效武器,
 //     镶嵌孔数组: [
-//       { 镶嵌类型: EquipmentInlayEnum.攻击 },
-//       { 镶嵌类型: EquipmentInlayEnum.力道 },
-//       { 镶嵌类型: EquipmentInlayEnum.破防 },
+//       { 镶嵌类型: 镶嵌增伤类型枚举.攻击 },
+//       { 镶嵌类型: 镶嵌增伤类型枚举.力道 },
+//       { 镶嵌类型: 镶嵌增伤类型枚举.破防 },
 //     ],
 //   },
 // ]
 
 // const getFumo = (data) => {
 //   const 部位 = data?.position?.split('_')?.[0]
-//   if (EquipmentPositionEnum.武器 === 部位) {
+//   if (装备部位枚举.武器 === 部位) {
 //     return `武伤+540`
-//   } else if ([EquipmentPositionEnum.鞋子].includes(部位)) {
+//   } else if ([装备部位枚举.鞋子].includes(部位)) {
 //     return `加速+491`
-//   } else if ([EquipmentPositionEnum.帽子, EquipmentPositionEnum.戒指].includes(部位)) {
+//   } else if ([装备部位枚举.帽子, 装备部位枚举.戒指].includes(部位)) {
 //     return `破招+799`
-//   } else if ([EquipmentPositionEnum.衣服, EquipmentPositionEnum.腰带].includes(部位)) {
+//   } else if ([装备部位枚举.衣服, 装备部位枚举.腰带].includes(部位)) {
 //     return `无双+240`
 //   } else if (
-//     [EquipmentPositionEnum.护腕, EquipmentPositionEnum.下装, EquipmentPositionEnum.暗器].includes(
+//     [装备部位枚举.护腕, 装备部位枚举.下装, 装备部位枚举.暗器].includes(
 //       部位
 //     )
 //   ) {
