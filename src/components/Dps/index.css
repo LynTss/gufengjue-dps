@@ -39,12 +39,13 @@
 
 .dps-number-count-time {
   padding: 16px 0 8px;
-  font-size: 24px;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .dps-number-count-time-label {
+  font-weight: 400;
   cursor: pointer;
-  font-weight: 700;
   font-size: 16px;
 }
 
