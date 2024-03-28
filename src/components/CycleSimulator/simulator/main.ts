@@ -459,8 +459,7 @@ class 循环主类 {
       }
     }
     // const 延迟等待 = this.当前时间 && (GCD || 等待CD) ? this.网络延迟 : 0
-    const 延迟等待 =
-      this.当前时间 && 当前技能?.技能GCD组 !== '自身' && (GCD || 等待CD) ? this.网络延迟 : 0
+    const 延迟等待 = this.当前时间 && 当前技能?.技能GCD组 !== '自身' && GCD ? this.网络延迟 : 0
 
     // const 延迟等待 = this.当前时间 ? this.网络延迟 : 0
     const 技能计划释放时间 = this.当前时间 + GCD + 延迟等待
