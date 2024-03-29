@@ -1,4 +1,4 @@
-import { Alert, Form, Input, Modal, Select, Tabs } from 'antd'
+import { Alert, Form, Input, Modal, Select, Tabs, Tooltip } from 'antd'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 更新全部方案数据, 更新角色最终属性, 更新选中的方案数据 } from '@/store/basicReducer'
@@ -12,6 +12,9 @@ interface SaveCustomProjectModalProps {
   保存自定义方案: (名称) => void
   getDpsFunction: () => void
 }
+
+// 最多保存数量
+const LIMIT_NUM = 10
 
 function SaveCustomProjectModal(props: SaveCustomProjectModalProps) {
   const { 自定义方案保存弹窗, 设置自定义方案保存弹窗, 保存自定义方案, getDpsFunction } = props
@@ -153,7 +156,17 @@ function SaveCustomProjectModal(props: SaveCustomProjectModalProps) {
             })}
           </Select>
         </Tabs.TabPane>
-        <Tabs.TabPane tab={'新增'} key='新增'>
+        <Tabs.TabPane
+          tab={
+            <Tooltip
+              title={全部方案列表?.length >= LIMIT_NUM ? `最多保存${LIMIT_NUM}个自定义方案` : ''}
+            >
+              新增
+            </Tooltip>
+          }
+          key='新增'
+          disabled={全部方案列表?.length >= LIMIT_NUM}
+        >
           <Form>
             <Form.Item
               rules={[

@@ -1,43 +1,39 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Modal, Table } from 'antd'
-import {
-  skillBasicDps,
-  skillDengjijianshangDps,
-  skillFinalDps,
-  skillStandardDps,
-} from '../../utils/skill-dps'
+import { skillBasicDps, skillFinalDps } from '../../utils/skill-dps'
 import { useAppSelector } from '@/hooks'
 import './index.css'
 
-function SkillDamageTable() {
+function SkillDamageTable({ visible, onClose }) {
   const 角色最终属性 = useAppSelector((state) => state?.basic?.角色最终属性)
   const 当前输出计算目标 = useAppSelector((state) => state?.basic?.当前输出计算目标)
   const 技能基础数据 = useAppSelector((state) => state?.basic?.技能基础数据)
 
-  const [visible, setVisible] = useState(false)
+  // const hrefSkill = location.href?.includes('?skill=1')
+  // useEffect(() => {
+  //   if (hrefSkill) {
+  //     setVisible(true)
+  //   }
+  // }, [hrefSkill])
 
   const columns = [
     {
       title: '技能名称',
       dataIndex: '技能名称',
-      fix: 'left',
+      fixed: 'left',
     },
     {
       title: '伤害系数',
       dataIndex: '技能伤害系数',
+      defaultSortOrder: 'descend',
+      sorter: (a, b) => a.技能伤害系数 - b.技能伤害系数,
     },
-    // {
-    //   title: '实测系数',
-    //   dataIndex: 'category',
-    // },
     {
       title: '武伤系数',
       dataIndex: '武器伤害系数',
+      defaultSortOrder: 'descend',
+      sorter: (a, b) => a.武器伤害系数 - b.武器伤害系数,
     },
-    // {
-    //   title: '系数实测',
-    //   dataIndex: 'action',
-    // },
     {
       title: '基础-min',
       dataIndex: '技能基础伤害_最小值',
@@ -65,47 +61,7 @@ function SkillDamageTable() {
       },
     },
     {
-      title: '基准伤害-min',
-      dataIndex: 'jizhun_min',
-      render: (_, row) => {
-        const damage = skillBasicDps(row, 角色最终属性)?.min
-        return skillStandardDps(damage, 角色最终属性, 当前输出计算目标)
-      },
-    },
-    {
-      title: '基准伤害-min',
-      dataIndex: 'jizhun_max',
-      render: (_, row) => {
-        const damage = skillBasicDps(row, 角色最终属性)?.max
-        return skillStandardDps(damage, 角色最终属性, 当前输出计算目标)
-      },
-    },
-    {
-      title: '等级减伤害后伤害-min',
-      dataIndex: 'min',
-      className: 'keyTable-1',
-      fix: 'right',
-      width: 120,
-      render: (_, row) => {
-        const damage = skillBasicDps(row, 角色最终属性)?.min
-        const standard_min = skillStandardDps(damage, 角色最终属性, 当前输出计算目标)
-        return skillDengjijianshangDps(standard_min, 角色最终属性, 当前输出计算目标)
-      },
-    },
-    {
-      title: '等级减伤害后伤害-max',
-      dataIndex: 'max',
-      className: 'keyTable-1',
-      fix: 'right',
-      width: 120,
-      render: (_, row) => {
-        const damage = skillBasicDps(row, 角色最终属性)?.max
-        const standard_min = skillStandardDps(damage, 角色最终属性, 当前输出计算目标)
-        return skillDengjijianshangDps(standard_min, 角色最终属性, 当前输出计算目标)
-      },
-    },
-    {
-      title: '无双计算后伤害-min',
+      title: '实际伤害-min',
       dataIndex: 'min',
       className: 'keyTable',
       fix: 'right',
@@ -115,9 +71,16 @@ function SkillDamageTable() {
       },
     },
     {
-      title: '无双计算后伤害-max',
+      title: '实际伤害-max',
       dataIndex: 'max',
       className: 'keyTable',
+      defaultSortOrder: 'descend',
+      sorter: (a, b) => {
+        return (
+          skillFinalDps(a, 角色最终属性, 当前输出计算目标)?.max -
+          skillFinalDps(b, 角色最终属性, 当前输出计算目标)?.max
+        )
+      },
       fix: 'right',
       width: 120,
       render: (_, row) => {
@@ -135,20 +98,17 @@ function SkillDamageTable() {
         width={'100%'}
         className={'skillDmageVisible'}
         open={visible}
-        onCancel={() => setVisible(false)}
+        onCancel={() => onClose(false)}
       >
         <Table
           rowKey={'技能名称'}
           className={'skillDamageTable'}
           dataSource={技能基础数据}
           pagination={false}
-          columns={columns}
-          scroll={{ x: 1300 }}
+          columns={columns as any}
+          scroll={{ x: 'max-content' }}
         />
       </Modal>
-      <span className='skillDamageBtn' onClick={() => setVisible(true)}>
-        单技能数据
-      </span>
     </div>
   )
 }

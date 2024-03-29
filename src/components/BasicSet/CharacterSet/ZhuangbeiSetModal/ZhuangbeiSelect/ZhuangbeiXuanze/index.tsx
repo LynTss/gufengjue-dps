@@ -44,17 +44,6 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
   // 获取dps提升装备列表
   const getDpsUpList = () => {
     if (openEquipmentDiff) {
-      // const backList = list.filter((item) => {
-      //   return (
-      //     item?.装备品级 >= 12800 ||
-      //     [
-      //       装备类型枚举.大CW,
-      //       装备类型枚举.特效武器,
-      //       装备类型枚举.副本精简,
-      //       装备类型枚举.试炼精简,
-      //     ]?.includes(item?.装备类型)
-      //   )
-      // })
       // 获取旧装备列表
       const oldEquipment = form?.getFieldsValue()
 
