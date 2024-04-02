@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.1833b786.css",
-    "main.js": "./static/js/main.58c86f96.js",
+    "main.css": "./static/css/main.bf13af0f.css",
+    "main.js": "./static/js/main.0a06d45e.js",
     "getDps.js": "./static/js/getDps.js",
     "static/media/3.jpg": "./static/media/3.2230bbe9e3babae1281f.jpg",
     "static/media/2.jpg": "./static/media/2.02cb73e851b6a253fd26.jpg",
@@ -13,12 +13,12 @@
     "static/media/paiming-2.png": "./static/media/paiming-2.a2390d1e78a1de0da5ba.png",
     "static/media/paiming-1.png": "./static/media/paiming-1.247b854286bb64dcebfe.png",
     "index.html": "./index.html",
-    "main.1833b786.css.map": "./static/css/main.1833b786.css.map",
-    "main.58c86f96.js.map": "./static/js/main.58c86f96.js.map",
+    "main.bf13af0f.css.map": "./static/css/main.bf13af0f.css.map",
+    "main.0a06d45e.js.map": "./static/js/main.0a06d45e.js.map",
     "getDps.js.map": "./static/js/getDps.js.map"
   },
   "entrypoints": [
-    "static/css/main.1833b786.css",
-    "static/js/main.58c86f96.js"
+    "static/css/main.bf13af0f.css",
+    "static/js/main.0a06d45e.js"
   ]
 }
