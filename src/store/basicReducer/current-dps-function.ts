@@ -6,7 +6,7 @@ import {
   getDpsTime,
   获取实际循环,
   根据奇穴处理技能的基础增益信息,
-  // getZengyiJiasu,
+  // 计算增益数据中加速值,
 } from '@/utils/skill-dps'
 import { 更新当前计算结果DPS } from './index'
 import { CharacterFinalDTO } from '@/@types/character'

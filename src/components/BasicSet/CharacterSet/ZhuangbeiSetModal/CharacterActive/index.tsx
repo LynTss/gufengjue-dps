@@ -12,6 +12,7 @@ import { Tooltip } from 'antd'
 import classnames from 'classnames'
 import React, { useMemo } from 'react'
 import './index.css'
+import { 计算增益数据中加速值 } from '@/utils/skill-dps'
 
 interface CharacterActiveProps {
   当前角色最终属性: CharacterFinalDTO
@@ -25,6 +26,8 @@ function CharacterActive(props: CharacterActiveProps) {
   const 装备信息 = useAppSelector((state) => state?.basic?.装备信息)
   const 当前奇穴信息 = useAppSelector((state) => state?.basic?.当前奇穴信息)
   const 开启强膂 = 判断是否开启力道加成奇穴(当前奇穴信息)
+  const 增益数据 = useAppSelector((state) => state?.basic?.增益数据)
+  const 增益启用 = useAppSelector((state) => state?.basic?.增益启用)
 
   const 获取计算后原始属性 = (角色属性, 装备信息) => {
     let 结果 = 角色属性
@@ -33,6 +36,12 @@ function CharacterActive(props: CharacterActiveProps) {
     }
     if (开启强膂) {
       结果 = 获取力道奇穴加成后面板(角色属性, 开启强膂)
+    }
+    if (增益启用) {
+      结果 = {
+        ...结果,
+        加速值: 结果.加速值 + 计算增益数据中加速值(增益数据),
+      }
     }
     return 结果
   }
