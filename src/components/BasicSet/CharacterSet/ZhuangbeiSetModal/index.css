@@ -180,6 +180,6 @@
   justify-content: space-between;
 }
 
-.zhuangbei-input-set-modal-title .ant-btn+.ant-btn {
-  margin-left: 8px;
+.zhuangbei-input-set-modal-title-operate {
+  margin-right: 24px;
 }

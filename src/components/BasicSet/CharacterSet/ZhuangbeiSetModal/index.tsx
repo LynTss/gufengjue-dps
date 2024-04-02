@@ -18,6 +18,8 @@ import WuCaiShiXuanZe from './WuCaiShiXuanZe'
 import MohedaoruModal from './MohedaoruModal'
 import CharacterActive from './CharacterActive'
 import Zhuangbeizengyi from './Zhuangbeizengyi'
+import MaxFumo from './MaxFumo'
+import MaxWucaishi from './MaxWucaishi'
 import './index.css'
 
 function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
@@ -217,16 +219,54 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
     form.setFieldsValue({ ...e })
   }
 
+  const 一键替换附魔 = (附魔信息) => {
+    form?.validateFields().then((values) => {
+      const obj = { ...values }
+      Object.keys(附魔信息).forEach((fumoKey) => {
+        const 附魔位置 = 装备栏部位枚举[fumoKey]
+        const formKey = `${附魔位置}${fumoKey}`
+
+        const 附魔属性 = Object.keys(附魔信息[fumoKey])?.[0]
+        const 附魔值 = Object.values(附魔信息[fumoKey])?.[0]
+        if (values[formKey]) {
+          obj[formKey] = {
+            ...obj[formKey],
+            附魔: `${附魔属性}+${附魔值}`,
+          }
+        }
+      })
+      form.setFieldsValue({ ...obj })
+      formValueChange(undefined, { ...obj })
+    })
+  }
+
+  const 一键替换五彩石 = (五彩石信息) => {
+    form?.validateFields().then((values) => {
+      const obj = { ...values, 五彩石: 五彩石信息 }
+      form.setFieldsValue(obj)
+      formValueChange(undefined, { ...obj })
+    })
+  }
+
   return (
     <Modal
       title={
         <div className='zhuangbei-input-set-modal-title'>
-          <span>
-            配装器
-            {/* <span style={{ color: '#F34242', fontSize: 14, marginLeft: 16 }}>
-              暂时只推荐1段加速配装，0段、2段伤害计算不准确
-            </span> */}
-          </span>
+          <span>配装器</span>
+          <div className='zhuangbei-input-set-modal-title-operate'>
+            {/* 最佳附魔设置 */}
+            <MaxFumo
+              一键替换附魔={一键替换附魔}
+              对比Dps={afterDps || 当前计算结果DPS}
+              对比装备信息={当前装备下配置?.当前角色装备信息 || 装备信息}
+            />
+            {/* 最佳五彩石设置 */}
+            <MaxWucaishi
+              一键替换五彩石={一键替换五彩石}
+              对比Dps={afterDps || 当前计算结果DPS}
+              对比装备信息={当前装备下配置?.当前角色装备信息 || 装备信息}
+            />
+          </div>
         </div>
       }
       className={'zhuangbei-input-set-modal'}
