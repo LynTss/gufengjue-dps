@@ -99,12 +99,7 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
           ...finalData,
           装备增益: { ...equipmentData },
         },
-        更新技能基础数据: 根据装备格式化技能基础数据(
-          技能基础数据,
-          equipmentData.套装技能,
-          equipmentData.大橙武特效,
-          equipmentData.小橙武特效
-        ),
+        更新技能基础数据: 根据装备格式化技能基础数据(技能基础数据, equipmentData),
       })
     )
 

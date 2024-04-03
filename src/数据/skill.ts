@@ -1,5 +1,5 @@
-import 通用增益 from '@/data/技能增益/通用增益'
 import { SkillBasicDTO } from '@/@types/skill'
+import 通用增益 from '@/数据/技能增益/通用增益/通用增益'
 import 停云势增益 from './技能增益/停云势增益'
 import 行云势增益 from './技能增益/行云势增益'
 import 留客雨增益 from './技能增益/留客雨增益'
@@ -21,7 +21,7 @@ import {
   流血5层增益,
   流血6层增益,
 } from './技能增益/流血增益'
-import { 属性系数 } from './constant'
+import { 属性系数 } from './常量'
 
 const 外攻基础系数 = 16 * 10
 

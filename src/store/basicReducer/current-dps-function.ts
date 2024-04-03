@@ -1,5 +1,5 @@
 // 根据当前增益装备，计算实时循环总dps
-import { 判断是否开启力道加成奇穴 } from '@/data/qixue'
+import { 判断是否开启力道加成奇穴 } from '@/数据/奇穴'
 import { RootState } from '../index'
 import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
 import {

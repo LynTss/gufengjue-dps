@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import skillMijiBasicData from '@/data/miji'
+import skillMijiBasicData from '@/数据/秘籍'
 import { Button, Checkbox, Col, Drawer, message, Row } from 'antd'
 import React, { useState } from 'react'
 import { MijiBasicDataDTO, SkillMijiBasicDataDTO } from '@/@types/miji'

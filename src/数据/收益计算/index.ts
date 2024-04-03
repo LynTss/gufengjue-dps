@@ -6,8 +6,8 @@ import {
   小吃类型枚举,
 } from '@/@types/enum'
 import { SKillGainData } from '@/@types/skill'
-import XIANGQIAN_DATA from '../xiangqian'
-import XIAOCHI_DATA from '../xiaochi'
+import XIANGQIAN_DATA from '../镶嵌孔'
+import XIAOCHI_DATA from '../小药小吃'
 
 export interface IncomeDataDTO {
   收益计算名称: string

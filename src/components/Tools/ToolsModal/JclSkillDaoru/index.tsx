@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Input, message } from 'antd'
-import { JCL技能序列导入 } from '@/data/skillCycle/JCL技能序列导入'
+import { JCL技能序列导入 } from '@/数据/计算循环/JCL技能序列导入'
 import './index.css'
 
 function JclSkillDaoru() {
@@ -48,18 +48,18 @@ function JclSkillDaoru() {
     <div>
       <Input.TextArea
         className={'tools-daoru-input'}
-        placeholder="输入接口数据"
+        placeholder='输入接口数据'
         value={inputValue}
         onChange={(e) => setInputValue(e?.target?.value)}
       />
       <div className={'tools-daoru-btns'}>
-        <Button type="primary" disabled={!shuju} className="tools-daoru-btn" onClick={copy}>
+        <Button type='primary' disabled={!shuju} className='tools-daoru-btn' onClick={copy}>
           复制
         </Button>
         <Button onClick={getDetail}>转换</Button>
       </div>
       {shuju && (
-        <div id="tools-daoru-zhuangbei-result" className={'tools-daoru-result'}>
+        <div id='tools-daoru-zhuangbei-result' className={'tools-daoru-result'}>
           {shuju}
         </div>
       )}

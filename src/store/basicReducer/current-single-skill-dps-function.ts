@@ -1,5 +1,5 @@
 // 根据当前增益装备，只计算传入的单条技能记录的dps
-import { 判断是否开启力道加成奇穴, 获取力道奇穴加成后面板 } from '@/data/qixue'
+import { 判断是否开启力道加成奇穴, 获取力道奇穴加成后面板 } from '@/数据/奇穴'
 import { RootState } from '../index'
 import {
   getAllGainData,

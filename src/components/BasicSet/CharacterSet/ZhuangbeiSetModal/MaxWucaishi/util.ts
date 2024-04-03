@@ -1,5 +1,5 @@
 import { 装备栏部位枚举 } from '@/@types/enum'
-import { AllEnchantDTO } from '@/data/enchantGain'
+import { AllEnchantDTO } from '@/数据/附魔'
 
 export const 修改装备信息 = (原装备信息, 当前附魔数据) => {
   return {

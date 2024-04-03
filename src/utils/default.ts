@@ -1,5 +1,5 @@
-import { 目标集合 } from '@/data/constant'
-import { 获取全部循环 } from '@/data/skillCycle'
+import { 目标集合 } from '@/数据/常量'
+import { 获取全部循环 } from '@/数据/计算循环'
 import {
   DEFAULT_CHARACTER,
   DEFAULT_EQUIPMENT,

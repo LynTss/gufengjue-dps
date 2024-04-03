@@ -1,7 +1,7 @@
 // 写这个文件的原因是这样就不用获取redux的数据了，避免了本地js调用异常
 // 根据当前增益装备，计算实时循环总dps
-import { 目标集合 } from '@/data/constant'
-import { 判断是否开启力道加成奇穴 } from '@/data/qixue'
+import { 目标集合 } from '@/数据/常量'
+import { 判断是否开启力道加成奇穴 } from '@/数据/奇穴'
 import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
 import { getDpsTime, 获取实际循环, 根据奇穴处理技能的基础增益信息 } from '@/utils/skill-dps'
 import { CharacterFinalDTO } from '@/@types/character'
@@ -9,7 +9,7 @@ import { SKillGainData, SkillBasicDTO } from '@/@types/skill'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { getNotGuoDpsTotal } from '@/components/Dps/wu_guoshi_dps_utils'
 import { CycleDTO } from '@/@types/cycle'
-import GuFengJueSkillDataDTO from '@/data/skill'
+import GuFengJueSkillDataDTO from '@/数据/skill'
 import { 根据装备格式化技能基础数据 } from '@/components/BasicSet/CharacterSet/ZhuangbeiSetModal/utils'
 import { DEFAULT_MIJI_SELECTED_DATA } from '@/pages/constant'
 import { 根据秘籍格式化技能基础数据 } from '@/components/BasicSet/CommonSet/MijiSet/utils'
@@ -55,13 +55,7 @@ export const currentDpsFunction = (props?: CurrentDpsFunctionProps) => {
   const 当前循环技能列表 = 更新循环技能列表
   const 当前目标 = 目标集合[0]
   const 技能基础 = 根据秘籍格式化技能基础数据(GuFengJueSkillDataDTO, DEFAULT_MIJI_SELECTED_DATA)
-  const 技能基础数据 =
-    根据装备格式化技能基础数据(
-      技能基础,
-      当前角色面板?.装备增益?.套装技能 || 0,
-      当前角色面板?.装备增益?.大橙武特效,
-      当前角色面板?.装备增益?.小橙武特效
-    ) || []
+  const 技能基础数据 = 根据装备格式化技能基础数据(技能基础, 当前角色面板?.装备增益) || []
   const 奇穴数据 = 更新奇穴数据 || []
 
   const 开启力道加成奇穴 = 判断是否开启力道加成奇穴(奇穴数据)

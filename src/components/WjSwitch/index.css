@@ -1,0 +1,18 @@
+.wj-switch {
+  position: fixed;
+  right: 24px;
+  top: 24px;
+}
+
+.wj-switch-img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  transition: .3s;
+  opacity: 0.8;
+}
+
+.wj-switch-img:hover {
+  transform: rotate(720deg);
+}

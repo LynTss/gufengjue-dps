@@ -1,5 +1,5 @@
-import { 增益计算类型枚举, 增益类型枚举 } from '../../@types/enum'
-import { SkillGainDTO } from '../../@types/skill'
+import { 增益计算类型枚举, 增益类型枚举 } from '../../../@types/enum'
+import { SkillGainDTO } from '../../../@types/skill'
 
 const commonGainDTO: SkillGainDTO[] = [
   {

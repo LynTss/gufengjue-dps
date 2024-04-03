@@ -1,5 +1,5 @@
 // 奇穴数据，只在模拟循环内生效
-import 奇穴数据, { QixueNameMap } from '@/data/qixue'
+import 奇穴数据, { QixueNameMap } from '@/数据/奇穴'
 import { Drawer, Form, Select } from 'antd'
 import React, { useEffect } from 'react'
 import { DEFAULT_QIXUE_VALUE } from '@/pages/constant'
@@ -45,7 +45,7 @@ const QixueSetModal: React.FC<QixueSetProps> = (props) => {
       title={'奇穴设置'}
       open={奇穴弹窗展示}
       onClose={() => 更新奇穴弹窗展示(false)}
-      placement="bottom"
+      placement='bottom'
       height={140}
       mask={false}
       className={'qixue-simulator-set-drawer'}
@@ -62,7 +62,7 @@ const QixueSetModal: React.FC<QixueSetProps> = (props) => {
                 className={'qixue-simulator-set-item-select'}
                 onChange={handleChangeQixue}
                 dropdownMatchSelectWidth={false}
-                optionLabelProp="label"
+                optionLabelProp='label'
                 showArrow={false}
                 popupClassName={'qixue-simulator-set-item-select-popup'}
                 defaultValue={DEFAULT_QIXUE_VALUE[index]}

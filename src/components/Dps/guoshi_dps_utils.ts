@@ -1,5 +1,5 @@
 import { getLidaoJiachengPofang } from './../BasicSet/CharacterSet/util'
-import { TuanduiZengyi_DATA } from './../../data/tuanduizengyi/index'
+import { TuanduiZengyi_DATA } from '@/数据/团队增益/index'
 import { getMianBanGongJI, getLidaoJiachengHuixin } from '@/components/BasicSet/CharacterSet/util'
 import { 增益计算类型枚举 } from './../../@types/enum'
 import { TargetDTO } from '@/@types/character'
@@ -10,11 +10,11 @@ import { 增益类型枚举 } from '@/@types/enum'
 import { DpsGainBasicDTO, SkillBasicDTO, SKillGainData } from '@/@types/skill'
 import { skillFinalDps } from '@/utils/skill-dps'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
-import { Zhenyan_DATA } from '@/data/zhenyan'
-import { 加成系数, 属性系数 } from '@/data/constant'
-import XIAOCHI_DATA from '@/data/xiaochi'
-import 装备增益数据 from '@/data/zhuangbei/zhuangbeiGain'
-import { 获取力道奇穴加成后面板 } from '@/data/qixue'
+import { Zhenyan_DATA } from '@/数据/阵眼'
+import { 加成系数, 属性系数 } from '@/数据/常量'
+import XIAOCHI_DATA from '@/数据/小药小吃'
+import 装备增益数据 from '@/数据/装备/装备增益数据'
+import { 获取力道奇穴加成后面板 } from '@/数据/奇穴'
 
 interface GetDpsTotalParams {
   计算循环: CycleDTO[]

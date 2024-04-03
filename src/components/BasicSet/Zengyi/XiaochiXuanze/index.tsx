@@ -1,5 +1,5 @@
 import { XiaochiDataDTO } from '@/@types/xiaochi'
-import XIAOCHI_DATA from '@/data/xiaochi'
+import XIAOCHI_DATA from '@/数据/小药小吃'
 import { useAppSelector } from '@/hooks'
 import React, { useMemo } from 'react'
 import './index.css'

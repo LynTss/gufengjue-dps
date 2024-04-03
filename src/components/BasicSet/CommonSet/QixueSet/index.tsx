@@ -1,4 +1,4 @@
-import 奇穴数据, { QixueNameMap } from '@/data/qixue'
+import 奇穴数据, { QixueNameMap } from '@/数据/奇穴'
 import { Button, Drawer, Form, Select } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { DEFAULT_QIXUE_VALUE } from '@/pages/constant'

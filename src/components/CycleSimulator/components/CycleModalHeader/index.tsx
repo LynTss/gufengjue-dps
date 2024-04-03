@@ -4,7 +4,7 @@ import { CycleSimulatorSkillDTO, 模拟信息类型 } from '../../simulator/type
 import 快速导入默认循环 from '../../constant/快速导入默认循环'
 import { useAppSelector } from '@/hooks'
 import './index.css'
-import { 延迟设定 } from '@/data/constant'
+import { 延迟设定 } from '@/数据/常量'
 interface CycleModalHeaderProps {
   cycle: CycleSimulatorSkillDTO[]
   设置自定义循环保存弹窗: (e: boolean) => void

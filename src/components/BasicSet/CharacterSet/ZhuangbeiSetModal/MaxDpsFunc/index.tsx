@@ -7,7 +7,7 @@
 //   增益类型枚举,
 // } from '@/@types/enum'
 // import { EquipmentDTO } from '@/@types/equipment'
-// import ZUANGBEI_DATA from '@/data/zhuangbei'
+// import ZUANGBEI_DATA from '@/数据/装备'
 // import { getZuiDaJingLian } from '../ZhuangbeiSelect'
 // import { getDpsTime, 根据奇穴处理技能的基础增益信息 } from '@/utils/skill-dps'
 // import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'

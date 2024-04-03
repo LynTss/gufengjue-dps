@@ -2,10 +2,10 @@
  * 装备选择
  */
 import React, { forwardRef, useMemo } from 'react'
-import ZUANGBEI_DATA from '@/data/zhuangbei'
+import ZUANGBEI_DATA from '@/数据/装备'
 import { EquipmentListDTO, EquipmentDTO } from '@/@types/equipment'
 import { 装备栏部位枚举, 装备部位枚举, 装备类型枚举 } from '@/@types/enum'
-import { AllEnchantDTO } from '@/data/enchantGain'
+import { AllEnchantDTO } from '@/数据/附魔'
 import ZhuangbeiXuanze from './ZhuangbeiXuanze'
 import JinglianXuanze from './JinglianXuanze'
 import XiangqianXuanze from './XiangqianXuanze'

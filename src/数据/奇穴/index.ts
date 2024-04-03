@@ -4,13 +4,12 @@ import {
   getMianBanGongJI,
   getLidao,
   getLidaoJiachengHuixin,
-  // getJiChuGongJI,
   getLidaoJiachengPofang,
   getJiChuGongJI,
 } from '@/components/BasicSet/CharacterSet/util'
-import { 加成系数 } from '../constant'
 import { 装备信息数据类型 } from '@/@types/equipment'
-import 装备增益数据 from '../zhuangbei/zhuangbeiGain'
+import 装备增益数据 from '@/数据/装备/装备增益数据'
+import { 加成系数 } from '@/数据/常量'
 
 export const 力道加成奇穴 = '强膂'
 

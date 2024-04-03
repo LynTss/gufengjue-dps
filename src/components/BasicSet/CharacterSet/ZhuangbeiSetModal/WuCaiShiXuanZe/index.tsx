@@ -1,6 +1,6 @@
 import { Cascader, Select } from 'antd'
 import React, { useMemo } from 'react'
-import WUCAISHI_DATA from '@/data/wucaishi'
+import WUCAISHI_DATA from '@/数据/五彩石'
 import { 五彩石增益类型枚举 } from '@/@types/enum'
 import './indes.css'
 

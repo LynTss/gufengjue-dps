@@ -1,10 +1,10 @@
 import React, { forwardRef, useImperativeHandle, useMemo, useState } from 'react'
-import { 属性系数 } from '@/data/constant'
+import { 属性系数 } from '@/数据/常量'
 import { useAppSelector } from '@/hooks'
 import { CharacterFinalDTO } from '@/@types/character'
 
 import { Checkbox, Tooltip } from 'antd'
-import { 判断是否开启力道加成奇穴, 获取力道奇穴加成后面板, 获取装备加成后面板 } from '@/data/qixue'
+import { 判断是否开启力道加成奇穴, 获取力道奇穴加成后面板, 获取装备加成后面板 } from '@/数据/奇穴'
 import { 计算增益数据中加速值, 根据奇穴处理技能的基础增益信息 } from '@/utils/skill-dps'
 import DpsKernelOptimizer from '@/utils/dps-kernel-optimizer'
 import { QuestionCircleOutlined } from '@ant-design/icons'

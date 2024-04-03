@@ -13,7 +13,7 @@ import {
   IncomeXiaoyao,
   IncomeXiaochi,
   IncomeWuxingshi,
-} from '@/data/income'
+} from '@/数据/收益计算'
 import './index.css'
 // import { DOMAIN_COLOR } from '@/utils/system_constant'
 import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
@@ -172,8 +172,8 @@ function Income({ zengyiVisible }, ref) {
   return (
     <>
       <div>
-        <div className={'income-chart'} id="income-chart" />
-        <div className="income-type-wrapper">
+        <div className={'income-chart'} id='income-chart' />
+        <div className='income-type-wrapper'>
           <div className={'income-chart-title'}>
             属性收益
             <Tooltip
@@ -183,7 +183,7 @@ function Income({ zengyiVisible }, ref) {
             </Tooltip>
           </div>
           <Radio.Group
-            className="income-type-select-radio"
+            className='income-type-select-radio'
             value={currentIncomeType}
             onChange={(e) => handleChangeType(e?.target.value)}
           >

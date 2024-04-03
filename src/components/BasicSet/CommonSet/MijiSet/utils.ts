@@ -1,6 +1,6 @@
 import { MijiSelectedData } from '@/@types/miji'
 import { SkillBasicDTO, SkillGainDTO } from '@/@types/skill'
-import skillMijiBasicData from '@/data/miji'
+import skillMijiBasicData from '@/数据/秘籍'
 
 /**
  * 根据当前已选的秘籍、奇穴等修改技能增益

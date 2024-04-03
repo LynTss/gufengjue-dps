@@ -24,44 +24,44 @@ function Log() {
   }
 
   return (
-    <div className="log-wrap">
+    <div className='log-wrap'>
       <span>当前版本: {log_data?.[0]?.version}</span>
-      <span className="log" onClick={() => setVisible(true)}>
+      <span className='log' onClick={() => setVisible(true)}>
         更新日志
       </span>
       <Modal
         width={600}
-        title="新版本公告"
+        title='新版本公告'
         centered
         open={newVersionModalVisible}
         onCancel={handleCloseNew}
         footer={
-          <Button onClick={handleCloseNew} type="primary">
+          <Button onClick={handleCloseNew} type='primary'>
             知道了
           </Button>
         }
       >
         <Timeline className={'log-line'}>
           <Timeline.Item style={{ padding: 0 }}>
-            <div className="log-content-text">
+            <div className='log-content-text'>
               {Array.isArray(log_data?.[0].content)
                 ? log_data?.[0].content.map((a, index) => {
-                    return <p key={index}>{a}</p>
+                    return <div key={index}>{a}</div>
                   })
                 : log_data?.[0].content}
             </div>
-            <div className="log-right">
-              <p className="log-version">{log_data?.[0].version}</p>
-              <p className="log-date">{log_data?.[0].date || '-'}</p>
+            <div className='log-right'>
+              <p className='log-version'>{log_data?.[0].version}</p>
+              <p className='log-date'>{log_data?.[0].date || '-'}</p>
             </div>
           </Timeline.Item>
         </Timeline>
       </Modal>
       <Modal
         width={600}
-        title="更新日志"
+        title='更新日志'
         centered
-        className="log-modal"
+        className='log-modal'
         open={visible}
         onCancel={() => setVisible(false)}
         footer={null}
@@ -70,16 +70,16 @@ function Log() {
           {log_data.map((item) => {
             return (
               <Timeline.Item key={item.version}>
-                <div className="log-content-text">
+                <div className='log-content-text'>
                   {Array.isArray(item.content)
                     ? item.content.map((a) => {
-                        return <p key={a}>{a}</p>
+                        return <div key={a}>{a}</div>
                       })
                     : item.content}
                 </div>
-                <div className="log-right">
-                  <p className="log-version">{item.version}</p>
-                  <p className="log-date">{item.date || '-'}</p>
+                <div className='log-right'>
+                  <p className='log-version'>{item.version}</p>
+                  <p className='log-date'>{item.date || '-'}</p>
                 </div>
               </Timeline.Item>
             )

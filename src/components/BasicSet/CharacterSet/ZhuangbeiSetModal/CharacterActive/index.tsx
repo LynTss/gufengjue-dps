@@ -6,7 +6,7 @@ import {
   getCharacterDataNumber,
   显示文案和实际属性枚举,
 } from '@/components/BasicSet/CharacterShow'
-import { 判断是否开启力道加成奇穴, 获取力道奇穴加成后面板, 获取装备加成后面板 } from '@/data/qixue'
+import { 判断是否开启力道加成奇穴, 获取力道奇穴加成后面板, 获取装备加成后面板 } from '@/数据/奇穴'
 import { useAppSelector } from '@/hooks'
 import { Tooltip } from 'antd'
 import classnames from 'classnames'

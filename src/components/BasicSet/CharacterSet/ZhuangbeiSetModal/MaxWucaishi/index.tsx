@@ -5,7 +5,7 @@ import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
 import { useAppDispatch } from '@/hooks'
 import { getFinalCharacterBasicDataByEquipment } from '../../util'
 import { RiseOutlined } from '@ant-design/icons'
-import WUCAISHI_DATA from '@/data/wucaishi'
+import WUCAISHI_DATA from '@/数据/五彩石'
 
 import './index.css'
 

@@ -108,12 +108,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
           },
         })
       )
-      const newSkillBasicData = 根据装备格式化技能基础数据(
-        技能基础数据,
-        data.套装技能,
-        data.大橙武特效,
-        data.小橙武特效
-      )
+      const newSkillBasicData = 根据装备格式化技能基础数据(技能基础数据, data)
       dispatch(更新技能基础数据(newSkillBasicData))
       onClose(true)
     })
@@ -196,12 +191,7 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
       const { dpsPerSecond } = dispatch(
         currentDpsFunction({
           更新角色面板: final,
-          更新技能基础数据: 根据装备格式化技能基础数据(
-            技能基础数据,
-            data.套装技能,
-            data.大橙武特效,
-            data.小橙武特效
-          ),
+          更新技能基础数据: 根据装备格式化技能基础数据(技能基础数据, data),
         })
       )
 

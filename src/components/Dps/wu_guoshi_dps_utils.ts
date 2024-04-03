@@ -1,12 +1,12 @@
 // !收益采用非郭式算法
-import { 每等级减伤 } from '@/data/constant'
+import { 每等级减伤 } from '@/数据/常量'
 import { TargetDTO } from '@/@types/character'
 import { CharacterFinalDTO } from '@/@types/character'
 import { CycleDTO } from '@/@types/cycle'
 import { 增益计算类型枚举, 增益类型枚举 } from '@/@types/enum'
 import { SkillBasicDTO, SKillGainData } from '@/@types/skill'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
-import { 加成系数, 属性系数 } from '@/data/constant'
+import { 加成系数, 属性系数 } from '@/数据/常量'
 import {
   getAllGainData,
   getFinalCycleData,
@@ -16,7 +16,7 @@ import {
   switchGain_A,
   switchGain_独立增伤,
 } from './guoshi_dps_utils'
-import { 获取力道奇穴加成后面板 } from '@/data/qixue'
+import { 获取力道奇穴加成后面板 } from '@/数据/奇穴'
 
 interface GetDpsTotalParams {
   计算循环: CycleDTO[]

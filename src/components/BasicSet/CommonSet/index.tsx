@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Select } from 'antd'
-import { 延迟设定, 目标集合 } from '@/data/constant'
-import { 获取全部循环 } from '@/data/skillCycle'
+import { 延迟设定, 目标集合 } from '@/数据/常量'
+import { 获取全部循环 } from '@/数据/计算循环'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 
 import {

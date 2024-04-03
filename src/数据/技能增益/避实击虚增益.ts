@@ -1,6 +1,6 @@
 import { 增益计算类型枚举, 增益类型枚举 } from '../../@types/enum'
 import { SkillGainDTO } from '../../@types/skill'
-import 通用增益 from './通用增益'
+import 通用增益 from './通用增益/通用增益'
 
 const 避实击虚增益: SkillGainDTO[] = [
   ...通用增益,

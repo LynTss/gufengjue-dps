@@ -1,14 +1,11 @@
 import React, { useRef, useState } from 'react'
-// import SkillDamageTable from '@/components/SkillDamageTable'
 import BasicSet from '@/components/BasicSet'
-// import Notice from '@/components/Notice'
 import Dps from '@/components/Dps'
 import TitleTip from '@/components/TitleTip'
 import Log from '@/components/Log'
 import Tools from '@/components/Tools'
-// import SkillDamageTable from '@/components/SkillDamageTable'
-// import ShangshouZhinan from '@/components/ShangshouZhinan'
 import ClearCache from '@/components/ClearCache'
+import WjSwitch from '@/components/WjSwitch'
 import './index.css'
 
 function Pages() {
@@ -33,6 +30,8 @@ function Pages() {
       <Tools />
       {/* 清除缓存 */}
       <ClearCache />
+      {/* 无界全局开关 */}
+      <WjSwitch />
     </>
   )
 }

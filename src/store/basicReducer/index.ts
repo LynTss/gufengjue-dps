@@ -20,9 +20,9 @@ import { MijiSelectedData } from '@/@types/miji'
 import { SkillBasicDTO } from '@/@types/skill'
 import { 全部方案数据 } from '@/@types/common'
 import { 缓存映射 } from '@/utils/system_constant'
-import { 获取全部循环 } from '@/data/skillCycle'
+import { 获取全部循环 } from '@/数据/计算循环'
 
-import GuFengJueSkillDataDTO from '@/data/skill'
+import GuFengJueSkillDataDTO from '@/数据/skill'
 
 interface BasicState {
   // 当前方案名称

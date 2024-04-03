@@ -1,5 +1,5 @@
 import { TuanduiZengyiBasicDataDTO, ZengyixuanxiangDataDTO } from '@/@types/zengyi'
-import { TuanduiZengyi_DATA } from '@/data/tuanduizengyi'
+import { TuanduiZengyi_DATA } from '@/数据/团队增益'
 import { useAppSelector } from '@/hooks'
 import { Button, Checkbox, Col, InputNumber, Modal, Row, Select } from 'antd'
 import React, { useState } from 'react'

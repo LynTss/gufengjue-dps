@@ -3,7 +3,7 @@
  */
 
 import { 获取加速等级 } from '@/utils/help'
-import 技能原始数据 from '@/data/skill'
+import 技能原始数据 from '@/数据/skill'
 import { ERROR_ACTION, 根据奇穴修改buff数据, 根据奇穴修改技能数据, 起手识破BUFF } from './utils'
 import {
   技能GCD组,

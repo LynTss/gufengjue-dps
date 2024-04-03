@@ -1,5 +1,5 @@
 import React from 'react'
-import { Zhenyan_DATA } from '@/data/zhenyan'
+import { Zhenyan_DATA } from '@/数据/阵眼'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { Select, SelectProps } from 'antd'
 import { ZhenyanGainDTO } from '@/@types/zhenyan'

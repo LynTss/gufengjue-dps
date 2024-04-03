@@ -1,6 +1,6 @@
 // 根据加速、延迟获取当前用于计算的循环
 import { CycleDTO } from '@/@types/cycle'
-import { 获取全部循环 } from '@/data/skillCycle'
+import { 获取全部循环 } from '@/数据/计算循环'
 import { useAppSelector } from '@/hooks'
 import { 获取加速等级 } from '@/utils/help'
 import { 计算增益数据中加速值 } from '@/utils/skill-dps'
