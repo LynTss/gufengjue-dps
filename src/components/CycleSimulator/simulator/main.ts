@@ -493,8 +493,8 @@ class 循环主类 {
     }
   }
 
-  // 判断添加GCD等
-  技能释放后(当前技能: CycleSimulatorSkillDTO, 技能实例, 计划释放时间: number) {
+  // 增加技能GCD
+  增加技能GCD(当前技能: CycleSimulatorSkillDTO) {
     // GCD处理
     if (当前技能?.技能GCD组) {
       let 待更新GCD组: string = 当前技能.技能GCD组 as string
@@ -506,6 +506,15 @@ class 循环主类 {
           (this.GCD组[待更新GCD组] || 0) + 当前技能?.技能释放后添加GCD - this.加速等级
       }
     }
+  }
+
+  技能成功开始释放(当前技能: CycleSimulatorSkillDTO, 技能实例) {
+    this.增加技能GCD(当前技能)
+    this.增加技能CD(当前技能, 技能实例)
+  }
+
+  // 增加技能CD
+  增加技能CD(当前技能: CycleSimulatorSkillDTO, 技能实例) {
     // 技能CD处理
     if (当前技能?.技能CD) {
       if (技能实例?.技能释放后更新运行数据) {
@@ -514,6 +523,10 @@ class 循环主类 {
         this.技能释放后更新运行数据(当前技能, 技能实例)
       }
     }
+  }
+
+  // 判断添加GCD等
+  技能释放后(当前技能: CycleSimulatorSkillDTO, 技能实例, 计划释放时间: number) {
     this.更新技能释放记录(当前技能, 技能实例, 计划释放时间)
   }
 
@@ -658,6 +671,7 @@ class 循环主类 {
           const 是否为最后一个技能 = i === this.测试循环.length - 1
           if (释放校验结果?.可以释放) {
             技能实例?.释放前初始化?.()
+            this.技能成功开始释放(当前技能, 技能实例)
             技能实例.命中?.(是否为最后一个技能)
             技能实例.造成伤害?.()
             技能实例.释放后?.()
