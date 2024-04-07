@@ -1,24 +1,26 @@
 {
   "files": {
-    "main.css": "./static/css/main.bf13af0f.css",
-    "main.js": "./static/js/main.aab60e42.js",
+    "main.css": "./static/css/main.8b31e13c.css",
+    "main.js": "./static/js/main.c5a00257.js",
     "getDps.js": "./static/js/getDps.js",
     "static/media/3.jpg": "./static/media/3.2230bbe9e3babae1281f.jpg",
     "static/media/2.jpg": "./static/media/2.02cb73e851b6a253fd26.jpg",
     "static/media/1.jpg": "./static/media/1.e0243388d22ce8132fb8.jpg",
     "static/media/4.jpeg": "./static/media/4.6c6cc427c09ace3fca67.jpeg",
     "static/media/daoru_help_2.png": "./static/media/daoru_help_2.8d37cf94d2cd6a48c68f.png",
+    "static/media/pc.png": "./static/media/pc.45614ce62b4d5d5484f7.png",
     "static/media/daoru_help_1.png": "./static/media/daoru_help_1.3e48a844d1bfb3a5117c.png",
+    "static/media/wj.png": "./static/media/wj.9e4e9a576bef81aca157.png",
     "static/media/paiming-3.png": "./static/media/paiming-3.aa2094d957d8c1493aa3.png",
     "static/media/paiming-2.png": "./static/media/paiming-2.a2390d1e78a1de0da5ba.png",
     "static/media/paiming-1.png": "./static/media/paiming-1.247b854286bb64dcebfe.png",
     "index.html": "./index.html",
-    "main.bf13af0f.css.map": "./static/css/main.bf13af0f.css.map",
-    "main.aab60e42.js.map": "./static/js/main.aab60e42.js.map",
+    "main.8b31e13c.css.map": "./static/css/main.8b31e13c.css.map",
+    "main.c5a00257.js.map": "./static/js/main.c5a00257.js.map",
     "getDps.js.map": "./static/js/getDps.js.map"
   },
   "entrypoints": [
-    "static/css/main.bf13af0f.css",
-    "static/js/main.aab60e42.js"
+    "static/css/main.8b31e13c.css",
+    "static/js/main.c5a00257.js"
   ]
 }
