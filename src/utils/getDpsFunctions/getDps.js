@@ -6,7 +6,7 @@ import {
 import 副本常用 from '../../components/BasicSet/Zengyi/增益快捷设置数据/副本常用.json'
 import { 属性系数 } from '../../数据/常量/index'
 import { 获取加速等级 } from '../help'
-import { 获取排序后各技能列表 } from '../..//components/Dps/DpsCountModal/util'
+import { 获取排序后各技能列表 } from '../../components/Dps/DpsCountModal/util'
 
 export const 计算Dps = (params = {}) => {
   // 获取面板
