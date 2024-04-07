@@ -1,10 +1,10 @@
-import Cycle_Data from '../../data/skillCycle'
+import Cycle_Data from '../../数据/计算循环'
 import { currentDpsFunction } from './getDpsLocal'
 import {
   IncomeFumo,
-} from '../../data/income'
+} from '../../数据/收益计算'
 import 副本常用 from '../../components/BasicSet/Zengyi/增益快捷设置数据/副本常用.json'
-import { 属性系数 } from '../../data/constant/index'
+import { 属性系数 } from '../../数据/常量/index'
 import { 获取加速等级 } from '../help'
 import { 获取排序后各技能列表 } from '../..//components/Dps/DpsCountModal/util'
 
