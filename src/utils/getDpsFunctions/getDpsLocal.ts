@@ -3,16 +3,17 @@
 import { 目标集合 } from '@/数据/常量'
 import { 判断是否开启力道加成奇穴 } from '@/数据/奇穴'
 import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
-import { getDpsTime, 获取实际循环, 根据奇穴处理技能的基础增益信息 } from '@/utils/skill-dps'
+import { 获取实际循环, 根据秘籍奇穴装备格式化技能信息 } from '@/utils/skill-dps'
 import { CharacterFinalDTO } from '@/@types/character'
 import { SKillGainData, SkillBasicDTO } from '@/@types/skill'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { getNotGuoDpsTotal } from '@/components/Dps/wu_guoshi_dps_utils'
 import { CycleDTO } from '@/@types/cycle'
-import GuFengJueSkillDataDTO from '@/数据/skill'
-import { 根据装备格式化技能基础数据 } from '@/components/BasicSet/CharacterSet/ZhuangbeiSetModal/utils'
+import GuFengJueSkillDataDTO from '@/数据/技能原始数据'
+// import { 根据装备格式化技能基础数据 } from '@/components/BasicSet/CharacterSet/ZhuangbeiSetModal/utils'
 import { DEFAULT_MIJI_SELECTED_DATA } from '@/pages/constant'
-import { 根据秘籍格式化技能基础数据 } from '@/components/BasicSet/CommonSet/MijiSet/utils'
+// import { 根据秘籍格式化技能基础数据 } from '@/components/BasicSet/CommonSet/MijiSet/utils'
+import { 全局平台标识枚举 } from '@/@types/enum'
 
 interface CurrentDpsFunctionProps {
   showTime?: boolean // 是否展示计算时间
@@ -27,6 +28,7 @@ interface CurrentDpsFunctionProps {
   更新循环名称?: string // 更新循环名称
   更新奇穴数据?: string[] // 更新奇穴数据
   更新增益启用?: boolean
+  当前平台标识?: string
 }
 
 export interface CurrentDpsFunctionRes {
@@ -37,41 +39,50 @@ export interface CurrentDpsFunctionRes {
 
 export const currentDpsFunction = (props?: CurrentDpsFunctionProps) => {
   const {
-    showTime = false,
+    // showTime = false,
     更新角色面板 = {},
     更新默认增益集合 = [],
     是否郭氏计算 = true,
     更新计算时间,
     更新循环技能列表,
-    更新循环名称,
+    // 更新循环名称,
     更新奇穴数据,
     更新增益启用,
     更新团队增益数据,
+    当前平台标识,
   } = props || {}
 
-  const 延迟 = 0
+  // const 延迟 = 0
   const 当前角色面板 = { ...更新角色面板 } as any
-  const 当前循环名称 = 更新循环名称 || ''
+  // const 当前循环名称 = 更新循环名称 || ''
   const 当前循环技能列表 = 更新循环技能列表
   const 当前目标 = 目标集合[0]
-  const 技能基础 = 根据秘籍格式化技能基础数据(GuFengJueSkillDataDTO, DEFAULT_MIJI_SELECTED_DATA)
-  const 技能基础数据 = 根据装备格式化技能基础数据(技能基础, 当前角色面板?.装备增益) || []
+  // const 技能基础 = 根据秘籍格式化技能基础数据(GuFengJueSkillDataDTO, DEFAULT_MIJI_SELECTED_DATA)
+  // const 技能基础数据 = 根据装备格式化技能基础数据(技能基础, 当前角色面板?.装备增益) || []
   const 奇穴数据 = 更新奇穴数据 || []
 
+  const 技能基础数据 = 根据秘籍奇穴装备格式化技能信息({
+    技能基础数据: GuFengJueSkillDataDTO,
+    秘籍信息: DEFAULT_MIJI_SELECTED_DATA,
+    奇穴数据: 奇穴数据,
+    装备增益: 当前角色面板?.装备增益,
+  })
+
+  const 当前为无界平台 = 当前平台标识 === 全局平台标识枚举.无界
   const 开启力道加成奇穴 = 判断是否开启力道加成奇穴(奇穴数据)
+  const 开启无界力道加成奇穴 = !!当前为无界平台
 
   if (!当前循环技能列表?.length || !当前角色面板) {
     return { totalDps: 0, dpsList: [], dpsPerSecond: 0 }
   }
 
-  const 战斗时间 =
-    更新计算时间 || getDpsTime(当前循环名称, 当前角色面板, 延迟, false, {} as any, showTime)
+  const 战斗时间 = 更新计算时间 || 0
 
   // 获取实际循环
   const trueCycle = 获取实际循环(当前循环技能列表, 奇穴数据)
 
   // 获取基础技能信息加成
-  const 计算后技能基础数据 = 根据奇穴处理技能的基础增益信息(技能基础数据, 奇穴数据)
+  // const 计算后技能基础数据 = 根据奇穴处理技能的基础增益信息(技能基础数据, 奇穴数据)
 
   const dpsFunction = 是否郭氏计算 ? getDpsTotal : getNotGuoDpsTotal
 
@@ -80,12 +91,13 @@ export const currentDpsFunction = (props?: CurrentDpsFunctionProps) => {
     计算循环: trueCycle,
     角色最终属性: 当前角色面板,
     当前目标: 当前目标,
-    技能基础数据: 计算后技能基础数据,
+    技能基础数据: 技能基础数据,
     增益启用: 更新增益启用 || false,
     增益数据: (更新团队增益数据 as any) || {},
     默认增益集合: 更新默认增益集合 || [],
     战斗时间,
     开启强膂: 开启力道加成奇穴,
+    开启斩涛悟: 开启无界力道加成奇穴,
   })
 
   // 每秒dps

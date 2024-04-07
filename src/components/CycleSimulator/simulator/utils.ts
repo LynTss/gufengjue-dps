@@ -1,6 +1,6 @@
 import { 每秒郭氏帧 } from '../constant'
 import 循环模拟技能基础数据, { 原始Buff数据 } from '../constant/skill'
-import { CycleSimulatorSkillDTO, DotDTO } from './type'
+import { 循环基础技能数据类型, DotDTO } from './type'
 
 export const 根据奇穴修改buff数据 = (奇穴: string[]) => {
   const res = {}
@@ -54,12 +54,12 @@ export const 根据奇穴修改buff数据 = (奇穴: string[]) => {
   return res
 }
 
-export const 根据奇穴修改技能数据 = (奇穴: string[]): CycleSimulatorSkillDTO[] => {
+export const 根据奇穴修改技能数据 = (奇穴: string[]): 循环基础技能数据类型[] => {
   const 判断奇穴 = (val) => {
     return 奇穴?.includes(val)
   }
 
-  const res: CycleSimulatorSkillDTO[] = 循环模拟技能基础数据.map((技能) => {
+  const res: 循环基础技能数据类型[] = 循环模拟技能基础数据.map((技能) => {
     if (技能?.技能名称 === '横') {
       return 判断奇穴('敛摄')
         ? {

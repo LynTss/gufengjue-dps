@@ -1,4 +1,4 @@
-import { 增益类型枚举 } from './enum'
+import { 全局平台标识枚举, 增益类型枚举 } from './enum'
 
 /**
  * @name 技能基础数据模型
@@ -44,6 +44,16 @@ export interface SkillBasicDTO {
    * @name 技能增益列表
    */
   技能增益列表: SkillGainDTO[]
+  /**
+   * 技能类型
+   */
+  技能类型?: 全局平台标识枚举
+  /**
+   * @name 技能破招系数
+   * @description 游戏面板描述 “破招伤害：xxxx%破招值”
+   * @default 0
+   */
+  技能破招系数?: number
 }
 
 /**

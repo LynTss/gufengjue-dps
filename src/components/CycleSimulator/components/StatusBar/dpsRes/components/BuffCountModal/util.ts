@@ -1,8 +1,8 @@
-import { CycleSimulatorLog } from '../../../../../simulator/type'
+import { 循环日志数据类型 } from '../../../../../simulator/type'
 
 const 过滤的buff列表 = ['长溯']
 
-export const 获取Buff覆盖率 = (日志: CycleSimulatorLog[], 总战斗用时: number) => {
+export const 获取Buff覆盖率 = (日志: 循环日志数据类型[], 总战斗用时: number) => {
   // 以buff个体分类，组成数字数组代表buff持续时间段
   const Buff枚举: {
     [key: string]: number[][]

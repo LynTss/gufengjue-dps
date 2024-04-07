@@ -3,15 +3,15 @@
  */
 
 import { 获取加速等级 } from '@/utils/help'
-import 技能原始数据 from '@/数据/skill'
+import 技能原始数据 from '@/数据/技能原始数据'
 import { ERROR_ACTION, 根据奇穴修改buff数据, 根据奇穴修改技能数据, 起手识破BUFF } from './utils'
 import {
   技能GCD组,
   技能类实例集合,
   检查运行数据实例类型,
   Buff枚举,
-  CycleSimulatorLog,
-  CycleSimulatorSkillDTO,
+  循环日志数据类型,
+  循环基础技能数据类型,
   角色状态信息类型,
   技能释放记录数据,
 } from './type'
@@ -57,10 +57,10 @@ class 循环主类 {
   当前目标buff列表: Buff枚举 = {}
   当前时间 = 0
   开始释放上一个技能的时间 = 0
-  战斗日志: CycleSimulatorLog[] = []
+  战斗日志: 循环日志数据类型[] = []
   技能释放记录: 技能释放记录数据[] = []
   Buff和Dot数据: Buff枚举 = {}
-  技能基础数据: CycleSimulatorSkillDTO[] = []
+  技能基础数据: 循环基础技能数据类型[] = []
   GCD组: 技能GCD组 = {
     单刀: 0,
     双刀: 0,
@@ -77,9 +77,7 @@ class 循环主类 {
     this.奇穴 = props.奇穴
     this.加速等级 = 获取加速等级(props.加速值)
     this.网络延迟 = props.网络延迟
-    // 根据奇穴和装备情况修改buff的数据
     this.Buff和Dot数据 = 根据奇穴修改buff数据(this.奇穴)
-    // 根据奇穴和装备情况修改技能的数据
     this.技能基础数据 = 根据奇穴修改技能数据(this.奇穴)
 
     // 模拟初始化
@@ -195,7 +193,7 @@ class 循环主类 {
   }
 
   // 单双刀体态校验
-  单双刀体态校验(当前技能: CycleSimulatorSkillDTO) {
+  单双刀体态校验(当前技能: 循环基础技能数据类型) {
     if (当前技能?.技能类型 && ['单刀', '双刀']?.includes(当前技能?.技能类型)) {
       if (this.角色状态信息?.体态 !== 当前技能?.技能类型) {
         return {
@@ -231,7 +229,7 @@ class 循环主类 {
     this.GCD组 = { ...新GCD组 }
   }
 
-  技能释放前检查GCD统一方法(当前技能: CycleSimulatorSkillDTO) {
+  技能释放前检查GCD统一方法(当前技能: 循环基础技能数据类型) {
     let 校验GCD组: string = 当前技能.技能GCD组 as string
     if (当前技能.技能GCD组 === '自身') {
       校验GCD组 = 当前技能?.技能名称
@@ -279,7 +277,7 @@ class 循环主类 {
     })
   }
 
-  技能释放前检查运行数据(当前技能: CycleSimulatorSkillDTO, 技能实例: 检查运行数据实例类型, GCD) {
+  技能释放前检查运行数据(当前技能: 循环基础技能数据类型, 技能实例: 检查运行数据实例类型, GCD) {
     let 等待CD时间 = 0
     const 可以释放时间 = this.当前时间 + GCD || 0
     if (技能实例?.技能运行数据) {
@@ -300,7 +298,7 @@ class 循环主类 {
     return 等待CD时间
   }
 
-  技能释放后更新运行数据(当前技能: CycleSimulatorSkillDTO, 技能实例: 检查运行数据实例类型) {
+  技能释放后更新运行数据(当前技能: 循环基础技能数据类型, 技能实例: 检查运行数据实例类型) {
     if (技能实例?.技能运行数据) {
       const 最大充能层数 = 当前技能?.最大充能层数 || 1
       const 是否为充满后第一次释放 = 技能实例?.技能运行数据?.当前层数 === 最大充能层数
@@ -332,7 +330,7 @@ class 循环主类 {
   // ----------------- 时间、GCD、CD相关算法 end----------------- //
 
   // 添加战斗日志
-  添加战斗日志(log: CycleSimulatorLog) {
+  添加战斗日志(log: 循环日志数据类型) {
     const { 日志时间 = this.当前时间, ...rest } = log
     this.战斗日志 = [
       ...(this.战斗日志 || []),
@@ -432,7 +430,7 @@ class 循环主类 {
     }
   }
 
-  检查GCD(当前技能: CycleSimulatorSkillDTO, 技能实例, i) {
+  检查GCD(当前技能: 循环基础技能数据类型, 技能实例, i) {
     let GCD = 0
     if (技能实例?.检查GCD) {
       GCD = 技能实例?.检查GCD?.(i)
@@ -443,7 +441,7 @@ class 循环主类 {
   }
 
   // 判断GCD，技能CD等
-  技能释放前(当前技能: CycleSimulatorSkillDTO, 技能实例, i) {
+  技能释放前(当前技能: 循环基础技能数据类型, 技能实例, i) {
     let GCD = 0
     let 等待CD = 0
 
@@ -473,7 +471,7 @@ class 循环主类 {
   技能GCD和CD处理(
     等待CD,
     技能预估释放时间,
-    当前技能: CycleSimulatorSkillDTO,
+    当前技能: 循环基础技能数据类型,
     技能实例: 检查运行数据实例类型
   ) {
     // 判断在处理完特殊事件以后，剩余的待定时间还有多少
@@ -494,7 +492,7 @@ class 循环主类 {
   }
 
   // 增加技能GCD
-  增加技能GCD(当前技能: CycleSimulatorSkillDTO) {
+  增加技能GCD(当前技能: 循环基础技能数据类型) {
     // GCD处理
     if (当前技能?.技能GCD组) {
       let 待更新GCD组: string = 当前技能.技能GCD组 as string
@@ -508,13 +506,13 @@ class 循环主类 {
     }
   }
 
-  技能成功开始释放(当前技能: CycleSimulatorSkillDTO, 技能实例) {
+  技能成功开始释放(当前技能: 循环基础技能数据类型, 技能实例) {
     this.增加技能GCD(当前技能)
     this.增加技能CD(当前技能, 技能实例)
   }
 
   // 增加技能CD
-  增加技能CD(当前技能: CycleSimulatorSkillDTO, 技能实例) {
+  增加技能CD(当前技能: 循环基础技能数据类型, 技能实例) {
     // 技能CD处理
     if (当前技能?.技能CD) {
       if (技能实例?.技能释放后更新运行数据) {
@@ -526,12 +524,7 @@ class 循环主类 {
   }
 
   // 判断添加GCD等
-  技能释放后(
-    当前技能: CycleSimulatorSkillDTO,
-    计划释放时间: number,
-    开始释放时间: number,
-    技能实例
-  ) {
+  技能释放后(当前技能: 循环基础技能数据类型, 计划释放时间: number, 开始释放时间: number, 技能实例) {
     const 技能释放记录结果 = 技能实例?.获取技能释放记录结果?.() || {}
     // 技能释放记录
     this.技能释放记录.push({

@@ -1,7 +1,7 @@
 // 当前角色状态栏，只用来展示
 import React from 'react'
 import {
-  CycleSimulatorLog,
+  循环日志数据类型,
   ShowCycleSingleSkill,
   模拟DPS结果,
   模拟信息类型,
@@ -16,7 +16,7 @@ import DpsRes from './dpsRes'
 interface StatusBarProps {
   模拟信息: 模拟信息类型
   完整循环: ShowCycleSingleSkill[]
-  日志信息: CycleSimulatorLog[]
+  日志信息: 循环日志数据类型[]
   模拟DPS结果: 模拟DPS结果
 }
 
@@ -28,12 +28,12 @@ function StatusBar(props: StatusBarProps) {
       <Titai 角色状态信息={模拟信息?.角色状态信息} />
       <Ruiyi 角色状态信息={模拟信息?.角色状态信息} />
       <Buff
-        title="自身Buff"
+        title='自身Buff'
         buff列表={模拟信息?.当前自身buff列表}
         当前时间点={模拟信息?.当前时间}
       />
       <Buff
-        title="目标Buff"
+        title='目标Buff'
         buff列表={模拟信息?.当前目标buff列表}
         当前时间点={模拟信息?.当前时间}
       />

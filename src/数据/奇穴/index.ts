@@ -2,10 +2,11 @@ import { QixueListDTO } from '@/@types/qixue'
 import { CharacterFinalDTO } from '@/@types/character'
 import {
   getMianBanGongJI,
-  getLidao,
   getLidaoJiachengHuixin,
   getLidaoJiachengPofang,
   getJiChuGongJI,
+  强膂力道加成,
+  斩涛悟力道加成,
 } from '@/components/BasicSet/CharacterSet/util'
 import { 装备信息数据类型 } from '@/@types/equipment'
 import 装备增益数据 from '@/数据/装备/装备增益数据'
@@ -424,9 +425,13 @@ export const 获取装备加成后面板 = (
 }
 
 // 判断力道奇穴加成后面板
-export const 获取力道奇穴加成后面板 = (data: CharacterFinalDTO, openQiangLv): CharacterFinalDTO => {
-  if (openQiangLv) {
-    const 加成后面板力道 = getLidao(data.力道, true)
+export const 获取力道奇穴加成后面板 = (
+  data: CharacterFinalDTO,
+  开启强膂,
+  开启斩涛悟
+): CharacterFinalDTO => {
+  if (开启强膂 || 开启斩涛悟) {
+    const 加成后面板力道 = 开启斩涛悟 ? 斩涛悟力道加成(data.力道) : 强膂力道加成(data.力道)
     const 力道差值 = 加成后面板力道 - data.力道
     return {
       ...data,

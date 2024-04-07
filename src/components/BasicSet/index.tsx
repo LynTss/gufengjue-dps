@@ -5,11 +5,9 @@ import CommonSet from './CommonSet'
 import CharacterSet from './CharacterSet'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { getFinalCharacterBasicData } from './CharacterSet/util'
-import { 更新角色最终属性, 更新技能基础数据 } from '@/store/basicReducer'
-import { 根据秘籍格式化技能基础数据 } from './CommonSet/MijiSet/utils'
+import { 更新角色最终属性 } from '@/store/basicReducer'
 import Footer from './Footer'
 import Zengyi from './Zengyi'
-import { 根据装备格式化技能基础数据 } from './CharacterSet/ZhuangbeiSetModal/utils'
 import './index.css'
 
 interface CharacterSetProps {
@@ -23,8 +21,6 @@ function BasicSet(props: CharacterSetProps) {
   const dispatch = useAppDispatch()
   const 角色基础属性 = useAppSelector((state) => state.basic.角色基础属性)
   const 装备信息 = useAppSelector((state) => state.basic.装备信息)
-  const 技能基础数据 = useAppSelector((state) => state?.basic?.技能基础数据)
-  const 当前秘籍信息 = useAppSelector((state) => state?.basic?.当前秘籍信息)
 
   const getDpsFunction = () => {
     setTimeout(() => {
@@ -49,14 +45,6 @@ function BasicSet(props: CharacterSetProps) {
           },
         })
       )
-
-      let 计算后技能基础数据 = [...技能基础数据]
-      // 进入以后默认设置秘籍选项
-      if (当前秘籍信息?.length) {
-        计算后技能基础数据 = 根据秘籍格式化技能基础数据(计算后技能基础数据, 当前秘籍信息)
-      }
-      计算后技能基础数据 = 根据装备格式化技能基础数据(计算后技能基础数据, 装备信息)
-      dispatch(更新技能基础数据(计算后技能基础数据))
     }
   }, [])
 

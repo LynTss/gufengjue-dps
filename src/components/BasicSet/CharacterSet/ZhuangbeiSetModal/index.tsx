@@ -20,6 +20,7 @@ import CharacterActive from './CharacterActive'
 import Zhuangbeizengyi from './Zhuangbeizengyi'
 import MaxFumo from './MaxFumo'
 import MaxWucaishi from './MaxWucaishi'
+import { 根据秘籍奇穴装备格式化技能信息 } from '@/utils/skill-dps'
 import './index.css'
 
 function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
@@ -30,6 +31,8 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
   const 装备信息 = useAppSelector((state) => state?.basic?.装备信息)
   const 当前计算结果DPS = useAppSelector((state) => state?.basic?.当前计算结果DPS)
   const 技能基础数据 = useAppSelector((state) => state?.basic?.技能基础数据)
+  const 当前奇穴信息 = useAppSelector((state) => state?.basic?.当前奇穴信息)
+  const 当前秘籍信息 = useAppSelector((state) => state?.basic?.当前秘籍信息)
 
   const [zhuangbeizengyi, setZhuangbeizengyi] = useState<any>()
   const [默认镶嵌宝石等级, 设置默认镶嵌宝石等级] = useState<number>(8)
@@ -188,10 +191,17 @@ function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {
         冬至套装: data?.冬至套装,
       })
 
+      const 更新技能基础数据 = 根据秘籍奇穴装备格式化技能信息({
+        技能基础数据: 技能基础数据,
+        秘籍信息: 当前秘籍信息,
+        奇穴数据: 当前奇穴信息,
+        装备增益: data,
+      })
+
       const { dpsPerSecond } = dispatch(
         currentDpsFunction({
           更新角色面板: final,
-          更新技能基础数据: 根据装备格式化技能基础数据(技能基础数据, data),
+          更新技能基础数据: 更新技能基础数据,
         })
       )
 

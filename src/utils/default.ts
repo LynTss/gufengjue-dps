@@ -4,12 +4,16 @@ import {
   DEFAULT_CHARACTER,
   DEFAULT_EQUIPMENT,
   DEFAULT_MIJI_SELECTED_DATA,
+  DEFAULT_PLATFORM,
   DEFAULT_PROJECT_NAME,
   DEFAULT_QIXUE_VALUE,
   ZENGYI_DATA_DEFAULT,
 } from '@/pages/constant'
 import { 缓存映射 } from './system_constant'
 import { 全部方案数据 } from '@/@types/common'
+import { 全局平台标识枚举 } from '@/@types/enum'
+import 技能原始数据 from '@/数据/技能原始数据'
+import 无界技能原始数据 from '@/数据/无界/技能原始数据'
 
 export const getDefaultNetwork = () => {
   const localNetwork = localStorage.getItem(缓存映射.网络延迟)
@@ -86,13 +90,21 @@ export const getDefaultCustomCycleList = () => {
   }
 }
 
+export const 加载技能原始数据 = () => {
+  const 当前平台标识 = 获取方案内信息('当前平台标识')
+  if (当前平台标识 === 全局平台标识枚举.无界) {
+    return 无界技能原始数据
+  } else {
+    return 技能原始数据
+  }
+}
+
 export const 加载缓存当前方案名称 = () => {
   const 当前方案名称字符: any = localStorage.getItem(缓存映射.当前方案名称) || false
   if (当前方案名称字符) {
     try {
-      const 解析结果 = JSON.parse(当前方案名称字符)
-      if (解析结果) {
-        return 解析结果
+      if (当前方案名称字符) {
+        return 当前方案名称字符
       }
       return DEFAULT_PROJECT_NAME
     } catch {
@@ -109,6 +121,7 @@ export const 加载缓存全部方案数据 = () => {
   const 默认全部方案数据: 全部方案数据 = {
     默认方案: {
       方案名称: DEFAULT_PROJECT_NAME,
+      当前平台标识: DEFAULT_PLATFORM,
       角色基础属性: DEFAULT_CHARACTER,
       装备信息: DEFAULT_EQUIPMENT as any,
       增益启用: false,
@@ -121,7 +134,7 @@ export const 加载缓存全部方案数据 = () => {
   try {
     const obj = JSON.parse(全部方案数据字符)
     if (obj) {
-      return obj
+      return Object.assign(默认全部方案数据, obj)
     }
     return 默认全部方案数据
   } catch {
@@ -135,7 +148,7 @@ export const 获取方案内信息 = (属性) => {
   const 当前方案数据 = 全部方案数据?.[当前方案名称]
   if (属性 === '当前循环信息') {
     const 循环名称 = 当前方案数据?.当前循环名称
-    const 全部循环 = 获取全部循环()
+    const 全部循环 = 获取全部循环(当前方案数据?.当前平台标识)
     const 加速枚举 =
       全部循环.find((item) => item.name === 循环名称)?.各加速枚举 || 全部循环[0]?.各加速枚举
     return {
@@ -148,3 +161,20 @@ export const 获取方案内信息 = (属性) => {
     return undefined
   }
 }
+
+// export const 加载当前平台标识 = () => {
+//   const 当前平台标识: any = localStorage.getItem(缓存映射.当前平台标识) || false
+//   if (当前平台标识) {
+//     try {
+//       const 解析结果 = JSON.parse(当前平台标识)
+//       if (解析结果) {
+//         return 解析结果
+//       }
+//       return DEFAULT_PLATFORM
+//     } catch {
+//       return DEFAULT_PLATFORM
+//     }
+//   } else {
+//     return DEFAULT_PLATFORM
+//   }
+// }

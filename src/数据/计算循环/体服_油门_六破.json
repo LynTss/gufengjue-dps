@@ -1,8 +1,10 @@
 {
-  "name": "体服_油门_六破",
-  "title": "体服_油门_六破",
+  "name": "油门_六破",
+  "title": "油门_六破",
   "hide": false,
   "type": "自定义",
+  "platform": "pc",
+  "tag": "体服",
   "qixue": [
     "渊冲",
     "戗风",

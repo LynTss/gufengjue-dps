@@ -1,14 +1,14 @@
 import { Modal, ModalProps, Space } from 'antd'
 import React, { useEffect, useRef, useState } from 'react'
 import { Chart } from '@antv/g2'
-import { CycleSimulatorLog } from '../../../../../simulator/type'
+import { 循环日志数据类型 } from '../../../../../simulator/type'
 import './index.css'
 import { 格式化buff覆盖数组, 获取Buff覆盖率 } from './util'
 
 interface BuffCountModalProps extends ModalProps {
   open: boolean
   onCancel: () => void
-  日志: CycleSimulatorLog[]
+  日志: 循环日志数据类型[]
   总战斗用时: number // 总战斗用时
 }
 

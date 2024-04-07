@@ -18,6 +18,7 @@ import { 缓存映射 } from '@/utils/system_constant'
 import SaveProject from './SaveProject'
 import { getFinalCharacterBasicData } from '../CharacterSet/util'
 import './index.css'
+import { 全局平台标识枚举 } from '@/@types/enum'
 // import { getExportFunction } from '@/utils/wasm'
 // import { getExportFunction } from '@/utils/wasm'
 // import { useWasm } from '@/hooks/use-wasm'
@@ -31,6 +32,8 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
   const 当前循环名称 = useAppSelector((state) => state?.basic?.当前循环名称)
   const 网络延迟 = useAppSelector((state) => state?.basic?.网络延迟)
   const 当前输出计算目标名称 = useAppSelector((state) => state?.basic?.当前输出计算目标名称)
+  const 当前平台标识 = useAppSelector((state) => state?.basic?.当前平台标识)
+  const 是否为无界平台 = 当前平台标识 === 全局平台标识枚举.无界
 
   const setCurrentTargetVal = (val) => {
     const target = 目标集合?.find((item) => item.名称 === val)
@@ -54,23 +57,22 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
 
   const setCurrentCycleVal = (val) => {
     const cycleData = skillCycle?.find((item) => item.name === val)
-    const cycle = cycleData?.cycle || []
-    if (cycle) {
+    if (cycleData?.各加速枚举) {
       dispatch(
         更新方案数据({
           属性: '当前循环名称',
           数据: val,
-          额外数据: cycleData?.各加速枚举,
+          额外数据: {
+            各加速枚举: cycleData?.各加速枚举,
+            奇穴信息: cycleData?.qixue,
+          },
         })
       )
-      if (cycleData?.qixue) {
-        dispatch(更新方案数据({ 数据: cycleData?.qixue, 属性: '当前奇穴信息' }))
-      }
       getDpsFunction()
     }
   }
 
-  const skillCycle = 获取全部循环()
+  const skillCycle = 获取全部循环(当前平台标识)
 
   const 更新方案 = (e) => {
     dispatch(更新选中的方案数据(e))
@@ -163,13 +165,17 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
             onChange={(v) => {
               setCurrentCycleVal(v)
             }}
+            optionFilterProp='label'
           >
             {skillCycle
               .filter((item) => !item.hide)
               .map((item) => {
                 return (
-                  <Select.Option value={item?.name} key={item.name}>
-                    {item.name}
+                  <Select.Option value={item?.name} key={item.name} label={item.name}>
+                    <div className='cycle-select-item'>
+                      {item.name}
+                      <span className='cycle-select-item-tag'>{item.tag}</span>
+                    </div>
                   </Select.Option>
                 )
               })}
@@ -191,9 +197,9 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
         </div>
       </div>
       <div className='common-item'>
-        <MijiSet getDpsFunction={getDpsFunction} />
-        <QixueSet getDpsFunction={getDpsFunction} />
-        <CycleSimulator />
+        <MijiSet getDpsFunction={getDpsFunction} disabled={是否为无界平台} />
+        <QixueSet getDpsFunction={getDpsFunction} disabled={是否为无界平台} />
+        <CycleSimulator disabled={是否为无界平台} />
       </div>
     </div>
   )

@@ -2,11 +2,11 @@ import React from 'react'
 import { Modal, ModalProps, Table } from 'antd'
 import 循环模拟技能基础数据, { 日志类型数组 } from '../../../../constant/skill'
 import { 每秒郭氏帧 } from '../../../../constant'
-import { CycleSimulatorLog } from '../../../../simulator/type'
+import { 循环日志数据类型 } from '../../../../simulator/type'
 import '../../../../index.css'
 
 interface BattleLogModalProps extends ModalProps {
-  logData: CycleSimulatorLog[]
+  logData: 循环日志数据类型[]
 }
 
 const BattleLogModal: React.FC<BattleLogModalProps> = (props) => {
@@ -76,7 +76,7 @@ const BattleLogModal: React.FC<BattleLogModalProps> = (props) => {
 
   return (
     <Modal
-      className="cycle-simulator-modal"
+      className='cycle-simulator-modal'
       open={open}
       onCancel={onCancel}
       title={
@@ -91,7 +91,7 @@ const BattleLogModal: React.FC<BattleLogModalProps> = (props) => {
       <Table
         dataSource={logData}
         columns={columns}
-        size="small"
+        size='small'
         pagination={{ pageSize: 100, showTotal: (total) => total }}
       />
     </Modal>

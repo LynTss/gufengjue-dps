@@ -1,8 +1,10 @@
 {
-  "name": "体服_无影刀",
-  "title": "体服_无影刀",
+  "name": "无影刀",
+  "title": "无影刀",
   "hide": false,
   "type": "自定义",
+  "platform": "pc",
+  "tag": "体服",
   "qixue": [
     "渊冲",
     "戗风",

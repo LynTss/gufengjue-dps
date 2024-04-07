@@ -43,11 +43,8 @@ export const 初始化所有组合 = () => {
     })
   })
 
-  // console.log('res', res)
   const generateCombinationsRes = generateCombinations(res)
-  // console.log('generateCombinationsRes', generateCombinationsRes)
   const filterUniqueObjectsRes = filterUniqueObjects(generateCombinationsRes)
-  // console.log('filterUniqueObjects', filterUniqueObjectsRes)
 
   return filterUniqueObjectsRes
 }

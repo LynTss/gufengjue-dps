@@ -9,10 +9,11 @@ import './index.css'
 interface QixueSetProps {
   getDpsFunction?: () => void
   className?: string
+  disabled?: boolean
 }
 
 const QixueSet: React.FC<QixueSetProps> = (props) => {
-  const { getDpsFunction, ...rest } = props
+  const { getDpsFunction, disabled, ...rest } = props
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false)
   const [form] = Form.useForm()
 
@@ -44,7 +45,12 @@ const QixueSet: React.FC<QixueSetProps> = (props) => {
 
   return (
     <>
-      <Button className='qixue-set-button' onClick={() => setDrawerOpen(true)} {...rest}>
+      <Button
+        disabled={disabled}
+        className='qixue-set-button'
+        onClick={() => setDrawerOpen(true)}
+        {...rest}
+      >
         奇穴设置
       </Button>
       <Drawer

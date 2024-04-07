@@ -5,9 +5,10 @@ import { CharacterFinalDTO } from '@/@types/character'
 
 import { Checkbox, Tooltip } from 'antd'
 import { 判断是否开启力道加成奇穴, 获取力道奇穴加成后面板, 获取装备加成后面板 } from '@/数据/奇穴'
-import { 计算增益数据中加速值, 根据奇穴处理技能的基础增益信息 } from '@/utils/skill-dps'
+import { 计算增益数据中加速值, 根据秘籍奇穴装备格式化技能信息 } from '@/utils/skill-dps'
 import DpsKernelOptimizer from '@/utils/dps-kernel-optimizer'
 import { QuestionCircleOutlined } from '@ant-design/icons'
+import { 全局平台标识枚举 } from '@/@types/enum'
 
 import useCycle from '@/hooks/use-cycle'
 import './index.css'
@@ -19,10 +20,14 @@ function CharacterShow(_, ref) {
   const 当前循环名称 = useAppSelector((state) => state?.basic?.当前循环名称)
   const 当前输出计算目标 = useAppSelector((state) => state?.basic?.当前输出计算目标)
   const 技能基础数据 = useAppSelector((state) => state?.basic?.技能基础数据)
+  const 当前秘籍信息 = useAppSelector((state) => state?.basic?.当前秘籍信息)
   const 增益数据 = useAppSelector((state) => state?.basic?.增益数据)
   const 增益启用 = useAppSelector((state) => state?.basic?.增益启用)
-
   const 开启强膂 = 判断是否开启力道加成奇穴(当前奇穴信息)
+
+  const 当前平台标识 = useAppSelector((state) => state?.basic?.当前平台标识)
+  const 当前为无界平台 = 当前平台标识 === 全局平台标识枚举.无界
+  const 开启斩涛悟 = !!当前为无界平台
 
   useImperativeHandle(ref, () => ({
     关闭优化算法: () => setOpenBFGS(false),
@@ -35,10 +40,10 @@ function CharacterShow(_, ref) {
   const 显示数据 = useMemo(() => {
     let 结果 = 角色最终属性
     if (装备信息) {
-      结果 = 获取装备加成后面板(角色最终属性, 装备信息)
+      结果 = 获取装备加成后面板(结果, 装备信息)
     }
     if (开启强膂) {
-      结果 = 获取力道奇穴加成后面板(角色最终属性, 开启强膂)
+      结果 = 获取力道奇穴加成后面板(结果, 开启强膂, 开启斩涛悟)
     }
     if (增益启用) {
       结果 = {
@@ -55,8 +60,12 @@ function CharacterShow(_, ref) {
     if (!openBFGS) {
       return {}
     }
-    // 获取实际循环
-    const 计算后技能基础数据 = 根据奇穴处理技能的基础增益信息(技能基础数据, 当前奇穴信息)
+    const 计算后技能基础数据 = 根据秘籍奇穴装备格式化技能信息({
+      技能基础数据,
+      秘籍信息: 当前秘籍信息,
+      奇穴数据: 当前奇穴信息,
+      装备增益: 装备信息,
+    })
 
     if (角色最终属性?.力道) {
       const res = DpsKernelOptimizer({
@@ -67,6 +76,7 @@ function CharacterShow(_, ref) {
         增益启用,
         增益数据,
         开启强膂,
+        开启斩涛悟,
       })
       return res
     } else {
@@ -103,7 +113,7 @@ function CharacterShow(_, ref) {
       </div>
       {mapKeyList.map((item) => {
         const maxObj: any = openBFGS
-          ? getCharacterMaxData(item, maxDpsData?.maxCharacterData, 开启强膂, 显示数据)
+          ? getCharacterMaxData(item, maxDpsData?.maxCharacterData, 开启强膂, 开启斩涛悟, 显示数据)
           : {}
         return (
           <div className='character-item' key={item}>
@@ -197,10 +207,11 @@ export const getCharacterDataNumber = (key: string, 角色最终属性: Characte
 export const getCharacterMaxData = (
   key: string,
   角色最终属性: CharacterFinalDTO,
-  openLidao: boolean,
+  开启强膂: boolean,
+  开启斩涛悟: boolean,
   oldData
 ) => {
-  const data = openLidao ? 获取力道奇穴加成后面板(角色最终属性, openLidao) : 角色最终属性
+  const data = 开启强膂 ? 获取力道奇穴加成后面板(角色最终属性, 开启强膂, 开启斩涛悟) : 角色最终属性
   let value: number | string | undefined = '-1'
   let upperStatus = false
   switch (key) {

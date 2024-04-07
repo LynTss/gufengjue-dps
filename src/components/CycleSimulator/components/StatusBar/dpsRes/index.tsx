@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Alert, Tooltip } from 'antd'
 import { PieChartOutlined, CalendarOutlined, AlignLeftOutlined } from '@ant-design/icons'
 
-import { CycleSimulatorLog, 模拟DPS结果, 模拟信息类型 } from '../../../simulator/type'
+import { 循环日志数据类型, 模拟DPS结果, 模拟信息类型 } from '../../../simulator/type'
 // import DpsResModal from './components/DpsResModal'
 import BattleLogModal from './components/BattleLogModal'
 import SkillCountModal from './components/SkillCountModal'
@@ -10,7 +10,7 @@ import BuffCountModal from './components/BuffCountModal'
 import './index.css'
 
 interface DpsResProps {
-  日志信息: CycleSimulatorLog[]
+  日志信息: 循环日志数据类型[]
   模拟信息: 模拟信息类型
   模拟DPS结果: 模拟DPS结果
 }

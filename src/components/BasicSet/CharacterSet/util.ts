@@ -16,8 +16,12 @@ export const getFinalCharacterBasicData = (data: CharacterBasicDTO): CharacterFi
   }
 }
 
-export const getLidao = (力道, 强膂, 额外郭氏力道 = 0) => {
-  return 强膂 ? 力道 + Math.floor((力道 * (102 + 额外郭氏力道 || 0)) / 1024) : 力道
+export const 强膂力道加成 = (力道, 额外郭氏力道 = 0) => {
+  return 力道 + Math.floor((力道 * (102 + 额外郭氏力道 || 0)) / 1024)
+}
+
+export const 斩涛悟力道加成 = (力道, 额外郭氏力道 = 0) => {
+  return 力道 + Math.floor((力道 * (154 + 额外郭氏力道 || 0)) / 1024)
 }
 
 export const getJiChuGongJI = (基础攻击, 面板力道) => {

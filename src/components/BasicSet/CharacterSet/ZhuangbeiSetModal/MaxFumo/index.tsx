@@ -82,7 +82,6 @@ function MaxFumo({ 一键替换附魔, 对比Dps, 对比装备信息 }) {
             } as any,
           })
         )
-        // console.log('dpsPerSecond', dpsPerSecond)
         if (dpsPerSecond > maxDps) {
           maxDps = dpsPerSecond
           最大组合 = 当前附魔数据

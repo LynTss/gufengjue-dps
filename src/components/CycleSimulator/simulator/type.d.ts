@@ -103,7 +103,7 @@ export interface 检查运行数据实例类型 {
 /**
  * @name 循环基础技能
  */
-export interface CycleSimulatorSkillDTO {
+export interface 循环基础技能数据类型 {
   /**
    * @name 技能名称
    */
@@ -253,7 +253,7 @@ export interface BuffDTO {
 }
 
 // 用来显示的循环技能类型类型
-export interface ShowCycleSingleSkill extends CycleSimulatorSkillDTO, 技能释放记录数据 {
+export interface ShowCycleSingleSkill extends 循环基础技能数据类型, 技能释放记录数据 {
   /**
    * 计划释放时间
    */
@@ -284,7 +284,7 @@ export interface ShowCycle {
   本轮总用时: number
 }
 
-export interface CycleSimulatorLog {
+export interface 循环日志数据类型 {
   /**
    * 日志
    */
@@ -346,7 +346,7 @@ export interface 模拟信息类型 {
   技能释放记录: 技能释放记录数据[] = []
   当前各技能运行状态: { [key: string]: 技能运行数据类型 }
   当前GCD组: 技能GCD组
-  技能基础数据: CycleSimulatorSkillDTO[]
+  技能基础数据: 循环基础技能数据类型[]
 }
 
 export interface 技能释放记录数据 {

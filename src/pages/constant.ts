@@ -1,6 +1,8 @@
+import { 全局平台标识枚举 } from '@/@types/enum'
 import { MijiSelectedData } from '@/@types/miji'
 
 export const DEFAULT_PROJECT_NAME = '默认方案'
+export const DEFAULT_PLATFORM = 全局平台标识枚举.旗舰版
 
 export const DEFAULT_CHARACTER = {
   等级: 120,

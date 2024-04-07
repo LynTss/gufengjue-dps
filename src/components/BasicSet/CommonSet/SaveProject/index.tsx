@@ -14,11 +14,13 @@ function SaveProject({ getDpsFunction }) {
   const 增益启用 = useAppSelector((state) => state.basic.增益启用)
   const 增益数据 = useAppSelector((state) => state.basic.增益数据)
   const 全部方案数据 = useAppSelector((state) => state.basic.全部方案数据)
+  const 当前平台标识 = useAppSelector((state) => state.basic.当前平台标识)
   const dispatch = useAppDispatch()
 
   const 保存方案 = (名称) => {
     const 新方案: 方案数据类型 = {
       方案名称: 名称,
+      当前平台标识,
       角色基础属性,
       装备信息,
       当前循环名称,

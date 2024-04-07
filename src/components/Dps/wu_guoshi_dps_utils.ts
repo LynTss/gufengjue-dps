@@ -28,6 +28,7 @@ interface GetDpsTotalParams {
   战斗时间: number
   默认增益集合?: SKillGainData[]
   开启强膂: boolean
+  开启斩涛悟: boolean
 }
 
 export interface DpsListData {
@@ -48,6 +49,7 @@ export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
     战斗时间,
     默认增益集合,
     开启强膂,
+    开启斩涛悟,
   } = props
   // 总dps
   let total = 0
@@ -55,7 +57,7 @@ export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
   const dpsList: DpsListData[] = []
   const 计算目标 = 当前目标
 
-  const 最终人物属性 = 获取力道奇穴加成后面板(角色最终属性, 开启强膂)
+  const 最终人物属性 = 获取力道奇穴加成后面板(角色最终属性, 开启强膂, 开启斩涛悟)
 
   // 获取装备增益等带来的最终增益集合
   let 总增益集合: SKillGainData[] = getAllGainData(角色最终属性, 默认增益集合)
@@ -93,7 +95,8 @@ export const getNotGuoDpsTotal = (props: GetDpsTotalParams) => {
       计算目标,
       技能基础数据,
       总增益集合,
-      开启强膂
+      开启强膂,
+      开启斩涛悟
       // 是否郭氏计算
     )
     dpsList.push({
@@ -114,7 +117,8 @@ export const getSingleSkillTotalDps = (
   计算目标: TargetDTO,
   技能基础数据: SkillBasicDTO[],
   总增益集合: SKillGainData[],
-  开启强膂: boolean
+  开启强膂: boolean,
+  开启斩涛悟: boolean
   // 是否郭氏计算?: boolean
 ) => {
   // 在技能数据模型中找到当前执行循环内技能的数据，获取各种系数
@@ -144,7 +148,8 @@ export const getSingleSkillTotalDps = (
           增益.增益技能数,
           计算目标,
           [...技能增益集合, ...技能独立增益集合列表],
-          开启强膂
+          开启强膂,
+          开启斩涛悟
         )
         totalDps = totalDps + 期望技能总伤
       })
@@ -157,7 +162,8 @@ export const getSingleSkillTotalDps = (
       无增益技能数,
       计算目标,
       技能增益集合,
-      开启强膂
+      开启强膂,
+      开启斩涛悟
     )
 
     totalDps = totalDps + 期望技能总伤
@@ -174,7 +180,8 @@ export const geSkillTotalDps = (
   技能总数: number,
   当前目标: TargetDTO,
   总增益集合: SKillGainData[],
-  开启强膂: boolean
+  开启强膂: boolean,
+  开启斩涛悟: boolean
 ) => {
   let 最终人物属性 = { ...人物属性 }
   let 计算目标 = 当前目标
@@ -241,14 +248,14 @@ export const geSkillTotalDps = (
     })
 
   // 计算力道带来的面板增益
-  const 强膂郭氏力道 = 开启强膂 ? 102 : 0
+  const 百分比郭氏力道 = 开启斩涛悟 ? 154 : 开启强膂 ? 102 : 0
   // 郭氏力道在是否开启强膂下的提升百分比
   const guoLidaoPercent =
-    (1024 + 计算郭氏力道 + 强膂郭氏力道) / 1024 / ((1024 + 强膂郭氏力道) / 1024) - 1
+    (1024 + 计算郭氏力道 + 百分比郭氏力道) / 1024 / ((1024 + 百分比郭氏力道) / 1024) - 1
   // 郭式力道对人物属性力道的提升值
   const 郭式力道对人物属性力道的提升值 = 最终人物属性.力道 * guoLidaoPercent
   // 力道数值的提升值
-  const 力道提升值 = 计算力道加成 + (计算力道加成 * (计算郭氏力道 + 强膂郭氏力道)) / 1024
+  const 力道提升值 = 计算力道加成 + (计算力道加成 * (计算郭氏力道 + 百分比郭氏力道)) / 1024
 
   const 总力道提升值 = 郭式力道对人物属性力道的提升值 + 力道提升值
 
@@ -403,6 +410,7 @@ export const skillBasicDps = (skillConfig: SkillBasicDTO, characterConfig: Chara
     技能基础伤害_最大值 = 0,
     伤害计算次数 = 1,
     技能伤害系数,
+    技能破招系数 = 0,
   } = skillConfig
   if (技能名称 === '破') {
     const poDps = 破招值 * 技能伤害系数
@@ -412,11 +420,16 @@ export const skillBasicDps = (skillConfig: SkillBasicDTO, characterConfig: Chara
     }
   }
 
-  function getSkill(damage, weapon_damage) {
-    return 面板攻击 * 技能伤害系数 + damage + weapon_damage * 武器伤害系数
+  function getSkill(技能基础伤害, 武器伤害, 技能破招系数 = 0) {
+    return (
+      技能基础伤害 +
+      面板攻击 * 技能伤害系数 +
+      武器伤害 * 武器伤害系数 +
+      (技能破招系数 ? 破招值 * 技能破招系数 : 0)
+    )
   }
-  const min = getSkill(技能基础伤害_最小值, 武器伤害_最小值) * 伤害计算次数
-  const max = getSkill(技能基础伤害_最大值, 武器伤害_最大值) * 伤害计算次数
+  const min = getSkill(技能基础伤害_最小值, 武器伤害_最小值, 技能破招系数) * 伤害计算次数
+  const max = getSkill(技能基础伤害_最大值, 武器伤害_最大值, 技能破招系数) * 伤害计算次数
 
   return {
     min,

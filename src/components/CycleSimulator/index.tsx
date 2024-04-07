@@ -10,8 +10,8 @@ import 循环模拟技能基础数据 from './constant/skill'
 
 import { getDpsCycle, 获取总用时 } from './utils'
 import {
-  CycleSimulatorLog,
-  CycleSimulatorSkillDTO,
+  循环日志数据类型,
+  循环基础技能数据类型,
   ShowCycleSingleSkill,
   模拟DPS结果,
   模拟信息类型,
@@ -30,6 +30,7 @@ import QixueSetModal from './components/QixueSetModal'
 import { 获取加速等级 } from '@/utils/help'
 import { 更新当前自定义循环列表 } from '@/store/basicReducer'
 import './index.css'
+import { 缓存映射 } from '@/utils/system_constant'
 
 const 加速等级枚举 = {
   0: 0,
@@ -42,11 +43,12 @@ const 加速等级枚举 = {
 
 interface CycleSimulatorProps {
   打开循环模拟器?: () => void
+  disabled?: boolean
 }
 
 function CycleSimulator(props: CycleSimulatorProps) {
-  const { 打开循环模拟器 } = props
-  const [logData, setLogData] = useState<CycleSimulatorLog[]>([])
+  const { 打开循环模拟器, disabled } = props
+  const [logData, setLogData] = useState<循环日志数据类型[]>([])
 
   const [模拟DPS结果, 更新模拟DPS结果] = useState<模拟DPS结果>({
     dps: 0,
@@ -74,7 +76,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
   // 基础弹窗
   const [basicModalOpen, setBasicModalOpen] = useState<boolean>(false)
   // 循环
-  const [cycle, setCycle] = useState<CycleSimulatorSkillDTO[]>([])
+  const [cycle, setCycle] = useState<循环基础技能数据类型[]>([])
   const [自定义循环保存弹窗, 设置自定义循环保存弹窗] = useState<boolean>(false)
   // 当前面板加速值
   const 外部加速值 = useAppSelector((state) => state?.basic?.角色最终属性)?.加速值
@@ -157,7 +159,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
   }
 
   // 计算DPS日志
-  const 计算dps = (data: CycleSimulatorLog[], 战斗时间) => {
+  const 计算dps = (data: 循环日志数据类型[], 战斗时间) => {
     const 获取用于计算的技能组 = getDpsCycle(data, 战斗时间)
     const { dpsPerSecond, dpsList, totalDps } = dispatch(
       currentDpsFunction({
@@ -175,12 +177,12 @@ function CycleSimulator(props: CycleSimulatorProps) {
   }
 
   // 向循环内新增技能
-  const 新增循环技能 = (item: CycleSimulatorSkillDTO) => {
+  const 新增循环技能 = (item: 循环基础技能数据类型) => {
     const newCycle = [...(cycle || []), item]
     setCycle(newCycle)
   }
 
-  const 批量新增循环 = (item: CycleSimulatorSkillDTO[]) => {
+  const 批量新增循环 = (item: 循环基础技能数据类型[]) => {
     const newCycle = [...(cycle || []), ...item]
     setCycle(newCycle)
   }
@@ -241,7 +243,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
       // 更新循环
       setCycle(newCycle)
     } else if (type === '整个轮次拖拽') {
-      const res: CycleSimulatorSkillDTO[] = []
+      const res: 循环基础技能数据类型[] = []
       newList.forEach((item) => {
         item.forEach((a) => {
           if (a.技能名称) {
@@ -376,13 +378,14 @@ function CycleSimulator(props: CycleSimulatorProps) {
         skillList: item?.技能序列,
       }
     })
-    localStorage?.setItem('dz_custom_cycle', JSON.stringify(保存信息))
+    localStorage?.setItem(缓存映射.自定义循环, JSON.stringify(保存信息))
   }, [customCycleList, 奇穴信息])
 
   return (
     <>
       <Button
         danger
+        disabled={disabled}
         onClick={() => {
           setBasicModalOpen(true)
           打开循环模拟器 && 打开循环模拟器()

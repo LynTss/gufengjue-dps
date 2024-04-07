@@ -31,7 +31,7 @@ function Pages() {
       {/* 清除缓存 */}
       <ClearCache />
       {/* 无界全局开关 */}
-      <WjSwitch />
+      <WjSwitch getDps={getDps} />
     </>
   )
 }

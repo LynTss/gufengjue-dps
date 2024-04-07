@@ -4,11 +4,11 @@ import { Modal, ModalProps } from 'antd'
 import * as G2 from '@antv/g2'
 import { DOMAIN_COLOR } from '@/utils/system_constant'
 import { 每秒郭氏帧 } from '../../../../constant'
-import { CycleSimulatorLog } from '../../../../simulator/type'
+import { 循环日志数据类型 } from '../../../../simulator/type'
 import '../../../../index.css'
 
 interface DpsResModalProps extends ModalProps {
-  logData: CycleSimulatorLog[]
+  logData: 循环日志数据类型[]
 }
 
 const DpsResModal: React.FC<DpsResModalProps> = (props) => {
@@ -134,7 +134,7 @@ const DpsResModal: React.FC<DpsResModalProps> = (props) => {
 
   return (
     <Modal
-      className="cycle-simulator-dps-modal"
+      className='cycle-simulator-dps-modal'
       open={open}
       onCancel={onCancel}
       title={'Dps'}
@@ -142,7 +142,7 @@ const DpsResModal: React.FC<DpsResModalProps> = (props) => {
       centered
       footer={false}
     >
-      <div className={'dps-res-chart'} id="dps-res-chart" />
+      <div className={'dps-res-chart'} id='dps-res-chart' />
     </Modal>
   )
 }

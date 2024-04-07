@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react'
-import { CycleSimulatorSkillDTO, 技能GCD组, 模拟信息类型 } from '../../simulator/type'
+import { 循环基础技能数据类型, 技能GCD组, 模拟信息类型 } from '../../simulator/type'
 import { 每秒郭氏帧 } from '../../constant'
 import classNames from 'classnames'
 import { Badge, Tooltip } from 'antd'
 import { ERROR_ACTION } from '../../simulator/utils'
 
 interface AddCycleSkillBtnProps {
-  技能: CycleSimulatorSkillDTO
-  完整循环: CycleSimulatorSkillDTO[]
+  技能: 循环基础技能数据类型
+  完整循环: 循环基础技能数据类型[]
   onClick?: any
   className?: string
   模拟信息: 模拟信息类型
@@ -94,7 +94,7 @@ const AddCycleSkillBtn: React.FC<AddCycleSkillBtnProps> = (props) => {
 
 export default AddCycleSkillBtn
 
-const 计算可以释放时技能CD = (模拟信息: 模拟信息类型, 技能: CycleSimulatorSkillDTO) => {
+const 计算可以释放时技能CD = (模拟信息: 模拟信息类型, 技能: 循环基础技能数据类型) => {
   const 技能运行状态 = 模拟信息?.当前各技能运行状态?.[技能?.技能名称]
 
   const GCD = 检查GCD(技能, 模拟信息.当前GCD组)
@@ -107,7 +107,7 @@ const 计算可以释放时技能CD = (模拟信息: 模拟信息类型, 技能:
   return 剩余秒
 }
 
-const 检查GCD = (技能: CycleSimulatorSkillDTO, GCD组: 技能GCD组) => {
+const 检查GCD = (技能: 循环基础技能数据类型, GCD组: 技能GCD组) => {
   let 校验GCD组: string = 技能.技能GCD组 as string
   if (技能.技能GCD组 === '自身') {
     校验GCD组 = 技能?.技能名称

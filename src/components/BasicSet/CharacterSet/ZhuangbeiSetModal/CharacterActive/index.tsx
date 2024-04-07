@@ -13,6 +13,7 @@ import classnames from 'classnames'
 import React, { useMemo } from 'react'
 import './index.css'
 import { 计算增益数据中加速值 } from '@/utils/skill-dps'
+import { 全局平台标识枚举 } from '@/@types/enum'
 
 interface CharacterActiveProps {
   当前角色最终属性: CharacterFinalDTO
@@ -29,13 +30,17 @@ function CharacterActive(props: CharacterActiveProps) {
   const 增益数据 = useAppSelector((state) => state?.basic?.增益数据)
   const 增益启用 = useAppSelector((state) => state?.basic?.增益启用)
 
+  const 当前平台标识 = useAppSelector((state) => state?.basic?.当前平台标识)
+  const 当前为无界平台 = 当前平台标识 === 全局平台标识枚举.无界
+  const 开启斩涛悟 = !!当前为无界平台
+
   const 获取计算后原始属性 = (角色属性, 装备信息) => {
     let 结果 = 角色属性
     if (装备信息) {
-      结果 = 获取装备加成后面板(角色属性, 装备信息)
+      结果 = 获取装备加成后面板(结果, 装备信息)
     }
     if (开启强膂) {
-      结果 = 获取力道奇穴加成后面板(角色属性, 开启强膂)
+      结果 = 获取力道奇穴加成后面板(结果, 开启强膂, 开启斩涛悟)
     }
     if (增益启用) {
       结果 = {

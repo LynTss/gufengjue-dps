@@ -7,10 +7,11 @@ import { EquipmentDTO } from '@/@types/equipment'
 import { 装备栏部位枚举, 装备部位枚举, 装备类型枚举, 增益类型枚举 } from '@/@types/enum'
 import './index.css'
 import { getZuiDaJingLian } from '..'
-import { getNewEquipmentData, 根据装备格式化技能基础数据 } from '../../utils'
+import { getNewEquipmentData } from '../../utils'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { getFinalCharacterBasicDataByEquipment } from '../../../util'
 import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
+import { 根据秘籍奇穴装备格式化技能信息 } from '@/utils/skill-dps'
 // import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
 
 interface ZhuangbeiXuanzeProps {
@@ -30,6 +31,8 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
     props
 
   const 技能基础数据 = useAppSelector((state) => state?.basic?.技能基础数据)
+  const 当前奇穴信息 = useAppSelector((state) => state?.basic?.当前奇穴信息)
+  const 当前秘籍信息 = useAppSelector((state) => state?.basic?.当前秘籍信息)
   const 当前计算结果DPS = useAppSelector((state) => state?.basic?.当前计算结果DPS)
   const [dpsUpList, setDpsUpList] = useState<{ uuid: string; dpsUp: number }[]>()
   const dispatch = useAppDispatch()
@@ -92,6 +95,13 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
     // 获取最终面板
     const { finalData } = getFinalCharacterBasicDataByEquipment(equipmentData)
 
+    const 更新技能基础数据 = 根据秘籍奇穴装备格式化技能信息({
+      技能基础数据: 技能基础数据,
+      秘籍信息: 当前秘籍信息,
+      奇穴数据: 当前奇穴信息,
+      装备增益: equipmentData,
+    })
+
     // 传入计算
     const { dpsPerSecond } = dispatch(
       currentDpsFunction({
@@ -99,7 +109,7 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
           ...finalData,
           装备增益: { ...equipmentData },
         },
-        更新技能基础数据: 根据装备格式化技能基础数据(技能基础数据, equipmentData),
+        更新技能基础数据: 更新技能基础数据,
       })
     )
 
