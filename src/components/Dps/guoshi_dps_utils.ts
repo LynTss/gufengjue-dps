@@ -14,7 +14,7 @@ import { Zhenyan_DATA } from '@/数据/阵眼'
 import { 加成系数, 属性系数 } from '@/数据/常量'
 import XIAOCHI_DATA from '@/数据/小药小吃'
 import 装备增益数据 from '@/数据/装备/装备增益数据'
-import { 获取力道奇穴加成后面板 } from '@/数据/奇穴'
+// import { 获取力道奇穴加成后面板 } from '@/数据/奇穴'
 
 interface GetDpsTotalParams {
   计算循环: CycleDTO[]
@@ -24,8 +24,6 @@ interface GetDpsTotalParams {
   增益启用: boolean
   增益数据: ZengyixuanxiangDataDTO
   战斗时间: number
-  开启强膂: boolean
-  开启斩涛悟: boolean
 }
 
 export interface DpsListData {
@@ -37,24 +35,12 @@ export interface DpsListData {
 
 // 计算技能循环总输出
 export const getDpsTotal = (props: GetDpsTotalParams) => {
-  const {
-    计算循环,
-    角色最终属性,
-    当前目标,
-    技能基础数据,
-    增益启用,
-    增益数据,
-    战斗时间,
-    开启强膂,
-    开启斩涛悟,
-  } = props
+  const { 计算循环, 角色最终属性, 当前目标, 技能基础数据, 增益启用, 增益数据, 战斗时间 } = props
   // 总dps
   let total = 0
   // 每个技能的dps总和列表
   const dpsList: DpsListData[] = []
   const 计算目标 = 当前目标
-
-  const 最终人物属性 = 获取力道奇穴加成后面板(角色最终属性, 开启强膂, 开启斩涛悟)
 
   // 获取装备增益等带来的最终增益集合
   let 总增益集合: SKillGainData[] = getAllGainData(角色最终属性, [])
@@ -91,13 +77,10 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
     // 获取循环内某个技能的总dps
     const skillDpsAll = getSingleSkillTotalDps(
       item,
-      最终人物属性,
+      角色最终属性,
       计算目标,
       技能基础数据,
-      总增益集合,
-      开启强膂,
-      开启斩涛悟
-      // 是否郭氏计算
+      总增益集合
     )
     dpsList.push({
       countName: item.统计用技能名称,
@@ -226,10 +209,7 @@ export const getSingleSkillTotalDps = (
   最终人物属性: CharacterFinalDTO,
   计算目标: TargetDTO,
   技能基础数据: SkillBasicDTO[],
-  总增益集合: SKillGainData[],
-  开启强膂: boolean,
-  开启斩涛悟: boolean
-  // 是否郭氏计算?: boolean
+  总增益集合: SKillGainData[]
 ) => {
   // 在技能数据模型中找到当前执行循环内技能的数据，获取各种系数
   const 当前技能属性 = 技能基础数据.find((item) => item.技能名称 === 循环?.技能名称)
@@ -258,9 +238,7 @@ export const getSingleSkillTotalDps = (
           最终人物属性,
           增益.增益技能数,
           计算目标,
-          [...技能增益集合, ...技能独立增益集合列表],
-          开启强膂,
-          开启斩涛悟
+          [...技能增益集合, ...技能独立增益集合列表]
         )
         totalDps = totalDps + 期望技能总伤
       })
@@ -272,9 +250,7 @@ export const getSingleSkillTotalDps = (
       最终人物属性,
       无增益技能数,
       计算目标,
-      技能增益集合,
-      开启强膂,
-      开启斩涛悟
+      技能增益集合
     )
 
     totalDps = totalDps + 期望技能总伤
@@ -290,9 +266,7 @@ export const geSkillTotalDps = (
   人物属性: CharacterFinalDTO,
   技能总数: number,
   当前目标: TargetDTO,
-  总增益集合: SKillGainData[],
-  开启强膂: boolean,
-  开启斩涛悟: boolean
+  总增益集合: SKillGainData[]
 ) => {
   let 增益计算基础: DpsGainBasicDTO = {
     计算目标: 当前目标,
@@ -328,22 +302,15 @@ export const geSkillTotalDps = (
       }
     })
 
-  // 设立和面板的强膂计算无关，只影响团队增益中力道加成收到强膂的影响
   // 计算力道带来的面板增益
-  const 百分比郭氏力道 = 开启斩涛悟 ? 154 : 开启强膂 ? 102 : 0
-  // 郭氏力道在是否开启强膂下的提升百分比
-  const guoLidaoPercent =
-    (1024 + 增益计算基础?.郭氏力道 + 百分比郭氏力道) / 1024 / ((1024 + 百分比郭氏力道) / 1024) - 1
+  const 力道提升百分比 = 增益计算基础?.郭氏力道 / 1024
   // 郭式力道对人物属性力道的提升值
-  const 郭式力道对人物属性力道的提升值 = Math.floor(
-    增益计算基础?.最终人物属性.力道 * guoLidaoPercent
-  )
+  const 郭式力道对属性力道的提升值 = Math.floor(增益计算基础?.最终人物属性.力道 * 力道提升百分比)
+  // 郭式力道对增益提供的力道二次加成提升值
+  const 郭式力道对增益内力道的提升值 = Math.floor(增益计算基础?.力道数值加成 * 力道提升百分比)
   // 力道数值的提升值
-  const 力道提升值 =
-    增益计算基础?.力道数值加成 +
-    Math.floor((增益计算基础?.力道数值加成 * (增益计算基础?.郭氏力道 + 百分比郭氏力道)) / 1024)
-
-  const 总力道提升值 = 郭式力道对人物属性力道的提升值 + 力道提升值
+  const 增益内力道提升值 = 增益计算基础?.力道数值加成 + 郭式力道对增益内力道的提升值
+  const 总力道提升值 = 郭式力道对属性力道的提升值 + 增益内力道提升值
 
   增益计算基础 = {
     ...增益计算基础,
@@ -464,153 +431,6 @@ const getSkillDamage = ({
   const 期望技能总伤 = Math.floor(平均伤害 + 会心期望率 * (会心实际伤害 - 平均伤害)) * 技能总数
 
   return { 期望技能总伤, 会心数量 }
-}
-
-/**
- * 计算不同的增益对属性、技能增伤的影响
- * 返回最终参与技能伤害计算的人物属性、技能增伤等数据
- * 计算A类增伤，所有增伤害相加
- */
-export const switchGain_A = (
-  人物属性: CharacterFinalDTO,
-  增益: SKillGainData,
-  当前目标: TargetDTO,
-  技能增伤: number,
-  郭氏额外会效果值: number,
-  额外会心率: number,
-  郭式无视防御: number,
-  计算力道加成: number,
-  计算郭氏力道: number,
-  计算郭氏无双等级: number,
-  计算郭氏破防等级: number,
-  计算郭氏基础攻击: number,
-  计算郭氏武器伤害: number
-) => {
-  const { 增益数值, 增益类型 } = 增益
-  const 计算后人物属性 = { ...人物属性 }
-  let 计算后技能增伤 = 技能增伤
-  let 计算后郭氏额外会效果值 = 郭氏额外会效果值
-  let 计算后额外会心率 = 额外会心率
-  let 计算后目标 = 当前目标
-  let 计算后郭式无视防御 = 郭式无视防御
-  let 计算后力道加成 = 计算力道加成
-  let 计算后郭氏力道 = 计算郭氏力道
-  let 计算后郭氏无双等级 = 计算郭氏无双等级
-  let 计算后郭氏破防等级 = 计算郭氏破防等级
-  let 计算后郭氏基础攻击 = 计算郭氏基础攻击
-  let 计算后郭氏武器伤害 = 计算郭氏武器伤害
-
-  switch (增益类型) {
-    case 增益类型枚举.基础攻击:
-      计算后人物属性.基础攻击 = 计算后人物属性.基础攻击 + 增益数值
-      计算后人物属性.面板攻击 = 计算后人物属性.面板攻击 + 增益数值
-      break
-    case 增益类型枚举.外攻破防等级:
-      计算后人物属性.破防值 = 计算后人物属性.破防值 + 增益数值
-      break
-    case 增益类型枚举.外攻会心等级:
-      计算后人物属性.会心值 = 计算后人物属性.会心值 + 增益数值
-      break
-    case 增益类型枚举.破招:
-      计算后人物属性.破招值 = 计算后人物属性.破招值 + 增益数值
-      break
-    case 增益类型枚举.无视防御:
-      if (计算后目标.防御点数 - 增益数值 > 0) {
-        计算后目标 = {
-          ...计算后目标,
-          防御点数: 计算后目标.防御点数 - 增益数值,
-        }
-      } else {
-        计算后目标 = {
-          ...计算后目标,
-          防御点数: 0,
-        }
-      }
-      break
-    case 增益类型枚举.力道:
-      计算后力道加成 = 计算后力道加成 + 增益数值
-      break
-    case 增益类型枚举.无双等级:
-      计算后人物属性.无双值 = 计算后人物属性.无双值 + 增益数值
-      break
-    case 增益类型枚举.加速:
-      计算后人物属性.加速值 = 计算后人物属性.加速值 + 增益数值
-      break
-    case 增益类型枚举.近战武器伤害:
-      计算后人物属性.武器伤害_最小值 += 增益数值
-      计算后人物属性.武器伤害_最大值 += 增益数值
-      break
-    case 增益类型枚举.外攻会心效果等级:
-      计算后人物属性.会心效果值 = 计算后人物属性.会心效果值 + 增益数值
-      break
-    case 增益类型枚举.郭氏外攻会心效果等级:
-      计算后郭氏额外会效果值 = 计算后郭氏额外会效果值 + 增益数值
-      break
-    case 增益类型枚举.外攻会心百分比:
-      计算后额外会心率 = 计算后额外会心率 + 增益数值
-      break
-    case 增益类型枚举.郭氏无视防御:
-      计算后郭式无视防御 = 计算后郭式无视防御 + 增益数值
-      break
-    case 增益类型枚举.郭氏外攻破防等级:
-      计算后郭氏破防等级 = 计算后郭氏破防等级 + 增益数值
-      break
-    case 增益类型枚举.郭氏无双等级:
-      计算后郭氏无双等级 = 计算后郭氏无双等级 + 增益数值
-      break
-    case 增益类型枚举.郭氏基础攻击:
-      计算后郭氏基础攻击 = 计算后郭氏基础攻击 + 增益数值
-      break
-    case 增益类型枚举.郭氏武器伤害:
-      计算后郭氏武器伤害 = 计算后郭氏武器伤害 + 增益数值
-      break
-    case 增益类型枚举.郭氏力道:
-      计算后郭氏力道 = 计算后郭氏力道 + 增益数值
-      break
-    case 增益类型枚举.伤害百分比:
-      计算后技能增伤 = 计算后技能增伤 + 增益数值
-      break
-    default:
-      console.warn(`存在未计算增益${增益?.增益类型}`, 增益)
-      break
-  }
-
-  return {
-    计算后人物属性,
-    计算后目标,
-    计算后技能增伤,
-    计算后郭氏额外会效果值,
-    计算后额外会心率,
-    计算后郭式无视防御,
-    计算后力道加成,
-    计算后郭氏力道,
-    计算后郭氏无双等级,
-    计算后郭氏破防等级,
-    计算后郭氏基础攻击,
-    计算后郭氏武器伤害,
-  }
-}
-
-/**
- * 计算不同的增益对属性、技能增伤的影响
- * 返回最终参与技能伤害计算的人物属性、技能增伤等数据
- * 分别计算BCD类增益，同类增益相加，结果和A类相乘
- */
-export const switchGain_独立增伤 = (增益: SKillGainData, B类增伤: number) => {
-  const { 增益数值, 增益类型 } = 增益
-  let 计算后技能增伤 = B类增伤
-  switch (增益类型) {
-    case 增益类型枚举.伤害百分比:
-      计算后技能增伤 = 计算后技能增伤 + 增益数值
-      break
-    default:
-      console.warn(`存在未计算增益${增益?.增益类型}`, 增益)
-      break
-  }
-
-  return {
-    计算后技能增伤,
-  }
 }
 
 /**

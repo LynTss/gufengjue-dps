@@ -35,12 +35,9 @@
 //   // })
 
 //   const result = bfgsBAlgorithm(objective, undefined, initialGuess, tol, maxit)
-//   // console.log('result')
 //   // 输出结果
 //   // const A = result.solution[0]
 //   // const B = result.solution[1]
-//   // console.log('会心' + A)
-//   // console.log('无双' + B)
 
 //   return result
 // }
@@ -157,13 +154,6 @@
 //   // 主循环
 //   while (iter < maxIterations) {
 //     const gradient = gradientFunction(x)
-
-//     console.log('numeric.norminf(gradient)', numeric.norminf(gradient))
-//     console.log('tolerance', tolerance)
-//     if (numeric.norminf(gradient) < tolerance) {
-//       console.log('123123')
-//       break
-//     }
 
 //     const p = computeSearchDirection(x, gradient)
 //     const alpha = computeStepLength(x, p)

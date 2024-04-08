@@ -1,5 +1,4 @@
 // 根据当前增益装备，计算实时循环总dps
-import { 判断是否开启力道加成奇穴 } from '@/数据/奇穴'
 import { RootState } from '../index'
 import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
 import { 获取实际循环, 根据秘籍奇穴装备格式化技能信息 } from '@/utils/skill-dps'
@@ -94,9 +93,6 @@ export const currentDpsFunction =
 
     const 当前循环技能列表 = 更新循环技能列表?.length ? 更新循环技能列表 : 当前内存技能列表
 
-    const 开启力道加成奇穴 = 判断是否开启力道加成奇穴(奇穴数据)
-    const 开启无界力道加成奇穴 = !!当前为无界平台
-
     if (!当前角色面板) {
       message.error('请先设置个人属性和目标')
       return { totalDps: 0, dpsList: [], dpsPerSecond: 0, dpsTime: 0 }
@@ -110,7 +106,6 @@ export const currentDpsFunction =
     }
 
     const 战斗时间 = 更新计算时间 || 当前循环信息?.dpsTime || 0
-    // getDpsTime(当前循环名称, 当前角色面板, 延迟, 团队增益是否启用, 团队增益数据, showTime)
 
     // 获取实际循环
     const 计算后循环 = 获取实际循环(当前循环技能列表, 奇穴数据)
@@ -134,12 +129,7 @@ export const currentDpsFunction =
       增益数据: 团队增益数据,
       默认增益集合: 更新默认增益集合 || [],
       战斗时间,
-      开启强膂: 开启力道加成奇穴,
-      开启斩涛悟: 开启无界力道加成奇穴,
     })
-
-    // TODO正式服删除
-    // const total = Math.floor(totalDps * 0.9)
 
     // 每秒dps
     const dpsPerSecond = Math.floor(totalDps / 战斗时间)

@@ -39,7 +39,7 @@ function CharacterActive(props: CharacterActiveProps) {
     if (装备信息) {
       结果 = 获取装备加成后面板(结果, 装备信息)
     }
-    if (开启强膂) {
+    if (开启强膂 || 开启斩涛悟) {
       结果 = 获取力道奇穴加成后面板(结果, 开启强膂, 开启斩涛悟)
     }
     if (增益启用) {
@@ -65,7 +65,7 @@ function CharacterActive(props: CharacterActiveProps) {
           : '-1'
     })
     return { 数据: 计算后的当前显示属性, 对比枚举 }
-  }, [当前角色最终属性, 开启强膂, 装备信息, 角色最终属性, 当前角色装备信息])
+  }, [当前角色最终属性, 当前奇穴信息, 装备信息, 角色最终属性, 当前角色装备信息])
 
   const mapKeyList = ['力道', '攻击', '会心', '会效', '破防', '无双', '破招', '加速']
 

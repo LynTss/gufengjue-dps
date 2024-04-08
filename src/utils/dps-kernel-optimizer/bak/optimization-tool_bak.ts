@@ -34,12 +34,6 @@
 //     step,
 //   })
 
-//   // 输出结果
-//   // const A = result.solution[0]
-//   // const B = result.solution[1]
-//   // console.log('会心' + A)
-//   // console.log('无双' + B)
-
 //   return result
 // }
 
@@ -47,7 +41,6 @@
 // //   const basic = 37040
 
 // //   // if (x[0] < 0 || x[1] < 0) {
-// //   //   console.log('22', 2)
 // //   //   return -Infinity
 // //   // }
 
@@ -62,8 +55,6 @@
 
 // //   // return 100 * (A ** 2 - B) ** 2 + (A - 1) ** 2
 
-// //   console.log('A', CT)
-// //   console.log('B', WS)
 // //   const res = basic + CT_1 * (1.5 * basic - basic) * WS_1 - basic + CT * (1.5 * basic - basic) * WS
 // //   return res
 // // }

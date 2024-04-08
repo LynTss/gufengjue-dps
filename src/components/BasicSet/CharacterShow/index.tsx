@@ -42,7 +42,7 @@ function CharacterShow(_, ref) {
     if (装备信息) {
       结果 = 获取装备加成后面板(结果, 装备信息)
     }
-    if (开启强膂) {
+    if (开启强膂 || 开启斩涛悟) {
       结果 = 获取力道奇穴加成后面板(结果, 开启强膂, 开启斩涛悟)
     }
     if (增益启用) {
@@ -52,7 +52,7 @@ function CharacterShow(_, ref) {
       }
     }
     return 结果
-  }, [角色最终属性, 开启强膂, 装备信息, 增益数据, 增益启用])
+  }, [角色最终属性, 当前奇穴信息, 装备信息, 增益数据, 增益启用])
 
   const 循环信息 = useCycle()?.cycle
 
@@ -75,8 +75,6 @@ function CharacterShow(_, ref) {
         技能基础数据: 计算后技能基础数据,
         增益启用,
         增益数据,
-        开启强膂,
-        开启斩涛悟,
       })
       return res
     } else {
@@ -91,7 +89,6 @@ function CharacterShow(_, ref) {
     当前输出计算目标,
     增益启用,
     增益数据,
-    开启强膂,
     openBFGS,
   ])
 

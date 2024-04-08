@@ -31,9 +31,7 @@
 // }) => {
 //   // 获取全部的装备组合
 //   const startTime = new Date().valueOf()
-//   console.log('开始计算最优配装')
 //   const all = getAllList(withWufeng)
-//   console.log('总计算量', all?.length)
 
 //   // 获取所有装备计算dps所需要的数据组合
 //   const allDpsParams = getAllDpsParams(all)
@@ -67,14 +65,6 @@
 //     }
 //   })
 //   const endTime = new Date().valueOf()
-
-//   console.log('------------------------------')
-//   console.log('计算完成')
-//   console.log('最大DPS期望组合为', maxDpsItem?.data)
-//   console.log('最大DPS期望为', Math.floor(maxDpsItem?.totalDps / maxDpsItem?.dpsTime))
-//   console.log('战斗时间', maxDpsItem?.dpsTime)
-//   console.log('计算共用时约', `${(endTime - startTime) / 1000}秒`)
-//   console.log('共计算装备排列可能数量', all?.length)
 
 //   Modal.confirm({
 //     type: 'success',
@@ -183,10 +173,8 @@
 //     zengyiQiyong,
 //     zengyixuanxiangData,
 //     dpsTime,
-//     开启强膂: true,
 //   })
 
-//   // console.log('dps', totalDps)
 //   return { totalDps, dpsTime }
 // }
 
@@ -211,8 +199,6 @@
 //         附魔: getFumo(item),
 //       }
 //     })
-
-//     // console.log('zhuangbeiObj', zhuangbeiObj)
 
 //     return {
 //       wucaishi: '彩·破招·斩铁·狂攻(陆)',

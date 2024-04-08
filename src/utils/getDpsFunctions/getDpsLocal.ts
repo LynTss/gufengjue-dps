@@ -1,7 +1,6 @@
 // 写这个文件的原因是这样就不用获取redux的数据了，避免了本地js调用异常
 // 根据当前增益装备，计算实时循环总dps
 import { 目标集合 } from '@/数据/常量'
-import { 判断是否开启力道加成奇穴 } from '@/数据/奇穴'
 import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
 import { 获取实际循环, 根据秘籍奇穴装备格式化技能信息 } from '@/utils/skill-dps'
 import { CharacterFinalDTO } from '@/@types/character'
@@ -10,10 +9,7 @@ import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { getNotGuoDpsTotal } from '@/components/Dps/wu_guoshi_dps_utils'
 import { CycleDTO } from '@/@types/cycle'
 import GuFengJueSkillDataDTO from '@/数据/技能原始数据'
-// import { 根据装备格式化技能基础数据 } from '@/components/BasicSet/CharacterSet/ZhuangbeiSetModal/utils'
 import { DEFAULT_MIJI_SELECTED_DATA } from '@/pages/constant'
-// import { 根据秘籍格式化技能基础数据 } from '@/components/BasicSet/CommonSet/MijiSet/utils'
-import { 全局平台标识枚举 } from '@/@types/enum'
 
 interface CurrentDpsFunctionProps {
   showTime?: boolean // 是否展示计算时间
@@ -49,7 +45,6 @@ export const currentDpsFunction = (props?: CurrentDpsFunctionProps) => {
     更新奇穴数据,
     更新增益启用,
     更新团队增益数据,
-    当前平台标识,
   } = props || {}
 
   // const 延迟 = 0
@@ -67,10 +62,6 @@ export const currentDpsFunction = (props?: CurrentDpsFunctionProps) => {
     奇穴数据: 奇穴数据,
     装备增益: 当前角色面板?.装备增益,
   })
-
-  const 当前为无界平台 = 当前平台标识 === 全局平台标识枚举.无界
-  const 开启力道加成奇穴 = 判断是否开启力道加成奇穴(奇穴数据)
-  const 开启无界力道加成奇穴 = !!当前为无界平台
 
   if (!当前循环技能列表?.length || !当前角色面板) {
     return { totalDps: 0, dpsList: [], dpsPerSecond: 0 }
@@ -96,8 +87,6 @@ export const currentDpsFunction = (props?: CurrentDpsFunctionProps) => {
     增益数据: (更新团队增益数据 as any) || {},
     默认增益集合: 更新默认增益集合 || [],
     战斗时间,
-    开启强膂: 开启力道加成奇穴,
-    开启斩涛悟: 开启无界力道加成奇穴,
   })
 
   // 每秒dps

@@ -17,6 +17,7 @@ import { QixueDataDTO } from '@/@types/qixue'
 import { CycleDTO } from '@/@types/cycle'
 import { 根据装备格式化技能基础数据 } from '@/components/BasicSet/CharacterSet/ZhuangbeiSetModal/utils'
 import { 根据秘籍格式化技能基础数据 } from '@/components/BasicSet/CommonSet/MijiSet/utils'
+import 无界奇穴数据 from '@/数据/无界/奇穴'
 
 /**
  * @name 破招原始伤害计算
@@ -266,7 +267,7 @@ export const 根据奇穴处理技能的基础增益信息 = (
 
 const getAllQixueData = (qixueData: string[]): QixueDataDTO[] => {
   const res: QixueDataDTO[] = []
-  奇穴数据.forEach((item) => {
+  ;[...奇穴数据, ...无界奇穴数据].forEach((item) => {
     const findData = item.奇穴列表?.find((a) => qixueData?.includes(a.奇穴名称))
     if (findData) {
       res.push(findData)
