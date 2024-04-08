@@ -1,7 +1,7 @@
 import { getLidaoJiachengPofang } from './../BasicSet/CharacterSet/util'
 import { TuanduiZengyi_DATA } from '@/数据/团队增益/index'
 import { getMianBanGongJI, getLidaoJiachengHuixin } from '@/components/BasicSet/CharacterSet/util'
-import { 增益计算类型枚举 } from './../../@types/enum'
+import { 增益计算类型枚举 } from '@/@types/enum'
 import { TargetDTO } from '@/@types/character'
 import { guoshiHuixin, guoshiHuixinLv, guoshiHuixinshanghai, guoshiResult } from '@/utils/help'
 import { CharacterFinalDTO } from '@/@types/character'

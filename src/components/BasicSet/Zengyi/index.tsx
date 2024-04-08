@@ -4,10 +4,8 @@ import React, { useState } from 'react'
 import TuanduiZengyiXuanze from './TuanduiZengyiXuanze'
 import XiaochiXuanze from './XiaochiXuanze'
 import ZhenyanXuanze from './ZhenyanXuanze'
-import 清空增益 from './增益快捷设置数据/清空增益.json'
-import 副本不吃药 from './增益快捷设置数据/副本不吃药.json'
-import 副本常用 from './增益快捷设置数据/副本常用.json'
-import 开荒拉满 from './增益快捷设置数据/开荒拉满.json'
+import 增益快捷设置数据 from './增益快捷设置数据'
+
 import { 更新方案数据 } from '@/store/basicReducer'
 import './index.css'
 
@@ -42,12 +40,13 @@ function Zengyi({ getDpsFunction }) {
           <Dropdown
             overlay={
               <Menu>
-                <Menu.Item onClick={() => saveDataAndGetDps({ ...清空增益 })}>清空增益</Menu.Item>
-                <Menu.Item onClick={() => saveDataAndGetDps({ ...副本不吃药 })}>
-                  副本不吃药
-                </Menu.Item>
-                <Menu.Item onClick={() => saveDataAndGetDps({ ...副本常用 })}>副本常用</Menu.Item>
-                <Menu.Item onClick={() => saveDataAndGetDps({ ...开荒拉满 })}>开荒拉满</Menu.Item>
+                {增益快捷设置数据.map((item) => {
+                  return (
+                    <Menu.Item key={item?.快捷名称} onClick={() => saveDataAndGetDps({ ...item })}>
+                      {item?.快捷名称}
+                    </Menu.Item>
+                  )
+                })}
               </Menu>
             }
             placement='topLeft'

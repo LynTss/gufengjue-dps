@@ -1,17 +1,17 @@
 import { TuanduiZengyiBasicDataDTO, ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { TuanduiZengyi_DATA } from '@/数据/团队增益'
 import { useAppSelector } from '@/hooks'
-import { Button, Checkbox, Col, InputNumber, Modal, Row, Select } from 'antd'
-import React, { useState } from 'react'
+import { Button, Space } from 'antd'
+import React, { useMemo, useState } from 'react'
+// import { SettingOutlined } from '@ant-design/icons'
+import 团队增益设置弹窗 from './团队增益设置弹窗'
+import 团队增益图标 from './团队增益图标'
 import './index.css'
 
 function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
   const 增益数据 = useAppSelector((state) => state.basic.增益数据)
 
   const [visible, setVisible] = useState<boolean>(false)
-
-  // 暂时不开放编辑
-  // const openEdit = true
 
   const onChangeZengyi = (
     e: boolean | null,
@@ -45,8 +45,8 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
         {
           增益名称: zengyi?.增益名称,
           启用: e === null ? true : e,
-          层数: cengshu || zengyi?.层数,
-          覆盖率: fugailv || zengyi?.覆盖率,
+          层数: cengshu || zengyi?.层数 || 1,
+          覆盖率: fugailv || zengyi?.覆盖率 || 100,
         },
       ]
     }
@@ -54,107 +54,56 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
     saveDataAndGetDps(newData)
   }
 
+  const 快捷设置团队增益 = (data) => {
+    const newData: ZengyixuanxiangDataDTO = {
+      ...增益数据,
+      团队增益: [...(data || [])],
+    }
+    saveDataAndGetDps(newData)
+  }
+
+  const 显示团队增益 = useMemo(() => {
+    return (
+      TuanduiZengyi_DATA.filter((item) => {
+        return (增益数据?.团队增益 || []).find((a) => item?.增益名称 === a?.增益名称)?.启用 || false
+      }).map((item) => {
+        const 当前数据 = (增益数据?.团队增益 || []).find((a) => item?.增益名称 === a?.增益名称)
+        return {
+          ...item,
+          当前数据: 当前数据,
+        }
+      }) || []
+    )
+  }, [TuanduiZengyi_DATA, 增益数据])
+
   return (
     <div className='tuandui-zengyi'>
-      <Row gutter={[8, 12]}>
-        {TuanduiZengyi_DATA.map((item) => {
-          const 当前增益选项 = (增益数据?.团队增益 || []).find(
-            (a) => item?.增益名称 === a?.增益名称
-          )?.启用
-          return (
-            <Col span={6} key={item.增益名称}>
-              <Checkbox
-                checked={当前增益选项}
-                className='tuandui-zengyi-checkbox'
-                onChange={(e) => onChangeZengyi(e?.target?.checked, item)}
-              >
-                {item.增益名称}
-              </Checkbox>
-            </Col>
-          )
-        })}
-      </Row>
-      <div className='tuandui-zengyi-btn-wrap'>
-        <Button size='small' className='tuandui-zengyi-btn' onClick={() => setVisible(true)}>
-          {/* 部分增益层数/覆盖率设置 */}
-          部分增益层数/覆盖率展示
+      <div className='tuandui-zengyi-header'>
+        <h1 className='tuandui-title'>团队增益</h1>
+        <Button
+          className={'tuandui-setting-btn'}
+          danger
+          size='small'
+          onClick={() => setVisible(true)}
+        >
+          设置增益
         </Button>
       </div>
-      <Modal
-        className='tuandui-zengyi-detail-modal'
-        centered
+      {显示团队增益?.length ? (
+        <Space size={[8, 8]} wrap>
+          {显示团队增益.map((item) => {
+            return <团队增益图标 data={item} key={item?.增益名称} 当前数据={item?.当前数据} />
+          })}
+        </Space>
+      ) : (
+        <p className={'tuandui-empty'}>当前无团队增益</p>
+      )}
+      <团队增益设置弹窗
         open={visible}
-        title={
-          <span>
-            部分增益层数/覆盖率展示
-            {/* 部分增益层数/覆盖率设置 */}
-            {/* <span style={{ color: '#F34242', fontSize: 14 }}>
-              为避免有人恶意输入100%覆盖率带节奏，暂时不开放编辑
-            </span> */}
-          </span>
-        }
         onCancel={() => setVisible(false)}
-        footer={null}
-      >
-        {TuanduiZengyi_DATA.filter(
-          (item) => item.层数选项数组?.length || item?.覆盖率支持手动录入
-        ).map((item) => {
-          const 当前增益选项 = (增益数据?.团队增益 || []).find(
-            (a) => item?.增益名称 === a?.增益名称
-          )
-          return (
-            <div
-              className={`tuandui-zengyi-detail-item ${
-                item.层数选项数组?.length && item?.覆盖率支持手动录入
-                  ? 'tuandui-zengyi-detail-item-100'
-                  : ''
-              }`}
-              key={item.增益名称}
-            >
-              <h1 className='tuandui-zengyi-detail-title'>{item.增益名称}</h1>
-              <div className='tuandui-zengyi-detail-content'>
-                {item?.层数选项数组?.length ? (
-                  <div className={'tuandui-zengyi-content-item'}>
-                    <span className='tuandui-zengyi-content-item-title'>层数</span>
-                    <Select
-                      value={当前增益选项?.层数}
-                      className='t-z-c-content'
-                      placeholder='请选择'
-                      defaultValue={item?.层数}
-                      onChange={(e) => onChangeZengyi(null, item, e)}
-                    >
-                      {item?.层数选项数组?.map((a) => {
-                        return (
-                          <Select.Option key={a} value={a}>
-                            {a}
-                          </Select.Option>
-                        )
-                      })}
-                    </Select>
-                  </div>
-                ) : null}
-                {item?.覆盖率支持手动录入 ? (
-                  <div className={'tuandui-zengyi-content-item'}>
-                    <span className='tuandui-zengyi-content-item-title'>覆盖率</span>
-                    <InputNumber
-                      // disabled={openEdit}
-                      className='t-z-c-content'
-                      placeholder='请输入覆盖率'
-                      min={0}
-                      value={当前增益选项?.覆盖率}
-                      precision={2}
-                      max={100}
-                      addonAfter={'%'}
-                      onChange={(e) => onChangeZengyi(null, item, item.层数, e)}
-                      defaultValue={item?.覆盖率}
-                    />
-                  </div>
-                ) : null}
-              </div>
-            </div>
-          )
-        })}
-      </Modal>
+        onChangeZengyi={onChangeZengyi}
+        快捷设置团队增益={快捷设置团队增益}
+      />
     </div>
   )
 }

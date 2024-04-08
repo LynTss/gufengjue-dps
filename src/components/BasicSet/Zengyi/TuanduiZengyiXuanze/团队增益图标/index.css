@@ -1,0 +1,56 @@
+.tuandui-zengyi-item-wrap {
+  width: 40px;
+  height: 40px;
+  position: relative; 
+}
+
+.tuandui-zengyi-img-count {
+  position: absolute;
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  display: block;
+  text-align: right;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  /* background: var(--ant-primary-color); */
+  opacity: 0.9;
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.tuandui-zengyi-img {
+  width: 40px;
+}
+
+.tuandui-zengyi-img.tuandui-zengyi-img-disabled {
+  -webkit-filter: grayscale(1) saturate(10%) contrast(50%);
+}
+
+.tuandui-zengyi-tag {
+  color: #ff0000
+}
+
+.tuandui-zengyi-img-content {
+  margin-bottom: -8px;
+}
+
+.tuandui-zengyi-img-title {
+  color: var(--ant-primary-color);
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.tuandui-zengyi-img-text {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.tuandui-zengyi-img-divider {
+  margin: 4px 0;
+}
