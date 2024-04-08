@@ -111,3 +111,12 @@ export const 获取加速等级 = (number) => {
     ? 4
     : 5
 }
+
+export const 求平均值 = (data: number[]) => {
+  // 计算数组中所有数字的总和
+  const sum = data.reduce((acc, curr) => acc + curr, 0)
+
+  // 计算平均值
+  const average = sum / data.length
+  return average
+}

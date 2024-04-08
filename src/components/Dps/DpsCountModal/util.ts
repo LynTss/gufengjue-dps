@@ -1,3 +1,4 @@
+import { 求平均值 } from '@/utils/help'
 import { DpsListData } from '../guoshi_dps_utils'
 
 export const 获取排序后各技能列表 = (dpsList = []) => {
@@ -6,9 +7,6 @@ export const 获取排序后各技能列表 = (dpsList = []) => {
   const qiluoshiList: DpsListData[] = []
   const liuxueList: DpsListData[] = []
   const zhanlangpofengList: DpsListData[] = []
-  const gufeng_pozhao_jiepo: DpsListData[] = []
-
-  const isSingleSkillCycle = list.some((item) => item.countName === '孤锋破浪（灭影）')
 
   list.forEach((item) => {
     if (item.countName) {
@@ -27,77 +25,62 @@ export const 获取排序后各技能列表 = (dpsList = []) => {
     } else {
       resList.push(item)
     }
-
-    if (
-      isSingleSkillCycle &&
-      (item.countName === '孤锋破浪（灭影）' ||
-        item.countName === '破（灭影）' ||
-        item.name === '界破')
-    ) {
-      gufeng_pozhao_jiepo.push(item)
-    }
   })
-
-  if (gufeng_pozhao_jiepo?.length) {
-    let gufeng_pozhao_jiepo_dps = 0
-
-    gufeng_pozhao_jiepo.forEach((item) => {
-      gufeng_pozhao_jiepo_dps = gufeng_pozhao_jiepo_dps + item?.dps
-    })
-
-    resList.push({
-      name: '孤锋破浪+破+界破（灭影）',
-      countName: '孤+破+界破（灭）孤的遮羞布',
-      number: 1,
-      dps: gufeng_pozhao_jiepo_dps,
-    })
-  }
 
   if (qiluoshiList?.length) {
     let qiluoshiNumber = 0
     let qiluoshiDps = 0
+    const 会心几率: number[] = []
 
     qiluoshiList.forEach((item) => {
       qiluoshiNumber = qiluoshiNumber + item?.number
       qiluoshiDps = qiluoshiDps + item?.dps
+      会心几率.push(item?.会心几率)
     })
 
     resList.push({
       name: '断云势',
       number: qiluoshiNumber,
       dps: qiluoshiDps,
+      会心几率: 求平均值(会心几率),
     })
   }
 
   if (liuxueList?.length) {
     let number = 0
     let dps = 0
+    const 会心几率: number[] = []
 
     liuxueList.forEach((item) => {
       number = number + item?.number
       dps = dps + item?.dps
+      会心几率.push(item?.会心几率)
     })
 
     resList.push({
       name: '流血（DOT）',
       number: number,
       dps: dps,
+      会心几率: 求平均值(会心几率),
     })
   }
 
   if (zhanlangpofengList?.length) {
     let number = 0
     let dps = 0
+    const 会心几率: number[] = []
 
     zhanlangpofengList.forEach((item) => {
       number = number + item?.number
       dps = dps + item?.dps
+      会心几率.push(item?.会心几率)
     })
 
     resList.push({
       name: '斩浪破锋（DOT）',
       number: number,
       dps: dps,
+      会心几率: 求平均值(会心几率),
     })
   }
 

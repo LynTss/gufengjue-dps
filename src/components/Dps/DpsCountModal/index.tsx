@@ -10,7 +10,7 @@ function DpsCountModal({ visible, onClose, dpsList, total }) {
 
   return (
     <Modal
-      className="dps-count-modal"
+      className='dps-count-modal'
       width={700}
       centered
       title={'技能统计'}
@@ -23,9 +23,10 @@ function DpsCountModal({ visible, onClose, dpsList, total }) {
           <div className={'dps-line-header dps-total'}>
             <span>技能名称</span>
             <div className={'dps-count'}>
-              <span className="dps-count-1">技能数量</span>
-              <span className="dps-count-2">技能总伤</span>
-              <span className="dps-count-3">技能比例</span>
+              <span className='dps-count-1'>技能数量</span>
+              <span className='dps-count-2'>技能总伤</span>
+              <span className='dps-count-3'>会心几率</span>
+              <span className='dps-count-4'>技能比例</span>
             </div>
           </div>
         </div>
@@ -37,9 +38,10 @@ function DpsCountModal({ visible, onClose, dpsList, total }) {
                   <div className={'dps-line'} key={item.name + index}>
                     <span>{item.countName || item.name}</span>
                     <div className={'dps-count'}>
-                      <span className="dps-count-1">{item.number}</span>
-                      <span className="dps-count-2">{item.dps}</span>
-                      <span className="dps-count-3">{((item.dps / total) * 100).toFixed(2)}%</span>
+                      <span className='dps-count-1'>{item.number}</span>
+                      <span className='dps-count-2'>{item.dps}</span>
+                      <span className='dps-count-3'>{(item.会心几率 * 100).toFixed(2)}%</span>
+                      <span className='dps-count-4'>{((item.dps / total) * 100).toFixed(2)}%</span>
                     </div>
                   </div>
                   <div

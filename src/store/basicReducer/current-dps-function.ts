@@ -1,12 +1,12 @@
 // 根据当前增益装备，计算实时循环总dps
 import { RootState } from '../index'
-import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
 import { 获取实际循环, 根据秘籍奇穴装备格式化技能信息 } from '@/utils/skill-dps'
 import { 更新当前计算结果DPS } from './index'
 import { CharacterFinalDTO } from '@/@types/character'
 import { SKillGainData, SkillBasicDTO } from '@/@types/skill'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { message } from 'antd'
+import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
 import { getNotGuoDpsTotal } from '@/components/Dps/wu_guoshi_dps_utils'
 import { CycleDTO } from '@/@types/cycle'
 // import { 获取加速等级 } from '@/utils/help'
