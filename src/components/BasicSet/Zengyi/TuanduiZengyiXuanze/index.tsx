@@ -89,15 +89,17 @@ function TuanduiZengyiXuanze({ saveDataAndGetDps }) {
           设置增益
         </Button>
       </div>
-      {显示团队增益?.length ? (
-        <Space size={[8, 8]} wrap>
-          {显示团队增益.map((item) => {
-            return <团队增益图标 data={item} key={item?.增益名称} 当前数据={item?.当前数据} />
-          })}
-        </Space>
-      ) : (
-        <p className={'tuandui-empty'}>当前无团队增益</p>
-      )}
+      <div className='tuandui-list'>
+        {显示团队增益?.length ? (
+          <Space size={[12, 12]} wrap>
+            {显示团队增益.map((item) => {
+              return <团队增益图标 data={item} key={item?.增益名称} 当前数据={item?.当前数据} />
+            })}
+          </Space>
+        ) : (
+          <p className={'tuandui-empty'}>当前无团队增益</p>
+        )}
+      </div>
       <团队增益设置弹窗
         open={visible}
         onCancel={() => setVisible(false)}
