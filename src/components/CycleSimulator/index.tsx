@@ -313,7 +313,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
               传入加速: Number(实际加速值),
               传入延迟: Number(延迟),
               更新展示: false,
-              奇穴: [...奇穴信息],
+              奇穴: [...奇穴信息, '镇机', '界破'],
             })
             const 本次日志 = 模拟结果?.最终日志
             const 循环执行结果 = 模拟结果?.循环执行结果

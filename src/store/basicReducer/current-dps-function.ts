@@ -95,12 +95,18 @@ export const currentDpsFunction =
 
     if (!当前角色面板) {
       message.error('请先设置个人属性和目标')
+      if (updateCurrentDps) {
+        dispatch(更新当前计算结果DPS(0))
+      }
       return { totalDps: 0, dpsList: [], dpsPerSecond: 0, dpsTime: 0 }
     }
 
     if (!当前循环技能列表?.length) {
       if (updateCurrentDps) {
-        message.error('当前加速无适配循环，请在自定义循环内添加或检查加速情况')
+        message.error('当前加速、延迟无适配循环，请在自定义循环内添加或检查加速情况')
+      }
+      if (updateCurrentDps) {
+        dispatch(更新当前计算结果DPS(0))
       }
       return { totalDps: 0, dpsList: [], dpsPerSecond: 0, dpsTime: 0 }
     }
