@@ -168,16 +168,6 @@ export const 计算增益数据中加速值 = (zengyixuanxiangData: Zengyixuanxi
   return number
 }
 
-export const getTrueCycleName = (
-  currentCycleName: string,
-  characterFinalData: CharacterFinalDTO
-) => {
-  if (characterFinalData?.装备增益?.大橙武特效 && currentCycleName?.includes('周流')) {
-    return `${currentCycleName}_cw`
-  }
-  return currentCycleName
-}
-
 export const 获取实际循环 = (currentCycle: CycleDTO[], qixueData: string[]) => {
   let trueCycle = [...currentCycle]
 

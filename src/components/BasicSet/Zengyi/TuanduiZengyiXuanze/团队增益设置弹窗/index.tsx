@@ -110,50 +110,46 @@ function 团队增益设置弹窗({ open, onCancel, onChangeZengyi, 快捷设置
                         ) : null}
                       </div>
                     </Checkbox>
-                    {item?.层数选项数组?.length || item?.覆盖率支持手动录入 ? (
-                      <>
-                        <Divider className='tuandui-zengyi-detail-divider' />
-                        <div className='tuandui-zengyi-detail-content'>
-                          {item?.层数选项数组?.length ? (
-                            <div className={'tuandui-zengyi-content-item'}>
-                              <span className='tuandui-zengyi-content-item-title'>层数</span>
-                              <Select
-                                value={当前增益选项?.层数}
-                                className='t-z-c-content'
-                                placeholder='请选择'
-                                defaultValue={item?.层数}
-                                onChange={(e) => onChangeZengyi(null, item, e)}
-                              >
-                                {item?.层数选项数组?.map((a) => {
-                                  return (
-                                    <Select.Option key={a} value={a}>
-                                      {a}
-                                    </Select.Option>
-                                  )
-                                })}
-                              </Select>
-                            </div>
-                          ) : null}
-                          {item?.覆盖率支持手动录入 ? (
-                            <div className={'tuandui-zengyi-content-item'}>
-                              <span className='tuandui-zengyi-content-item-title'>覆盖率</span>
-                              <InputNumber
-                                // disabled={openEdit}
-                                className='t-z-c-content'
-                                placeholder='请输入覆盖率'
-                                min={0}
-                                value={当前增益选项?.覆盖率}
-                                precision={2}
-                                max={100}
-                                addonAfter={'%'}
-                                onChange={(e) => onChangeZengyi(null, item, item.层数, e)}
-                                defaultValue={item?.覆盖率}
-                              />
-                            </div>
-                          ) : null}
+                    <>
+                      <Divider className='tuandui-zengyi-detail-divider' />
+                      <div className='tuandui-zengyi-detail-content'>
+                        <div className={'tuandui-zengyi-content-item'}>
+                          <span className='tuandui-zengyi-content-item-title'>覆盖率</span>
+                          <InputNumber
+                            disabled={!item?.覆盖率支持手动录入}
+                            className='t-z-c-content'
+                            placeholder='请输入覆盖率'
+                            min={0}
+                            value={当前增益选项?.覆盖率}
+                            precision={2}
+                            max={100}
+                            addonAfter={'%'}
+                            onChange={(e) => onChangeZengyi(null, item, item.层数, e)}
+                            defaultValue={item?.覆盖率}
+                          />
                         </div>
-                      </>
-                    ) : null}
+                        {item?.层数选项数组?.length ? (
+                          <div className={'tuandui-zengyi-content-item'}>
+                            <span className='tuandui-zengyi-content-item-title'>层数</span>
+                            <Select
+                              value={当前增益选项?.层数}
+                              className='t-z-c-content'
+                              placeholder='请选择'
+                              defaultValue={item?.层数}
+                              onChange={(e) => onChangeZengyi(null, item, e)}
+                            >
+                              {item?.层数选项数组?.map((a) => {
+                                return (
+                                  <Select.Option key={a} value={a}>
+                                    {a}
+                                  </Select.Option>
+                                )
+                              })}
+                            </Select>
+                          </div>
+                        ) : null}
+                      </div>
+                    </>
                   </div>
                 )
               })}
