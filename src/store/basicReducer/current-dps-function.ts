@@ -86,6 +86,7 @@ export const currentDpsFunction =
       网络延迟: 延迟,
       当前奇穴信息: 当前为无界平台 ? [] : 奇穴数据,
       当前循环各加速枚举: currentState?.basic?.当前循环各加速枚举,
+      当前循环名称: currentState?.basic?.当前循环名称,
       当前平台标识,
     })
 
