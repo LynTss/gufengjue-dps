@@ -1,7 +1,7 @@
 import { 增益类型枚举, 五彩石增益类型枚举 } from '@/@types/enum'
 
-const 切糕名标识 = ['暮祁', '雪舞', '雪漫', '风停', '风烈']
-const 套装名标识 = ['揽江·', '濯心·', '灵源·']
+const 切糕名标识 = ['暮祁', '雪舞', '雪漫', '风停', '风烈', '水泽']
+const 套装名标识 = ['揽江·', '濯心·', '灵源·', '鸿辉·']
 
 // 装备导入
 export const zhuangbeidaoru = (list: MoHeZhuangBeiShuJu[]) => {

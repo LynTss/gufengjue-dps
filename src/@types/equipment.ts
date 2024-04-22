@@ -133,7 +133,7 @@ export interface EquipmentDTO {
   /**
    * @name 装备iid
    */
-  uid?: string
+  uid?: string | number
   /**
    * @name 装备名称
    */
