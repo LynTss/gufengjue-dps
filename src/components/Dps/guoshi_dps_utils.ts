@@ -8,7 +8,7 @@ import { CharacterFinalDTO } from '@/@types/character'
 import { CycleDTO, CycleGain } from '@/@types/cycle'
 import { 增益类型枚举 } from '@/@types/enum'
 import { DpsGainBasicDTO, SkillBasicDTO, SKillGainData } from '@/@types/skill'
-import { skillFinalDps } from '@/utils/skill-dps'
+import { skillFinalDps, 获取全能加成面板 } from '@/utils/skill-dps'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { Zhenyan_DATA } from '@/数据/阵眼'
 import { 加成系数, 属性系数 } from '@/数据/常量'
@@ -42,16 +42,17 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
   // 每个技能的dps总和列表
   const dpsList: DpsListData[] = []
   const 计算目标 = 当前目标
+  const 计算属性 = 获取全能加成面板(角色最终属性)
 
   // 获取装备增益等带来的最终增益集合
-  let 总增益集合: SKillGainData[] = getAllGainData(角色最终属性, [])
+  let 总增益集合: SKillGainData[] = getAllGainData(计算属性, [])
 
   // 判断是不是单技能统计循环。如果是则不计入
   const isSingeSkillCycle = 计算循环?.find((item) => item?.技能名称 === '云刀')?.技能数量 === 1
 
   // 根据增益信息修改最终循环内容
   const 最终循环: CycleDTO[] = getFinalCycleData(
-    角色最终属性,
+    计算属性,
     [...计算循环],
     战斗时间,
     isSingeSkillCycle
@@ -78,7 +79,7 @@ export const getDpsTotal = (props: GetDpsTotalParams) => {
     // 获取循环内某个技能的总dps
     const { totalDps, 总会心数量 } = getSingleSkillTotalDps(
       item,
-      角色最终属性,
+      计算属性,
       计算目标,
       技能基础数据,
       总增益集合
@@ -552,6 +553,11 @@ export const 通用增益计算 = (
   let 郭氏武器伤害 = 增益计算基础?.郭氏武器伤害
 
   switch (增益类型) {
+    case 增益类型枚举.全能等级:
+      计算后人物属性.全能值 = 计算后人物属性.全能值 + 增益数值
+      计算后人物属性.破招值 = 计算后人物属性.破招值 + 增益数值
+      计算后人物属性.无双值 = 计算后人物属性.无双值 + 增益数值
+      break
     case 增益类型枚举.基础攻击:
       计算后人物属性.基础攻击 = 计算后人物属性.基础攻击 + 增益数值
       计算后人物属性.面板攻击 = 计算后人物属性.面板攻击 + 增益数值

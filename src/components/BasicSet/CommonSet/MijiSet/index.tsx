@@ -47,7 +47,12 @@ function MijiSet({ getDpsFunction, disabled }) {
 
   return (
     <>
-      <Button disabled={disabled} className='miji-set-button' onClick={() => setVisible(true)}>
+      <Button
+        size='small'
+        disabled={disabled}
+        className='miji-set-button'
+        onClick={() => setVisible(true)}
+      >
         秘籍设置
       </Button>
       <Drawer

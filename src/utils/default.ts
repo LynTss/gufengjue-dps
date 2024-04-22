@@ -39,6 +39,7 @@ export const getDefaultCharacterFinal = () => {
     武器伤害_最大值: 0,
     会心值: 0,
     会心效果值: 0,
+    全能值: 0,
   }
 }
 

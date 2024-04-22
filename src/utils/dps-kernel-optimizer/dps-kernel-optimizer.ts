@@ -2,10 +2,7 @@ import { CharacterFinalDTO, TargetDTO } from '@/@types/character'
 import { CycleDTO } from '@/@types/cycle'
 import { SkillBasicDTO } from '@/@types/skill'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
-// import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
 import { optimizationTool } from './optimization-tool'
-// import { getNotGuoDpsTotal } from '@/components/Dps/wu_guoshi_dps_utils'
-// import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
 import { getNotGuoDpsTotal } from '@/components/Dps/wu_guoshi_dps_utils'
 
 interface DpsKernelOptimizerParams {

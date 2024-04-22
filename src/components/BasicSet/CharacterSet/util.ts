@@ -58,6 +58,7 @@ export const getFinalCharacterBasicDataByEquipment = (
     武器伤害_最大值: 0,
     会心值: 2775 + 26, // 自带2775 自带41身法+26会心
     会心效果值: 0,
+    全能值: 0,
   }
   Object.keys(data).map((item) => {
     if (item === '五彩石') {
@@ -185,6 +186,9 @@ const switchData = (
       break
     case 增益类型枚举.无双等级:
       newObj.无双值 += 数值
+      break
+    case 增益类型枚举.全能等级:
+      newObj.全能值 += 数值
       break
     default:
       console.error('存在未计算属性值')

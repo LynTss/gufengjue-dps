@@ -13,7 +13,12 @@
   height: 24px;
 }
 
-.zhuangbei-character-item:nth-child(-n+6) {
+.zhuangbei-character-item-last {
+  width: 100%;
+  padding-right: 58px;
+}
+
+.zhuangbei-character-item:nth-child(-n+8) {
   margin-bottom: 8px;
 }
 
@@ -41,7 +46,7 @@
   font-weight: 700;
   display: flex;
   flex: 1 1;
-  justify-content: flex;
+  justify-content: space-between;
 }
 
 .zhuangbei-character-content-normal.zhuangbei-character-content-upper {

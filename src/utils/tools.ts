@@ -20,27 +20,30 @@ export const zhuangbeidaoru = (list: MoHeZhuangBeiShuJu[]) => {
       装备名称: name,
       装备品级: item.Level,
       ...wuqishanghaiObj,
-      装备类型: isWuqi
-        ? +item.MaxStrengthLevel === 4
-          ? `装备类型枚举.特效武器`
+      装备类型:
+        item.GetType === 'PVX'
+          ? '装备类型枚举.PVX'
+          : isWuqi
+          ? +item.MaxStrengthLevel === 4
+            ? `装备类型枚举.特效武器`
+            : +item.MaxStrengthLevel === 6
+            ? `装备类型枚举.普通`
+            : +item.MaxStrengthLevel === 8
+            ? `装备类型枚举.大CW`
+            : `装备类型枚举.小CW`
+          : 切糕名标识?.find((item) => name?.includes(item))
+          ? `装备类型枚举.切糕`
+          : 套装名标识?.find((item) => name?.includes(item))
+          ? `装备类型枚举.门派套装`
+          : +item.MaxStrengthLevel === 4
+          ? `装备类型枚举.副本精简`
+          : +item.MaxStrengthLevel === 3
+          ? `装备类型枚举.试炼精简`
+          : +item.MaxStrengthLevel === 8
+          ? `装备类型枚举.橙戒`
           : +item.MaxStrengthLevel === 6
           ? `装备类型枚举.普通`
-          : +item.MaxStrengthLevel === 8
-          ? `装备类型枚举.大CW`
-          : `装备类型枚举.小CW`
-        : 切糕名标识?.find((item) => name?.includes(item))
-        ? `装备类型枚举.切糕`
-        : 套装名标识?.find((item) => name?.includes(item))
-        ? `装备类型枚举.门派套装`
-        : +item.MaxStrengthLevel === 4
-        ? `装备类型枚举.副本精简`
-        : +item.MaxStrengthLevel === 3
-        ? `装备类型枚举.试炼精简`
-        : +item.MaxStrengthLevel === 8
-        ? `装备类型枚举.橙戒`
-        : +item.MaxStrengthLevel === 6
-        ? `装备类型枚举.普通`
-        : `未匹配`,
+          : `未匹配`,
       装备增益: Object.keys(item)
         .filter((key) => key.includes('_Magic'))
         .map((key) => {
@@ -87,6 +90,7 @@ interface MoHeZhuangBeiShuJu {
   UiID: string // uuid
   Name: string // 装备名称
   Level: number // 装备品级
+  GetType: 'PVX' | string // PVX躺平装备显示为PVX
   MaxStrengthLevel: string // 最大精炼等级
   Base1Type: string // atMeleeWeaponDamageBase 武器伤害
   Base1Min: string // 武器伤害具体值
@@ -196,6 +200,7 @@ const ShuxingMeiju = {
   atPhysicsOvercomeBase: '增益类型枚举.外攻破防等级',
   atStrainBase: '增益类型枚举.无双等级',
   atMeleeWeaponDamageBase: '增益类型枚举.近战武器伤害',
+  atPVXAllRound: '增益类型枚举.全能等级',
 }
 
 const XiangQianKOngMeiju = {
@@ -206,6 +211,8 @@ const XiangQianKOngMeiju = {
   atPhysicsCriticalDamagePowerBase: '镶嵌增伤类型枚举.会效',
   atPhysicsOvercomeBase: '镶嵌增伤类型枚举.破防',
   atStrainBase: '镶嵌增伤类型枚举.无双',
+  atMaxLifeAdditional: '镶嵌增伤类型枚举.气血',
+  atPVXAllRound: '镶嵌增伤类型枚举.全能',
 }
 
 const WuCaiShiGainNameMeiju = {

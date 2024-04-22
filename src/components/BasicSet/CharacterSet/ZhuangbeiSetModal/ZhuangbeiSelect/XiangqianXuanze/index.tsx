@@ -34,12 +34,13 @@ function XiangqianXuanze(props: XiangqianXuanzeProps) {
         <>
           {(data?.镶嵌孔数组 || []).map((item, index) => {
             return (
-              <div className="xiangqian-item" key={`${indexKey}${item.镶嵌类型}${index}`}>
-                <div className="xiangqian-label">{item.镶嵌类型}</div>
+              <div className='xiangqian-item' key={`${indexKey}${item.镶嵌类型}${index}`}>
+                <div className='xiangqian-label'>{item.镶嵌类型 || '未知'}</div>
                 <Select
-                  className="xiangqian-select"
+                  className='xiangqian-select'
                   value={value?.[index]?.镶嵌宝石等级}
                   onChange={(e) => beforeOnChange(e, index)}
+                  disabled={!item.镶嵌类型}
                 >
                   {list.map((a) => (
                     <Select.Option value={a} key={`${indexKey}${item.镶嵌类型}${index}${a}`}>

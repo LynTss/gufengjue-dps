@@ -35,7 +35,7 @@ function CharacterShow(_, ref) {
 
   const [openBFGS, setOpenBFGS] = useState<boolean>(false)
 
-  const mapKeyList = ['力道', '攻击', '会心', '会效', '破防', '无双', '破招', '加速']
+  const mapKeyList = ['力道', '攻击', '会心', '会效', '破防', '无双', '破招', '全能', '加速']
 
   const 显示数据 = useMemo(() => {
     let 结果 = 角色最终属性
@@ -155,6 +155,8 @@ export const getCharacterData = (key: string, 角色最终属性: CharacterFinal
       return ((角色最终属性.无双值 / 属性系数.无双) * 100).toFixed(2) + `%`
     case '破招':
       return 角色最终属性.破招值 || 0
+    case '全能':
+      return 角色最终属性.全能值 || 0
     case '加速':
       return (
         <>
@@ -194,6 +196,8 @@ export const getCharacterDataNumber = (key: string, 角色最终属性: Characte
       return 角色最终属性.无双值
     case '破招':
       return 角色最终属性.破招值 || 0
+    case '全能':
+      return 角色最终属性.全能值
     case '加速':
       return 角色最终属性.加速值
   }
@@ -243,5 +247,6 @@ export const 显示文案和实际属性枚举 = {
   破防: '破防值',
   无双: '无双值',
   破招: '破招值',
+  全能: '全能值',
   加速: '加速值',
 }

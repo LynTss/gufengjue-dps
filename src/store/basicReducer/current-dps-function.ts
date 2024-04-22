@@ -117,14 +117,16 @@ export const currentDpsFunction =
     // 获取实际循环
     const 计算后循环 = 获取实际循环(当前循环技能列表, 奇穴数据)
 
-    const dpsFunction =
-      当前平台标识 === 全局平台标识枚举.旗舰版
-        ? 是否郭氏计算
-          ? getDpsTotal
-          : getNotGuoDpsTotal
-        : 是否郭氏计算
-        ? getDpsTotal
-        : getNotGuoDpsTotal
+    // const dpsFunction =
+    //   当前平台标识 === 全局平台标识枚举.旗舰版
+    //     ? 是否郭氏计算
+    //       ? getDpsTotal
+    //       : getNotGuoDpsTotal
+    //     : 是否郭氏计算
+    //     ? getDpsTotal
+    //     : getNotGuoDpsTotal
+
+    const dpsFunction = 是否郭氏计算 ? getDpsTotal : getNotGuoDpsTotal
 
     // dps结果计算
     const { totalDps, dpsList } = dpsFunction({

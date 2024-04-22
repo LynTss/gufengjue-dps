@@ -5,6 +5,7 @@ import React, { forwardRef, useMemo, useState } from 'react'
 import { Select } from 'antd'
 import { EquipmentDTO } from '@/@types/equipment'
 import { 装备栏部位枚举, 装备部位枚举, 装备类型枚举, 增益类型枚举 } from '@/@types/enum'
+import classnames from 'classnames'
 import './index.css'
 import { getZuiDaJingLian } from '..'
 import { getNewEquipmentData } from '../../utils'
@@ -172,16 +173,19 @@ function ZhuangbeiXuanze(props: ZhuangbeiXuanzeProps, ref) {
                 </span>
                 <span className={'zhuangbei-select-shuoming'}>
                   {`(`}
-                  {(getZhuangbeiZengyiMiaoshu(item) || []).map((a) => (
-                    <span
-                      className={`zhuangbei-miaoshu-label ${
-                        a === '精简' || a === '特效' ? 'zhuangbei-miaoshu-label-jingjian' : ''
-                      }`}
-                      key={`${item.装备名称}-${a}-${indexKey}`}
-                    >
-                      {a}
-                    </span>
-                  ))}
+                  {(getZhuangbeiZengyiMiaoshu(item) || []).map((a) => {
+                    const 装备描述文本样式 = classnames(
+                      'zhuangbei-miaoshu-label',
+                      a === '精简' || a === '特效' ? 'zhuangbei-miaoshu-label-jingjian' : '',
+                      a === 'PVX' ? 'zhuangbei-miaoshu-label-pvx' : ''
+                    )
+
+                    return (
+                      <span className={装备描述文本样式} key={`${item.装备名称}-${a}-${indexKey}`}>
+                        {a}
+                      </span>
+                    )
+                  })}
                   {`)`}
                 </span>
               </div>
@@ -214,6 +218,9 @@ export const getZhuangbeiZengyiMiaoshu = (data: EquipmentDTO) => {
   if ([装备类型枚举.特效武器].includes(装备类型)) {
     strList.push('特效')
   }
+  if ([装备类型枚举.PVX].includes(装备类型)) {
+    strList.push('PVX')
+  }
   if ([装备类型枚举.副本精简, 装备类型枚举.试炼精简].includes(装备类型)) {
     strList.push('精简')
   }
@@ -238,6 +245,9 @@ export const getZhuangbeiZengyiMiaoshu = (data: EquipmentDTO) => {
         break
       case 增益类型枚举.破招:
         strList.push('破招')
+        break
+      case 增益类型枚举.全能等级:
+        strList.push('全能')
         break
       case 增益类型枚举.加速:
         strList.push('加速')

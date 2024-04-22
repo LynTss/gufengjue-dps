@@ -13,6 +13,7 @@ import {
   IncomeXiaoyao,
   IncomeXiaochi,
   IncomeWuxingshi,
+  单点收益列表,
 } from '@/数据/收益计算'
 import './index.css'
 // import { DOMAIN_COLOR } from '@/utils/system_constant'
@@ -23,6 +24,7 @@ const checkTypeList = [
   { label: '小药', list: IncomeXiaoyao },
   { label: '小吃', list: IncomeXiaochi },
   { label: '五行石 ', list: IncomeWuxingshi },
+  { label: '单点', list: 单点收益列表 },
 ]
 
 function Income({ zengyiVisible }, ref) {

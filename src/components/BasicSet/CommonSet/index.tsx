@@ -196,7 +196,7 @@ function CommonSet({ getDpsFunction, setZengyiVisible }) {
           </Select>
         </div>
       </div>
-      <div className='common-item'>
+      <div className='common-item' style={{ height: 'unset' }}>
         <MijiSet getDpsFunction={getDpsFunction} disabled={是否为无界平台} />
         <QixueSet getDpsFunction={getDpsFunction} disabled={是否为无界平台} />
         <CycleSimulator disabled={是否为无界平台} />

@@ -67,11 +67,11 @@ function CharacterActive(props: CharacterActiveProps) {
     return { 数据: 计算后的当前显示属性, 对比枚举 }
   }, [当前角色最终属性, 当前奇穴信息, 装备信息, 角色最终属性, 当前角色装备信息])
 
-  const mapKeyList = ['力道', '攻击', '会心', '会效', '破防', '无双', '破招', '加速']
+  const mapKeyList = ['力道', '攻击', '会心', '会效', '破防', '无双', '破招', '全能', '加速']
 
   return (
     <div className={'zhuangbei-character-show'}>
-      {mapKeyList.map((item) => {
+      {mapKeyList.map((item, index) => {
         const 对比枚举属性名 = 显示文案和实际属性枚举[item]
         const 对比枚举结果 = 显示数据?.对比枚举?.[对比枚举属性名]
         const 有变化 = 对比枚举结果 && 对比枚举结果 !== '-1'
@@ -84,7 +84,12 @@ function CharacterActive(props: CharacterActiveProps) {
             : ''
         )
         return (
-          <div className='zhuangbei-character-item' key={item}>
+          <div
+            className={`zhuangbei-character-item ${
+              index === mapKeyList.length - 1 ? 'zhuangbei-character-item-last' : ''
+            }`}
+            key={item}
+          >
             <h1 className='zhuangbei-character-label'>{item}</h1>
             <Tooltip
               placement='topLeft'

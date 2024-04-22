@@ -386,6 +386,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
       <Button
         danger
         disabled={disabled}
+        size='small'
         onClick={() => {
           setBasicModalOpen(true)
           打开循环模拟器 && 打开循环模拟器()
