@@ -108,10 +108,10 @@ export const 奇穴数据: QixueListDTO[] = [
         奇穴图片: 'https://icon.jx3box.com/icon/17749.png',
       },
       {
-        奇穴名称: '急潮',
+        奇穴名称: '殊际',
         奇穴加成类型: '无增益',
         是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/17748.png',
+        奇穴图片: 'https://icon.jx3box.com/icon/18242.png',
       },
       {
         奇穴名称: '靖步',
@@ -285,10 +285,10 @@ export const 奇穴数据: QixueListDTO[] = [
     // 是否不可编辑: true,
     奇穴列表: [
       {
-        奇穴名称: '殊际',
+        奇穴名称: '急潮',
         奇穴加成类型: '无增益',
         是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/18242.png',
+        奇穴图片: 'https://icon.jx3box.com/icon/17748.png',
       },
       {
         奇穴名称: '涤瑕',
