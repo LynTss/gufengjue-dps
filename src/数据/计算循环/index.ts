@@ -1,22 +1,19 @@
 // PC
-import 体服_DMI_六破 from './体服_DMI_六破.json'
-import 体服_油门_六破 from './体服_油门_六破.json'
-// import 体服_DMI_四破 from './体服_DMI_四破.json'
-// import 体服_油门_四破 from './体服_油门_四破.json'
-// import 体服_无影刀 from './体服_无影刀.json'
-import 体服_橙武 from './体服_橙武.json'
+import DMI_六破 from './DMI_六破.json'
+import 油门_六破 from './油门_六破.json'
+import 橙武 from './橙武.json'
 // 无界
 import 无界循环 from './无界/无界循环.json'
 import { 缓存映射 } from '@/utils/system_constant'
 import { 全局平台标识枚举 } from '@/@types/enum'
 
 const 计算循环 = [
-  { ...体服_DMI_六破 },
-  { ...体服_油门_六破 },
+  { ...DMI_六破 },
+  { ...油门_六破 },
+  { ...橙武 },
   // { ...体服_DMI_四破 },
   // { ...体服_油门_四破 },
   // { ...体服_无影刀 },
-  { ...体服_橙武 },
 ]
 
 const 无界_计算循环 = [{ ...无界循环 }]
