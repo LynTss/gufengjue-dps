@@ -17,7 +17,7 @@ export const 计算Dps = (params = {}) => {
     const 转换后面板 =  百分比 ? 把面板的百分比转换为普通面板 (面板) : 面板
 
     const 是否为大CW = !!装备增益.大橙武特效
-    const {cycle: 计算循环, 实际加速等级} = 根据奇穴和加速判断计算循环(奇穴, 转换后面板?.加速值, 是否为大CW)
+    const {cycle: 计算循环, 实际加速等级} = 根据奇穴和加速判断计算循环(转换后面板?.加速值, 是否为大CW)
 
     const 计算面板 = {
       装备增益: { ...面板.装备增益, ...(装备增益 || {}) },
@@ -37,6 +37,7 @@ export const 计算Dps = (params = {}) => {
       更新循环技能列表: 计算循环?.cycle,
       更新循环名称: 计算循环?.name,
       更新奇穴数据: 计算循环?.qixue,
+      更新计算时间: 计算循环?.dpsTime,
       更新增益启用:true,
       更新团队增益数据: 副本常用,
     })
@@ -49,6 +50,7 @@ export const 计算Dps = (params = {}) => {
           更新循环技能列表: 计算循环?.cycle,
           更新循环名称: 计算循环?.name,
           更新奇穴数据: 计算循环?.qixue,
+          更新计算时间: 计算循环?.dpsTime,
           是否郭氏计算: false,
           更新默认增益集合: data.增益集合.map((item) => {
             return {
@@ -78,6 +80,7 @@ export const 计算Dps = (params = {}) => {
         更新循环技能列表: 计算循环?.cycle,
         更新循环名称: 计算循环?.name,
         更新奇穴数据: 计算循环?.qixue,
+        更新计算时间: 计算循环?.dpsTime,
         是否郭氏计算: false,
         ...(zengyiOpen ? {
           更新增益启用:true,
@@ -126,27 +129,29 @@ const 获取排序后的Dps列表 = (dpsList = []) => {
   return 获取排序后各技能列表(dpsList)
 }
 
-const 根据奇穴和加速判断计算循环 = (奇穴 = [], 加速值 = 0, 是否为大CW) => {
+const 根据奇穴和加速判断计算循环 = ( 加速值 = 0, 是否为大CW) => {
   let 加速等级 = 获取加速等级(加速值) || 0
   const 延迟 = 0
-  const defaultCycle = (Cycle_Data || []).find((item) => item.name === '体服_油门_六破')
+  const defaultCycle = (Cycle_Data || []).find((item) => item.name === 'DMI_六破')
   let res
   let cycle
   if (是否为大CW) {
     res = (Cycle_Data || []).find((item) => item.name?.includes('橙武'))
-  } else if (奇穴.includes('聚疏')) {
-    res = (Cycle_Data || []).find((item) => item.name === '体服_无影刀')
-  } else if (奇穴.includes('承磊')) {
-    res = (Cycle_Data || []).find((item) => item.name === '体服_油门_六破')
-  } else {
-    res = (Cycle_Data || []).find((item) => item.name === '体服_油门_四破')
+  }
+  // } else if (奇穴.includes('聚疏')) {
+  //   res = (Cycle_Data || []).find((item) => item.name === '体服_无影刀')
+  // } else if (奇穴.includes('承磊')) {
+  //   res = (Cycle_Data || []).find((item) => item.name === '体服_油门_六破')
+  // }
+  else {
+    res = (Cycle_Data || []).find((item) => item.name === 'DMI_六破')
   }
   if (res) {
     cycle = res.各加速枚举 && res.各加速枚举[加速等级]?.[延迟] || ''
   }
   return {
+    ...(res || defaultCycle),
     cycle: {
-      ...(res || defaultCycle),
       ...(cycle.length ? cycle : cycle || defaultCycle.各加速枚举[1]?.[0]),
     } ,
     实际加速等级: res ? 加速等级 : 1

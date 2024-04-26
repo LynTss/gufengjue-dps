@@ -191,16 +191,5 @@ export const 获取显示秒伤 = (最后一条伤害数据) => {
   return Math.round((最后一条伤害数据?.造成总伤害 || 0) / (最后一条伤害数据?.日志时间 / 每秒郭氏帧))
 }
 
-export const 获取贯穿对应实际倍率 = (日志) => {
-  const 当前层数 = Number(日志?.split('【')?.[1]?.[0])
-  if (当前层数) {
-    const 当前引爆跳数 = Number(日志?.split('【')?.[2]?.[0]) || 3
-    const 当前引爆倍率 = 日志?.includes('- 引爆') ? 当前引爆跳数 : 1
-    return 当前层数 * 当前引爆倍率
-  } else {
-    return 1
-  }
-}
-
 // 没表明枚举就直接取原值
 export const Skill_Cycle_Map = {}

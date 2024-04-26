@@ -386,7 +386,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
     层数: 36,
     覆盖率: 20,
     增益图片: 'https://icon.jx3box.com/icon/7513.png',
-    增益描述: '受到“号令三军”鼓舞，每层提高无双值【470】点',
+    增益描述: '受到“号令三军”鼓舞，每层提高无双值【500】点',
     增益来源: '铁牢律',
     团队增益类型: '坦克Buff增益',
     层数选项数组: [
@@ -398,7 +398,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       {
         增益计算类型: 增益计算类型枚举.A,
         增益类型: 增益类型枚举.无双等级,
-        增益数值: (470 + 235) / 2,
+        增益数值: (500 + 250) / 2,
       },
     ],
   },
@@ -429,7 +429,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
     层数: 24,
     覆盖率: 7, // 持续8秒，CD5分钟，一般一直刷2分钟一次
     增益图片: 'https://icon.jx3box.com/icon/3791.png',
-    增益描述: '无双等级提高【470】点，每秒回复5%最大气血值',
+    增益描述: '无双等级提高【500】点，每秒回复5%最大气血值',
     增益来源: '明尊琉璃体_朝圣言',
     团队增益类型: '坦克Buff增益',
     冲突增益: ['圣浴明心'],
@@ -441,7 +441,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       {
         增益计算类型: 增益计算类型枚举.A,
         增益类型: 增益类型枚举.无双等级,
-        增益数值: 470,
+        增益数值: 500,
       },
     ],
   },
@@ -450,7 +450,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
     层数: 24,
     覆盖率: 7, // 持续8秒，CD5分钟，一般一直刷2分钟一次
     增益图片: 'https://icon.jx3box.com/icon/7483.png',
-    增益描述: '无双等级提高【820】点，每秒回复5%最大气血值',
+    增益描述: '无双等级提高【875】点，每秒回复5%最大气血值',
     增益来源: '明尊琉璃体_奇穴增伤朝圣言',
     团队增益类型: '坦克Buff增益',
     冲突增益: ['朝圣'],
@@ -462,7 +462,7 @@ export const TuanduiZengyi_DATA: TuanduiZengyiBasicDataDTO[] = [
       {
         增益计算类型: 增益计算类型枚举.A,
         增益类型: 增益类型枚举.无双等级,
-        增益数值: 820,
+        增益数值: 875,
       },
     ],
   },

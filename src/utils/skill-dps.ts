@@ -41,6 +41,7 @@ export const skillBasicDps = (skillConfig: SkillBasicDTO, characterConfig: Chara
     技能伤害系数,
     技能破招系数 = 0,
   } = skillConfig
+
   if (技能名称 === '破') {
     const poDps = getPoDps(破招值, 技能伤害系数)
     return {
@@ -51,8 +52,8 @@ export const skillBasicDps = (skillConfig: SkillBasicDTO, characterConfig: Chara
 
   function getSkill(技能基础伤害, 武器伤害, 技能破招系数) {
     return (
-      Math.floor(面板攻击 * 技能伤害系数) +
       Math.floor(技能基础伤害) +
+      Math.floor(面板攻击 * 技能伤害系数) +
       Math.floor(武器伤害 * 武器伤害系数) +
       (技能破招系数 ? Math.floor(技能破招系数 * 破招值) : 0)
     )
