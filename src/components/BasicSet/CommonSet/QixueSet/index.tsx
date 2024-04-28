@@ -5,7 +5,6 @@ import { DEFAULT_QIXUE_VALUE } from '@/pages/constant'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 更新方案数据 } from '@/store/basicReducer'
 import './index.css'
-import useCycle from '@/hooks/use-cycle'
 
 interface QixueSetProps {
   getDpsFunction?: () => void
@@ -20,7 +19,6 @@ const QixueSet: React.FC<QixueSetProps> = (props) => {
 
   const dispatch = useAppDispatch()
   const 当前奇穴信息 = useAppSelector((state) => state?.basic?.当前奇穴信息)
-  const 当前循环奇穴 = useCycle()?.qixue
 
   const handleChangeQixue = () => {
     setTimeout(() => {
@@ -37,14 +35,13 @@ const QixueSet: React.FC<QixueSetProps> = (props) => {
   // 监听表单变化
   useEffect(() => {
     const obj = {}
-    const 显示数据 = 当前循环奇穴?.length ? 当前循环奇穴 : 当前奇穴信息
-    显示数据.map((item, index) => {
+    当前奇穴信息.map((item, index) => {
       obj[index] = item || DEFAULT_QIXUE_VALUE[index]
     })
     form?.setFieldsValue({
       ...obj,
     })
-  }, [当前奇穴信息, 当前循环奇穴])
+  }, [当前奇穴信息])
 
   return (
     <>

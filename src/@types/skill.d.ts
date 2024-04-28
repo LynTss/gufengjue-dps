@@ -124,6 +124,7 @@ export interface DpsGainBasicDTO {
     技能独立增伤: number
     易伤增伤: number
     非侠增伤: number
+    系数增伤: number // 这里的系数增伤直接修改系数，不乘在最后
   }
   /**
    * @name 郭氏额外会效果值
