@@ -137,21 +137,16 @@ const 根据奇穴和加速判断计算循环 = ( 加速值 = 0, 是否为大CW)
   let cycle
   if (是否为大CW) {
     res = (Cycle_Data || []).find((item) => item.name?.includes('橙武'))
-  }
-  // } else if (奇穴.includes('聚疏')) {
-  //   res = (Cycle_Data || []).find((item) => item.name === '体服_无影刀')
-  // } else if (奇穴.includes('承磊')) {
-  //   res = (Cycle_Data || []).find((item) => item.name === '体服_油门_六破')
-  // }
-  else {
+  } else {
     res = (Cycle_Data || []).find((item) => item.name === 'DMI_六破')
   }
+  console.log('res',res)
   if (res) {
     cycle = res.各加速枚举 && res.各加速枚举[加速等级]?.[延迟] || ''
   }
   return {
-    ...(res || defaultCycle),
     cycle: {
+      ...(res || defaultCycle),
       ...(cycle.length ? cycle : cycle || defaultCycle.各加速枚举[1]?.[0]),
     } ,
     实际加速等级: res ? 加速等级 : 1

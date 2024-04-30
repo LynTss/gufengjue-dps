@@ -9,6 +9,8 @@ import { 更新角色最终属性 } from '@/store/basicReducer'
 import Footer from './Footer'
 import Zengyi from './Zengyi'
 import './index.css'
+// import jsApi from '@/utils/getDpsFunctions/getDps'
+// import demo from './demo_params.json'
 
 interface CharacterSetProps {
   getDps: () => void
@@ -27,6 +29,11 @@ function BasicSet(props: CharacterSetProps) {
       getDps()
     }, 0)
   }
+
+  // useEffect(() => {
+  //   const res = jsApi(demo)
+  //   console.log('res', res)
+  // }, [])
 
   useEffect(() => {
     if (角色基础属性) {
