@@ -2,7 +2,7 @@
 import { CycleDTO } from '@/@types/cycle'
 import { useAppSelector } from '@/hooks'
 import { 获取加速等级 } from '@/utils/help'
-import { 计算增益数据中加速值 } from '@/utils/skill-dps'
+import { 计算增益数据中加速值 } from '@/utils/help'
 
 function useCycle(state?) {
   let 角色最终属性: any

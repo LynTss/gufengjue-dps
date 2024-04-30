@@ -67,6 +67,7 @@ export const 奇穴数据: QixueListDTO[] = [
   },
   // 3
   {
+    是否不可编辑: true,
     奇穴列表: [
       {
         奇穴名称: '雨积',
@@ -282,7 +283,7 @@ export const 奇穴数据: QixueListDTO[] = [
   },
   // 10
   {
-    // 是否不可编辑: true,
+    是否不可编辑: true,
     奇穴列表: [
       {
         奇穴名称: '急潮',

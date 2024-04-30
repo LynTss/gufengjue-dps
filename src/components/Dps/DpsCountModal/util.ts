@@ -1,12 +1,12 @@
 import { 求平均值 } from '@/utils/help'
-import { DpsListData } from '../guoshi_dps_utils'
+import { 技能伤害结果列表类型 } from '@/@types/dps'
 
 export const 获取排序后各技能列表 = (dpsList = []) => {
-  const list: DpsListData[] = [...dpsList]
-  const resList: DpsListData[] = []
-  const qiluoshiList: DpsListData[] = []
-  const liuxueList: DpsListData[] = []
-  const zhanlangpofengList: DpsListData[] = []
+  const list: 技能伤害结果列表类型[] = [...dpsList]
+  const resList: 技能伤害结果列表类型[] = []
+  const qiluoshiList: 技能伤害结果列表类型[] = []
+  const liuxueList: 技能伤害结果列表类型[] = []
+  const zhanlangpofengList: 技能伤害结果列表类型[] = []
 
   list.forEach((item) => {
     if (item.countName) {
@@ -35,7 +35,7 @@ export const 获取排序后各技能列表 = (dpsList = []) => {
     qiluoshiList.forEach((item) => {
       qiluoshiNumber = qiluoshiNumber + item?.number
       qiluoshiDps = qiluoshiDps + item?.dps
-      会心几率.push(item?.会心几率)
+      会心几率.push(item?.会心几率 || 0)
     })
 
     resList.push({
@@ -54,7 +54,7 @@ export const 获取排序后各技能列表 = (dpsList = []) => {
     liuxueList.forEach((item) => {
       number = number + item?.number
       dps = dps + item?.dps
-      会心几率.push(item?.会心几率)
+      会心几率.push(item?.会心几率 || 0)
     })
 
     resList.push({
@@ -73,7 +73,7 @@ export const 获取排序后各技能列表 = (dpsList = []) => {
     zhanlangpofengList.forEach((item) => {
       number = number + item?.number
       dps = dps + item?.dps
-      会心几率.push(item?.会心几率)
+      会心几率.push(item?.会心几率 || 0)
     })
 
     resList.push({

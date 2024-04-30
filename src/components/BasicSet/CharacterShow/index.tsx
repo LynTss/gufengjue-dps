@@ -5,7 +5,7 @@ import { CharacterFinalDTO } from '@/@types/character'
 
 import { Checkbox, Tooltip } from 'antd'
 import { 判断是否开启力道加成奇穴, 获取力道奇穴加成后面板, 获取装备加成后面板 } from '@/数据/奇穴'
-import { 计算增益数据中加速值, 根据秘籍奇穴装备格式化技能信息 } from '@/utils/skill-dps'
+import { 计算增益数据中加速值, 根据秘籍奇穴装备格式化技能信息 } from '@/utils/help'
 import DpsKernelOptimizer from '@/utils/dps-kernel-optimizer'
 import { QuestionCircleOutlined } from '@ant-design/icons'
 import { 全局平台标识枚举 } from '@/@types/enum'

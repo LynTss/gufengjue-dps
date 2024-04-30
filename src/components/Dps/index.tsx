@@ -2,7 +2,8 @@ import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import { Divider } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 
-import { DpsListData } from './guoshi_dps_utils'
+import { 技能伤害结果列表类型 } from '@/@types/dps'
+
 import DpsCountModal from './DpsCountModal/index'
 import Income from './Income'
 import './index.css'
@@ -14,7 +15,7 @@ function Dps(props, ref) {
   const 当前计算结果DPS = useAppSelector((state) => state?.basic?.当前计算结果DPS)
 
   const [total, setTotal] = useState<number>(0)
-  const [dpsList, setDpsList] = useState<DpsListData[]>([])
+  const [dpsList, setDpsList] = useState<技能伤害结果列表类型[]>([])
   const [time, setDpsTime] = useState<number>(0)
   const [dpsCountModalVisible, setDpsCountModalVisible] = useState<boolean>(false)
 

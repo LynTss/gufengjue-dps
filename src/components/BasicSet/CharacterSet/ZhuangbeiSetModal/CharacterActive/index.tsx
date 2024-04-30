@@ -12,7 +12,7 @@ import { Tooltip } from 'antd'
 import classnames from 'classnames'
 import React, { useMemo } from 'react'
 import './index.css'
-import { 计算增益数据中加速值 } from '@/utils/skill-dps'
+import { 计算增益数据中加速值 } from '@/utils/help'
 import { 全局平台标识枚举 } from '@/@types/enum'
 
 interface CharacterActiveProps {

@@ -1,15 +1,16 @@
 // 写这个文件的原因是这样就不用获取redux的数据了，避免了本地js调用异常
 // 根据当前增益装备，计算实时循环总dps
 import { 目标集合 } from '@/数据/常量'
-import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
-import { 获取实际循环, 根据秘籍奇穴装备格式化技能信息 } from '@/utils/skill-dps'
+import { 获取实际循环, 根据秘籍奇穴装备格式化技能信息 } from '@/utils/help'
 import { CharacterFinalDTO } from '@/@types/character'
 import { SKillGainData, SkillBasicDTO } from '@/@types/skill'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
-import { getNotGuoDpsTotal } from '@/components/Dps/wu_guoshi_dps_utils'
 import { CycleDTO } from '@/@types/cycle'
 import GuFengJueSkillDataDTO from '@/数据/技能原始数据'
 import { DEFAULT_MIJI_SELECTED_DATA } from '@/pages/constant'
+
+import { 郭氏技能总伤害计算 } from '@/utils/dps/郭氏计算'
+import { 非郭氏技能总伤害计算 } from '@/utils/dps/非郭氏计算'
 
 interface CurrentDpsFunctionProps {
   showTime?: boolean // 是否展示计算时间
@@ -75,7 +76,7 @@ export const currentDpsFunction = (props?: CurrentDpsFunctionProps) => {
   // 获取基础技能信息加成
   // const 计算后技能基础数据 = 根据奇穴处理技能的基础增益信息(技能基础数据, 奇穴数据)
 
-  const dpsFunction = 是否郭氏计算 ? getDpsTotal : getNotGuoDpsTotal
+  const dpsFunction = 是否郭氏计算 ? 郭氏技能总伤害计算 : 非郭氏技能总伤害计算
 
   // dps结果计算
   const { totalDps, dpsList } = dpsFunction({

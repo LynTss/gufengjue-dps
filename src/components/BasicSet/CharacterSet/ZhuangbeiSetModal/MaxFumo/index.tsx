@@ -14,6 +14,7 @@ function MaxFumo({ 一键替换附魔, 对比Dps, 对比装备信息 }) {
   const [open, setOpen] = useState<boolean>(false)
   const [最大组合, 更新最大组合] = useState<any>({})
   const [最大Dps, 更新最大Dps] = useState<number>(0)
+  const [计算用时, 更新计算用时] = useState<number>(0)
   // 所有组合的缓存数据
   const dispatch = useAppDispatch()
   const dataRef = useRef<any>()
@@ -66,6 +67,7 @@ function MaxFumo({ 一键替换附魔, 对比Dps, 对比装备信息 }) {
   }
 
   const 开始计算 = () => {
+    const 开始计算时间 = new Date().valueOf()
     let maxDps = 0
     let 最大组合: any = {}
     if (dataRef?.current?.length) {
@@ -90,10 +92,13 @@ function MaxFumo({ 一键替换附魔, 对比Dps, 对比装备信息 }) {
     }
     更新最大组合(最大组合)
     更新最大Dps(maxDps)
+    const 结束计算时间 = new Date().valueOf()
+    const 计算用时 = 结束计算时间 - 开始计算时间
     if (maxDps > 对比Dps) {
       setOpen(true)
+      更新计算用时(计算用时)
     } else {
-      message.success('当前附魔已为最佳方案，无需替换')
+      message.success(`当前附魔已为最佳方案，无需替换。计算用时${计算用时}ms`)
     }
   }
 
@@ -110,7 +115,12 @@ function MaxFumo({ 一键替换附魔, 对比Dps, 对比装备信息 }) {
       </Button>
       {/* 设置提醒和结果弹窗 */}
       <Modal
-        title='最佳附魔结果对比'
+        title={
+          <div className={'max-fumo-modal-title'}>
+            <span>最佳附魔结果对比</span>
+            <span>计算用时：{计算用时}ms</span>
+          </div>
+        }
         centered
         open={open}
         onCancel={() => setOpen(false)}

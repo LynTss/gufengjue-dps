@@ -9,7 +9,7 @@
 // import { EquipmentDTO } from '@/@types/equipment'
 // import ZUANGBEI_DATA from '@/数据/装备'
 // import { getZuiDaJingLian } from '../ZhuangbeiSelect'
-// import { getDpsTime, 根据奇穴处理技能的基础增益信息 } from '@/utils/skill-dps'
+// import { getDpsTime, 根据奇穴处理技能的基础增益信息 } from '@/utils/help'
 // import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
 // import { getNewEquipmentData, 根据装备格式化技能基础数据 } from '../utils'
 // import { getFinalCharacterBasicDataByEquipment } from '../../util'

@@ -20,7 +20,7 @@ import CharacterActive from './CharacterActive'
 import Zhuangbeizengyi from './Zhuangbeizengyi'
 import MaxFumo from './MaxFumo'
 import MaxWucaishi from './MaxWucaishi'
-import { 根据秘籍奇穴装备格式化技能信息 } from '@/utils/skill-dps'
+import { 根据秘籍奇穴装备格式化技能信息 } from '@/utils/help'
 import './index.css'
 
 function ZhuangbeiSet({ visible, onClose, getDpsFunction }) {

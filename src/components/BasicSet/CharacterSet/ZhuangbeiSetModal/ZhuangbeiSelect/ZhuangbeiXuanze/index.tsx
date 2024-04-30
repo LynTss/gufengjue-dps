@@ -12,7 +12,7 @@ import { getNewEquipmentData } from '../../utils'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { getFinalCharacterBasicDataByEquipment } from '../../../util'
 import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
-import { 根据秘籍奇穴装备格式化技能信息 } from '@/utils/skill-dps'
+import { 根据秘籍奇穴装备格式化技能信息 } from '@/utils/help'
 // import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
 
 interface ZhuangbeiXuanzeProps {

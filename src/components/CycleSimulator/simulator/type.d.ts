@@ -14,7 +14,7 @@ import { 点掉橙武类型 } from './技能类/点掉橙武/index'
 import { 流血DOT类型 } from './DOT类/流血/index'
 import { 斩浪破锋DOT类型 } from './DOT类/斩浪破锋/index'
 import { 截辕DOT类型 } from './DOT类/截辕/index'
-import { DpsListData } from '@/components/Dps/guoshi_dps_utils'
+import { 技能伤害结果列表类型 } from '@/@types/dps'
 
 // 将一个技能从释放到释放结束的各阶段定义类型
 export interface 技能类类型 {
@@ -372,5 +372,5 @@ export interface 模拟DPS结果 {
   dps: number
   total: number
   战斗时间: number
-  技能列表: DpsListData[]
+  技能列表: 技能伤害结果列表类型[]
 }

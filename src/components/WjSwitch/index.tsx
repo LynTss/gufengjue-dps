@@ -8,7 +8,7 @@ import { 更新技能基础数据, 更新方案数据 } from '@/store/basicReduc
 import { 获取全部循环 } from '@/数据/计算循环'
 import 技能原始数据 from '@/数据/技能原始数据'
 import 无界技能原始数据 from '@/数据/无界/技能原始数据'
-import { 根据秘籍奇穴装备格式化技能信息 } from '@/utils/skill-dps'
+import { 根据秘籍奇穴装备格式化技能信息 } from '@/utils/help'
 import './index.css'
 
 function WjSwitch({ getDps }) {

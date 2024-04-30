@@ -1,3 +1,10 @@
+.max-fumo-modal-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 24px;
+}
+
 .max-fumo-wrap {
   display: flex;
   align-items: flex-start;

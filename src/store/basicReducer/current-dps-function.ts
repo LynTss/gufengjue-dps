@@ -1,19 +1,20 @@
 // 根据当前增益装备，计算实时循环总dps
 import { RootState } from '../index'
-import { 获取实际循环, 根据秘籍奇穴装备格式化技能信息 } from '@/utils/skill-dps'
+import { 获取实际循环, 根据秘籍奇穴装备格式化技能信息 } from '@/utils/help'
 import { 更新当前计算结果DPS } from './index'
 import { CharacterFinalDTO } from '@/@types/character'
 import { SKillGainData, SkillBasicDTO } from '@/@types/skill'
 import { ZengyixuanxiangDataDTO } from '@/@types/zengyi'
 import { message } from 'antd'
-import { getDpsTotal } from '@/components/Dps/guoshi_dps_utils'
-import { getNotGuoDpsTotal } from '@/components/Dps/wu_guoshi_dps_utils'
 import { CycleDTO } from '@/@types/cycle'
 // import { 获取加速等级 } from '@/utils/help'
 import useCycle from '@/hooks/use-cycle'
 import { 全局平台标识类型 } from '@/@types/common'
 import { 全局平台标识枚举 } from '@/@types/enum'
 import { MijiSelectedData } from '@/@types/miji'
+
+import { 郭氏技能总伤害计算 } from '@/utils/dps/郭氏计算'
+import { 非郭氏技能总伤害计算 } from '@/utils/dps/非郭氏计算'
 
 interface CurrentDpsFunctionProps {
   showTime?: boolean // 是否展示计算时间
@@ -126,7 +127,7 @@ export const currentDpsFunction =
     //     ? getDpsTotal
     //     : getNotGuoDpsTotal
 
-    const dpsFunction = 是否郭氏计算 ? getDpsTotal : getNotGuoDpsTotal
+    const dpsFunction = 是否郭氏计算 ? 郭氏技能总伤害计算 : 非郭氏技能总伤害计算
 
     // dps结果计算
     const { totalDps, dpsList } = dpsFunction({

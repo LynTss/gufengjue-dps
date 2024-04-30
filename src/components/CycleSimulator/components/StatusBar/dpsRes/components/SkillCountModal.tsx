@@ -1,12 +1,12 @@
 import React from 'react'
 import DpsCountModal from '@/components/Dps/DpsCountModal'
-import { DpsListData } from '@/components/Dps/guoshi_dps_utils'
+import { 技能伤害结果列表类型 } from '@/@types/dps'
 import '../../../../index.css'
 
 interface SkillCountModalProps {
   open: boolean
   onCancel: () => void
-  dpsList: DpsListData[]
+  dpsList: 技能伤害结果列表类型[]
   total: number
 }
 

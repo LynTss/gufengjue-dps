@@ -1,3 +1,4 @@
+import { 计算公式计算类型 } from '@/utils/dps/常量'
 import { 全局平台标识枚举, 增益类型枚举 } from './enum'
 
 /**
@@ -54,6 +55,18 @@ export interface SkillBasicDTO {
    * @default 0
    */
   技能破招系数?: number
+  /**
+   * @name 真实伤害
+   * @description 大部分百战技能和大附魔技能的伤害
+   * @description 只吃秋肃和等级减伤
+   */
+  真实伤害?: number
+  /**
+   * @name 伤害计算类型标记
+   * @description 计算伤害时是否对某些环节进行计算
+   * @default [增伤, 破防, 会心, 等级减伤, 无双, 非侠, 易伤]
+   */
+  伤害计算类型标记?: 计算公式计算类型[]
 }
 
 /**

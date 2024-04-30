@@ -1,6 +1,6 @@
 import React from 'react'
 import { Modal, Table } from 'antd'
-import { skillBasicDps, skillFinalDps } from '../../utils/skill-dps'
+import { 完整技能伤害 } from '@/utils/dps/郭氏计算'
 import { useAppSelector } from '@/hooks'
 import './index.css'
 
@@ -47,44 +47,26 @@ function SkillDamageTable({ visible, onClose }) {
       dataIndex: '伤害计算次数',
     },
     {
-      title: '原始伤害-min',
-      dataIndex: 'yuanshi_min',
-      render: (_, row) => {
-        return skillBasicDps(row, 角色最终属性)?.min
-      },
-    },
-    {
-      title: '原始伤害-max',
-      dataIndex: 'yuanshi_max',
-      render: (_, row) => {
-        return skillBasicDps(row, 角色最终属性)?.max
-      },
-    },
-    {
-      title: '实际伤害-min',
-      dataIndex: 'min',
-      className: 'keyTable',
-      fix: 'right',
-      width: 120,
-      render: (_, row) => {
-        return skillFinalDps(row, 角色最终属性, 当前输出计算目标)?.min
-      },
-    },
-    {
-      title: '实际伤害-max',
-      dataIndex: 'max',
+      title: '实际伤害',
+      dataIndex: '实际伤害',
       className: 'keyTable',
       defaultSortOrder: 'descend',
       sorter: (a, b) => {
         return (
-          skillFinalDps(a, 角色最终属性, 当前输出计算目标)?.max -
-          skillFinalDps(b, 角色最终属性, 当前输出计算目标)?.max
+          完整技能伤害({ 当前技能属性: a, 最终人物属性: 角色最终属性, 当前目标: 当前输出计算目标 })
+            ?.期望技能总伤 -
+          完整技能伤害({ 当前技能属性: b, 最终人物属性: 角色最终属性, 当前目标: 当前输出计算目标 })
+            ?.期望技能总伤
         )
       },
       fix: 'right',
       width: 120,
       render: (_, row) => {
-        return skillFinalDps(row, 角色最终属性, 当前输出计算目标)?.max
+        return 完整技能伤害({
+          当前技能属性: row,
+          最终人物属性: 角色最终属性,
+          当前目标: 当前输出计算目标,
+        })?.期望技能总伤
       },
     },
   ]

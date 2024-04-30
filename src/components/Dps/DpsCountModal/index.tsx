@@ -40,7 +40,9 @@ function DpsCountModal({ visible, onClose, dpsList, total }) {
                     <div className={'dps-count'}>
                       <span className='dps-count-1'>{item.number}</span>
                       <span className='dps-count-2'>{item.dps}</span>
-                      <span className='dps-count-3'>{(item.会心几率 * 100).toFixed(2)}%</span>
+                      <span className='dps-count-3'>
+                        {((item.会心几率 || 0) * 100).toFixed(2)}%
+                      </span>
                       <span className='dps-count-4'>{((item.dps / total) * 100).toFixed(2)}%</span>
                     </div>
                   </div>
